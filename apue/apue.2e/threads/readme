@@ -1,0 +1,5 @@
+gcc -o main threadid.c -I ../include/ ../lib/libapue.a -lpthread
+gcc threadid.c -I ../include/ ../lib/libapue.a -lpthread -o main
+
+g++ -o main threadid.c -I ../include/ ../lib/libapue.a -lpthread
+g++ threadid.c -I ../include/ ../lib/libapue.a -lpthread -o main

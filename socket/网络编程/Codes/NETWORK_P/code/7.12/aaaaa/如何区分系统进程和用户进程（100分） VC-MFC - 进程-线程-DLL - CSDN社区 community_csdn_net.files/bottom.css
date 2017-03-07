@@ -1,0 +1,27 @@
+#CFContent A:link {
+	COLOR: #000; TEXT-DECORATION: none
+}
+#CFContent A:visited {
+	COLOR: #000; TEXT-DECORATION: none
+}
+#CFContent A:hover {
+	COLOR: #f00; TEXT-DECORATION: underline
+}
+#CFContent A:active {
+	COLOR: #000; TEXT-DECORATION: none
+}
+#CFBig {
+	CLEAR: both; MARGIN: auto; WIDTH: 760px; FONT-FAMILY: Tahoma, sans-serif; TEXT-ALIGN: center
+}
+#CFBig #CFContent {
+	MARGIN: auto; WIDTH: 500px; TEXT-ALIGN: center
+}
+#CFBig #CFContent P {
+	FONT-SIZE: 9pt; MARGIN: 2px
+}
+#CFBig HR {
+	COLOR: #4682b4; HEIGHT: 1px
+}
+#CFBig #CFBiaoShi {
+	FLOAT: right; WIDTH: 40px
+}

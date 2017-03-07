@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DLLTest2 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/DLLTest2.res" /d "_DEBUG" /d "_AFXDLL" "C:\Documents and Settings\syjie\桌面\DLLTest2\DLLTest2.rc"" 
+Creating temporary file "C:\DOCUME~1\syjie\LOCALS~1\Temp\RSP1DF.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/DLLTest2.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"C:\Documents and Settings\syjie\桌面\DLLTest2\DLLTest2.cpp"
+"C:\Documents and Settings\syjie\桌面\DLLTest2\DLLTest2Dlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\syjie\LOCALS~1\Temp\RSP1DF.tmp" 
+Creating temporary file "C:\DOCUME~1\syjie\LOCALS~1\Temp\RSP1E0.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/DLLTest2.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"C:\Documents and Settings\syjie\桌面\DLLTest2\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\syjie\LOCALS~1\Temp\RSP1E0.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/DLLTest2.pdb" /debug /machine:I386 /out:"Debug/DLLTest2.exe" /pdbtype:sept  ".\Debug\DLLTest2.obj" ".\Debug\DLLTest2Dlg.obj" ".\Debug\StdAfx.obj" ".\Debug\DLLTest2.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DLLTest2.cpp
+DLLTest2Dlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+DLLTest2.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

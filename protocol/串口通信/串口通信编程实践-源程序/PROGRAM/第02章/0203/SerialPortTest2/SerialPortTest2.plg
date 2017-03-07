@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SerialPortTest2 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/SerialPortTest2.res" /d "_DEBUG" /d "_AFXDLL" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0203\SerialPortTest2\SerialPortTest2.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5C.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SerialPortTest2.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0203\SerialPortTest2\MainFrm.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0203\SerialPortTest2\SerialPort.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0203\SerialPortTest2\SerialPortTest2.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0203\SerialPortTest2\SerialPortTest2Doc.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0203\SerialPortTest2\SerialPortTest2View.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5C.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5D.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SerialPortTest2.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0203\SerialPortTest2\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5D.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5E.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/SerialPortTest2.pdb" /debug /machine:I386 /out:"Debug/SerialPortTest2.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\SerialPort.obj"
+".\Debug\SerialPortTest2.obj"
+".\Debug\SerialPortTest2Doc.obj"
+".\Debug\SerialPortTest2View.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SerialPortTest2.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5E.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+SerialPort.cpp
+SerialPortTest2.cpp
+SerialPortTest2Doc.cpp
+SerialPortTest2View.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+SerialPortTest2.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

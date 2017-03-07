@@ -1,0 +1,21 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GetIP - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/GetIP.res" /d "_DEBUG" /d "_AFXDLL" "D:\文档\写书\VC高级网络编程\sample\GetIP\GetIP.rc"" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/GetIP.pdb" /debug /machine:I386 /out:"Debug/GetIP.exe" /pdbtype:sept  ".\Debug\GetIP.obj" ".\Debug\GetIPDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\GetIP.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+
+
+
+<h3>Results</h3>
+GetIP.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

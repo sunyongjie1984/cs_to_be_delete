@@ -1,0 +1,96 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ProgrammeTechnicFund - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "../" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ProgrammeTechnicFund.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\ACE_Frame.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\BackgroundUtil.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\ControlRegedit.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\FileOperateClass.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\FileOperateDlg.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\ListCtrlPrint.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\MainFrm.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\PrinterJob.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\ProgrammeTechnicFund.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\ProgrammeTechnicFundDoc.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\ProgrammeTechnicFundView.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\ShareResource.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\SortHeaderCtrl.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\SortListCtrl.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\UsingMethodDlg.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\UsingSocketCommunication.cpp"
+"G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\VisitDatabaseInterface.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/ProgrammeTechnicFund.pdb" /debug /machine:I386 /out:"Debug/ProgrammeTechnicFund.exe" /pdbtype:sept 
+".\Debug\ACE_Frame.obj"
+".\Debug\BackgroundUtil.obj"
+".\Debug\ControlRegedit.obj"
+".\Debug\FileOperateClass.obj"
+".\Debug\FileOperateDlg.obj"
+".\Debug\ListCtrlPrint.obj"
+".\Debug\MainFrm.obj"
+".\Debug\PrinterJob.obj"
+".\Debug\ProgrammeTechnicFund.obj"
+".\Debug\ProgrammeTechnicFundDoc.obj"
+".\Debug\ProgrammeTechnicFundView.obj"
+".\Debug\ShareResource.obj"
+".\Debug\SortHeaderCtrl.obj"
+".\Debug\SortListCtrl.obj"
+".\Debug\StdAfx.obj"
+".\Debug\UsingMethodDlg.obj"
+".\Debug\UsingSocketCommunication.obj"
+".\Debug\VisitDatabaseInterface.obj"
+".\Debug\ProgrammeTechnicFund.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7.tmp"
+<h3>Output Window</h3>
+Compiling...
+ACE_Frame.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+BackgroundUtil.cpp
+ControlRegedit.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+FileOperateClass.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+FileOperateDlg.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+ListCtrlPrint.cpp
+MainFrm.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+PrinterJob.cpp
+G:\学习资料\编程\Windows_P\Applications_P\TEST\ProgrammeTechnicFundTEST\PrinterJob.cpp(206) : warning C4552: '!=' : operator has no effect; expected operator with side-effect
+ProgrammeTechnicFund.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+ProgrammeTechnicFundDoc.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+ProgrammeTechnicFundView.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+ShareResource.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+SortHeaderCtrl.cpp
+SortListCtrl.cpp
+UsingMethodDlg.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+UsingSocketCommunication.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+VisitDatabaseInterface.cpp
+g:\学习资料\编程\windows_p\applications_p\test\programmetechnicfundtest\ace_frame.h(12) : fatal error C1083: Cannot open include file: 'ace/process_mutex.h': No such file or directory
+Generating Code...
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+ProgrammeTechnicFund.exe - 12 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,11 @@
+LIBRARY      Phone
+DESCRIPTION  'Phone Windows Dynamic Link Library'
+
+EXETYPE WINDOWS
+
+EXPORTS
+    ; Explicit exports can go here
+	StartPhone		@1
+	ClosePhone		@2
+
+

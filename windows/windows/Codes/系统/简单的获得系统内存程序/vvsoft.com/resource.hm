@@ -1,0 +1,4 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by Sysinfo.rc
+//
+#define HIDC_FREE_MEMORY                0x806603eb    // IDD_SYSINFO_DIALOG

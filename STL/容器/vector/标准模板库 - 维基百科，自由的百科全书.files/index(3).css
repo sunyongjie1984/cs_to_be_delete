@@ -1,0 +1,187 @@
+BODY.page-Wikipedia_首页 #deleteconfirm {
+	DISPLAY: none! important
+}
+BODY.page-Wikipedia_首页 #t-cite {
+	DISPLAY: none! important
+}
+BODY.page-Wikipedia_首页 #lastmod {
+	DISPLAY: none! important
+}
+BODY.page-Wikipedia_首页 #siteSub {
+	DISPLAY: none! important
+}
+BODY.page-Wikipedia_首页 #contentSub {
+	DISPLAY: none! important
+}
+BODY.page-Wikipedia_首页 H1.firstHeading {
+	DISPLAY: none! important
+}
+BODY.page-Wikipedia_首页 #content {
+	BACKGROUND: white
+}
+BODY.page-Wikipedia_首页 #mytabs LI {
+	BACKGROUND: white
+}
+BODY.page-Wikipedia_首页 #mytabs LI A {
+	BACKGROUND: white
+}
+BODY.page-Wikipedia_首页 #p-cactions LI.selected A {
+	BACKGROUND: white
+}
+BODY.page-Wikipedia_首页 #p-cactions LI A:hover {
+	BACKGROUND: white
+}
+BODY.page-Wikipedia_首页 #content DIV.thumb {
+	BACKGROUND: white
+}
+BODY.page-Wikipedia_首页 #p-cactions LI A {
+	BACKGROUND-COLOR: #fbfbfb
+}
+#siteNotice {
+	MARGIN-TOP: 5px; PADDING-LEFT: 4px; FONT-STYLE: italic; TEXT-ALIGN: center
+}
+#content {
+	BACKGROUND: #f8fcff
+}
+#content DIV.thumb {
+	BORDER-LEFT-COLOR: #f8fcff; BORDER-BOTTOM-COLOR: #f8fcff; BORDER-TOP-COLOR: #f8fcff; BORDER-RIGHT-COLOR: #f8fcff
+}
+.ns-0  #content {
+	BACKGROUND: white
+}
+#mytabs LI {
+	BACKGROUND: #f8fcff
+}
+.ns-0  #mytabs LI {
+	BACKGROUND: white
+}
+#mytabs LI A {
+	BACKGROUND-COLOR: #f8fcff
+}
+.ns-0  #mytabs LI A {
+	BACKGROUND-COLOR: white
+}
+#p-cactions LI A {
+	BACKGROUND-COLOR: #f8fcff
+}
+#p-cactions LI A:hover {
+	BACKGROUND-COLOR: #f8fcff
+}
+#p-cactions LI.selected A {
+	BACKGROUND-COLOR: #f8fcff
+}
+.ns-0  #p-cactions LI A {
+	BACKGROUND-COLOR: #fbfbfb
+}
+.ns-0  #p-cactions LI.selected A {
+	BACKGROUND-COLOR: white
+}
+.ns-0  #p-cactions LI A:hover {
+	BACKGROUND-COLOR: white
+}
+.ns-0  #content DIV.thumb {
+	BORDER-LEFT-COLOR: white; BORDER-BOTTOM-COLOR: white; BORDER-TOP-COLOR: white; BORDER-RIGHT-COLOR: white
+}
+#siteSub {
+	DISPLAY: inline; FONT-WEIGHT: normal; FONT-SIZE: 92%; COLOR: #000
+}
+#siteSub .editsection {
+	FONT-SIZE: 100%
+}
+#bodyContent #siteSub A {
+	PADDING-RIGHT: 0px; BACKGROUND-IMAGE: none; COLOR: #000; BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+}
+#siteSub .editsection A {
+	COLOR: #002bb8! important
+}
+#siteSub .editsection A:hover {
+	TEXT-DECORATION: underline! important
+}
+#ca-edit A {
+	FONT-WEIGHT: bold! important
+}
+DIV.alreadyloggedin {
+	FONT-WEIGHT: bold; COLOR: red
+}
+
+@media Print    
+{
+.editlink {
+	DISPLAY: none
+}
+.noprint {
+	DISPLAY: none
+}
+.metadata {
+	DISPLAY: none
+}
+.dablink {
+	DISPLAY: none
+}
+#content {
+	BACKGROUND: #ffffff
+}
+    }
+.diffchange {
+	FONT-WEIGHT: bold
+}
+TD.diff-addedline {
+	FONT-SIZE: 85%
+}
+TD.diff-deletedline {
+	FONT-SIZE: 85%
+}
+TD.diff-context {
+	FONT-SIZE: 85%
+}
+#pt-login {
+	FONT-WEIGHT: bold; FONT-SIZE: 110%
+}
+FORM#userlogin {
+	BORDER-RIGHT: #fc6 2px solid; PADDING-RIGHT: 1em; BORDER-TOP: #fc6 2px solid; PADDING-LEFT: 1em; FLOAT: left; PADDING-BOTTOM: 0.7em; BORDER-LEFT: #fc6 2px solid; COLOR: #000; MARGIN-RIGHT: 2em; PADDING-TOP: 1em; BORDER-BOTTOM: #fc6 2px solid; BACKGROUND-COLOR: #ffffe6
+}
+FORM#userlogin TABLE {
+	FLOAT: left; COLOR: #000; BACKGROUND-COLOR: #ffffe6
+}
+P.error {
+	FONT-WEIGHT: bold
+}
+#bodyContent {
+	FONT-SIZE: 118%
+}
+.portlet H5 {
+	FONT-SIZE: 100%
+}
+.portlet UL {
+	FONT-SIZE: 100%
+}
+#toc .toctoggle {
+	FONT-SIZE: 100%
+}
+.pBody {
+	FONT-SIZE: 95%
+}
+#footer {
+	FONT-SIZE: 95%
+}
+DIV.thumb DIV {
+	FONT-SIZE: 95%
+}
+H2 {
+	FONT-WEIGHT: bold
+}
+#sharedUploadNotice {
+	FONT-STYLE: normal
+}
+#siteNotice {
+	FONT-STYLE: normal
+}
+#siteNotice TABLE {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+LI.FA {
+	LIST-STYLE-IMAGE: url(http://upload.wikimedia.org/wikipedia/commons/d/d4/Monobook-bullet-star.png)
+}
+LI.GA {
+	LIST-STYLE-IMAGE: url(http://upload.wikimedia.org/wikipedia/commons/4/42/Monobook-bullet-ga.png)
+}

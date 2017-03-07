@@ -1,0 +1,120 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Developer Studio generated include file.
+// Used by SCC.rc
+//
+#define IDR_CNTR_INPLACE                6
+#define IDD_ABOUTBOX                    100
+#define IDP_OLE_INIT_FAILED             100
+#define IDP_FAILED_TO_CREATE            102
+#define IDR_MAINFRAME                   128
+#define IDR_SCCTYPE                     129
+#define IDB_DOCKBAR                     131
+#define IDB_DOCKBAROFFICE               133
+#define IDB_MDIICONS                    134
+#define IDR_SCC_TOOL                    135
+#define IDR_TOOLBAR_SHELL               139
+#define IDR_TOOLBAR_CS                  141
+#define IDR_MENU_SHELL                  143
+#define IDD_DIALOG_SEND                 146
+#define IDD_DIALOG_TRANSMIT             149
+#define IDD_DIALOG_FILTER               151
+#define IDD_DIALOG_SAVE                 152
+#define IDB_BITMAP1                     153
+#define IDC_RADIO_LINE                  1004
+#define IDC_RADIO_LINES                 1005
+#define IDC_RADIO_CURLINE               1006
+#define IDC_RADIO_ONELINE               1007
+#define IDC_EDIT_ONELINE                1008
+#define IDC_EDIT_MULTILINES             1009
+#define IDC_EDIT_TIME                   1010
+#define IDC_BUTTON_USE                  1011
+#define IDC_BUTTON_HIDE                 1012
+#define IDC_EDIT_MULTILINES2            1013
+#define IDC_EDIT_TRIGGER                1014
+#define IDC_LIST_TRIGGER                1017
+#define IDC_EDIT_COMSRC                 1018
+#define IDC_EDIT_COMDEST                1019
+#define IDC_CHECK_COM                   1020
+#define IDC_STATIC_EMAIL                1021
+#define IDC_RADIO_ALL                   1022
+#define IDC_STATIC_GUILIB               1022
+#define IDC_RADIO_CUR                   1023
+#define IDC_STATIC_GUILIB2              1023
+#define IDC_LIST_FILTER                 1024
+#define IDC_BUTTON_FILTER               1025
+#define IDC_BUTTON_EXIT                 1026
+#define IDC_BROWSE_EDIT                 1026
+#define IDC_BROWSE                      1027
+#define IDC_CHECK_AS                    1028
+#define IDC_EDIT_ASTIME                 1029
+#define IDC_CHECK_CLEAR                 1030
+#define IDC_CHECK_FILTER                1030
+#define ID_CANCEL_EDIT_CNTR             32768
+#define ID_SCC_SET_COM                  32771
+#define ID_SCC_SET_BAUD                 32772
+#define ID_SCC_SET_PARITY               32773
+#define ID_SCC_SET_DATA                 32774
+#define ID_SCC_SET_STOP                 32775
+#define ID_SCC_SET_RTO                  32776
+#define ID_SCC_SET_FLOW                 32777
+#define ID_SCC_SET_OPTION               32778
+#define ID_SCC_OPEN                     32779
+#define ID_SCC_CLEARDATA                32780
+#define ID_SCC_PAUSE                    32781
+#define ID_SCC_ASCRECV                  32783
+#define ID_SCC_ASCSEND                  32784
+#define ID_VIEW_WRAP                    32785
+#define ID_VIEW_SCC_PORT                32786
+#define ID_VIEW_SCC_SEND                32787
+#define ID_VIEW_SCC_TIME                32788
+#define ID_SCC_ADDENTER                 32789
+#define ID_SCC_ADDSTX                   32790
+#define ID_SCC_ADDETX                   32791
+#define ID_SCC_READONLY                 32792
+#define ID_SCC_GONEXT                   32793
+#define ID_SCC_SENDLINE                 32794
+#define ID_SCC_ADDECHO                  32795
+#define ID_VIEW_SFWND                   32797
+#define ID_CS_ADDSUM                    32799
+#define ID_CS_ADDSUMWORD                32800
+#define ID_CS_MODBUS                    32801
+#define ID_CS_CRC_CCITT16               32802
+#define ID_CS_CRC_CCITT8                32803
+#define ID_CS_CRC_ANSI16                32804
+#define ID_CS_CRC_CDT                   32805
+#define ID_CS_1                         32806
+#define ID_CS_2                         32807
+#define ID_CS_3                         32808
+#define ID_CS_4                         32809
+#define ID_CS_5                         32810
+#define ID_CS_6                         32811
+#define ID_CS_7                         32812
+#define ID_SCC_DEFAULT                  32813
+#define ID_SCC_SET_ADVANCE              32814
+#define ID_FILE_XSAVE                   32816
+#define ID_VIEW_CENTER                  32817
+#define ID_VIEW_TOPHARF                 32818
+#define ID_VIEW_BOTTOMHARF              32819
+#define ID_VIEW_LEFTHARF                32820
+#define ID_VIEW_RIGHTHARF               32821
+#define ID_ALWAYSONTOP                  32822
+#define ID_ADVANCE_SEND                 32823
+#define ID_SCC_CYCSEND                  32824
+#define ID_SCC_TRIGGER                  32825
+#define ID_SCC_TRANSMIT                 32826
+#define ID_FILE_AUTOSAVE                32827
+#define ID_SHOW_FILTER                  32828
+#define ID_FILE_OPENS                   32830
+#define ID_FILE_SAVESEND                32831
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_3D_CONTROLS                     1
+#define _APS_NEXT_RESOURCE_VALUE        154
+#define _APS_NEXT_COMMAND_VALUE         32832
+#define _APS_NEXT_CONTROL_VALUE         1031
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif

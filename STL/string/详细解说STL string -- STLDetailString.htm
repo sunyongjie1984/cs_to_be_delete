@@ -1,0 +1,1070 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0060)http://www.360doc.com/content/08/0702/01/68681_1389111.shtml -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta content="360doc" name="classification">
+    <meta content="STL,string,C" name="keywords">
+    <meta content="详细解说STL string -- STLDetailString" name="description">
+    <meta content="www.360doc.com" name="author">
+    
+    <title>
+        详细解说STL string -- STLDetailString </title>
+    <link href="./详细解说STL string -- STLDetailString_files/StickySystemIEBlue.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" language="javascript">
+        window.onerror = ignoreError;
+        function ignoreError() {
+            return true;
+        }  
+    </script>
+</head>
+<body onmouseup="setDragEnd()" onmousemove="DragDiv();" onclick="delAllDiv(event)">
+
+<script>
+Date.prototype.Format = function(formatStr)    
+{    
+ var Week = ['日','一','二','三','四','五','六'];   
+ return formatStr.replace(/yyyy|YYYY/,this.getFullYear()).replace(/yy|YY/,(this.getYear() % 100)>9?(this.getYear() % 100).toString():'0' + (this.getYear() % 100)).replace(/MM/,(this.getMonth()+1)>9?(this.getMonth()+1).toString():'0' + (this.getMonth()+1)).replace(/M/g,(this.getMonth()+1)).replace(/w|W/g,Week[this.getDay()]).replace(/dd|DD/,this.getDate()>9?this.getDate().toString():'0' + this.getDate()).replace(/d|D/g,this.getDate());    
+};    
+</script>
+
+<div id="container">
+    <div class="header">
+            <div class="day">
+
+                 <script type="text/javascript">document.write(new Date().Format("yyyy年MM月dd日"));</script>2011年07月15日
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<script>document.write(new Date().Format("星期W"));</script>星期五</div>
+            <div class="help111">
+                <a href="javascript:void(0)" onclick="setHomepage(&#39;http://www.360doc.com&#39;)">设为主页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="AddFavorite(&#39;http://www.360doc.com&#39;,&#39;360doc个人图书馆&#39;)">&nbsp;加入收藏</a><b class="help1"><a href="http://www.360doc.com/help.html" target="_blank">帮助</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="http://www.360doc.com/advice.html">留言交流</a>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="spanLogin">
+
+                                <span id="loginstatus"><a href="http://www.360doc.com/login.aspx?reurl=http://www.360doc.com/content/08/0702/01/68681_1389111.shtml">登录</a></span>
+
+                            </span>&nbsp; &nbsp;</b>
+            </div>
+        </div>
+        <div class="nav111">
+            <div class="logo">
+                <img src="./详细解说STL string -- STLDetailString_files/logo.gif" width="147" height="63"></div>
+            <div class="topnav">
+                <div class="mainbav">
+                   <div class="nav_wenzi">
+                        <span class="ziyewz1" style="padding-left: 29px; float: left;"><a href="http://www.360doc.com/index.html">
+                            首页</a></span> <span class="ziyewz mainbavzt">&nbsp;|&nbsp;<a href="http://www.360doc.com/topic.html">主题阅读</a></span>
+                        <span class="ziyewz mainbavzt">&nbsp;|&nbsp;<a href="http://www.360doc.com/tags.html">tags</a></span>
+                        <span class="ziyewz mainbavzt">&nbsp;|&nbsp;<a href="http://www.360doc.com/catalog.html">精彩目录</a></span>
+                        <span class="ziyewz mainbavzt">&nbsp;|&nbsp;<a href="http://www.360doc.com/firstarticle.html">精品文苑</a></span>
+                        <span class="ziyewz mainbavzt">&nbsp;|&nbsp;<a href="http://www.360doc.com/topuser.html">会员浏览</a></span>
+                        <span class="ziyewz1" style="padding-left: 29px;"><a href="http://www.360doc.com/myfiles.aspx">我的图书馆</a></span>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <div class="sub_a">
+                        <div>
+                            <h3 class="sub_azt">
+                                <a href="http://www.360doc.com/leisure.html">休闲·怡情</a>&nbsp;&nbsp;<span style="color: #c0c0c0;">|</span>&nbsp;&nbsp;</h3>
+                            <span class="navzt" style="float: left;"><a href="http://www.360doc.com/leisure.html">艺术</a>&nbsp;&nbsp;<a href="http://www.360doc.com/leisure.html">音画</a>&nbsp;&nbsp;<a href="http://www.360doc.com/leisure.html">美女</a>&nbsp;&nbsp;<a href="http://www.360doc.com/leisure.html">笑话</a>&nbsp;&nbsp;<a href="http://www.360doc.com/leisure.html">小游戏</a>&nbsp;&nbsp;<a href="http://www.360doc.com/leisure.html">壁纸</a>&nbsp;&nbsp;<a href="http://www.360doc.com/leisure.html">风景</a></span>
+                        </div>
+                        <div style="clear: both;">
+                            <h3 class="sub_azt">
+                                <a href="http://www.360doc.com/health.html">健康·养生</a>&nbsp;&nbsp;<span style="color: #c0c0c0;">|</span>&nbsp;&nbsp;</h3>
+                            <span class="navzt" style="float: left;"><a href="http://www.360doc.com/health.html">健身</a>&nbsp;&nbsp;<a href="http://www.360doc.com/health.html">食疗</a>&nbsp;&nbsp;<a href="http://www.360doc.com/health.html">治病</a>&nbsp;&nbsp;<a href="http://www.360doc.com/health.html">中医</a>&nbsp;&nbsp;<a href="http://www.360doc.com/health.html">减肥</a>&nbsp;&nbsp;<a href="http://www.360doc.com/health.html">经穴</a>&nbsp;&nbsp;<a href="http://www.360doc.com/health.html">亚健康</a></span>
+                        </div>
+                    </div>
+                    <div class="sub_a" style="margin-left: 60px;">
+                        <div>
+                            <h3 class="sub_azt">
+                                <a href="http://www.360doc.com/life.html">生活·情感</a>&nbsp;&nbsp;<span style="color: #c0c0c0;">|</span>&nbsp;&nbsp;</h3>
+                            <span class="navzt" style="float: left;"><a href="http://www.360doc.com/life.html">哲理</a>&nbsp;&nbsp;<a href="http://www.360doc.com/life.html">情感</a>&nbsp;&nbsp;<a href="http://www.360doc.com/life.html">家居</a>&nbsp;&nbsp;<a href="http://www.360doc.com/life.html">母婴</a>&nbsp;&nbsp;<a href="http://www.360doc.com/life.html">美食</a>&nbsp;&nbsp;<a href="http://www.360doc.com/life.html">美容</a>&nbsp;&nbsp;<a href="http://www.360doc.com/life.html">百宝箱</a></span>
+                        </div>
+                        <div style="clear: both;">
+                            <h3 class="sub_azt">
+                                <a href="http://www.360doc.com/society.html">文教·社会</a>&nbsp;&nbsp;<span style="color: #c0c0c0;">|</span>&nbsp;&nbsp;</h3>
+                            <span class="navzt" style="float: left;"><a href="http://www.360doc.com/society.html">读书</a>&nbsp;&nbsp;<a href="http://www.360doc.com/society.html">人文</a>&nbsp;&nbsp;<a href="http://www.360doc.com/society.html">历史</a>&nbsp;&nbsp;<a href="http://www.360doc.com/society.html">社会</a>&nbsp;&nbsp;<a href="http://www.360doc.com/society.html">教育</a>&nbsp;&nbsp;<a href="http://www.360doc.com/society.html">职场</a>&nbsp;&nbsp;<a href="http://www.360doc.com/society.html">电脑</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="index_main" style="word-break: break-all;">
+    <div class="wenzhang_tit">
+        <div style=" width: 740px;  text-align: center; font-size: 22px; padding:15px 0px;
+            font-weight: bold; color: #b20000;">
+            详细解说STL string -- STLDetailString
+            （转载）</div>
+    </div>
+    <div class="wztop">
+        <table border="0" cellpadding="0" cellspacing="0" class="wztop" style="font-size: 14px;
+            color: #555555;">
+            <tbody><tr>
+                <td class="mz" style="font-size: 12px; padding-left: 18px;">
+                    <a href="http://www.360doc.com/userhome/68681" target="_blank">ly_personal</a>
+                </td>
+                <td width="8px">
+                </td>
+                <td>
+                    收藏于
+                </td>
+                <td width="8px">
+                </td>
+                <td style="font-size: 12px;">
+                    2008-07-02
+                </td>
+                <td width="8px">
+                </td>
+                <td>
+                    阅读数：<span id="360doc_Readnum" style="font-size: 12px;">714</span>
+                </td>
+                <td width="8px">
+                </td>
+                <td>
+                    <span id="360doc_saverNum" style="font-size: 12px;" class="ym"><table cellpadding="0" cellspacing="0"><tbody><tr><td valign="top">&nbsp;&nbsp;<font style="font-size:14px;">收藏数：</font><a href="javascript:ShowSaverUser();">2</a>&nbsp;&nbsp;</td></tr><tr><td><div id="sameArtOuter" style="position: absolute; height: 305px; width: 144px; margin-left: 52px; display: none; " class="box_6"><div id="sameArt" style=" overflow-y: auto;  height:300px;overflow-x: hidden; z-index: 100;right:0px;" onclick="event.cancelBubble=true;"></div></div></td></tr></tbody></table></span>
+                </td>
+                 <td width="8px">
+                </td>
+                <td>
+                   公众公开
+                </td>
+                <td width="8px">
+                </td>
+                <td style="font-size: 12px;" class="ym">
+                    <a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#3_string_Charactor_Traits" target="_blank">原文来源</a>　
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0" class="index_main">
+        <tbody>
+            <tr>
+                <td align="left" valign="top" width="740px">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <tbody><tr>
+                            <td>
+                                <div class="wztop2" style="background-color: #eef3f7;">
+                                    <table width="100%">
+                                        <tbody><tr>
+                                            <td align="left" valign="top">
+                                                <div id="headFirst"><span class="wenzhang_cz_xx01 link_red_dark"><span style="float:left;padding-left: 16px;"><img src="./详细解说STL string -- STLDetailString_files/add08.gif">&nbsp;</span><span style="float:left"><a href="http://www.360doc.com/register.aspx?refer=9&reurl=resaveArt.aspx?articleid=1389111&isreg=1" target="_blank" onclick="InsertLogData(0);">转藏到我的图书馆</a></span></span></div>
+                                            </td>
+                                            <td align="right" valign="top">
+                                                <div id="headSecond" style="float: right"><span><span style="float:left">&nbsp;&nbsp;&nbsp;<img src="./详细解说STL string -- STLDetailString_files/UserAlert.gif">&nbsp;</span><span style="float:left"><a href="javascript:void(0);" onclick="DisplayDiv(1);">举报</a></span></span><div id="AlertDivDetail360doc1" style="display:none;position: absolute; width:300px;margin-left:-240px;margin-top:22px;background-color:#fff;" class="box_1"><div style="float:right;margin-top:5px;margin-right:3px;">  <img src="./详细解说STL string -- STLDetailString_files/btn_close.gif" onclick="HideDiv(1);" style="cursor: pointer;"></div><div style=" margin-top:5px; margin-left:10px;margin-right:10px; z-index: 100;right:0px;" onclick="event.cancelBubble=true;"><div>如果您在该网页中发现有色情、暴力、反动等不良内容，请联系我们：</div><div><textarea cols="30" style="height:100px;width:277px;" id="AlertTextArea360doc1"></textarea></div><div><table><tbody><tr><td><input type="button" id="btnSendAlert1" style="width:50px;" onclick="AddUserAlert(1);" value="发 送" class="botton"></td><td align="center"><input type="button" onclick="HideDiv(1);" style="width:50px;" value="取 消" class="botton"></td><td><div id="divok1Alert360doc" style="color:green;line-height:150%;"></div></td><td>&nbsp;</td></tr></tbody></table></div></div></div>&nbsp;&nbsp;<span onclick="insertData()"></span></div>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="border-left: #ebf4ea 1px solid;
+                        border-right: #ebf4ea 1px solid; background-color: #f4f9f3;">
+                            <td align="left" width="740px">
+                                <div>
+                                    <div style="height: 5px;">
+                                    </div>
+                                    <div width="100%">
+                                    <div align="center">
+                                    <div style=" z-index:1">
+<div id="ADAboveArtContent"><iframe marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="728" height="90" src="./详细解说STL string -- STLDetailString_files/aboveConentAD.htm"></iframe></div>
+
+
+</div>
+                                    </div>
+                                    </div>
+                   
+
+                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhangcss">
+        <tbody>
+            <tr>
+                <td align="left" valign="top" width="740px">
+                    <span id="articlecontent" onmouseup="NewHighlight(event)" style="width: 740px">
+                        <div class="patternContent">
+<div class="patternTopic">
+<h2><a name="详细解说STL string"></a>详细解说STL string </h2>
+<div class="twikiToc">
+<ul>
+    <li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#详细解说STL string">详细解说STL string</a>
+    <ul>
+        <li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#0 前言: string 的角色">0 前言: string 的角色</a>
+        </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#1 string 使用">1 string 使用</a>
+        <ul>
+            <li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#1.1 充分使用string 操作符">1.1 充分使用string 操作符</a>
+            </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#1.2 眼花缭乱的string find 函数">1.2 眼花缭乱的string find 函数</a>
+            </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#1.3 string insert, replace, eras">1.3 string insert, replace, erase</a> </li>
+        </ul>
+        </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#2 string 和 C风格字符串">2 string 和 C风格字符串</a>
+        </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#3 string 和 Charactor Traits">3 string 和 Charactor Traits</a>
+        </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#4 string 建议">4 string 建议</a>
+        </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#5 小结">5 小结</a>
+        </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#6 附录">6 附录</a>
+        </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#7 参考文章">7 参考文章</a> </li>
+    </ul>
+    </li>
+</ul>
+</div>
+<h3><a name="0 前言: string 的角色"></a>0 前言: string 的角色 </h3>
+C++ 语言是个十分优秀的语言，但优秀并不表示完美。还是有许多人不愿意使用C或者C++，为什么？原因众多，其中之一就是C/C++的文本处理功能太麻烦，用起来很不方便。以前没有接触过其他语言时，每当别人这么说，我总是不屑一顾，认为他们根本就没有领会C++的精华，或者不太懂C++，现在我接触perl, php, 和Shell脚本以后，开始理解了以前为什么有人说C++文本处理不方便了。
+<p>举例来说，如果文本格式是：用户名 电话号码，文件名name.txt
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">Tom 23245332
+Jenny 22231231
+Heny 22183942
+Tom 23245332
+...</pre>
+</pre>
+</div>
+</div>
+现在我们需要对用户名排序，且只输出不同的姓名。
+<p>那么在<a class="twikiLink" href="http://www.stlchina.org/twiki/bin/view.pl/Main/ScriptShellTutorial">shell 编程</a>中，可以这样用：
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="navy">awk</font> '<font color="blue">{print $1}</font>' name.txt | sort | uniq </pre>
+</pre>
+</div>
+</div>
+简单吧？
+<p>如果使用C/C++ 就麻烦了，他需要做以下工作：
+</p><ol>
+    <li>先打开文件，检测文件是否打开，如果失败，则退出。
+    </li><li>声明一个足够大得二维字符数组或者一个字符指针数组
+    </li><li>读入一行到字符空间
+    </li><li>然后分析一行的结构，找到空格，存入字符数组中。
+    </li><li>关闭文件
+    </li><li>写一个排序函数，或者使用写一个比较函数，使用qsort排序
+    </li><li>遍历数组，比较是否有相同的，如果有，则要删除，copy...
+    </li><li>输出信息 </li>
+</ol>
+你可以用C++或者C语言去实现这个流程。如果一个人的主要工作就是处理这种类似的文本(例如做apache的日志统计和分析),你说他会喜欢C/C++么？
+<p>
+</p><p>当然，有了STL，这些处理会得到很大的简化。我们可以使用 fstream来代替麻烦的fopen fread fclose, 用vector 来代替数组。最重要的是用 <a href="http://www.stlchina.org/stl_doc/basic_string.html" target="_top">string</a>来代替char * 数组，使用<a class="twikiLink" href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLSortAlgorithms">sort排序算法</a>来排序，用<a href="http://www.stlchina.org/stl_doc/unique.html" target="_top">unique 函数</a>来去重。听起来好像很不错 <img title="smile" alt="smile" src="./详细解说STL string -- STLDetailString_files/68681_1389111_1.gif" border="0"> 。看看下面代码(例程1）：
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="navy">#include</font> &lt;string&gt;
+<font color="navy">#include</font> &lt;iostream&gt;
+<font color="navy">#include</font> &lt;algorithm&gt;
+<font color="navy">#include</font> &lt;vector&gt;
+<font color="navy">#include</font> &lt;fstream&gt;
+<font color="brown">using</font> <font color="brown">namespace</font> std;
+<font color="brown">int</font> main(){
+ifstream in("<font color="blue">name.txt</font>");
+string strtmp;
+vector&lt;string&gt; vect;
+<font color="brown">while</font>(getline(in, strtmp, '\n'))
+vect.push_back(strtmp.substr(0, strtmp.find(' ')));
+sort(vect.begin(), vect.end());
+vector&lt;string&gt;::iterator it=unique(vect.begin(), vect.end());
+copy(vect.begin(), it, ostream_iterator&lt;string&gt;(cout, "<font color="blue">\n</font>"));
+<font color="brown">return</font> 0;
+}</pre>
+</pre>
+</div>
+</div>
+也还不错吧，至少会比想象得要简单得多！（代码里面没有对错误进行处理，只是为了说明问题，不要效仿).
+<p>当然，在这个文本格式中，不用vector而使用map会更有扩充性，例如，还可通过人名找电话号码等等，但是使用了map就不那么好用sort了。你可以用map试一试。
+</p><p>这里string的作用不只是可以存储字符串，还可以提供字符串的比较，查找等。在sort和unique函数中就默认使用了less<string> 和equal_to<string>函数, 上面的一段代码，其实使用了string的以下功能：
+</string></string></p><ol>
+    <li>存储功能，在getline() 函数中
+    </li><li>查找功能，在find() 函数中
+    </li><li>子串功能，在substr() 函数中
+    </li><li>string operator &lt; , 默认在sort() 函数中调用
+    </li><li>string operator == , 默认在unique() 函数中调用 </li>
+</ol>
+<p>总之，有了string 后，C++的字符文本处理功能总算得到了一定补充，加上配合STL其他容器使用，其在文本处理上的功能已经与perl, shell, php的距离缩小很多了。 因此掌握string 会让你的工作事半功倍。
+</p><p>
+</p><h3><a name="1 string 使用"></a>1 string 使用 </h3>
+其实，string并不是一个单独的容器，只是basic_string 模板类的一个typedef 而已，相对应的还有wstring, 你在string 头文件中你会发现下面的代码:
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="brown">extern</font> "<font color="blue">C++</font>" {
+<font color="brown">typedef</font> basic_string &lt;<font color="brown">char</font>&gt; string;
+<font color="brown">typedef</font> basic_string &lt;wchar_t&gt; wstring;
+} <font color="green">// extern "C++"</font></pre>
+</pre>
+</div>
+</div>
+由于只是解释string的用法，如果没有特殊的说明，本文并不区分string 和 basic_string的区别。
+<p>string 其实相当于一个保存字符的序列容器，因此除了有字符串的一些常用操作以外，还有包含了所有的序列容器的操作。字符串的常用操作包括：增加、删除、修改、查找比较、链接、输入、输出等。详细函数列表参看<a class="twikiCurrentTopicLink twikiAnchorLink" href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString#FuncList">附录</a>。不要害怕这么多函数，其实有许多是序列容器带有的，平时不一定用的上。
+</p><p>如果你要想了解所有函数的详细用法，你需要查看<a class="twikiLink" href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLBasicString">basic_string</a>，或者下载<a href="http://stl.winterxy.com/html/000035.html" target="_top">STL编程手册</a>。这里通过实例介绍一些常用函数。
+</p><h4><a name="1.1 充分使用string 操作符"></a>1.1 充分使用string 操作符 </h4>
+string 重载了许多操作符，包括 +, +=, &lt;, <code>=, </code>, [], &lt;&lt;, &gt;&gt;等，正式这些操作符，对字符串操作非常方便。先看看下面这个例子：tt.cpp（例程2）
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="navy">#include</font> &lt;string&gt;
+<font color="navy">#include</font> &lt;iostream&gt;
+<font color="brown">using</font> <font color="brown">namespace</font> std;
+<font color="brown">int</font> main(){
+string strinfo="<font color="blue">Please input your name:</font>";
+cout &lt;&lt; strinfo ;
+cin &gt;&gt; strinfo;
+<font color="brown">if</font>( strinfo == "<font color="blue">winter</font>" )
+cout &lt;&lt; "<font color="blue">you are winter!</font>"&lt;&lt;endl;
+<font color="brown">else</font> <font color="brown">if</font>( strinfo != "<font color="blue">wende</font>" )
+cout &lt;&lt; "<font color="blue">you are not wende!</font>"&lt;&lt;endl;
+<font color="brown">else</font> <font color="brown">if</font>( strinfo &lt; "<font color="blue">winter</font>")
+cout &lt;&lt; "<font color="blue">your name should be ahead of winter</font>"&lt;&lt;endl;
+<font color="brown">else</font>
+cout &lt;&lt; "<font color="blue">your name should be after of winter</font>"&lt;&lt;endl;
+strinfo += "<font color="blue"> , Welcome to China!</font>";
+cout &lt;&lt; strinfo&lt;&lt;endl;
+cout &lt;&lt;"<font color="blue">Your name is :</font>"&lt;&lt;endl;
+string strtmp = "<font color="blue">How are you? </font>" + strinfo;
+<font color="brown">for</font>(<font color="brown">int</font> i = 0 ; i &lt; strtmp.size(); i ++)
+cout&lt;&lt;strtmp[i];
+<font color="brown">return</font> 0;
+} </pre>
+</pre>
+</div>
+</div>
+<p>下面是程序的输出
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">-bash-2.05b$ make tt
+c++  -O -pipe -march=pentiumpro  tt.cpp  <font color="purple">-o</font> tt
+-bash-2.05b$ ./tt
+Please input your name:Hero
+you are not wende!
+Hero , Welcome to China!
+How are you? Hero , Welcome to China!</pre>
+</pre>
+</div>
+</div>
+<p>有了这些操作符，在STL中仿函数都可以直接使用string作为参数，例如 less, great, equal_to 等，因此在把string作为参数传递的时候，它的使用和int 或者float等已经没有什么区别了。例如，你可以使用：
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">map&lt;string, <font color="brown">int</font>&gt; mymap;
+<font color="green">//以上默认使用了 less&lt;string&gt;</font></pre>
+</pre>
+</div>
+</div>
+有了 operator + 以后，你可以直接连加，例如：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">string strinfo="<font color="blue">Winter</font>";
+string strlast="<font color="blue">Hello </font>" + strinfo + "<font color="blue">!</font>";
+<font color="green">//你还可以这样：</font>
+string strtest="<font color="blue">Hello </font>" + strinfo + "<font color="blue"> Welcome</font>" + "<font color="blue"> to China</font>" + "<font color="blue"> !</font>";</pre>
+</pre>
+</div>
+</div>
+看见其中的特点了吗？只要你的等式里面有一个 string 对象，你就可以一直连续"+"，但有一点需要保证的是，在开始的两项中，必须有一项是 string 对象。其原理很简单：
+<ol>
+    <li>系统遇到"+"号，发现有一项是string 对象。
+    </li><li>系统把另一项转化为一个临时 string 对象。
+    </li><li>执行 operator + 操作，返回新的临时string 对象。
+    </li><li>如果又发现"+"号，继续第一步操作。 </li>
+</ol>
+由于这个等式是由左到右开始检测执行，如果开始两项都是const char* ，程序自己并没有定义两个const char* 的加法，编译的时候肯定就有问题了。
+<p>有了操作符以后，assign(), append(), compare(), at()等函数，除非有一些特殊的需求时，一般是用不上。当然at()函数还有一个功能，那就是检查下标是否合法，如果是使用：
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">string str="<font color="blue">winter</font>";
+<font color="green">//下面一行有可能会引起程序中断错误</font>
+str[100]='!';
+<font color="green">//下面会抛出异常:throws: out_of_range</font>
+cout&lt;&lt;str.at(100)&lt;&lt;endl;</pre>
+</pre>
+</div>
+</div>
+了解了吗？如果你希望效率高，还是使用[]来访问，如果你希望稳定性好，最好使用at()来访问。
+<h4><a name="1.2 眼花缭乱的string find 函数"></a>1.2 眼花缭乱的string find 函数 </h4>
+由于查找是使用最为频繁的功能之一，string 提供了非常丰富的查找函数。其列表如下：
+<table class="twikiTable" style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px" cellspacing="1" cellpadding="1" border="0">
+    <tbody>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" align="middle" bgcolor="#eaeaea">函数名 </td>
+            <td align="middle" bgcolor="#eaeaea">描述 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">find </td>
+            <td bgcolor="#ffffff">查找 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">rfind </td>
+            <td bgcolor="#eaeaea">反向查找 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">find_first_of </td>
+            <td bgcolor="#ffffff">查找包含子串中的任何字符，返回第一个位置 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">find_first_not_of </td>
+            <td bgcolor="#eaeaea">查找不包含子串中的任何字符，返回第一个位置 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">find_last_of </td>
+            <td bgcolor="#ffffff">查找包含子串中的任何字符，返回最后一个位置 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol twikiLast" bgcolor="#eaeaea">find_last_not_of </td>
+            <td class="twikiLast" bgcolor="#eaeaea">查找不包含子串中的任何字符，返回最后一个位置 </td>
+        </tr>
+    </tbody>
+</table>
+以上函数都是被重载了4次，以下是以find_first_of 函数为例说明他们的参数，其他函数和其参数一样，也就是说总共有24个函数 <img title="smile" alt="smile" src="./详细解说STL string -- STLDetailString_files/68681_1389111_1.gif" border="0"> ：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">size_type find_first_of(<font color="brown">const</font> basic_string&amp; s, size_type pos = 0)
+size_type find_first_of(<font color="brown">const</font> charT* s, size_type pos, size_type n)
+size_type find_first_of(<font color="brown">const</font> charT* s, size_type pos = 0)
+size_type find_first_of(charT c, size_type pos = 0)</pre>
+</pre>
+</div>
+</div>
+所有的查找函数都返回一个size_type类型，这个返回值一般都是所找到字符串的位置，如果没有找到，则返回string::npos。有一点需要特别注意，所有和string::npos的比较一定要用string::size_type来使用，不要直接使用int 或者unsigned int等类型。其实string::npos表示的是-1, 看看头文件：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="brown">template</font> &lt;<font color="brown">class</font> _CharT, <font color="brown">class</font> _Traits, <font color="brown">class</font> _Alloc&gt;
+<font color="brown">const</font> basic_string&lt;_CharT,_Traits,_Alloc&gt;::size_type
+basic_string&lt;_CharT,_Traits,_Alloc&gt;::npos
+= basic_string&lt;_CharT,_Traits,_Alloc&gt;::size_type) -1;</pre>
+</pre>
+</div>
+</div>
+<p>find 和 rfind 都还比较容易理解，一个是正向匹配，一个是逆向匹配，后面的参数pos都是用来指定起始查找位置。对于find_first_of 和find_last_of 就不是那么好理解。
+</p><p>find_first_of 是给定一个要查找的字符集，找到这个字符集中任何一个字符所在字符串中第一个位置。或许看一个例子更容易明白。
+</p><p>有这样一个需求：过滤一行开头和结尾的所有非英文字符。看看用string 如何实现：
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="navy">#include</font> &lt;string&gt;
+<font color="navy">#include</font> &lt;iostream&gt;
+<font color="brown">using</font> <font color="brown">namespace</font> std;
+<font color="brown">int</font> main(){
+string strinfo="<font color="blue">   //*---Hello Word!......------</font>";
+string strset="<font color="blue">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</font>";
+<font color="brown">int</font> first = strinfo.find_first_of(strset);
+<font color="brown">if</font>(first == string::npos) {
+cout&lt;&lt;"<font color="blue">not find any characters</font>"&lt;&lt;endl;
+<font color="brown">return</font> -1;
+}
+<font color="brown">int</font> last = strinfo.find_last_of(strset);
+<font color="brown">if</font>(last == string::npos) {
+cout&lt;&lt;"<font color="blue">not find any characters</font>"&lt;&lt;endl;
+<font color="brown">return</font> -1;
+}
+cout &lt;&lt; strinfo.substr(first, last - first + 1)&lt;&lt;endl;
+<font color="brown">return</font> 0;
+}</pre>
+</pre>
+</div>
+</div>
+这里把所有的英文字母大小写作为了需要查找的字符集，先查找第一个英文字母的位置，然后查找最后一个英文字母的位置，然后用substr 来的到中间的一部分，用于输出结果。下面就是其结果：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">Hello Word</pre>
+</pre>
+</div>
+</div>
+前面的符号和后面的符号都没有了。像这种用法可以用来查找分隔符，从而把一个连续的字符串分割成为几部分，达到 shell 命令中的 awk 的用法。特别是当分隔符有多个的时候，可以一次指定。例如有这样的需求：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">张三|3456123, 湖南
+李四,4564234| 湖北
+王小二, 4433253|北京
+...</pre>
+</pre>
+</div>
+</div>
+我们需要以 "|" ","为分隔符，同时又要过滤空格，把每行分成相应的字段。可以作为你的一个家庭作业来试试，要求代码简洁。
+<h4><a name="1.3 string insert, replace, eras"></a>1.3 string insert, replace, erase </h4>
+了解了string 的操作符，查找函数和substr，其实就已经了解了string的80%的操作了。insert函数, replace函数和erase函数在使用起来相对简单。下面以一个例子来说明其应用。
+<p>string只是提供了按照位置和区间的replace函数，而不能用一个string字串来替换指定string中的另一个字串。这里写一个函数来实现这个功能：
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="brown">void</font> string_replace(string &amp; strBig, <font color="brown">const</font> string &amp; strsrc, <font color="brown">const</font> string &amp;strdst) {
+string::size_type pos=0;
+string::size_type srclen=strsrc.size();
+string::size_type dstlen=strdst.size();
+<font color="brown">while</font>( (pos=strBig.find(strsrc, pos)) != string::npos){
+strBig.replace(pos, srclen, strdst);
+pos += dstlen;
+}
+}</pre>
+</pre>
+</div>
+</div>
+看看如何调用：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="navy">#include</font> &lt;string&gt;
+<font color="navy">#include</font> &lt;iostream&gt;
+<font color="brown">using</font> <font color="brown">namespace</font> std;
+<font color="brown">int</font> main() {
+string strinfo="<font color="blue">This is Winter, Winter is a programmer. Do you know Winter?</font>";
+cout&lt;&lt;"<font color="blue">Orign string is :\n</font>"&lt;&lt;strinfo&lt;&lt;endl;
+string_replace(strinfo, "<font color="blue">Winter</font>", "<font color="blue">wende</font>");
+cout&lt;&lt;"<font color="blue">After replace Winter with wende, the string is :\n</font>"&lt;&lt;strinfo&lt;&lt;endl;
+<font color="brown">return</font> 0;
+}</pre>
+</pre>
+</div>
+</div>
+其输出结果：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">Orign string is :
+This is Winter, Winter is a programmer. Do you know Winter?
+After replace Winter with wende, the string is :
+This is wende, wende is a programmer. Do you know wende?</pre>
+</pre>
+</div>
+</div>
+如果不用replace函数，则可以使用erase和insert来替换，也能实现string_replace函数的功能：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="brown">void</font> string_replace(string &amp; strBig, <font color="brown">const</font> string &amp; strsrc, <font color="brown">const</font> string &amp;strdst) {
+string::size_type pos=0;
+string::size_type srclen=strsrc.size();
+string::size_type dstlen=strdst.size();
+<font color="brown">while</font>( (pos=strBig.find(strsrc, pos)) != string::npos){
+strBig.erase(pos, srclen);
+strBig.insert(pos, strdst);
+pos += dstlen;
+}
+}</pre>
+</pre>
+</div>
+</div>
+当然，这种方法没有使用replace来得直接。
+<h3><a name="2 string 和 C风格字符串"></a>2 string 和 C风格字符串 </h3>
+现在看了这么多例子，发现const char* 可以和string 直接转换，例如我们在上面的例子中，使用
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">string_replace(strinfo, "<font color="blue">Winter</font>", "<font color="blue">wende</font>");</pre>
+</pre>
+</div>
+</div>
+来代用
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="brown">void</font> string_replace(string &amp; strBig, <font color="brown">const</font> string &amp; strsrc, <font color="brown">const</font> string &amp;strdst) </pre>
+</pre>
+</div>
+</div>
+在C语言中只有char* 和 const char*，为了使用起来方便，string提供了三个函数满足其要求：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="brown">const</font> charT* c_str() <font color="brown">const</font>
+<font color="brown">const</font> charT* data() <font color="brown">const</font>
+size_type copy(charT* buf, size_type n, size_type pos = 0) <font color="brown">const</font> </pre>
+</pre>
+</div>
+</div>
+其中：
+<ol>
+    <li>c_str 直接返回一个以\0结尾的字符串。
+    </li><li>data 直接以数组方式返回string的内容，其大小为size()的返回值，结尾并没有\0字符。
+    </li><li>copy 把string的内容拷贝到buf空间中。 </li>
+</ol>
+你或许会问，c_str()的功能包含data()，那还需要data()函数干什么？看看源码：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="brown">const</font> charT* c_str () <font color="brown">const</font>
+{ <font color="brown">if</font> (length () == 0) <font color="brown">return</font> "<font color="blue"></font>"; terminate (); <font color="brown">return</font> data (); }</pre>
+</pre>
+</div>
+</div>
+原来c_str()的流程是：先调用terminate()，然后在返回data()。因此如果你对效率要求比较高，而且你的处理又不一定需要以\0的方式结束，你最好选择data()。但是对于一般的C函数中，需要以const char*为输入参数，你就要使用c_str()函数。
+<p>对于c_str() data()函数，返回的数组都是由string本身拥有，千万不可修改其内容。其原因是许多string实现的时候采用了引用机制，也就是说，有可能几个string使用同一个字符存储空间。而且你不能使用sizeof(string)来查看其大小。详细的解释和实现查看<a href="http://stl.winterxy.com/html/000030.html" target="_top">Effective STL</a>的条款15：<a href="http://stl.winterxy.com/html/item_15.html" target="_top">小心string实现的多样性</a>。
+</p><p>另外在你的程序中，只在需要时才使用c_str()或者data()得到字符串，每调用一次，下次再使用就会失效，如：
+</p><div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px">string strinfo("<font color="blue">this is Winter</font>");
+...
+<font color="green">//最好的方式是:</font>
+foo(strinfo.c_str());
+<font color="green">//也可以这么用:</font>
+<font color="brown">const</font> <font color="brown">char</font>* pstr=strinfo.c_str();
+foo(pstr);
+<font color="green">//不要再使用了pstr了, 下面的操作已经使pstr无效了。</font>
+strinfo += "<font color="blue"> Hello!</font>";
+foo(pstr);<font color="green">//错误！</font></pre>
+</pre>
+</div>
+</div>
+会遇到什么错误？当你幸运的时候pstr可能只是指向"this is Winter Hello!"的字符串，如果不幸运，就会导致程序出现其他问题，总会有一些不可遇见的错误。总之不会是你预期的那个结果。
+<p>
+</p><h3><a name="3 string 和 Charactor Traits"></a>3 string 和 Charactor Traits </h3>
+了解了string的用法，该详细看看string的真相了。前面提到string 只是basic_string的一个typedef。看看basic_string 的参数：
+<div class="BeautifierPlugin">
+<div class="fragment">
+<pre style="PADDING-BOTTOM: 0px"><pre style="PADDING-BOTTOM: 0px"><font color="brown">template</font> &lt;<font color="brown">class</font> charT, <font color="brown">class</font> traits = char_traits&lt;charT&gt;,
+<font color="brown">class</font> Allocator = allocator&lt;charT&gt; &gt;
+<font color="brown">class</font> basic_string
+{
+<font color="green">//...</font>
+}</pre>
+</pre>
+</div>
+</div>
+char_traits不仅是在basic_string 中有用，在basic_istream 和 basic_ostream中也需要用到。
+<p>就像Steve Donovan在<a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLOverdoTemplates" target="_top">过度使用C++模板</a>中提到的，这些确实有些过头了，要不是系统自己定义了相关的一些属性，而且用了个typedef，否则还真不知道如何使用。
+</p><p>但复杂总有复杂道理。有了char_traits，你可以定义自己的字符串类型。当然，有了char_traits &lt; char &gt; 和char_traits &lt; wchar_t &gt; 你的需求使用已经足够了，为了更好的理解string ，咱们来看看char_traits都有哪些要求。
+</p><p>如果你希望使用你自己定义的字符，你必须定义包含下列成员的结构：
+</p><table class="twikiTable" style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px" cellspacing="1" cellpadding="1" border="0">
+    <tbody>
+        <tr class="twikiTableEven">
+            <th class="twikiFirstCol" bgcolor="#dadada" maxcols="0"><a title="Sort by this column" style="COLOR: #000000" href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString?sortcol=0;table=2;up=0#sorted_table" rel="nofollow">表达式</a> </th>
+            <th align="middle" bgcolor="#dadada" maxcols="0"><a title="Sort by this column" style="COLOR: #000000" href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailString?sortcol=1;table=2;up=0#sorted_table" rel="nofollow">描述</a> </th>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">char_type </td>
+            <td bgcolor="#eaeaea">字符类型 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">int_type </td>
+            <td bgcolor="#ffffff">int 类型 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">pos_type </td>
+            <td bgcolor="#eaeaea">位置类型 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">off_type </td>
+            <td bgcolor="#ffffff">表示位置之间距离的类型 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">state_type </td>
+            <td bgcolor="#eaeaea">表示状态的类型 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">assign(c1,c2) </td>
+            <td bgcolor="#ffffff">把字符c2赋值给c1 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">eq(c1,c2) </td>
+            <td bgcolor="#eaeaea">判断c1,c2 是否相等 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">lt(c1,c2) </td>
+            <td bgcolor="#ffffff">判断c1是否小于c2 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">length(str) </td>
+            <td bgcolor="#eaeaea">判断str的长度 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">compare(s1,s2,n) </td>
+            <td bgcolor="#ffffff">比较s1和s2的前n个字符 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">copy(s1,s2, n) </td>
+            <td bgcolor="#eaeaea">把s2的前n个字符拷贝到s1中 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">move(s1,s2, n) </td>
+            <td bgcolor="#ffffff">把s2中的前n个字符移动到s1中 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">assign(s,n,c) </td>
+            <td bgcolor="#eaeaea">把s中的前n个字符赋值为c </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">find(s,n,c) </td>
+            <td bgcolor="#ffffff">在s的前n个字符内查找c </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">eof() </td>
+            <td bgcolor="#eaeaea">返回end-of-file </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">to_int_type(c) </td>
+            <td bgcolor="#ffffff">将c转换成int_type </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">to_char_type(i) </td>
+            <td bgcolor="#eaeaea">将i转换成char_type </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#ffffff">not_eof(i) </td>
+            <td bgcolor="#ffffff">判断i是否为EOF </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol twikiLast" bgcolor="#eaeaea">eq_int_type(i1,i2) </td>
+            <td class="twikiLast" bgcolor="#eaeaea">判断i1和i2是否相等 </td>
+        </tr>
+    </tbody>
+</table>
+想看看实际的例子，你可以看看sgi STL的<a href="http://www.stlchina.org/stl_doc/char_traits.h" target="_top">char_traits结构源码</a>.
+<p>现在默认的string版本中，并不支持忽略大小写的比较函数和查找函数，如果你想练练手，你可以试试改写一个char_traits , 然后生成一个case_string类, 也可以在string 上做继承，然后派生一个新的类，例如：ext_string，提供一些常用的功能，例如：
+</p><ol>
+    <li>定义分隔符。给定分隔符，把string分为几个字段。
+    </li><li>提供替换功能。例如，用winter, 替换字符串中的wende
+    </li><li>大小写处理。例如，忽略大小写比较，转换等
+    </li><li>整形转换。例如把"123"字符串转换为123数字。 </li>
+</ol>
+这些都是常用的功能，如果你有兴趣可以试试。其实有人已经实现了，看看<a href="http://www.gotroot.ca/ext_string/" target="_top">Extended STL string</a>。如果你想偷懒，下载一个头文件就可以用，有了它确实方便了很多。要是有人能提供一个支持正则表达式的string，我会非常乐意用。
+<p>
+</p><h3><a name="4 string 建议"></a>4 string 建议 </h3>
+使用string 的方便性就不用再说了，这里要重点强调的是string的安全性。
+<ol>
+    <li>string并不是万能的，如果你在一个大工程中需要频繁处理字符串，而且有可能是多线程，那么你一定要慎重(当然，在多线程下你使用任何STL容器都要慎重)。
+    </li><li>string的实现和效率并不一定是你想象的那样，如果你对大量的字符串操作，而且特别关心其效率，那么你有两个选择，首先，你可以看看你使用的STL版本中string实现的源码；另一选择是你自己写一个只提供你需要的功能的类。
+    </li><li>string的c_str()函数是用来得到C语言风格的字符串，其返回的指针不能修改其空间。而且在下一次使用时重新调用获得新的指针。
+    </li><li>string的data()函数返回的字符串指针不会以'\0'结束，千万不可忽视。
+    </li><li>尽量去使用操作符，这样可以让程序更加易懂（特别是那些脚本程序员也可以看懂） </li>
+</ol>
+<h3><a name="5 小结"></a>5 小结 </h3>
+难怪有人说：<br><strong>string 使用方便功能强，我们一直用它！</strong>
+<p>
+</p><h3><a name="6 附录"></a>6 附录 </h3>
+<a name="FuncList"></a>string 函数列表
+<table class="twikiTable" style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px" cellspacing="1" cellpadding="1" border="0">
+    <tbody>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" align="middle" bgcolor="#eaeaea">函数名 </td>
+            <td align="middle" bgcolor="#eaeaea">描述 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">begin </td>
+            <td bgcolor="#ffffff">得到指向字符串开头的Iterator </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">end </td>
+            <td bgcolor="#eaeaea">得到指向字符串结尾的Iterator </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">rbegin </td>
+            <td bgcolor="#ffffff">得到指向反向字符串开头的Iterator </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">rend </td>
+            <td bgcolor="#eaeaea">得到指向反向字符串结尾的Iterator </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">size </td>
+            <td bgcolor="#ffffff">得到字符串的大小 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">length </td>
+            <td bgcolor="#eaeaea">和size函数功能相同 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">max_size </td>
+            <td bgcolor="#ffffff">字符串可能的最大大小 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">capacity </td>
+            <td bgcolor="#eaeaea">在不重新分配内存的情况下，字符串可能的大小 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">empty </td>
+            <td bgcolor="#ffffff">判断是否为空 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">operator[] </td>
+            <td bgcolor="#eaeaea">取第几个元素，相当于数组 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">c_str </td>
+            <td bgcolor="#ffffff">取得C风格的const char* 字符串 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">data </td>
+            <td bgcolor="#eaeaea">取得字符串内容地址 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">operator= </td>
+            <td bgcolor="#ffffff">赋值操作符 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">reserve </td>
+            <td bgcolor="#eaeaea">预留空间 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">swap </td>
+            <td bgcolor="#ffffff">交换函数 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">insert </td>
+            <td bgcolor="#eaeaea">插入字符 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">append </td>
+            <td bgcolor="#ffffff">追加字符 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">push_back </td>
+            <td bgcolor="#eaeaea">追加字符 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">operator+= </td>
+            <td bgcolor="#ffffff">+= 操作符 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">erase </td>
+            <td bgcolor="#eaeaea">删除字符串 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">clear </td>
+            <td bgcolor="#ffffff">清空字符容器中所有内容 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">resize </td>
+            <td bgcolor="#eaeaea">重新分配空间 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">assign </td>
+            <td bgcolor="#ffffff">和赋值操作符一样 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">replace </td>
+            <td bgcolor="#eaeaea">替代 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">copy </td>
+            <td bgcolor="#ffffff">字符串到空间 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">find </td>
+            <td bgcolor="#eaeaea">查找 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">rfind </td>
+            <td bgcolor="#ffffff">反向查找 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">find_first_of </td>
+            <td bgcolor="#eaeaea">查找包含子串中的任何字符，返回第一个位置 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">find_first_not_of </td>
+            <td bgcolor="#ffffff">查找不包含子串中的任何字符，返回第一个位置 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">find_last_of </td>
+            <td bgcolor="#eaeaea">查找包含子串中的任何字符，返回最后一个位置 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">find_last_not_of </td>
+            <td bgcolor="#ffffff">查找不包含子串中的任何字符，返回最后一个位置 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">substr </td>
+            <td bgcolor="#eaeaea">得到字串 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">compare </td>
+            <td bgcolor="#ffffff">比较字符串 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">operator+ </td>
+            <td bgcolor="#eaeaea">字符串链接 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">operator== </td>
+            <td bgcolor="#ffffff">判断是否相等 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">operator!= </td>
+            <td bgcolor="#eaeaea">判断是否不等于 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">operator&lt; </td>
+            <td bgcolor="#ffffff">判断是否小于 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol" bgcolor="#eaeaea">operator&gt;&gt; </td>
+            <td bgcolor="#eaeaea">从输入流中读入字符串 </td>
+        </tr>
+        <tr class="twikiTableOdd">
+            <td class="twikiFirstCol" bgcolor="#ffffff">operator&lt;&lt; </td>
+            <td bgcolor="#ffffff">字符串写入输出流 </td>
+        </tr>
+        <tr class="twikiTableEven">
+            <td class="twikiFirstCol twikiLast" bgcolor="#eaeaea">getline </td>
+            <td class="twikiLast" bgcolor="#eaeaea">从输入流中读入一行 </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+</p><h3><a name="7 参考文章"></a>7 参考文章 </h3>
+<ol>
+    <li><a href="http://www.stlchina.org/stl_doc/char_traits.h" target="_top">SGI STL: char_traits 源码</a>
+    </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLBasicString" target="_top">STL 编程手册: basic_string </a>
+    </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLSortAlgorithms" target="_top">详细解说 STL 排序(Sort)</a>
+    </li><li><a href="http://www.stlchina.org/twiki/bin/view.pl/Main/STLDetailHashMap" target="_top">详细解说 STL hash_map系列</a>
+    </li><li><a href="http://stl.winterxy.com/html/000016.html" target="_top">Effective STL 中文版</a> </li>
+</ol>
+<!--
+<ul>
+    <li> Set MYTITLE = 详细解说STL string
+    </li>
+</ul>
+-->
+<p><strong>论坛讨论</strong> ：<a href="http://www.stlchina.org/bbs/viewthread.php?tid=505&fpage=1" target="_top">讨论：详细解说STL string</a></p>
+</div>
+<!-- /patternTopic-->
+<div class="twikiAfterText"></div>
+</div>
+<!-- /patternContent-->
+<div></div>
+                    </span>
+                    <table>
+                        <tbody><tr>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    </td></tr></tbody></table>
+
+
+
+
+
+
+
+                                  
+                                    <div style="padding: 0px 26px;" id="360docIsStranger"><div class="greenkuang"><div class="greenkuang1 login_box_font "><div style="padding-top:8px; padding-left:18px;">欢迎浏览<span class="mz" style=" font-weight:bold;"> <a href="http://www.360doc.com/UserHome/68681" target="_blank">ly_personal</a> </span>个人图书馆的文章，想收藏这篇好文章吗？花一分钟<a href="http://www.360doc.com/register.aspx?refer=2&reurl=resaveArt.aspx?articleid=1389111&isreg=1"><img src="./详细解说STL string -- STLDetailString_files/botton_zc.gif" alt="免费注册" style="margin-bottom: -4px; margin-right:5px;margin-left:5px;" onclick="InsertLogData(3);"></a>吧！</div></div></div></div>
+                                    <div id="360Ad07Below" style="text-align: center; "><iframe marginwidth="0" id="IframeAd" marginheight="0" frameborder="0" scrolling="no" width="740" src="./详细解说STL string -- STLDetailString_files/belowContentAD.htm"></iframe></div>
+
+                                    <div class="wztop2">
+                                        <div style="padding-left: 14px;">
+                                            <div style="float: left;">
+                                                <span id="saverDiv"><span class="wenzhang_cz_xx01 link_red_dark"><img src="./详细解说STL string -- STLDetailString_files/add06.gif">&nbsp;<a href="http://www.360doc.com/register.aspx?refer=-1&reurl=resaveArt.aspx?articleid=1389111&isreg=1" target="_blank" onclick="InsertLogData(1);">转藏到我的图书馆</a></span>&nbsp;&nbsp;</span>
+                                            </div>
+                                            <div style="float: right; padding-right: 26px;">
+                                                <span>此文来自&nbsp;&nbsp;<span class="mz" style="font-weight: bold;"><a href="http://www.360doc.com/userhome/68681" target="_blank">ly_personal</a></span>&nbsp;&nbsp;的文件夹&nbsp;&nbsp;</span><span class="bulebold bulelink">[<a href="http://www.360doc.com/userhome.aspx?userid=68681&cid=9" target="_blank">其他</a>]</span></div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 11px; border-bottom: #a8a8a8 1px dashed; margin: 0px 26px;">
+                                    </div>
+                                    <div class="wenzhang_bt_list">
+                                        <div style="padding-left: 26px; min-height: 50px; background-color: #f4f9f3;">
+                                            <div style="float: left;" id="UserPreNextArt">
+                                                <div><b>上一篇：</b><a href="http://www.360doc.com/content/10/0719/23/68681_40190593.shtml" target="_blank" onclick="ClickStatics(&#39;wz3&#39;)">富人的28个理财习惯</a></div><div><b>下一篇：</b><a href="http://www.360doc.com/content/08/0721/20/68681_1454519.shtml" target="_blank" onclick="ClickStatics(&#39;wz3&#39;)">便宜机票预定方式，重新整理了一下。</a></div>
+                                            </div>
+                                            <div style="float: right; padding-right: 26px;">
+                                                <div id="360FriendLink"><div align="left" width="100%"><font class="wenzhang_bt_list"><b>分享到：</b></font><a href="javascript:void(0);" onclick="window.open(&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+encodeURIComponent(document.location.href));return false;" title="分享到QQ空间"><img style="vertical-align:middle;" src="./详细解说STL string -- STLDetailString_files/qq.gif" alt="分享到QQ空间"></a>&nbsp;&nbsp;<a href="javascript:void((function(s,d,e){if(/renren.com/.test(d.location))return;var f='http://share.renren.com/share/buttonshare?link=',u=d.location,l=d.title,p=[e(u),'&title=',e(l)].join('');function a(){if(!window.open([f,p].join(''),'xnshare',['toolbar=0,status=0,resizable=1,width=626,height=436,left=',(s.width-626)/2,',top=',(s.height-436)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else a();})(screen,document,encodeURIComponent));" title="分享到人人"><img style="vertical-align:middle;" src="./详细解说STL string -- STLDetailString_files/renren.gif"></a>&nbsp;&nbsp;<a rel="nofollow" title="分享到开心" href="javascript:window.open('http://www.kaixin001.com/repaste/bshare.php?rcontent='+getPageDes()+'&rurl='+encodeURIComponent(document.location.href)+'&rtitle='+encodeURIComponent(document.title));void(0)"><img style="vertical-align:middle;" src="./详细解说STL string -- STLDetailString_files/kaixin.gif"></a>&nbsp;&nbsp;<a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','',getPageDes(),'',''));"><img style="vertical-align:middle;" src="./详细解说STL string -- STLDetailString_files/sina.gif" alt="分享到新浪微博"></a>&nbsp;&nbsp;<a rel="nofollow" href="javascript:void(0);" onclick="(function(){var _t = encodeURI(document.title);var _url = encodeURI(window.location);var _appkey =&#39;bf0f24baaebe44ce937e233818bd6d90&#39;;var _site = encodeURI;var _pic = &#39;&#39;;var _u = &#39;http://v.t.qq.com/share/share.php?title=&#39;+_t+&#39;&amp;url=&#39;+_url+&#39;&amp;appkey=&#39;+_appkey+&#39;&amp;site=&#39;+_site+&#39;&amp;pic=&#39;+_pic;window.open( _u,&#39;转播到腾讯微博&#39;, &#39;width=700, height=580, top=180, left=320, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no&#39; );})()"><img style="vertical-align:middle;" src="./详细解说STL string -- STLDetailString_files/tqq.gif" alt="分享到腾讯微博"></a>&nbsp;&nbsp;<a title="分享到搜狐微博" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var f='http://t.sohu.com/third/post.jsp?',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=660,height=470,left=',(s.width-660)/2,',top=',(s.height-470)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','',getPageDes(),'','utf-8'));"><img style="vertical-align:middle;" src="./详细解说STL string -- STLDetailString_files/sohu.gif" alt="分享到搜狐微博"></a></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                            <div class="ad02" id="ad02New">
+                        </div>
+                        <div id="divadleft" style="position: absolute; width: 120px; word-break: break-all; top: 250px; left: 0px; padding-left: 13px; display: none; ">
+
+                            <script type="text/javascript"><!--
+         function leftshow()
+         {
+            var screenwidth=screen.availWidth;
+            var ad_left= '';
+            try
+            {
+                if(screenwidth>1200) 
+                { 
+                    ad_left+='<'+'script type=\"text/javascript\">';
+                    ad_left+='google_ad_client = "pub-6625678643128649";';
+                    ad_left+='google_ad_slot =\"7792148991\";';
+                    ad_left+='google_ad_width =120;';
+                    ad_left+='google_ad_height = 600;';  
+                    ad_left+='</'+'script>';
+                    ad_left+='<'+'script type=\"text/javascript\"';
+                    ad_left+='src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">';
+                    ad_left+='</'+'script>';
+                }
+                document.write(ad_left);
+            }
+            catch(e)
+            {
+            }
+        }
+ 
+        leftshow();
+        -->
+                            </script>
+
+                            <div style="float: right; padding-right: 2px; padding-top: 2px; background-color: #fff;" class="link_underline">
+                                <a href="http://www.360doc.com/content/08/0702/01/68681_1389111.shtml#" onclick="document.getElementById(&#39;divadleft&#39;).style.display=&#39;none&#39;">关闭</a></div>
+                        </div>
+
+                        <script>
+    var screenwidth=screen.availWidth;
+    try
+    {
+        if(screenwidth<=1200) 
+        { 
+            document.getElementById("divadleft").style.display="none";
+            document.getElementById("divadright").style.display="none";
+        }   
+    }
+    catch(e)
+    {
+    }
+                        </script>
+                                </div>
+                                <div style="height: 22px; background-color: #f4f9f3;">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 15px; *height: 0px !important;">
+                                </div>
+                                <div id="360docMoreArt" style="width: 740px;">
+                                    ﻿  <div class="wenzhang_bt">相关文章</div><div class="wenzhang_bt_list"><ul><li><a href="http://www.360doc.com/content/05/1027/09/126_24535.shtml" target="_blank">详细解说STL string - STLDetailString</a><span class="time3 link_green">2005-10-27 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.360doc.com/UserHome/126" target="_blank">accesine</a></span> </li><li><a href="http://www.360doc.com/content/07/0725/10/15934_631653.shtml" target="_blank">Java 截取字符串</a><span class="time3 link_green">2007-07-25 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.360doc.com/UserHome/15934" target="_blank">七郎</a></span> </li><li><a href="http://www.360doc.com/content/06/1028/12/7635_243198.shtml" target="_blank">常见笔试/面试题目（一）--歪歪忘记了</a><span class="time3 link_green">2006-10-28 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.360doc.com/UserHome/7635" target="_blank">凡尘一滴</a></span> </li><li><a href="http://www.360doc.com/content/07/0305/21/3630_385786.shtml" target="_blank">C语言中操作字符串的一些函数源代码</a><span class="time3 link_green">2007-03-05 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.360doc.com/UserHome/3630" target="_blank">lxjtc</a></span> </li><li><a href="http://www.360doc.com/content/08/0516/15/7635_1263918.shtml" target="_blank">关于字节流和字符流--Welcome to Wan's Blog</a><span class="time3 link_green">2008-05-16 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.360doc.com/UserHome/7635" target="_blank">凡尘一滴</a></span> </li><li><a href="http://www.360doc.com/content/05/1027/20/126_24825.shtml" target="_blank">见过这种对字符串的处理方式吗？ - C/C++讨论区 - - C...</a><span class="time3 link_green">2005-10-27 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.360doc.com/UserHome/126" target="_blank">accesine</a></span> </li><li><a href="http://www.360doc.com/content/07/0718/14/36626_618107.shtml" target="_blank">string.h</a><span class="time3 link_green">2007-07-18 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.360doc.com/UserHome/36626" target="_blank">枫叶飘红</a></span> </li><li><a href="http://www.360doc.com/content/09/0924/14/168576_6376220.shtml" target="_blank">输入输出</a><span class="time3 link_green">2009-09-24 &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.360doc.com/UserHome/168576" target="_blank">Sachchit</a></span> </li></ul><div style="float:right; font-size:12px;" class="link_underline"><a href="http://www.360doc.com/relevant/1389111_more.shtml" target="_blank">查看更多文章&gt;&gt;</a></div></div>
+                                </div>
+                                <div id="Reflction">
+                                    <div id="360docRefTN" class="wenzhang_btnew1" style="width: 730px; background-color: rgb(237, 243, 247); padding-left: 10px; display: none; "></div>
+                                    <div id="360docRefCT"></div>
+                                    <div id="360docRefPB" align="center" style="display: none; "></div>
+                                </div>
+                                <div class="wenzhang_btnew1" style="background-color: #fff; color: #4a4a4a; padding-left: 30px;">
+                                    发表评论：<span id="isLogInSpan" class="wenzhang_pl_fb_tit link_red"></span>
+                                </div>
+                                <div id="ReflectionPart" style="padding-left: 30px;"><div class="pinglun ">您需要登录后才可以发表评论&nbsp;&nbsp;&nbsp;&nbsp;<span class="bulebold bulelink"><a href="http://www.360doc.com/login.aspx?reurl=http://www.360doc.com/content/08/0702/01/68681_1389111.shtml" onclick="InsertLogData(6);">登录</a>&nbsp;|&nbsp;<a href="http://www.360doc.com/register.aspx?refer=3&reurl=showweb/0/0/1389111.aspx" onclick="InsertLogData(4);">立即注册</a></span></div></div>
+                            </td>
+            </tr>
+            </tbody></table> 
+            </td>
+            <td valign="top" align="center">
+                <div style="margin-left: 20px;">
+                    <div><script type="text/javascript">google_ad_client = 'pub-6625678643128649';google_ad_slot = '0378477824';google_ad_width = 180;google_ad_height = 90;</script><script type="text/javascript" src="./详细解说STL string -- STLDetailString_files/show_ads.js"></script></div><div class="WidthRight" style="width:178px;"><div class="wenzhang_bt">热点推荐</div><div class="wenzhang_bt_listCG"><ul><li><a href="http://www.360doc.com/content/09/0224/19/37196_2634612.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">史上最强最全的鞋带系法！ </a></li><li><a href="http://www.360doc.com/content/09/0405/18/88761_3031161.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">世界三十大死刑(死刑大... </a></li><li><a href="http://www.360doc.com/content/08/0803/13/9807_1505056.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">新加坡:受贿1元坐牢8月 </a></li><li><a href="http://www.360doc.com/content/09/0408/21/118405_3064876.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">最常吃的家常菜 (图文... </a></li><li><a href="http://www.360doc.com/content/09/0314/09/102433_2803077.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">高中女生学习困难的原因... </a></li><li><a href="http://www.360doc.com/content/09/0305/13/19446_2718225.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">请不要以丢丑的方式爱国... </a></li><li><a href="http://www.360doc.com/content/06/0808/11/6276_176313.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">愛情婚姻經典物語 </a></li><li><a href="http://www.360doc.com/content/08/1227/12/37063_2209121.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">１７个超乎想象的人体极... </a></li><li><a href="http://www.360doc.com/content/08/0828/15/68419_1585120.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">中国百句经典名言 </a></li><li><a href="http://www.360doc.com/content/09/0124/12/55073_2393256.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">假如我是一个女人 </a></li><li><a href="http://www.360doc.com/content/07/0627/22/26331_582734.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">绝对真实的这年头－好文... </a></li><li><a href="http://www.360doc.com/content/09/0205/14/88761_2465127.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">革命年代千奇百怪的结婚证 </a></li><li><a href="http://www.360doc.com/content/09/0217/08/101101_2566016.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">不见其实就是一种特别的美 </a></li><li><a href="http://www.360doc.com/content/06/1108/11/353_253042.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">选择与沟通对象接近的方式 </a></li><li><a href="http://www.360doc.com/content/09/0325/20/118405_2917409.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">自制酸菜（图解） </a></li><li><a href="http://www.360doc.com/content/08/0516/17/9787_1264076.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">教师上公开课的心理调适 </a></li><li><a href="http://www.360doc.com/content/09/0112/10/92803_2315375.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">网络播放器:1000首... </a></li><li><a href="http://www.360doc.com/content/08/1115/23/62878_1933538.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">民国编年史 重光篇 </a></li><li><a href="http://www.360doc.com/content/09/0115/06/83855_2336594.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">讯雷提速技巧：四招10... </a></li><li><a href="http://www.360doc.com/content/07/0420/19/12719_458290.shtml" target="_blank" onclick="ClickStatics(&#39;wz1&#39;)">桃花诗词 </a></li></ul><br></div></div><div id="AdArtRight" align="center"><iframe marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="160" height="600" src="./详细解说STL string -- STLDetailString_files/ad.htm"></iframe><br><br></div><div id="360docAdBetween"></div><div id="Getbook_list" class="WidthRight"><div id="ImgCache" style="display: none; "><img src="./详细解说STL string -- STLDetailString_files/ArtSure.gif"><img src="./详细解说STL string -- STLDetailString_files/ArtCancel.gif"></div></div>
+
+                </div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script language="javascript" type="text/javascript">var ArticleID=1389111;var userid=68681;var SearchByArt="href='http://www.google.com.hk/search?hl=zh-CN&amp;q=string%2b%e5%87%bd%e6%95%b0%2b%e5%ad%97%e7%ac%a6%e4%b8%b2&amp;lr=lang_zh-CN' target='_blank'";var xmlHttp=null;var xmlDom =null;var xslDom =null;</script>
+<script language="javascript" type="text/javascript">
+    var appName = navigator.appName.toLowerCase();
+    if (appName.indexOf("microsoft internet explorer") > -1) {
+        document.write("<scr" + "ipt type='text/javascript' src='http://www.360doc.com/js/StickySystemIE090401.js'></sc" + "ript>");
+    }
+    else {
+        document.write("<scr" + "ipt type='text/javascript' src='http://www.360doc.com/js/StickySystemOther090401.js'></sc" + "ript>");
+    }
+
+</script><script type="text/javascript" src="./详细解说STL string -- STLDetailString_files/StickySystemOther090401.js"></script>
+ <script>GerLookingUserInfo(1,68681,1);</script>
+<div class="footer">
+    <div>
+        北京六智信息技术有限公司&nbsp;&nbsp;Copyright © 2005-2011 360doc.com ,&nbsp;&nbsp;All Rights
+        Reserved
+    </div>
+    <div style="padding-top: 5px;">
+        <a target="_blank" href="http://www.360doc.com/service.html">服务条款</a> <a href="javascript:void(0)" onclick="setHomepage(&#39;http://www.360doc.com&#39;)">
+            设360doc为首页</a> <a target="_blank" href="http://www.360doc.com/advice.html">留言交流</a> <a target="_blank" href="http://www.360doc.com/contactus.html">联系我们</a> <a target="_blank" href="http://www.360doc.com/friendlink.html">友情链接</a>
+    </div>
+    <div>
+        <table cellpadding="0" cellspacing="0" border="0" align="center">
+            <tbody><tr>
+                <td>
+                    <div>
+                        <a target="_blank" href="http://www.miibeian.gov.cn/">京ICP证090625号</a>&nbsp;&nbsp;京ICP备05038915号&nbsp;&nbsp;北京市公安局朝阳分局备案编号:1101051118
+                    </div>
+                </td>
+                <td>
+                    <a target="_blank" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202009120700006">
+                        <img src="./详细解说STL string -- STLDetailString_files/biaoshi.gif"></a>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>
+</div>
+
+
+
+
+</body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: condition variable</TITLE>
+ <LINK HREF="apr-tutorial-19.html" REL=next>
+ <LINK HREF="apr-tutorial-17.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc18" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-19.html">Next</A>
+<A HREF="apr-tutorial-17.html">Previous</A>
+<A HREF="apr-tutorial.html#toc18">Contents</A>
+<HR>
+<H2><A NAME="s18">18.</A> <A HREF="apr-tutorial.html#toc18">condition variable</A></H2>
+
+<P>We often have the case that we require one thread to wait until the other thread completes something. We can write such a code with condition variable. One thread has a role to wake up the other thread. The other thread has a role to wait(sleep) until it's notified(signalled). Sometimes, the former is called producer and the latter is called consumer. Here, I call them so.</P>
+<P>At first, we create a condition variable object. We just call apr_thread_cond_create() as follows:</P>
+<P>/* excerpted from thread-
+<A HREF="../sample/cond-sample.c">cond-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+typedef struct {
+    /* condition variable should be used with a mutex variable */
+    apr_thread_mutex_t *mutex;
+    apr_thread_cond_t  *cond;
+
+    /* shared context depends on application */
+    int input_num;
+} my_production_t;
+
+apr_thread_mutex_create(&amp;prod.mutex, APR_THREAD_MUTEX_UNNESTED, mp);
+apr_thread_cond_create(&amp;prod.cond, mp);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>As you can see, I create apr_thread_mutex_t object, too. That's because condition variable requires apr_thread_mutex_t. The relation between two objects is not explicit in their creations, but it will be clear when we call apr_thread_cond_wait() later.</P>
+<P>Let's take a look at thread-
+<A HREF="../sample/cond-sample.c">cond-sample.c</A>. In which, the main thread works as a producer and the sub thread works as a consumer.</P>
+<P>The basic structure of the producer's code looks as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* producer thread's basic code */
+apr_thread_mutex_lock(prod->mutex);
+apr_thread_cond_signal(prod->cond);
+apr_thread_mutex_unlock(prod->mutex);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>By calling apr_thread_cond_signal(), producer thread can wake up consumer thread. The call must be protected by the associated mutex lock, because the condition variable object is shared between producer and consumer. Calling apr_thread_cond_signal() never block. Even if there are multiple consumers waiting, only one consumer is waken up. If we want to wake all of them, we use a call to apr_thread_cond_broadcast().</P>
+<P>The basic structure of the consumer's code looks as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* consumer thread's basic code */
+apr_thread_mutex_lock(prod->mutex);
+apr_thread_cond_wait(prod->cond, prod->mutex);
+apr_thread_mutex_unlock(prod->mutex);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>By calling apr_thread_cond_wait(), the consumer thread blocks. It sleeps until producer thread wakes it up. If we want a timeout for the wait, we can use apr_thread_cond_timedwait() instead.</P>
+<P>As same as producer, calling apr_thread_cond_wait() must be protected by the associated mutex lock. Moreover, apr_thread_cond_wait() requires the mutex lock as the function's second argument. The reason is that apr_thread_cond_wait() internaly releases(unlocks) the associted mutex lock, then sleeps. After waken up, it internally acquires the mutex lock, again. At first glance, both producer's code and consumer's code are protected by the same mutex lock, so that you would think they don't work properly. However, it works by such internal unlock of apr_thread_cond_wait().</P>
+<P>If producer calls apr_thread_cond_signal() while no consumer exists, what happens? Unfortunately, there is a portability issue. Think about the case that a producer thread calls apr_thread_cond_signal() when no consumer thread waits for the condition variable. Then, a consumer thread calls apr_thread_cond_wait() for the condition variable. On Unix the consumer sleeps, but on Windows the consumer thread doesn't sleep. To get around this cross-platform problem, we generally must have a flag variable. Please take a look at thread-
+<A HREF="../sample/cond-sample.c">cond-sample.c</A> about it. my_production_t::input_num works as such a flag, although it is also an output production shared between two threads. Without such a flag, apr_thread_cond_wait() would sleep forever.</P>
+
+
+<HR>
+<A HREF="apr-tutorial-19.html">Next</A>
+<A HREF="apr-tutorial-17.html">Previous</A>
+<A HREF="apr-tutorial.html#toc18">Contents</A>
+</BODY>
+</HTML>

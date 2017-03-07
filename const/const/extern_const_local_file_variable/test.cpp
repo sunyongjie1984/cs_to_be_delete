@@ -1,0 +1,1 @@
+extern unsigned int const AA = 200;

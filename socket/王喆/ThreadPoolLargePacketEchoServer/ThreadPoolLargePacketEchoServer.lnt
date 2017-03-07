@@ -1,0 +1,13 @@
+
+/* Generated from file: ThreadPoolLargePacketEchoServer.dsp */
+-i..\\
+-dWIN32
+-d_DEBUG
+-d_CONSOLE
+-d_MBCS
+-dUNICODE
+-d_UNICODE
+ServerMain.cpp
+SocketServer.cpp
+ThreadPool.cpp
+ThreadPoolWorkerThread.cpp

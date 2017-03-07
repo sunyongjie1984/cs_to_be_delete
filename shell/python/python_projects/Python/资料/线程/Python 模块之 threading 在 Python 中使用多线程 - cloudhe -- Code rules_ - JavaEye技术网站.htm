@@ -1,0 +1,483 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0038)http://cloudhe.javaeye.com/blog/228376 -->
+<HTML dir=ltr xml:lang="zh-CN" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Python 模块之 threading: 在 Python 中使用多线程 - cloudhe -- Code rules. - JavaEye技术网站</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<META 
+content="&nbsp;&nbsp;&nbsp; Python 是支持多线程的，并且是 native 的线程。主要是通过 thread 和 threading 这两个模块来实现的。thread是比较底层的模块，threading 是对 thread 做了一些包装的，可以更加方便的被使用。这里需要提一下的是 Python 对线程的支持还不够完善，不能利用多 CPU，但是下个版本的 Python 中已经考虑改进这点，让我们拭目以待。&nbsp;&nbsp;&nbsp; th ..." 
+name=description>
+<META content="threading  Python 模块之 threading: 在 Python 中使用多线程" 
+name=keywords><LINK href="/images/favicon.ico" type=image/x-icon 
+rel="shortcut icon"><LINK title=JavaEye href="/open_search.xml" 
+type=application/opensearchdescription+xml rel=search><LINK 
+title="cloudhe -- Code rules." href="/rss" type=application/rss+xml 
+rel=alternate><LINK media=screen 
+href="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/blog.css" 
+type=text/css rel=stylesheet><LINK media=screen 
+href="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/green.css" 
+type=text/css rel=stylesheet>
+<SCRIPT 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/application.js" 
+type=text/javascript></SCRIPT>
+<LINK media=screen 
+href="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/SyntaxHighlighter.css" 
+type=text/css rel=stylesheet>
+<SCRIPT 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/shCoreCommon.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/hotkey.js" 
+type=text/javascript></SCRIPT>
+
+<STYLE>DIV#main {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; WIDTH: 740px; PADDING-TOP: 0px; BACKGROUND-COLOR: transparent; BORDER-RIGHT-WIDTH: 0px
+}
+</STYLE>
+<LINK media=screen 
+href="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/ui.css" 
+type=text/css rel=stylesheet>
+<SCRIPT 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/compress.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.3790.4504" name=GENERATOR></HEAD>
+<BODY>
+<DIV id=header>
+<DIV id=blog_site_nav><A class=homepage href="http://www.javaeye.com/">首页</A> <A 
+href="http://www.javaeye.com/news">新闻</A> <A 
+href="http://www.javaeye.com/forums">论坛</A> <A 
+href="http://www.javaeye.com/ask">问答</A> <A 
+href="http://www.javaeye.com/blogs">博客</A> <A 
+href="http://www.javaeye.com/job">招聘</A> <A id=msna onclick="return false;" 
+href="http://cloudhe.javaeye.com/blog/228376#"><U>更多</U> <SMALL>▼</SMALL></A> 
+<DIV class=quick_menu style="DISPLAY: none"><A 
+href="http://www.javaeye.com/wiki">专栏</A> <A 
+href="http://www.javaeye.com/articles">文摘</A> <A 
+href="http://www.javaeye.com/groups">圈子</A> <A 
+href="http://www.javaeye.com/google_search">搜索</A> </DIV></DIV>
+<DIV id=user_nav><A class=welcome title=登录 
+href="http://cloudhe.javaeye.com/login">您还未登录 !</A> <A style="COLOR: red" 
+href="http://www.javaeye.com/all">我的应用</A> <A 
+href="http://cloudhe.javaeye.com/login">登录</A> <A class=nobg 
+href="http://cloudhe.javaeye.com/signup">注册</A> </DIV></DIV>
+<DIV id=page>
+<DIV class=clearfix id=branding>
+<DIV id=blog_name>
+<H1><A href="http://cloudhe.javaeye.com/">cloudhe -- Code rules.</A></H1></DIV>
+<DIV id=blog_preview></DIV>
+<DIV id=blog_domain>永久域名 <A 
+href="http://cloudhe.javaeye.com/">http://cloudhe.javaeye.com/</A></DIV></DIV>
+<DIV class=clearfix id=content>
+<DIV id=main>
+<DIV class=blog_main>
+<DIV class=blog_nav>
+<DIV class=pre_next><A class=next title="Python 中使用 pyrex 生成 Linux 可执行文件" 
+href="http://cloudhe.javaeye.com/blog/228379">Python 中使用 pyrex 生成 Linux 可执行 
+...</A> | <A class=pre title="Python 模块之 ConfigParser: 用 Python 解析配置文件" 
+href="http://cloudhe.javaeye.com/blog/228374">Python 模块之 ConfigParser: 用 Python 
+...</A> </DIV></DIV>
+<DIV class=blog_title>
+<DIV class=date><SPAN class=year>2008</SPAN><SPAN class=sep_year>-</SPAN><SPAN 
+class=month>08</SPAN><SPAN class=sep_month>-</SPAN><SPAN 
+class=day>15</SPAN></DIV>
+<H3><A href="http://cloudhe.javaeye.com/blog/228376">Python 模块之 threading: 在 
+Python 中使用多线程</A></H3>关键字: threading </DIV>
+<DIV class=blog_content>
+<P>&nbsp;&nbsp;&nbsp; <SPAN style="FONT-SIZE: medium">Python 是支持多线程的，并且是 native 
+的线程。主要是通过 thread 和 threading 这两个模块来实现的。thread是比较底层的模块，threading 是对 thread 
+做了一些包装的，可以更加方便的被使用。这里需要提一下的是 Python 对线程的支持还不够完善，不能利用多 CPU，但是下个版本的 Python 
+中已经考虑改进这点，让我们拭目以待。<BR>&nbsp;&nbsp;&nbsp; threading 模块里面主要是对一些线程的操作对象化了，创建了叫 
+Thread 的 class。一般来说，使用线程有两种模式，一种是创建线程要执行的函数，把这个函数传递进 Thread 对象里，让它来执行；另一种是直接从 
+Thread 继承，创建一个新的 class，把线程执行的代码放到这个新的 class 里。我们来看看这两种做法吧。</SPAN></P>
+<DIV 
+style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; BACKGROUND: #e6e6e6 0% 50%; PADDING-BOTTOM: 4px; WIDTH: 95%; PADDING-TOP: 4px">
+<DIV><SPAN style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">-*-&nbsp;encoding:&nbsp;gb2312&nbsp;-*-</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #0000ff">import</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;string,&nbsp;threading,&nbsp;time<BR><BR></SPAN><SPAN 
+style="COLOR: #0000ff">def</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;thread_main(a):<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">global</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;count,&nbsp;mutex<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;获得线程名</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;threadname&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threading.currentThread().getName()<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;x&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">in</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;xrange(0,&nbsp;int(a)):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;取得锁</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutex.acquire()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;count&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">+</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">1</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;释放锁</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutex.release()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">print</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threadname,&nbsp;x,&nbsp;count<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(</SPAN><SPAN 
+style="COLOR: #000000">1</SPAN><SPAN 
+style="COLOR: #000000">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR></SPAN><SPAN 
+style="COLOR: #0000ff">def</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;main(num):<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">global</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;count,&nbsp;mutex<BR>&nbsp;&nbsp;&nbsp;&nbsp;threads&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;[]<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">1</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;创建一个锁</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;mutex&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threading.Lock()<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;先创建线程对象</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;x&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">in</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;xrange(0,&nbsp;num):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;threads.append(threading.Thread(target</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">thread_main,&nbsp;args</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">(</SPAN><SPAN 
+style="COLOR: #000000">10</SPAN><SPAN 
+style="COLOR: #000000">,)))<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;启动所有线程</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;t&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">in</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threads:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.start()<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;主线程中等待所有子线程退出</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;t&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">in</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threads:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.join()&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR></SPAN><SPAN 
+style="COLOR: #0000ff">if</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #800080">__name__</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #000000">==</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #800000">'</SPAN><SPAN 
+style="COLOR: #800000">__main__</SPAN><SPAN style="COLOR: #800000">'</SPAN><SPAN 
+style="COLOR: #000000">:<BR>&nbsp;&nbsp;&nbsp;&nbsp;num&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">4</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;创建4个线程</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;main(</SPAN><SPAN 
+style="COLOR: #000000">4</SPAN><SPAN style="COLOR: #000000">)</SPAN></DIV></DIV>
+<P><BR><SPAN style="FONT-SIZE: medium">上面的就是第一种做法，这种做法是很常见的，下面是另一种，曾经使用过 Java 
+的朋友应该很熟悉这种模式：</SPAN></P>
+<DIV 
+style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; BACKGROUND: #e6e6e6 0% 50%; PADDING-BOTTOM: 4px; WIDTH: 95%; PADDING-TOP: 4px">
+<DIV><SPAN style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">-*-&nbsp;encoding:&nbsp;gb2312&nbsp;-*-</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #0000ff">import</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threading<BR></SPAN><SPAN 
+style="COLOR: #0000ff">import</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;time<BR><BR></SPAN><SPAN 
+style="COLOR: #0000ff">class</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;Test(threading.Thread):<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">def</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #800080">__init__</SPAN><SPAN 
+style="COLOR: #000000">(self,&nbsp;num):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;threading.Thread.</SPAN><SPAN 
+style="COLOR: #800080">__init__</SPAN><SPAN 
+style="COLOR: #000000">(self)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self._run_num&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;num<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">def</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;run(self):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">global</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;count,&nbsp;mutex<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;threadname&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threading.currentThread().getName()<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;x&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">in</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;xrange(0,&nbsp;int(self._run_num)):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutex.acquire()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;count&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">+</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">1</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutex.release()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">print</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threadname,&nbsp;x,&nbsp;count<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(</SPAN><SPAN 
+style="COLOR: #000000">1</SPAN><SPAN 
+style="COLOR: #000000">)<BR><BR></SPAN><SPAN 
+style="COLOR: #0000ff">if</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #800080">__name__</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #000000">==</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #800000">'</SPAN><SPAN 
+style="COLOR: #800000">__main__</SPAN><SPAN style="COLOR: #800000">'</SPAN><SPAN 
+style="COLOR: #000000">:<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">global</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;count,&nbsp;mutex<BR>&nbsp;&nbsp;&nbsp;&nbsp;threads&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;[]<BR>&nbsp;&nbsp;&nbsp;&nbsp;num&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">4</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">1</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;创建锁</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;mutex&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threading.Lock()<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;创建线程对象</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;x&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">in</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;xrange(0,&nbsp;num):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;threads.append(Test(</SPAN><SPAN 
+style="COLOR: #000000">10</SPAN><SPAN 
+style="COLOR: #000000">))<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;启动线程</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;t&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">in</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threads:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.start()<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">#</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;等待子线程结束</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;t&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">in</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;threads:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.join()&nbsp;&nbsp;</SPAN></DIV></DIV>
+<P><BR>&nbsp;</P>
+<P>From <A 
+href="http://www.pythonid.com/html/fenleiwenzhang/thread/20070704/19.html">http://www.pythonid.com/html/fenleiwenzhang/thread/20070704/19.html</A></P></DIV>
+<SCRIPT type=text/javascript><!--
+google_ad_client = "pub-1076724771190722";
+/* JE个人博客468x60 */
+google_ad_slot = "5506163105";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</SCRIPT>
+
+<SCRIPT 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/show_ads.js" 
+type=text/javascript>
+</SCRIPT>
+
+<DIV class=blog_nav>
+<DIV class=pre_next><A class=next title="Python 中使用 pyrex 生成 Linux 可执行文件" 
+href="http://cloudhe.javaeye.com/blog/228379">Python 中使用 pyrex 生成 Linux 可执行 
+...</A> | <A class=pre title="Python 模块之 ConfigParser: 用 Python 解析配置文件" 
+href="http://cloudhe.javaeye.com/blog/228374">Python 模块之 ConfigParser: 用 Python 
+...</A> </DIV></DIV>
+<DIV class=blog_bottom>
+<UL>
+  <LI>14:25 </LI>
+  <LI>浏览 (1224) </LI>
+  <LI><A href="http://cloudhe.javaeye.com/blog/228376#comments">评论</A> (0) </LI>
+  <LI>分类: <A href="http://cloudhe.javaeye.com/category/23743">Python</A> </LI>
+  <LI class=last><A class=more href="http://www.javaeye.com/wiki/topic/228376" 
+  target=_blank>相关推荐</A> </LI></UL></DIV>
+<DIV class=blog_comment>
+<H5>评论</H5><A id=comments name=comments></A></DIV>
+<DIV class=blog_comment>
+<H5>发表评论</H5>
+<FORM id=comment_form onsubmit="return false;" action=/blog/228376 
+method=post><INPUT id=editor_bbcode_flag type=hidden> 
+<DIV id=editor_main><TEXTAREA class="validate-richeditor bad-words min-length-5" id=editor_body style="WIDTH: 500px; HEIGHT: 350px" name=comment[body] rows=20 cols=40></TEXTAREA></DIV>
+<SCRIPT type=text/javascript>
+  var editor = new Control.TextArea.Editor("editor_body", "bbcode", false);
+</SCRIPT>
+
+<P style="PADDING-RIGHT: 30px; TEXT-ALIGN: right">您还没有登录，请<A 
+href="http://cloudhe.javaeye.com/login">登录</A>后发表评论(快捷键 Alt+S / Ctrl+Enter) <INPUT class=submit id=quick_reply_button type=submit value=提交 name=commit></P></FORM>
+<SCRIPT type=text/javascript>
+          new HotKey("s",function() {$('quick_reply_button').click();},{altKey: true, ctrlKey: false});
+          new HotKey(new Number(13),function() {$('quick_reply_button').click();},{altKey: false, ctrlKey: true});
+
+          new Validation("comment_form", {immediate: false, onFormValidate: function(result, form){
+    
+            if(confirm('您需要登录以后才能执行这个操作，现在要登录吗？')) window.location.href = '/login';
+    
+        }});
+        </SCRIPT>
+</DIV></DIV>
+<SCRIPT type=text/javascript>
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  fix_image_size($$('div.blog_content img'), 700);
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'Post'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);}
+    });
+  }
+</SCRIPT>
+</DIV>
+<DIV id=local>
+<DIV class=local_top></DIV>
+<DIV id=blog_owner>
+<DIV id=blog_owner_logo><A href="http://cloudhe.javaeye.com/"><IMG class=logo 
+title="cloudhe的博客: cloudhe -- Code rules." alt=cloudhe的博客 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/c0c26e56-f4b0-4e25-ad08-1836054a5d42.jpg"></A></DIV>
+<DIV id=blog_owner_name>cloudhe</DIV></DIV>
+<DIV id=blog_actions>
+<UL>
+  <LI>浏览: 19736 次 
+  <LI>性别: <IMG title=男 alt=Icon_minigender_1 
+  src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/icon_minigender_1.gif"> 
+
+  <LI>来自: 北京 
+  <LI><IMG 
+  src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/offline.gif"> 
+
+  <LI><A class=profile href="http://cloudhe.javaeye.com/blog/profile">详细资料</A> 
+  <A class=guest_book href="http://cloudhe.javaeye.com/blog/guest_book">留言簿</A> 
+  </LI></UL>
+<H5>搜索本博客</H5>
+<FORM action=/blog/search method=get><INPUT class=text id=query 
+style="MARGIN-LEFT: 10px; WIDTH: 110px" name=query> <INPUT class=submit type=submit value=搜索> </FORM></DIV>
+<DIV class=clearfix id=user_visits>
+<H5>最近访客 <SPAN 
+style="PADDING-LEFT: 30px; FONT-WEIGHT: normal; FONT-SIZE: 12px"><A 
+href="http://cloudhe.javaeye.com/blog/user_visits">&gt;&gt;更多访客</A></SPAN></H5>
+<DIV class=user_visit>
+<DIV class=logo><A href="http://aitilang.javaeye.com/" target=_blank><IMG 
+class=logo title="aitilang的博客: " alt=aitilang的博客 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/user-logo-thumb.gif"></A></DIV>
+<DIV class=left><A href="http://aitilang.javaeye.com/" 
+target=_blank>aitilang</A></DIV></DIV>
+<DIV class=user_visit>
+<DIV class=logo><A href="http://99388035.javaeye.com/" target=_blank><IMG 
+class=logo title="99388035的博客: " alt=99388035的博客 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/user-logo-thumb.gif"></A></DIV>
+<DIV class=left><A href="http://99388035.javaeye.com/" 
+target=_blank>99388035</A></DIV></DIV>
+<DIV class=user_visit>
+<DIV class=logo><A href="http://rootsoso.javaeye.com/" target=_blank><IMG 
+class=logo title="rootsoso的博客: 随机思考" alt=rootsoso的博客 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/4da17be6-681a-3fe8-8d78-5ca68f4451b6-thumb.jpg"></A></DIV>
+<DIV class=left><A href="http://rootsoso.javaeye.com/" 
+target=_blank>rootsoso</A></DIV></DIV>
+<DIV class=user_visit>
+<DIV class=logo><A href="http://hustzxx.javaeye.com/" target=_blank><IMG 
+class=logo title="hustzxx的博客: " alt=hustzxx的博客 
+src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/user-logo-thumb.gif"></A></DIV>
+<DIV class=left><A href="http://hustzxx.javaeye.com/" 
+target=_blank>hustzxx</A></DIV></DIV></DIV>
+<DIV id=blog_menu>
+<H5>博客分类</H5>
+<UL>
+  <LI><A href="http://cloudhe.javaeye.com/">全部博客 (39)</A> 
+  <LI><A href="http://cloudhe.javaeye.com/category/23743">Python (23)</A> 
+  <LI><A href="http://cloudhe.javaeye.com/category/23761">Maemo (5)</A> 
+  <LI><A href="http://cloudhe.javaeye.com/category/23759">Ubuntu (4)</A> 
+  <LI><A href="http://cloudhe.javaeye.com/category/23873">Socket (4)</A> 
+  <LI><A href="http://cloudhe.javaeye.com/category/25344">Javascript (1)</A> 
+  <LI><A href="http://cloudhe.javaeye.com/category/23971">Other (2)</A> 
+</LI></UL></DIV>
+<DIV id=blog_others>
+<H5>其他分类</H5>
+<UL>
+  <LI><A href="http://cloudhe.javaeye.com/blog/favorite">我的收藏</A> (23) 
+  <LI><A href="http://cloudhe.javaeye.com/blog/topic">我的论坛主题贴</A> (0) 
+  <LI><A href="http://cloudhe.javaeye.com/blog/post">我的所有论坛贴</A> (2) 
+  <LI><A href="http://cloudhe.javaeye.com/blog/article">我的精华良好贴</A> (0) 
+</LI></UL></DIV>
+<DIV id=recent_groups>
+<H5>最近加入圈子</H5>
+<UL>
+  <LI><A href="http://wfp.group.javaeye.com/">函数式编程の道</A> 
+  <LI><A href="http://ubuntu.group.javaeye.com/">Ubuntu For Fun</A> 
+  <LI><A href="http://onlypython.group.javaeye.com/">Python</A> </LI></UL></DIV>
+<DIV id=month_blogs>
+<H5>存档</H5>
+<UL>
+  <LI><A href="http://cloudhe.javaeye.com/blog/monthblog/2008-10">2008-10</A> 
+  (1) 
+  <LI><A href="http://cloudhe.javaeye.com/blog/monthblog/2008-09">2008-09</A> 
+  (3) 
+  <LI><A href="http://cloudhe.javaeye.com/blog/monthblog/2008-08">2008-08</A> 
+  (12) 
+  <LI><A href="http://cloudhe.javaeye.com/blog/monthblog_more">更多存档...</A> 
+</LI></UL></DIV>
+<DIV id=recent_comments>
+<H5>最新评论</H5>
+<UL>
+  <LI><A title="Python 中怎么 copy 文件和目录" 
+  href="http://cloudhe.javaeye.com/blog/228372#comments">Python 中怎么 copy 文件 
+  ...</A><BR>不支持中文路径<BR>-- by <A href="http://bcw104.javaeye.com/" 
+  target=_blank>bcw104</A> 
+  <LI><A title="Amusing Python 2: range/xrange" 
+  href="http://cloudhe.javaeye.com/blog/228352#comments">Amusing Python 2: 
+  range/ ...</A><BR>10000的结果xrange 0.65599989891&nbsp; 0.546999931 ...<BR>-- by 
+  <A href="http://snageyang.javaeye.com/" target=_blank>snageyang</A> 
+  <LI><A title="Python 中使用 FTP" 
+  href="http://cloudhe.javaeye.com/blog/228369#comments">Python 中使用 
+  FTP</A><BR>有的没那么简单，呵呵<BR>-- by <A href="http://caesarok.javaeye.com/" 
+  target=_blank>caesarok</A> 
+  <LI><A title="Python and Ruby" 
+  href="http://cloudhe.javaeye.com/blog/249455#comments">Python and 
+  Ruby</A><BR>qubic 写道引用 Ruby 没有类似 Jython 的东西。jruby H ...<BR>-- by <A 
+  href="http://cloudhe.javaeye.com/" target=_blank>cloudhe</A> 
+  <LI><A title="Python and Ruby" 
+  href="http://cloudhe.javaeye.com/blog/249455#comments">Python and 
+  Ruby</A><BR>引用Ruby 没有类似 Jython 的东西。jruby<BR>-- by <A 
+  href="http://qubic.javaeye.com/" target=_blank>qubic</A> </LI></UL></DIV>
+<DIV id=comments_top>
+<H5>评论排行榜</H5>
+<UL></UL></DIV>
+<DIV id=rss>
+<UL>
+  <LI><A href="http://cloudhe.javaeye.com/rss" target=_blank><IMG alt=Rss 
+  src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/rss.png"></A> 
+
+  <LI><A 
+  href="http://fusion.google.com/add?feedurl=http://cloudhe.javaeye.com/rss" 
+  target=_blank><IMG alt=Rss_google 
+  src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/rss_google.gif"></A> 
+
+  <LI><A 
+  href="http://www.xianguo.com/subscribe.php?url=http://cloudhe.javaeye.com/rss" 
+  target=_blank><IMG alt=Rss_xianguo 
+  src="Python 模块之 threading 在 Python 中使用多线程 - cloudhe -- Code rules_ - JavaEye技术网站_files/rss_xianguo.jpg"></A> 
+
+  <LI><A href="http://www.google.com/search?hl=zh-CN&amp;q=RSS">[什么是RSS?]</A> 
+  </LI></UL></DIV>
+<DIV class=local_bottom></DIV></DIV></DIV>
+<DIV class=clearfix id=footer>
+<DIV id=copyright>
+<HR>
+声明：JavaEye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<BR>© 
+2003-2010 JavaEye.com. All rights reserved. 上海炯耐计算机软件有限公司 [ 沪ICP备05023328号 ] 
+</DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+  document.write("<img src='http://stat.javaeye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&logged_in=no" + "' width='0' height='0' />");
+</SCRIPT>
+</BODY></HTML>

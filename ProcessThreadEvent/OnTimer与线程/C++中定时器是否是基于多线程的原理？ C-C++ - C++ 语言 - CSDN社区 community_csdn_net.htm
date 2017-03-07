@@ -1,0 +1,317 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0048)http://topic.csdn.net/t/20060907/15/5005901.html -->
+<HTML lang=zh-CN xml:lang="zh-CN" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>C++中定时器是否是基于多线程的原理？ C/C++ / C++ 语言 - CSDN社区 community.csdn.net</TITLE>
+<META content=all name=robots>
+<META http-equiv=Content-Language content=zh-CN>
+<META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK 
+href="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/topic.css" 
+type=text/css rel=stylesheet>
+<SCRIPT 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/Topic.js" 
+type=text/javascript></SCRIPT>
+
+<META content=" C/C++ C++ 语言" name=Keywords>
+<META 
+content="比如我在主线程中启动了一个10秒的定时器， 那么时间到的时候， 是中断主线程去执行由定时器启动的内容还是说， 是有两线程，主线程执行自己的， 定时器响应函数又是一个线程？请各位大虾指教，谢谢先" 
+name=description>
+<META content="MSHTML 6.00.2900.5726" name=GENERATOR></HEAD>
+<BODY>
+<DIV id=wrapper>
+<DIV id=innerWrapper>
+<DIV id=logo>
+<SCRIPT 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/csdn_ggmm.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>show_ads_zone(230);</SCRIPT>
+<IMG style="DISPLAY: none" alt="" 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/pv.aspx"> 
+
+<DIV>
+<TABLE class=CSDN-PHF id=CSDNPHL cellSpacing=1 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD><A href="http://www.csdn.net/" rel=external>CSDN首页</A></TD>
+    <TD><A href="http://hi.csdn.net/" rel=external>空间</A></TD>
+    <TD><A href="http://news.csdn.net/" rel=external>新闻</A></TD>
+    <TD><A href="http://bbs.csdn.net/" rel=external>论坛</A></TD>
+    <TD><A href="http://blog.csdn.net/" rel=external>Blog</A></TD>
+    <TD><A href="http://download.csdn.net/" rel=external>下载</A></TD>
+    <TD><A href="http://book.csdn.net/" rel=external>读书</A></TD>
+    <TD><A href="http://wz.csdn.net/" rel=external>网摘</A></TD>
+    <TD><A href="http://search.csdn.net/" rel=external>搜索</A></TD>
+    <TD><A href="http://dotnet.csdn.net/" rel=external>.NET</A></TD>
+    <TD><A href="http://java.csdn.net/" rel=external>Java</A></TD>
+    <TD><A href="http://live.csdn.net/" rel=external>视频</A></TD>
+    <TD><A href="http://prj.csdn.net/" rel=external>接项目</A></TD>
+    <TD><A href="http://job.csdn.net/" rel=external>求职</A></TD>
+    <TD><A href="http://www.itcast.net/" rel=external>在线学习</A></TD>
+    <TD><A href="http://www.dearbook.com.cn/" rel=external>买书</A></TD>
+    <TD><A href="http://www.programmer.com.cn/" rel=external>程序员</A></TD>
+    <TD><A href="http://hi.csdn.net/Admin/NotifyList.aspx"><SPAN 
+      id=notifyPrompt>通知</SPAN></A></TD></TR></TBODY></TABLE>
+<DIV id=logo>
+<TABLE cellSpacing=0 cellPadding=0 width=760 border=0>
+  <TBODY>
+  <TR style="TEXT-ALIGN: center">
+    <TD style="MARGIN: auto; VERTICAL-ALIGN: middle; BACKGROUND-COLOR: #026994" 
+    align=middle width=380 height=36><!--a href="http://community.csdn.net/Games/GamesList.aspx/" target="_blank"><font size="3px" color="white"><strong>可用分押宝游戏火热进行中...</strong></font></a--><A 
+      href="http://g.csdn.net/5085044" target=_blank><FONT color=white 
+      size=3><STRONG>【经验总结】不能实施并行处理的情况</STRONG></FONT></A> </TD>
+    <TD style="MARGIN: auto; VERTICAL-ALIGN: middle; BACKGROUND-COLOR: #026994" 
+    align=middle width=380 height=36><A href="http://g.csdn.net/5085045" 
+      target=_blank><FONT color=white 
+      size=3><STRONG>浅谈并行编程中的任务分解模式</STRONG></FONT></A> </TD></TR>
+  <TR id=bigFlash style="TEXT-ALIGN: center"><!--td colspan="2"><a href="http://community.csdn.net/" target="_blank"><img src="/t/img/topicAD.jpg" width="760" height="300" border="0" /></a></td-->
+    <TD colSpan=2><A href="http://g.csdn.net/5078710" target=_blank><IMG 
+      height=300 
+      src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/20090403.jpg" 
+      width=760 border=0></A></TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>setTimeout("document.getElementById('bigFlash').style.display='none'", 5000);</SCRIPT>
+</DIV>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><A href="http://community.csdn.net/" rel=external><IMG alt=CSDN社区 
+      src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/logo_csdn.gif"></A></TD>
+    <TD>
+      <SCRIPT type=text/javascript>show_ads_zone(228);</SCRIPT>
+<!--<iframe frameborder="0" width="475" height="60" scrolling="no" src="/t/img/centerAd.htm">
+    </iframe>--></TD>
+    <TD>
+      <SCRIPT type=text/javascript>show_ads_zone(229);</SCRIPT>
+    </TD></TR></TBODY></TABLE><!-- script src="http://notify.hi.csdn.net/PromptInfo.ashx?ForWhat=FullJs"></script --><LINK 
+media=all 
+href="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/csdn_favbykimi.css" 
+type=text/css rel=stylesheet>
+<DIV id=navigation>
+<DIV id=search>
+<DIV id=innerSearch><INPUT id=key onfocus="value=''"><A 
+onclick="return Search()" 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">搜索</A>&nbsp;<CITE 
+class=fav_csdnstylebykimi><A title=收藏到我的网摘中，并分享给我的朋友 
+href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(saveit=window.open('http://wz.csdn.net/storeit.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t),'saveit','scrollbars=no,width=590,height=300,left=75,top=20,status=no,resizable=yes'));saveit.focus();">收藏</A></CITE>&nbsp;<A 
+onclick="return Print()" 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">打印</A>&nbsp;<A 
+onclick="return Close()" 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">关闭</A> </DIV></DIV>
+<DIV><A class=CSDNRoom href="http://community.csdn.net/" 
+rel=external>CSDN社区</A>&nbsp;&gt;&nbsp; <A 
+href="http://community.csdn.net/Expert/ForumsList.asp?typenum=1&amp;roomid=56" 
+rel=external>C/C++</A>&nbsp;&gt;&nbsp; <A 
+href="http://community.csdn.net/Expert/ForumList.asp?typenum=1&amp;roomid=5604" 
+rel=external>C++ 语言</A> </DIV></DIV>
+<DIV id=mainWrapper>
+<DIV id=pageContent>
+<DIV id=innerContent>
+<H1>C++中定时器是否是基于多线程的原理？</H1>
+<DIV class=author><A class=anchor name=Top>楼主</A>xixizhang（西西）<INPUT class=user1 title="一级用户 该版得分小于等于100分" type=button>2006-09-07 
+15:24:01 在 C/C++ / C++ 语言 提问</DIV>
+<P>比如我在主线程中启动了一个10秒的定时器， &nbsp; 那么时间到的时候， &nbsp; 是中断主线程去执行由定时器启动的内容还是说， &nbsp; 
+是有两线程，主线程执行自己的， &nbsp; 定时器响应函数又是一个线程？ &nbsp; <BR>&nbsp; &nbsp; <BR>&nbsp; 
+请各位大虾指教，谢谢先 <SPAN>问题点数：20、回复次数：10</SPAN><A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A> </P>
+<DIV class=tagad><IFRAME 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/Board.htm" 
+frameBorder=0 scrolling=no></IFRAME></DIV>
+<H3><STRONG><A class=anchor name=r_36607702>1 
+楼</A>healer_kx（甘草(楼主揭贴吧，我们这些上班灌水的也不容易)）<INPUT class=star2 title="二星用户 该版得分小于等于30000分，大于10000分" type=button></STRONG><SPAN>回复于 
+2006-09-07 15:30:02 得分 <EM>5</EM></SPAN></H3>
+<P>No， &nbsp; 消息。 &nbsp; <BR>&nbsp; <A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36608193>2 楼</A>wuliang416（Rick）<INPUT class=user2 title="二级用户 该版得分小于等于500分，大于100分" type=button></STRONG><SPAN>回复于 
+2006-09-07 15:43:22 得分 <EM>5</EM></SPAN></H3>
+<P>C++不知道，反正在UNIX上由alarm产生一个SIGALARM的信号，如果没有用sigaction或者signal捕捉的话，系统默认是终止程序。不然当SIGALARM被捕捉时系统会暂停当前程序转而执行sigaction指定的中断处理程序。当然用多线程处理信号也是可以的，而且SIGALARM是线程独享的不会被误发送到其他线程中去，在某个线程中使用sigwait等待信号就可以<A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36609214>3 楼</A>mathe（）<INPUT class=user4 title="四级用户 该版得分小于等于2000分，大于1000分" type=button></STRONG><SPAN>回复于 
+2006-09-07 16:12:16 得分 <EM>5</EM></SPAN></H3>
+<P>不是,系统级是通过时钟中断.每隔固定时间,时钟中断会中断当前代码执行而跳转到中断执行程序(系统级代码). &nbsp; 
+而在这段代码中,可以在指定时间给用户程序发消息来通知用户.<A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36610569>4 楼</A>avocado（）<INPUT class=user1 title="一级用户 该版得分小于等于100分" type=button></STRONG><SPAN>回复于 
+2006-09-07 16:45:26 得分 0 </SPAN></H3>
+<P>各位好！我公司近期大量的招聘C++人才，如有兴趣请 &nbsp; <BR>&nbsp; 
+点:http://www.51job.com/sc/co_all_job.php<A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36610932>5 楼</A>hailongchang（什么时候才能看到星星啊。。。）<INPUT class=user5 title="五级用户 该版得分小于等于5000分，大于2000分" type=button></STRONG><SPAN>回复于 
+2006-09-07 16:53:28 得分 0 </SPAN></H3>
+<P>windows是通过消息驱动,定时期是有系统定期给应用程序发送WM_TIMER消息来实现的, &nbsp; <BR>&nbsp; 
+而消息循环肯定会在主线程内进行,如果你要给另一个线程发消息，可以在主线程中响应WM_TIMER消息,然后自己定义消息,用SendMessage发送广播消息,这样在另一个线程中可以进行处理.<A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36611207>6 楼</A>OOPhaisky（异化$渴望成功~~）<INPUT class=star1 title="一星用户 该版得分小于等于10000分，大于5000分" type=button></STRONG><SPAN>回复于 
+2006-09-07 17:00:07 得分 <EM>3</EM></SPAN></H3>
+<P>不是！ &nbsp; <BR>&nbsp; 定时器是定时器，线程是线程。<A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36612759>7 楼</A>pottichu（拉拉是头猪）<INPUT class=user5 title="五级用户 该版得分小于等于5000分，大于2000分" type=button></STRONG><SPAN>回复于 
+2006-09-07 17:45:48 得分 <EM>2</EM></SPAN></H3>
+<P>windows &nbsp; API &nbsp; 中定时器是基于消息的。 &nbsp; <BR>&nbsp; &nbsp; C++ &nbsp; 
+中的定时器？你自己要做个定时器的话，还是得单独开个线程。 &nbsp; <BR>&nbsp; <A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36614624>8 楼</A>DraculaW（成爲牛人，然後離開）<INPUT class=user2 title="二级用户 该版得分小于等于500分，大于100分" type=button></STRONG><SPAN>回复于 
+2006-09-07 19:47:46 得分 0 </SPAN></H3>
+<P>呵呵 &nbsp; 线程是怎么实现的呢？ &nbsp; &nbsp; 分时？？？<A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36617453>9 楼</A>roger_77（阿生)(路漫漫长，上下索求）<INPUT class=user5 title="五级用户 该版得分小于等于5000分，大于2000分" type=button></STRONG><SPAN>回复于 
+2006-09-08 00:14:20 得分 0 </SPAN></H3>
+<P>C++定时器? &nbsp; <BR>&nbsp; 偶还没听说过.<A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H3><STRONG><A class=anchor name=r_36617714>10 楼</A>minico（小科）<INPUT class=user2 title="二级用户 该版得分小于等于500分，大于100分" type=button></STRONG><SPAN>回复于 
+2006-09-08 07:44:44 得分 0 </SPAN></H3>
+<P>定时器怎么能和高级语言相联系呢？应该是和某种操作系统向关联的。<A 
+href="http://topic.csdn.net/t/20060907/15/5005901.html#">Top</A></P>
+<H4><STRONG>相关问题</STRONG></H4>
+<DIV class=relation></DIV></DIV></DIV>
+<DIV id=sidebar>
+<H3>关键词</H3>
+<DIV></DIV>
+<H3>得分解答快速导航</H3>
+<DIV>
+<UL>
+  <LI>帖主：<A 
+  href="http://topic.csdn.net/t/20060907/15/5005901.html#Top">xixizhang</A> 
+  <LI><A 
+  href="http://topic.csdn.net/t/20060907/15/5005901.html#r_36607702">healer_kx</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20060907/15/5005901.html#r_36608193">wuliang416</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20060907/15/5005901.html#r_36609214">mathe</A> 
+  <LI><A 
+  href="http://topic.csdn.net/t/20060907/15/5005901.html#r_36611207">OOPhaisky</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20060907/15/5005901.html#r_36612759">pottichu</A> 
+  </LI></UL></DIV>
+<H3>相关链接</H3>
+<DIV>
+<UL>
+  <LI><A href="http://blog.csdn.net/AggView/35/" target=_blank>C/C++ Blog</A> 
+  <LI><A 
+  href="http://www.dearbook.com.cn/Book/SearchBook.aspx?sortid=7&amp;sorttype=smallsort" 
+  target=_blank>C/C++类图书</A> 
+  <LI><A href="http://www.codechina.net/resource/sort.php/20" 
+  target=_blank>C/C++类源码下载</A> </LI></UL></DIV>
+<H3>广告也精彩</H3>
+<DIV>
+<SCRIPT 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/show_ads.js" 
+type=text/javascript></SCRIPT>
+</DIV>
+<H3>反馈</H3>
+<DIV>请通过下述方式给我们反馈<BR><IMG alt=反馈 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/feedback.gif"></DIV></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV style="TEXT-ALIGN: center">
+<DIV id=pubfooter style="WIDTH: 770px">
+<DIV id=Float21789 
+style="Z-INDEX: 9; RIGHT: 3px; WIDTH: 190px; POSITION: absolute; TOP: 200px">
+<CENTER>
+<DIV id=AD21789 
+style="FLOAT: none; WIDTH: 190px; HEIGHT: 90px; TEXT-ALIGN: center"><A 
+href="http://g.csdn.net/5060169" target=_blank><IMG 
+style="PADDING-RIGHT: 3px; WIDTH: 180px; HEIGHT: 50px" alt=提问 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/questions.gif"></A> 
+</DIV></CENTER></DIV>
+<SCRIPT language=JavaScript type=text/javascript>
+    var csdnScrollTop=function(){
+        return document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop;
+        };
+        function mymove21789(){
+        document.getElementById("Float21789").style.top=csdnScrollTop()+100+'px';document.getElementById("Float21789").style.right=3+'px';setTimeout("mymove21789();",50);
+        }
+        mymove21789();
+    </SCRIPT>
+
+<DIV id=Float21790 
+style="Z-INDEX: 9; RIGHT: 3px; WIDTH: 190px; POSITION: absolute; TOP: 300px">
+<CENTER>
+<DIV id=AD21790 
+style="FLOAT: none; WIDTH: 190px; HEIGHT: 90px; TEXT-ALIGN: center"><A 
+href="http://vote.csdn.net/VoteList.aspx" target=_blank><IMG 
+style="WIDTH: 180px; HEIGHT: 30px" alt=惹火投票。。火热进行中... 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/hotvote.gif"></A> 
+</DIV></CENTER></DIV>
+<SCRIPT language=JavaScript type=text/javascript>
+        function mymove21790(){
+        document.getElementById("Float21790").style.top=csdnScrollTop()+200+'px';document.getElementById("Float21790").style.right=3+'px';setTimeout("mymove21790();",50);
+        }
+        mymove21790();
+    </SCRIPT>
+
+<SCRIPT 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/floatBox.js" 
+type=text/javascript></SCRIPT>
+<LINK 
+href="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/public_header_footer.css" 
+type=text/css rel=stylesheet>
+<DL>
+  <DT>
+  <DD><A href="http://www.csdn.net/help/intro.htm" target=_blank>网站简介</A>|<A 
+  href="http://www.csdn.net/help/ads.htm" target=_blank>广告服务</A>|<A 
+  href="http://www.csdn.net/help/vip.htm" target=_blank>VIP资费标准</A>|<A 
+  href="http://www.csdn.net/help/bankaccount.htm" target=_blank>银行汇款帐号</A>|<A 
+  href="http://www.csdn.net/help/sitemap.htm" target=_blank>网站地图</A>|<A 
+  href="http://www.csdn.net/help/help.htm" target=_blank>帮助</A>|<A 
+  href="http://www.csdn.net/help/contact.htm" target=_blank>联系方式</A>|<A 
+  href="http://job.csdn.net/Jobs/f9c75c9f2ad14404a604669b757b9ed0/viewcompany.aspx" 
+  target=_blank>诚聘英才</A>|<A href="http://www.csdn.net/help/english.htm" 
+  target=_blank>English</A>|<A 
+  onclick="window.location.href='mai'+'lto:'+'webm'+'aster@c'+'sdn.n'+'et?subject=Report To CSDN';return false" 
+  href="http://topic.csdn.net/t/20060907/15/5005901.html#">问题报告</A> 
+  <DD>北京创新乐知广告有限公司 版权所有,&nbsp;京&nbsp;ICP&nbsp;证&nbsp;070598&nbsp;号 
+  <DD>世纪乐知(北京)网络技术有限公司 提供技术支持 
+  <DD>CSDN网站24小时值班电话：13552009689 
+  <DD class=small>Copyright © 2000-2009, CSDN.NET, All Rights Reserved 
+  <DD><A 
+  href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" 
+  target=_blank><IMG alt=GongshangLogo 
+  src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/gongshang_logos.gif"></A> 
+  </DD></DL></DIV></DIV><!--google   Analytics begin -->
+<SCRIPT 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/urchin.js" 
+type=text/javascript>
+        </SCRIPT>
+
+<SCRIPT type=text/javascript>
+_uacct = "UA-2688088-7";
+urchinTracker();
+        </SCRIPT>
+<!--google   Analytics end -->
+<SCRIPT 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/counter.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="C++中定时器是否是基于多线程的原理？ C-C++ - C++ 语言 - CSDN社区 community_csdn_net.files/clickeye.js"></SCRIPT>
+<!-- Control Code/Caption.Yo-Focus-->
+<SCRIPT language=JavaScript1.1>
+var afp_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8 = "";
+var afp_ad_count = 0;
+var afp_keyword_lenth = 200;
+
+var _YOYI_CONTROL_ = false;
+
+if ((navigator.userAgent.indexOf("MSIE 7.0") != -1) && (navigator.userAgent.indexOf("Windows") != -1))
+{
+	afp_keyword_lenth = 273;
+}
+
+if (document.title != "")
+	afp_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8 = document.title;
+if (window.keywords)
+	afp_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8 += window.keywords.content;
+if (window.description)
+	afp_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8 += window.description.content;
+
+if (document.innerTEXT)
+	afp_all_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8 = document.innerTEXT;
+
+if(afp_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8.length > afp_keyword_lenth) 
+{
+	afp_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8 = afp_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8.substring(0,afp_keyword_lenth);
+}
+
+document.write("<scr"+"ipt src='http://server.yoyi.com.cn/afp/get/;pl_id=BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8;tp=js;sk=0;ck=0;ext_key="+afp_keyword_BDA9CBA6_5658_A4DB_7E1D_1B781AF3DEE8+";u_id=afu;ex_id=;/?'></scr"+"ipt>");
+</SCRIPT>
+<!-- Control Code End/No.csdn--></DIV></DIV></DIV></DIV></BODY></HTML>

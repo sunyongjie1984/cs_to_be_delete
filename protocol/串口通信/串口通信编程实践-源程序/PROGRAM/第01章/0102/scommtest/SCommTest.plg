@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SCommTest - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/SCommTest.res" /d "_DEBUG" /d "_AFXDLL" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第01章\0102\scommtest\SCommTest.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP49.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SCommTest.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第01章\0102\scommtest\mscomm.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第01章\0102\scommtest\SCommTest.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第01章\0102\scommtest\SCommTestDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP49.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP4A.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SCommTest.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第01章\0102\scommtest\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP4A.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP4B.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/SCommTest.pdb" /debug /machine:I386 /out:"Debug/SCommTest.exe" /pdbtype:sept 
+".\Debug\mscomm.obj"
+".\Debug\SCommTest.obj"
+".\Debug\SCommTestDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SCommTest.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP4B.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+mscomm.cpp
+SCommTest.cpp
+SCommTestDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+SCommTest.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

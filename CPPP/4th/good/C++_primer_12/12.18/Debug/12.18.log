@@ -1,0 +1,12 @@
+﻿Build started 2013/8/10 19:25:25.
+     1>Project "E:\CS\CPPP\4th\good\C++_primer_12\12.18\12.18.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>e:\cs\cppp\4th\good\c++_primer_12\12.18\main.cpp(21): error C2220: warning treated as error - no 'object' file generated
+     1>e:\cs\cppp\4th\good\c++_primer_12\12.18\main.cpp(21): warning C4244: '=' : conversion from 'Exercise::Type' to 'int', possible loss of data
+     1>Done Building Project "E:\CS\CPPP\4th\good\C++_primer_12\12.18\12.18.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.52

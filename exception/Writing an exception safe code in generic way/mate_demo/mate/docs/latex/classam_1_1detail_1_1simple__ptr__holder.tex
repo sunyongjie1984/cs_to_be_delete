@@ -1,0 +1,61 @@
+\section{am::detail::simple\_\-ptr\_\-holder Class Reference}
+\label{classam_1_1detail_1_1simple__ptr__holder}\index{am::detail::simple_ptr_holder@{am::detail::simple\_\-ptr\_\-holder}}
+{\tt \#include $<$mate.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+template$<$class T$>$ \textbf{simple\_\-ptr\_\-holder} (T $\ast$ptr)\label{classam_1_1detail_1_1simple__ptr__holder_2f1481e35d91fe069c2e4b5ce1e62190}
+
+\item 
+\textbf{simple\_\-ptr\_\-holder} ({\bf simple\_\-ptr\_\-holder} const \&other)\label{classam_1_1detail_1_1simple__ptr__holder_42d5461ff01a8b5def157e79af43947d}
+
+\item 
+void $\ast$ \textbf{get} () const\label{classam_1_1detail_1_1simple__ptr__holder_7d87eeccfa11890cf7ffac424972205a}
+
+\item 
+bool \textbf{empty} () const\label{classam_1_1detail_1_1simple__ptr__holder_7cee3cc13012dc1b5d8f3c302533b3c5}
+
+\item 
+void \textbf{reset} ()\label{classam_1_1detail_1_1simple__ptr__holder_b8fd1365e058fba7c0270cc08d2f2599}
+
+\end{CompactItemize}
+\subsection*{Private Types}
+\begin{CompactItemize}
+\item 
+typedef void($\ast$) \textbf{typeless\_\-deleter\_\-stub} (void $\ast$)\label{classam_1_1detail_1_1simple__ptr__holder_e0a1a8bbf6d7a1b4897df97eb3b5523f}
+
+\end{CompactItemize}
+\subsection*{Private Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf simple\_\-ptr\_\-holder} \& \textbf{operator=} ({\bf simple\_\-ptr\_\-holder} const \&)\label{classam_1_1detail_1_1simple__ptr__holder_b8a07a0e314e931f893ad3137a8cccbb}
+
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+void $\ast$ \textbf{ptr\_\-}\label{classam_1_1detail_1_1simple__ptr__holder_a917d43dc53ccd659ad5e452a06faad3}
+
+\item 
+typeless\_\-deleter\_\-stub \textbf{deleter\_\-stub\_\-}\label{classam_1_1detail_1_1simple__ptr__holder_9921d838af2d228eb1b635d6697d1569}
+
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct \textbf{typed\_\-}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[For internal use only.]
+Simple pointer holder. Store a pointer and delete it in type safe manner in its destructor when it goes out of scope. \end{Desc}
+
+
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf mate.hpp}\end{CompactItemize}

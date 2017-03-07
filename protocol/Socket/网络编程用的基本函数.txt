@@ -1,0 +1,111 @@
+28．网络编程用的基本函数：
+
+本文所谈到的Socket函数如果没有特别说明，都是指的Windows Socket API。
+
+一、WSAStartup函数
+int WSAStartup(
+WORD wVersionRequested,
+LPWSADATA lpWSAData
+);
+使用Socket的程序在使用Socket之前必须调用WSAStartup函数。该函数的第一个参数指明程序请求使用的Socket版本，其中高位字节指明副版本、低位字节指明主版本；操作系统利用第二个参数返回请求的Socket的版本信息。当一个应用程序调用WSAStartup函数时，操作系统根据请求的Socket版本来搜索相应的Socket库，然后绑定找到的Socket库到该应用程序中。以后应用程序就可以调用所请求的Socket库中的其它Socket函数了。该函数执行成功后返回0。
+例：假如一个程序要使用2.1版本的Socket,那么程序代码如下
+wVersionRequested = MAKEWORD( 2, 1 );
+err = WSAStartup( wVersionRequested, &wsaData );
+
+二、WSACleanup函数
+int WSACleanup (void);
+　　应用程序在完成对请求的Socket库的使用后，要调用WSACleanup函数来解除与Socket库的绑定并且释放Socket库所占用的系统资源。
+
+三、socket函数
+SOCKET socket(
+int af,
+int type,
+int protocol
+);
+　　应用程序调用socket函数来创建一个能够进行网络通信的套接字。第一个参数指定应用程序使用的通信协议的协议族，对于TCP/IP协议族，该参数置PF_INET;第二个参数指定要创建的套接字类型，流套接字类型为SOCK_STREAM、数据报套接字类型为SOCK_DGRAM；第三个参数指定应用程序所使用的通信协议。
+　　 该函数如果调用成功就返回新创建的套接字的描述符，如果失败就返回INVALID_SOCKET。套接字描述符是一个整数类型的值。每个进程的进程空间里都有一个套接字描述符表，该表中存放着套接字描述符和套接字数据结构的对应关系。该表中有一个字段存放新创建的套接字的描述符，另一个字段存放套接字数据结构的地址，因此根据套接字描述符就可以找到其对应的套接字数据结构。每个进程在自己的进程空间里都有一个套接字描述符表但是套接字数据结构都是在操作系统的内核缓冲里。下面是一个创建流套接字的例子：
+struct protoent *ppe;
+ppe=getprotobyname("tcp");
+SOCKET ListenSocket=socket(PF_INET,SOCK_STREAM,ppe->p_proto);
+
+四、closesocket函数
+int closesocket(
+SOCKET s
+);
+closesocket函数用来关闭一个描述符为s套接字。由于每个进程中都有一个套接字描述符表，表中的每个套接字描述符都对应了一个位于操作系统缓冲区中的套接字数据结构，因此有可能有几个套接字描述符指向同一个套接字数据结构。套接字数据结构中专门有一个字段存放该结构的被引用次数，即有多少个套接字描述符指向该结构。当调用closesocket函数时，操作系统先检查套接字数据结构中的该字段的值，如果为1，就表明只有一个套接字描述符指向它，因此操作系统就先把s在套接字描述符表中对应的那条表项清除，并且释放s对应的套接字数据结构；如果该字段大于1，那么操作系统仅仅清除s在套接字描述符表中的对应表项，并且把s对应的套接字数据结构的引用次数减1。
+closesocket函数如果执行成功就返回0，否则返回SOCKET_ERROR。
+
+五、send函数
+int send(
+SOCKET s,
+const char FAR *buf,
+int len,
+int flags
+);
+不论是客户还是服务器应用程序都用send函数来向TCP连接的另一端发送数据。客户程序一般用send函数向服务器发送请求，而服务器则通常用send函数来向客户程序发送应答。该函数的第一个参数指定发送端套接字描述符；第二个参数指明一个存放应用程序要发送数据的缓冲区；第三个参数指明实际要发送的数据的字节数；第四个参数一般置0。这里只描述同步Socket的send函数的执行流程。当调用该函数时，send先比较待发送数据的长度len和套接字s的发送缓冲区的长度，如果len大于s的发送缓冲区的长度，该函数返回SOCKET_ERROR；如果len小于或者等于s的发送缓冲区的长度，那么send先检查协议是否正在发送s的发送缓冲中的数据，如果是就等待协议把数据发送完，如果协议还没有开始发送s的发送缓冲中的数据或者s的发送缓冲中没有数据，那么send就比较s的发送缓冲区的剩余空间和len，如果len大于剩余空间大小send就一直等待协议把s的发送缓冲中的数据发送完，如果len小于剩余空间大小send就仅仅把buf中的数据copy到剩余空间里（注意并不是send把s的发送缓冲中的数据传到连接的另一端的，而是协议传的，send仅仅是把buf中的数据copy到s的发送缓冲区的剩余空间里）。如果send函数copy数据成功，就返回实际copy的字节数，如果send在copy数据时出现错误，那么send就返回SOCKET_ERROR；如果send在等待协议传送数据时网络断开的话，那么send函数也返回SOCKET_ERROR。要注意send函数把buf中的数据成功copy到s的发送缓冲的剩余空间里后它就返回了，但是此时这些数据并不一定马上被传到连接的另一端。如果协议在后续的传送过程中出现网络错误的话，那么下一个Socket函数就会返回SOCKET_ERROR。（每一个除send外的Socket函数在执行的最开始总要先等待套接字的发送缓冲中的数据被协议传送完毕才能继续，如果在等待时出现网络错误，那么该Socket函数就返回SOCKET_ERROR）
+注意：在Unix系统下，如果send在等待协议传送数据时网络断开的话，调用send的进程会接收到一个SIGPIPE信号，进程对该信号的默认处理是进程终止。
+
+六、recv函数
+int recv(
+SOCKET s,
+char FAR *buf,
+int len,
+int flags
+);
+不论是客户还是服务器应用程序都用recv函数从TCP连接的另一端接收数据。该函数的第一个参数指定接收端套接字描述符；第二个参数指明一个缓冲区，该缓冲区用来存放recv函数接收到的数据；第三个参数指明buf的长度；第四个参数一般置0。这里只描述同步Socket的recv函数的执行流程。当应用程序调用recv函数时，recv先等待s的发送缓冲中的数据被协议传送完毕，如果协议在传送s的发送缓冲中的数据时出现网络错误，那么recv函数返回SOCKET_ERROR，如果s的发送缓冲中没有数据或者数据被协议成功发送完毕后，recv先检查套接字s的接收缓冲区，如果s接收缓冲区中没有数据或者协议正在接收数据，那么recv就一直等待，只到协议把数据接收完毕。当协议把数据接收完毕，recv函数就把s的接收缓冲中的数据copy到buf中（注意协议接收到的数据可能大于buf的长度，所以在这种情况下要调用几次recv函数才能把s的接收缓冲中的数据copy完。recv函数仅仅是copy数据，真正的接收数据是协议来完成的），recv函数返回其实际copy的字节数。如果recv在copy时出错，那么它返回SOCKET_ERROR；如果recv函数在等待协议接收数据时网络中断了，那么它返回0。
+注意：在Unix系统下，如果recv函数在等待协议接收数据时网络断开了，那么调用recv的进程会接收到一个SIGPIPE信号，进程对该信号的默认处理是进程终止。
+
+七、bind函数
+int bind(
+SOCKET s,
+const struct sockaddr FAR *name,
+int namelen
+);
+当创建了一个Socket以后，套接字数据结构中有一个默认的IP地址和默认的端口号。一个服务程序必须调用bind函数来给其绑定一个IP地址和一个特定的端口号。客户程序一般不必调用bind函数来为其Socket绑定IP地址和断口号。该函数的第一个参数指定待绑定的Socket描述符；第二个参数指定一个sockaddr结构，该结构是这样定义的：
+struct sockaddr {
+u_short sa_family;
+char sa_data[14];
+};
+sa_family指定地址族，对于TCP/IP协议族的套接字，给其置AF_INET。当对TCP/IP协议族的套接字进行绑定时，我们通常使用另一个地址结构：
+struct sockaddr_in {
+short sin_family;
+u_short sin_port;
+struct in_addr sin_addr;
+char sin_zero[8];
+};
+其中sin_family置AF_INET；sin_port指明端口号；sin_addr结构体中只有一个唯一的字段s_addr，表示IP地址，该字段是一个整数，一般用函数inet_addr（）把字符串形式的IP地址转换成unsigned long型的整数值后再置给s_addr。有的服务器是多宿主机，至少有两个网卡，那么运行在这样的服务器上的服务程序在为其Socket绑定IP地址时可以把htonl(INADDR_ANY)置给s_addr，这样做的好处是不论哪个网段上的客户程序都能与该服务程序通信；如果只给运行在多宿主机上的服务程序的Socket绑定一个固定的IP地址，那么就只有与该IP地址处于同一个网段上的客户程序才能与该服务程序通信。我们用0来填充sin_zero数组，目的是让sockaddr_in结构的大小与sockaddr结构的大小一致。下面是一个bind函数调用的例子：
+struct sockaddr_in saddr；
+saddr.sin_family = AF_INET;
+saddr.sin_port = htons(8888);
+saddr.sin_addr.s_addr = htonl(INADDR_ANY);
+bind(ListenSocket,(struct sockaddr *)&saddr,sizeof(saddr))；
+
+八、listen函数
+int listen( SOCKET s, int backlog );
+服务程序可以调用listen函数使其流套接字s处于监听状态。处于监听状态的流套接字s将维护一个客户连接请求队列，该队列最多容纳backlog个客户连接请求。假如该函数执行成功，则返回0；如果执行失败，则返回SOCKET_ERROR。
+
+九、accept函数
+SOCKET accept(
+SOCKET s,
+struct sockaddr FAR *addr,
+int FAR *addrlen
+);
+服务程序调用accept函数从处于监听状态的流套接字s的客户连接请求队列中取出排在最前的一个客户请求，并且创建一个新的套接字来与客户套接字创建连接通道，如果连接成功，就返回新创建的套接字的描述符，以后与客户套接字交换数据的是新创建的套接字；如果失败就返回INVALID_SOCKET。该函数的第一个参数指定处于监听状态的流套接字；操作系统利用第二个参数来返回新创建的套接字的地址结构；操作系统利用第三个参数来返回新创建的套接字的地址结构的长度。下面是一个调用accept的例子：
+struct sockaddr_in ServerSocketAddr;
+int addrlen;
+addrlen=sizeof(ServerSocketAddr);
+ServerSocket=accept(ListenSocket,(struct sockaddr *)&ServerSocketAddr,&addrlen);
+
+十、connect函数
+int connect(
+SOCKET s,
+const struct sockaddr FAR *name,
+int namelen
+);
+客户程序调用connect函数来使客户Socket s与监听于name所指定的计算机的特定端口上的服务Socket进行连接。如果连接成功，connect返回0；如果失败则返回SOCKET_ERROR。下面是一个例子：
+struct sockaddr_in daddr;
+memset((void *)&daddr,0,sizeof(daddr));
+daddr.sin_family=AF_INET;
+daddr.sin_port=htons(8888);
+daddr.sin_addr.s_addr=inet_addr("133.197.22.4");
+connect(ClientSocket,(struct sockaddr *)&daddr,sizeof(daddr))；

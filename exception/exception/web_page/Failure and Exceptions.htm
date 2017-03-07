@@ -1,0 +1,346 @@
+
+<!-- saved from url=(0037)http://www.artima.com/intv/solid.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Failure and Exceptions</title>
+<meta name="description" content="
+James Gosling talks with Bill Venners about how to build solid apps, organize your catch clauses,
+scale checked exceptions, and deal with failure.
+">
+<meta name="keywords" content="james, gosling, java, exceptions, failure, exception, handling, catch, throws">
+<meta name="author" content="Bill Venners">
+<link rel="stylesheet" type="text/css" href="./Failure and Exceptions_files/artima.css">
+<link rel="shortcut icon" href="http://www.artima.com/favicon.ico">
+<script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>
+<body><table width="100%" bgcolor="#FFFFFF" style="margin-top: 5px">
+<tbody><tr>
+<td align="center">
+<div id="topbanner" style="height: 90px"><a href="http://www.artima.com/zcr/adclick.php?bannerid=575&zoneid=1&source=&dest=http%3A%2F%2Fwww.artima.com%2Fshop%2Fscala_boston" target="_top"><img src="./Failure and Exceptions_files/scalaseminar728x90_7.gif" width="728" height="90" alt="Sign up for Applied and Advanced Scala Workshop: Dec 5-9, Boston, MA" title="Sign up for Applied and Advanced Scala Workshop: Dec 5-9, Boston, MA" border="0"></a><div id="beacon_575" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="./Failure and Exceptions_files/adlog.php" width="0" height="0" alt="" style="width: 0px; height: 0px;"></div></div>
+</td>
+</tr>
+</tbody></table>
+<table width="100%" cellspacing="0">
+<tbody><tr>
+<td align="left" valign="bottom">
+<a href="http://www.artima.com/index.jsp"><img src="./Failure and Exceptions_files/a7.gif" alt="The Artima Developer Community" border="0" width="550" height="43"></a>
+</td>
+</tr></tbody></table>
+<table width="100%" bgcolor="#333333">
+<tbody><tr>
+<td align="center">
+<div class="ml">
+<a href="http://www.artima.com/articles" class="hl">Articles</a>&nbsp;|
+<a href="http://www.artima.com/news/index.jsp" class="hl">News</a>&nbsp;|
+<a href="http://www.artima.com/weblogs/index.jsp" class="hl">Weblogs</a>&nbsp;|
+<a href="http://www.artima.com/buzz/index.jsp" class="hl">Buzz</a>&nbsp;|
+<a href="http://www.artima.com/shop/catalog" class="hl">Books</a>&nbsp;|
+<a href="http://www.artima.com/forums/index.jsp" class="hl">Forums</a>
+</div>
+</td>
+</tr>
+</tbody></table>
+<table width="100%" bgcolor="#CCCC99">
+<tbody><tr>
+<td align="center">
+<div class="sc">
+<a href="http://www.artima.com/articles">Interviews</a>&nbsp;| 
+<a href="http://www.artima.com/forums/flat.jsp?forum=32&thread=14050">Discuss</a>&nbsp;| 
+<a href="http://www.artima.com/intv/solidP.html">Print</a>&nbsp;| 
+<a href="mailto:?subject=Failure%20and%20Exceptions&body=%20%0AFailure%20and%20Exceptions%20%0AA%20Conversation%20with%20James%20Gosling,%20Part%20II%20%0Aby%20Bill%20Venners%20%0A%0Ahttp://www.artima.com/intv/solid.html">Email</a>&nbsp;| 
+First Page&nbsp;| 
+<a href="http://www.artima.com/intv/jackpot.html">Previous</a>&nbsp;| 
+<a href="http://www.artima.com/intv/solid2.html">Next</a>
+</div>
+</td>
+</tr>
+</tbody></table>
+<table width="100%" bgcolor="#EEEEEE">
+<tbody><tr>
+<td align="center">
+<div class="sc">
+<span style="color: #555555">Sponsored Link</span> <span style="color: #888888">•</span> 
+<script language="JavaScript" type="text/javascript" src="./Failure and Exceptions_files/adx.js"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+   
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://www.artima.com/zcr/adjs.php?n=" + phpAds_random);
+   document.write ("&amp;what=zone:9&amp;target=_top");   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referrer)
+      document.write ("&amp;referer=" + escape(document.referrer));
+   document.write ("'><" + "/script>");
+//-->
+</script><script language="JavaScript" type="text/javascript" src="./Failure and Exceptions_files/adjs.php"></script><a href="http://www.artima.com/zcr/adclick.php?bannerid=579&zoneid=9&source=&dest=http%3A%2F%2Fwww.artima.com%2Fshop%2Fscala_boston" target="_top">Sign up for Applied and Advanced Scala Workshop: Dec 5-9, Boston, MA</a><div id="beacon_579" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="./Failure and Exceptions_files/adlog(1).php" width="0" height="0" alt="" style="width: 0px; height: 0px;"></div><noscript>&lt;a href='http://www.artima.com/zcr/adclick.php?n=a799ecf6' target='_top'&gt;&lt;img src='http://www.artima.com/zcr/adview.php?what=zone:9&amp;amp;n=a0587811' border='0' alt=''&gt;&lt;/a&gt;</noscript>
+</div>
+</td>
+</tr>
+</tbody></table>
+<br>
+<div class="vegies">
+<div class="tc">
+<span class="ts">Failure and Exceptions</span><br>
+<span class="sts">A Conversation with James Gosling, Part II</span><br>
+<span class="as">by Bill Venners</span><br>
+<span class="pd">September 22, 2003</span><br>
+</div>
+<p>
+</p><center>
+<strong>Page 1 of 4</strong>&nbsp;&nbsp;<a href="http://www.artima.com/intv/solid2.html">&gt;&gt;</a>
+</center>
+<p>
+
+<table align="right" border="0" cellpadding="5" cellspacing="0">
+
+<tbody><tr>
+
+<td align="center">
+
+<div style="margin-left: 15%;">
+
+<div class="adnotice">Advertisement</div>
+<script language="JavaScript" type="text/javascript" src="./Failure and Exceptions_files/adx.js"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+   
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://www.artima.com/zcr/adjs.php?n=" + phpAds_random);
+   document.write ("&amp;what=zone:2&amp;target=_top&amp;block=1&amp;blockcampaign=1");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referrer)
+      document.write ("&amp;referer=" + escape(document.referrer));
+   document.write ("'><" + "/script>");
+//-->
+</script><script language="JavaScript" type="text/javascript" src="./Failure and Exceptions_files/adjs(1).php"></script><a href="http://www.artima.com/zcr/adclick.php?bannerid=264&zoneid=2&source=&dest=http%3A%2F%2Fwww.artima.com%2Fshop%2Fprogramming_in_scala" target="_top"><img src="./Failure and Exceptions_files/rproginscalapaper.jpg" width="300" height="250" alt="http://www.artima.com/shop/programming_in_scala" title="http://www.artima.com/shop/programming_in_scala" border="0"></a><div id="beacon_264" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="./Failure and Exceptions_files/adlog(2).php" width="0" height="0" alt="" style="width: 0px; height: 0px;"></div><noscript>&lt;a href='http://www.artima.com/zcr/adclick.php?n=a799ecf6' target='_top'&gt;&lt;img src='http://www.artima.com/zcr/adview.php?what=zone:2&amp;amp;n=a799ecf6' border='0' alt=''&gt;&lt;/a&gt;</noscript>
+</div>
+
+</td>
+
+</tr>
+
+</tbody></table>
+
+</p>
+
+<blockquote>
+<b>Summary</b><br>
+James Gosling talks with Bill Venners about how to build solid apps, organize your catch clauses,
+scale checked exceptions, and deal with failure.
+</blockquote>
+
+<p>
+Much has been written recently about the value that checked exceptions add, or subtract, from Java.
+Some programmers feel that checked exceptions help them build robust applications. Others find that
+checked exceptions are an annoyance that hinders their productivity.  In this article, Java's
+creator James Gosling voices his opinions about checked exceptions and error handling.
+
+</p><p>
+In this interview, which will be published in multiple installments, James Gosling talks about many aspects
+of programming.
+
+</p><ul>
+<li>In <a href="http://www.artima.com/intv/jackpot.html">Part I: Analyze <code>this</code>!</a>, Gosling describes the ways in which Jackpot
+can help programmers analyze, visualize, and refactor their programs.
+</li><li>In this installment, Gosling talks about how to build solid apps, organize your catch clauses,
+scale checked exceptions, and deal with failure.
+</li></ul>
+
+<h1>Creating Solid Software</h1>
+
+<p>
+<strong>Bill Venners</strong>: In your weblog, you wrote:
+
+</p><blockquote>
+Lots of newbie's coming in from the C world complain about exceptions and the fact that 
+they have to put exception handling all over the place—they want to just write their code. 
+But that's stupid: most C code never checks return codes and so it tends to be very fragile.  
+If you want to build something really robust, you need to pay attention to things that can 
+go wrong, and most folks don't in the C world because it's just too damn hard. 
+
+<p>One of the design principles behind Java is that I don't care much about how long it 
+takes to slap together something that kind of works.  The real measure is how long it 
+takes to write something solid.
+</p></blockquote>
+
+<p>
+What does "solid" mean?
+
+</p><p>
+<strong>James Gosling</strong>: Solid means you can run the software day in and day 
+out. When the usual crazy things happen, the software survives. The software deals with 
+the problems. If you change the system configuration around, the system, as much as 
+possible, copes—or at least recognizes when things are wrong.
+
+</p><p>
+One of the traditional things to screw up in C code is opening a data file to
+read. It's semi-traditional in the C world to not check 
+the return code, because you just know the file is there, right? So you just open the file 
+and you read it. But someday months from now when your program is in deployment, 
+some system administrator reconfigures files, and the file ends up in the wrong place. 
+Your program goes to open the file. It's not there, and the open call returns you an error 
+code that you never check. You take this file descriptor and slap it into your file 
+descriptor variable. The value happens to be -1, which isn't very useful as a file 
+descriptor, but it's still an integer, right? So you're still happily calling reads. And as far 
+as you can tell, the world is all rosy, except the data just isn't there.
+
+</p><p>
+Problems like that are really hard to test for. It is really hard to test the unlikely things, if 
+only because the unlikely things never really occur to you. In this example, the 
+programmer will think, "Well of course the file is there. Why would anybody not have 
+the file there?"
+
+</p><p>
+A programming language can't solve all the problems. A language can't guarantee that no 
+matter how screwed up the environment gets the program will survive. But anything the 
+language can do to increase the probability that programs will be reasonably graceful 
+under fire is a good thing. For example, just making people at least willfully ignore return 
+codes helps. In Java you can ignore exceptions, but you have to willfully do it. You can't 
+accidentally say, "I don't care." You have to explicitly say, "I don't care."
+
+
+</p><p>
+<strong>Bill Venners</strong>: You don't have plausible deniability.
+
+</p><p>
+<strong>James Gosling</strong>: Yeah, there's no plausible deniability when it comes to 
+checked exceptions.
+
+
+</p><p>
+</p><center>
+<strong>Page 1 of 4</strong>&nbsp;&nbsp;<a href="http://www.artima.com/intv/solid2.html">&gt;&gt;</a>
+</center>
+<br clear="all">
+<p>
+</p><center>
+<div class="sc">
+<a href="http://www.artima.com/articles">Interviews</a>&nbsp;| 
+<a href="http://www.artima.com/forums/flat.jsp?forum=32&thread=14050">Discuss</a>&nbsp;| 
+<a href="http://www.artima.com/intv/solidP.html">Print</a>&nbsp;| 
+<a href="mailto:?subject=Failure%20and%20Exceptions&body=%20%0AFailure%20and%20Exceptions%20%0AA%20Conversation%20with%20James%20Gosling,%20Part%20II%20%0Aby%20Bill%20Venners%20%0A%0Ahttp://www.artima.com/intv/solid.html">Email</a>&nbsp;| 
+First Page&nbsp;| 
+<a href="http://www.artima.com/intv/jackpot.html">Previous</a>&nbsp;| 
+<a href="http://www.artima.com/intv/solid2.html">Next</a>
+</div>
+</center>
+</div>
+<hr width="100%">
+<table width="50%" align="center">
+<tbody><tr>
+<td>
+<div class="horizontaltextadbox">
+<div class="adheadline">Sponsored Links</div>
+<div id="sponsoredlinks"><div class="sponlink"><a href="http://www.artima.com/zcr/adclick.php?bannerid=429&zoneid=4&source=&dest=http%3A%2F%2Fbeta.parleys.com%2F%23st%3D5%26id%3D1552" target="_top">Learn how to "get higher" with ScalaTest in this one-hour free video at Parleys.com</a></div><div id="beacon_429" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="./Failure and Exceptions_files/adlog(3).php" width="0" height="0" alt="" style="width: 0px; height: 0px;"></div><div class="sponlink"><a href="http://www.artima.com/zcr/adclick.php?bannerid=578&zoneid=4&source=&dest=http%3A%2F%2Fwww.artima.com%2Fshop%2Fscala_boston" target="_top">Sign up for Applied and Advanced Scala Workshop: Dec 5-9, Boston, MA</a></div><div id="beacon_578" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="./Failure and Exceptions_files/adlog(4).php" width="0" height="0" alt="" style="width: 0px; height: 0px;"></div></div>
+</div>
+</td>
+</tr>
+</tbody></table>
+<hr width="100%">
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-3911176865765226";
+google_alternate_color = "ffffff";
+google_ad_width = 728;
+google_ad_height = 15;
+google_ad_format = "728x15_0ads_al";
+google_ad_channel = "";
+google_color_border = "ffffff";
+google_color_bg = "FFFFFF";
+google_color_link = "003090";
+google_color_text = "000000";
+google_color_url = "666666";
+//--></script>
+<script type="text/javascript" src="./Failure and Exceptions_files/show_ads.js">
+</script>
+<br>
+<br>
+<!-- SiteSearch Google -->
+<form method="get" action="http://www.google.com/custom">
+<table border="0" bgcolor="#ffffff">
+<tbody><tr><td nowrap="nowrap" valign="top" align="left" height="32">
+<a href="http://www.google.com/">
+<img src="./Failure and Exceptions_files/Logo_25wht.gif" border="0" alt="Google"></a>
+</td>
+<td nowrap="nowrap">
+<input type="hidden" name="domains" value="Artima.com">
+<input type="text" name="q" size="31" maxlength="255" value="">
+<input type="submit" name="sa" value="Search">
+</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td nowrap="nowrap">
+<font size="-1" color="#000000">
+<input type="radio" name="sitesearch" value=""> Web
+<input type="radio" name="sitesearch" value="Artima.com" checked="checked">Artima.com
+</font>&nbsp;&nbsp;
+<input type="hidden" name="client" value="pub-3911176865765226">
+<input type="hidden" name="forid" value="1">
+<input type="hidden" name="ie" value="ISO-8859-1">
+<input type="hidden" name="oe" value="ISO-8859-1">
+<input type="hidden" name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:FFFFFF;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;LH:50;LW:150;L:http://www.artima.com/images/artima150.gif;S:http://www.artima.com;FORID:1;">
+<input type="hidden" name="hl" value="en">
+</td></tr></tbody></table>
+</form>
+<!-- SiteSearch Google -->
+</center>
+<div class="sp">
+<div style="text-align: center">
+<a href="http://www.artima.com/copyright.html">Copyright</a> © 1996-2009 Artima, Inc. All Rights Reserved. - <a href="http://www.artima.com/privacy.html">Privacy Policy</a> - <a href="http://www.artima.com/termsofuse.html">Terms of Use</a> - <a href="http://www.artima.com/advertising.html">Advertise with Us</a>
+</div>
+</div>
+<br>
+<script language="JavaScript" type="text/javascript">
+<!--
+function initBannerVarForZone(zone) {
+        initBannerVarForZoneWithScript(zone, 'adjs_modified');
+}
+
+function initBannerVarForZoneWithScript(zone, phpScript) {
+
+        if (!document.phpAds_used) document.phpAds_used = ',';
+        phpAds_random = new String (Math.random());
+        phpAds_random = phpAds_random.substring(2,11);
+
+        var nextScriptSrc = 'http://www.artima.com/zcr/' + phpScript + '.php?n=' +
+                phpAds_random  +
+                '&amp;what=zone:' + zone + '&amp;target=_top&amp;block=1&amp;blockcampaign=1' +
+                '&amp;exclude=' + document.phpAds_used;
+
+        document.write("<script language='JavaScript' type='text/javascript' src='");
+        document.write(nextScriptSrc);
+        document.write("'><\/script>");
+
+}
+
+function replaceDiv(divID) {
+        document.getElementById(divID).innerHTML = phpadsbanner;
+}
+-->
+</script>
+<script language="JavaScript" type="text/javascript">
+<!--
+initBannerVarForZone(1);
+-->
+</script><script language="JavaScript" type="text/javascript" src="./Failure and Exceptions_files/adjs_modified.php"></script>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+replaceDiv('topbanner');
+-->
+</script>
+<script language="JavaScript" type="text/javascript">
+<!--
+initBannerVarForZoneWithScript(4, 'textman');
+-->
+</script><script language="JavaScript" type="text/javascript" src="./Failure and Exceptions_files/textman.php"></script>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+replaceDiv('sponsoredlinks');
+-->
+</script>
+
+
+</body></html>

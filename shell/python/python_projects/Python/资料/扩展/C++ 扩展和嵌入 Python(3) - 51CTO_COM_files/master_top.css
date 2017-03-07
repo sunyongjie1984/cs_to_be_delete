@@ -1,0 +1,105 @@
+BODY {
+	MARGIN: 0px
+}
+.top {
+	FONT-SIZE: 12px; BACKGROUND-IMAGE: url(http://images.51cto.com/images/art/top_images/top_bg.gif); BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: "ËÎÌו"; HEIGHT: 35px
+}
+.top_nav {
+	BACKGROUND-IMAGE: url(http://images.51cto.com/images/art/top_images/top_bg.gif); MARGIN-LEFT: auto; WIDTH: 960px; MARGIN-RIGHT: auto; HEIGHT: 35px
+}
+.top_nav_logo {
+	BACKGROUND: url(http://images.51cto.com/images/art/top_images/top_logo.gif) no-repeat; FLOAT: left; WIDTH: 222px; HEIGHT: 35px
+}
+.top_nav_r {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 3px; WIDTH: 700px; COLOR: #696969; PADDING-TOP: 12px; TEXT-ALIGN: right
+}
+.top_nav_r A {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; COLOR: #696969; PADDING-TOP: 2px; TEXT-DECORATION: none
+}
+.top_nav_r A:hover {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; BACKGROUND: #4a4a4a; PADDING-BOTTOM: 2px; COLOR: #fff; PADDING-TOP: 2px; TEXT-DECORATION: none
+}
+.top_nav_r LI {
+	FLOAT: right
+}
+.top_nav_r1 {
+	BACKGROUND-POSITION: right 50%; BACKGROUND-IMAGE: url(http://images.51cto.com/images/art/top_images/nav_ico1.gif); WIDTH: 100px; BACKGROUND-REPEAT: no-repeat
+}
+.top_nav_r1 A {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; WIDTH: 100px; COLOR: #696969; PADDING-TOP: 2px; TEXT-DECORATION: none
+}
+.top_nav_r1 A:hover {
+	BACKGROUND: #4a4a4a; WIDTH: 100px; COLOR: #fff; TEXT-DECORATION: none
+}
+.subMenu1 {
+	BORDER-RIGHT: #cecece 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #cecece 1px solid; DISPLAY: none; PADDING-LEFT: 0px; LEFT: 812px; PADDING-BOTTOM: 0px; BORDER-LEFT: #cecece 1px solid; WIDTH: 70px; PADDING-TOP: 0px; BORDER-BOTTOM: #cecece 1px solid; POSITION: absolute; TOP: 116px; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.subMenu2 {
+	BORDER-RIGHT: #cecece 1px solid; PADDING-RIGHT: 4px; BORDER-TOP: #cecece 1px solid; DISPLAY: none; PADDING-LEFT: 4px; LEFT: 883px; PADDING-BOTTOM: 0px; BORDER-LEFT: #cecece 1px solid; WIDTH: 60px; PADDING-TOP: 0px; BORDER-BOTTOM: #cecece 1px solid; POSITION: absolute; TOP: 116px; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.subMenu3 {
+	BORDER-RIGHT: #cecece 1px solid; PADDING-RIGHT: 4px; BORDER-TOP: #cecece 1px solid; DISPLAY: none; PADDING-LEFT: 4px; LEFT: 883px; PADDING-BOTTOM: 0px; BORDER-LEFT: #cecece 1px solid; WIDTH: 60px; PADDING-TOP: 0px; BORDER-BOTTOM: #cecece 1px solid; POSITION: absolute; TOP: 116px; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.subMenu4 {
+	BORDER-RIGHT: #cecece 1px solid; PADDING-RIGHT: 4px; BORDER-TOP: #cecece 1px solid; DISPLAY: none; PADDING-LEFT: 4px; LEFT: 883px; PADDING-BOTTOM: 0px; BORDER-LEFT: #cecece 1px solid; WIDTH: 60px; PADDING-TOP: 0px; BORDER-BOTTOM: #cecece 1px solid; POSITION: absolute; TOP: 116px; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.subMenu1 A {
+	DISPLAY: block; PADDING-LEFT: 10px; WIDTH: 60px; COLOR: #000; LINE-HEIGHT: 24px; PADDING-TOP: 1px; HEIGHT: 20px; TEXT-ALIGN: left; TEXT-DECORATION: none
+}
+.subMenu1 A.lcnew {
+	TEXT-DECORATION: none
+}
+.subMenu1 A:hover {
+	BACKGROUND: #eee no-repeat; COLOR: #c00; TEXT-DECORATION: none
+}
+.subMenu1 UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.subMenu1 LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; BACKGROUND: url(http://images.51cto.com/images/art/images/dt.gif) #fff no-repeat left 50%; PADDING-BOTTOM: 0px; PADDING-TOP: 1px; LIST-STYLE-TYPE: none
+}
+.subMenu2 A {
+	DISPLAY: block; WIDTH: 53px; COLOR: #000; LINE-HEIGHT: 18px; PADDING-TOP: 1px; HEIGHT: 17px; TEXT-ALIGN: left; TEXT-DECORATION: none
+}
+.subMenu2 A.lcnew {
+	TEXT-DECORATION: none
+}
+.subMenu2 A:hover {
+	BACKGROUND-IMAGE: url(http://images.51cto.com/images/art/images/nav_bg1.gif); COLOR: #c00; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.subMenu2 UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.subMenu2 LI {
+	PADDING-LEFT: 8px; FONT-SIZE: 12px; BACKGROUND: url(http://images.51cto.com/images/art/images/dt.gif) no-repeat left 50%; PADDING-TOP: 1px; LIST-STYLE-TYPE: none
+}
+.subMenu3 A {
+	DISPLAY: block; WIDTH: 53px; COLOR: #000; LINE-HEIGHT: 18px; PADDING-TOP: 1px; HEIGHT: 17px; TEXT-ALIGN: left; TEXT-DECORATION: none
+}
+.subMenu3 A.lcnew {
+	TEXT-DECORATION: none
+}
+.subMenu3 A:hover {
+	BACKGROUND-IMAGE: url(http://images.51cto.com/images/art/images/nav_bg1.gif); COLOR: #c00; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.subMenu3 UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.subMenu3 LI {
+	PADDING-LEFT: 8px; FONT-SIZE: 12px; BACKGROUND: url(http://images.51cto.com/images/art/images/dt.gif) no-repeat left 50%; PADDING-TOP: 1px; LIST-STYLE-TYPE: none
+}
+.subMenu4 A {
+	DISPLAY: block; WIDTH: 53px; COLOR: #000; LINE-HEIGHT: 18px; PADDING-TOP: 1px; HEIGHT: 17px; TEXT-ALIGN: left; TEXT-DECORATION: none
+}
+.subMenu4 A.lcnew {
+	TEXT-DECORATION: none
+}
+.subMenu4 A:hover {
+	BACKGROUND-IMAGE: url(http://images.51cto.com/images/art/images/nav_bg1.gif); COLOR: #c00; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none
+}
+.subMenu4 UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.subMenu4 LI {
+	PADDING-LEFT: 8px; FONT-SIZE: 12px; BACKGROUND: url(http://images.51cto.com/images/art/images/dt.gif) no-repeat left 50%; PADDING-TOP: 1px; LIST-STYLE-TYPE: none
+}

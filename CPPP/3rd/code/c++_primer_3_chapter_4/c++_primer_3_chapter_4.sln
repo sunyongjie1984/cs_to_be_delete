@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "c++_primer_3_chapter_4", "c++_primer_3_chapter_4\c++_primer_3_chapter_4.vcproj", "{FF3CFDBC-8E88-4B7A-A3D8-096EF184FA16}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntStack", "IntStack\IntStack.vcproj", "{57B9BC0D-57DC-47DF-8E87-F8B037F3674A}"
+EndProject
+Project("{4CAA2610-1955-4629-BDC1-8133FE0B2087}") = "AQtimeProject1", "AQtimeProject1\AQtimeProject1.aqt", "{57F92064-BB9C-4A7E-A480-39CAEB5269C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF3CFDBC-8E88-4B7A-A3D8-096EF184FA16}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FF3CFDBC-8E88-4B7A-A3D8-096EF184FA16}.Debug|Win32.Build.0 = Debug|Win32
+		{FF3CFDBC-8E88-4B7A-A3D8-096EF184FA16}.Release|Win32.ActiveCfg = Release|Win32
+		{FF3CFDBC-8E88-4B7A-A3D8-096EF184FA16}.Release|Win32.Build.0 = Release|Win32
+		{57B9BC0D-57DC-47DF-8E87-F8B037F3674A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{57B9BC0D-57DC-47DF-8E87-F8B037F3674A}.Debug|Win32.Build.0 = Debug|Win32
+		{57B9BC0D-57DC-47DF-8E87-F8B037F3674A}.Release|Win32.ActiveCfg = Release|Win32
+		{57B9BC0D-57DC-47DF-8E87-F8B037F3674A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

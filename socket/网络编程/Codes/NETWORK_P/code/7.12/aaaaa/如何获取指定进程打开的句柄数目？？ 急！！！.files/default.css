@@ -1,0 +1,60 @@
+BODY {
+	FONT-SIZE: 12px; BACKGROUND: #6fa6ce; MARGIN: 5px 10px 0px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif, ËÎÌו
+}
+INPUT {
+	BORDER-RIGHT: #082d71 1px solid; BORDER-TOP: #082d71 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #082d72 1px solid; COLOR: #082d71; BORDER-BOTTOM: #082d71 1px solid; HEIGHT: 18px; BACKGROUND-COLOR: #ffffff
+}
+.alignTop {
+	VERTICAL-ALIGN: top
+}
+A:link {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+LI {
+	LINE-HEIGHT: 200%
+}
+.DivMenu {
+	PADDING-LEFT: 8px; FONT-SIZE: 13px; MARGIN-BOTTOM: 1px; BORDER-LEFT: #d0d0d0 5px solid; CURSOR: hand; BACKGROUND-COLOR: #efefef
+}
+.DivMenuS {
+	PADDING-LEFT: 8px; FONT-SIZE: 13px; MARGIN-BOTTOM: 1px; BORDER-LEFT: #d0d0d0 5px solid; BACKGROUND-COLOR: #efefef
+}
+.DivTop {
+	FONT-SIZE: 34px; BACKGROUND: #8379a7; COLOR: #ffffff
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 34px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.DivBody {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; WIDTH: 100%; PADDING-TOP: 5px; BACKGROUND-COLOR: #ffffff
+}
+.DivLeft {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 220px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.DivRight {
+	PADDING-LEFT: 0px; FLOAT: right; MARGIN: 0px; WIDTH: 735px; TEXT-ALIGN: left
+}
+.DivFoot {
+	CLEAR: both; BACKGROUND: #dddddd; TEXT-ALIGN: center
+}
+.DivTitle {
+	PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(titlebg.gif); PADDING-TOP: 6px; BACKGROUND-REPEAT: no-repeat
+}
+.DivContent {
+	MARGIN-TOP: 2px; MARGIN-BOTTOM: 10px
+}
+.DivRightTitle {
+	PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(titlebg.gif); PADDING-TOP: 6px
+}
+.DivTopicTitle {
+	PADDING-RIGHT: 0px; BORDER-TOP: 1px dashed; MARGIN-TOP: 10px; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; BORDER-BOTTOM: 1px dashed; BACKGROUND-COLOR: #d0d0d0
+}
+.DivTopicContent {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; MARGIN-BOTTOM: 50px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BACKGROUND-COLOR: #efefef
+}

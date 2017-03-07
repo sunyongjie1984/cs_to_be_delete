@@ -1,0 +1,58 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SFTP - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP5310.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/SFTP.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Vc高级网络编程\写书\Sftp\ListItem.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP5310.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP5311.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/SFTP.pdb" /debug /machine:I386 /out:"Debug/SFTP.exe" /pdbtype:sept 
+".\Debug\FTPClient.obj"
+".\Debug\FTPSocket.obj"
+".\Debug\ListItem.obj"
+".\Debug\MainFrm.obj"
+".\Debug\MessageDlg.obj"
+".\Debug\SetupDlg.obj"
+".\Debug\SFTP.obj"
+".\Debug\SFTPDoc.obj"
+".\Debug\SFTPView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SFTP.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP5311.TMP"
+<h3>Output Window</h3>
+Compiling...
+ListItem.cpp
+Linking...
+Creating temporary file "C:\WINDOWS\TEMP\RSP5321.TMP" with contents
+[
+/nologo /o"Debug/SFTP.bsc" 
+".\Debug\StdAfx.sbr"
+".\Debug\FTPClient.sbr"
+".\Debug\FTPSocket.sbr"
+".\Debug\ListItem.sbr"
+".\Debug\MainFrm.sbr"
+".\Debug\MessageDlg.sbr"
+".\Debug\SetupDlg.sbr"
+".\Debug\SFTP.sbr"
+".\Debug\SFTPDoc.sbr"
+".\Debug\SFTPView.sbr"]
+Creating command line "bscmake.exe @C:\WINDOWS\TEMP\RSP5321.TMP"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+SFTP.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

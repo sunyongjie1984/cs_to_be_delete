@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highscore - The Boost C++ Libraries - Cast Operators</title>
+<link rel="stylesheet" href="css/highscore.css" type="text/css">
+<link rev="made" href="mailto:boris@highscore.de">
+<link rel="home" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="up" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="prev" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="chapter" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="chapter" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="chapter" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="chapter" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="chapter" href="serialization.html" title="Chapter 11: Serialization">
+<link rel="chapter" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="containers.html" title="Chapter 13: Containers">
+<link rel="chapter" href="datastructures.html" title="Chapter 14: Data Structures">
+<link rel="chapter" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="castoperators.html" title="Chapter 16: Cast Operators">
+<link rel="section" href="castoperators.html#castoperators_general" title="16.1 General">
+<link rel="section" href="castoperators.html#castoperators_conversion" title="16.2 Boost.Conversion">
+<link rel="section" href="castoperators.html#castoperators_numeric_conversion" title="16.3 Boost.NumericConversion">
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1) gen true for "http://highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1))'>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link href="http://www.highscore.de/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script><script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script><script type="text/javascript" src="js/highscore.js"></script>
+</head>
+<body>
+<div lang="en" class="docbook chapter" title="Chapter 16: Cast Operators">
+<p class="title">The Boost C++ Libraries</p>
+<script type="text/javascript">
+          var titlepage = "Front page";
+        
+      var titles = new Array(titlepage,
+      
+        "Chapter 1: Introduction",
+      
+        "Chapter 2: Smart Pointers",
+      
+        "Chapter 3: Function Objects",
+      
+        "Chapter 4: Event Handling",
+      
+        "Chapter 5: String Handling",
+      
+        "Chapter 6: Multithreading",
+      
+        "Chapter 7: Asynchronous Input and Output",
+      
+        "Chapter 8: Interprocess Communication",
+      
+        "Chapter 9: Filesystem",
+      
+        "Chapter 10: Date and Time",
+      
+        "Chapter 11: Serialization",
+      
+        "Chapter 12: Parser",
+      
+        "Chapter 13: Containers",
+      
+        "Chapter 14: Data Structures",
+      
+        "Chapter 15: Error Handling",
+      
+        "Chapter 16: Cast Operators",
+      
+      "");
+
+      
+          var titlehtml = "frontpage.html";
+        
+      var filenames = new Array(titlehtml,
+      
+        "introduction.html",
+      
+        "smartpointers.html",
+      
+        "functionobjects.html",
+      
+        "eventhandling.html",
+      
+        "stringhandling.html",
+      
+        "multithreading.html",
+      
+        "asio.html",
+      
+        "interprocesscommunication.html",
+      
+        "filesystem.html",
+      
+        "datetime.html",
+      
+        "serialization.html",
+      
+        "parser.html",
+      
+        "containers.html",
+      
+        "datastructures.html",
+      
+        "errorhandling.html",
+      
+        "castoperators.html",
+      
+      "");
+
+      
+      document.open();
+      document.write('<form action="" class="toc">');
+      document.write('<select size="1" onchange="location.href=options[selectedIndex].value">');
+      for (var i = 0; i < titles.length && i < filenames.length; ++i) {
+        if (titles[i] != "" && filenames[i] != "") {
+          document.write('<option');
+          document.write(' value="' + filenames[i] + '"');
+          var expr = new RegExp('[/\]' + filenames[i] + '$');
+          if (expr.test(location.href)) {
+            document.write(' selected="selected"');
+          }
+          document.write('>' + titles[i] + '<\/option>');
+        }
+      }
+      document.write('<\/select>');
+      document.write('<\/form>');
+      document.close();
+      
+    </script><noscript><p class="toc"><a href="toc.html">Table of Contents</a></p></noscript>
+<hr class="hrhead">
+<h1 class="title">
+<a name="castoperators"></a><small>Chapter 16:</small> Cast Operators</h1>
+<hr>
+<div class="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><span class="sect1"><a href="castoperators.html#castoperators_general">16.1 General</a></span></li>
+<li><span class="sect1"><a href="castoperators.html#castoperators_conversion">16.2 Boost.Conversion</a></span></li>
+<li><span class="sect1"><a href="castoperators.html#castoperators_numeric_conversion">16.3 Boost.NumericConversion</a></span></li>
+</ul>
+</div>
+<p class="license"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top"><img src="img/88x31_cc_logo.gif" alt="" width="88" height="31"></a> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top">Creative Commons License</a>.</p>
+<hr>
+<h2 class="title">
+<a name="castoperators_general"></a>16.1 General</h2>
+<div class="sect1"><p>The C++ standard defines four cast operators:  <code class="code">static_cast</code>, <code class="code">dynamic_cast</code>, <code class="code">const_cast</code> and <code class="code">reinterpret_cast</code>. The two libraries Boost.Conversion and Boost.NumericConversion define additional cast operators specialized for certain type casts.</p></div>
+<hr>
+<h2 class="title">
+<a name="castoperators_conversion"></a>16.2 Boost.Conversion</h2>
+<div class="sect1">
+<p>The library <a class="link" href="http://www.boost.org/libs/conversion/">Boost.Conversion</a> consists of only two header files. While <code class="filename">boost/cast.hpp</code> defines the two cast operators <code class="code">boost::polymorphic_cast</code> and <code class="code">boost::polymorphic_downcast</code>, <code class="filename">boost/lexical_cast.hpp</code> offers the cast operator <code class="code">boost::lexical_cast</code>, respectively.</p>
+<p>The goal of <code class="code">boost::polymorphic_cast</code> and <code class="code">boost::polymorphic_downcast</code> is to embody type casts, usually done with <code class="code">dynamic_cast</code>, more precisely as shown in the following example.</p>
+<pre class="programlisting">struct father 
+{ 
+  virtual ~father() { }; 
+}; 
+
+struct mother 
+{ 
+  virtual ~mother() { }; 
+}; 
+
+struct child : 
+  public father, 
+  public mother 
+{ 
+}; 
+
+void func(father *f) 
+{ 
+  child *c = dynamic_cast&lt;child*&gt;(f); 
+} 
+
+int main() 
+{ 
+  child *c = new child; 
+  func(c); 
+
+  father *f = new child; 
+  mother *m = dynamic_cast&lt;mother*&gt;(f); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/16.2.1/main.cpp">Download source code</a></li></ul>
+<p>The example uses the cast operator <code class="code">dynamic_cast</code> twice: It transforms the pointer pointing to a parent class to one pointing to the child class in <code class="function">func()</code>. In  <code class="function">main()</code>, it transforms the pointer pointing to a parent class to one pointing to a different parent class. The first transformation is called downcast while the second one is called cross cast, respectively.</p>
+<p>By using the cast operators of Boost.Conversion, a downcast can be distinguished from a cross cast.</p>
+<pre class="programlisting">#include &lt;boost/cast.hpp&gt; 
+
+struct father 
+{ 
+  virtual ~father() { }; 
+}; 
+
+struct mother 
+{ 
+  virtual ~mother() { }; 
+}; 
+
+struct child : 
+  public father, 
+  public mother 
+{ 
+}; 
+
+void func(father *f) 
+{ 
+  child *c = boost::polymorphic_downcast&lt;child*&gt;(f); 
+} 
+
+int main() 
+{ 
+  child *c = new child; 
+  func(c); 
+
+  father *f = new child; 
+  mother *m = boost::polymorphic_cast&lt;mother*&gt;(f); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/16.2.2/main.cpp">Download source code</a></li></ul>
+<p>The cast operator <code class="code">boost::polymorphic_downcast</code> can only be used for downcasts. It uses <code class="code">static_cast</code> internally to perform the cast. Since <code class="code">static_cast</code> does not dynamically check whether or not the type cast is valid, <code class="code">boost::polymorphic_downcast</code> should only be used if the type cast is safe. In debug builds, <code class="code">boost::polymorphic_downcast</code> actually uses <code class="code">dynamic_cast</code> to verify the validity of the type cast using the <code class="function">assert()</code> function. Please note that this test is only performed as long as the <code class="code">NDEBUG</code> macro is defined which is usually the case for debug builds.</p>
+<p>While downcasts are possible using <code class="code">boost::polymorphic_downcast</code>, <code class="code">boost::polymorphic_cast</code> is required for cross casts. <code class="code">boost::polymorphic_cast</code> internally uses <code class="code">dynamic_cast</code> since it is the only cast operator able to perform a cross cast. It still makes sense to prefer <code class="code">boost::polymorphic_cast</code> since it will throw an exception of type <code class="exceptionname">std::bad_cast</code> in case of an error. <code class="code">dynamic_cast</code>, on the contrary, will return 0 if the type cast fails. Instead of manually verifying the return value, <code class="code">boost::polymorphic_cast</code> provides an automatic way instead.</p>
+<p>Both <code class="code">boost::polymorphic_downcast</code> and <code class="code">boost::polymorphic_cast</code> can only be used if pointers must be converted; otherwise, <code class="code">dynamic_cast</code> must be used. Since <code class="code">boost::polymorphic_downcast</code> is based on <code class="code">static_cast</code>, it is not able to e.g. convert objects of a parent class to objects of a child class. It also does not make much sense to use <code class="code">boost::polymorphic_cast</code> if types other than pointers should be converted as <code class="code">dynamic_cast</code> throws an exception of type <code class="exceptionname">std::bad_cast</code> in this case as well.</p>
+<p>While the usage of <code class="code">boost::polymorphic_downcast</code> and <code class="code">boost::polymorphic_cast</code> is not really mandatory since all type casts can also be performed using <code class="code">dynamic_cast</code>, Boost.Conversion also offers a second cast operator fairly beneficial in practice. Consider the following example.</p>
+<pre class="programlisting">#include &lt;boost/lexical_cast.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  std::string s = boost::lexical_cast&lt;std::string&gt;(169); 
+  std::cout &lt;&lt; s &lt;&lt; std::endl; 
+  double d = boost::lexical_cast&lt;double&gt;(s); 
+  std::cout &lt;&lt; d &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/16.2.3/main.cpp">Download source code</a></li></ul>
+<p>The cast operator  <code class="code">boost::lexical_cast</code> can convert numbers of different data types. The example first converts the integer 169 to a string before converting the string to a floating-point number in a second step.</p>
+<p><code class="code">boost::lexical_cast</code> internally uses streams to perform the conversion. Therefore, only types with overloaded <code class="methodname">operator&lt;&lt;()</code> and <code class="methodname">operator&gt;&gt;()</code> operators can be converted. The advantage of using <code class="code">boost::lexical_cast</code> is that type conversions occur within one line of code without the need for manipulating the streams manually. Since the usage of streams for type conversions may not immediately become apparent, cast operators such as <code class="code">boost::lexical_cast</code> also help to make the code more meaningful.</p>
+<p>Please note that <code class="code">boost::lexical_cast</code> not necessarily accesses streams; it can be optimized for different data types as well.</p>
+<p>If a conversion fails, an exception of type <code class="exceptionname">boost::bad_lexical_cast</code>, derived from <code class="exceptionname">std::bad_cast</code>, is thrown.</p>
+<pre class="programlisting">#include &lt;boost/lexical_cast.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    int i = boost::lexical_cast&lt;int&gt;("abc"); 
+    std::cout &lt;&lt; i &lt;&lt; std::endl; 
+  } 
+  catch (boost::bad_lexical_cast &amp;e) 
+  { 
+    std::cerr &lt;&lt; e.what() &lt;&lt; std::endl; 
+  } 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/16.2.4/main.cpp">Download source code</a></li></ul>
+<p>The example throws an exception since the string "abc" cannot be converted to a number of type <code class="type">int</code>.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="castoperators_numeric_conversion"></a>16.3 Boost.NumericConversion</h2>
+<div class="sect1">
+<p>The library <a class="link" href="http://www.boost.org/libs/numeric/conversion/">Boost.NumericConversion</a> can be used to convert numbers of one type to numbers of a different type. In C++, such a conversion can also take place implicitly as shown in the following example.</p>
+<pre class="programlisting">#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  int i = 0x10000; 
+  short s = i; 
+  std::cout &lt;&lt; s &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/16.3.1/main.cpp">Download source code</a></li></ul>
+<p>The example is compiled without any error since the type conversion from <code class="type">int</code> to <code class="type">short</code> takes place automatically. Even though the application can be executed, the result of the conversion cannot be predicted but rather depends on the actual compiler and its implementation. The number <code class="literal">0x10000</code> in the variable <var>i</var> is too big to be stored in a variable of type  <code class="type">short</code>. Per the C++ standard, the result of this operation is "implementation defined". Compiled with Visual C++ 2008, the application displays <code class="computeroutput">0</code>. The value of  <var>s</var> certainly differs from the value in <var>i</var>.</p>
+<p>To avoid these kind of errors while converting numbers, the cast operator <code class="classname">boost::numeric_cast</code> can be used.</p>
+<pre class="programlisting">#include &lt;boost/numeric/conversion/cast.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    int i = 0x10000; 
+    short s = boost::numeric_cast&lt;short&gt;(i); 
+    std::cout &lt;&lt; s &lt;&lt; std::endl; 
+  } 
+  catch (boost::numeric::bad_numeric_cast &amp;e) 
+  { 
+    std::cerr &lt;&lt; e.what() &lt;&lt; std::endl; 
+  } 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/16.3.2/main.cpp">Download source code</a></li></ul>
+<p><code class="code">boost::numeric_cast</code> is used exactly like the known C++ cast operators. The correct header file must certainly be included though; in this case <code class="filename">boost/numeric/conversion/cast.hpp</code>.</p>
+<p><code class="code">boost::numeric_cast</code> executes the same conversion than C++ does implicitly. However, <code class="code">boost::numeric_cast</code> actually verifies whether or not the conversion can take place without changing the value of the number to be converted. Given the example application, a conversion would not take place. Instead, an exception of type <code class="exceptionname">boost::numeric::bad_numeric_cast</code> is thrown since <code class="literal">0x10000</code> is too big to be placed in a variable of type <code class="type">short</code>.</p>
+<p>Strictly speaking, an exception of type <code class="exceptionname">boost::numeric::positive_overflow</code> is thrown. This type specifies a so-called overflow - in this case for positive numbers. There also exists a type <code class="exceptionname">boost::numeric::negative_overflow</code> which specifies an overflow for negative numbers instead.</p>
+<pre class="programlisting">#include &lt;boost/numeric/conversion/cast.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    int i = -0x10000; 
+    short s = boost::numeric_cast&lt;short&gt;(i); 
+    std::cout &lt;&lt; s &lt;&lt; std::endl; 
+  } 
+  catch (boost::numeric::negative_overflow &amp;e) 
+  { 
+    std::cerr &lt;&lt; e.what() &lt;&lt; std::endl; 
+  } 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/16.3.3/main.cpp">Download source code</a></li></ul>
+<p>Boost.NumericConversion defines additional exception types, all derived from <code class="exceptionname">boost::numeric::bad_numeric_cast</code>. Since <code class="exceptionname">boost::numeric::bad_numeric_cast</code> is derived from <code class="exceptionname">std::bad_cast</code> itself, a <code class="code">catch</code> handler can also catch exceptions of this type.</p>
+</div>
+</div>
+<hr class="hrfoot">
+<p class="copyright">Copyright © 2008-2010 
+        <a class="link" href="mailto:boris@highscore.de">Boris Schäling</a>
+      </p>
+</body>
+</html>

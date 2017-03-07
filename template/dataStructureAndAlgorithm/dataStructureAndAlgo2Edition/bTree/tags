@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+BTree	.\main.cpp	/^    BTree()$/;"	f	class:BTree
+BTree	.\main.cpp	/^    BTree(char* q, int n) $/;"	f	class:BTree
+BTree	.\main.cpp	/^class BTree {$/;"	c	file:
+BTreeNode	.\main.cpp	/^    BTreeNode(): data(0), lchild(NULL), rchild(NULL) { }$/;"	f	class:BTreeNode
+BTreeNode	.\main.cpp	/^class BTreeNode {$/;"	c	file:
+InOrder	.\main.cpp	/^    void InOrder(BTreeNode* p) \/\/ 中根输出$/;"	f	class:BTree	file:
+LeverCreate	.\main.cpp	/^    void LeverCreate(BTreeNode* p, char* q, int i, int n)$/;"	f	class:BTree	file:
+PostOrder	.\main.cpp	/^    void PostOrder(BTreeNode* p) \/\/ 后根输出$/;"	f	class:BTree	file:
+PreOrder	.\main.cpp	/^    void PreOrder(BTreeNode* p) \/\/ 先根输出$/;"	f	class:BTree	file:
+PreOrderCreate	.\main.cpp	/^    void PreOrderCreate(BTreeNode* p) \/\/ create tree preorder$/;"	f	class:BTree	file:
+PrintInOrder	.\main.cpp	/^    void PrintInOrder() \/\/ print inorder$/;"	f	class:BTree
+PrintPostOrder	.\main.cpp	/^    void PrintPostOrder() \/\/ print postorder$/;"	f	class:BTree
+PrintPreOrder	.\main.cpp	/^    void PrintPreOrder() \/\/ print preorder$/;"	f	class:BTree
+data	.\main.cpp	/^    char data;$/;"	m	class:BTreeNode	file:
+lchild	.\main.cpp	/^    BTreeNode* lchild;$/;"	m	class:BTreeNode	file:
+main	.\main.cpp	/^int main()$/;"	f
+rchild	.\main.cpp	/^    BTreeNode* rchild;$/;"	m	class:BTreeNode	file:
+root	.\main.cpp	/^    BTreeNode* root;$/;"	m	class:BTree	file:

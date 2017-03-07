@@ -1,0 +1,11 @@
+dflt:
+	nmake -f lp.mak CFG="lp - Win32 Debug"
+
+dbg:
+	nmake -f lp.mak CFG="lp - Win32 Debug"
+
+rel:
+	nmake -f lp.mak CFG="lp - Win32 Release"
+
+all:	dbg rel
+	

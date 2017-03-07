@@ -1,0 +1,1777 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>
+	 15.3  PYTHON线程的创建 - 《Python源码剖析——深度探索动态语言核心技术》 - 免费试读 - book.csdn.net
+</title><meta name="keywords" content="图书,连载,免费试读,电子书,畅销书,热点书,原创,资讯,名人堂,书友会,作家,名家" /><meta name="description" content="CSDN读书频道为中国最大的开发者网络平台开辟的IT人专有读书平台，提供最新热点图书的连载，章节试读，提供书友会，读者可以在浏览图书的同时，以书会友建立出版圈子，实时讨论出版热点，建立IT图书交流社区。" /><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><link href="/css/newindex2.css" rel="stylesheet" type="text/css" />
+    <script src="/css/bookread.js" type="text/javascript"></script>
+    <link href="/css/newbookindex/arc2.css" rel="stylesheet" type="text/css" />
+    <style>
+    a:link {
+	color: #336699;
+	 
+}
+a:visited {
+	color: #666699;
+	 
+}
+ 
+a img {
+	border-width:0;
+}
+    #friendlinks #linkup{margin-top:2px; margin-left:10px}
+#friendlinks #linkup2{margin-top:2px; margin-left:10px}
+#friendlinks #linkbottom{margin-left:10px}
+#friendlinks span{ font-weight:bold; color:yellow;}
+#friendlinks a{ margin-left:5px; text-decoration:none; color:white;}
+#friendlinks{padding-top:10px; width:1000px; margin:2px auto 2px auto; height:70px; background:url(/images/newindex/friendlinks_bg.gif) repeat-x }
+
+.content h6{font-size:12px; width:100%; height:22px;text-indent:1em;font-weight:bold;text-align:left;color:black;background:url(http://remark2.csdn.net/App_Themes/Default/images/r/listpage_titbg.gif) repeat-x;line-height:29px;padding:0 5px;}
+#Ian_RemarkTop li{text-align:left;line-height:15pt;padding-top:3px;padding-bottom:3px;}
+.cDRed{display:none;}
+
+    </style>
+</head>
+<body>
+     <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-178341-4";
+urchinTracker();
+</script>
+<style>
+.CSDN-PHF
+{
+    width: 1000px;
+    margin: auto;
+    font-size: 12px;
+    text-align: left;
+    font-family: Tahoma, verdana, "Lucida Sans Unicode", sans-serif;
+}
+.CSDN-PHF a,
+.CSDN-PHF a:link,
+.CSDN-PHF a:visited,
+.CSDN-PHF a:active
+{
+    color: #003366;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: normal;
+    text-decoration: none;
+    font-family: Tahoma, verdana, "Lucida Sans Unicode", sans-serif;
+}
+
+/* CSDN Public Header style */
+#CSDNPH, #CSDNPF{text-align: center;}
+/* CSDN Public Header */
+#CSDNPH table{width: 100%; height: 20px; border: none;}
+#CSDNPH_line1{height: 20px;}
+#CSDNPH dl
+{
+    padding-left: 160px;
+    border-bottom: 3px solid #4682B4;
+    background: #FFFFFF url(http://www.csdn.net/ui/styles/public_header_footer/logo_csdn.gif) no-repeat top left;
+}
+#CSDNPH dd
+{
+    height: 60px;
+    text-align: left;
+    line-height: 20px;
+    background: url(http://www.csdn.net/ui/styles/public_header_footer/bgpheadtop.gif) no-repeat top right;
+}
+#data_for_drop_menu
+{
+    position: absolute;
+    top: 19px;
+    left: 0px;
+    width: 68px;
+    border: solid 1px #4682B4;
+    border-top: none;
+    text-align: left;
+    background-color: #FFFFFF;
+}
+#data_for_drop_menu div{padding: 1px 2px;margin: 0 2px;border-bottom: dotted 1px #D4D0C8;}
+#CSDNPHL td, #CSDNPH_line2 td{text-align: center; background-color: #4682B4;}
+#CSDNPH_line2 a:link, #CSDNPH_line2 a:visited, #CSDNPH_line2 a:hover, #CSDNPH_line2 a:active{color: #FFFFFF; padding: 0 2px;}
+#CSDNPH_line3 a{padding: 0 1px;}
+
+/* CSDN Public Footer style */
+#CSDNPF{line-height: 120%; text-align: center; overflow: hidden;}
+#CSDNPF .CSDN-PHF{text-align: center;}
+#CSDNPF .CSDN-PHF div{padding-left: 40px;}
+* html #CSDNPF hr{clear: both; height: 1px; border-top: 1px solid #4682B4;}
+#CSDNPF a.biaoshi
+{
+    left: -9%;
+    width: 40px;
+    height: 48px;
+    float: right;
+    display: block;
+    position: relative;
+    background: url(http://www.csdn.net/ui/styles/public_header_footer/biaoshi.gif) no-repeat center;
+}
+#CSDNPF a, #CSDNPF a:link, #CSDNPF a:visited, #CSDNPF a:active{color: #000000;}
+
+/* CSDN Public Header Single Line Style */
+#CSDNPHL{text-align: center; height: 20px;}
+#CSDNPHL a:link, #CSDNPHL a:visited, #CSDNPHL a:active, #CSDNPHL a:hover{color: #FFFFFF;padding: 0 1px;}.CSDN-PHF
+{
+    width: 1000px;
+    margin: auto;
+    font-size: 12px;
+    text-align: left;
+    font-family: Tahoma, verdana, "Lucida Sans Unicode", sans-serif;
+}
+.CSDN-PHF a,
+.CSDN-PHF a:link,
+.CSDN-PHF a:visited,
+.CSDN-PHF a:active
+{
+    color: #003366;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: normal;
+    text-decoration: none;
+    font-family: Tahoma, verdana, "Lucida Sans Unicode", sans-serif;
+}
+
+/* CSDN Public Header style */
+#CSDNPH, #CSDNPF{text-align: center;}
+/* CSDN Public Header */
+#CSDNPH table{width: 100%; height: 20px; border: none;}
+#CSDNPH_line1{height: 20px;}
+#CSDNPH dl
+{
+    padding-left: 160px;
+    border-bottom: 3px solid #4682B4;
+    background: #FFFFFF url(http://www.csdn.net/ui/styles/public_header_footer/logo_csdn.gif) no-repeat top left;
+}
+#CSDNPH dd
+{
+    height: 60px;
+    text-align: left;
+    line-height: 20px;
+    background: url(http://www.csdn.net/ui/styles/public_header_footer/bgpheadtop.gif) no-repeat top right;
+}
+#data_for_drop_menu
+{
+    position: absolute;
+    top: 19px;
+    left: 0px;
+    width: 68px;
+    border: solid 1px #4682B4;
+    border-top: none;
+    text-align: left;
+    background-color: #FFFFFF;
+}
+#data_for_drop_menu div{padding: 1px 2px;margin: 0 2px;border-bottom: dotted 1px #D4D0C8;}
+#CSDNPHL td, #CSDNPH_line2 td{text-align: center; background-color: #4682B4;}
+#CSDNPH_line2 a:link, #CSDNPH_line2 a:visited, #CSDNPH_line2 a:hover, #CSDNPH_line2 a:active{color: #FFFFFF; padding: 0 2px;}
+#CSDNPH_line3 a{padding: 0 1px;}
+
+/* CSDN Public Footer style */
+#CSDNPF{line-height: 120%; text-align: center; overflow: hidden;}
+#CSDNPF .CSDN-PHF{text-align: center;}
+#CSDNPF .CSDN-PHF div{padding-left: 40px;}
+* html #CSDNPF hr{clear: both; height: 1px; border-top: 1px solid #4682B4;}
+#CSDNPF a.biaoshi
+{
+    left: -9%;
+    width: 40px;
+    height: 48px;
+    float: right;
+    display: block;
+    position: relative;
+    background: url(http://www.csdn.net/ui/styles/public_header_footer/biaoshi.gif) no-repeat center;
+}
+#CSDNPF a, #CSDNPF a:link, #CSDNPF a:visited, #CSDNPF a:active{color: #000000;}
+
+/* CSDN Public Header Single Line Style */
+#CSDNPHL{text-align: center; height: 20px;}
+#CSDNPHL a:link, #CSDNPHL a:visited, #CSDNPHL a:active, #CSDNPHL a:hover{color: #FFFFFF;padding: 0 1px;}
+</style>
+<div style="margin:0 auto; width:1000px; overflow:hidden">
+<script src="http://csdnimg.cn/pubnav/js/pub_topnav_gb.js" type="text/javascript" ></script>
+</div>
+
+<script type="text/javascript">/*<![CDATA[*/
+(function()
+{
+  var $=function(id){return document.getElementById(id)};
+  var a=$("CSDNPH").getElementsByTagName("A"),i;window["$mz_"]={};
+  for(i=0;i<a.length;i++)if(a[i].href&&a[i].rel=="mz")a[i].target="_blank";
+  var a=$("CSDNPH_line2").rows[0].cells;   for(i=0, n=a.length; i<n; i++){
+  a[i].onmouseout =function(){this.style.backgroundColor=""}
+  a[i].onmouseover=function(){this.style.backgroundColor="#336699";}}
+
+  //dropdowm menu
+  $mz_.B="object"==typeof(window.createPopup);//IE5.5+
+  if($mz_.B){$mz_.pop=window.createPopup();with($mz_.pop.document.body.style){
+  border="solid 1px #4682B4";borderTop="none";margin="0 3px";fontSize="12px";}
+  $mz_.pdoc=$mz_.pop.document; var s=$mz_.pdoc.createStyleSheet();
+  $mz_.pdoc.body.innerHTML=$("data_for_drop_menu").innerHTML;
+  s.cssText = "div{line-height: 20px; border-bottom: dotted 1px #D4D0C8;}"
+  +"a{color: #003366; font-size: 12px; font-family: \u5B8B\u4F53; text-decoration: none;}";
+  $mz_.pdoc.onclick=function(){var a=$mz_.pdoc.parentWindow.event.srcElement;
+  if(a.tagName=="A"){$("a_f_p_").href = a.href; $("a_f_p_").click();}}}
+
+  $mz_.show=function(e,td){window.event?event.cancelBubble=true:e.stopPropagation();
+  if($mz_.B) $mz_.pop.show(0, 20, 70, $("data_for_drop_menu").childNodes.length*21, td);
+  else $('data_for_drop_menu').style.display='';}
+  $mz_.hide=function(){if($mz_.B)$mz_.pop.hide();else $('data_for_drop_menu').style.display='none'}
+  $mz_.mouseout=function(e){window.event?event.cancelBubble=true:e.stopPropagation();}
+  
+  if(document.addEventListener) document.addEventListener("mouseover", function(){$mz_.hide()}, false);
+  else if(document.attachEvent) document.attachEvent("onmouseover", function(){$mz_.hide()});
+
+  function getCookie(name){var arr=document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+  if(arr!=null)return unescape(arr[2]);return null;}
+
+  $mz_.logout=function(e){new Image().src=e.href; if($mz_.login_info) $mz_.log.innerHTML=$mz_.login_info;}
+  $mz_.log=$("CSDNPH_line1");$mz_.login_info=$mz_.log.innerHTML; var user=getCookie("activeUserName");
+  if(user && user!="Guest") $mz_.log.innerHTML = "欢迎 <strong>"+ user +"</strong>   "
+    +"<a href='http://www.itliyu.com/User_Manage' target='_blank'>我的简历</a> | "
+    +"<a href='http://community.csdn.net/Expert/member/MyForum.asp?typenum=1' target='_blank'>我的帖子</a> | "
+    +"<a href='http://blog.csdn.net/"+ user +"/' target='_blank'>我的Blog</a> | "
+    +"<a href='http://wz.csdn.net/my/' target='_blank'>我的网摘</a> | "
+    +"<a href='http://club.book.csdn.net/people/myclub.aspx' target='_blank'>我的书架</a> "
+    +"<a href='http://passport.csdn.net/logonout.aspx' onclick='$mz_.logout(this); return false'>【注销】</a>"
+})();
+/*]]>*/</script>
+</div>
+	<table class="top" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><a href="http://book.csdn.net/"><img alt="" src="/images2/bookLogo.gif" /></a></td>
+				<td>
+					<div id="ad_div"></div>
+						<div class="tabs1">
+							<ul>
+							<li class="current"><a href="http://book.csdn.net/book/morelz.aspx"><span>精品连载</span></a></li>
+							<li><a href="http://club.book.csdn.net/people/myclub.aspx"><span>书友会</span></a></li>
+							<li><a href="http://club.book.csdn.net/book/bookrank.aspx"><span>图书指数榜</span></a></li>
+							<li><a href="http://club.book.csdn.net/people/putblog.aspx"><span>收藏秀</span></a></li>
+							<li><a href="http://club.book.csdn.net/people/morelist.aspx?username=bookread"><span>特色书架</span></a></li>
+							<li><a href="http://blog.csdn.net/group/bookread/" target="_blank"><span>出版圈子</span></a></li>
+							<li><a href="http://groups.csdn.net/bookread/" target="_blank"><span>读书讨论群</span></a></li>
+							<li><a href="http://blog.csdn.net/bookread/" target="_blank"><span>读书博客</span></a></li>
+							<li><a href="http://bank.csdn.net" target="_blank"><span>社区银行</span></a></li>
+							</ul>
+  		              </div>
+				</td>
+			</tr>
+		</table>
+		
+		 
+		 <script type="text/javascript">
+     function IsBlank(obj) //查看对象的值是否为空
+    {
+      if(obj.replace(/^\s+|\s+$/,"")=="")
+		  {
+		 
+		    return true; 
+		  }
+		  else
+		  {
+		   return false;
+		  }
+		  
+     }
+    function SearchBook_Top()
+    {
+      if( !IsBlank(document.getElementById("txtTopKey").value))
+      {
+           var loc;
+         var szType;
+         if(document.getElementById("searchKind1").checked==true)
+          {    
+            szType= 2
+          }
+          else if (document.getElementById("searchKind2").checked==true)
+          {
+              szType=1;
+          }
+          else if (document.getElementById("searchKind3").checked==true)
+          { 
+            szType=3;
+          }
+           else if (document.getElementById("searchKind4").checked==true)
+          { 
+            szType=4;
+          }
+           else if (document.getElementById("searchKind5").checked==true)
+          { 
+            szType=5;
+          }
+          
+          if(szType==1)
+            loc="http://book.csdn.net/book/morelz.aspx?key="+escape(document.getElementById("txtTopKey").value);
+          else if(szType==2)
+             loc="http://club.book.csdn.net/book/s.aspx?key="+escape(document.getElementById("txtTopKey").value);
+             else if(szType==3)
+             loc="http://club.book.csdn.net/tag/"+escape(document.getElementById("txtTopKey").value)+"/1.html";
+             else if(szType==5)
+               loc="http://www.baidu.com/s?wd=site%3Abook.csdn.net%20"+document.getElementById("txtTopKey").value+"&cl=3";
+             else
+                loc="http://www.google.cn/search?q=site%3Abook.csdn.net%20"+document.getElementById("txtTopKey").value;
+          if(szType<=3)
+          self.location=loc;
+          else
+          window.open(loc,"gsearch");
+        
+      } 
+    }
+  </script>
+		<div class="searchMain">
+			<dl style="border: solid 1px #5992ac; padding: 2px;">
+				<dd style="background-color:#95c4d9; padding: 5px 5px 5px 240px;">
+					 
+						<input class="searchDi" size="70" id="txtTopKey" /> <input type="image" src="/images2/search.gif"/ onclick="SearchBook_Top();return false;"/>&nbsp;&nbsp;&nbsp;&nbsp;图书品种：<font color="#FF0000"><b>235680</b></font>种<br />
+						 
+						<input type="radio" name="aa" id="searchKind1" checked="checked" /> <label for="searchKind1">书友会</label> &nbsp;
+						<input type="radio" name="aa" id="searchKind2" /> <label for="searchKind2">连载</label> &nbsp;
+					        <input type="radio" name="aa" id="searchKind3" /> <label for="searchKind3">Tag</label>&nbsp;
+					        <input type="radio" name="aa" id="searchKind4" /> <label for="searchKind4"><font color="#800080">用Google进行全文检索</font></label>&nbsp;
+					        <input type="radio" name="aa" id="searchKind5" /> <label for="searchKind5"><font color="#800080">用百度进行全文检索</font></label>
+				 
+				</dd>
+				<dt style="padding: 5px 5px 5px 245px;">
+					热门搜索：
+					<a href="http://club.book.csdn.net/book/s.aspx?key=ASP.NET">ASP.NET</a>  
+					<a href="http://club.book.csdn.net/book/s.aspx?key=Ajax">Ajax</a>  
+					<a href="http://club.book.csdn.net/book/s.aspx?key=Spring">Spring</a>  
+					<a href="http://club.book.csdn.net/book/s.aspx?key=Hibernate">Hibernate</a>  
+					<a href="http://club.book.csdn.net/book/s.aspx?key=Java">Java</a>
+				</dt>
+			</dl>
+		</div>
+<link href="/css/newindex2.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/AdFile/AdOut.aspx?adtype=bsad"></script>
+      <div id="wrapper">
+        <div id="innerWrapper">
+            <div id="mainWrappe">
+             
+            <div id="pageContent">
+                <div class="col1">
+            
+            <!-- title -->
+            <div class="arcTitle" style="width:100%;"> 
+            
+                <h1 style="width:100%;">
+                    <script src="http://wz.csdn.net/javascripts/vote.js"></script><a href="http://book.csdn.net/bookfiles/749">
+                        Python源码剖析——深度探索动态语言核心技术
+                    </a>
+                </h1>
+                <div style="text-align: center; font-size: 15px">
+                    <a href="http://book.csdn.net/bookfiles/749/10074922952.shtml">
+                        15.3  PYTHON线程的创建&nbsp;
+                    </a>
+                </div>
+                <div style="text-align: center; font-size: 15px">
+                    <a class="url" href="http://book.csdn.net">http://book.csdn.net/</a>
+                    2008-6-26 16:56:00
+                </div>
+                <div class="clear">
+                </div>
+                <div style="margin: 0px auto; width: 600px; border: solid 1px #0b5f98;float:left;">
+                    <div style="float: left; width: 16px; background-color: #0b5f98; color: White; padding: 1px;">
+                        图书导读
+                    </div>
+                    <div style="float: right; width: 570px; text-align: left; line-height: 16pt; padding-left: 2px">
+                        <!--导读-->
+                        <h1 id="divCurrentNode" style="color: #b83507; width: 100%; text-align: left; font-size: 12px; padding-left: 2px">当前章节:<a href='http://book.csdn.net/bookfiles/749/10074922952.shtml'><font color='red'>15.3  PYTHON线程的创建</font></a></h1>
+                        <div id="divRelateNode" style="padding-left: 2px">
+                        <div style='float:left;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922949.shtml'>8.4  PYTHON运行时环境初探</a></div><div style='float:right;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922950.shtml'>15.1  GIL与线程调度</a></div><div style='float:left;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922951.shtml'>15.2  初见PYTHON THREAD</a></div><div style='float:right;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922953.shtml'>15.4  PYTHON线程的调度</a></div><div style='float:left;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922954.shtml'>15.5  PYTHON子线程的销毁</a></div><div style='float:right;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922955.shtml'>15.6  PYTHON线程的用户级互斥与同步</a></div></div>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <!-- main -->
+            <div id="main">
+                <div id="text">
+                  <div id="csdn_zhaig_ad_yahoo_2"></div>
+                  
+                 <link href="css.css" rel="stylesheet" type="text/css" />
+<p class=afd>15.3&nbsp; Python线程的创建</p>
+
+</div>
+
+<p class=aff style='text-indent:18.4pt'>在Python的thread module所提供的接口中，一定不能少的肯定是创建线程的接口，倘若没有这个接口，生活还有什么意义呢J？在上面的thread1.py中，我们正是通过其提供的start_new_thread创建了一个崭新的线程。好，我们就进入这个start_new_ thread，看看Python是如何进行创世纪的工作的（见代码清单15-1）。</p>
+
+<p class=aff style='text-indent:0cm'>代码清单15-1</p>
+
+<p class=afa>[threadmodule.c]</p>
+
+<p class=afa>static PyObject*
+thread_PyThread_start_new_thread(PyObject *self, PyObject</p>
+
+<p class=afa>&nbsp;&nbsp;*fargs)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyObject
+*func, *args, *keyw = NULL;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct
+bootstate *boot;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; long
+ident;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyArg_UnpackTuple(fargs,
+&quot;start_new_thread&quot;, 2, 3, &amp;func, &amp;args,</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&amp;keyw);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[1]：创建bootstate结构</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot =
+PyMem_NEW(struct bootstate, 1);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot-&gt;interp
+= PyThreadState_GET()-&gt;interp;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot-&gt;func
+= func;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot-&gt;args
+= args;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot-&gt;keyw
+= keyw;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[2]：初始化多线程环境</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyEval_InitThreads();
+/* Start the interpreter's thread-awareness */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[3]：创建线程</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; ident =
+PyThread_start_new_thread(t_bootstrap, (void*) boot);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+PyInt_FromLong(ident);</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>在thread_PyThread_start_new_thread中，Python虚拟机通过三个主要的动作，完成一个线程的创建。</p>
+
+<p class=aff style='margin-left:47.8pt;text-indent:-20.25pt;line-height:15.0pt'>代码清单15-1的[1]、[2]和[3]分别有如下含义：</p>
+
+<p class=aff style='margin-left:68.2pt;text-indent:-20.25pt;line-height:15.0pt'>[1]&nbsp; 创建并初始化bootstate结构boot，在boot中，将保存关于线程的一切信息，如：线程过程，线程过程的参数等。</p>
+
+<p class=aff style='margin-left:47.95pt;text-indent:0cm;line-height:15.0pt'>[2]&nbsp; 初始化Python的多线程环境。</p>
+
+<p class=aff style='margin-left:47.95pt;text-indent:0cm;line-height:15.0pt'>[3]&nbsp; 以boot为参数，创建操作系统的原生线程。</p>
+
+<p class=aff style='text-indent:18.4pt'>在代码清单15-1的[1]中，我们注意到boot-&gt;interp中保存了Python的PyInter- preterState对象，这个对象中携带了Python的module pool这样的全局信息，Python中所有的thread都会共享这些全局信息。</p>
+
+<p class=aff style='text-indent:18.4pt'>关于代码清单15-1的[2]处所示的多线程环境的初始化动作，有一点需要特别说明，当Python启动时，是并不支持多线程的。换句话说，Python中支持多线程的数据结构以及GIL都是没有创建的，Python之所以有这种行为是因为大多数的Python程序都不需要多线程的支持。假如一个简单地统计词频的Python脚本中居然出现了多线程，面对这样的代码，我们一定都会抓狂的J。</p>
+
+<p class=aff style='text-indent:18.4pt'>对多线程的支持并非是没有代价的，最简单的一点，如果激活多线程机制，而执行的Python程序中并没有多线程，那么在100条指令之后，Python虚拟机同样会激活线程的调度。而如果不激活多线程，Python虚拟机则不用做这些无用功。所以Python选择了让用户激活多线程机制的策略。在Python虚拟机启动时，多线程机制并没有被激活，它只支持单线程，一旦用户调用thread.start_new_thread，明确指示Python虚拟机创建新的线程，Python就能意识到用户需要多线程的支持，这个时候，Python虚拟机会自动建立多线程机制需要的数据结构、环境以及那个至关重要的GIL。</p>
+
+<p class=afe style='margin-top:17.0pt;margin-right:0cm;margin-bottom:7.0pt;
+margin-left:0cm;line-height:15.0pt'>15.3.1&nbsp; 建立多线程环境</p>
+
+<p class=aff style='text-indent:18.4pt'>多线程环境的建立，说得直白一点，主要就是创建GIL。我们已经知道GIL对于Python的多线程机制的重要意义，然而这个GIL到底是如何实现的呢，呃，这是一个很有趣的问题。</p>
+
+<p class=afa>[pythread.h]</p>
+
+<p class=afa>typedef void *PyThread_type_lock;</p>
+
+
+
+<p class=afa>[ceval.c]</p>
+
+<p class=afa>static PyThread_type_lock interpreter_lock = 0; /*
+This is the GIL */</p>
+
+<p class=afa>static long main_thread = 0;</p>
+
+
+
+<p class=afa>void PyEval_InitThreads(void)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if
+(interpreter_lock)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+interpreter_lock = PyThread_allocate_lock();</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+PyThread_acquire_lock(interpreter_lock, 1);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+main_thread = PyThread_get_thread_ident();</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>终于见识到了神秘的GIL（interpreter_lock），没想到吧，万万没想到，它居然指示一个简单的void*。但是转念一想，在C中void*几乎可以是任何东西，这家伙，可是个万能容器啊。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>可以看到，无论创建多少个线程，Python建立多线程环境的动作只会执行一次。在PyEval_InitThreads的开始，Python会检查GIL是否已经被创建，如果是，则不再进行任何动作，否则，就会创建这个GIL。创建GIL的工作由PyThread_allocate_lock完成，我们来看一看这个GIL到底是何方神圣。</p>
+
+<p class=afa>[thread_nt.h]</p>
+
+<p class=afa>PyThread_type_lock
+PyThread_allocate_lock(void)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PNRMUTEX
+aLock;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if
+(!initialized)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PyThread_init_thread();</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; aLock =
+AllocNonRecursiveMutex() ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+(PyThread_type_lock) aLock;</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.3pt'>在这里，我们终于看到了Python中多线程机制的平台相关性，在Python25\Python目录下，有一大批thread_***.h这样的文件，在这些文件中，包装了不同操作系统的原生线程，并通过统一的接口暴露给Python，比如这里的PyThread_allocate_lock就是这样一个接口。我们这里的thread_nt.h中包装的是Win32平台的原生thread，在本章中后面的代码剖析中，还会有大量与平台相关的代码，我们都以Win32平台为例。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.3pt'>在PyThread_allocate_lock中，与PyEval_InitThreads非常类似的，它会检查一个initialized的变量，如果说GIL指示着Python的多线程环境是否已经建立，那么这个initialized变量就指示着为了使用底层平台所提供的原生thread，必须的初始化动作是否完成。这些必须的初始化动作通常都是底层操作系统所提供的API，不同的操作系统可能需要不同的初始化动作。在Win32平台下，不需要任何的初始化动作，所以PyThread_init_thread的唯一作用就是设置initialized变量：</p>
+
+<p class=afa>[thread.c]</p>
+
+<p class=afa>void
+PyThread_init_thread(void)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if
+(initialized)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+initialized = 1;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+PyThread__init_thread();</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>[thread_nt.h]</p>
+
+<p class=afa>static void
+PyThread__init_thread(void) { }</p>
+
+
+
+
+<p class=aff style='margin-top:0cm;text-indent:18.4pt'>在PyThread_allocate_lock中，出现了一个关键的结构体PNRMUTEX，我们发现，这个结构体是函数的返回值，实际上也就是PyEval_InitThread中需要创建的那个interperter_lock（GIL）。原来GIL就是这个家伙，我们来看一看它的真身。</p>
+
+<p class=afa>[thread_nt.h]</p>
+
+<p class=afa>typedef struct NRMUTEX {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+LONG&nbsp;&nbsp; owned ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+DWORD&nbsp; thread_id ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; HANDLE
+hevent ;</p>
+
+<p class=afa>} NRMUTEX, *PNRMUTEX ;</p>
+
+<p class=aff style='text-indent:18.4pt'>在NRMUTEX中，所有的数据成员的类型都是Win32平台下的类型风格了，owned和thread_id都很普通，而其中的HANDLE hevent却值得注意，我们来看看AllocNon- RecursiveMutex究竟为这个hevent准备了什么。</p>
+
+<p class=afa>[thread_nt.h]</p>
+
+<p class=afa>PNRMUTEX
+AllocNonRecursiveMutex(void)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PNRMUTEX
+mutex = (PNRMUTEX)malloc(sizeof(NRMUTEX)) ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if(mutex
+&amp;&amp; !InitializeNonRecursiveMutex(mutex)) {</p>
+
+<p class=afa>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;free(mutex);</p>
+
+<p class=afa>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mutex
+= NULL;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; }</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+mutex ;</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>BOOL InitializeNonRecursiveMutex(PNRMUTEX
+mutex)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; ……</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; mutex-&gt;owned
+= -1 ;&nbsp; /* No threads have entered NonRecursiveMutex */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; mutex-&gt;thread_id
+= 0 ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; mutex-&gt;hevent
+= CreateEvent(NULL, FALSE, FALSE, NULL) ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+mutex-&gt;hevent != NULL ;&nbsp; /* TRUE if the mutex is created */</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>一切真相大白了，原来，GIL（NRMUTEX）中的hevent就是Win32平台下的Event这个内核对象，而其中的thread_id将记录任一时刻获得GIL的线程的id。</p>
+
+<p class=aff style='text-indent:18.4pt'>到了这里，Python中的线程互斥机制的真相渐渐浮出水面，看来Python是通过Win32下的Event来实现了线程的互斥，熟悉Win32的朋友马上就可能想到，与这个Event对应的，必定有一个WaitForSingleObject。</p>
+
+<p class=aff style='text-indent:18.4pt'>在PyEval_InitThreads通过PyThread_allocate_lock成功地创建了GIL之后，当前线程就开始遵循Python的多线程机制的规则：在调用任何Python C API之前，必须首先获得GIL。因此PyEval_InitThreads紧接着通过PyThread_acquire_lock尝试获得GIL。</p>
+
+<p class=afa>[thread_nt.h]</p>
+
+<p class=afa>int PyThread_acquire_lock(PyThread_type_lock aLock, int
+waitflag)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; int
+success ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; success =
+aLock &amp;&amp; EnterNonRecursiveMutex((PNRMUTEX) aLock, (waitflag</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+== 1 ? INFINITE : 0)) == WAIT_OBJECT_0 ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+success;</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>DWORD
+EnterNonRecursiveMutex(PNRMUTEX mutex, BOOL wait)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; /* Assume
+that the thread waits successfully */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; DWORD ret;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; /*
+InterlockedIncrement(&amp;mutex-&gt;owned) == 0 means that no thread</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+currently owns the mutex */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if (!wait)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (InterlockedCompareExchange((PVOID *)&amp;mutex-&gt;owned, (PVOID)0,</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(PVOID)-1) != (PVOID)-1)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return WAIT_TIMEOUT ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ret = WAIT_OBJECT_0 ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; }</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; else</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ret = InterlockedIncrement(&amp;mutex-&gt;owned) ?</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/* Some thread owns the mutex, let's wait... */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+WaitForSingleObject(mutex-&gt;hevent, INFINITE) : WAIT_OBJECT_0 ;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; mutex-&gt;thread_id
+= GetCurrentThreadId() ; /* We own it */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return ret
+;</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:16.4pt;line-height:15.5pt'>PyThread_acquire_lock有两种工作方式，通过函数参数waitflag来区分。这个waitflag指示当GIL当前不可获得时，是否进行等待，更直接地说，就是当前线程是否通过WaitForSingleObject将自身挂起，直到别的线程释放GIL，然后由操作系统将自己唤醒。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>如果waitflag为0，Python会检查当前GIL是否可用，GIL中的owned是指示GIL是否可用的变量，在前面的InitializeNonRecursiveMutex中我们看到这个值被初始化为-1，Python会检查这个值是否为-1，如果是，则意味着GIL可用，必须将其置为0，当owned为0后，表示该GIL已经被一个线程占用，不再可用。对于我们这里分析的调用PyEval_InitThread的主线程而言，由于在初始化GIL之后就调用PyThread_ acquire_lock申请GIL，到这时，并没有第二个线程被创建，所以主线程会轻而易举地获得GIL的使用权。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>注意这里的检查和更新owned的操作是通过一个Win32的系统API——Interlocked- CompareExchange——来完成的。这个API是一个原子操作，其函数原形和功能如下。</p>
+
+<p class=afa>原形：InterlockedCompareExchange(PLONG
+dest, long exchange, long compared) </p>
+
+<p class=afa>功能：如果*dest
+== compared,那么*dest = exchange</p>
+
+<p class=aff style='text-indent:18.4pt'>与InterlockedCompareExchange相同的，InterlockedIncrement也是一个原子操作，其功能是将mutex-&gt;owned的值增加1。从这里可以看到，当一个线程开始等待GIL时，其owned就会被增加1。显然我们可以猜测，当一个线程最终释放GIL时，一定会将GIL的owned减1，这样当所有需要GIL的线程都最终释放了GIL之后，owned会再次变为-1，意味着GIL再次变为可用。</p>
+
+<p class=aff style='text-indent:18.4pt'>为了清晰地展示这一点，我们现在就来看看PyThread_aquire_lock的逆运算，PyThread_release_lock每一个将从运行转态转为等待状态的线程都会在被挂起之前调用它以释放对GIL的占有。</p>
+
+<p class=afa>[thread_nt.h]</p>
+
+<p class=afa>void PyThread_release_lock(PyThread_type_lock aLock)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+LeaveNonRecursiveMutex((PNRMUTEX) aLock)；</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>BOOL
+LeaveNonRecursiveMutex(PNRMUTEX mutex)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; /* We
+don't own the mutex */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; mutex-&gt;thread_id
+= 0 ;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+InterlockedDecrement(&amp;mutex-&gt;owned) &lt; 0 ||</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SetEvent(mutex-&gt;hevent) ; /* Other threads are waiting, wake one on</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;them up */</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>最终，一个线程在释放GIL时，会通过SetEvent通知所有在等待GIL的hevent这个Event内核对象的线程，结合前面的分析，如果这时候有线程在等待GIL的hevent，那么将被操作系统唤醒。这就是我们在前面介绍的Python将线程调度的第二个难题委托给操作系统来实现的机制。</p>
+
+<p class=aff style='text-indent:18.4pt'>到了这时，调用PyEval_InitThread的线程（也就是Python主线程）已经成功获得了GIL，最后会调用PyThread_get_thread_ident()，通过Win32的API：GetCurrent- ThreadId，获得当前Python主线程的id，并将其赋给main_thread，main_thread是一个静态全局变量，专职存储Python主线程的线程id，用以判断一个线程是否是Python主线程。</p>
+
+<p class=aff style='text-indent:18.4pt'>最后，我们在图15-4中给出整个PyEval_InitThread的函数调用关系。</p>
+
+<p class=aff2><img border=0 width=242 height=103
+src="/BookFiles/749/img/image017.jpg"></p>
+
+<p class=aff2>图15-4 &nbsp;PyEval_InitThreads中的函数调用关系</p>
+
+
+
+
+<p class=afe style='margin-top:0cm'>15.3.2&nbsp; 创建线程</p>
+
+<p class=affc>15.3.2.1&nbsp; 子线程的诞生</p>
+
+<p class=aff style='text-indent:18.4pt'>在完成了多线程环境的初始化之后，Python会开始创建底层平台的原生thread，以thread1.py为例，这个原生thread将执行threadProc所定义的操作。从现在开始，为了描述的清晰性，我们将Python主线程，也就是调用thread_PyThread_start_new_thread创建新的线程的线程称为主线程，而将与threadProc对应的原生thread称之为子线程。现在我们来看看一个子线程是如何被创建的（见代码清单15-2）。</p>
+
+<p class=aff style='text-indent:0cm'>代码清单15-2</p>
+
+<p class=afa>[threadmodule.c]</p>
+
+<p class=afa>static PyObject*
+thread_PyThread_start_new_thread(PyObject *self, PyObject</p>
+
+<p class=afa>&nbsp;&nbsp;*fargs)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyObject
+*func, *args, *keyw = NULL;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct
+bootstate *boot;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; long
+ident;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyArg_UnpackTuple(fargs,
+&quot;start_new_thread&quot;, 2, 3, &amp;func, &amp;args, &amp;keyw);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[1]：创建bootstate结构</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot =
+PyMem_NEW(struct bootstate, 1);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot-&gt;interp
+= PyThreadState_GET()-&gt;interp;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot-&gt;func
+= func;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot-&gt;args
+= args;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; boot-&gt;keyw
+= keyw;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[2]：初始化多线程环境</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyEval_InitThreads();
+/* Start the interpreter's thread-awareness */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[3]：创建线程</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; ident =
+PyThread_start_new_thread(t_bootstrap, (void*) boot);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+PyInt_FromLong(ident);</p>
+
+
+
+<p class=afa>[thread.c]</p>
+
+<p class=afa>/* Support for runtime thread
+stack size tuning.</p>
+
+<p class=afa>&nbsp;&nbsp; A value of 0
+means using the platform's default stack size</p>
+
+<p class=afa>&nbsp;&nbsp; or the size
+specified by the THREAD_STACK_SIZE macro. */</p>
+
+<p class=afa>static size_t
+_pythread_stacksize = 0;</p>
+
+
+
+<p class=afa>[thread_nt.h]</p>
+
+<p class=afa>long PyThread_start_new_thread(void (*func)(void *), void *arg)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; unsigned long
+rv;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; callobj
+obj;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; obj.id =
+-1;&nbsp;&nbsp;&nbsp; /* guilty until proved innocent */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; obj.func =
+func;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; obj.arg =
+arg;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; obj.done =
+CreateSemaphore(NULL, 0, 1, NULL);</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; rv = _beginthread(bootstrap, _pythread_stacksize,
+&amp;obj); /* use default stack size */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if (rv ==
+(unsigned long)-1) {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//创建raw thread失败</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+obj.id = -1;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; }</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; else {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+WaitForSingleObject(obj.done, INFINITE);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; }</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+CloseHandle((HANDLE)obj.done);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+obj.id;</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>主线程通过调用PyThread_start_new_thread完成创建子线程的工作。为了清晰地理解PyThread_start_new_thread的工作，我们需要特别注意该函数的参数，从thread_ PyThread_start_new_thread中可以看到，这里的func实际上是函数t_bootstrap，而arg则是在thread_PyThread_start_new_thread中创建的bootstate结构体boot。在boot中，保存着Python程序（thread1.py）中所定义的线程的信息。</p>
+
+<p class=aff style='text-indent:16.4pt'>PyThread_start_new_thread首先会将func和arg都打包到一个类型为callobj的结构体obj中，我们来看看这个obj。</p>
+
+<p class=afa>[thread_nt.h]</p>
+
+<p class=afa>typedef struct {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; void
+(*func)(void*);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; void *arg;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; long id;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; HANDLE
+done;</p>
+
+<p class=afa>} callobj;</p>
+
+<p class=aff style='text-indent:18.4pt'>图15-5显示了对应thread1.py所构造出的callobj对象的示意图。</p>
+
+<p class=aff2><img border=0 width=484 height=238
+src="/BookFiles/749/img/image018.jpg"></p>
+
+<p class=aff2>图15-5 &nbsp;thread1.py对应的callobj对象的示意图</p>
+
+<p class=aff style='text-indent:18.4pt'>值得注意的是，obj.done是一个Win32下的Semaphore内核对象，这个特殊的内核对象的用途我们马上就会看到。我们创建线程的工作需要func和arg，但是Win32下创建线程的API只允许用户指定一个自定义的参数，这就是需要用obj来打包的原因。</p>
+
+<p class=aff style='text-indent:18.4pt'>完成打包之后，调用Win32下创建thread的API：_beginthread来完成线程的创建。奇怪的是，我们期望的线程过程应该是thread1.py中定义的那个threadPoc呀，而这里指定的线程过程却是一个相当面生的bootstrap。实际上，在bootstrap中，会最终调用thread1.py中定义的threadProc。</p>
+
+<p class=aff style='text-indent:18.4pt'>但是，这里有一个至关重要的转折，还记得我们现在在哪里吗？没错，我们现在是沿着主线程的执行路径在剖析，而对bootstrap的调用并不是在主线程中发生的，而是在通过_beginthread所创建的子线程中发生的。从这里开始，我们需要特别注意代码的执行是在哪个线程中执行的，这对于理解Python的多线程机制相当重要。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>好了，花开两朵，各表一枝。我们继续沿着主线程的执行路径前进。如果不出什么意外，_beginthread将最终成功地创建Win32下的原生线程，并顺利返回。在返回之后，主线程开始将自己挂起，等待obj.done。我们前面看到，这是一个Win32的Semaphore内核对象。由于obj已经作为参数传递给了子线程，所以我们猜想，子线程会设置这个Semaphore，并最终唤醒主线程。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>现在我们来理清一下Python当前的状态。Python当前实际上由两个Win32下的原生thread构成，一个是执行python程序（python.exe）时操作系统创建的主线程，另一个是我们通过thread1.py创建的子线程。主线程在执行PyEval_InitThread的过程中，获得了GIL，但是目前已经被挂起，这是为了等待子线程中控制着的obj.done。子线程的线程过程是bootstrap，不过我们刚才已经猜测了，从bootstrap出发，最终将在Python解释器中执行python1.py中定义的theadProc。但是，我们知道，子线程为了访问Python解释器，必须首先获得GIL，这是Python世界的游戏规则，谁也不能例外。所以，为了避免死锁，子线程一定会在申请GIL之前通知obj.done。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>现在，是时候开始进入子线程，也就是那个bootstrap函数了，看看它究竟什么时候开始通知obj.done。</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>[thread_nt.h]</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>static int</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>bootstrap(void *call)</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>{</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; callobj *obj = (callobj*)call;</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; /* copy callobj since other thread might
+free it before we're done */</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; //这里将得到函数t_bootstrap</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; void (*func)(void*) = obj-&gt;func;</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; void *arg = obj-&gt;arg;</p>
+
+
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; obj-&gt;id =
+PyThread_get_thread_ident();</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; ReleaseSemaphore(obj-&gt;done, 1, NULL);</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; func(arg);</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>&nbsp;&nbsp;&nbsp; return 0;</p>
+
+<p class=afa style='line-height:9.2pt;layout-grid-mode:char'>}</p>
+
+
+
+
+<p class=aff style='margin-top:0cm;text-indent:18.4pt'>在bootstrap中，子线程完成了三个动作：</p>
+
+<p class=affe>&Oslash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+获得线程id；</p>
+
+<p class=affe>&Oslash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+通知obj-&gt;done内核对象；</p>
+
+<p class=affe>&Oslash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+调用t_bootstrap；</p>
+
+<p class=aff style='text-indent:18.4pt'>在这里我们看到，子线程在申请GIL之前确实通知了前面提到的obj.done内核对象以唤醒主线程。那么，Python为什么需要让主线程等待子线程的通知呢，在这里一切都明了了。原来，主线程所调用的PyThread_start_new_thread需要返回所创建的子线程的线程id，然而子线程的线程id只有在子线程被激活后才能在子线程中获取，因此主线程等的就是这个子线程id，一旦子线程设置了obj-&gt;id，就会设法唤醒主线程。</p>
+
+<p class=aff style='text-indent:18.4pt'>从这里开始，主线程和子线程开始分道扬镳，主线程在返回子线程id之后，会继续执行后续的字节码，因为我们知道，这时候，主线程手里握着GIL。而子线程则将进入t_bootstrap，并最终进入等待GIL的状态。</p>
+
+<p class=afa>[threadmodule.c]</p>
+
+<p class=afa>static void t_bootstrap(void *boot_raw)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct
+bootstate *boot = (struct bootstate *) boot_raw;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+PyThreadState *tstate;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyObject
+*res;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; tstate =
+PyThreadState_New(boot-&gt;interp);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyEval_AcquireThread(tstate);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; res =
+PyEval_CallObjectWithKeywords(boot-&gt;func, boot-&gt;args, boot-&gt;keyw);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyMem_DEL(boot_raw);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyThreadState_Clear(tstate);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyThreadState_DeleteCurrent();</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+PyThread_exit_thread();</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>子线程从这里开始了与主线程对GIL的竞争。在t_bootstrap中，所进行的第一个动作——PyEval_AcquireThread——就是申请GIL，当PyEval_AcquireThread结束之后，子线程也就获得了GIL，并且做好了一切执行的准备。接下来子线程通过PyEval_ CallObjectWithKeywords，将最终调用我们已经非常熟悉的PyEval_EvalFrameEx，也就是Python的字节码执行引擎。传递进PyEval_CallObjectWithKeywords的boot-&gt;func是一个PyFunctionObject对象，正是therad1.py中定义的threadProc编译后的结果。</p>
+
+<p class=aff style='text-indent:18.4pt'>在PyEval_CallObjectWithKeywords结束之后，子线程将释放GIL，并完成销毁线程的所有扫尾工作，到了这里，子线程就结束了。</p>
+
+<p class=aff style='text-indent:18.4pt'>从t_bootstrap的代码看上去，似乎子线程会一直执行，直到子线程的所有计算都完成，才会通过PyThreadState_DeleteCurrent释放GIL。如此一来，那主线程岂非一直都会处于等待GIL的状态？如果真是这样，那Python显然就不可能支持多线程机制了。实际上在PyEval_EvalFrameEx中，图15-2中显示的Python内部维护的那个模拟时钟中断会不断地激活线程的调度机制，在子线程和主线程之间不断地进行切换，从而真正实现多线程机制。当然，这一点我们将在后面详细剖析。现在我们感兴趣的是子线程在PyEval_AcquireThreade中到底做了什么。</p>
+
+<p class=afa>[ceval.c]</p>
+
+<p class=afa>void
+PyEval_AcquireThread(PyThreadState *tstate)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if (tstate
+== NULL) </p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Py_FatalError(&quot;PyEval_AcquireThread:
+NULL new thread state&quot;);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //检查interpreter_lock，确保已经调用PyEval_InitThreads并创建了GIL</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; assert(interpreter_lock);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //获得GIL</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyThread_acquire_lock(interpreter_lock,
+1);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //在PyThreadState_Swap中更新指向”当前线程”的</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //线程状态对象指针_PyThreadState_Current</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if
+(PyThreadState_Swap(tstate) != NULL)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Py_FatalError(&quot;PyEval_AcquireThread:
+non-NULL old thread state&quot;);</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>[pystate.c]</p>
+
+<p class=afa>PyThreadState *
+PyThreadState_Swap(PyThreadState *newts)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyThreadState
+*oldts = _PyThreadState_Current;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; _PyThreadState_Current
+= newts;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+oldts;</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>到这里，了解了PyEval_AcquireThread，似乎创建线程的机制都清晰了。但实际上，有一个非常重要的机制——线程状态保护机制——隐藏在了一个毫不起眼的地方：PyThreadState_New。这个机制对于理解Python中线程的创建和维护是非常关键的。</p>
+
+<p class=affc>15.3.2.2&nbsp; 线程状态保护机制</p>
+
+<p class=aff style='text-indent:18.4pt'>要剖析线程状态的保护机制，我们首先需要回顾一下线程状态。在Python中，每一个Python线程都会有一个线程状态对象与之关联，在线程状态对象中，记录了每一个线程所独有的一些信息。实际上，在剖析Python的初始化过程时，我们曾经见过这个对象。</p>
+
+<p class=afa>[pystate.h]</p>
+
+<p class=afa>typedef struct _ts {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct _ts
+*next;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+PyInterpreterState *interp;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct
+_frame *frame;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; int
+recursion_depth;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; ……</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; int
+gilstate_counter;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; long
+thread_id; /* Thread id where this tstate was created */</p>
+
+<p class=afa>} PyThreadState;</p>
+
+
+
+
+<p class=aff style='text-indent:18.4pt'>每一个线程对应的线程状态对象都保存着这个线程当前的PyFrameObject对象，线程的id这样一些信息。有时候，线程是需要访问这些信息的。比如考虑一个最简单的情形，在某种情况下，每个线程都需要访问线程状态对象中所保存的thread_id信息，显然，线程A获得的应该是A的thread_id，线程B亦然。倘若线程A获得的是B的thread_id，那就坏菜了。这就意味着Python内部必须有一套机制，这套机制与操作系统管理进程的机制非常类似。我们知道，在操作系统从进程A切换到进程B时，首先会保存进程A的上下文环境，再进行切换；当从进程B切换回进程A时，又会恢复进程A的上下文环境，这样就保证了进程A始终是在属于自己的上下文环境中运行。</p>
+
+<p class=aff style='text-indent:18.4pt'>这里的线程状态对象就等同于进程的上下文，Python同样会有一套存储、恢复线程状态对象的机制。同时，在Python内部，维护着一个全局变量：PyThreadState
+* _PyThread- State_Current。当前活动线程所对应的线程状态对象就保存在这个变量里，当Python调度线程时，会将被激活的线程所对应的线程状态对象赋给_PyThreadState_Current，使其始终保存着活动线程的状态对象。</p>
+
+<p class=aff style='text-indent:18.4pt'>这就引出了这样的一个问题：Python如何在调度进程时，获得被激活线程对应的状态对象？Python内部会通过一个单向链表来管理所有的Python线程的状态对象，当需要寻找一个线程对应的状态对象时，就遍历这个链表，搜索其对应的状态对象。在此后的描述中，我们将这个链表称为“状态对象链表”。</p>
+
+<p class=aff style='text-indent:18.4pt'>下面我们来看一看实现这个机制的关键数据结构。</p>
+
+<p class=afa>[thread.c]</p>
+
+<p class=afa>struct key {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct key
+*next;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; long id;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; int key;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; void
+*value;</p>
+
+<p class=afa>};</p>
+
+
+
+<p class=afa>static struct key *keyhead = NULL;</p>
+
+<p class=aff style='text-indent:18.4pt'>图15-6展示了在运行时这个状态对象链表的示意图。</p>
+
+<p class=aff style='text-indent:18.4pt'>在Python中，对于这个状态对象链表的访问，不必在GIL的保护下进行。因为对于这个状态对象链表，Python会创建一个独立的锁，专职对状态对象链表进行保护。这个锁的创建是在Python进行初始化的时候完成的。</p>
+
+
+
+
+<p class=aff2 style='margin-top:0cm'><img border=0 width=376
+height=189 src="/BookFiles/749/img/image019.jpg"></p>
+
+<p class=aff2>图15-6 &nbsp;线程状态对象链表</p>
+
+<p class=afa>[pystate.c]</p>
+
+<p class=afa>static PyInterpreterState
+*autoInterpreterState = NULL;</p>
+
+<p class=afa>static int autoTLSkey = 0;</p>
+
+
+
+<p class=afa>void _PyGILState_Init(PyInterpreterState *i, PyThreadState *t)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; autoTLSkey
+= PyThread_create_key(); </p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; autoInterpreterState
+= i;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; /* Now
+stash the thread state for this thread in TLS */</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; assert(PyThread_get_key_value(autoTLSkey)
+== NULL);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; _PyGILState_NoteThreadState(t);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; ……</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>static void _PyGILState_NoteThreadState(PyThreadState*
+tstate)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if
+(!autoTLSkey)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyThread_set_key_value(autoTLSkey,
+(void *)tstate);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; tstate-&gt;gilstate_counter
+= 1;</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>[thread.c]</p>
+
+<p class=afa>static PyThread_type_lock keymutex = NULL;</p>
+
+
+
+<p class=afa>int PyThread_create_key(void)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if
+(keymutex == NULL)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+keymutex = PyThread_allocate_lock();</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+++nkeys;</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:16.4pt'>PyThread_create_key将创建一个新的key。注意，这里的key都是一个整数，而且，当PyThread_create_key第一次被调用时（在_PyGILState_Init中的调用正是第一次调用），会通过PyThread_allcate_lock创建一个keymutex。根据我们前面的分析，这个keymutex实际上和GIL一样，都是一个PNRMUTEX结构体，而在这个结构体中，维护着一个Win32下的Event内核对象。这个keymutex的功能就是用来互斥对状态对象链表的访问。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>在_PyGILState_Init中，创建的新key被Python维护的全局变量autoTLSkey接收，其中的TLS是Thread Local Store的缩写，这个autoTLSkey将用作Python保存所有线程的状态对象的一个参数，即是图15-6中的key值。也就是说，状态对象列表中所有key结构体中的key值都会是autoTLSkey。哎，那位看官说了，你看PyThread_create_key返回的是nkeys的递增后的值啊，就是说每create一次，得到的结果都是不同的，怎么能说所有的key都是一样的呢？事实上，在整个Python的源码中，PyThread_create_key只在_PyGILState_Init中被调用了，而这个_PyGILState_Init只会在Python运行时环境初始化时调用一次。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>那么如何区分哪个线程对应哪个状态对象呢，别忘了，我们还有线程id呢。图15-6中的id存储的正是各个线程的id，根据这个id，显然可以区分不同的线程了。</p>
+
+<p class=aff style='text-indent:18.4pt;line-height:15.5pt'>那么图15-6中的key看上去就有点多此一举了，实际上，图15-6中所示的链表结构并非是纯的状态对象链表，当在一个key结构体的value域存储的不是线程的状态对象，而是与线程相关的其他对象时，这个key值就有意义了。假如我们将一种状态对象设为S，而另一种对象设为O，在图15-6所示的链表中，存在着两个与某个线程A相关的key结构体。显然，对于这两个key结构体，id域是完全一致的，那么当我们需要从这个链表中取出对象O，而并非S时，该用什么来区分O和S呢？正是这个key值。所以实际上在Python中，与每个线程相关的对象可能有多种，而每一种对象都会对应一个key值，这个key值将会被所有的线程在存储这种对象时共享。对于我们这里关注的线程状态对象，其key值就是autoTLSkey。同样，由于我们这里仅仅关注Python的线程机制，所以我们在后面的描述中还是将图15-6中的链表称为线程状态对象链表。</p>
+
+<p class=aff style='text-indent:18.4pt'>Python提供了一些列操作状态对象链表的接口，其中核心是find_key，见代码清单15-3。</p>
+
+<p class=aff style='text-indent:0cm'>代码清单15-3</p>
+
+<p class=afa>[thread.c]</p>
+
+<p class=afa>static struct key* find_key(int key, void *value)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct key
+*p;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[1]：获得当前线程的线程id，并锁住线程状态对象链表</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; long id =
+PyThread_get_thread_ident();</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyThread_acquire_lock(keymutex,
+1);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[2]：遍历线程状态对象链表，寻找key和id都匹配的元素</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; for (p =
+keyhead; p != NULL; p = p-&gt;next) {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (p-&gt;id == id &amp;&amp; p-&gt;key == key)</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+goto Done;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; }</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[3]：如果[2]处的搜索失败，则创建新的元素，并加入线程状态对象链表</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; p = (struct
+key *)malloc(sizeof(struct key));</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; if (p !=
+NULL) {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p-&gt;id = id;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p-&gt;key = key;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p-&gt;value = value;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+p-&gt;next = keyhead;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+keyhead = p;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; }</p>
+
+<p class=afa>&nbsp;Done:</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; //[4]：释放锁住的线程状态对象链表</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+PyThread_release_lock(keymutex);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return p;</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>虽然这个核心函数的名字叫find_key，然而我们可以看到，它的作用并不仅仅是搜索，而且还包含了创建的动作。在代码清单15-3的[2]处，find_key会遍历状态对象列表，搜索key和id都匹配的key结构体，如果搜索成功，则直接返回；而当搜索失败时，find_key会在代码清单15-3的[3]处创建一个新的key结构体，并设置其中的id，key和value，最后将其插入到状态对象列表的头部。</p>
+
+<p class=aff style='text-indent:18.4pt'>在代码清单15-3的[1]和[4]处我们看到了Python确实通过在_PyGILState_Init中创建的keymutex来互斥对状态对象列表的访问。</p>
+
+<p class=aff style='text-indent:18.4pt'>在了解了这个核心函数之后，Python为状态对象列表所提供的接口就显得非常清晰了。其实，就是简单的链表的插入、删除和查询操作。</p>
+
+<p class=afa>[thread.c]</p>
+
+<p class=afa>//查询操作</p>
+
+<p class=afa>void* PyThread_get_key_value(int key)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct key
+*p = find_key(key, NULL);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return p-&gt;value;</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>//插入操作</p>
+
+<p class=afa>int PyThread_set_key_value(int key, void *value)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct key
+*p = find_key(key, value);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return 0;</p>
+
+<p class=afa>}</p>
+
+
+
+<p class=afa>//删除操作</p>
+
+<p class=afa>void PyThread_delete_key(int key)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct key
+*p, **q;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+PyThread_acquire_lock(keymutex, 1);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; q =
+&amp;keyhead;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; while ((p
+= *q) != NULL) {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (p-&gt;key == key) {</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+*q = p-&gt;next;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+free((void *)p);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+else</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+q = &amp;p-&gt;next;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; }</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp;
+PyThread_release_lock(keymutex);</p>
+
+<p class=afa>}</p>
+
+<p class=affc>15.3.2.3&nbsp; 从GIL到字节码解释器</p>
+
+<p class=aff style='text-indent:18.4pt'>现在，回过头来看一看刚才提到的PyThreadState_New：</p>
+
+<p class=afa>[pystate.c]</p>
+
+<p class=afa>PyThreadState *</p>
+
+<p class=afa>PyThreadState_New(PyInterpreterState
+*interp)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyThreadState *tstate = (PyThreadState
+*)malloc(sizeof(PyThreadState));</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; ……</p>
+
+<p class=afa>#ifdef WITH_THREAD</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; _PyGILState_NoteThreadState(tstate);</p>
+
+<p class=afa>#endif</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; ……</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; return
+tstate;</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>子线程在创建了自身的线程状态对象后，会通过_PyGILState_NoteThreadState将这个对象放入到线程状态对象链表中去。</p>
+
+<p class=aff style='text-indent:18.4pt'>这里有一个需要特别注意的地方，即当前活动的Python线程不一定是获得了GIL的线程。正如我们在这里所展示的，在thread1.py中，主线程现在是获得了GIL的，但是子线程到现在还没有申请GIL，自然也不会将自身挂起。由于主线程和子线程都是Win32的原生线程，所以操作系统可能在主线程和子线程之间切换。我们在这里要着重指出操作系统级的线程调度和Python级的线程调度是不同的。Python级的线程调度一定意味着GIL拥有权的易手，而操作系统级的线程调度并不一定意味着GIL的易手，当所有的线程都完成了初始化动作之后，操作系统的线程调度和Python的线程调度才会同一。那时，Python的线程调度会迫使当前活动线程释放GIL，而这一操作会触发GIL中维护的Event内核对象，这个触发又进而触发操作系统的线程调度。而在线程的初始化完成之前，在Python线程调度和操作系统线程调度之间并没有这样的因果关系。图15-7中显示了GIL在Python级线程调度与操作系统级线程调度之间所起的桥梁作用。</p>
+
+<p class=aff2><img border=0 width=248 height=58
+src="/BookFiles/749/img/image020.jpg"></p>
+
+<p class=aff2>图15-7 &nbsp;Python级的线程调度与操作系统级的线程调度</p>
+
+<p class=aff style='text-indent:18.4pt'>很显然，对于这个例子，子线程还没有获得GIL。所以在PyThreadState_New之后，子线程开始争夺话语权了。</p>
+
+<p class=afa>[threadmodule.c]</p>
+
+<p class=afa>static void t_bootstrap(void *boot_raw)</p>
+
+<p class=afa>{</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; struct
+bootstate *boot = (struct bootstate *) boot_raw;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyThreadState
+*tstate;</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyObject
+*res;</p>
+
+
+
+<p class=afa>&nbsp;&nbsp;&nbsp; tstate =
+PyThreadState_New(boot-&gt;interp);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; PyEval_AcquireThread(tstate);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; res =
+PyEval_CallObjectWithKeywords(boot-&gt;func, boot-&gt;args, boot-&gt;keyw);</p>
+
+<p class=afa>&nbsp;&nbsp;&nbsp; ……</p>
+
+<p class=afa>}</p>
+
+<p class=aff style='text-indent:18.4pt'>前面我们已经剖析过PyEval_AcquireThread的代码，在PyEval_AcquireThread中，子线程进行了最后的冲刺，它要生存，要执行，于是它开始通过PyThread_acquire_
+lock争取GIL。到了这一步，子线程将自己挂起，操作系统的线程调度机制再也不能靠自身的力量将其唤醒，只有等待Python的线程调度机制强迫主线程放弃GIL后，子线程才会被唤醒；而子线程被唤醒之后，主线程却又陷入了苦苦地等待中，同样苦苦地守望着Python强迫子线程放弃GIL的那一刻。</p>
+
+<p class=aff style='text-indent:18.4pt'>当子线程被Python的线程调度机制唤醒之后，它所作的第一件事就是通过PyThreadState_Swap将Python维护的当前线程状态对象设置为其自身的状态对象，一如操作系统的进程上下文环境恢复一样。</p>
+
+<p class=aff style='text-indent:18.4pt'>现在我们的子线程开始等待GIL，但是注意，线程的初始化还没有真正完成，因为子线程还没有顺利进入字节码解释器。当Python线程调度将子线程唤醒之后，子线程将回到t_bootstrap中，并进入PyEval_CallObjectWithKeywords，从这里一直往前，最终将调用PyEval_EvalFrameEx，进入解释器。到了那个时候，子线程和主线程一样，就完全被Python线程调度机制所控制了。</p>
+
+<p class=aff style='text-indent:18.4pt'>图15-8展示了从主线程开始创建子线程，到子线程进入Python解释器的所有函数调用。</p>
+
+<p class=aff style='text-indent:18.4pt'>需要注意的是，PyThread_start_new_thread是在主线程中执行的，而从bootstrap开始，则是在子线程中执行的。其中涉及线程销毁的动作，如PyThreadState_ DeleteCurrent等，将在后续的部分剖析。</p>
+
+<p class=aff style='text-indent:18.4pt'>到了这里，读者可能有些疑惑了，我们花费了大量篇幅剖析的线程状态对象链表似乎没有什么用啊。其实不然，试想一下，当线程调度发生时，在Python一级，需要通过之前剖析过的PyTrheadState_Swap函数切换当前的线程状态对象，这时候就需要根据线程id从线程状态对象链表中获取线程对象了。事实上，在Python内部的许多API中，比如PyGILState_Ensure等等中，都会涉及这个链表，这些API在C与Python交互时可能被大量调用，有兴趣的读者可以自行深入探索一下。</p>
+
+
+
+
+<p class=aff2><img border=0 width=254 height=252
+src="/BookFiles/749/img/image021.jpg"></p>
+
+<p class=aff2>图15-8 &nbsp;PyThread_start_new_thread中的执行序列</p>
+
+<div style='border:none;border-bottom:solid windowtext 1.0pt;padding:0cm 0cm 1.0pt 0cm'>
+</div>
+                <!-- page -->
+                <div class="page" style="text-align: center">
+                    <a href="/bookfiles/749/10074922951.shtml">上一页</a>&nbsp;&nbsp;&nbsp;<a href="/bookfiles/749/index.html">首页</a>&nbsp;&nbsp;&nbsp;<a href="/bookfiles/749/10074922953.shtml">下一页</a>
+                </div>
+                <div class="content" style="text-align: right;width:99%;">
+   
+   <script type="text/javascript" src="/hi/LzReview.ashx?id= 749"></script>
+		
+<!--引用评论结束--> 
+
+                </div>
+                <div style="margin: 0px auto; width: 600px; border: solid 1px #0b5f98;float:left;">
+                    <div style="float: left; width: 16px; background-color: #0b5f98; color: White; padding: 1px;">
+                        图书导读
+                    </div>
+                    <div style="float: right; width: 570px; text-align: left; line-height: 16pt; padding-left: 2px">
+                        <!--导读-->
+                        <h1 id="divCurrentNode2" style="color: #b83507; width: 100%; text-align: left; font-size: 12px; padding-left: 2px">当前章节:<a href='http://book.csdn.net/bookfiles/749/10074922952.shtml'><font color='red'>15.3  PYTHON线程的创建</font></a></h1>
+                        <div id="divRealteNod2" style="padding-left: 2px">
+                        <div style='float:left;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922949.shtml'>8.4  PYTHON运行时环境初探</a></div><div style='float:right;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922950.shtml'>15.1  GIL与线程调度</a></div><div style='float:left;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922951.shtml'>15.2  初见PYTHON THREAD</a></div><div style='float:right;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922953.shtml'>15.4  PYTHON线程的调度</a></div><div style='float:left;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922954.shtml'>15.5  PYTHON子线程的销毁</a></div><div style='float:right;width:49%'>·<a href='http://book.csdn.net/bookfiles/749/10074922955.shtml'>15.6  PYTHON线程的用户级互斥与同步</a></div></div>
+                    </div>
+                </div>
+                <div class="clear">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="todayCommend" style="width: 100%;">
+                <div class="title">
+                    <h5>
+                        同类图书推荐</h5>
+                </div>
+                <div class="blank6 clear">
+                </div>
+                <div id="divSameSort" class="content">
+                <li style='float:left;width:19%;list-style-type:none;margin:0;padding:0;text-align:center;'><a href='http://book.csdn.net/bookfiles/1271/' title='ASP.NET项目开发指南'><img width='80px' height='112px' src='http://www.dearbook.com.cn//book/BookImage/TS00260224__.jpg' border=0/></a><p><a href='http://book.csdn.net/bookfiles/1271/' title='ASP.NET项目开发指南'>ASP.NET项目...</a></p></li><li style='float:left;width:19%;list-style-type:none;margin:0;padding:0;text-align:center;'><a href='http://book.csdn.net/bookfiles/1270/' title='ASP.NET网络开发指南'><img width='80px' height='112px' src='http://www.dearbook.com.cn//book/BookImage/TS00260223__.jpg' border=0/></a><p><a href='http://book.csdn.net/bookfiles/1270/' title='ASP.NET网络开发指南'>ASP.NET网络...</a></p></li><li style='float:left;width:19%;list-style-type:none;margin:0;padding:0;text-align:center;'><a href='http://book.csdn.net/bookfiles/1269/' title='Dreamweaver CS4网页设计与制作指南'><img width='80px' height='112px' src='http://www.dearbook.com.cn//book/BookImage/TS00260225__.jpg' border=0/></a><p><a href='http://book.csdn.net/bookfiles/1269/' title='Dreamweaver CS4网页设计与制作指南'>Dreamweave...</a></p></li><li style='float:left;width:19%;list-style-type:none;margin:0;padding:0;text-align:center;'><a href='http://book.csdn.net/bookfiles/1268/' title='重构:改善既有代码的设计'><img width='80px' height='112px' src='http://www.dearbook.com.cn//book/BookImage/TS00260565__.jpg' border=0/></a><p><a href='http://book.csdn.net/bookfiles/1268/' title='重构:改善既有代码的设计'>重构:改善既...</a></p></li><li style='float:left;width:19%;list-style-type:none;margin:0;padding:0;text-align:center;'><a href='http://book.csdn.net/bookfiles/1267/' title='PHP实战(Web开发人员必读之作)'><img width='80px' height='112px' src='http://www.dearbook.com.cn//book/BookImage/TS00259843__.jpg' border=0/></a><p><a href='http://book.csdn.net/bookfiles/1267/' title='PHP实战(Web开发人员必读之作)'>PHP实战(We...</a></p></li></div>
+            </div>
+            <!-- 评论 -->
+            <div class="clear">
+            </div>
+            <div class="todayCommend" style="width: 100%;">
+                 
+                <div class="blank6 clear">
+                </div>
+                
+            </div>
+            <!-- 今日推荐 -->
+            <div class="clear">
+            </div>
+            
+            <div id="tagad" style="text-align:left">
+             <div id="csdn_zhaig_ad_yahoo" style="width:99%;">
+                </div>
+                <script type="text/javascript">
+                ad_width=468;
+ad_height=60;
+adcss=2;
+unionuser=22;
+  
+ad_type='j';
+count=3;
+                </script>
+                   <script src="http://tagegg.csdn.net/showads.js" type="text/javascript"></script>
+                   <script src="/book/tag.js" type="text/javascript"></script>
+
+            </div>
+        </div>
+             
+            </div>
+            <div id="sidebar">
+               <div class="ad">
+                        
+                                  <script type="text/javascript" src="http://book.csdn.net/js/bookflash.js"></script>
+    <div id="focusViwer" align="left" style="width:100%"><a 
+            href="http://book.csdn.net/bookfiles/184/" 
+            target="_blank"><IMG 
+            style="BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid" 
+            height="252" alt="重点连载书 "
+            src="http://book.csdn.net/images/flash/0711/asp_net.jpg" 
+            width="100%"><br/>Programming ASP.NET</a> </div>
+            <div>
+                          <marquee onmouseover='this.stop()' onmouseout='this.start()' scrollDelay=110 ><b></b> </marquee>
+                       </div>
+   <SCRIPT type="text/javascript">
+	<!--
+	
+	var focus_width=290;
+	var focus_height=252;
+	var text_height=20;
+	var swf_height = focus_height+text_height
+	
+	var 
+pics='http://book.csdn.net/smallimg/081223hicsdngg290.jpg|http://book.csdn.net/smallimg/091225.jpg|http://book.csdn.net/smallimg/20090925.jpg|http://book.csdn.net/smallimg/091106.jpg'
+links='http://book.csdn.net/subject/1014action/|http://club.book.csdn.net/people/mylist5282.html|http://book.csdn.net/bookfiles/1094/index.html|http://club.book.csdn.net/people/mylist4871.html'
+
+texts='第二届程序员读书月|RIA开发最强音|Java程序员上班那点事儿|中国第一本介绍企业级开发工具ZEND的书籍'
+		var FocusFlash = new sinaFlash("http://book.csdn.net/html/index/pixviewer.swf", "focusflash", focus_width, swf_height, "7", "#cccccc", false, "High");
+	FocusFlash.addParam("allowScriptAccess", "sameDomain");
+	FocusFlash.addParam("menu", "false");
+	FocusFlash.addParam("wmode", "opaque");
+
+	FocusFlash.addVariable("pics", pics);
+	FocusFlash.addVariable("links", links);
+	FocusFlash.addVariable("texts", texts);
+	FocusFlash.addVariable("borderwidth", focus_width);
+	FocusFlash.addVariable("borderheight", focus_height);
+	FocusFlash.addVariable("textheight", text_height);
+	FocusFlash.write("focusViwer");
+	
+	//-->
+	</SCRIPT>
+
+                            
+                    </div>
+                    <div class="zhuantituijian">
+                        <dl>
+                            <dt>热点推荐</dt>
+                            <dd>
+                                <STRONG>【活动】</STRONG><A title="" href="/subject/0708action/" target=_blank><FONT color=#ff0000><STRONG>写百字读书心得 赢"万元"图书大奖</STRONG></FONT></A><BR><STRONG>【活动】</STRONG><A title="" href="/subject/0707cbi/" target=_blank><FONT color=#ff0000><STRONG>7月新的C币获取原则推出</STRONG></FONT></A><BR><STRONG>【专题】</STRONG><A title="" href="/subject/0706wg/" target="">专业网管笔记　成就资深网管</A><BR><STRONG>【专题】</STRONG><A href="/subject/0706ryasp/">重磅出击----Asp.net2.0</A><BR><STRONG>【活动】</STRONG><A title="" href="http://news.csdn.net/n/20070525/104534.html" target=_blank>6月5日与微软专家在线讨论Vista安全</A><BR><STRONG>【专题】</STRONG><A href="/subject/0705soa/">SOA袭来，技术人员如何提升自己? </A><BR><STRONG>【专题】</STRONG><A title="" href="/subject/0704jolt/" target=_blank>历届Jolt大奖全回顾。17届最新发布</A><BR><STRONG>【专题】</STRONG><A href="/manage/indexMang/editpage.aspx?name=热点推荐管理_1html1newindex1newhot.htm#">07年技术最新热点：Ruby on Rails</A><BR><STRONG>【专题】</STRONG><A title="" href="/subject/0704WhyPF/" target=_blank>徜徉在经验与科学之间</A><BR><STRONG>【专题】</STRONG><A title="" href="/subject/0704doitus/" target=_blank>时代DIY 自己动手开发自己的搜索引擎</A><BR><STRONG>【专题】</STRONG><A title="" href="/subject/0703programming/" target=_blank>O'reilly经典图书Programming系列<BR></A><STRONG>【专题】</STRONG><A title="" href="/subject/0703Excel/" target=_blank>引起众多MVP关注的Excel</A><BR><STRONG>【专题】</STRONG><A title="" href="/subject/0704aspnet/" target=_blank>征服ASP.NET2.0 Ajax Web开发技术详解</A>
+                            </dd>
+                        </dl>
+                    </div>
+                 　
+                   
+   <div class="remenTAG">
+                        <dl>
+                            <dt>热门TAG</dt>
+                            <dd style="line-height:18pt;">
+                              &nbsp;&nbsp;&nbsp;&nbsp;<a href='http://club.book.csdn.net/tag/推荐/1.html' style='font-size: 12px; color:#545555; ' title='11' target=_blank>推荐</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://club.book.csdn.net/tag/好/1.html' style='font-size: 15px; color:#6399B0; ' title='69' target=_blank>好</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://club.book.csdn.net/tag/好书/1.html' style='font-size: 14px; color:#545555; ' title='34' target=_blank>好书</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://club.book.csdn.net/tag/1/1.html' style='font-size: 13px; color:#545555; ' title='27' target=_blank>1</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://club.book.csdn.net/tag/tag/1.html' style='font-size: 13px; color:#545555; ' title='32' target=_blank>tag</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://club.book.csdn.net/tag/不错/1.html' style='font-size: 13px; color:#545555; ' title='24' target=_blank>不错</a>
+                            </dd>
+                        </dl>
+                    </div>  
+                    
+                    
+<script type="text/javascript">  
+    function Du_GC(type)
+    {  
+  
+      var request_url="/UserServer/GetDataServer.aspx";       // 请求url
+       var request_pars = "type="+type //请求参数
+       var my  =   new  Ajax.Request(
+       request_url, 
+        {
+       method: 'get',
+       parameters: request_pars,
+       onComplete: Du_done
+      } );  
+    }
+    function Du_done(originalRequest)
+   {
+      var szRes=originalRequest.responseText;
+ 
+      if(szRes=="")
+         $("txtDu").innerHTML="暂无信息";
+      else
+        $("txtDu").innerHTML=szRes;
+
+    }
+    function Du_ClearStyle()
+    {
+      
+     $("liZD").className="";
+     $("liDG").className="";
+     $("liR").className="";
+    
+      
+    }
+     function Du_ShowStr(li,type)
+    {
+    Du_ClearStyle();
+       $(li).className="current";
+       Du_GC(type);
+    }
+    </script>
+ <div class="du">
+                        <div class="tabs2">
+                            <ul>
+                                <!-- CSS Tabs -->
+                                <li id="liZD"><a href="#" onclick="Du_ShowStr('liZD','reading');return false;"><span><strong>最新在读</strong></span></a></li>
+                                <li id="liDG"><a href="#" onclick="Du_ShowStr('liDG','readed');return false;"><span>最新读过</span></a></li>
+                                <li id="liR"><a href="#" onclick="Du_ShowStr('liR','review');return false;"><span>周评论最多</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="duContent">
+                            <ul id="txtDu">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <script>
+                      Du_ShowStr('liZD','reading');
+                    </script>
+                    <!--<div>
+                        <a href="#">
+                            <img alt="" src="/images2/BookRank.gif"></a></div>-->
+                    <div class="zuixinshujia">
+                        <dl>
+                            <dt>最新书架</dt>
+                            <dd>
+                                <ul>
+                                     <ul> <li><a title="" href="http://club.book.csdn.net/people/mylist600.html" target="_blank"><font color="#ff0000">Web 2.0开发利器：RoR学习书架</font></a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist687.html" target="_blank"><font color="#ff0000">最新版PHP+MySQL编程开发经典书籍</font></a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist672.html" target="_blank"><font color="#ff0000">五种移动开发平台经典书架</font></a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist642.html" target="_blank"><font color="#ff0000">SQL Server 2005学习必看的几本图书</font></a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist599.html" target="_blank"><font color="#ff0000">AJAX学习必备三本书 </font></a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist511.html" target="_blank">2006年度计算机图书分类排行榜</a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist512.html" target="_blank">2006年度.NET类图书读者评选Top10 </a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist513.html" target="_blank">2006JAVA类图书读者评选Top10 </a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist519.html" target="_blank">2006年度数据库类图书读者评选Top10 </a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist514.html" target="_blank" a="">2006年度操作系统类图书读者评选Top10</a></li> <li><a title="" href="http://club.book.csdn.net/people/mylist516.html" target="_blank" a="">2006年度设计语言类图书读者评选Top10 </a></li></ul>
+                                </ul>
+                               </dd>                           
+                        </dl>
+                    </div>
+            </div>
+            </div>
+            </div>
+            </div> <!-- 页脚 -->
+        <div id="foot">
+         <img src="/book/readbook.aspx?node=22952&bookid=749&bookname=15.3++PYTHON%cf%df%b3%cc%b5%c4%b4%b4%bd%a8" alt="" width="0" height="0" />
+          </div>
+            <style>
+/* 页脚 */
+/* CSDN Public Footer style */
+
+.pubfooter{border-top:1px solid #9BA5C9;width:960px;margin:0 auto;color:#8D8D8D;}
+.pubfooter dl{padding:5px 0;text-align:center;}
+.pubfooter dl dd{padding:2px 0;}
+
+.pubfooter dd.small{font-size:75%;}
+.pubfooter dd a{padding:0 8px;color:#000;}
+</style>
+<!-- 页脚 -->
+<div class="pubfooter" id="foot">
+
+   <dl id="CFBig">
+   <dt id="CFContent"></dt>
+   <dd><a href="http://www.csdn.net/help/intro.htm" target="_blank">网站简介</a>&#124;<a href="http://www.csdn.net/help/ads.htm" target="_blank">广告服务</a>&#124;<a href="http://www.csdn.net/help/vip.htm" target="_blank">VIP资费标准</a>&#124;<a href="http://www.csdn.net/help/bankaccount.htm" target="_blank">银行汇款帐号</a>&#124;<a href="http://www.csdn.net/help/sitemap.htm" target="_blank">网站地图</a>&#124;<a href="http://www.csdn.net/help/help.htm" target="_blank">帮助</a>&#124;<a href="http://www.csdn.net/help/contact.htm" target="_blank">联系方式</a>&#124;<a href="http://job.csdn.net/Jobs/f9c75c9f2ad14404a604669b757b9ed0/viewcompany.aspx" target="_blank">诚聘英才</a>&#124;<a href="http://www.csdn.net/help/english.htm" target="_blank">English</a>&#124;<a href="http://www.csdn.net/help/about.htm" target="_blank">版权声明</a>&#124;<a href="#" onclick="window.location.href='mai'+'lto:'+'adm'+'in@c'+'sdn.n'+'et?subject=Report To CSDN';return false">问题报告</a></dd>
+
+   <dd>北京创新乐知广告有限公司 版权所有,&nbsp;京&nbsp;ICP&nbsp;证&nbsp;070598&nbsp;号</dd>
+   <dd>世纪乐知(北京)网络技术有限公司 提供技术支持</dd>
+   <dd>举报电话：13552009689</dd>
+   <dd class="small">Copyright ? 2000-2008, CSDN.NET, All Rights Reserved</dd>
+
+   <dd><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" target="_blank"><img src="http://www.csdn.net/ui/images/gongshang_logos.gif" alt="GongshangLogo" /></a></dd>
+   </dl>
+</div>
+ 
+<script language="JavaScript" type="text/javascript" src="http://www.csdn.net/common/counter.js"></script> 
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+<script type="text/javascript" src="/css/webad.js"></script>
+<!-- /页脚 -->
+
+            <script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=115 border=0 width=0 height=0>");</script>
+            
+     </body>
+</html>

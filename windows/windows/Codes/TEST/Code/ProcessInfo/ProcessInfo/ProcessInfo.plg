@@ -1,0 +1,138 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ProcessInfo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP596.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/ProcessInfo.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Ares\Software_Exploiture\ProgrammeCode\ProcessInfo\ProcessInfo\ProcessInfo.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP596.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP597.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ProcessInfo.pdb" /debug /machine:I386 /out:"Debug/ProcessInfo.exe" /pdbtype:sept 
+.\Debug\ProcessInfo.obj
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP597.tmp"
+<h3>Output Window</h3>
+Compiling...
+ProcessInfo.cpp
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1298) : error C2011: '_SECURITY_DESCRIPTOR' : 'struct' type redefinition
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1321) : error C2011: '_RTL_CRITICAL_SECTION_DEBUG' : 'struct' type redefinition
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1343) : error C2011: '_RTL_CRITICAL_SECTION' : 'struct' type redefinition
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1369) : error C2059: syntax error : '__stdcall'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1369) : error C2091: function returns function
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1370) : error C2143: syntax error : missing ';' before '*'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1370) : error C2501: 'PNTPROC' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1429) : error C2146: syntax error : missing ';' before identifier 'ServiceTable'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1429) : error C2501: 'PNTPROC' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1429) : error C2501: 'ServiceTable' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1471) : error C2371: 'BOOL' : redefinition; different basic types
+        c:\microsoft sdk\include\windef.h(142) : see declaration of 'BOOL'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1569) : error C2146: syntax error : missing ';' before identifier 'Lock'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1569) : error C2501: 'ERESOURCE' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1569) : error C2501: 'Lock' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1571) : error C2146: syntax error : missing ';' before identifier 'ObjectTypeName'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1571) : error C2501: 'UNICODE_STRING' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1571) : error C2501: 'ObjectTypeName' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1614) : error C2146: syntax error : missing ';' before identifier 'ObjectTypeName'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1614) : error C2501: 'UNICODE_STRING' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1614) : error C2501: 'ObjectTypeName' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1630) : warning C4200: nonstandard extension used : zero-sized array in struct/union
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1648) : error C2146: syntax error : missing ';' before identifier 'AccessMode'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1648) : error C2501: 'KPROCESSOR_MODE' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1648) : error C2501: 'AccessMode' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1719) : warning C4200: nonstandard extension used : zero-sized array in struct/union
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1769) : error C2146: syntax error : missing ';' before identifier 'Name'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1769) : error C2501: 'UNICODE_STRING' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1769) : error C2501: 'Name' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1802) : warning C4200: nonstandard extension used : zero-sized array in struct/union
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1837) : error C2146: syntax error : missing ';' before identifier 'Header'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1837) : error C2501: 'DISPATCHER_HEADER' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1837) : error C2501: 'Header' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1872) : error C2146: syntax error : missing ';' before identifier 'TimerRoutine'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1872) : error C2501: 'PIO_TIMER_ROUTINE' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1872) : error C2501: 'TimerRoutine' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1874) : error C2146: syntax error : missing ';' before identifier 'DeviceObject'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1874) : error C2501: 'PDEVICE_OBJECT' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1874) : error C2501: 'DeviceObject' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1891) : error C2146: syntax error : missing ';' before identifier 'DeviceObject'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1891) : error C2501: 'PDEVICE_OBJECT' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1891) : error C2501: 'DeviceObject' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1892) : error C2146: syntax error : missing ';' before identifier 'DriverObject'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1892) : error C2501: 'PDRIVER_OBJECT' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1892) : error C2501: 'DriverObject' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1895) : error C2146: syntax error : missing ';' before identifier 'EntryData'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1895) : error C2501: 'IO_ERROR_LOG_PACKET' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1895) : error C2501: 'EntryData' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1910) : error C2146: syntax error : missing ';' before identifier 'Event1'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1910) : error C2501: 'KEVENT' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1910) : error C2501: 'Event1' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1911) : error C2146: syntax error : missing ';' before identifier 'Event2'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1911) : error C2501: 'KEVENT' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1911) : error C2501: 'Event2' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1942) : error C2146: syntax error : missing ';' before identifier 'Tcb'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1942) : error C2501: 'KTIMER' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1942) : error C2501: 'Tcb' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1943) : error C2146: syntax error : missing ';' before identifier 'Apc'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1943) : error C2501: 'KAPC' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1943) : error C2501: 'Apc' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1944) : error C2146: syntax error : missing ';' before identifier 'Dpc'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1944) : error C2501: 'KDPC' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(1944) : error C2501: 'Dpc' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2151) : error C2146: syntax error : missing ';' before identifier 'HandleTableLock'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2151) : error C2501: 'ERESOURCE' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2151) : error C2501: 'HandleTableLock' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2153) : error C2146: syntax error : missing ';' before identifier 'Event'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2153) : error C2501: 'KEVENT' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2153) : error C2501: 'Event' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2168) : error C2146: syntax error : missing ';' before identifier 'Header'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2168) : error C2501: 'DISPATCHER_HEADER' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2168) : error C2501: 'Header' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2205) : error C2146: syntax error : missing ';' before identifier 'Header'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2205) : error C2501: 'DISPATCHER_HEADER' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2205) : error C2501: 'Header' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2234) : error C2146: syntax error : missing ';' before identifier 'WaitBlock'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2234) : error C2501: 'KWAIT_BLOCK' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2234) : error C2501: 'WaitBlock' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2243) : error C2146: syntax error : missing ';' before identifier 'Timer'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2243) : error C2501: 'KTIMER' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2243) : error C2501: 'Timer' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2258) : error C2146: syntax error : missing ';' before identifier 'PreviousMode'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2258) : error C2501: 'KPROCESSOR_MODE' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2258) : error C2501: 'PreviousMode' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2268) : error C2146: syntax error : missing ';' before identifier 'SuspendApc'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2268) : error C2501: 'KAPC' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2268) : error C2501: 'SuspendApc' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2269) : error C2146: syntax error : missing ';' before identifier 'SuspendSemaphore'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2269) : error C2501: 'KSEMAPHORE' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2269) : error C2501: 'SuspendSemaphore' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2291) : error C2146: syntax error : missing ';' before identifier 'LockEvent'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2291) : error C2501: 'KEVENT' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2291) : error C2501: 'LockEvent' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2319) : error C2146: syntax error : missing ';' before identifier 'WorkingSetLock'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2319) : error C2501: 'FAST_MUTEX' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2319) : error C2501: 'WorkingSetLock' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2325) : error C2146: syntax error : missing ';' before identifier 'AddressCreationLock'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2325) : error C2501: 'FAST_MUTEX' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2325) : error C2501: 'AddressCreationLock' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2425) : error C2146: syntax error : missing ';' before identifier 'Cid'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2425) : error C2501: 'CLIENT_ID' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2425) : error C2501: 'Cid' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2426) : error C2146: syntax error : missing ';' before identifier 'LpcReplySemaphore'
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2426) : error C2501: 'KSEMAPHORE' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2426) : error C2501: 'LpcReplySemaphore' : missing storage-class or type specifiers
+e:\ares\software_exploiture\programmecode\processinfo\processinfo\w2k_def.h(2426) : fatal error C1003: error count exceeds 100; stopping compilation
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+ProcessInfo.exe - 102 error(s), 3 warning(s)
+</pre>
+</body>
+</html>

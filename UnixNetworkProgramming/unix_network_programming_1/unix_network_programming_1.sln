@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unix_network_programming_1", "unix_network_programming_1\unix_network_programming_1.vcproj", "{ACE899D9-37FF-4E98-B6E6-013EF3CE8D7C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "time_server", "time_server\time_server.vcproj", "{E42A2EFC-2EF7-43EE-AD1A-19D8F90EC8A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACE899D9-37FF-4E98-B6E6-013EF3CE8D7C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ACE899D9-37FF-4E98-B6E6-013EF3CE8D7C}.Debug|Win32.Build.0 = Debug|Win32
+		{ACE899D9-37FF-4E98-B6E6-013EF3CE8D7C}.Release|Win32.ActiveCfg = Release|Win32
+		{ACE899D9-37FF-4E98-B6E6-013EF3CE8D7C}.Release|Win32.Build.0 = Release|Win32
+		{E42A2EFC-2EF7-43EE-AD1A-19D8F90EC8A7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E42A2EFC-2EF7-43EE-AD1A-19D8F90EC8A7}.Debug|Win32.Build.0 = Debug|Win32
+		{E42A2EFC-2EF7-43EE-AD1A-19D8F90EC8A7}.Release|Win32.ActiveCfg = Release|Win32
+		{E42A2EFC-2EF7-43EE-AD1A-19D8F90EC8A7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

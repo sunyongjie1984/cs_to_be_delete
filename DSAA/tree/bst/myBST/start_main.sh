@@ -1,0 +1,1 @@
+./main | tee a.txt &

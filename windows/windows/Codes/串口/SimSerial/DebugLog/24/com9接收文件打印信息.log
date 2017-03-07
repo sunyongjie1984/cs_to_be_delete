@@ -1,0 +1,804 @@
+
+
+
+===========   打开com9口    ===============
+
+DevUpper.sys: + Enter FilterCreate routine
+DevUpper.sys: - Exit FilterCreate routine
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_QUEUE_SIZE ---
+DevUpper.sys: IoControl code:  1769480
+InputBufferLength:  8     OutputBufferLength:   0   Irp:   0x8163eae8
+DevUpper.sys: Input Buf (8172ee88):
+ 0 20  0  0  0 20  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  0
+return buffer(0x8172ee88):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: --- Default  ---
+DevUpper.sys: IoControl code:  1769600
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  4
+return buffer(0x8172ee88):
+ 0  0  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769552
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  4
+return buffer(0x8172ee88):
+60  9  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769556
+InputBufferLength:  0     OutputBufferLength:   3   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  3
+return buffer(0x8172ee88):
+ 0  0  8
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_CHARS ---
+DevUpper.sys: IoControl code:  1769560
+InputBufferLength:  0     OutputBufferLength:   6   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  6
+return buffer(0x8172ee88):
+ 0  0  0  0 11 13
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769568
+InputBufferLength:  0     OutputBufferLength:   16   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  16
+return buffer(0x8172ee88):
+ 9  0  0 80 80  0  0 80  0 10  0  0  0  4  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769552
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  4
+return buffer(0x8172ee88):
+60  9  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769556
+InputBufferLength:  0     OutputBufferLength:   3   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  3
+return buffer(0x8172ee88):
+ 0  0  8
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_CHARS ---
+DevUpper.sys: IoControl code:  1769560
+InputBufferLength:  0     OutputBufferLength:   6   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  6
+return buffer(0x8172ee88):
+ 0  0  0  0 11 13
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769568
+InputBufferLength:  0     OutputBufferLength:   16   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  16
+return buffer(0x8172ee88):
+ 9  0  0 80 80  0  0 80  0 10  0  0  0  4  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769476
+InputBufferLength:  4     OutputBufferLength:   0   Irp:   0x8163eae8
+DevUpper.sys: Input Buf (8172ee88):
+60  9  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  0
+return buffer(0x8172ee88):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_DTR ---
+DevUpper.sys: IoControl code:  1769508
+InputBufferLength:  0     OutputBufferLength:   0   Irp:   0x8163eae8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  0
+return buffer(0x0):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769484
+InputBufferLength:  3     OutputBufferLength:   0   Irp:   0x8163eae8
+DevUpper.sys: Input Buf (8172ee88):
+ 0  0  8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  0
+return buffer(0x8172ee88):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_CHARS ---
+DevUpper.sys: IoControl code:  1769564
+InputBufferLength:  6     OutputBufferLength:   0   Irp:   0x8163eae8
+DevUpper.sys: Input Buf (8172ee88):
+ 0  0  0  0 11 13
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  0
+return buffer(0x8172ee88):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769572
+InputBufferLength:  16     OutputBufferLength:   0   Irp:   0x8163eae8
+DevUpper.sys: Input Buf (8172ee88):
+ 9  0  0 80 80  0  0 80 50  0  0  0 c8  0  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  0
+return buffer(0x8172ee88):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_TIMEOUTS ---
+DevUpper.sys: IoControl code:  1769500
+InputBufferLength:  20     OutputBufferLength:   0   Irp:   0x8163eae8
+DevUpper.sys: Input Buf (8172ee88):
+ a  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 88 13  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  0
+return buffer(0x8172ee88):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_WAIT_MASK ---
+DevUpper.sys: IoControl code:  1769540
+InputBufferLength:  4     OutputBufferLength:   0   Irp:   0x8163eae8
+DevUpper.sys: Input Buf (8172ee88):
+a0  0  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  0
+return buffer(0x8172ee88):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_WAIT_ON_MASK ---
+DevUpper.sys: IoControl code:  1769544
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x8163eae8
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: +  Enter Filter Read routine
+InputBufferLength:  0     OutputBufferLength:   80   Irp:   0x81638428
+DevUpper.sys: -  Exit Filter Read routine
+
+==========       打开完毕   ===============
+NTICE: Exit32 PID=35C  MOD=notepad
+
+
+NTICE: Exit32 PID=498  MOD=notepad
+
+
+============     开始准备使用协议接收文件    ===========
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: --- Default  ---
+DevUpper.sys: IoControl code:  1769600
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  4
+return buffer(0x816b2248):
+ 0  0  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769552
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  4
+return buffer(0x816b2248):
+60  9  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769556
+InputBufferLength:  0     OutputBufferLength:   3   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  3
+return buffer(0x816b2248):
+ 0  0  8
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_CHARS ---
+DevUpper.sys: IoControl code:  1769560
+InputBufferLength:  0     OutputBufferLength:   6   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  6
+return buffer(0x816b2248):
+ 0  0  0  0 11 13
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769568
+InputBufferLength:  0     OutputBufferLength:   16   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  16
+return buffer(0x816b2248):
+ 9  0  0 80 80  0  0 80 50  0  0  0 c8  0  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769552
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  4
+return buffer(0x816b2248):
+60  9  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769556
+InputBufferLength:  0     OutputBufferLength:   3   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  3
+return buffer(0x816b2248):
+ 0  0  8
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_CHARS ---
+DevUpper.sys: IoControl code:  1769560
+InputBufferLength:  0     OutputBufferLength:   6   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  6
+return buffer(0x816b2248):
+ 0  0  0  0 11 13
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769568
+InputBufferLength:  0     OutputBufferLength:   16   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  16
+return buffer(0x816b2248):
+ 9  0  0 80 80  0  0 80 50  0  0  0 c8  0  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769476
+InputBufferLength:  4     OutputBufferLength:   0   Irp:   0x81643e68
+DevUpper.sys: Input Buf (816b2248):
+60  9  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  0
+return buffer(0x816b2248):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_DTR ---
+DevUpper.sys: IoControl code:  1769508
+InputBufferLength:  0     OutputBufferLength:   0   Irp:   0x81643e68
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  0
+return buffer(0x0):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769484
+InputBufferLength:  3     OutputBufferLength:   0   Irp:   0x81643e68
+DevUpper.sys: Input Buf (816b2248):
+ 0  0  8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  0
+return buffer(0x816b2248):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_CHARS ---
+DevUpper.sys: IoControl code:  1769564
+InputBufferLength:  6     OutputBufferLength:   0   Irp:   0x81643e68
+DevUpper.sys: Input Buf (816b2248):
+ 0  0  0  0 11 13
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  0
+return buffer(0x816b2248):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769572
+InputBufferLength:  16     OutputBufferLength:   0   Irp:   0x81643e68
+DevUpper.sys: Input Buf (816b2248):
+ 9  0  0 80 80  0  0 80 50  0  0  0 c8  0  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  0
+return buffer(0x816b2248):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_TIMEOUTS ---
+DevUpper.sys: IoControl code:  1769500
+InputBufferLength:  20     OutputBufferLength:   0   Irp:   0x81643e68
+DevUpper.sys: Input Buf (816b2248):
+ a  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 88 13  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  0
+return buffer(0x816b2248):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+
+
+
+===========   接收时首先发送协议内容，进行交换    ===============
+
+DevUpper.sys: +  Enter Filter Write routine
+InputBufferLength:  21     OutputBufferLength:   0   Irp:   0x81643e68
+DevUpper.sys: Input Buf (816b2248):
+2a 2a 18 42 30 31 30 30 30 30 30 30 32 33 62 65 35 30  d 8a 11
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  21
+return buffer(0x816b2248):
+2a 2a 18 42 30 31 30 30 30 30 30 30 32 33 62 65 35 30  d 8a 11
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: -  Exit Filter Write routine
+
+NTICE: Exit32 PID=4D4  MOD=notepad
+NTICE: Unload32 MOD=browseui
+NTICE: Unload32 MOD=shdocvw
+
+
+==========     com10发送文件    ===============
+==========   首先读到10发过来的数据    ===========
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  24
+return buffer(0x81643228):
+72 7a  d 2a 2a 18 42 30 30 30 30 30 30 30 30 30 30 30 30 30 30  d 8a 11
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: +  Enter Filter Read routine
+InputBufferLength:  0     OutputBufferLength:   80   Irp:   0x81638428
+DevUpper.sys: -  Exit Filter Read routine
+
+DevUpper.sys: +  Enter Filter Write routine
+InputBufferLength:  21     OutputBufferLength:   0   Irp:   0x816c2908
+DevUpper.sys: Input Buf (817a5148):
+2a 2a 18 42 30 31 30 30 30 30 30 30 32 33 62 65 35 30  d 8a 11
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x816c2908
+info:  21
+return buffer(0x817a5148):
+2a 2a 18 42 30 31 30 30 30 30 30 30 32 33 62 65 35 30  d 8a 11
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: -  Exit Filter Write routine
+
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  42
+return buffer(0x816434a8):
+2a 18 41  4  0  0  0  3 b9 65 31 2e 74 78 74  0 35 20 37 37 37 32 33 32 35 35 36 34 20 30 20 30 20 3
+1 20 35  0 18 6b 7b 6f 11
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: +  Enter Filter Read routine
+InputBufferLength:  0     OutputBufferLength:   80   Irp:   0x81638428
+DevUpper.sys: -  Exit Filter Read routine
+
+DevUpper.sys: +  Enter Filter Write routine
+InputBufferLength:  21     OutputBufferLength:   0   Irp:   0x816c2908
+DevUpper.sys: Input Buf (81742128):
+2a 2a 18 42 30 35 30 30 30 30 30 30 32 33 33 37 35 36  d 8a 11
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x816c2908
+info:  21
+return buffer(0x81742128):
+2a 2a 18 42 30 35 30 30 30 30 30 30 32 33 33 37 35 36  d 8a 11
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: -  Exit Filter Write routine
+
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  20
+return buffer(0x816434a8):
+2a 2a 18 42 30 38 30 30 30 30 30 30 30 30 30 32 32 64  d 8a
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: +  Enter Filter Read routine
+InputBufferLength:  0     OutputBufferLength:   80   Irp:   0x81638428
+DevUpper.sys: -  Exit Filter Read routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_PURGE ---
+DevUpper.sys: IoControl code:  1769548
+InputBufferLength:  4     OutputBufferLength:   0   Irp:   0x816c2908
+DevUpper.sys: Input Buf (817a5148):
+ a  0  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  0
+return buffer(0x816434a8):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x816c2908
+info:  0
+return buffer(0x817a5148):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: +  Enter Filter Read routine
+InputBufferLength:  0     OutputBufferLength:   80   Irp:   0x816c2908
+DevUpper.sys: -  Exit Filter Read routine
+
+DevUpper.sys: +  Enter Filter Write routine
+InputBufferLength:  20     OutputBufferLength:   0   Irp:   0x81638428
+DevUpper.sys: Input Buf (817a5148):
+2a 2a 18 42 30 38 30 30 30 30 30 30 30 30 30 32 32 64  d 8a
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  20
+return buffer(0x817a5148):
+2a 2a 18 42 30 38 30 30 30 30 30 30 30 30 30 32 32 64  d 8a
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: -  Exit Filter Write routine
+
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x816c2908
+info:  2
+return buffer(0x816434a8):
+4f 4f
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: +  Enter Filter Read routine
+InputBufferLength:  0     OutputBufferLength:   80   Irp:   0x816c2908
+DevUpper.sys: -  Exit Filter Read routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: --- Default  ---
+DevUpper.sys: IoControl code:  1769600
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  4
+return buffer(0x817a5148):
+ 0  0  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769552
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  4
+return buffer(0x817a5148):
+60  9  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769556
+InputBufferLength:  0     OutputBufferLength:   3   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  3
+return buffer(0x817a5148):
+ 0  0  8
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_CHARS ---
+DevUpper.sys: IoControl code:  1769560
+InputBufferLength:  0     OutputBufferLength:   6   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  6
+return buffer(0x817a5148):
+ 0  0  0  0 11 13
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769568
+InputBufferLength:  0     OutputBufferLength:   16   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  16
+return buffer(0x817a5148):
+ 9  0  0 80 80  0  0 80 50  0  0  0 c8  0  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769552
+InputBufferLength:  0     OutputBufferLength:   4   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  4
+return buffer(0x817a5148):
+60  9  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769556
+InputBufferLength:  0     OutputBufferLength:   3   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  3
+return buffer(0x817a5148):
+ 0  0  8
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_CHARS ---
+DevUpper.sys: IoControl code:  1769560
+InputBufferLength:  0     OutputBufferLength:   6   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  6
+return buffer(0x817a5148):
+ 0  0  0  0 11 13
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_GET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769568
+InputBufferLength:  0     OutputBufferLength:   16   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  16
+return buffer(0x817a5148):
+ 9  0  0 80 80  0  0 80 50  0  0  0 c8  0  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_BAUD_RATE ---
+DevUpper.sys: IoControl code:  1769476
+InputBufferLength:  4     OutputBufferLength:   0   Irp:   0x81638428
+DevUpper.sys: Input Buf (817a5148):
+60  9  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  0
+return buffer(0x817a5148):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_DTR ---
+DevUpper.sys: IoControl code:  1769508
+InputBufferLength:  0     OutputBufferLength:   0   Irp:   0x81638428
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  0
+return buffer(0x0):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_LINE_CONTROL ---
+DevUpper.sys: IoControl code:  1769484
+InputBufferLength:  3     OutputBufferLength:   0   Irp:   0x81638428
+DevUpper.sys: Input Buf (817a5148):
+ 0  0  8
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  0
+return buffer(0x817a5148):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_CHARS ---
+DevUpper.sys: IoControl code:  1769564
+InputBufferLength:  6     OutputBufferLength:   0   Irp:   0x81638428
+DevUpper.sys: Input Buf (817a5148):
+ 0  0  0  0 11 13
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  0
+return buffer(0x817a5148):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_HANDFLOW ---
+DevUpper.sys: IoControl code:  1769572
+InputBufferLength:  16     OutputBufferLength:   0   Irp:   0x81638428
+DevUpper.sys: Input Buf (817a5148):
+ 9  0  0 80 80  0  0 80 50  0  0  0 c8  0  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  0
+return buffer(0x817a5148):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_TIMEOUTS ---
+DevUpper.sys: IoControl code:  1769500
+InputBufferLength:  20     OutputBufferLength:   0   Irp:   0x81638428
+DevUpper.sys: Input Buf (817a5148):
+ a  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 88 13  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81638428
+info:  0
+return buffer(0x817a5148):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+NTICE: Exit32 PID=28C  MOD=notepad
+NTICE: Exit32 PID=3C0  MOD=notepad
+NTICE: Unload32 MOD=HTRN_JIS
+NTICE: Exit32 PID=2E4  MOD=hypertrm
+NTICE: Exit32 PID=1D4  MOD=notepad
+NTICE: Exit32 PID=4B4  MOD=calc
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_SET_WAIT_MASK ---
+DevUpper.sys: IoControl code:  1769540
+InputBufferLength:  4     OutputBufferLength:   0   Irp:   0x81643e68
+DevUpper.sys: Input Buf (816e22a8):
+a0  0  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x8163eae8
+info:  4
+return buffer(0x81743e68):
+ 0  0  0  0
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x816c2908
+info:  0
+return buffer(0x816434a8):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x81643e68
+info:  0
+return buffer(0x816e22a8):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterIoControl routine
+DevUpper.sys: ---  IOCTL_SERIAL_PURGE ---
+DevUpper.sys: IoControl code:  1769548
+InputBufferLength:  4     OutputBufferLength:   0   Irp:   0x816c2908
+DevUpper.sys: Input Buf (81743e68):
+ 3  0  0  0
+DevUpper.sys: +  Enter Completion routine...
+CompletionRoutine:  Irp:  0x816c2908
+info:  0
+return buffer(0x81743e68):
+
+DevUpper.sys: -  Exit Completion routine...
+DevUpper.sys: - Exit FilterIoControl routine
+
+DevUpper.sys: + Enter FilterCleanup routine
+DevUpper.sys: - Exit FilterCleanup routine
+DevUpper.sys: + Enter FilterClose routine
+DevUpper.sys: - Exit FilterClose routine
+NTICE: Unload32 MOD=HTRN_JIS
+NTICE: Exit32 PID=144  MOD=hypertrm
+NTICE: Unload32 MOD=wininet
+NTICE: Unload32 MOD=sensapi
+NTICE: Exit32 PID=388  MOD=NDETECT

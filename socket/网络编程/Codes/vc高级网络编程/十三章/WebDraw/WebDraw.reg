@@ -1,0 +1,30 @@
+REGEDIT
+; This .REG file may be used by your SETUP program.
+;   If a SETUP program is not available, the entries below will be
+;   registered in your InitInstance automatically with a call to
+;   CWinApp::RegisterShellFileTypes and COleObjectFactory::UpdateRegistryAll.
+
+HKEY_CLASSES_ROOT\.drw = WebDraw.Document
+HKEY_CLASSES_ROOT\WebDraw.Document\shell\open\command = WEBDRAW.EXE %1
+HKEY_CLASSES_ROOT\WebDraw.Document\shell\open\ddeexec = [open("%1")]
+HKEY_CLASSES_ROOT\WebDraw.Document\shell\open\ddeexec\application = WEBDRAW
+    ; note: the application is optional
+    ;  (it defaults to the app name in "command")
+
+HKEY_CLASSES_ROOT\WebDraw.Document = WebDra Document
+HKEY_CLASSES_ROOT\WebDraw.Document\protocol\StdFileEditing\server = WEBDRAW.EXE
+HKEY_CLASSES_ROOT\WebDraw.Document\protocol\StdFileEditing\verb\0 = &Edit
+HKEY_CLASSES_ROOT\WebDraw.Document\Insertable =
+HKEY_CLASSES_ROOT\WebDraw.Document\CLSID = {D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}
+
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319} = WebDra Document
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\DefaultIcon = WEBDRAW.EXE,1
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\LocalServer32 = WEBDRAW.EXE
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\ProgId = WebDraw.Document
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\MiscStatus = 32
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\AuxUserType\3 = WebDraw
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\AuxUserType\2 = WebDra
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\Insertable = 
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\verb\1 = &Open,0,2
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\verb\0 = &Edit,0,2
+HKEY_CLASSES_ROOT\CLSID\{D5C2CE4E-4FC0-4549-9B85-15AAC2CBD319}\InprocHandler32 = ole32.dll

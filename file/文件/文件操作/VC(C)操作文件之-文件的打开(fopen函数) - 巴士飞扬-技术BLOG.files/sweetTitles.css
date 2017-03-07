@@ -1,0 +1,12 @@
+BODY DIV#toolTip {
+	BORDER-RIGHT: #cef3ff 3px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cef3ff 3px solid; PADDING-LEFT: 5px; Z-INDEX: 1000; MIN-HEIGHT: 1em; BACKGROUND: #edf5fa 0% 50%; PADDING-BOTTOM: 5px; BORDER-LEFT: #cef3ff 3px solid; WIDTH: auto; PADDING-TOP: 5px; BORDER-BOTTOM: #cef3ff 3px solid; FONT-FAMILY: Verdana,Arial,Helvetica,Georgia,Sans-Serif; POSITION: absolute; TEXT-ALIGN: left; max-width: 500px; moz-border-radius: 5px
+}
+BODY DIV#toolTip P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: 11px/12px Verdana,Arial,sans-serif; COLOR: #027ac6; PADDING-TOP: 0px
+}
+BODY DIV#toolTip P EM {
+	MARGIN-TOP: 3px; DISPLAY: block; FONT-WEIGHT: bold; COLOR: #f60; FONT-STYLE: normal
+}
+BODY DIV#toolTip P EM SPAN {
+	FONT-WEIGHT: bold; COLOR: #669900
+}

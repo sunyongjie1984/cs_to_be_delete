@@ -1,0 +1,48 @@
+   The "generic" notes for putting this thing together are below.  Here's the 
+short version.
+
+1.) *** Make sure you have Microsoft Visual Studio C++ 6 installed!!! ***
+2.) Go to the directory you extracted snort-win32 to then go to the directory named 'WIN32-Prj'.
+3.) Type nmake. You will receive a listing of possible build types.
+	"snort - Win32 Release" - Standard snort-win32.
+	"snort - Win32 Debug" - Standard snort-win32 with debugging symbols.
+	"snort - Win32 MySQL Release" - Snort-win32 with MySQL support.
+	"snort - Win32 MySQL Debug" - Snort-win32 with MySQL support and debugging symbols.
+	"snort - Win32 Flexresp Release" - Snort-win32 with FlexResp support.
+	"snort - Win32 Flexresp Debug" - Snort-win32 with FlexResp support and debugging symbols.
+	
+    Select one build.
+4.) type 'nmake CFG="BUILD"' where BUILD(note the use of quotes) is one of the build types listed above.
+5.) Create a sample rules file (if you want to use rules, check out the 
+    included snort.conf file)
+6.) snort -?
+7.) If you've used previous versions of Snort, you may need to rewrite your
+    rules to make them compliant to the rules format.  See 
+    http://www.snort.org/writing_snort_rules.htm for more information. 
+8.) Have fun!
+
+   Any questions?  Send them to Michael Davis <mike@datanerds.net> or sign up on the snort-users
+mailing list at http://snort.sourceforge.net!
+
+Basic Installation
+==================
+
+   These are generic installation instructions.
+
+The simplest way to compile this package is:
+
+  1. `cd' to the directory containing the package's source code and then cd to 'WIN32-PRJ'.
+      Next, type `nmake' to retreive a listing of possible build types.
+	"snort - Win32 Release" - Standard snort-win32.
+	"snort - Win32 Debug" - Standard snort-win32 with debugging symbols.
+	"snort - Win32 MySQL Release" - Snort-win32 with MySQL support.
+	"snort - Win32 MySQL Debug" - Snort-win32 with MySQL support and debugging symbols.
+	"snort - Win32 Flexresp Release" - Snort-win32 with FlexResp support.
+	"snort - Win32 Flexresp Debug" - Snort-win32 with FlexResp support and debugging symbols.
+	
+  2. Type `nmake CFG="BUILD"' where BUILD(note the use of quotes) is one of the build type slisted above to compile the package.
+
+  3. You now have a new binary in the Release directory.
+
+  4. You can remove the program binaries and object files from the
+     source code directory by typing `nmake CFG="BUILD" clean' where BUILD(note the use of quotes) is one of the build types listed in step 1 above.

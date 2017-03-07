@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ServerSocket - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\JACKIE~1\LOCALS~1\Temp\RSP1BF.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/ServerSocket.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\临时\tcp,udp 编程chap3\TCP.UDP高级编程\ClientSocketDlg.cpp"
+"F:\临时\tcp,udp 编程chap3\TCP.UDP高级编程\ServerSocket.cpp"
+"F:\临时\tcp,udp 编程chap3\TCP.UDP高级编程\ServerSocketDlg.cpp"
+"F:\临时\tcp,udp 编程chap3\TCP.UDP高级编程\SocketComm.cpp"
+"F:\临时\tcp,udp 编程chap3\TCP.UDP高级编程\SocketManager.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\JACKIE~1\LOCALS~1\Temp\RSP1BF.tmp" 
+<h3>Output Window</h3>
+Compiling...
+Skipping... (no relevant changes detected)
+ClientSocketDlg.cpp
+ServerSocket.cpp
+ServerSocketDlg.cpp
+SocketComm.cpp
+SocketManager.cpp
+Creating temporary file "C:\DOCUME~1\JACKIE~1\LOCALS~1\Temp\RSP1C0.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/ServerSocket.pdb" /debug /machine:I386 /out:"Debug/ServerSocket.exe" /pdbtype:sept 
+".\Debug\ClientSocketDlg.obj"
+".\Debug\ServerSocket.obj"
+".\Debug\ServerSocketDlg.obj"
+".\Debug\SocketComm.obj"
+".\Debug\SocketManager.obj"
+".\Debug\StdAfx.obj"
+".\Debug\ServerSocket.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\JACKIE~1\LOCALS~1\Temp\RSP1C0.tmp"
+<h3>Output Window</h3>
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/ServerSocket.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\ClientSocketDlg.sbr" ".\Debug\ServerSocket.sbr" ".\Debug\ServerSocketDlg.sbr" ".\Debug\SocketComm.sbr" ".\Debug\SocketManager.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+ServerSocket.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

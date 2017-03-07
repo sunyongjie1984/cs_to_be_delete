@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "definition_declaration", "definition_declaration\definition_declaration.vcproj", "{6CEF61EB-CB11-4A19-A5B3-497F99F5B9D9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "const_test", "const_test\const_test.vcproj", "{850B095F-497F-446C-B5FA-79CFF1DC1742}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CEF61EB-CB11-4A19-A5B3-497F99F5B9D9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6CEF61EB-CB11-4A19-A5B3-497F99F5B9D9}.Debug|Win32.Build.0 = Debug|Win32
+		{6CEF61EB-CB11-4A19-A5B3-497F99F5B9D9}.Release|Win32.ActiveCfg = Release|Win32
+		{6CEF61EB-CB11-4A19-A5B3-497F99F5B9D9}.Release|Win32.Build.0 = Release|Win32
+		{850B095F-497F-446C-B5FA-79CFF1DC1742}.Debug|Win32.ActiveCfg = Debug|Win32
+		{850B095F-497F-446C-B5FA-79CFF1DC1742}.Debug|Win32.Build.0 = Debug|Win32
+		{850B095F-497F-446C-B5FA-79CFF1DC1742}.Release|Win32.ActiveCfg = Release|Win32
+		{850B095F-497F-446C-B5FA-79CFF1DC1742}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

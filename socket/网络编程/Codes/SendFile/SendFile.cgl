@@ -1,0 +1,23 @@
+Functions called:
+ fflush (4 times)
+ delete (11 times)
+ free (7 times)
+ memset (1 times)
+ new (11 times)
+ SysReallocMem (57 times)
+ SysFreeMem (1853 times)
+ SysGetMem (1855 times)
+ lstrlenA (1 times)
+ lstrcpynA (4 times)
+ calloc (1 times)
+ strlen (63 times)
+ realloc (1 times)
+ strdup (1 times)
+ malloc (4 times)
+ memcpy (2 times)
+Resource types used:
+ object (11 allocs, 11 max)
+ memory block (1862 allocs, 736 max)
+Modules used:
+ 00400000 05/23/2003 10:05:04 D:\Test\SendFile2\SendFile.exe
+==========================================

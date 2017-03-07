@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: mutex lock</TITLE>
+ <LINK HREF="apr-tutorial-18.html" REL=next>
+ <LINK HREF="apr-tutorial-16.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc17" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-18.html">Next</A>
+<A HREF="apr-tutorial-16.html">Previous</A>
+<A HREF="apr-tutorial.html#toc17">Contents</A>
+<HR>
+<H2><A NAME="s17">17.</A> <A HREF="apr-tutorial.html#toc17">mutex lock</A></H2>
+
+<P>Mutex is abbreviation of 'mutual exclusion'. As stated above, mulitiple threads run in the same memory address space. It means all objects are shared except ones on stack memory. If multiple threads modify the same object simultaneoulsy, the result is undetermined. Because one line in C program is not always an atomic operation of CPU. The simplest solution to get around is mutex lock.</P>
+<P>At first, we call apr_thread_mutex_create(). Mutex lock has three basic operations:</P>
+<P>/* excerpted from apr_thread_proc.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_status_t) apr_thread_mutex_lock(apr_thread_mutex_t *mutex);
+APR_DECLARE(apr_status_t) apr_thread_mutex_trylock(apr_thread_mutex_t *mutex);
+APR_DECLARE(apr_status_t) apr_thread_mutex_unlock(apr_thread_mutex_t *mutex);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>lock and unlock operations are always used as pair. trylock operation is alternative to lock. Code looks as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* pseudo code: mutex lock's typical code */
+/* case one */
+apr_thread_mutex_lock(mutex);/* sleep until the current thread acquires the mutex lock */
+do something on shared objects...  /* during this, the other threads can't acquire the mutex lock. */
+apr_thread_mutex_unlock(mutex);/* we should unlock after lock as soon as possible */
+
+/* case two */
+apr_status_t rv = apr_thread_mutex_trylock(mutex);
+if (APR_STATUS_IS_EBUSY(rv)) {
+    go through/* we don't need to unlock, because we didn't acquire the lock */
+} else {
+    do something on shared objects...
+    apr_thread_mutex_unlock(mutex);/* we should unlock */
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>Imagine the case multiple threads are running. They run independently, and they reach the same point simultaneously. They call apr_thread_mutex_lock() simultaneously to acquire the mutex lock. Only one thread can acquire it. We can't control which thread is chosen, because it depends on the system. Anyway, only one thread becomes the winner. It acquires the mutex lock and returns from apr_thread_mutex_lock(). The other threads still sleep in apr_thread_mutex_lock(). The winner thread calls apr_thread_mutex_unlock() later. Then, another only one thread is waken, chosen from the sleeping threads. This second winner returns from apr_thread_mutex_lock(), although the others still sleep. When the second winner calls apr_thread_mutex_unlock(), another thread, the third winner, is chosen from the sleeping threads. Similarly, it goes like this.</P>
+<P>apr_thread_mutex_trylock() never blocks. It returns APR_SUCCESS or APR_EBUSY. It returns APR_SUCCESS when it has acquired the mutex lock. Otherwise, it returns APR_EBUSY. APR_EBUSY indicates another thread is acquiring the mutex lock.</P>
+<P>In general, the time between lock and unlock is shorter, the better. It performs faster and it helps you to get around deadlock bugs which I describe later.</P>
+<P>We can create two kinds of mutex lock, APR_THREAD_MUTEX_NESTED or APR_THREAD_MUTEX_UNNESTED. The former, nested lock, allows recursive locks by the same thread. The latter, unnested lock, doesn't allow it. Nested locks are a little bit inefficient than unnested locks. So, if you don't need recursive locks, you should create APR_THREAD_MUTEX_UNNESTED locks. There is APR_THREAD_MUTEX_DEFAULT defined in apr_thread_mutex.h. In my opinion, you shouldn't rely on it. Because you must be aware that the mutex lock is recursive or not. </P>
+<P>There is a well-known bug called deadlock in multi-threaded programming. The following example has deadlock bug.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* pseudo code: deadlock bug sample code */
+apr_thread_mutex_t *mutex1;
+apr_thread_mutex_t *mutex2;
+
+/* portion-X */
+apr_thread_mutex_lock(mutex1);
+apr_thread_mutex_lock(mutex2);
+do something on shared objects...
+apr_thread_mutex_unlock(mutex2);
+apr_thread_mutex_unlock(mutex1);
+
+/* portion-Y */
+apr_thread_mutex_lock(mutex2);
+apr_thread_mutex_lock(mutex1);
+do something on shared objects...
+apr_thread_mutex_unlock(mutex1);
+apr_thread_mutex_unlock(mutex2);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>What can happen? Think about two threads running concurrently. One thread named thread-a runs at portion-X. The other thread named thread-b runs at portion-Y. Imagine thread-a has acquired mutex1. Then, two threads are competitors on acquiring mutex2. If thread-a wins, you're lucky and there is no problem. In contrast, if thread-b wins, you have a problem. thread-a tries to acquire mutex2 in portion-X and thread-b tries to acquire mutex1 in portion-Y. Then, what happens next? Nothing happens forever. Each thread will sleep to wait mutex lock. Unfortunately, the mutex locks are never unlocked.</P>
+<P>It seems easy to fix. It is sometimes so, but it isn't sometimes. Because the bug can be unreproducable. There is no silver bullet to avoid deadlock bugs, but we can have one principle to get around deadlocks. It is caleld 'layered approach'. It said that we should always lock multiple mutex locks in the same order. For example, if we have to lock mutex1 and mutex2 at once, we must decide the locking order and must always keep it. If we decided mutex1 is upper on mutex2, we must always lock mutex1 before mutex2.</P>
+
+
+<HR>
+<A HREF="apr-tutorial-18.html">Next</A>
+<A HREF="apr-tutorial-16.html">Previous</A>
+<A HREF="apr-tutorial.html#toc17">Contents</A>
+</BODY>
+</HTML>

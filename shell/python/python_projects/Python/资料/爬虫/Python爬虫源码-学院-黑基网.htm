@@ -1,0 +1,698 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0050)http://www.hackbase.com/tech/2009-10-22/57212.html -->
+<HTML lang=zh-CN xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Python爬虫源码-学院-黑基网</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gbk">
+<META content=all name=robots>
+<META content=黑基网,版权所有 name=Copyright>
+<META 
+content="Python爬虫源码-学院 黑客培训 黑客软件 黑客下载 黑客图片 黑客动画 黑客大全 ,入门 电脑知识 网络技术 黑客教程 编程初步 英语学习 黑客文化 技巧 Windows黑客 Unix黑客 脚本黑客 游戏黑客 网吧黑客 QQ黑客 研究 扫描探测 拒绝服务 脱壳破解 嗅探监听 病毒查杀 漏洞研究 实战 密码破解 网站入侵 免杀挂马 软件修改 远程控制 攻防案例 防护 个人安全 企业安全 网站安全 安全工具 认证培训 政策法规 开发 脚本后门 病毒代码 木马编程 缓冲溢出 外挂开发 私服制作,学院 #IMPORTS--------------------------------------------------------------------------------------- ..." 
+name=keywords>
+<META 
+content="Python爬虫源码-学院 黑客培训 黑客软件 黑客下载 黑客图片 黑客动画 黑客大全 #IMPORTS--------------------------------------------------------------------------------------- ..." 
+name=description><LINK href="/favicon.ico" rel="shortcut icon"><LINK media=all 
+href="Python爬虫源码-学院-黑基网.files/css.css" type=text/css rel=stylesheet><LINK 
+media=all href="Python爬虫源码-学院-黑基网.files/content.css" type=text/css 
+rel=stylesheet>
+<SCRIPT language=javascript src="Python爬虫源码-学院-黑基网.files/config.js"></SCRIPT>
+
+<SCRIPT language=javascript src="Python爬虫源码-学院-黑基网.files/common.js"></SCRIPT>
+
+<SCRIPT language=javascript src="Python爬虫源码-学院-黑基网.files/prototype.js"></SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY>
+<DIV id=main>
+<DIV id=top><SPAN class=f_l>
+<SCRIPT language=javascript src="Python爬虫源码-学院-黑基网.files/login.htm"></SCRIPT>
+</SPAN><A href="http://www.hackbase.com/tech/rss.php?catid=105" 
+target=_blank><IMG src="Python爬虫源码-学院-黑基网.files/rss.gif" 
+border=0></A>&nbsp;&nbsp;<A id=StranLink>繁体中文</A>&nbsp;&nbsp;<A 
+onclick="this.style.behavior='url(#default#homepage)';this.setHomePage ('http://www.hackbase.com/');" 
+href="http://www.hackbase.com/tech/2009-10-22/57212.html#">设为首页</A>&nbsp;&nbsp;<A 
+onclick="window.external.addFavorite('http://www.hackbase.com/','黑基网')" 
+href="http://www.hackbase.com/tech/2009-10-22/57212.html#">加入收藏</A>&nbsp; </DIV>
+<DIV id=header><A href="http://www.hackbase.com/"><IMG class="logo f_l" 
+src="Python爬虫源码-学院-黑基网.files/logo2009.gif"></A> 
+<DIV class=navmenu>
+<P><STRONG><A href="http://www.hackbase.com/news/">新闻</A></STRONG>&nbsp;&nbsp;<A 
+href="http://www.hackbase.com/news/1.html">业界</A> <A 
+href="http://www.hackbase.com/news/153.html">事件</A> <A 
+href="http://www.hackbase.com/news/162.html">威胁</A> <A 
+href="http://www.hackbase.com/news/164.html">科技</A> <A 
+href="http://www.hackbase.com/news/165.html">创业</A> <A 
+href="http://www.hackbase.com/news/166.html">社会</A> |&nbsp; <STRONG><A 
+href="http://www.hackbase.com/tech/">学院</A></STRONG>&nbsp; <A 
+href="http://www.hackbase.com/tech/60.html">入门</A> <A 
+href="http://www.hackbase.com/tech/76.html">技巧</A> <A 
+href="http://www.hackbase.com/tech/83.html">研究</A> <A 
+href="http://www.hackbase.com/tech/91.html">实战</A> <A 
+href="http://www.hackbase.com/tech/98.html">防护</A> <A 
+href="http://www.hackbase.com/tech/104.html">开发</A> | <STRONG>&nbsp;<A 
+href="http://www.hackbase.com/picture/">图片</A>&nbsp; </STRONG><A 
+href="http://www.hackbase.com/picture/123.html">电脑</A> <A 
+href="http://www.hackbase.com/picture/124.html">极客</A> <A 
+href="http://www.hackbase.com/picture/125.html">科技</A> <A 
+href="http://www.hackbase.com/picture/126.html">生活</A></P>
+<P><STRONG><A href="http://www.hackbase.com/soft/">软件</A></STRONG>&nbsp;&nbsp;<A 
+href="http://www.hackbase.com/soft/10.html">必备</A> <A 
+href="http://www.hackbase.com/soft/20.html">攻防</A> <A 
+href="http://www.hackbase.com/soft/41.html">动画</A> <A 
+href="http://www.hackbase.com/soft/49.html">解密</A> <A 
+href="http://www.hackbase.com/soft/28.html">安全</A> <A 
+href="http://www.hackbase.com/soft/35.html">编程</A> |&nbsp; <STRONG><A 
+href="http://www.hackbase.com/product/">商城</A></STRONG>&nbsp; <A 
+href="http://www.hackbase.com/product/vipcard/119.html">VIP卡</A> <A 
+href="http://www.hackbase.com/product/cdrom/120.html">光盘</A> <A 
+href="http://www.hackbase.com/product/tshirt/402.html">T恤</A> <A 
+href="http://www.hackbase.com/product/txb/160.html">特训</A> <A 
+href="http://www.hackbase.com/product/safesoft/404.html">软件</A> <A 
+href="http://www.hackbase.com/product/book/403.html">图书</A> | <STRONG>&nbsp;<A 
+href="http://www.hackbase.com/video/">视频</A></STRONG>&nbsp; <A 
+href="http://www.hackbase.com/video/127.html">聚焦</A> <A 
+href="http://www.hackbase.com/video/129.html">教程</A> <A 
+href="http://www.hackbase.com/video/128.html">影视</A> <A 
+href="http://www.hackbase.com/video/130.html">娱乐</A></P>
+<P><STRONG><A href="http://bbs.hackbase.com/">论坛</A></STRONG>&nbsp;&nbsp;<A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=45">播报</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=12">聊天</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=41">情感</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=132">开心</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=71">问答</A>&nbsp;<A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=1">电脑</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=82">硬件</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=83">软件</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=29">网管</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=33">编程</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=92">建站</A>&nbsp;<A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=28">菜鸟</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=139">QQ区</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=128">系统</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=130">攻防</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=59">木马</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=131">安全</A> <A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=37">破解</A>&nbsp;<A 
+href="http://bbs.hackbase.com/forumdisplay.php?fid=136">VIP</A> </P></DIV><A 
+href="http://vip.hackbase.com/" target=_blank><IMG class="vip f_r" 
+src="Python爬虫源码-学院-黑基网.files/vipad.gif"></A> </DIV>
+<DIV id=menu><SPAN id=search>
+<FORM name=search onsubmit=this.action=document.search.channelsearch.value 
+method=get target=_blank><INPUT class=key size=18 value=&nbsp;&nbsp;请输入搜索关键字 
+name=keywords> <SELECT class=select name=channelsearch> <OPTION 
+  value=/news/search.php selected>新闻</OPTION> <OPTION 
+  value=/soft/search.php>软件</OPTION> <OPTION value=/tech/search.php>学院</OPTION> 
+  <OPTION value=/picture/search.php>图片</OPTION> <OPTION 
+  value=/video/search.php>视频</OPTION> <OPTION value=/lib/search.php>知识</OPTION> 
+  <OPTION value=/subject/search.php>专题</OPTION> <OPTION 
+  value=/product/search.php>商城</OPTION></SELECT> <INPUT type=hidden value=1 
+name=search> <INPUT class=btn type=submit value=&nbsp; name=submit> 
+</FORM></SPAN><A href="http://www.hackbase.com/">首页 </A>&nbsp;&nbsp;<A title=新闻 
+href="http://www.hackbase.com/news/" target=_blank>新闻</A> &nbsp;<A title=软件 
+href="http://www.hackbase.com/soft/" target=_blank>软件</A> &nbsp;<A title=学院 
+href="http://www.hackbase.com/tech/" target=_blank>学院</A> &nbsp;<A title=图片 
+href="http://www.hackbase.com/picture/" target=_blank>图片</A> &nbsp;<A title=视频 
+href="http://www.hackbase.com/video/" target=_blank>视频</A> &nbsp;<A title=商城 
+href="http://www.hackbase.com/product/" target=_blank>商城</A> &nbsp;<A title=论坛 
+href="http://bbs.hackbase.com/" target=_blank>论坛</A> &nbsp;<A title=家园 
+href="http://jia.hackbase.com/" target=_blank>家园</A> &nbsp;<A title=教室 
+href="http://chat.hackbase.com/" target=_blank>教室</A> &nbsp;<A title=知识 
+href="http://www.hackbase.com/lib/" target=_blank>知识</A> &nbsp;<A title=专题 
+href="http://www.hackbase.com/subject/" target=_blank>专题</A> &nbsp;<A 
+title=VIP会员 href="http://vip.hackbase.com/" target=_blank>VIP会员</A> </DIV>
+<DIV class=submenu><A class=white href="http://www.hackbase.com/tech/">学院首页</A> 
+| <A class=white href="http://www.hackbase.com/tech/60.html">入门</A> | <A 
+class=white href="http://www.hackbase.com/tech/76.html">技巧</A> | <A class=white 
+href="http://www.hackbase.com/tech/83.html">研究</A> | <A class=white 
+href="http://www.hackbase.com/tech/91.html">实战</A> | <A class=white 
+href="http://www.hackbase.com/tech/98.html">防护</A> | <A class=white 
+href="http://www.hackbase.com/tech/104.html">开发</A> | <A class=white 
+href="http://www.hackbase.com/tech/special/">专题</A> </DIV>
+<DIV class=cont_top></DIV>
+<DIV id=cont>
+<DIV id=left>
+<DIV class=position>当前位置：<A href="http://www.hackbase.com/tech/">学院首页</A> 
+&gt;&gt; <A href="http://www.hackbase.com/tech/104.html">开发</A> &gt;&gt; <A 
+href="http://www.hackbase.com/tech/105.html">脚本后门</A> &gt;&gt; Python爬虫源码</DIV>
+<DIV class=content>
+<SCRIPT language=javascript src="Python爬虫源码-学院-黑基网.files/10.js"></SCRIPT>
+
+<H1 class=yin><BR>Python爬虫源码 </H1><!--副标题--><!--文章属性-->
+<DIV id=property>2009-10-22 
+09:44:46&nbsp;&nbsp;www.hackbase.com&nbsp;&nbsp;来源：<A 
+href="http://www.qqxnw.com/" target=_blank>梦幻光芒</A></DIV><!--引用地址-->
+<DIV 
+class=introduce>#IMPORTS--------------------------------------------------------------------------------------------------------------import 
+re,urllib,os #GLOBALS------------------------------------------------ ...</DIV>
+<DIV class=content_text>
+<P>#IMPORTS--------------------------------------------------------------------------------------------------------------<BR>import 
+re,urllib,os</P>
+<P>#GLOBALS--------------------------------------------------------------------------------------------------------------<BR>#Global 
+that holds all our spidered URL'S<BR>siteSet = []</P>
+<P>#Open our log files<BR>siteLog = open("sitelog","w")<BR>mediaLog = 
+open("medialog","w")<BR>exceptionLog = open("exceptionlog","w")</P>
+<P>#Spider recursive paramaters RECURSION == "On" means depth first search, 
+"Off" == BFS <BR>RECURSION = "Off"<BR>MAXDEPTH = 1<BR>SITE_FILE = 
+"siteList2.txt"</P>
+<P>#REGEXS<BR>#Compile to regex one simple the other complex to allow for fairly 
+funky url's<BR>regex_URL_CONTAINS = ""<BR>regex_LOCAL_HREF = 
+"(\"\S+(.htm|.html)\")"<BR>#regex_HREF_Simple = 
+"(http://\S+(\.com|\.htm|\.html|\.net|\.org))"<BR>#regex_HREF_Complex = 
+"(http://\S+(\.com|\.net|\.org|\.htm|\.html)\S*(\.com|\.net|\.org|\.htm|\.html)(\S*)(?=\"))"<BR>regex_HREF_CONTAINS 
+= ""</P>
+<P>regex_HREF_Simple = "((http://\S/?[^&lt;&gt;\"']*))" #IIIIIIdontkonw</P>
+<P><BR>#This can be anything you want try .rpm .txt .html .php .cgi 
+.gzip<BR>regex_LOCAL_MEDIA = "(\"\S+(\.mpg|\.avi|\.mpeg|\.rm)\")" 
+<BR>regex_MEDIA = "(http://\S+(\.mpg|\.avi|\.mpeg|\.rm))"<BR>#regex_MEDIA = 
+"(http://\S+(\.mpg|\.avi|\.mpeg|\.rm))"<BR>regex_MEDIA_NAME_CONTAINS = ""</P>
+<P>#----------------------------------------------------------------------------------------------------------------------</P>
+<P>def findRefs(site,lines=[]):<BR>&nbsp;&nbsp;&nbsp; hrefs = 
+[]<BR>&nbsp;&nbsp;&nbsp; try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #For 
+each line of the URL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for x in 
+lines:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#REGEX match for a simple and a complex HREF 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+matchSimple = 
+re.search(regex_HREF_Simple,x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mediaCheck = 
+re.search(regex_MEDIA,x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#matchComplex = 
+re.search(regex_HREF_Complex,x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Disable Local file naming EX: ./index.html vs <A 
+href="http://local/inde.html"><FONT 
+color=#005eac><U>http://local/inde.html</U></FONT></A> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+matchLocal =&nbsp; None 
+#re.search(regex_LOCAL_HREF,x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Make sure we got a 
+match<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(mediaCheck == "" or mediaCheck == 
+None):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (matchSimple != "" and matchSimple != None) or (matchLocal != "" and 
+matchLocal != 
+None):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Order the check to make sure the complex one isnt 
+overridden<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if matchLocal != None and matchLocal != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = 
+matchLocal.string[matchLocal.start():matchLocal.end()]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = site + '/' + url[1:-1]</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if matchSimple != None and matchSimple != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = 
+matchSimple.string[matchSimple.start():matchSimple.end()]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url=url.split(" 
+")[0]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#if url.find(" 
+"):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#&nbsp;&nbsp;&nbsp; temp=url.split(" 
+")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#&nbsp;&nbsp;&nbsp; 
+url=temp[0]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Here we need to check if hrefs is already in our set of to be spidered 
+sites<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+found = 
+"false"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for y in 
+siteSet:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if y == 
+url:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+found = 
+"true"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#print "Duplicate url!"</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#If the site is not in our list then add it to the set to be 
+spidered<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if found == 
+"false":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#print "New url appended to spider list = %s" % 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+siteSet.append(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+hrefs.append(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+siteLog.write(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+siteLog.write("\n")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #Flush the 
+contents of the buffer to the file<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+siteLog.flush()<BR>&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "Exception in 
+findRefs :("<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception in findRefs :(\n")<BR>&nbsp;&nbsp;&nbsp; #Return a 
+new list or HREFS to be spidered<BR>&nbsp;&nbsp;&nbsp; return 
+hrefs<BR>#----------------------------------------------------------------------------------------------------------------------<BR>def 
+findMedia(site,lines=[]):<BR>&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #The downloaded files we 
+found<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; media = 
+[]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for x in 
+lines:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Search for a media 
+match<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+match = 
+re.search(regex_MEDIA,x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_match = None #re.search(regex_LOCAL_MEDIA,x)</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+local_match != None and local_match != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = 
+local_match.string[local_match.start():local_match.end()]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Search to see if there is htm/html in the sites 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+temp_match = 
+re.search("\S+(.htm|.html)",x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#if so then remove from the last / to 
+html<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if temp_match != None and temp_match != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+backPnt = 
+len(site)-1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+while site[backPnt] != 
+'/':<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--backPnt<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+site = 
+site[0:backPnt]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = site + '/' + 
+url[1:-1]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++changed url is 
+now " + 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if match 
+!= None and match != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = match.string[match.start():match.end()]</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(local_match != None and local_match != "") or (match != None and match != 
+""):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end = 
+len(url)-1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Get the file name itself not just the whole 
+URL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+while end &gt; 0: 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if url[end] == '/': 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end = end + 1 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end = end - 1 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+name = url[end:] 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#We need to change this to check to see if it exists locally, if not then 
+download 
+it<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#&nbsp;&nbsp;&nbsp; this saves MUCH 
+time<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+existing = 
+os.listdir("./")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+found = 
+0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for x in 
+existing:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if x == 
+name:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+found = 
+1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#print "*****Duplicate File :| [%s] Source[ %s ]*****" % 
+(name,site)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if found == 
+0:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "*****New File :) [%s] downloading...*****" % 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+blankFile = 
+open(name,"w")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+urllib.urlretrieve(url,name) #And download 
+it<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+media.append(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mediaLog.write(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mediaLog.write("\n")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Error: Downloading; File 
+Exception!"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Error downloading %s\n" % 
+url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mediaLog.flush()<BR>&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "Exception in find 
+media :("<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception in find media 
+:(\n")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; return 
+media<BR>#----------------------------------------------------------------------------------------------------------------------<BR>#The 
+controlling recursive function spider using Depth First Recursion Breadth First 
+would be better.<BR>def spider(site,depth):&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+#Continue recursively untill we reach the maximum allowed 
+depth<BR>&nbsp;&nbsp;&nbsp; if depth &lt;= MAXDEPTH:&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if site != None and site != "" 
+:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Connect to the page, read all the 
+lines<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Current depth = %d site = %s" % 
+(depth,site)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+usock = 
+urllib.urlopen(site)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+lines = 
+usock.readlines()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+usock.close()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Find any media on the 
+page<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+media = 
+findMedia(site,lines)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Find any HREFS on the 
+page<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+hrefs = 
+findRefs(site,lines)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#For each HREF run spider on 
+it<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for x in 
+hrefs:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+spider(x,depth+1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Exception in spider 
+:("<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception in spider :( at %s depth %d\n" % 
+(site,depth))<BR>&nbsp;&nbsp;&nbsp; #else:<BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; #&nbsp;&nbsp;&nbsp; print "----maxdepth reached, 
+returning..."<BR>#----------------------------------------------------------------------------------------------------------------------<BR>#Try 
+to implement spider using BFS instead of DFS<BR>def BFSpider(L = 
+[]):<BR>&nbsp;&nbsp;&nbsp; #Connect to the page, read all the 
+lines<BR>&nbsp;&nbsp;&nbsp; try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+while(len(L) &gt; 0):</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+usock = 
+urllib.urlopen(L[0])<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Exception connecting to :( %s" % 
+L[0]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+del(L[0])<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+continue<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception connecting to :( %s" % 
+L[0])<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+lines = 
+usock.readlines()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+usock.close()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; media = 
+findMedia(L[0],lines)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+hrefs = 
+findRefs(L[0],lines)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print 
+"&lt;From %s&gt; Appended: %s \n{ Media: %s }" % (L[0], hrefs 
+,media)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+del(L[0])<BR>&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "Exception in 
+BFSpider :( %s" % L<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception in BFSpider :( %s\n" % 
+L)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>#----------------------------------------------------------------------------------------------------------------------<BR># 
+Main Execution point <BR>def run():<BR>&nbsp;&nbsp;&nbsp; file = 
+open(SITE_FILE,"r")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #Open the 
+site file for reading (should be an argument)<BR>&nbsp;&nbsp;&nbsp; sites = 
+file.readlines()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Read in all the lines from the file</P>
+<P>&nbsp;&nbsp;&nbsp; a = 0</P>
+<P>&nbsp;&nbsp;&nbsp; if RECURSION == 
+"On":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for x in 
+sites:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+spider(x,a)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Exception in Main :("<BR>&nbsp;&nbsp;&nbsp; else:&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+BFSpider(sites)<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+siteLog.close()<BR>&nbsp;&nbsp;&nbsp; mediaLog.close()<BR>&nbsp;&nbsp;&nbsp; 
+exceptionLog.close()</P>
+<P>#----------------------------------------------------------------------------------------------------------------------<BR>#<BR>#NOTES<BR>#</P></DIV>
+<DIV class=clear></DIV><!--自定义字段-->
+<TABLE cellSpacing=1 cellPadding=5 width="100%" align=center bgColor=#cccccc>
+  <TBODY></TBODY></TABLE><!--自定义字段--><!--分页-->
+<DIV class=td_center></DIV>
+<H3>责任编辑：Jason&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</H3>
+<DIV class=mar_10><BR><BR><SPAN class=font_1>本文引用网址：</SPAN>&nbsp;<SPAN 
+class=border_2>
+<SCRIPT>
+
+function copyToClipBoard(){ 
+
+var clipBoardContent=document.title + '\r\n' + document.location; 
+
+clipBoardContent+='\r\n'; 
+
+window.clipboardData.setData("Text",clipBoardContent); 
+
+alert("恭喜您！复制成功"); 
+
+} 
+
+</SCRIPT>
+
+<SCRIPT language=javascript> 
+
+document.write("<input size=\"60\" style='color: #808080; border-style: dotted; border-width: 1px; background-color: #000000' value=\""+document.location+"\"><input type=\"button\" style='border-style: solid; border-width: 1px' value=\"点击复制\" title=\"点击将本文网址复制到剪贴板\" onclick=\"copyToClipBoard()\">&nbsp;&nbsp;与您的QQ/MSN好友分享! "); 
+
+</SCRIPT>
+ </SPAN></DIV><!--上下文-->
+<DIV class=border_1 id=pre_and_next 
+style="BORDER-TOP: #ccc 1px solid; MARGIN-TOP: 10px; PADDING-TOP: 10px"></DIV><BR>
+<DIV class=iconbox id=par>
+<FORM id=sendmail name=sendmail action=/mail/sendmail.php><INPUT type=hidden 
+value=推荐《Python爬虫源码》 name=title> <INPUT type=hidden 
+value="<a href=http://www.hackbase.com/tech/2009-10-22/57212.html target=_blank>Python爬虫源码<br/>http://www.hackbase.com/tech/2009-10-22/57212.html</a>" 
+name=content> </FORM><A class=comment_icon 
+href="http://www.hackbase.com/tech/2009-10-22/57212.html#comment">发表评论</A>　<A 
+class=favorites_icon 
+href="javascript:window.external.addFavorite(window.location,'Python爬虫源码')">加入收藏</A>　<A 
+class=friend_icon href="javascript:$('sendmail').submit();">告诉好友</A>　<A 
+class=print_icon href="javascript:window.print();">打印本页</A>　<A class=close_icon 
+href="javascript:window.close()">关闭窗口</A>　<A class=top_icon 
+href="http://www.hackbase.com/tech/2009-10-22/57212.html#top">返回顶部</A>&nbsp;&nbsp;&nbsp;&nbsp;<A 
+style="COLOR: #ff66cc; TEXT-DECORATION: underline" 
+href="http://vip.hackbase.com/" target=_blank><FONT 
+size=2>VIP会员</FONT></A></DIV>
+<DIV class=title>
+<H5>Python爬虫源码的相关文章<SPAN></SPAN></H5></DIV>
+<DIV class=re_shuang>
+<UL></UL>
+<DIV class=clear></DIV></DIV>
+<DIV class=title>
+<H5>发表评论<SPAN></SPAN></H5></DIV>
+<SCRIPT src="Python爬虫源码-学院-黑基网.files/list_js.htm" type=text/javascript></SCRIPT>
+</DIV></DIV>
+<DIV id=right>
+<DIV class=title>
+<H5>最新<SPAN></SPAN></H5></DIV>
+<UL>
+  <LI>&nbsp;· <A title=Python爬虫源码 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-22/57212.html" 
+  target=_blank>Python爬虫源码</A> </LI>
+  <LI>&nbsp;· <A title=绕过一流信息监控系统上传 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57207.html" 
+  target=_blank>绕过一流信息监控系统上传</A> </LI>
+  <LI>&nbsp;· <A title=盗取cookie的代码 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57206.html" 
+  target=_blank>盗取cookie的代码</A> </LI>
+  <LI>&nbsp;· <A title="msn dniff代码(ruby)" style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57203.html" target=_blank>msn 
+  dniff代码(ruby)</A> </LI>
+  <LI>&nbsp;· <A title=再谈在2003服务器下建立隐藏帐号 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57195.html" 
+  target=_blank>再谈在2003服务器下建立隐藏</A> </LI>
+  <LI>&nbsp;· <A title=3389登陆记录的清除 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57194.html" 
+  target=_blank>3389登陆记录的清除</A> </LI>
+  <LI>&nbsp;· <A title=3389登陆记录的清除 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57193.html" 
+  target=_blank>3389登陆记录的清除</A> </LI>
+  <LI>&nbsp;· <A title=图片留Shell后门 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57190.html" 
+  target=_blank>图片留Shell后门</A> </LI>
+  <LI>&nbsp;· <A title=搜狗输入法提权 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57184.html" 
+  target=_blank>搜狗输入法提权</A> </LI>
+  <LI>&nbsp;· <A title=端口扫描代码(php) style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-21/57182.html" 
+  target=_blank>端口扫描代码(php)</A> </LI></UL>
+<DIV class=title>
+<H5>推荐<SPAN></SPAN></H5></DIV>
+<UL>
+  <LI>&nbsp;· <A title=“伪装网站”的欺诈方法介绍及案例分析 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-01-04/42972.html" 
+  target=_blank>“伪装网站”的欺诈方法介绍及案</A> </LI>
+  <LI>&nbsp;· <A title=手工查杀病毒常见文件型分析总结 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2008-10-27/42079.html" 
+  target=_blank>手工查杀病毒常见文件型分析总结</A> </LI>
+  <LI>&nbsp;· <A title=如何知道自己是不是中木马 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2008-10-10/41862.html" 
+  target=_blank>如何知道自己是不是中木马</A> </LI>
+  <LI>&nbsp;· <A title=QQ宝典　六法则保护你安全聊天 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2008-10-09/41850.html" 
+  target=_blank>QQ宝典　六法则保护你安全聊天</A> </LI>
+  <LI>&nbsp;· <A title=小技巧解决QQ占用CPU资源过高问题 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2008-10-07/41829.html" 
+  target=_blank>小技巧解决QQ占用CPU资源过高问</A> </LI>
+  <LI>&nbsp;· <A title=如何防御分布式拒绝服务DDoS的攻击 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2008-10-04/41809.html" 
+  target=_blank>如何防御分布式拒绝服务DDoS的攻</A> </LI>
+  <LI>&nbsp;· <A title=机器狗病毒入侵源代码以及入侵原理 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2008-05-05/40626.html" 
+  target=_blank>机器狗病毒入侵源代码以及入侵原</A> </LI></UL>
+<DIV style="CLEAR: both"></DIV>
+<DIV class=title>
+<H5>专题<SPAN></SPAN></H5></DIV>
+<UL>
+  <DIV id=content 
+  style="CLEAR: both; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 10px 0px; PADDING-TOP: 5px; BORDER-BOTTOM: #789 1px dotted"><A 
+  href="http://www.hackbase.com/tech/special/2008-01/11.html" target=_blank><IMG 
+  style="BORDER-RIGHT: #789 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #789 1px solid; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 5px; BORDER-LEFT: #789 1px solid; MARGIN-RIGHT: 15px; PADDING-TOP: 5px; BORDER-BOTTOM: #789 1px solid" 
+  height=150 alt=SQL注入攻防专题 src="Python爬虫源码-学院-黑基网.files/20080113013610722.jpg" 
+  width=150 border=0></A>SQL注入攻防专题<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+  href="http://www.hackbase.com/tech/special/2008-01/11.html" target=_blank> 
+  详细&gt;&gt;</A> 
+  <DIV style="CLEAR: both"></DIV></DIV>
+  <DIV id=content 
+  style="CLEAR: both; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 10px 0px; PADDING-TOP: 5px; BORDER-BOTTOM: #789 1px dotted"><A 
+  href="http://www.hackbase.com/tech/special/2008-01/9.html" target=_blank><IMG 
+  style="BORDER-RIGHT: #789 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #789 1px solid; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 5px; BORDER-LEFT: #789 1px solid; MARGIN-RIGHT: 15px; PADDING-TOP: 5px; BORDER-BOTTOM: #789 1px solid" 
+  height=150 alt=ARP欺骗与反欺骗技术 src="Python爬虫源码-学院-黑基网.files/20080113022235333.jpg" 
+  width=150 border=0></A>ARP欺骗与反欺骗技术<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+  href="http://www.hackbase.com/tech/special/2008-01/9.html" target=_blank> 
+  详细&gt;&gt;</A> 
+  <DIV style="CLEAR: both"></DIV></DIV>
+  <DIV id=content 
+  style="CLEAR: both; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 10px 0px; PADDING-TOP: 5px; BORDER-BOTTOM: #789 1px dotted"><A 
+  href="http://www.hackbase.com/tech/special/2007-12/3.html" target=_blank><IMG 
+  style="BORDER-RIGHT: #789 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #789 1px solid; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 5px; BORDER-LEFT: #789 1px solid; MARGIN-RIGHT: 15px; PADDING-TOP: 5px; BORDER-BOTTOM: #789 1px solid" 
+  height=150 alt=黑客DDOS拒绝服务攻击 
+  src="Python爬虫源码-学院-黑基网.files/20080113014238129.jpg" width=150 
+  border=0></A>黑客DDOS拒绝服务攻击<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+  href="http://www.hackbase.com/tech/special/2007-12/3.html" target=_blank> 
+  详细&gt;&gt;</A> 
+  <DIV style="CLEAR: both"></DIV></DIV></UL>
+<DIV style="CLEAR: both"></DIV>
+<DIV class=title>
+<H5>图片<SPAN></SPAN></H5></DIV>
+<DL class=pic><A href="http://www.hackbase.com/tech/2008-03-17/40297.html" 
+  target=_blank><IMG height=100 alt=变种机器狗木马病毒防范 
+  src="Python爬虫源码-学院-黑基网.files/20080401114628193.jpg" width=135></A> <A 
+  title=变种机器狗木马病毒防范 href="http://www.hackbase.com/tech/2008-03-17/40297.html" 
+  target=_blank>变种机器狗木马病毒防</A> </DL>
+<DL class=pic><A href="http://www.hackbase.com/tech/2008-01-08/40063.html" 
+  target=_blank><IMG height=100 alt=“反黑军团”总教头 
+  src="Python爬虫源码-学院-黑基网.files/20080108031750779.jpg" width=135></A> <A 
+  title=“反黑军团”总教头 href="http://www.hackbase.com/tech/2008-01-08/40063.html" 
+  target=_blank>“反黑军团”总教头</A> </DL>
+<DL class=pic><A href="http://www.hackbase.com/tech/2008-01-08/40062.html" 
+  target=_blank><IMG height=100 alt=黑客训练营一瞥 
+  src="Python爬虫源码-学院-黑基网.files/20080108030921929.jpg" width=135></A> <A 
+  title=黑客训练营一瞥 href="http://www.hackbase.com/tech/2008-01-08/40062.html" 
+  target=_blank>黑客训练营一瞥</A> </DL>
+<DL class=pic><A href="http://www.hackbase.com/tech/2008-01-03/40058.html" 
+  target=_blank><IMG height=100 alt=黑客域名劫持攻击详细步骤 
+  src="Python爬虫源码-学院-黑基网.files/20080109023033413.jpg" width=135></A> <A 
+  title=黑客域名劫持攻击详细步骤 href="http://www.hackbase.com/tech/2008-01-03/40058.html" 
+  target=_blank>黑客域名劫持攻击详细</A> </DL>
+<DL class=pic><A href="http://www.hackbase.com/tech/2008-01-03/40056.html" 
+  target=_blank><IMG height=100 alt=Linux下如何知道某个端口在运行什么程序 
+  src="Python爬虫源码-学院-黑基网.files/20080109021720912.jpg" width=135></A> <A 
+  title=Linux下如何知道某个端口在运行什么程序 
+  href="http://www.hackbase.com/tech/2008-01-03/40056.html" 
+  target=_blank>Linux下如何知道某个</A> </DL>
+<DIV class=title>
+<H5>热点<SPAN></SPAN></H5></DIV>
+<UL>
+  <LI>&nbsp;· <A title=变态入侵：有史以来最酷的Windows后门 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-17/57065.html" 
+  target=_blank>变态入侵：有史以来最酷的W</A> </LI>
+  <LI>&nbsp;· <A title=简单破解路由器的帐号和密码 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-05/56696.html" 
+  target=_blank>简单破解路由器的帐号和密码</A> </LI>
+  <LI>&nbsp;· <A title=创建无法检测与删除的后门 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-15/57002.html" 
+  target=_blank>创建无法检测与删除的后门</A> </LI>
+  <LI>&nbsp;· <A title=超小ASP小马 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-09-23/56352.html" 
+  target=_blank>超小ASP小马</A> </LI>
+  <LI>&nbsp;· <A title=三分钟搞定隐藏管理员账号 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-09-28/56505.html" 
+  target=_blank>三分钟搞定隐藏管理员账号</A> </LI>
+  <LI>&nbsp;· <A title=ASP后门程序代码 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-02/56651.html" 
+  target=_blank>ASP后门程序代码</A> </LI>
+  <LI>&nbsp;· <A title=小偷程序原理和简单实例 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-09-28/56495.html" 
+  target=_blank>小偷程序原理和简单实例</A> </LI>
+  <LI>&nbsp;· <A title=JAVA简单编写后门程序 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-09-23/56349.html" 
+  target=_blank>JAVA简单编写后门程序</A> </LI>
+  <LI>&nbsp;· <A title=手工克隆管理员帐户 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-10-15/57001.html" 
+  target=_blank>手工克隆管理员帐户</A> </LI>
+  <LI>&nbsp;· <A title=全自动添加隐藏用户的脚本 style="FONT-SIZE: 12px" 
+  href="http://www.hackbase.com/tech/2009-09-25/56449.html" 
+  target=_blank>全自动添加隐藏用户的脚本</A> </LI></UL>
+<DIV style="CLEAR: both"></DIV></DIV></DIV>
+<DIV class=cont_bottom></DIV>
+<SCRIPT src="Python爬虫源码-学院-黑基网.files/show_js.htm" type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+function fontZoom(size)
+{
+   $('content').style.fontSize=size+'px';
+}
+ 
+</SCRIPT>
+
+<SCRIPT>
+document.body.oncopy = function () { setTimeout( function () { var text = clipboardData.getData("text"); if (text) { text = text + "\r\n本篇文章来源于 黑客基地-全球最大的中文黑客站 原文链接："+location.href; clipboardData.setData("text", text); } }, 100 ) }
+</SCRIPT>
+
+<DIV id=footer>
+<P class=page><A href="http://www.hackbase.com/about/hackbase.html" 
+target=_blank>关于黑基网</A> |&nbsp; <A 
+href="http://www.hackbase.com/about/announce.html" target=_blank>免责条款</A> 
+|&nbsp; <A href="http://www.hackbase.com/about/jobs.html" target=_blank>诚聘英才</A> 
+|&nbsp; <A href="http://www.hackbase.com/about/ads.html" target=_blank>广告服务</A> 
+|&nbsp; <A href="http://www.hackbase.com/about/tougao.html" 
+target=_blank>投稿指南</A> |&nbsp; <A 
+href="http://www.hackbase.com/about/contact.html" target=_blank>联系我们</A> </P>
+<P>
+<P><BR><FONT color=#808080>版权所有 &copy;2003-2009&nbsp;黑基网 保留全部权利<BR>Copyright 
+&copy;2003-2009 HackBase&nbsp;Network Security Technology Group. All rights 
+reserved.&nbsp;</FONT></P>
+<P></P>
+<TABLE id=icpno cellSpacing=0 cellPadding=0 width=910 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=330></TD>
+    <TD align=middle width=250>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD width=49 rowSpan=2><IMG height=48 
+            src="Python爬虫源码-学院-黑基网.files/icp.gif" width=40 align=right></TD>
+          <TD width=120>
+            <P align=center><A 
+            style="COLOR: #ff0000; TEXT-DECORATION: underline" 
+            href="http://www.miibeian.gov.cn/" 
+            target=_blank>京ICP备05010001号</A></P></TD>
+          <TD rowSpan=2><IMG height=43 
+            src="Python爬虫源码-学院-黑基网.files/police.gif" width=38 border=0></TD></TR>
+        <TR>
+          <TD width=120>
+            <P align=center><FONT 
+        color=#808080>中国网通·中国电信</FONT></P></TD></TR></TBODY></TABLE></TD>
+    <TD width=330></TD></TR></TBODY></TABLE></DIV></DIV>
+<SCRIPT src="Python爬虫源码-学院-黑基网.files/Std_StranJF.Js" 
+type=text/javascript></SCRIPT>
+</BODY></HTML>

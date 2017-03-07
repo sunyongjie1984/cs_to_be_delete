@@ -1,0 +1,6 @@
+<DNlist skipped="1">
+    <DN name="DN1"/>
+    <DN name="DN2" ot= "Add|Del|Modify"/>
+    <DN name="DN3" ot= "Add"/>
+    <DN name="DN4" ot=" Del|Modify"/>
+</DNlist>

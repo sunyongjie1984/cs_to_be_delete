@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/TR/xhtml1/strict"><head><META http-equiv="Content-Type" content="text/html; charset=GB2312"><title>Windows Sockets API实现网络异步通讯</title><meta content="text/html; charset=gb2312" http-equiv="Content-Type"></meta><link href="/newimages/css/cpcw.css" rel="stylesheet"></link><style>.nava{FONT-SIZE:9pt}</style><meta content="MSHTML 5.00.2919.6307" name="GENERATOR"></meta><script language="JavaScript">function sendemail(){	
+OpenWindow = window.open('http://other.chinabyte.com/chinabyte/qin/sendemail.shtm?url=http%3A%2F%2Fwww.yesky.com/20020910/1629711.shtml&title=Windows Sockets API实现网络异步通讯&channel=9','emailwin','toolbar=no,location=no,scrollbars=no,menubar=no,width=462,height=450')
+}</script></head><body bgcolor="#FFFFFF" leftmargin="0" topmargin="2" marginwidth="0" marginheight="0"><div align="center"><html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="760" border="0" cellspacing="0" cellpadding="0" height="90">
+  <tr> 
+    <td width="149">&nbsp;</td>
+    <td colspan="2"> <a href="http://www.yesky.com">首页</a> ·<a href="http://www.yesky.com/ServerIndex/77124143618719744/index.shtml"><font class="zzz">硬件</font> 
+      </a>· <a href="http://www.chinabyte.com/Enterprise/218706056904179712/index.shtml">E企业 
+      </a>·<a href="http://price.yesky.com/"> 商情 </a>·<a href="/Fashion/73746443898191872/index.shtml"> 
+      数字电子 </a>·<a href="/SoftChannel/72339069014638592/index.shtml"> 软件 </a>· 
+      <a href="/Gameall/73183493944770560/index.shtml">游戏 </a>·<a href="http://download.yesky.com/"> 
+      下载 </a>· <a href="/Etimes/74872343805034496/index.shtml">E时代</a>· <a href="http://bbs.yesky.com/">论坛</a></td>
+  </tr>
+  <tr> 
+    <td width="149" align="center" height="70" valign="top"><img src="/newimages/index/bz2.gif" width="110" height="60"></td>
+    <td width="474" valign="top"><iframe src="http://images.chinabyte.com/adjs/iframe-column/y-soft-column-s.htm" width="500" height="90" frameborder="0" scrolling="no"></iframe></td>
+    <td width="137" valign="top"><iframe src="http://software.yesky.com/content.htm" width="130" height="60" frameborder="0" scrolling="no"></iframe></td>
+  </tr>
+</table>
+<iframe src="http://images.chinabyte.com/adjs/iframe-column/y-soft-column-1.htm" width="766" height="96" scrolling="no" frameborder="0">
+		</iframe> 
+</body>
+</html>
+<table width="760" border="0" cellspacing="0" cellpadding="0" bgcolor="#979797"><tr><td width="10"></td><td width="536"><span class="nava"><font color="#ffffff">您现在的位置是：
+</font><a href="/72339069014638592/index.shtml"><font color="#ffffff">软件</font></a><font color="#ffffff"> > </font><a href="/72342367549521920/index.shtml"><font color="#ffffff">开发者网络</font></a><font color="#ffffff"> > </font><a href="/72342371844489216/index.shtml"><font color="#ffffff">程序方舟</font></a><font color="#ffffff"> > </font><a href="/72342371928375296/index.shtml"><font color="#ffffff">开发专栏</font></a><font color="#ffffff"> > </font><a href="/72342371928702976/index.shtml"><font color="#ffffff">Visual C++开发</font></a><font color="#ffffff"> > </font><font color="#ffffff"> 正文</font></span></td><td width="214" bgcolor="#F7F7F7"><img src="/newimages/index/content-1.gif" width="214" height="22"></img></td></tr></table><table width="760" border="0" cellspacing="0" cellpadding="0" bgcolor="#F7F7F7"><tr><td height="10" width="149"></td><td height="10" width="1" background="/newimages/index/content-3.gif"></td><td height="10" width="610"></td></tr></table><table width="760" border="0" cellspacing="0" cellpadding="0" bgcolor="#F7F7F7"><tr><td width="149" align="center" valign="top">·<a href="http://www.chinabyte.com/20020731/1623017.shtml">速成电脑精英（包分配）白领高薪一族从这里开始</a></td></tr><tr><td width="149" align="center" valign="top"><iframe src="http://images.chinabyte.com/adjs/svbanner/softwaresv.html" width="120" height="500" frameborder="0" scrolling="no"></iframe><br><br><script src="http://sms.sina.com.cn/mysms/code/140_250.js?sinauserid=1005&c1=#00A3DF&c2=#F0FFFF&c3=#0000ff"></script><br><table width="135" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#3D7B7B" width="30"><img src="/newimages/index/content-2.gif" width="24" height="17" align="absmiddle"></img></td><td bgcolor="#A0D0D0" class="nava" align="center" width="105"><a class="A1" href="/72348964619288576/index.shtml"><font color="#000000">T O P 排 行</font></a></td></tr><tr><td width="6%" valign="top" bgcolor="#EBEBEB" align="center">-</td><td width="94%" bgcolor="#EBEBEB"><a href="/20030110/1647918.shtml">Java套接字编程（下）</a><br></td></tr><tr><td width="6%" valign="top" bgcolor="#EBEBEB" align="center">-</td><td width="94%" bgcolor="#EBEBEB"><a href="/20030108/1647533.shtml">MediaStudio Pro 6.5教程</a><br></td></tr><tr><td width="6%" valign="top" bgcolor="#EBEBEB" align="center">-</td><td width="94%" bgcolor="#EBEBEB"><a href="/20030103/1646964.shtml">三款卸载软件最新试用</a><br></td></tr><tr><td width="6%" valign="top" bgcolor="#EBEBEB" align="center">-</td><td width="94%" bgcolor="#EBEBEB"><a href="/20030102/1646785.shtml">基于Visual C++的Winsock API研究</a><br></td></tr></table><br><table width="135" border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#3D7B7B" width="30"><img src="/newimages/index/content-2.gif" width="24" height="17" align="absmiddle"></img></td><td bgcolor="#A0D0D0" class="nava" align="center" width="105"><a class="A1" href="http://training.yesky.com/"><font color="#000000">网 校 热 门</font></a></td></tr></table><script src="http://training.yesky.com/js/softyesky.js"></script></td><td width="1" background="/newimages/index/content-3.gif"></td><td valign="top" align="center"><table width="550" border="0" cellspacing="2" cellpadding="0"><tr><td align="center"><b><font color="#333399" class="BHEAD">Windows Sockets API实现网络异步通讯</font></b></td></tr><tr><td height="1" bgcolor="#BBBBBB"></td></tr><tr><td align="center"><font face="Arial, Helvetica, sans-serif"><span class="nava">2002-09-10· 
+              ·信息产业部电子第二十二研究所青岛分所郎锐··yesky<br><br></span></font></td></tr><tr><td><p align="right"><font color="red">1 <a href="1629711_1.shtml">2</a> <a href="1629711_2.shtml">3</a> &nbsp;<a href="1629711_1.shtml">下一页</a></font></p><span class="txt"><IFRAME align=right marginWidth=0 marginHeight=0 src="http://www.chinabyte.com/tag/cont_flash_software.html" frameBorder=0 width=360 scrolling=no height=300></IFRAME><IMG height=85 src="jt-2002-9-10-0910-1.gif" width=104 align=right>　　<B>摘要：</B>本文对如何使用面向连接的流式套接字实现对网卡的编程以及如何实现异步网络通讯等问题进行了讨论与阐述。 <BR><BR>　　<B>一、 引言</B><BR><BR>　　在80年代初，美国加利福尼亚大学伯克利分校的研究人员为TCP/IP网络通信开发了一个专门用于网络通讯开发的API。这个API就是Socket接口（套接字）--当今在TCP/IP网络最为通用的一种API，也是在互联网上进行应用开发最为通用的一种API。在微软联合其它几家公司共同制定了一套Windows下的网络编程接口Windows Sockets规范后，由于在其规范中引入了一些异步函数，增加了对网络事件异步选择机制，因此更加符合Windows的消息驱动特性，使网络开发人员可以更加方便的进行高性能网络通讯程序的设计。本文接下来就针对Windows Sockets API进行面向连接的流式套接字编程以及对异步网络通讯的编程实现等问题展开讨论。<BR><BR>　　<B>二、 面向连接的流式套接字编程模型的设计</B><BR><BR>　　本文在方案选择上采用了在网络编程中最常用的一种模型--客户机/服务器模型。这种客户/服务器模型是一种非对称式编程模式。该模式的基本思想是把集中在一起的应用划分成为功能不同的两个部分，分别在不同的计算机上运行，通过它们之间的分工合作来实现一个完整的功能。对于这种模式而言其中一部分需要作为服务器，用来响应并为客户提供固定的服务；另一部分则作为客户机程序用来向服务器提出请求或要求某种服务。<BR><BR>　　本文选取了基于TCP/IP的客户机/服务器模型和面向连接的流式套接字。其通信原理为：服务器端和客户端都必须建立通信套接字，而且服务器端应先进入监听状态，然后客户端套接字发出连接请求，服务器端收到请求后，建立另一个套接字进行通信，原来负责监听的套接字仍进行监听，如果有其它客户发来连接请求，则再建立一个套接字。默认状态下最多可同时接收5个客户的连接请求，并与之建立通信关系。因此本程序的设计流程应当由服务器首先启动，然后在某一时刻启动客户机并使其与服务器建立连接。服务器与客户机开始都必须调用Windows Sockets API函数socket()建立一个套接字sockets,然后服务器方调用bind()将套接字与一个本地网络地址捆扎在一起，再调用listen()使套接字处于一种被动的准备接收状态，同时规定它的请求队列长度。在此之后服务器就可以通过调用accept()来接收客户机的连接。<BR><BR>　　相对于服务器，客户端的工作就显得比较简单了，当客户端打开套接字之后，便可通过调用connect()和服务器建立连接。连接建立之后，客户和服务器之间就可以通过连接发送和接收资料。最后资料传送结束，双方调用closesocket()关闭套接字来结束这次通讯。整个通讯过程的具体流程框图可大致用下面的流程图来表示：<BR><BR>
+<TABLE width="90%" align=center>
+<TBODY>
+<TR>
+<TD><IMG height=460 src="table.gif" width=604><BR>　　　　　　　　面向连接的流式套接字编程流程示意图 </TD></TR></TBODY></TABLE><BR></span><p align="right"><font color="red">1 <a href="1629711_1.shtml">2</a> <a href="1629711_2.shtml">3</a> &nbsp;<a href="1629711_1.shtml">下一页</a></font></p></td></tr><tr><td><div align="right">
+【责任编辑：方舟】 <br><script src="http://images.chinabyte.com/adjs/below/dell.js"></script><img src="/newimages/index/kong.gif" width="100" height="10"></img><a href="javascript:sendemail()"><img src="http://www.chinabyte.com/images/eqy/ms_020220.gif" width="73" height="13" border="0"></img></a><a href="http://bbs.yesky.com/servlet/IBBS2.ListTopic?forumID=123">【发表评论】</a><a href="javascript:window.close()"><font color="#000000">【关闭窗口】</font></a></div></td></tr><tr><td><iframe src="http://images.chinabyte.com/adjs/below/software.html" width="550" height="80" frameborder="0" scrolling="no"></iframe><table width="550" border="0" cellspacing="0" cellpadding="0"><tr><td rowspan="5" bgcolor="#000000" width="1"></td><td bgcolor="#000000" height="1"></td><td rowspan="5" bgcolor="#000000" width="1"></td></tr><tr><td bgcolor="#A0D0D0">■	相关内容</td></tr><tr><td bgcolor="#000000" height="1"></td></tr><tr><td>
+            　<a href="/20020916/1630530.shtml"><font color="#000000">网络监听技术概览</font></a><br>
+            　<a href="/20020730/1622842.shtml"><font color="#000000">Visual C++　COM/DCOM设计专辑</font></a><br>
+            　<a href="/20020629/1618242.shtml"><font color="#000000">C++ Builder与Visual C++孰优孰劣</font></a><br>
+            　<a href="/20020524/1612773.shtml"><font color="#000000">基于Visual C++ 的自动化客户端的实现</font></a><br>
+            　<a href="/20020517/1611650.shtml"><font color="#000000">使用Visual C++开发SOAP客户端应用</font></a><br>
+            　<a href="/20020422/1607998.shtml"><font color="#000000">Visual C++.NET完全兼容VC++么</font></a><br>
+            　<a href="/20020413/1606853.shtml"><font color="#000000">Visual C++ 文件处理及打印绘图</font></a><br>
+            　<a href="/20020409/1606097.shtml"><font color="#000000">Visual C++ MFC/ATL开发</font></a><br>
+            　<a href="/20020406/1605704.shtml"><font color="#000000">Visual C++ 数据库开发</font></a><br>
+            　<a href="/20020406/1605701.shtml"><font color="#000000">Visual C++实现视频图像处理技术</font></a><br></td></tr><tr><td bgcolor="#000000" height="1"></td></tr></table></td></tr><tr><td align="center"><a href="http://www.yesky.com/hdong/zz.htm" target="_blank"><font color="#000000">感谢
+访问天极网，如果您觉得该文章涉及版权问题，请看这里！</font></a><br><br></td></tr></table></td></tr></table><table width="760" border="0" cellspacing="0" cellpadding="0" bgcolor="#4E4E4E"><tr><td height="3"></td></tr></table><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+
+<body bgcolor="#FFFFFF">
+<table width="770" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr> 
+    <td><iframe src="/include/floor-tougao.htm" width="770" height="20" frameborder="0" scrolling="no"></iframe></td>
+  </tr>
+</table>
+<table width="770" border="0" cellspacing="0" cellpadding="0" height="40" align="center">
+  <tr> 
+    <td> 
+      <div align="center"><span class="nava"><font color="#000000" face="Arial, Helvetica, sans-serif"> 
+        Copyright (C) 2001 Yesky.com, All Rights Reserved </font><font color="#000000"><br>
+        版权所有　 <font face="Arial, Helvetica, sans-serif"> Yesky </font> <a href="mailto:webmaster@yesky.com"> 
+        </a></font></span></div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+<script language="Javascript">document.write("<img src='http://counter.yesky.com/counter.shtml?CID=72342371928702976&AID=1629711&refer="+escape(document.referrer)+"&cur="+escape(document.URL)+"' border='0' alt='' width='0' height='0'>");</script><br></div></body></html>

@@ -1,0 +1,9 @@
+Test Exception Handler - build date <Date gets shown here in release builds>
+Operating System Windows XP Service Pack 3
+
+Exception occurred at 4379d5:
+
+Access violation (in WndProc)
+
+message 513, wParam lw 1 hw 0, lParam lw 407, hw 13
+

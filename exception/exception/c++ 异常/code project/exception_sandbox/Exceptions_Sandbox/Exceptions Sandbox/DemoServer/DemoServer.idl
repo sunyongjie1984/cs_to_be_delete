@@ -1,0 +1,37 @@
+// DemoServer.idl : IDL source for DemoServer
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DemoServer.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(5C0E5491-5486-4AC5-9482-98E17EB3EB16),
+	dual,
+	nonextensible,
+	helpstring("IDemoDCOM Interface"),
+	pointer_default(unique)
+]
+interface IDemoDCOM : IDispatch{
+    [id(1), helpstring("method DoSomethingRemote")] HRESULT DoSomethingRemote(void);
+};
+[
+	uuid(74A178D6-A0CC-48F4-AE09-845097265E94),
+	version(1.0),
+	helpstring("DemoServer 1.0 Type Library")
+]
+library DemoServerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(FC774D47-E524-4C2B-9C24-91D219773707),
+		helpstring("DemoDCOM Class")
+	]
+	coclass DemoDCOM
+	{
+		[default] interface IDemoDCOM;
+	};
+};

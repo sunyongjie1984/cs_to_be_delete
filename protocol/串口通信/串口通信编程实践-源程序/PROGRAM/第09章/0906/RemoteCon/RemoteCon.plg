@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: RemoteCon - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/RemoteCon.res" /d "_DEBUG" /d "_AFXDLL" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\RemoteCon\RemoteCon.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP93.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/RemoteCon.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\RemoteCon\mscomm.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\RemoteCon\RemoteCon.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\RemoteCon\RemoteConDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP93.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP94.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/RemoteCon.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\RemoteCon\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP94.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP95.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/RemoteCon.pdb" /debug /machine:I386 /out:"Debug/RemoteCon.exe" /pdbtype:sept 
+".\Debug\mscomm.obj"
+".\Debug\RemoteCon.obj"
+".\Debug\RemoteConDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\RemoteCon.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP95.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+mscomm.cpp
+RemoteCon.cpp
+RemoteConDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+RemoteCon.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,1 @@
+document.writeln("<script src=\'http:\/\/s38.cnzz.com\/stat.php?id=127520&web_id=127520&show=pic\' language=\'JavaScript\' charset=\'gb2312\'><\/script>")

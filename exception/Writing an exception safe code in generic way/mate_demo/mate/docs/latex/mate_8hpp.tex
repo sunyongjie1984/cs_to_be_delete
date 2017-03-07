@@ -1,0 +1,236 @@
+\section{mate.hpp File Reference}
+\label{mate_8hpp}\index{mate.hpp@{mate.hpp}}
+Writing an exception safe code in generic way. 
+
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace {\bf am}
+\item 
+namespace \textbf{am::detail}
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class {\bf am::detail::mate\_\-base}
+\item 
+class {\bf am::detail::simple\_\-ptr\_\-holder}
+\item 
+struct \textbf{am::detail::simple\_\-ptr\_\-holder::typed\_\-$<$ T $>$}
+\item 
+class {\bf am::mate$<$ R $>$}
+\begin{CompactList}\small\item\em Mates a host function with the mate function object. \item\end{CompactList}\item 
+struct {\bf am::mate$<$ R $>$::typed\_\-$<$ T $>$}
+\item 
+class {\bf am::mate$<$ void $>$}
+\begin{CompactList}\small\item\em void template specialization for mate. \item\end{CompactList}\item 
+struct {\bf am::mate$<$ void $>$::typed\_\-$<$ T $>$}
+\item 
+struct {\bf am::condition}
+\begin{CompactList}\small\item\em Predicate. \item\end{CompactList}\item 
+class {\bf am::ref\_\-holder$<$ T $>$}
+\begin{CompactList}\small\item\em Reference holder. \item\end{CompactList}\item 
+struct {\bf am::pointer\_\-to\_\-function$<$ Fn $>$}
+\begin{CompactList}\small\item\em Function pointer to an unary function or a binary function. \item\end{CompactList}\item 
+struct {\bf am::binder1st$<$ Op, P1 $>$}
+\begin{CompactList}\small\item\em Bind the 1st argument of a binary function. \item\end{CompactList}\item 
+struct {\bf am::binder2nd$<$ Op, P2 $>$}
+\begin{CompactList}\small\item\em Bind the 2nd argument of a binary function. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \textbf{\_\-\_\-MATE\_\-HPP\_\-\_\-INCLUDED\_\-\_\-}\label{mate_8hpp_3e4350f057eab99f651bf44d03762124}
+
+\item 
+\#define \textbf{AM\_\-JOIN}(a, b)~AM\_\-DO\_\-JOIN(a, b)\label{mate_8hpp_f20ae84ff5fe6051ab485fe2188d1764}
+
+\item 
+\#define \textbf{AM\_\-DO\_\-JOIN}(a, b)~AM\_\-DO\_\-JOIN2(a, b)\label{mate_8hpp_ef14a56f5094b52719cef7b4babbb19c}
+
+\item 
+\#define \textbf{AM\_\-DO\_\-JOIN2}(a, b)~a\#\#b\label{mate_8hpp_252890d60fe1730841c5a00489165ec4}
+
+\item 
+\#define {\bf AM\_\-ANONYMOUS\_\-MATE}(HOST\_\-FN, MATE\_\-FN, UNIQUE)
+\item 
+\#define {\bf AM\_\-ANONYMOUS\_\-MATE\_\-IF}(HOST\_\-FN, MATE\_\-FN, COND, UNIQUE)
+\item 
+\#define {\bf AM\_\-ANONYMOUS\_\-MATE\_\-VOID}(MATE\_\-FN, UNIQUE)
+\item 
+\#define {\bf AM\_\-ANONYMOUS\_\-MATE\_\-VOID\_\-IF}(MATE\_\-FN, COND, UNIQUE)
+\item 
+\#define {\bf MATE}(HOST\_\-FN, MATE\_\-FN)~AM\_\-ANONYMOUS\_\-MATE(HOST\_\-FN, MATE\_\-FN, \_\-\_\-LINE\_\-\_\-)
+\item 
+\#define {\bf MATE\_\-IF}(HOST\_\-FN, MATE\_\-FN, COND)~AM\_\-ANONYMOUS\_\-MATE\_\-IF(HOST\_\-FN, MATE\_\-FN, COND, \_\-\_\-LINE\_\-\_\-)
+\item 
+\#define {\bf MATE\_\-VOID}(MATE\_\-FN)~AM\_\-ANONYMOUS\_\-MATE\_\-VOID(MATE\_\-FN, \_\-\_\-LINE\_\-\_\-)
+\item 
+\#define {\bf MATE\_\-VOID\_\-IF}(MATE\_\-FN, COND)~AM\_\-ANONYMOUS\_\-MATE\_\-VOID\_\-IF(MATE\_\-FN, COND, \_\-\_\-LINE\_\-\_\-)
+\item 
+\#define {\bf MATE\_\-}(N, HOST\_\-FN, MATE\_\-FN)~MATE(HOST\_\-FN, MATE\_\-FN)
+\item 
+\#define {\bf MATE\_\-IF\_\-}(N, HOST\_\-FN, MATE\_\-FN, COND)~MATE\_\-IF(HOST\_\-FN, MATE\_\-FN, COND)
+\item 
+\#define {\bf MATE\_\-VOID\_\-}(N, MATE\_\-FN)~MATE\_\-VOID(MATE\_\-FN)
+\item 
+\#define {\bf MATE\_\-VOID\_\-IF\_\-}(N, MATE\_\-FN, COND)~MATE\_\-VOID\_\-IF(MATE\_\-FN, COND)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+template$<$class R, class T$>$ mate$<$ R $>$ {\bf am::make\_\-mate} (R ret, T mate\_\-functor)
+\item 
+template$<$class R, class T, class C$>$ mate$<$ R $>$ {\bf am::make\_\-mate} (R ret, T mate\_\-functor, C mate\_\-if)
+\item 
+template$<$class T$>$ ref\_\-holder$<$ T $>$ {\bf am::ref} (T \&ref)
+\item 
+template$<$class T$>$ ref\_\-holder$<$ T const $>$ {\bf am::cref} (T const \&ref)
+\item 
+template$<$typename Fn$>$ pointer\_\-to\_\-function$<$ Fn $>$ {\bf am::ptr\_\-fun} (Fn const fn)
+\item 
+template$<$typename Op, typename P1$>$ binder1st$<$ Op, P1 $>$ {\bf am::bind1st} (Op const \&op, P1 p1)
+\item 
+template$<$typename Op, typename P2$>$ binder2nd$<$ Op, P2 $>$ {\bf am::bind2nd} (Op const \&op, P2 p2)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Writing an exception safe code in generic way. 
+
+\begin{Desc}
+\item[Author:]Jae\-Wook Choi (zzzz.ooo \char`\"{}at' gmail.com) \end{Desc}
+\begin{Desc}
+\item[Version:]1.02 \end{Desc}
+\begin{Desc}
+\item[Date:]12.12.2006 \end{Desc}
+\begin{Desc}
+\item[Warning:]This software is provided \char`\"{}as is\char`\"{} without express or implied warranty. 
+
+Use it at your own risk! \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{mate.hpp@{mate.hpp}!AM_ANONYMOUS_MATE@{AM\_\-ANONYMOUS\_\-MATE}}
+\index{AM_ANONYMOUS_MATE@{AM\_\-ANONYMOUS\_\-MATE}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define AM\_\-ANONYMOUS\_\-MATE(HOST\_\-FN, MATE\_\-FN, UNIQUE)}\label{mate_8hpp_0b43846b9d4b2cf0017afdb28a0fdda6}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}am::detail::mate_base const & AM_JOIN(_anonymous_, UNIQUE) = \
+  am::make_mate((HOST_FN), (MATE_FN)); AM_JOIN(_anonymous_, UNIQUE);
+\end{verbatim}\end{Code}
+\begin{Desc}
+\item[For internal use only.]
+Generates anonymous mate variable. \end{Desc}
+\index{mate.hpp@{mate.hpp}!AM_ANONYMOUS_MATE_IF@{AM\_\-ANONYMOUS\_\-MATE\_\-IF}}
+\index{AM_ANONYMOUS_MATE_IF@{AM\_\-ANONYMOUS\_\-MATE\_\-IF}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define AM\_\-ANONYMOUS\_\-MATE\_\-IF(HOST\_\-FN, MATE\_\-FN, COND, UNIQUE)}\label{mate_8hpp_a986ab16c039b02db09e4da015c65a0d}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}am::detail::mate_base const & AM_JOIN(_anonymous_if_, UNIQUE) = \
+  am::make_mate((HOST_FN), (MATE_FN), (COND)); AM_JOIN(_anonymous_if_, UNIQUE);
+\end{verbatim}\end{Code}
+\begin{Desc}
+\item[For internal use only.]
+Generates anonymous mate variable with a condition. \end{Desc}
+\index{mate.hpp@{mate.hpp}!AM_ANONYMOUS_MATE_VOID@{AM\_\-ANONYMOUS\_\-MATE\_\-VOID}}
+\index{AM_ANONYMOUS_MATE_VOID@{AM\_\-ANONYMOUS\_\-MATE\_\-VOID}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define AM\_\-ANONYMOUS\_\-MATE\_\-VOID(MATE\_\-FN, UNIQUE)}\label{mate_8hpp_b96c3730f55e6042664d206492749cf3}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}am::mate<void> AM_JOIN(_anonymous_void_, UNIQUE)((MATE_FN)); \
+ AM_JOIN(_anonymous_void_, UNIQUE);
+\end{verbatim}\end{Code}
+\begin{Desc}
+\item[For internal use only.]
+Generates anonymous mate$<$void$>$ variable. \end{Desc}
+\index{mate.hpp@{mate.hpp}!AM_ANONYMOUS_MATE_VOID_IF@{AM\_\-ANONYMOUS\_\-MATE\_\-VOID\_\-IF}}
+\index{AM_ANONYMOUS_MATE_VOID_IF@{AM\_\-ANONYMOUS\_\-MATE\_\-VOID\_\-IF}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define AM\_\-ANONYMOUS\_\-MATE\_\-VOID\_\-IF(MATE\_\-FN, COND, UNIQUE)}\label{mate_8hpp_034dce381d7a40e6b85afa5fc84ed86d}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}am::mate<void> AM_JOIN(_anonymous_void_if_, UNIQUE)((MATE_FN), (COND)); \
+ AM_JOIN(_anonymous_void_if_, UNIQUE);
+\end{verbatim}\end{Code}
+\begin{Desc}
+\item[For internal use only.]
+Generates anonymous mate$<$void$>$ variable with a condition. \end{Desc}
+\index{mate.hpp@{mate.hpp}!MATE@{MATE}}
+\index{MATE@{MATE}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MATE(HOST\_\-FN, MATE\_\-FN)~AM\_\-ANONYMOUS\_\-MATE(HOST\_\-FN, MATE\_\-FN, \_\-\_\-LINE\_\-\_\-)}\label{mate_8hpp_01562e931d80813b43fcddc1a13799fe}
+
+
+Create an anonymous (unnamed) mate variable which calls the mate function object, {\em MATE\_\-FN\/} in its destructor with the return of the host function, {\em HOST\_\-FN\/} as its argument when it goes out of scope.
+
+\begin{Desc}
+\item[See also:]\doxyref{AM\_\-ANONYMOUS\_\-MATE()}{p.}{mate_8hpp_0b43846b9d4b2cf0017afdb28a0fdda6} \end{Desc}
+\index{mate.hpp@{mate.hpp}!MATE_@{MATE\_\-}}
+\index{MATE_@{MATE\_\-}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MATE\_\-(N, HOST\_\-FN, MATE\_\-FN)~MATE(HOST\_\-FN, MATE\_\-FN)}\label{mate_8hpp_19fc8b71e7a27de46d8a4a8c7ef8c3ff}
+
+
+It is devised to remedy the issue that some compiler can't generate an unique anonymous variable. In such compiler, user must provide an unique number {\em N\/} to create an unique identifier manually. In other compilers, it is identical to \doxyref{MATE()}{p.}{mate_8hpp_01562e931d80813b43fcddc1a13799fe} and {\em N\/} is simply ignored.
+
+\begin{Desc}
+\item[See also:]\doxyref{MATE()}{p.}{mate_8hpp_01562e931d80813b43fcddc1a13799fe} \end{Desc}
+\index{mate.hpp@{mate.hpp}!MATE_IF@{MATE\_\-IF}}
+\index{MATE_IF@{MATE\_\-IF}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MATE\_\-IF(HOST\_\-FN, MATE\_\-FN, COND)~AM\_\-ANONYMOUS\_\-MATE\_\-IF(HOST\_\-FN, MATE\_\-FN, COND, \_\-\_\-LINE\_\-\_\-)}\label{mate_8hpp_9017d939bd69b57ffa03347874ac607b}
+
+
+Create an anonymous (unnamed) mate variable which calls the mate function object, {\em MATE\_\-FN\/} in its destructor with the return of the host function {\em HOST\_\-FN\/} as its argument when it goes out of scope only if the unary predicate, {\em COND\/} asserts true.
+
+\begin{Desc}
+\item[See also:]\doxyref{AM\_\-ANONYMOUS\_\-MATE\_\-IF()}{p.}{mate_8hpp_a986ab16c039b02db09e4da015c65a0d} \end{Desc}
+\index{mate.hpp@{mate.hpp}!MATE_IF_@{MATE\_\-IF\_\-}}
+\index{MATE_IF_@{MATE\_\-IF\_\-}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MATE\_\-IF\_\-(N, HOST\_\-FN, MATE\_\-FN, COND)~MATE\_\-IF(HOST\_\-FN, MATE\_\-FN, COND)}\label{mate_8hpp_4cca2d4ba772910bd738c660c1a8348e}
+
+
+It is devised to remedy the issue that some compiler can't generate an unique anonymous variable. In such compiler, user must provide an unique number {\em N\/} to create an unique identifier manually. In other compilers, it is identical to \doxyref{MATE\_\-IF()}{p.}{mate_8hpp_9017d939bd69b57ffa03347874ac607b} and {\em N\/} is simply ignored.
+
+\begin{Desc}
+\item[See also:]\doxyref{MATE\_\-IF()}{p.}{mate_8hpp_9017d939bd69b57ffa03347874ac607b} \end{Desc}
+\index{mate.hpp@{mate.hpp}!MATE_VOID@{MATE\_\-VOID}}
+\index{MATE_VOID@{MATE\_\-VOID}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MATE\_\-VOID(MATE\_\-FN)~AM\_\-ANONYMOUS\_\-MATE\_\-VOID(MATE\_\-FN, \_\-\_\-LINE\_\-\_\-)}\label{mate_8hpp_b64fb21cccc9097c72ddab9f2c37d78a}
+
+
+Create an anonymous (unnamed) mate variable which calls the mate function object, {\em MATE\_\-FN\/} in its destructor when it goes out of scope.
+
+\begin{Desc}
+\item[See also:]\doxyref{AM\_\-ANONYMOUS\_\-MATE\_\-VOID()}{p.}{mate_8hpp_b96c3730f55e6042664d206492749cf3} \end{Desc}
+\index{mate.hpp@{mate.hpp}!MATE_VOID_@{MATE\_\-VOID\_\-}}
+\index{MATE_VOID_@{MATE\_\-VOID\_\-}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MATE\_\-VOID\_\-(N, MATE\_\-FN)~MATE\_\-VOID(MATE\_\-FN)}\label{mate_8hpp_c8c88f0150b222ce2afb082872d36918}
+
+
+It is devised to remedy the issue that some compiler can't generate an unique anonymous variable. In such compiler, user must provide an unique number {\em N\/} to create an unique identifier manually. In other compilers, it is identical to \doxyref{MATE\_\-VOID()}{p.}{mate_8hpp_b64fb21cccc9097c72ddab9f2c37d78a} and {\em N\/} is simply ignored.
+
+\begin{Desc}
+\item[See also:]\doxyref{MATE\_\-VOID()}{p.}{mate_8hpp_b64fb21cccc9097c72ddab9f2c37d78a} \end{Desc}
+\index{mate.hpp@{mate.hpp}!MATE_VOID_IF@{MATE\_\-VOID\_\-IF}}
+\index{MATE_VOID_IF@{MATE\_\-VOID\_\-IF}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MATE\_\-VOID\_\-IF(MATE\_\-FN, COND)~AM\_\-ANONYMOUS\_\-MATE\_\-VOID\_\-IF(MATE\_\-FN, COND, \_\-\_\-LINE\_\-\_\-)}\label{mate_8hpp_becd3ca3f114b18666fd383aad100fef}
+
+
+Create an anonymous (unnamed) mate variable which calls the mate function object, {\em MATE\_\-FN\/} in its destructor when it goes out of scope only if the null-nary predicate, {\em COND\/} asserts true.
+
+\begin{Desc}
+\item[See also:]\doxyref{AM\_\-ANONYMOUS\_\-MATE\_\-VOID\_\-IF()}{p.}{mate_8hpp_034dce381d7a40e6b85afa5fc84ed86d} \end{Desc}
+\index{mate.hpp@{mate.hpp}!MATE_VOID_IF_@{MATE\_\-VOID\_\-IF\_\-}}
+\index{MATE_VOID_IF_@{MATE\_\-VOID\_\-IF\_\-}!mate.hpp@{mate.hpp}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MATE\_\-VOID\_\-IF\_\-(N, MATE\_\-FN, COND)~MATE\_\-VOID\_\-IF(MATE\_\-FN, COND)}\label{mate_8hpp_35d3c430642a21a853b08f966bb16895}
+
+
+It is devised to remedy the issue that some compiler can't generate an unique anonymous variable. In such compiler, user must provide an unique number {\em N\/} to create an unique identifier manually. In other compilers, it is identical to \doxyref{MATE\_\-VOID\_\-IF()}{p.}{mate_8hpp_becd3ca3f114b18666fd383aad100fef} and {\em N\/} is simply ignored.
+
+\begin{Desc}
+\item[See also:]\doxyref{MATE\_\-VOID\_\-IF()}{p.}{mate_8hpp_becd3ca3f114b18666fd383aad100fef} \end{Desc}

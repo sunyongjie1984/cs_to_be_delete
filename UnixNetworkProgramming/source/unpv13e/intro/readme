@@ -1,0 +1,6 @@
+1.  the server programe must be run under account root or there would be error
+
+2.  byteorder
+    gdb byteorber
+    p *(char*)(&un.s)
+    p *((char*)(&un.s)+1)

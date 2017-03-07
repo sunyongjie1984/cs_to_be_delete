@@ -1,0 +1,31 @@
+//------------------------------------------------------------------------------
+// AUTHOR  : OAM applicative Team
+// PROJECT : OAM applicative
+// DOMAIN  : AUDIT
+// FILENAME: SubCheckAuditor.cc
+//------------------------------------------------------------------------------
+//           Versions and editions historic
+//------------------------------------------------------------------------------
+//    Ver    | Ed |   date     | resp.                 | comment
+//-----------+----+------------+-----------------------+------------------------
+//           | 01 | 7/14/2010  | Shen Xin              | creation (SDM8650 R3.1, 70729)
+//-----------+----+------------+-----------------------+------------------------
+
+
+#include <ace/Guard_T.h>
+
+#include "GDReSyncAuditor.hh"
+#include "SSDGlobal.hh"
+#include "GDReSyncMngt.hh"
+#include "OamInitDefenseHandler.hh"
+#include "SSDResourceMngt.hh"
+
+#include "OamCpuLoadControl.hh"
+
+// Includes the API for getNrgKey
+#include "DDBTopolologyManagerIF.hh"
+#include "DatabaseRedundancyGroupIF.hh"
+#include "TopologyManagerException.hh"
+
+
+#include "OamCommonHandler.hh"  //write log header fi

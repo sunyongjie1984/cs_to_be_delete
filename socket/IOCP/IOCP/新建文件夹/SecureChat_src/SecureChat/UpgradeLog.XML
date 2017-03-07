@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="SecureChat">
+</Property><Property Name="Solution File" Value="C:\Documents and Settings\dlfc\桌面\快捷方式\now\新建文件夹\SecureChat_src\SecureChat\SecureChat.sln">
+</Property><Property Name="Date" Value="2012年4月11日">
+</Property><Property Name="Time" Value="13:41">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="SecureChat.sln" Description="File successfully backed up as C:\Documents and Settings\dlfc\桌面\快捷方式\now\新建文件夹\SecureChat_src\SecureChat\SecureChat.sln.old">
+</Event><Event ErrorLevel="0" Project="SecureChat" Source="SecureChat.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="SecureChat" Source="SecureChat.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="SecureChat" Source="SecureChat.vcproj" Description="Project file successfully backed up as 'C:\Documents and Settings\dlfc\桌面\快捷方式\now\新建文件夹\SecureChat_src\SecureChat\SecureChat.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="SecureChat" Source="SecureChat.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="SecureChat" Source="SecureChat.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SecureChatClient" Source="SecureChatClient\SecureChatClient.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="SecureChatClient" Source="SecureChatClient\SecureChatClient.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="SecureChatClient" Source="SecureChatClient\SecureChatClient.vcproj" Description="Project file successfully backed up as 'C:\Documents and Settings\dlfc\桌面\快捷方式\now\新建文件夹\SecureChat_src\SecureChat\SecureChatClient\SecureChatClient.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="SecureChatClient" Source="SecureChatClient\SecureChatClient.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="SecureChatClient" Source="SecureChatClient\SecureChatClient.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="SecureChat.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="SecureChat.sln" Description="Converted">
+</Event></UpgradeLog>

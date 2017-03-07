@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1326434491 source:d:\work_around\work_test\code_blocks\hello\src\entry.c
+	"../package/headers/protocol_interface.h"
+	<stdio.h>
+	<string.h>
+
+1326264668 d:\work_around\work_test\code_blocks\hello\package\headers\protocol_interface.h
+	"protocol_enum.h"
+	"protocol_macro.h"
+	"protocol_type_define.h"
+
+1326250578 d:\work_around\work_test\code_blocks\hello\package\headers\protocol_enum.h
+
+1326268130 d:\work_around\work_test\code_blocks\hello\package\headers\protocol_macro.h
+
+1326264757 d:\work_around\work_test\code_blocks\hello\package\headers\protocol_type_define.h
+
+1326264541 source:d:\work_around\work_test\code_blocks\hello\package\sources\protocol_interface.c
+	"../headers/protocol_interface.h"
+	<stdio.h>
+	<memory.h>
+
+1326439677 source:d:\work_around\work_test\code_blocks\hello\package\sources\abstract_memory.c
+	"object_interface_macro.c"
+	"../headers/abstract_memory.h"
+	<memory.h>
+
+1326335913 d:\work_around\work_test\code_blocks\hello\package\sources\object_interface_macro.h
+	<malloc.h>
+
+1326338268 d:\work_around\work_test\code_blocks\hello\package\headers\abstract_memory.h
+	"protocol_interface.h"
+
+1326434857 d:\work_around\work_test\code_blocks\hello\package\sources\object_interface_macro.c
+	<malloc.h>
+
+1326434857 source:d:\work_around\work_test\code_blocks\hello\package\sources\object_interface_macro.c
+	<malloc.h>
+

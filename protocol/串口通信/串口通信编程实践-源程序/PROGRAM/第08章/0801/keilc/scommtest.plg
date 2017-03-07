@@ -1,0 +1,57 @@
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+Target has no object modules
+Target not created
+compiling test0c.c...
+TEST0C.C(6): error C100: unprintable character 0xA1 skipped
+TEST0C.C(6): error C100: unprintable character 0xA1 skipped
+TEST0C.C(7): error C100: unprintable character 0xA1 skipped
+TEST0C.C(7): error C100: unprintable character 0xA1 skipped
+TEST0C.C(8): error C100: unprintable character 0xA1 skipped
+TEST0C.C(8): error C100: unprintable character 0xA1 skipped
+TEST0C.C(9): error C100: unprintable character 0xA1 skipped
+TEST0C.C(9): error C100: unprintable character 0xA1 skipped
+TEST0C.C(10): error C100: unprintable character 0xA1 skipped
+TEST0C.C(10): error C100: unprintable character 0xA1 skipped
+TEST0C.C(11): error C100: unprintable character 0xA1 skipped
+TEST0C.C(11): error C100: unprintable character 0xA1 skipped
+TEST0C.C(12): error C100: unprintable character 0xA1 skipped
+TEST0C.C(12): error C100: unprintable character 0xA1 skipped
+TEST0C.C(14): error C100: unprintable character 0xA1 skipped
+TEST0C.C(14): error C100: unprintable character 0xA1 skipped
+TEST0C.C(15): error C100: unprintable character 0xA1 skipped
+TEST0C.C(15): error C100: unprintable character 0xA1 skipped
+TEST0C.C(16): error C100: unprintable character 0xA1 skipped
+TEST0C.C(16): error C100: unprintable character 0xA1 skipped
+TEST0C.C(16): error C100: unprintable character 0xA1 skipped
+TEST0C.C(16): error C100: unprintable character 0xA1 skipped
+TEST0C.C(16): error C100: unprintable character 0xA1 skipped
+TEST0C.C(16): error C100: unprintable character 0xA1 skipped
+TEST0C.C(17): error C100: unprintable character 0xA1 skipped
+TEST0C.C(17): error C100: unprintable character 0xA1 skipped
+TEST0C.C(17): error C100: unprintable character 0xA1 skipped
+TEST0C.C(18): error C141: syntax error near ''
+test0c.c - 28 Error(s), 0 Warning(s).
+compiling test0c.c...
+test0c.c - 0 Error(s), 0 Warning(s).
+compiling test0c.c...
+test0c.c - 0 Error(s), 0 Warning(s).
+compiling test0c.c...
+test0c.c - 0 Error(s), 0 Warning(s).
+compiling test0c.c...
+test0c.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=30.1 xdata=0 code=1100
+"scommtest" - 0 Error(s), 0 Warning(s).

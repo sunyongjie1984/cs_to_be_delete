@@ -1,0 +1,100 @@
+\section{Utility classes and their helper template functions.}\label{mate_utility_classes}
+\subsection{Supporting parameter by reference: am::ref and am::cref.}\label{mate_utility_classes_mate_uc_s1}
+Specifies the reference type as the template argument of the \doxyref{am::mate}{p.}{classam_1_1mate} class if you want to provide the return of the host function as a reference to the mate function.
+
+
+
+\begin{Code}\begin{verbatim} int & Increase(int & x) { return ++x; }
+ void Decrease(int & x) { --x; }
+
+ void test15(int & refCount)
+ {
+   am::mate<int &> decreseOnExit( Increase( refCount ), &Decrease );
+
+ } //  Calls Decrease( refCount ) on exit.
+\end{verbatim}\end{Code}
+
+
+
+By default, a template parameter is passed by value, not by reference. Thus if a mate function provided wants to take the return of the host function as a reference and \doxyref{MATE()}{p.}{mate_8hpp_01562e931d80813b43fcddc1a13799fe} macro definition is used, the specified mate function will be called with the reference to the \char`\"{}copy\char`\"{} of the argument, not with the reference to argument itself, when it goes out of scope since template parameter is passed by value. Use \doxyref{am::ref}{p.}{namespaceam_aeac214784a5e1a16be743677555cb96} or \doxyref{am::cref}{p.}{namespaceam_10096add639d0ba375c58c53aa8ff4a7} function to specify explicitly to use \doxyref{am::ref\_\-holder}{p.}{classam_1_1ref__holder} class transforms a reference into a value.
+
+
+
+\begin{Code}\begin{verbatim} void test16(int & refCount)
+ {
+   MATE( am::ref( Increase( refCount ) ), &Decrease );
+
+ }  //  Calls Decrease( refCount ) on exit.
+\end{verbatim}\end{Code}
+
+\subsubsection{Free function pointer: am::ptr\_\-fun.}\label{mate_utility_classes_mate_uc_s2}
+\doxyref{am::ptr\_\-fun}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829} is very similar to {\tt std::ptr\_\-fun} that it is used to convert unary and binary function pointers, respectively, into unary and binary adaptable function objects. However they are different in that \doxyref{am::ptr\_\-fun}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829} can convert the function pointers of any calling covention while {\tt std::ptr\_\-fun} can only convert {\tt \_\-\_\-cdecl} function pointers. In general, use {\tt std::ptr\_\-fun} and ignore \doxyref{am::ptr\_\-fun}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829} if you don't concern about calling convention.
+
+\doxyref{am::ptr\_\-fun}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829} and other helper template functions of \doxyref{am::mate}{p.}{classam_1_1mate} are designed to collaborate only with \doxyref{am::mate}{p.}{classam_1_1mate} and its other sibling helper template functions so do not mix use it with helper template functions from STL (such as {\tt std::ptr\_\-fun}, {\tt std::bind1st}, {\tt std::bind2nd} and so on.)
+
+You can also use \doxyref{am::ptr\_\-fun}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829} to resolve overloaded functions manually since the template rules are very strict for type checking and it is not supposed to resolve the resolution of the overloaded functions automatically.
+
+
+
+\begin{Code}\begin{verbatim} // Overloaded functions
+ void foo(char const *, int) { }
+ void foo(int) { }
+ void __stdcall foo(char const *) { }
+
+ void __stdcall bar(char const *) { }
+
+ void test17()
+ {
+   // Provides function template parameter explicitly to resolve overloaded functions.
+   MATE( "Hello foo!", am::ptr_fun<void (_stdcall *)(char const *)>( &foo ) );
+   MATE( "Hello foo!", am::bind2nd( am::ptr_fun<void (*)(char const *, int)>( &foo ), 123 ) );
+
+   // am::pointer_to_function is not necessary,
+   // unless otherwise resolving overloaded functions is required.
+   MATE( "Hello bar!", am::ptr_fun( &bar ) );
+   MATE( "Hello bar!", &bar );
+ }
+\end{verbatim}\end{Code}
+
+
+
+Be aware that the template parameter is provided as a single function pointer not as individual types from the function signature like STL does. It gives \doxyref{am::ptr\_\-fun}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829} and its sibling helper template functions the ability to resolve overloaded functions better as well as to work well with any calling conventions but it also prevents from being able to define the public interfaces such as {\tt first\_\-argument\_\-type}, {\tt second\_\-argument\_\-type} and {\tt result\_\-type}. Actually {\tt result\_\-type} is always fixed and defined as void internally since \doxyref{am::mate}{p.}{classam_1_1mate} does not utilize the {\tt result\_\-type} under the hood.
+
+{\bf - NOTE -}
+
+{\em Do {\bf NOT} use \doxyref{am::ptr\_\-fun}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829}, \doxyref{am::bind1st}{p.}{namespaceam_5d35d0139360afc672d2cf1ff279fd83}, \doxyref{am::bind2nd}{p.}{namespaceam_7416ae43749c6a8c08f3a1f8760ae24f} to create a function object which wraps a free function with the calling convention other than {\tt \_\-\_\-cdecl} under none-MSVC environment. Calling convention is subject to be a platform specific therefore it does not work well for none-MSVC environment, especially when function pointer is passed as a template parameter. Use \doxyref{am::lambda::bind}{p.}{namespaceam_1_1lambda_794d3c4a2b7231c36cfc0684fea9bf5e} instead.\/}\subsubsection{Bind the 1st or the 2nd argument of the binary function: am::bind1st and am::bind2nd.}\label{mate_utility_classes_mate_uc_s3}
+\doxyref{am::bind1st}{p.}{namespaceam_5d35d0139360afc672d2cf1ff279fd83} and \doxyref{am::bind2nd}{p.}{namespaceam_7416ae43749c6a8c08f3a1f8760ae24f} are similar to {\tt std::bind1st} and {\tt std::bind2nd} respectively but they resolve overloaded functions better as well as work for any calling conventions at the expense of not having public interface {\tt first\_\-argument\_\-type}. The template parameter is also required to be provided as a single function pointer not as individual types from the function signature when resolving overloaded functions is needed.
+
+
+
+\begin{Code}\begin{verbatim} void foo(char const *, int) { }
+ void __stdcall bar(char const *, int) { }  // __stdcall calling convention.
+
+ void main()
+ {
+   // MATE( "Hello foo!", std::bind2nd( &foo, 123 ) ); // Compiles error!
+   // MATE( "Hello bar!", std::bind2nd( &bar, 123 ) ); // Compiles error!
+   MATE( "Hello foo!", am::bind2nd( &foo, 123 ) ); // Compiles OK!
+   MATE( "Hello bar!", am::bind2nd( &bar, 123 ) ); // Compiles OK!
+ }
+\end{verbatim}\end{Code}
+
+\subsubsection{Miscellaneous.}\label{mate_utility_classes_mate_uc_s4}
+\doxyref{am::condition}{p.}{structam_1_1condition} can be used to convert a boolean expression into a null-nary or unary predicate.
+
+
+
+\begin{Code}\begin{verbatim} void test19(bool cond)
+ {
+   assert( false == am::condition( 2 == 3 )() );
+   assert( false == am::condition( 2 == 3 )( "123" ) );  // Input argument is simply ignored.
+
+   // Use am::lambda::condition instead when composing a function object using am::lambda
+   MATE_IF( ::CreateMutex(NULL, TRUE, NULL), &::ReleaseMutex,
+     (HANDLE)NULL != am::lambda::_1 && am::lambda::condition( cond ) );
+ } 
+\end{verbatim}\end{Code}
+
+
+
+\doxyref{[Contents]}{p.}{index_mate_contents} 

@@ -1,0 +1,61 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SCOMM - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/SCOMM.res" /d "_DEBUG" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\SCOMM.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7E.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/SCOMM.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\AnimateDlgIcon.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\HYPERLINK.CPP"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\PushPin.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\SCOMM.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\SCOMMDlg.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\SerialPort.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7E.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7F.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/SCOMM.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7F.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP80.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/SCOMM.pdb" /debug /machine:I386 /out:"Debug/SCOMM.exe" /pdbtype:sept 
+".\Debug\AnimateDlgIcon.obj"
+".\Debug\HYPERLINK.OBJ"
+".\Debug\PushPin.obj"
+".\Debug\SCOMM.obj"
+".\Debug\SCOMMDlg.obj"
+".\Debug\SerialPort.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SCOMM.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP80.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+AnimateDlgIcon.cpp
+HYPERLINK.CPP
+PushPin.cpp
+SCOMM.cpp
+SCOMMDlg.cpp
+SerialPort.cpp
+C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第05章\SCOMMV23\SerialPort.cpp(500) : warning C4018: '!=' : signed/unsigned mismatch
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+SCOMM.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

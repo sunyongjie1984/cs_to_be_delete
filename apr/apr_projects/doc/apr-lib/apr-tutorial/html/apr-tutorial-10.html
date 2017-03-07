@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: command line options</TITLE>
+ <LINK HREF="apr-tutorial-11.html" REL=next>
+ <LINK HREF="apr-tutorial-9.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc10" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-11.html">Next</A>
+<A HREF="apr-tutorial-9.html">Previous</A>
+<A HREF="apr-tutorial.html#toc10">Contents</A>
+<HR>
+<H2><A NAME="s10">10.</A> <A HREF="apr-tutorial.html#toc10">command line options</A></H2>
+
+<P>For CLI(command line interface) tools, command line options are popular. libapr provides APIs to handle command line options easily. Here is an excerpted code from 
+<A HREF="../sample/getopt-sample.c">getopt-sample.c</A>.</P>
+<P>/* excerpted from 
+<A HREF="../sample/getopt-sample.c">getopt-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+static const apr_getopt_option_t opt_option[] = {
+    /* long-option, short-option, has-arg flag, description */
+    { "in", 'i', TRUE, "input file" },      /* -i name or --in name */
+    { "out", 'o', TRUE, "output file" },    /* -o name or --out name */
+    { "help", 'h', FALSE, "show help" },    /* -h or --help */
+    { NULL, 0, 0, NULL }, /* end (a.k.a. sentinel) */
+};
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>At first, we should supply an array of apr_getopt_option_t elements. We call it option-list. Each element has four variables, i.e. long option, short option, flag of the trailing argument, and description. A long option is specified as '--help'. A short option is specified as '-h'. Short options are mandatory and long options are optional. We can set a long option to NULL. The third variable is flag of the existence of trailing argument. If a command line option works as '--in filename', i.e. the trailing argument is required, we have to set the flag to TRUE. If you run the program without the required argument, e.g. './a.out -in', it causes an error.
+The option-list must have a sentinel element as described above.</P>
+<P>To parse actual command line options based on the option-list, we have to call apr_getopt_init() at first. That initializes apr_getopt_t object. Next, we keep calling apr_getopt_long() while it returns APR_SUCCESS. Here is an excerpted code from 
+<A HREF="../sample/getopt-sample.c">getopt-sample.c</A>.</P>
+<P>/* excerpted from 
+<A HREF="../sample/getopt-sample.c">getopt-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+/* initialize apr_getopt_t */
+apr_getopt_t *opt;
+apr_getopt_init(&amp;opt, mp, argc, argv);
+/* parse the all options based on opt_option[] */
+while ((rv = apr_getopt_long(opt, opt_option, &amp;optch, &amp;optarg)) == APR_SUCCESS) {
+    switch (optch) {
+    case 'i':
+        ...OMIT
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>During the loop, apr_getopt_long() processes the actual command line option one by one. If the option found is in the option-list, apr_getopt_long() returns APR_SUCCESS and set optch's value. When the option has the trailing argument, apr_getopt_long() parses it and set optarg's value. </P>
+<P>I show you an example. Let's think about the case that you run the program as './getopt-sample -h -i foo.txt'. At the first loop, apr_getopt_long() finds 'h' in the option-list. Then, apr_getopt_long() returns APR_SUCCESS and set optch to 'h'. At the next loop, apr_getopt_long() finds 'i' in the option-list and 'i' requiring the trailing argument, so it parses the trailing argument, 'foo.txt'. Thus, apr_getopt_long() returns APR_SUCCESS, and set optch to 'i' and optarg to "foo.txt". At the next loop, apr_getopt_long() finds no more options, so returns APR_EOF.</P>
+
+
+<HR>
+<A HREF="apr-tutorial-11.html">Next</A>
+<A HREF="apr-tutorial-9.html">Previous</A>
+<A HREF="apr-tutorial.html#toc10">Contents</A>
+</BODY>
+</HTML>

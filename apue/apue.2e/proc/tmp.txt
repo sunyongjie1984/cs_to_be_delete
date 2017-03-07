@@ -1,0 +1,10 @@
+file fork2.c, line 6 parent, getpid() = 11123
+file fork2.c, line 16 child 1, getpid() = 11124
+first child, going to sleep(2)
+first child, after sleep(2), begin exiting
+after sleep(2), first child exit caught by parent (waitpid)
+file fork2.c, line 49, getpid() = 11123
+file fork2.c, line 36, child 2, getpid() = 11125
+second child, going to sleep(5)
+second child, after sleep(5)
+second child, parent pid = 1, parent id is 1, which means my parent process is init

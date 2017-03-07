@@ -1,0 +1,46 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: NNTest - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/NNTest.res" /d "_DEBUG" /d "_AFXDLL" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\NNTest.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP63.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/NNTest.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\NNTest.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\NNTestDlg.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\SerialPort.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP63.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP64.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/NNTest.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP64.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/NNTest.pdb" /debug /machine:I386 /out:"Debug/NNTest.exe" /pdbtype:sept  ".\Debug\NNTest.obj" ".\Debug\NNTestDlg.obj" ".\Debug\SerialPort.obj" ".\Debug\StdAfx.obj" ".\Debug\NNTest.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+NNTest.cpp
+NNTestDlg.cpp
+C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\NNTestDlg.cpp(185) : warning C4305: 'initializing' : truncation from 'const int' to 'char'
+C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\NNTestDlg.cpp(185) : warning C4309: 'initializing' : truncation of constant value
+C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\NNTestDlg.cpp(185) : warning C4305: 'initializing' : truncation from 'const int' to 'char'
+C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第02章\0204\NNTest\NNTestDlg.cpp(185) : warning C4309: 'initializing' : truncation of constant value
+SerialPort.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+NNTest.exe - 0 error(s), 4 warning(s)
+</pre>
+</body>
+</html>

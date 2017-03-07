@@ -1,0 +1,1515 @@
+From: "Saved by Windows Internet Explorer 8"
+Subject: =?gb2312?B?obZDKysgUHJpbWVyILXay8Sw5qG3scq8x9Prv7HO8zEgLSBzcm9w?=
+	=?gb2312?B?tcTI1da+IC0gzfjS17Kpv80=?=
+Date: Mon, 27 Dec 2010 16:01:06 -0800
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://cache.baidu.com/c?m=9d78d513d99256af28fa940e1a16a624590fdf347cc0d06468a4e75fe3674c30307197ba3365505adc9f3a2143b8482ff7ed662c6a5637b7eccb8c4bcabbe57972d73a753041c41f59ce49f19613388066c31cb2fe04e4bff23993aad5d0d45451c856057a81fa8c580210cf6fed&p=8b2a935fcc961bdd08e2907b7f43&user=baidu&fm=sc&query=c%2B%2B+primer+%BF%B1%CE%F3&qid=9f4779ef0f935322&p1=5
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7600.16385
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--STATUS OK--><HTML><HEAD><TITLE>=A1=B6C++ Primer =
+=B5=DA=CB=C4=B0=E6=A1=B7=B1=CA=BC=C7=D3=EB=BF=B1=CE=F31 - =
+srop=B5=C4=C8=D5=D6=BE - =CD=F8=D2=D7=B2=A9=BF=CD</TITLE>
+<META content=3Dtext/html;charset=3Dgb2312 http-equiv=3DContent-Type>
+<STYLE>BODY {
+	MARGIN: 4px 0px
+}
+#bd_sn_h {
+	TEXT-ALIGN: left; BACKGROUND-COLOR: #ffffff; COLOR: #000000
+}
+#bd_sn_h #p1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT: 14px Arial; CLEAR: both; PADDING-TOP: 4px
+}
+#bd_sn_h A {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+#bd_sn_h #p1 A {
+	FONT-WEIGHT: bold
+}
+#baidu DIV {
+	POSITION: static
+}
+</STYLE>
+
+<META name=3DGENERATOR content=3D"MSHTML 8.00.7600.16385"></HEAD>
+<BODY id=3Dblog-163-com class=3D"nb-body nb-inr nb-prv">
+<TABLE id=3Dbaidu border=3D0 cellSpacing=3D0 cellPadding=3D0 =
+width=3D"100%">
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV style=3D"TEXT-ALIGN: left; BACKGROUND-COLOR: #ffffff; COLOR: =
+#000000">
+      <DIV style=3D"MARGIN: 6px 18px 0px 10px; FLOAT: left"><A=20
+      href=3D"http://www.baidu.com/"><IMG=20
+      style=3D"BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px"=20
+      alt=3D=B5=BD=B0=D9=B6=C8=CA=D7=D2=B3 src=3D""></A></DIV>
+      <DIV style=3D"MARGIN: 27px 0px 0px; FLOAT: left">
+      <FORM=20
+      style=3D"PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px"=20
+      action=3Dhttp://www.baidu.com/s><INPUT style=3D"FONT: 16px Arial" =
+size=3D35=20
+      name=3Dwd> <INPUT value=3D=B0=D9=B6=C8=D2=BB=CF=C2 type=3Dsubmit> =
+<INPUT value=3D3 type=3Dhidden=20
+      name=3Dcl> </FORM></DIV>
+      <P=20
+      style=3D"TEXT-ALIGN: left; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: =
+#ffffff; MARGIN: 0px 0px 0px 2px; PADDING-LEFT: 0px; WIDTH: 100%; =
+PADDING-RIGHT: 0px; FONT: 14px Arial; COLOR: #000000; CLEAR: both; =
+PADDING-TOP: =
+4px">=C4=FA=B2=E9=D1=AF=B5=C4=B9=D8=BC=FC=B4=CA=CA=C7=A3=BA<B=20
+      style=3D"BACKGROUND-COLOR: #ffff66; COLOR: black"><A=20
+      =
+href=3D"http://cache.baidu.com/c?m=3D9d78d513d99256af28fa940e1a16a624590f=
+df347cc0d06468a4e75fe3674c30307197ba3365505adc9f3a2143b8482ff7ed662c6a563=
+7b7eccb8c4bcabbe57972d73a753041c41f59ce49f19613388066c31cb2fe04e4bff23993=
+aad5d0d45451c856057a81fa8c580210cf6fed&amp;p=3D8b2a935fcc961bdd08e2907b7f=
+43&amp;user=3Dbaidu&amp;fm=3Dsc&amp;query=3Dc%2B%2B+primer+%BF%B1%CE%F3&a=
+mp;qid=3D9f4779ef0f935322&amp;p1=3D5#baidusnap0">c++</A>&nbsp;</B><B=20
+      style=3D"BACKGROUND-COLOR: #a0ffff; COLOR: black"><A=20
+      =
+href=3D"http://cache.baidu.com/c?m=3D9d78d513d99256af28fa940e1a16a624590f=
+df347cc0d06468a4e75fe3674c30307197ba3365505adc9f3a2143b8482ff7ed662c6a563=
+7b7eccb8c4bcabbe57972d73a753041c41f59ce49f19613388066c31cb2fe04e4bff23993=
+aad5d0d45451c856057a81fa8c580210cf6fed&amp;p=3D8b2a935fcc961bdd08e2907b7f=
+43&amp;user=3Dbaidu&amp;fm=3Dsc&amp;query=3Dc%2B%2B+primer+%BF%B1%CE%F3&a=
+mp;qid=3D9f4779ef0f935322&amp;p1=3D5#baidusnap1">primer</A>&nbsp;</B><B=20
+      style=3D"BACKGROUND-COLOR: #99ff99; COLOR: black"><A=20
+      =
+href=3D"http://cache.baidu.com/c?m=3D9d78d513d99256af28fa940e1a16a624590f=
+df347cc0d06468a4e75fe3674c30307197ba3365505adc9f3a2143b8482ff7ed662c6a563=
+7b7eccb8c4bcabbe57972d73a753041c41f59ce49f19613388066c31cb2fe04e4bff23993=
+aad5d0d45451c856057a81fa8c580210cf6fed&amp;p=3D8b2a935fcc961bdd08e2907b7f=
+43&amp;user=3Dbaidu&amp;fm=3Dsc&amp;query=3Dc%2B%2B+primer+%BF%B1%CE%F3&a=
+mp;qid=3D9f4779ef0f935322&amp;p1=3D5#baidusnap2">=BF=B1=CE=F3</A>&nbsp;</=
+B>=20
+      =
+=A1=A3=C8=E7=B9=FB=B4=F2=BF=AA=CB=D9=B6=C8=C2=FD=A3=AC=BF=C9=D2=D4=B3=A2=CA=
+=D4<A=20
+      style=3D"COLOR: #0000ff; FONT-WEIGHT: bold; TEXT-DECORATION: =
+underline"=20
+      =
+href=3D"http://cache.baidu.com/c?m=3D9d78d513d99256af28fa940e1a16a624590f=
+df347cc0d06468a4e75fe3674c30307197ba3365505adc9f3a2143b8482ff7ed662c6a563=
+7b7eccb8c4bcabbe57972d73a753041c41f59ce49f19613388066c31cb2fe04e4bff23993=
+aad5d0d45451c856057a81fa8c580210cf6fed&amp;p=3D8b2a935fcc961bdd08e2907b7f=
+43&amp;user=3Dbaidu&amp;fm=3Dsc&amp;query=3Dc%2B%2B+primer+%BF%B1%CE%F3&a=
+mp;qid=3D9f4779ef0f935322&amp;p1=3D5&amp;fast=3Dy">=BF=EC=CB=D9=B0=E6</A>=
+=A3=BB=C8=E7=B9=FB=CF=EB=B1=A3=B4=E6=BF=EC=D5=D5=A3=AC=BF=C9=D2=D4<A=20
+      style=3D"COLOR: #0000ff; FONT-WEIGHT: bold; TEXT-DECORATION: =
+underline"=20
+      =
+onclick=3D"window.open('http://cang.baidu.com/do/add?it=3D'+encodeURIComp=
+onent(document.title)+'&amp;iu=3D'+encodeURIComponent(location.href)+'&am=
+p;fr=3Dps#nw=3D1','_s','scrollbars=3Dno,width=3D600,height=3D450,right=3D=
+75,top=3D20,status=3Dno,resizable=3Dyes'); return false;"=20
+      href=3D"http://cang.baidu.com/do/add" =
+target=3D_blank>=CC=ED=BC=D3=B5=BD=CB=D1=B2=D8</A>=A1=A3</P>
+      <P=20
+      style=3D"BACKGROUND-COLOR: #ffffff; MARGIN: 0px 2px; FONT: 12px =
+Arial; COLOR: gray">(=B0=D9=B6=C8=BA=CD=CD=F8=D2=B3<A=20
+      style=3D"COLOR: #0000ff; TEXT-DECORATION: underline"=20
+      =
+href=3D"http://blog.163.com/sroply/blog/static/17092651920072238500672/">=
+http://blog.163.com/sroply/blog/static/17092651920072238500672/</A>=B5=C4=
+=D7=F7=D5=DF=CE=DE=B9=D8=A3=AC=B2=BB=B6=D4=C6=E4=C4=DA=C8=DD=B8=BA=D4=F0=A1=
+=A3=B0=D9=B6=C8=BF=EC=D5=D5=BD=F7=CE=AA=CD=F8=C2=E7=B9=CA=D5=CF=CA=B1=D6=AE=
+=CB=F7=D2=FD=A3=AC=B2=BB=B4=FA=B1=ED=B1=BB=CB=D1=CB=F7=CD=F8=D5=BE=B5=C4=BC=
+=B4=CA=B1=D2=B3=C3=E6=A1=A3)</P>
+      <HR style=3D"MARGIN: 8px 0px; WIDTH: 100%">
+      </DIV></TD></TR></TBODY></TABLE>
+<DIV style=3D"POSITION: relative">
+<META content=3Dtext/css http-equiv=3Dcontent-style-type>
+<META content=3Dtext/javascript http-equiv=3Dcontent-script-type>
+<META name=3Dversion content=3Dneblog-1.0>
+<META name=3Dauthor content=3Dsroply,srop>
+<META name=3Dkeywords=20
+content=3D"=A1=B6C++ Primer =
+=B5=DA=CB=C4=B0=E6=A1=B7=B1=CA=BC=C7=D3=EB=BF=B1=CE=F31,=C8=D5=D6=BE,srop=
+,srop|sroply,=CD=F8=D2=D7=B2=A9=BF=CD,=CD=F8=D2=D7,blog">
+<META name=3Ddescription=20
+content=3D"=A1=B6C++ Primer =
+=B5=DA=CB=C4=B0=E6=A1=B7=B1=CA=BC=C7=D3=EB=BF=B1=CE=F31,srop=B5=C4=CD=F8=D2=
+=D7=B2=A9=BF=CD,srop|sroply,"><LINK rel=3Dstylesheet=20
+type=3Dtext/css =
+href=3D"http://b2.bst.126.net/newpage/r/c/c.css?v=3D6343416087"><LINK=20
+id=3Dblog-163-com-theme rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://os.blog.163.com/style/css/diy/81185296/170926519/-12842782=
+71837/b.css"><!--[if lte IE 6]>
+  <style type=3D"text/css">
+    =
+html,body,#blog-163-com-ie6body{height:100%;width:100%;overflow:hidden;}
+    #blog-163-com-ie6body{overflow:auto;overflow-y:scroll;}
+    #blog-163-com{background:none;}
+  </style>
+  <![endif]-->
+<STYLE type=3Dtext/css>.m-3 .nbw-ryt .left .mcnt {
+	PADDING-LEFT: 10px
+}
+.m-3 .nbw-ryt .right .acts {
+	POSITION: relative; LINE-HEIGHT: 20px; MARGIN: 0px 0px 35px
+}
+.m-3 .nbw-ryt .right .more {
+	LINE-HEIGHT: 24px; MARGIN-TOP: -15px; HEIGHT: 24px
+}
+#blog-163-com .m-3 .phide {
+	DISPLAY: none
+}
+.m-3 .nbw-ryt .left .nbw-bitm {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+.m-3 .nbw-ryt .left .nbw-bitm .title {
+	MARGIN: 30px 0px 20px
+}
+.m-3 .nbw-ryt .left .nbw-bitm .title .tcnt {
+	FONT-FAMILY: =
+'=CE=A2=C8=ED=D1=C5=BA=DA','=BA=DA=CC=E5',Arial,Helvetica,Sans-Serif; =
+FONT-SIZE: 20px
+}
+.m-3 .nbw-ryt .left .nbw-bitm .tdep {
+	MARGIN-BOTTOM: 20px
+}
+.m-3 .nbw-ryt .left .nbw-bitm .tbar {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; MARGIN: 5px =
+0px; PADDING-LEFT: 0px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+.m-3 .nbw-ryt .left .nbw-bitm .bct {
+	PADDING-LEFT: 0px; FONT-SIZE: 14px
+}
+.m-3 .nbw-ryt .left .snl .pnb DIV {
+	TEXT-ALIGN: left; LINE-HEIGHT: 20px
+}
+.m-3 .nbw-ryt .cite {
+	TEXT-ALIGN: left; LINE-HEIGHT: 24px; MARGIN: 0px 0px 0px 50px
+}
+.m-3 .nbw-ryt .cite .close {
+	TEXT-ALIGN: right; MARGIN: 20px 0px
+}
+.m-3 .nbw-ryt .cite SPAN {
+	CURSOR: pointer
+}
+.m-3 .nbw-ryt .cite .nbw-act {
+	TEXT-ALIGN: center
+}
+.m-3 .nbw-ryt .cite .ads {
+	WIDTH: 400px; MARGIN-LEFT: 20px
+}
+.m-3 .nbw-ryt .cite .tbac {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: =
+24px; LIST-STYLE-TYPE: none; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; =
+MARGIN-LEFT: 60px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m-3 .nbw-ryt .cite .tbl {
+	WIDTH: 150px; OVERFLOW: hidden
+}
+.m-3 .nbw-ryt .cite .tbr {
+	MARGIN-LEFT: 20px; OVERFLOW: hidden
+}
+.m-3 .nbw-act-share {
+	POSITION: relative
+}
+.m-3 .nbw-act-share .nas-wrap {
+	VISIBILITY: hidden
+}
+.m-3 .nbw-act-share:hover .nas-wrap {
+	VISIBILITY: visible
+}
+.m-3 .js-share-hover .nas-wrap {
+	VISIBILITY: visible
+}
+.m-3 .nas-wrap {
+	BACKGROUND: url(/newpage/images/blog/icn-share.png) no-repeat 9999px =
+9999px
+}
+.nas-itm {
+	BACKGROUND: url(/newpage/images/blog/icn-share.png) no-repeat 9999px =
+9999px
+}
+.nas-wb {
+	BACKGROUND: url(/newpage/images/blog/icn-share.png) no-repeat 9999px =
+9999px
+}
+.m-3 .nas-wrap {
+	MARGIN-TOP: 5px
+}
+.nas-itm {
+	TEXT-DECORATION: none
+}
+.nas-wb {
+	TEXT-DECORATION: none
+}
+.nas-itm {
+	TEXT-DECORATION: underline
+}
+.nas-wb:hover {
+	TEXT-DECORATION: underline
+}
+.m-3 .nas-itm {
+	MARGIN: 0px 1px 0px 6px; WIDTH: 16px; FLOAT: left; HEIGHT: 16px; =
+OVERFLOW: hidden; CURSOR: pointer
+}
+.m-3 .nas-itm0 {
+	BACKGROUND-POSITION: 0px -173px
+}
+.m-3 .nas-itm1 {
+	BACKGROUND-POSITION: 0px -56px
+}
+.m-3 .nas-itm2 {
+	BACKGROUND-POSITION: 0px -85px
+}
+.m-3 .nas-itm3 {
+	BACKGROUND-POSITION: 0px -227px
+}
+.m-3 .nas-itm4 {
+	BACKGROUND-POSITION: 0px -143px
+}
+.m-3 .nas-itm5 {
+	BACKGROUND-POSITION: 0px -201px
+}
+.m-3 .nas-itm6 {
+	BACKGROUND-POSITION: 0px -249px
+}
+.nas-wb {
+	LINE-HEIGHT: normal; PADDING-LEFT: 20px; BACKGROUND-POSITION: 0px =
+-173px; CURSOR: pointer
+}
+.nas-icn0fix {
+	MARGIN-TOP: 4px
+}
+.nas-tofix {
+	LINE-HEIGHT: 25px; MARGIN-TOP: 2px
+}
+.m-3 .relateblog {
+	TEXT-ALIGN: left
+}
+.m-3 .relateblog H4 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; MARGIN: 0px; PADDING-LEFT: =
+10px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m-3 .relateblog .cnt {
+	MARGIN: 10px 0px; PADDING-LEFT: 8px
+}
+.m-3 .relateblog .cnt UL {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m-3 .relateblog .cnt UL LI {
+	LINE-HEIGHT: 24px; HEIGHT: 24px; MARGIN-RIGHT: 20px
+}
+.m-3 .relateblog .cnt UL LI SPAN {
+	MARGIN: 0px 8px
+}
+.m-3 .author {
+	TEXT-ALIGN: left
+}
+.m-3 .comment {
+	TEXT-ALIGN: left
+}
+.m-3 .author .nlogif {
+	LINE-HEIGHT: 20px; WIDTH: 150px; MARGIN-LEFT: 3px
+}
+.m-3 .author .nlogif .nbw-fce {
+	MARGIN: 0px 3px 0px 5px
+}
+.m-3 .author .nlogif .pright {
+	PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 85px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 10px
+}
+.m-3 .nbw-ryt .right H4 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; MARGIN: 0px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m-3 .author H4 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; MARGIN: 0px; PADDING-LEFT: =
+10px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m-3 .comment H4 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; MARGIN: 0px; PADDING-LEFT: =
+10px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m-3 .author .cwd {
+	BORDER-BOTTOM: 0px; TEXT-ALIGN: left; BORDER-LEFT: 0px; BORDER-TOP: =
+0px; BORDER-RIGHT: 0px
+}
+.m-3 .author .vname {
+	WIDTH: 50px
+}
+.m-3 .author .cnt {
+	MARGIN: 10px 0px 10px -5px
+}
+.m-3 .author .nbw-fce {
+	MARGIN: 0px 11px
+}
+.m-3 .author .nbw-f50 {
+	WIDTH: 50px
+}
+.m-3 .nbw-ryt .left .top {
+	POSITION: relative; PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px
+}
+.m-3 .nbw-ryt .left .top .ilft {
+	POSITION: absolute; TOP: 0px; LEFT: 0px
+}
+.m-3 .nbw-ryt .left .top .irgt {
+	POSITION: absolute; TOP: 0px; RIGHT: -10px
+}
+.m-3 .nbw-ryt .left .top .pleft {
+	TEXT-ALIGN: left; WIDTH: 40%; HEIGHT: 20px; MARGIN-LEFT: 10px; =
+OVERFLOW: hidden
+}
+.m-3 .nbw-ryt .left .top .pright {
+	TEXT-ALIGN: right; WIDTH: 40%; HEIGHT: 20px; OVERFLOW: hidden; =
+MARGIN-RIGHT: 5px
+}
+.m-3 .nbw-ryt .left .snl .top {
+	POSITION: relative; PADDING-BOTTOM: 15px; LINE-HEIGHT: 20px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 5px
+}
+.m-3 .nbw-ryt .left .snl .top .ilft {
+	POSITION: absolute; TOP: 5px; LEFT: -10px
+}
+.m-3 .nbw-ryt .left .snl .top .irgt {
+	POSITION: absolute; TOP: 5px; RIGHT: -10px
+}
+.m-3 .nbw-ryt .left .snl .top .pleft {
+	TEXT-ALIGN: left; WIDTH: 40%; HEIGHT: 20px; MARGIN-LEFT: 5px; OVERFLOW: =
+hidden
+}
+.m-3 .nbw-ryt .left .snl .top .pright {
+	TEXT-ALIGN: right; WIDTH: 40%; HEIGHT: 20px; MARGIN-LEFT: 5px; =
+OVERFLOW: hidden; MARGIN-RIGHT: 10px
+}
+.m-3 .nbw-ryt .left .snl .pnb {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: 100%; PADDING-RIGHT: =
+0px; OVERFLOW: hidden; PADDING-TOP: 5px
+}
+.m-3 .comment H4 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; =
+PADDING-TOP: 0px
+}
+.m-3 .comment .publish {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 10px; MARGIN: 10px 0px; PADDING-LEFT: =
+5px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.m-3 .comment .publish .nbw-fce {
+	PADDING-TOP: 0px
+}
+.m-3 .comment .publish .nbw-fce .cwd {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: =
+0px
+}
+.m-3 .comment .publish .redt {
+	MARGIN-LEFT: 65px
+}
+.m-3 .comment .nolog {
+	BORDER-BOTTOM: #000 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #000 =
+1px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 40px; BACKGROUND-COLOR: =
+#ffffe1; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 20px; =
+BORDER-TOP: #000 1px solid; BORDER-RIGHT: #000 1px solid; PADDING-TOP: =
+10px
+}
+.m-3 .comment .case {
+	PADDING-LEFT: 5px
+}
+.m-3 .comment .vgl {
+	TEXT-ALIGN: center; MARGIN: 8px; WIDTH: 75%
+}
+#blog-163-com .m-3 .comment .nbw-cmt .cnt {
+	WIDTH: 488px
+}
+#blog-163-com .m-3 .comment .nbw-cmt .nbw-cmt .cnt {
+	WIDTH: 444px
+}
+.m-3 .edt-cmt {
+	WIDTH: 444px
+}
+.m-3 .comment .publish .edt-cmt {
+	WIDTH: 488px
+}
+.m-3 .comment .publish .edt-cmt .zbcc {
+	DISPLAY: none
+}
+.m-3 .nbw-ryt .left .nbw-bitm .js-fs0 {
+	FONT-SIZE: 150%
+}
+.m-3 .nbw-ryt .left .nbw-bitm .js-fs0 * {
+	FONT-SIZE: 150%
+}
+.m-3 .nbw-ryt .left .nbw-bitm .js-fs1 {
+	FONT-SIZE: 130%
+}
+.m-3 .nbw-ryt .left .nbw-bitm .js-fs1 * {
+	FONT-SIZE: 130%
+}
+.m-3 .nbw-ryt .left .nbw-bitm .js-fs2 {
+=09
+}
+.m-3 .nbw-ryt .left .nbw-bitm .js-fs2 * {
+=09
+}
+.m-3 .js-fcurrent {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none; font-color: #000
+}
+.m-3 .nbw-bitm .rdif {
+	LINE-HEIGHT: 24px; HEIGHT: 24px
+}
+.m-3 .nbw-bitm .rdif .pnt {
+	LINE-HEIGHT: 24px; HEIGHT: 24px; MARGIN-RIGHT: 10px
+}
+.m-3 .nbw-bitm .rdif .pclass {
+	WIDTH: 57px; HEIGHT: 22px; VERTICAL-ALIGN: middle
+}
+.m-3 .nbw-bitm .rdif .rdct {
+	DISPLAY: inline-block
+}
+.m-3 .snl .rdcnt {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; =
+PADDING-RIGHT: 5px; PADDING-TOP: 5px
+}
+.m-3 .snl .rdcnt .nbw-fce {
+	MARGIN: 0px 5px
+}
+.m-3 .snl .rdcnt P {
+	MARGIN: 10px 0px
+}
+.m-3 .snl .rdcnt .rrb {
+	LINE-HEIGHT: 22px; LIST-STYLE-TYPE: none; HEIGHT: 22px
+}
+.m-3 .acts .iblock {
+	WIDTH: 18px
+}
+.m-3 .ns {
+	MARGIN: 0px 0px 0px 2px
+}
+.m-3 .cancel {
+	DISPLAY: none
+}
+.m-3 .js-hover .cancel {
+	DISPLAY: inline
+}
+.m-3 .follow:hover .cancel {
+	DISPLAY: inline
+}
+.m-3 .frd:hover .cancel {
+	DISPLAY: inline
+}
+.m-3 .follow {
+	MARGIN-LEFT: 2px
+}
+.m-3 .flw {
+	BORDER-BOTTOM: #b7b7b7 1px solid; BORDER-LEFT: #b7b7b7 1px solid; =
+PADDING-BOTTOM: 7px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; BACKGROUND: =
+#fefce4; COLOR: #000; BORDER-TOP: #b7b7b7 1px solid; BORDER-RIGHT: =
+#b7b7b7 1px solid; PADDING-TOP: 7px
+}
+.m-3 .acts .flw .iblock {
+	WIDTH: 20px
+}
+.m-3 .sntesctf {
+	WIDTH: 15px; MARGIN-LEFT: 3px
+}
+.dr-warm {
+	BORDER-BOTTOM: #aaa 1px solid; BORDER-LEFT: #aaa 1px solid; =
+PADDING-BOTTOM: 12px; LINE-HEIGHT: 20px; MARGIN: 18px 0px; PADDING-LEFT: =
+18px; WIDTH: 480px; PADDING-RIGHT: 18px; BACKGROUND: #ffffdc; COLOR: =
+#666; BORDER-TOP: #aaa 1px solid; BORDER-RIGHT: #aaa 1px solid; =
+PADDING-TOP: 12px
+}
+.dr-warm A {
+	COLOR: #02a; TEXT-DECORATION: underline
+}
+.dr-warm A:hover {
+	COLOR: #02a; TEXT-DECORATION: underline
+}
+</STYLE>
+<!--[if lte IE 6]><div id=3D"blog-163-com-ie6bodywrap" =
+class=3D""><![endif]--><!--[if lte IE 6]><div =
+id=3D"blog-163-com-ie6body" class=3D"nb-body"><![endif]-->
+<DIV id=3Dblog-163-com-topbar class=3D"nb-nbar clearfix">
+<DIV class=3D"pl fl clearfix">
+<DIV class=3D"nbw-im fl im im0"><A hideFocus class=3D"lbl bd ia noul"=20
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://www.163.com/"=20
+target=3D_blank><SPAN class=3Dtx>=CD=F8=D2=D7</SPAN><SPAN=20
+class=3D"iblock icn0 icn0-421">&nbsp;</SPAN></A>=20
+<DIV class=3D"nbw-tcd box-shadow bd"><A hideFocus class=3D"itm noul  "=20
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://news.163.com/"=20
+target=3D_blank>=D0=C2=CE=C5 </A><A hideFocus class=3D"itm noul  "=20
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://t.163.com/"=20
+target=3D_blank>=CE=A2=B2=A9 </A><A hideFocus class=3D"itm noul  "=20
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://email.163.com/"=20
+target=3D_blank>=D3=CA=CF=E4 </A><A hideFocus class=3D"itm noul  "=20
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://fm.163.com/?fmblogzx0628"=20
+target=3D_blank>=C9=C1=B5=E7=D3=CA </A><A hideFocus class=3D"itm noul  " =
+
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://photo.163.com/"=20
+target=3D_blank>=CF=E0=B2=E1 </A><A hideFocus class=3D"itm noul  "=20
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://www.youdao.com/"=20
+target=3D_blank>=D3=D0=B5=C0 </A><A hideFocus class=3D"itm noul  "=20
+href=3D"http://m.123.163.com/?frombkcp" =
+target=3D_blank>=CA=D6=BB=FA=D3=CA </A><A hideFocus=20
+class=3D"itm noul  "=20
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://yxp.163.com/"=20
+target=3D_blank>=D3=A1=CF=F1=C5=C9 </A><A hideFocus class=3D"itm noul  " =
+
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://dream.163.com/?from=3Dbkcp"=20
+target=3D_blank>=C3=CE=BB=C3=C8=CB=C9=FA </A>
+<DIV class=3D"sep bd space">&nbsp;</DIV><A hideFocus class=3D"itm noul  =
+"=20
+href=3D"http://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://sitemap.163.com/"=20
+target=3D_blank>=B8=FC=B6=E0 </A></DIV></DIV>
+<DIV class=3D"nbw-im fl im im10"><A hideFocus class=3D"lbl bd ia noul"=20
+href=3D"http://blog.163.com/?frompersonalbloghome" target=3D_blank><SPAN =
+
+class=3Dtx>=B2=A9=BF=CD</SPAN><SPAN class=3D"iblock icn0 =
+icn0-421">&nbsp;</SPAN></A>=20
+<DIV class=3D"nbw-tcd box-shadow bd"><A hideFocus class=3D"itm noul  "=20
+href=3D"http://blog.163.com/?frompersonalbloghome" =
+target=3D_blank>=B2=A9=BF=CD=CA=D7=D2=B3 </A><A=20
+hideFocus class=3D"itm noul  " =
+href=3D"http://blog.163.com/ht/?frompersonalbloghome"=20
+target=3D_blank>=B2=A9=BF=CD=BB=B0=CC=E2 </A><A hideFocus class=3D"itm =
+noul  "=20
+href=3D"http://blog.163.com/hot/history/?frompersonalbloghome" =
+target=3D_blank>=C8=C8=B5=E3=D7=A8=CC=E2=20
+</A><A hideFocus class=3D"itm noul youcai "=20
+href=3D"http://blog.163.com/BLOG_YOUCAI/" =
+target=3D_blank>=B2=A9=BF=CD=D3=CD=B2=CB=B5=D8 </A><A hideFocus=20
+class=3D"itm noul  "=20
+href=3D"http://blog.163.com/findFriend.do?type=3D5?frompersonalbloghome" =
+
+target=3D_blank>=D5=D2=C5=F3=D3=D1 </A><A hideFocus class=3D"itm noul  " =
+
+href=3D"http://q.163.com/#home?frompersonalbloghome" =
+target=3D_blank>=B2=A9=BF=CD=C8=A6=D7=D3 </A><A=20
+hideFocus class=3D"itm noul  "=20
+href=3D"http://blog.163.com/public/theme/?frompersonalbloghome" =
+target=3D_blank>=B2=A9=BF=CD=B7=E7=B8=F1=20
+</A><A hideFocus class=3D"itm noul  "=20
+href=3D"http://blog.163.com/services/wapblog.html?frompersonalbloghome"=20
+target=3D_blank>=CA=D6=BB=FA=B2=A9=BF=CD </A><A hideFocus class=3D"itm =
+noul  "=20
+href=3D"http://blog.163.com/services/emsblog.html?frompersonalbloghome"=20
+target=3D_blank>=B6=CC=D0=C5=D0=B4=B2=A9 </A><A hideFocus class=3D"itm =
+noul  "=20
+href=3D"http://blog.163.com/services/mailblog.html?frompersonalbloghome" =
+
+target=3D_blank>=D3=CA=BC=FE=D0=B4=B2=A9 </A><A hideFocus class=3D"itm =
+noul  "=20
+href=3D"http://blog.163.com/clone/clone.html?frompersonalbloghome"=20
+target=3D_blank>=B2=A9=BF=CD=B8=B4=D6=C6 </A></DIV></DIV>
+<DIV class=3D"nbw-im fl im im10"><A hideFocus class=3D"lbl bd ia noul"=20
+href=3D"http://photo.163.com/?frompersonalbloghome" =
+target=3D_blank><SPAN=20
+class=3Dtx>=C9=E3=D3=B0</SPAN><SPAN class=3D"iblock icn0 =
+icn0-421">&nbsp;</SPAN></A>=20
+<DIV class=3D"nbw-tcd box-shadow bd"><A hideFocus class=3D"itm noul  "=20
+href=3D"http://photo.163.com/pp/?frompersonalbloghome" =
+target=3D_blank>=C9=E3=D3=B0=D5=B9=C7=F8 </A><A=20
+hideFocus class=3D"itm noul  "=20
+href=3D"http://photo.163.com/pp/zhuanti.html?frompersonalbloghome"=20
+target=3D_blank>=C3=BF=C8=D5=D7=A8=CC=E2 </A></DIV></DIV>
+<DIV style=3D"DISPLAY: none" class=3D"nbw-im fl im im2">
+<FORM class=3D"nbw-tcd bd tsh" onsubmit=3D"return false;"=20
+action=3Dhttp://blog.163.com/redirect.html?frompersonalbloghome&amp;url=3D=
+http://blog.youdao.com/search?keyfrom=3Dblog.163&amp;suser=3Duser163&amp;=
+ue=3Dgbk&amp;site=3Dblog.163.com&amp;in=3Dpage>
+<DIV class=3D"ipt bd bg"><INPUT class=3D"txt ztag"><A hideFocus=20
+class=3D"iblock bd btn ztag" href=3D"http://blog.youdao.com/"=20
+target=3D_blank>=CB=D1=B2=A9=CE=C4</A><SPAN class=3D"iblock bd icn0 =
+icn0-421">&nbsp;<SPAN=20
+class=3D"lnk cs bd nbw-tgl1 =
+ztag">=CB=D1=B2=A9=BF=CD</SPAN></SPAN></DIV></FORM></DIV>
+<DIV class=3D"nbw-im fl im1 im seebyway"><A class=3D"lbl bd ima spy"=20
+href=3D"http://blog.163.com/randomUser.do">=CB=E6=B1=E3=BF=B4=BF=B4</A></=
+DIV><SPAN=20
+class=3D"fl iblock space icn1 icn1-4">&nbsp;</SPAN>=20
+<DIV class=3D"nbw-im fl im1"><SPAN=20
+class=3D"lbl bd ima followit =
+ztag">=B9=D8=D7=A2=B4=CB=B2=A9=BF=CD</SPAN></DIV><SPAN=20
+class=3D"fl iblock space icn1 icn1-4">&nbsp;</SPAN>=20
+<DIV class=3D"nbw-im fl im1 im"><A class=3D"lbl bd ima moveblog"=20
+href=3D"http://blog.163.com/clone/clone.html?frompersonalbloghome"=20
+target=3D_blank>LiveSpaces=B0=E1=BC=D2</A></DIV></DIV>
+<DIV class=3D"pr fr clearfix"><A class=3D"iblock fr ima"=20
+href=3D"http://reg.163.com/reg/reg0_new.jsp?product=3Dblog&amp;url=3Dhttp=
+://blog.163.com/ntesRegBlank.html"=20
+target=3D_blank>=D7=A2=B2=E1</A> <SPAN class=3D"fr iblock space icn1 =
+icn1-4 spx">&nbsp;</SPAN>=20
+<A class=3D"iblock fr ima ztag"=20
+href=3D"http://blog.163.com/sroply/blog/static/17092651920072238500672/#"=
+>=B5=C7=C2=BC</A>=20
+</DIV></DIV>
+<DIV id=3Dblog-163-com-main class=3D"nb-wrap wsy">
+<DIV class=3D"nb-are nb-top">
+<DIV id=3Dblog-163-com-banner class=3D"wkg h">
+<DIV class=3Dt>
+<H1 class=3D"n c"><SPAN class=3D"ztag pre">srop|sroply</SPAN></H1>
+<P class=3D"d c"><SPAN class=3D"ztag pre">srop|sroply</SPAN></P></DIV>
+<DIV class=3D"f h ztag"></DIV><A hideFocus class=3Dx=20
+href=3D"http://blog.163.com/sroply/blog/static/17092651920072238500672/#"=
+=20
+target=3D_blank><SPAN class=3D"xx ztag"></SPAN></A></DIV></DIV>
+<DIV class=3D"nb-are nb-nav">
+<DIV class=3Dwkg>
+<DIV class=3D"c h">
+<H2>=B5=BC=BA=BD</H2>
+<UL class=3D"noul clearfix">
+  <LI class=3D"w w0"><A hideFocus class=3D"i i0 fc01 h"=20
+  href=3D"http://sroply.blog.163.com/">=CA=D7=D2=B3</A>=20
+  <LI class=3D"w w1 selected"><A hideFocus class=3D"i i1 fc01 h"=20
+  href=3D"http://sroply.blog.163.com/blog/">=C8=D5=D6=BE</A>=20
+  <LI class=3D"w w2"><A hideFocus class=3D"i i2 fc01 h"=20
+  href=3D"http://sroply.blog.163.com/album/">=CF=E0=B2=E1</A>=20
+  <LI class=3D"w w3"><A hideFocus class=3D"i i3 fc01 h"=20
+  href=3D"http://sroply.blog.163.com/music/">=D2=F4=C0=D6</A>=20
+  <LI class=3D"w w4"><A hideFocus class=3D"i i4 fc01 h"=20
+  href=3D"http://sroply.blog.163.com/collection/">=CA=D5=B2=D8</A>=20
+  <LI class=3D"w w5"><A hideFocus class=3D"i i5 fc01 h"=20
+  href=3D"http://sroply.blog.163.com/friends/">=B2=A9=D3=D1</A>=20
+  <LI class=3D"w w6"><A hideFocus class=3D"i i6 fc01 h"=20
+  href=3D"http://sroply.blog.163.com/profile/">=B9=D8=D3=DA=CE=D2</A> =
+</LI></UL><!--
+ --></DIV>
+<DIV class=3D"l h">&nbsp;</DIV>
+<DIV class=3D"r h">&nbsp;</DIV></DIV></DIV>
+<DIV class=3D"nb-are nb-smt">
+<DIV class=3D"wkg h space">
+<DIV class=3D"l h">&nbsp;</DIV>
+<DIV class=3D"r h">&nbsp;</DIV>
+<DIV class=3D"c h">&nbsp;</DIV></DIV></DIV>
+<DIV class=3D"nb-are nb-cnt">
+<DIV class=3Dwkg>
+<DIV id=3Dblog-163-com-container class=3D"c wc h clearfix ">
+<DIV id=3D-3 class=3D"nb-mdl lcr m-3">
+<DIV class=3D"nb-mt lcr th fc02">
+<DIV class=3D"c tc th lcr">
+<H2 class=3D"thide nb-jsc">=C8=D5=D6=BE</H2></DIV>
+<DIV class=3D"r tm th nb-jsc"></DIV>
+<DIV class=3D"l tl th">&nbsp;</DIV>
+<DIV class=3D"r tr th">&nbsp;</DIV></DIV>
+<DIV class=3D"nb-mc lcr">
+<DIV class=3D"c cc lcr nb-jsc">
+<DIV class=3D"nbw-ryt ztag clearfix ">
+<DIV class=3D"right bdwl bds0 bdc0">
+<DIV class=3D"cnt ztag"></DIV></DIV>
+<DIV class=3Dleft>
+<DIV class=3D"lcnt bdwr bds0 bdc0 ">
+<DIV id=3D$_divTopLink class=3D"top fc03 bdwb bdc0 bds2 clearfix"><SPAN=20
+class=3D"ilft iblock icn0 icn0-620">&nbsp;</SPAN>=20
+<DIV class=3D"pleft thide"><A name=3Dbaidusnap0></A><A class=3Dm2a=20
+href=3D"http://sroply.blog.163.com/blog/static/17092651920072710130704/">=
+=A1=B6Accelerated=20
+<B style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=A1=B7=B1=CA=BC=C7</A></DIV><SPAN=20
+class=3D"irgt iblock icn0 icn0-619">&nbsp;</SPAN>=20
+<DIV class=3D"pright thide"><A class=3Dm2a=20
+href=3D"http://sroply.blog.163.com/blog/static/17092651920093692146532/">=
+=D2=BB=D0=A9=C1=B4=BD=D3</A></DIV></DIV>
+<DIV class=3D"mcnt ztag">
+<DIV class=3D"nbw-bitm bdwb bds2 bdc0">
+<H3 class=3D"title pre fs1"><SPAN class=3Dtcnt>=A1=B6<B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: black">C++</B> <A=20
+name=3Dbaidusnap1></A><B=20
+style=3D"BACKGROUND-COLOR: #a0ffff; COLOR: black">Primer</B> =
+=B5=DA=CB=C4=B0=E6=A1=B7=B1=CA=BC=C7=D3=EB<A=20
+name=3Dbaidusnap2></A><B=20
+style=3D"BACKGROUND-COLOR: #99ff99; COLOR: =
+black">=BF=B1=CE=F3</B>1</SPAN><SPAN=20
+class=3D"bgc0 fc07 fw0 fs0"></SPAN></H3>
+<P style=3D"LINE-HEIGHT: 20px" class=3D"tdep clearfix nbw-act =
+fc06"><SPAN=20
+class=3Dpleft><A class=3D"fc03 m2a"=20
+href=3D"http://sroply.blog.163.com/blog/#m=3D0&amp;t=3D1&amp;c=3Dfks_0840=
+67093095087075083085084095085081081074086080083066093">=C4=AC=C8=CF=B7=D6=
+=C0=E0</A>=20
+<SPAN class=3Dsep>2007-03-23 08:50:00</SPAN> <SPAN =
+class=3Dsep>=D4=C4=B6=C1<SPAN=20
+id=3D$_spanReadCount>1</SPAN></SPAN> <SPAN class=3Dsep>=C6=C0=C2=DB<SPAN =
+
+id=3D$_spanCommentCount>0</SPAN></SPAN> </SPAN><SPAN=20
+class=3D"pright fc07 ztag"><SPAN =
+class=3Dsep></SPAN>&nbsp;&nbsp;=D7=D6=BA=C5=A3=BA<SPAN=20
+class=3D"ul sep fc04">=B4=F3</SPAN><SPAN class=3D"ul sep =
+fc04">=D6=D0</SPAN><SPAN=20
+class=3D"sep ul fc04">=D0=A1</SPAN></SPAN><SPAN id=3D$_blog_subscribe=20
+class=3D"pright pnt fc03"><SPAN class=3D"iblock icn0 =
+icn0-919">&nbsp;</SPAN><A=20
+class=3Dm2a>=B6=A9=D4=C4</A></SPAN> </P>
+<DIV class=3D"bct fc05 fc11 nbw-blog ztag">
+<DIV>
+<DIV id=3Dsina_keyword_ad_area2 class=3DarticalContent>
+<DIV>
+<P><FONT face=3D"Courier New">=A1=B6<B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: black">C++</B> <B=20
+style=3D"BACKGROUND-COLOR: #a0ffff; COLOR: black">Primer</B> =
+=B5=DA=CB=C4=B0=E6=A1=B7=B1=CA=BC=C7=D3=EB<B=20
+style=3D"BACKGROUND-COLOR: #99ff99; COLOR: =
+black">=BF=B1=CE=F3</B>1<BR>=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=
+=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=
+=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=
+=AD<BR><STRONG>=D2=D4=CF=C2=B1=CA=BC=C7=B0=B4=D4=DA=CA=E9=D6=D0=B3=F6=CF=D6=
+=B5=C4=CF=C8=BA=F3=CB=B3=D0=F2=C0=B4=BC=C7=D4=D8</STRONG>=A3=BA</FONT></P=
+>
+<P><FONT face=3D"Courier New">P6&nbsp; cout&lt;&lt;std:endl;=20
+=CA=C7=CB=A2=D0=C2=CA=E4=B3=F6=C1=F7=BB=BA=B3=E5=C7=F8=B5=C4=B7=BD=B7=A8=D6=
+=AE=D2=BB=A1=A3=BC=B0=CA=B1=CB=A2=D0=C2=BB=BA=B3=E5=C7=F8=A3=AC=C4=DC=B1=DC=
+=C3=E2=B5=F7=CA=D4=B3=CC=D0=F2=CA=B1=C8=E7=B9=FB=B3=CC=D0=F2=B1=C0=C0=A3=CE=
+=D2=C3=C7=B6=D4=B3=F6=B4=ED=CE=BB=D6=C3=B5=C4=B4=ED=CE=F3=C5=D0=B6=CF=A1=A3=
+</FONT></P>
+<P><FONT face=3D"Courier New">P7=20
+=D2=BB=B0=E3=B3=F6=CF=D6=BF=D5=B8=F1=B7=FB=B5=C4=B5=D8=B7=BD=B6=BC=BF=C9=D2=
+=D4=D3=C3=BB=BB=D0=D0=B7=FB=CC=E6=B4=FA=A3=AC=D6=BB=D3=D0=C1=BD=B8=F6=C0=FD=
+=CD=E2=A3=BA=D2=BB=CA=C7=D4=A4=B4=A6=C0=ED=D6=B8=CA=BE=D6=D0=A3=AC=B6=FE=CA=
+=C7=D7=D6=B7=FB=B4=AE=CE=C4=D7=D6=C1=BF=D6=D0=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P23=20
+=C4=AC=C8=CF=C7=E9=BF=F6=CF=C2=A3=AC=B6=C1cin=BB=F2=B3=CC=D0=F2=BD=E1=CA=F8=
+=CA=B1=A3=AC=B6=BC=BB=E1=CB=A2=D0=C2cout=A1=A3cerr=B2=BB=B4=F8=BB=BA=B3=E5=
+=A3=ACclog=D4=F2=B4=F8=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P23 =
+=B1=ED=B4=EF=CA=BD=CA=C7=D7=EE=D0=A1=B5=C4=BC=C6=CB=E3=B5=A5=D4=AA=A3=AC=CD=
+=A8=B3=A3=BA=AC=D3=D0=D2=BB=B8=F6=BB=F2=B6=E0=B8=F6=B2=D9=D7=F7=CA=FD=A3=AC=
+=B2=A2=CD=A8=B3=A3=BA=AC=D3=D0=D2=BB=B8=F6=B2=D9=D7=F7=B7=FB=A1=A3</FONT>=
+</P>
+<P><FONT face=3D"Courier New">P30 <B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=B1=EA=D7=BC=B9=E6=B6=A8=C1=CB=C3=BF=B8=F6=CB=E3=CA=F5=C0=E0=
+=D0=CD=B5=C4=D7=EE=D0=A1=B4=E6=B4=A2=BF=D5=BC=E4=A3=AC=B5=AB=CA=C7=B2=BB=D7=
+=E8=D6=B9=B1=E0=D2=EB=C6=F7=CA=B9=D3=C3=B8=FC=B4=F3=B5=C4=B4=E6=B4=A2=BF=D5=
+=BC=E4=A1=A3=B6=D4=D3=DAint=A3=AC=BC=B8=B8=F6=C3=BF=B8=F6=B1=E0=D2=EB=C6=F7=
+=B6=BC=CA=B9=D3=C3=B1=C8=B1=EA=D7=BC=B9=E6=B6=A8=B5=C4=B4=E6=B4=A2=BF=D5=BC=
+=E4=B4=F3=B5=C4=BF=D5=BC=E4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P30 <B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=CB=E3=CA=F5=C0=E0=D0=CD=B9=B29=D6=D6=A3=AC=C6=E4=D6=D0=D5=FB=
+=D0=CD6=D6=D6=A3=AC=B8=A1=B5=E3=D0=CD3=D6=D6=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P31 int,=20
+short,long=B6=BC=C4=AC=C8=CF=CE=AA=B4=F8=B7=FB=BA=C5=D0=CD=A1=A3=B6=F8cha=
+r=D4=F2=CA=C7=D3=C9=B1=E0=D2=EB=C6=F7=BE=F6=B6=A8=C4=AC=C8=CF=CA=C7=B7=F1=
+=B4=F8=B7=FB=BA=C5=A1=A3=D4=DAVC7=D6=D0=A3=ACchar=C4=AC=C8=CF=D2=B2=CA=C7=
+=B4=F8=B7=FB=BA=C5=B5=C4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P32&nbsp; unsigned =
+=C4=AC=C8=CF=B1=ED=CA=BEunsigned int=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P32&nbsp; =
+signed=C0=E0=D0=CD=C8=E7=BA=CE=C8=A1=D6=B5=A3=AC=C8=E7=BA=CE=D3=C3=CE=BB=C0=
+=B4=B1=ED=CA=BE=CA=C7=D2=C0=C0=B5=D3=DA=B1=E0=D2=EB=C6=F7=B5=C4=A1=A3</FO=
+NT></P>
+<P><FONT face=3D"Courier New">P32=20
+=C8=E7=B9=FB=B1=BB=B8=B3=D3=E8=B3=AC=B9=FD=C8=A1=D6=B5=B7=B6=CE=A7=B5=C4=D6=
+=B5=A3=AC=D2=BB=B0=E3=B1=E0=D2=EB=C6=F7=B2=BB=BB=E1=B1=A8=B7=C7=B7=A8=A3=AC=
+=B6=F8=CA=C7=B6=D4=B6=D4=CF=F3=C8=A1=C4=A3=A3=AC=B1=C8=C8=E7=BD=AB-1=B8=B3=
+=D3=E8unsigned=B6=D4=CF=F3=A3=AC=B5=C3255=A1=A3=A3=A8-1=B6=D4256=C8=A1=C4=
+=A3=BA=F3=B5=C4=D6=B5=A3=A9=A1=A3=B5=AB=D2=B2=D3=D0=B1=E0=D2=EB=C6=F7=B2=BB=
+=CA=C7=D5=E2=D1=F9=CA=B5=CF=D6=B5=C4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P33 =
+=B6=D4=B1=EA=D7=BC=BF=E2=B5=C4=BC=C6=CB=E3=BD=A8=D2=E9=CA=B9=D3=C3size_ty=
+pe=A3=AC=B8=A1=B5=E3=D0=CD=BC=C6=CB=E3=BD=A8=D2=E9=CA=B9=D3=C3double=A1=A3=
+</FONT></P>
+<P><FONT face=3D"Courier New">P33=20
+=B4=F3=B6=E0=CA=FD=BB=FA=C6=F7=CA=B9=D3=C3=D3=EBlong=CF=E0=CB=C6=B5=C432=CE=
+=BB=C0=B4=B1=ED=CA=BEint=A3=BB=C4=B3=D0=A9=BB=FA=C6=F7=C9=CF=A3=AC=D3=C3d=
+ouble=BC=C6=CB=E3=B1=C8float=BC=C6=CB=E3=D2=AA=BF=EC=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P34 =
+=D6=BB=D3=D0=C4=DA=D6=C3=C0=E0=D0=CD=B4=E6=D4=DA=D7=D6=C3=E6=D6=B5literal=
+=20
+constant=A3=BB=BB=BB=BE=E4=BB=B0=CB=B5=A3=AC=C8=CE=BA=CE=D7=D6=C3=E6=D6=B5=
+=B6=BC=B1=D8=C8=BB=CA=F4=D3=DA=C4=B3=B8=F6=C4=DA=D6=C3=C0=E0=D0=CD=A1=A3<=
+/FONT></P>
+<P><FONT face=3D"Courier New">P35=20
+=B6=D4=D3=DA=D7=D6=C3=E6=D6=B5=A3=AC=D5=FB=D0=CD=B5=C4=BF=C9=D2=D4=D4=DA=BA=
+=F3=C3=E6=BC=D3L=BB=F2U=A3=AC=C7=B0=C3=E6=BC=D30=BB=F20X=A3=BB=B8=A1=B5=E3=
+=D0=CD=BF=C9=D2=D4=D4=DA=BA=F3=C3=E6=BC=D3L=A3=ACf=BB=F2E=A3=BB=D7=D6=B7=FB=
+=D0=CD=B5=C4=BF=C9=D2=D4=D4=DA=C7=B0=C3=E6=BC=D3L=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P41 <B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=B9=B2=D3=D063=B8=F6=B9=D8=BC=FC=D7=D6=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P42=20
+=D2=BB=B0=E3=C0=B4=CB=B5=A3=AC=A1=B0=D6=B1=BD=D3=B3=F5=CA=BC=BB=AF=A1=B1=A3=
+=A8=D4=B2=C0=A8=BA=C5=B5=C4=B3=F5=CA=BC=BB=AF=A3=A9=B1=C8=A1=B0=B8=B4=D6=C6=
+=B3=F5=CA=BC=BB=AF=A1=B1=A3=A8=D3=C3=B5=C8=BA=C5=B5=C4=B3=F5=CA=BC=BB=AF=A3=
+=A9=B8=FC=C1=E9=BB=EE=BA=CD=D0=A7=C2=CA=B8=FC=B8=DF=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P45 =
+=BD=A8=D2=E9=C3=BF=B8=F6=C4=DA=D6=C3=C0=E0=D0=CD=B5=C4=B1=E4=C1=BF=B6=BC=D2=
+=AA=B3=F5=CA=BC=BB=AF=A3=AC=CB=E4=C8=BB=D5=E2=D1=F9=D7=F6=D3=D0=CA=B1=BA=F2=
+=B2=BB=CA=C7=B1=D8=D0=EB=B5=C4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P46 =
+=B4=F8=B3=F5=CA=BC=BB=AF=D6=B5=B5=C4=C9=F9=C3=F7=B1=BB=C8=CF=CE=AA=CA=C7=B6=
+=A8=D2=E5=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P48 =
+=D4=DA=B6=D4=CF=F3=B5=DA=D2=BB=B4=CE=B1=BB=CA=B9=D3=C3=B5=C4=B5=D8=B7=BD=B2=
+=C5=B6=A8=D2=E5=B6=D4=CF=F3=A3=AC=BF=C9=D2=D4=CC=E1=B8=DF=B3=CC=D0=F2=B5=C4=
+=BF=C9=B6=C1=D0=D4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P50=20
+=D6=D8=D2=AA=A3=BA=B7=C7const=B1=E4=C1=BF=C4=AC=C8=CF=BE=CD=CA=C7extern=B5=
+=C4=A3=AC=B5=ABconst=B3=A3=C1=BF=C4=AC=C8=CF=C8=B4=CA=C7=BE=D6=B2=BF=D3=DA=
+=CB=FC=CB=F9=D4=DA=B5=C4=CE=C4=BC=FE=B5=C4=A3=A8=C4=BF=B5=C4=CA=C7=B5=B1=CB=
+=FC=C3=C7=CA=C7=B1=BB=B3=A3=C1=BF=B1=ED=B4=EF=CA=BD=CB=F9=B3=F5=CA=BC=BB=AF=
+=CA=B1=A3=AC=C4=DC=B1=BB=B7=C5=B5=BD=CD=B7=CE=C4=BC=FE=D6=D0=A3=AC=BC=FBP=
+59=A3=A9=A1=A3=CB=F9=D2=D4=A3=AC=D2=AA=CF=EB=CF=F1=C8=C3const=B3=A3=C1=BF=
+=BB=F1=B5=C3=CF=F1=C6=D5=CD=A8=B1=E4=C1=BF=C4=C7=D1=F9=B5=C4=D7=F7=D3=C3=D3=
+=F2=A3=AC=B1=D8=D0=EB=D4=DA=CB=FC=B5=C4=B3=F5=CA=BC=BB=AF=CA=BD=B5=C4=C7=B0=
+=C3=E6=BC=D3=C9=CFextern=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P51=20
+=D2=FD=D3=C3=CA=C7=D2=BB=D6=D6=B8=B4=BA=CF=C0=E0=D0=CD=A3=AC=A1=B0=B8=B4=BA=
+=CF=C0=E0=D0=CD=A1=B1=CA=C7=D6=B8=D3=C3=C6=E4=CB=FB=C0=E0=D0=CD=B6=A8=D2=E5=
+=B5=C4=C0=E0=D0=CD=A1=A3<BR>=B3=FD=C1=CB=B2=BB=C4=DC=B6=A8=D2=E5=D2=FD=D3=
+=C3=C0=E0=D0=CD=B5=C4=D2=FD=D3=C3=CD=E2=A3=AC=BF=C9=D2=D4=B6=A8=D2=E5=C6=E4=
+=CB=FC=C8=CE=BA=CE=C0=E0=D0=CD=B5=C4=D2=FD=D3=C3=A1=A3<BR>=D2=FD=D3=C3=B1=
+=D8=D0=EB=D3=C3=D3=EB=B8=C3=D2=FD=D3=C3=CD=AC=C0=E0=D0=CD=B5=C4=B6=D4=CF=F3=
+=C0=B4=B3=F5=CA=BC=BB=AF=A1=A3<BR>=D2=FD=D3=C3=B2=BB=C4=DC=B1=BB=D6=D8=B0=
+=F3=B6=A8=B5=BD=C1=ED=D2=BB=B6=D4=CF=F3=A1=A3</FONT></P>
+<P><FONT face=3D"Courier =
+New">=D2=FD=D3=C3=D6=BB=CA=C7=CB=FC=B0=F3=B6=A8=B5=C4=B6=D4=CF=F3=B5=C4=B1=
+=F0=C3=FB=A3=AC=C8=CE=BA=CE=D7=F7=D3=C3=D4=DA=D2=FD=D3=C3=C9=CF=B5=C4=B2=D9=
+=D7=F7=A3=AC=CA=B5=BC=CA=B6=BC=CA=C7=D7=F7=D3=C3=D4=DA=CB=FC=B0=F3=B6=A8=B5=
+=C4=B6=D4=CF=F3=C9=CF=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P52=20
+=D6=BB=D3=D0const=D2=FD=D3=C3=B2=C5=BF=C9=D2=D4=D3=C3=B3=A3=C1=BF=D6=B5=BB=
+=F2=B2=BB=CD=AC=C0=E0=D0=CD=B5=C4=B1=E4=C1=BF=B3=F5=CA=BC=BB=AF=A1=A3=B7=C7=
+const=D2=FD=D3=C3=D4=F2=B2=BB=BF=C9=D2=D4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P53 =
+=C3=B6=BE=D9=B5=C4=D6=F7=D2=AA=D7=F7=D3=C3=CA=C7=B6=A8=D2=E5=D2=BB=D7=E9=D5=
+=FB=CA=FD=B3=A3=C1=BF=BC=AF=A3=AC=CD=AC=CA=B1=D6=B8=B3=F6=CB=FC=C3=C7=CA=C7=
+=B9=D8=C1=AA=B5=C4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P54=20
+=C3=B6=BE=D9=B3=C9=D4=B1=D6=B5=BF=C9=D2=D4=CA=C7=B2=BB=CE=A8=D2=BB=B5=C4=A1=
+=A3<BR>=C3=BF=B8=F6enum=D3=EF=BE=E4=B6=BC=B6=A8=D2=E5=C1=CB=D2=BB=D6=D6=CE=
+=A9=D2=BB=B5=C4=C0=E0=D0=CD=A1=A3=B6=D4=CB=FC=B5=C4=CA=B9=D3=C3=B7=BD=CA=BD=
+=C0=E0=CB=C6=D3=DA=C0=E0=C0=E0=D0=CD=B5=C4=C6=D5=CD=A8=B1=E4=C1=BF=A1=A3<=
+/FONT></P>
+<P><FONT face=3D"Courier New">P55&nbsp;=20
+class=BA=CDstruct=B5=C4=CE=A9=D2=BB=C7=F8=B1=F0=CA=C7=C7=B0=D5=DF=B5=C4=B7=
+=C3=CE=CA=BC=B6=B1=F0=C4=AC=C8=CF=CE=AAprivate=A3=AC=BA=F3=D5=DF=D4=F2=C4=
+=AC=C8=CF=CE=AApublic=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P59=20
+=CD=B7=CE=C4=BC=FE=B2=BB=D3=A6=B8=C3=BA=AC=D3=D0=B6=A8=D2=E5=A3=AC=B5=AB=D3=
+=D0=C8=FD=B8=F6=C0=FD=CD=E2=A3=BA=D2=BB=CA=C7const=B3=A3=C1=BF=A3=AC=B6=FE=
+=CA=C7inline=BA=AF=CA=FD=A3=AC=C8=FD=CA=C7=C0=E0=CD=B7=B5=C4=B6=A8=D2=E5=A1=
+=A3</FONT></P>
+<P><FONT face=3D"Courier New">P59 =
+=B1=BB=B3=A3=C1=BF=B1=ED=B4=EF=CA=BD=CB=F9=B3=F5=CA=BC=BB=AF=B5=C4const=B3=
+=A3=C1=BF=D3=A6=B8=C3=B7=C5=B5=BD=CD=B7=CE=C4=BC=FE=D6=D0=A3=AC=B7=F1=D4=F2=
+=D4=F2=B2=BB=C8=BB=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P61=20
+=BF=C9=D2=D4=D3=C3=B6=A8=D2=E5=D4=DA=CD=B7=CE=C4=BC=FE=C0=EF=B5=C4=CA=B5=CC=
+=E5=A3=A8=B1=C8=C8=E7=C0=E0=A3=A9=C3=FB=C0=B4=C3=FC=C3=FB=D4=A4=B4=A6=C0=ED=
+=C6=F7=B1=E4=C1=BF=A3=AC=C0=B4=B1=DC=C3=E2=D4=A4=B4=A6=C0=ED=C6=F7=B1=E4=C1=
+=BF=D6=D8=C3=FB=B5=C4=CE=CA=CC=E2=A3=AC=B4=D3=B6=F8=B1=DC=C3=E2=CD=B7=CE=C4=
+=BC=FE=C4=DA=C8=DD=B5=C4=D6=D8=B8=B4=B0=FC=BA=AC=A3=AC=B1=C8=C8=E7 =
+#ifndef=20
+SALESITEM_H</FONT></P>
+<P><FONT face=3D"Courier New">P63 =
+=B8=B4=BA=CF=C0=E0=D0=CD=CA=C7=D6=B8=CD=A8=B9=FD=C6=E4=CB=FB=C0=E0=D0=CD=B6=
+=A8=D2=E5=B5=C4=C0=E0=D0=CD=A3=AC=B1=C8=C8=E7=A3=BA=D2=FD=D3=C3=A3=AC=D6=B8=
+=D5=EB=BA=CD=CA=FD=D7=E9=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P64 =
+=B6=D4=CF=F3=CA=C7=BE=DF=D3=D0=C0=E0=D0=CD=B5=C4=D2=BB=B6=CE=C4=DA=B4=E6=C7=
+=F8=D3=F2=A3=AC=B1=E4=C1=BF=D4=F2=CA=C7=D3=D0=C3=FB=D7=D6=B5=C4=B6=D4=CF=F3=
+=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P64 =
+=D4=A4=B4=A6=C0=ED=C6=F7=BC=CC=B3=D0=D7=D4C=D3=EF=D1=D4=A3=AC<B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=B5=C4=CC=D8=D5=F7=B4=F3=C1=BF=BC=F5=C9=D9=C1=CB=CB=FC=B5=C4=
+=CA=B9=D3=C3=A3=AC=B5=AB=C8=D4=C8=BB=B1=A3=C1=F4=D2=BB=B8=F6=BA=DC=D6=D8=D2=
+=AA=B5=C4=D3=C3=B7=A8=A3=BA#include</FONT></P>
+<P><FONT face=3D"Courier New">P64 =
+=D7=F7=D3=C3=D3=F2=CA=C7=B3=CC=D0=F2=B5=C4=D2=BB=B2=BF=B7=D6=A3=AC=D4=DA=C6=
+=E4=D6=D0=B5=C4=C3=FB=D7=D6=D3=D0=D2=E2=D2=E5=A3=A8=C4=DC=C6=F0=D7=F7=D3=C3=
+=A3=A9=A1=A3<B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=B9=B2=D3=D06=D6=D6=D7=F7=D3=C3=D3=F2=A3=AC=D3=C9=D0=A1=B5=BD=
+=B4=F3=CE=AA=A3=BA=D3=EF=BE=E4=A3=A8=C8=E7if=A3=A9=A3=AC=BF=E9=A3=A8=B4=F3=
+=C0=A8=BA=C5=D6=D0=A3=A9=A3=AC=BE=D6=B2=BF=A3=A8=D2=B2=B3=C6=BA=AF=CA=FD=C4=
+=DA=A3=A9=A3=AC=C3=FC=C3=FB=BF=D5=BC=E4=A3=A8=D6=B8namespace=B4=F3=C0=A8=BA=
+=C5=C4=DA=A3=A9=A3=AC=C0=E0=A3=A8=C0=E0=CC=E5=B5=C4=B4=F3=C0=A8=BA=C5=D6=D0=
+=A3=A9=A3=AC=C8=AB=BE=D6=A3=A8=D4=DA=C8=CE=BA=CE=D2=D4=C9=CF=CE=E5=D6=D6=D7=
+=F7=D3=C3=D3=F2=D2=D4=CD=E2=B5=C4=A3=AC=D2=B2=B3=C6=CE=C4=BC=FE=A3=BF=A3=A9=
+</FONT></P>
+<P><FONT face=3D"Courier =
+New">=D7=F7=D3=C3=D3=F2=BF=C9=D2=D4=C7=B6=CC=D7=A3=AC=BC=B4=D4=DA=B4=F3=B5=
+=C4=D7=F7=D3=C3=D3=F2=D6=D0=C9=F9=C3=F7=B5=C4=C3=FB=D7=D6=D4=DA=D0=A1=D7=F7=
+=D3=C3=D3=F2=D6=D0=D2=C0=C8=BB=D3=D0=D0=A7=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P65&nbsp; <B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=CA=C7=D2=BB=D6=D6=BE=B2=CC=AC=C0=E0=D0=CD=D3=EF=D1=D4=A3=AC=
+=D2=E2=CB=BC=CA=C7=CB=FC=CA=C7=D4=DA=B1=E0=D2=EB=CA=B1=BD=F8=D0=D0=C0=E0=D0=
+=CD=BC=EC=B2=E9=B5=C4=D3=EF=D1=D4=A3=AC=D4=DA=B1=E0=D2=EB=CA=B1=D1=E9=D6=A4=
+=B1=ED=B4=EF=CA=BD=D6=D0=B3=F6=CF=D6=B5=C4=CB=F9=D3=D0=C0=E0=D0=CD=A3=AC=CA=
+=C7=B7=F1=BF=C9=D2=D4=D6=B4=D0=D0=CB=FC=CB=F9=D0=E8=D2=AA=B5=C4=B2=D9=D7=F7=
+=A1=A3=B1=E4=C1=BF=D4=DA=CA=B9=D3=C3=C7=B0=B1=D8=D0=EB=B1=BB=C9=F9=C3=F7=BB=
+=F2=B6=A8=D2=E5=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P65=20
+=A1=B0word=A3=A8=D7=D6=A3=A9=A1=B1=CA=C7=D4=DA=B8=F8=B6=A8=BB=FA=C6=F7=C9=
+=CF=BD=F8=D0=D0=D5=FB=D0=CD=BC=C6=CB=E3=B5=C4=D4=AD=CA=BC=B5=A5=D4=AA=A1=A3=
+=CD=A8=B3=A3=D2=BB=B8=F6=D7=D6=D7=E3=D2=D4=C8=DD=C4=C9=D2=BB=B8=F6=B5=D8=D6=
+=B7=A1=A3=B5=E4=D0=CD=B5=D8=A3=AC=B6=D4=D3=DA=D2=BB=B8=F632=CE=BB=B5=C4=BB=
+=FA=C6=F7=C0=B4=CB=B5=A3=AC=D2=BB=B8=F6=D7=D6=CA=C74=B8=F6=D7=D6=BD=DA=A1=
+=A3</FONT></P>
+<P><FONT face=3D"Courier New">P67 =
+=B1=EA=D7=BC=BF=E2=D6=D0=C6=E4=D6=D0=C1=BD=D6=D6=D7=EE=D6=D8=D2=AA=B5=C4=C0=
+=E0=D0=CD=CA=C7=A3=BAstring=20
+=BA=CDvector=A3=AC=CB=FC=C3=C7=B7=D6=B1=F0=B6=A8=D2=E5=C1=CB=B4=F3=D0=A1=BF=
+=C9=B1=E4=B5=C4=D7=D6=B7=FB=B4=AE=BA=CD=BC=AF=BA=CF=A1=A3=CB=FC=C3=C7=CD=F9=
+=CD=F9=BD=AB=B5=FC=B4=FA=C6=F7=D3=C3=D7=F7=B0=E9=CB=E6=C0=E0=D0=CD=A3=AC=D3=
+=C3=D3=DA=B7=C3=CE=CA=D7=D4=C9=ED=D6=D0=B5=C4=D4=AA=CB=D8=A1=A3</FONT></P=
+>
+<P><FONT face=3D"Courier New">P69=20
+=D4=DA=CD=B7=CE=C4=BC=FE=D6=D0=D3=A6=B8=C3=D7=DC=CA=C7=CA=B9=D3=C3=B4=F8=C3=
+=FB=D7=D6=BF=D5=BC=E4=CF=DE=B6=A8=B5=C4=C3=FB=D7=D6=A3=AC=B1=C8=C8=E7std:=
+:cout=A1=A3=A3=A8=D2=E2=CB=BC=CA=C7=B4=F8=CF=DE=B6=A8=B5=C4=B7=BD=CA=BD=CA=
+=C7=B6=D4=C3=FB=D7=D6=BF=D5=BC=E4=CE=DB=C8=BE=B1=C8=BD=CF=D0=A1=B5=C4=B7=BD=
+=CA=BD=C1=CB=A3=AC=B1=C8=C6=F0 using namespace=20
+std=A3=BB=C0=B4=CB=B5=A1=A3=B6=F8=CD=B7=CE=C4=BC=FE=D2=F2=CE=AA=A1=B0=C6=E4=
+=C4=DA=C8=DD=BB=E1=CD=EA=C8=AB=BF=BD=B1=B4=B5=BD=B0=FC=BA=AC=CB=FC=B5=C4=CE=
+=C4=BC=FE=D6=D0=A1=B1=A3=AC=CB=F9=D2=D4=D3=A6=B8=C3=C8=A1=CE=DB=C8=BE=B1=C8=
+=BD=CF=D0=A1=B5=C4=B7=BD=CA=BD=A1=A3=A3=A9</FONT></P>
+<P><FONT face=3D"Courier New">P72&nbsp;=20
+getline()=BA=AF=CA=FD=B5=C4=D3=C3=B4=A6=D6=AE=D2=BB=CA=C7=B6=C1=C8=EB=CA=E4=
+=C8=EB=C1=F7=D6=D0=D3=D0=D0=A7=D7=D6=B7=FB=D6=AE=C7=B0=B5=C4=BF=D5=B0=D7=D7=
+=D6=B7=FB=A1=A3</FONT></P>
+<P><FONT=20
+face=3D"Courier =
+New">P73=B1=EA=D7=BC=C0=E0=D0=CD=D6=D0=B3=A3=BC=FB=B5=C4=B3=C9=D4=B1size_=
+type=B1=C8=C6=F0unsigned=B5=C4=D3=C5=CA=C6=CA=C7=A3=AC=CB=FC=CA=C7=D3=EB=BB=
+=FA=C6=F7=CE=DE=B9=D8=B5=C4=A1=A3=CB=F9=D2=D4=A3=AC=D4=DA=D7=F7=CE=AA=CF=C2=
+=B1=EA/=CB=F7=D2=FD=A3=AC=BB=F2=B4=E6=B4=A2=B4=F3=D0=A1=CA=B1=A3=AC=B6=BC=
+=BD=A8=D2=E9=D3=C3=CB=FC=A3=AC=B1=C8=C8=E7=A3=BA<BR>string::size_type&nbs=
+p;=20
+ix;<BR>s1[ix]=3D=A1=AF*=A1=AF;<BR>ix=3Ds1.size();</FONT></P>
+<P><FONT face=3D"Courier New">P74 =
+=B6=E0=CA=FD=BC=C6=CB=E3=BB=FA=C9=CF=A3=AC=C9=E6=BC=B0=B5=BD=D7=D6=B7=FB=B4=
+=AE=B1=C8=BD=CF=D6=D0=B5=C4=B5=A5=B8=F6=D7=D6=B7=FB=CA=B1=A3=AC=B4=F3=D0=B4=
+=D7=D6=C4=B8=D0=A1=D3=DA=D0=A1=D0=B4=D7=D6=C4=B8=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P75=20
+=B1=ED=B4=EF=CA=BD=BC=C6=CB=E3=CA=B1=D2=AA=BF=BC=C2=C7=B5=BD=BD=E1=BA=CF=D0=
+=D4=A3=A8=B1=C8=C8=E7=CA=C7=D7=F3=BD=E1=BA=CF=A3=A8=B4=D3=D7=F3=B5=BD=D3=D2=
+=A3=A9=BB=B9=CA=C7=D3=D2=BD=E1=BA=CF=A3=A9=A3=AC<BR>=C8=E7=CF=C2=C1=BD=B8=
+=F6=B8=B3=D6=B5=D3=EF=BE=E4=A3=BA<BR>string s1;<BR>string s2 =3D s1 +=20
+=A1=B0a=A1=B1 + =A1=B0b=A1=B1;<BR>string s3=3D =A1=B0a=A1=B1 + =
+=A1=B0b=A1=B1 + =
+s1;<BR>=C7=B0=D5=DF=CA=C7=BA=CF=B7=A8=B5=C4=A3=AC=BA=F3=D5=DF=D4=F2=B7=F1=
+=A3=BB=D4=AD=D2=F2=D5=FD=D4=DA=D3=DAstring=D6=D0=B5=C4=A1=B0 +=20
+=A1=B1=BA=C5=B2=D9=D7=F7=B7=FB=CA=C7=D7=F3=BD=E1=BA=CF=B5=C4=A1=A3</FONT>=
+</P>
+<P><FONT face=3D"Courier New">P78 <B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=B1=EA=D7=BC=BF=E2=B3=FD=C1=CB=B6=A8=D2=E5=C1=CB=CC=D8=B6=A8=
+=D3=DA<B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=B1=BE=C9=ED=B5=C4=D2=BB=D0=A9=BF=E2=CD=E2=A3=AC=BB=B9=B0=FC=
+=BA=AC=C1=CBC=B1=EA=D7=BC=BF=E2=A1=A3C=B1=EA=D7=BC=BF=E2=D4=AD=C0=B4=B5=C4=
+=CD=B7=CE=C4=BC=FE=B5=C4=C3=FB=B3=C6=CE=AA.h=A3=AC=D4=DA<B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=D6=D0=C3=FC=C3=FB=CE=AA&lt;cxxx&gt;=A3=AC=B2=A2=B1=BB=B0=FC=
+=BA=AC=D3=DA=C3=FB=D7=D6=BF=D5=BC=E4std=B5=C4=D3=F2=C4=DA=A1=A3</FONT></P=
+>
+<P><FONT face=3D"Courier New">P79 =
+vector=CA=C7=D2=BB=B8=F6=C0=E0=C4=A3=B0=E5=A3=ACvector=B2=C5=CA=C7=D2=BB=D6=
+=D6=CA=FD=BE=DD=C0=E0=D0=CD=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P80=20
+=D6=D8=D2=AA=A3=BA=B6=D4=D3=DAvecotr=A3=AC=B1=C8=C6=F0=B6=D4=B8=F8=B6=A8=B8=
+=F6=CA=FD=B5=C4=CB=FC=D4=A4=CF=C8=B7=D6=C5=E4=C4=DA=B4=E6=A3=AC=B8=FC=D3=D0=
+=D0=A7=B5=C4=B7=BD=B7=A8=CA=C7=CF=C8=B3=F5=CA=BC=BB=AF=D2=BB=B8=F6=BF=D5=B5=
+=C4vector=D4=AA=CB=D8=A3=AC=D4=D9=B6=AF=CC=AC=B5=D8=CD=F9=C0=EF=C3=E6=CC=ED=
+=BC=D3=D4=AA=CB=D8=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P82&nbsp; <B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=B3=CC=D0=F2=D4=B1=CF=B0=B9=DF=D3=DA=D3=C5=CF=C8=CA=B9=D3=C3=
+!=3D=B6=F8=B2=BB=CA=C7&lt;=D7=F7=CE=AA=D1=AD=BB=B7=B5=C4=C5=D0=B6=CF=CC=F5=
+=BC=FE=A1=A3=D5=E2=B8=F6=CF=B0=B9=DF=C0=B4=D7=D4=D3=DA=B7=BA=D0=CD=B1=E0=B3=
+=CC=A3=AC=D3=D0=C6=E4=BA=CF=C0=ED=D0=D4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P82=20
+=D4=DA=D1=AD=BB=B7=C5=D0=B6=CF=D6=D0=B6=AF=CC=AC=B5=D8=B5=F7=D3=C3size()=B6=
+=F8=B2=BB=CA=C7=CC=E1=C7=B0=B5=F7=D3=C3=B2=A2=B1=A3=B4=E6=C6=E4=D6=B5=A3=AC=
+=CD=AC=D1=F9=D3=D0=C6=E4=BA=CF=C0=ED=D0=D4=A1=A3=D2=F2=CE=AA=D3=D0=D0=A9=CA=
+=FD=BE=DD=BD=E1=B9=B9=B1=C8=C8=E7vector=CA=C7=BF=C9=D2=D4=D4=DA=D1=AD=BB=B7=
+=D6=D0=B6=AF=CC=AC=D4=F6=B3=A4=B5=C4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P84=20
+=D4=DA=B1=EA=D7=BC=BF=E2=D6=D0=A3=AC=D6=BB=D3=D0=C9=D9=CA=FD=B5=C4=C8=DD=C6=
+=F7=A3=A8=B1=C8=C8=E7vector=A3=A9=D6=A7=B3=D6=CF=C2=B1=EA=B2=D9=D7=F7=A3=AC=
+=B6=F8=CB=F9=D3=D0=C8=DD=C6=F7=B6=BC=D6=A7=B3=D6=B5=FC=B4=FA=C6=F7=A3=A8=B6=
+=BC=B6=A8=D2=E5=D2=BB=B8=F6=C3=FB=CE=AAiterator=B5=C4=C0=E0=D0=CD=A3=A9=A1=
+=A3=D2=F2=B4=CB=A3=AC=BD=A8=D2=E9=D3=C5=CF=C8=CA=B9=D3=C3=B5=FC=B4=FA=C6=F7=
+=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P86&nbsp; =
+const_iterator=CA=C7=D2=BB=B8=F6=D6=B8=CF=F2=B3=A3=C1=BF=B5=C4iterator=A1=
+=A3</FONT></P>
+<P><FONT face=3D"Courier New">P87=20
+difference_type=B5=C4=D7=F7=D3=C3=D3=EBsize_type=C0=E0=CB=C6=A3=AC=C7=F8=B1=
+=F0=D4=DA=D3=DA=CB=FC=CA=C7signed=D0=CD=B6=F8=D2=D1=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P88 =
+=C8=CE=BA=CE=B8=C4=B1=E4vector=B3=A4=B6=C8=B5=C4=B2=D9=D7=F7=A3=AC=B6=BC=BB=
+=E1=CA=B9=D2=D1=B4=E6=D4=DA=B5=C4=B5=FC=B4=FA=C6=F7=CA=A7=D0=A7=A1=A3</FO=
+NT></P>
+<P><FONT face=3D"Courier New">P88=20
+bitset=D3=EBvector=C0=E0=CB=C6=B6=BC=CA=C7=D2=BB=B8=F6=C0=E0=C4=A3=B0=E5=A3=
+=AC=B2=BB=B9=FD=CB=FC=B8=F7=B8=F6=B6=D4=CF=F3=D6=AE=BC=E4=B5=C4=C7=F8=B1=F0=
+=D4=DA=D3=DA=B4=F3=D0=A1=B6=F8=B2=BB=D4=DA=D3=DA=C0=E0=D0=CD=A3=AC=B1=C8=C8=
+=E7bitset&lt;32&gt;=20
+bitvec;</FONT></P>
+<P><FONT face=3D"Courier New">P89 =
+bitset=C6=A5=C5=E4=CA=B1=CA=C7=B4=D3=B5=CD=BD=D7=BF=AA=CA=BC=C6=A5=C5=E4=B5=
+=C4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier =
+New">=A3=A8=CE=B4=CD=EA=B4=FD=D0=F8=A3=A9</FONT></P>
+<P><FONT face=3D"Courier =
+New">=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=
+=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=
+=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD=A3=AD<BR><STRONG>=D2=D4=CF=
+=C2=B8=F6=C8=CB<B=20
+style=3D"BACKGROUND-COLOR: #99ff99; COLOR: =
+black">=BF=B1=CE=F3</B>=B0=B4=D4=DA=CA=E9=D6=D0=B3=F6=CF=D6=B5=C4=CF=C8=BA=
+=F3=CB=B3=D0=F2=C0=B4=BC=C7=D4=D8</STRONG>=A3=BA</FONT></P>
+<P><FONT face=3D"Courier New"><FONT face=3D"Courier =
+New">P13=A3=A8=B5=DA13=D2=B3=A3=A9=20
+=A1=B0=B2=BB=CA=C7=CB=F9=D3=D0=B1=E0=D2=EB=C6=F7=B6=BC=D3=D0=D5=E2=D2=BB=D2=
+=AA=C7=F3=A1=B1=BA=F3=B0=EB=BE=E4=D3=A6=B7=AD=D2=EB=CE=AA=A1=B0=B6=BC=C2=FA=
+=D7=E3=D5=E2=D2=BB=B1=EA=D7=BC=A1=B1=A1=A3<BR>=D3=B0=CF=EC=D4=C4=B6=C1=B3=
+=CC=B6=C8=A3=BA=D1=CF=D6=D8</FONT></FONT></P>
+<P><FONT face=3D"Courier =
+New">=CB=B5=C3=F7=A3=BA=A1=B0=B1=E0=D2=EB=C6=F7=A1=B1=C8=E7=BA=CE=C4=DC=A1=
+=B0=D2=AA=C7=F3=A1=B1<B=20
+style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=B1=EA=D7=BC=A3=BF=D4=AD=D3=A2=CE=C4=B0=E6=D6=D0=B5=C4=A1=B0=
+enforce=A1=B1=D3=A6=B7=AD=D2=EB=CE=AA=A1=B0=C2=FA=D7=E3=A1=B1=B6=F8=B2=BB=
+=CA=C7=A1=B0=D3=D0=A1=B1=A3=AC=B6=AF=B1=F6=B9=D8=CF=B5=B2=C5=B2=BB=BB=E1=B8=
+=E3=B7=B4=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P43=20
+=A1=B0=D3=D0=B6=E0=B8=F6=B3=F5=CA=BC=BB=AF=CA=BD=CA=B1=B2=BB=C4=DC=CA=B9=D3=
+=C3=B8=B4=D6=C6=B3=F5=CA=BC=BB=AF=A1=B1=C7=B0=B0=EB=BE=E4=D3=A6=B7=AD=D2=EB=
+=CE=AA=A1=B0=D3=D0=B6=E0=B8=F6=B3=F5=CA=BC=BB=AF=B2=CE=CA=FD=CA=B1=A1=B1=A1=
+=A3<BR>=D3=B0=CF=EC=B3=CC=B6=C8=A3=BA=D2=BB=B0=E3</FONT></P>
+<P><FONT face=3D"Courier New">P45=20
+=A1=B0=C8=E7=B9=FB=B6=A8=D2=E5=C4=B3=B8=F6=C0=E0=B5=C4=B1=E4=C1=BF=CA=B1=C3=
+=BB=D3=D0=CC=E1=B9=A9=B3=F5=CA=BC=BB=AF=CA=BD=A1=AD.=A1=B1=D5=E2=BE=E4=BA=
+=CD=BA=F3=D2=BB=BE=E4=D3=A6=B7=AD=D2=EB=CE=AA=A1=B0=C8=E7=B9=FB=B6=A8=D2=E5=
+=C4=B3=B8=F6=C0=E0=B5=C4=B1=E4=C1=BF=CA=B1=C3=BB=D3=D0=CC=E1=B9=A9=B3=F5=CA=
+=BC=BB=AF=B2=CE=CA=FD=A3=AC=C4=C7=C3=B4=CF=B5=CD=B3=BB=E1=B5=F7=D3=C3=B8=C3=
+=C0=E0=B5=C4=A1=AF=C8=B1=CA=A1=B9=B9=D4=EC=BA=AF=CA=FD=A1=AF=A1=A3=A1=B1<=
+BR>=D3=B0=CF=EC=B3=CC=B6=C8=A3=BA=D2=BB=B0=E3</FONT></P>
+<P><FONT face=3D"Courier New">P50=20
+=D3=D0=C8=FD=B4=A6=B5=C4=A1=B0const=B1=E4=C1=BF=A1=B1=B7=AD=D2=EB=CE=AA=A1=
+=B0const=B3=A3=C1=BF=A1=B1=BB=F2=A1=B0const=B6=D4=CF=F3=A1=B1=B1=C8=BD=CF=
+=BA=C3=A3=AC=CB=E4=C8=BB=D4=AD=D3=A2=CE=C4=B0=E6=D3=D0=C1=BD=B4=A6=D2=B2=CA=
+=C7=D3=C3const=20
+variable=A1=A3<BR>=D3=B0=CF=EC=B3=CC=B6=C8=A3=BA=C7=E1=CE=A2</FONT></P>
+<P><FONT face=3D"Courier New"><FONT face=3D"Courier New">P52=20
+=A1=B0=BD=F6=D4=CA=D0=EDconst=D2=FD=D3=C3=B0=F3=B6=A8=B5=BD=D0=E8=D2=AA=C1=
+=D9=CA=B1=CA=B9=D3=C3=B5=C4=D6=B5=A1=B1=D3=A6=B7=AD=D2=EB=CE=AA=A1=B0=BD=F6=
+=D4=CA=D0=EDconst=D2=FD=D3=C3=B0=F3=B6=A8=B5=BD=D0=E8=D2=AA=C1=D9=CA=B1=D6=
+=B5=D6=D0=D7=AA=C0=B4=CD=EA=B3=C9=B0=F3=B6=A8=B9=FD=B3=CC=B5=C4=B6=D4=CF=F3=
+=A1=B1<BR>=D3=B0=CF=EC=B3=CC=B6=C8=A3=BA=D1=CF=D6=D8</FONT></FONT></P>
+<P><FONT=20
+face=3D"Courier =
+New">=CB=B5=C3=F7=A3=BA=D2=EB=D5=DF=B6=D4=B1=F6=D3=EF=B5=C4=D6=F7=CC=E5=C0=
+=ED=BD=E2=B4=ED=CE=F3=A1=A3=D4=AD=D3=A2=CE=C4=B0=E6=D6=D0=B5=C4=A1=B0=C1=D9=
+=CA=B1=CA=B9=D3=C3=B5=C4=D6=B5=A1=B1=CA=C7=D3=C3=C0=B4=D0=DE=CA=CEvalue=A3=
+=A8=B6=D4=CF=F3=A3=A9=B5=C4=A3=AC=B2=BB=CA=C7=D7=EE=D6=D5=B5=C4=B1=F6=D3=EF=
+=A1=A3<BR>=D2=F2=CE=AA=B6=D4=D3=DA=B3=CC=D0=F2=D4=B1=C0=B4=CB=B5=A3=AC=B1=
+=E0=D2=EB=C6=F7=D7=F6=B5=C4=D6=D0=D7=AA=B9=A4=D7=F7=CA=C7=CD=B8=C3=F7=B5=C4=
+=A3=ACconst=D2=FD=D3=C3=D7=EE=D6=D5=BB=B9=CA=C7=B0=F3=B6=A8=B5=BD=B6=D4=CF=
+=F3=A3=AC=CB=E4=C8=BB=BD=E1=B9=FB=CF=E0=CD=AC=A1=A3</FONT></P>
+<P><FONT face=3D"Courier New">P65=20
+=A1=B0word=A3=A8=D7=D6=A3=A9=BB=FA=C6=F7=C9=CF=B5=C4=D7=D4=C8=BB=B5=C4=D5=
+=FB=D0=CD=BC=C6=CB=E3=B5=A5=D4=AA=A1=B1=D3=A6=B7=AD=D2=EB=CE=AA=A1=B0word=
+=A3=A8=D7=D6=A3=A9=CA=C7=D4=DA=B8=F8=B6=A8=BB=FA=C6=F7=C9=CF=BD=F8=D0=D0=D5=
+=FB=D0=CD=BC=C6=CB=E3=B5=C4=D4=AD=CA=BC=B5=A5=D4=AA=A1=B1<BR>=D3=B0=CF=EC=
+=B3=CC=B6=C8=A3=BA=D2=BB=B0=E3</FONT></P>
+<P><FONT face=3D"Courier New">P79=20
+=A1=B0v4=BA=AC=D3=D0=D6=B5=B3=F5=CA=BC=BB=AF=B5=C4=D4=AA=CB=D8=A1=B1=D5=E2=
+=BE=E4=D3=A6=B7=AD=D2=EB=CE=AA=A1=B0v4=BA=AC=D3=D0n=B8=F6=D3=C3=C8=B1=CA=A1=
+=B9=B9=D4=EC=BA=AF=CA=FD=D6=D0=B5=C4=D6=B5=B3=F5=CA=BC=BB=AF=B5=C4=D4=AA=CB=
+=D8=A1=B1<BR>=D3=B0=CF=EC=B3=CC=B6=C8=A3=BA=D1=CF=D6=D8</FONT></P>
+<P><FONT face=3D"Courier New">P79=20
+=A1=B0=B6=AF=CC=AC=B5=D8=CC=ED=BC=D3=D4=AA=CB=D8=A1=B1=D5=E2=BE=E4=D3=A6=B7=
+=AD=D2=EB=CE=AA=A1=B0=B5=B1=D4=AA=CB=D8=D6=B5=D2=D1=D6=AA=CA=B1=A3=AC=D7=EE=
+=BA=C3=CA=C7=CD=A8=B9=FD=B6=AF=CC=AC=B5=D8=CF=F2=CB=FC=CC=ED=BC=D3=D4=AA=CB=
+=D8=A3=AC=C0=B4=C8=C3=CB=FC=D4=F6=B3=A4=A1=A3=A1=B1<BR>=D3=B0=CF=EC=B3=CC=
+=B6=C8=A3=BA=D2=BB=B0=E3</FONT></P>
+<P><FONT face=3D"Courier =
+New">=A3=A8=CE=B4=CD=EA=B4=FD=D0=F8=A3=A9</FONT></P>
+<P>&nbsp;</P></DIV></DIV></DIV></DIV>
+<DIV class=3D"nbw-act tbar fc03 clearfix">
+<DIV class=3D"pleft rdif"><SPAN id=3D$_spanRecommend class=3D"pnt =
+pleft"><IMG=20
+class=3Dpclass src=3D""></SPAN> <SPAN id=3D$_spanShowRecommend=20
+class=3D"pleft rdct  phide"><SPAN class=3D"pleft ul fc03"><SPAN=20
+id=3D$_spanRecommendCount>0</SPAN>=C8=CB</SPAN><SPAN=20
+class=3D"pleft iblock icn0 icn0-722 nbw-tgl1 =
+nas-icn0fix">&nbsp;</SPAN><SPAN=20
+class=3D"pleft iblock icn0 icn0-621 nbw-tgl0 =
+nas-icn0fix">&nbsp;</SPAN><SPAN=20
+class=3Dfc07></SPAN>|&nbsp; </SPAN><SPAN=20
+class=3D"fc07 pleft nas-tofix">=B7=D6=CF=ED=B5=BD=A3=BA</SPAN><SPAN =
+class=3D"nas-wrap pleft"><SPAN=20
+id=3D$_shareBtn_email class=3D"nas-itm nas-itm5" =
+title=3D=B7=D6=CF=ED=B5=BD=D3=CA=BC=FE>&nbsp;</SPAN><SPAN=20
+id=3D$_shareBtn_163weibo class=3D"nas-itm nas-itm0" =
+title=3D=B7=D6=CF=ED=B5=BD=CD=F8=D2=D7=CE=A2=B2=A9>&nbsp;</SPAN><SPAN=20
+id=3D$_shareBtn_sinaweibo class=3D"nas-itm nas-itm6"=20
+title=3D=B7=D6=CF=ED=B5=BD=D0=C2=C0=CB=CE=A2=B2=A9>&nbsp;</SPAN><SPAN =
+id=3D$_shareBtn_qq class=3D"nas-itm nas-itm3"=20
+title=3D=B7=D6=CF=ED=B5=BDQQ=BF=D5=BC=E4>&nbsp;</SPAN><SPAN =
+id=3D$_shareBtn_renren class=3D"nas-itm nas-itm1"=20
+title=3D=B7=D6=CF=ED=B5=BD=C8=CB=C8=CB=CD=F8>&nbsp;</SPAN><SPAN =
+id=3D$_shareBtn_kaixin class=3D"nas-itm nas-itm2"=20
+title=3D=B7=D6=CF=ED=B5=BD=BF=AA=D0=C4=CD=F8>&nbsp;</SPAN><SPAN =
+id=3D$_shareBtn_douban class=3D"nas-itm nas-itm4"=20
+title=3D=B7=D6=CF=ED=B5=BD=B6=B9=B0=EA>&nbsp;</SPAN></SPAN></SPAN> =
+</DIV>
+<DIV class=3Dpright><SPAN class=3Dfc07>=D4=C4=B6=C1(<SPAN=20
+id=3D$_spaniReadCount>1</SPAN>)</SPAN><SPAN class=3D"sep fc07">|</SPAN> =
+<SPAN=20
+class=3Dfc07>=C6=C0=C2=DB(<SPAN =
+id=3D$_spaniCommentCount>0</SPAN>)</SPAN><SPAN=20
+class=3D"sep fc07">|</SPAN> <SPAN id=3D$_spanCite =
+class=3Dm2a>=D2=FD=D3=C3(<SPAN=20
+id=3D$_spanCiteCount>0</SPAN>)</SPAN> <SPAN class=3D"sep =
+fc07">|</SPAN><SPAN=20
+id=3D$_spanReport class=3Dm2a>=BE=D9=B1=A8</SPAN> </DIV></DIV></DIV>
+<DIV class=3Dsnl>
+<DIV id=3D$_divRecommendContent class=3D"phide bdwb bds2 bdc0 =
+rdcnt"></DIV>
+<DIV id=3D$_divTopLink class=3D"top fc03 clearfix"><SPAN=20
+class=3D"ilft iblock icn0 icn0-620">&nbsp;</SPAN>=20
+<DIV class=3D"pleft thide"><A class=3Dm2a=20
+href=3D"http://sroply.blog.163.com/blog/static/17092651920072710130704/">=
+=A1=B6Accelerated=20
+<B style=3D"BACKGROUND-COLOR: #ffff66; COLOR: =
+black">C++</B>=A1=B7=B1=CA=BC=C7</A></DIV><SPAN=20
+class=3D"irgt iblock icn0 icn0-619">&nbsp;</SPAN>=20
+<DIV class=3D"pright thide"><A class=3Dm2a=20
+href=3D"http://sroply.blog.163.com/blog/static/17092651920093692146532/">=
+=D2=BB=D0=A9=C1=B4=BD=D3</A></DIV></DIV>
+<DIV class=3D"relateblog phide">
+<H4 class=3D"bdwb bds2 bdc0 fc07 =
+fs0">=C0=FA=CA=B7=C9=CF=B5=C4=BD=F1=CC=EC</H4>
+<DIV class=3D"cnt ztag clearfix"></DIV></DIV>
+<DIV class=3D"relateblog phide">
+<H4 class=3D"bdwb bds2 bdc0 fc07 fs0">=CF=E0=B9=D8=CE=C4=D5=C2</H4>
+<DIV class=3D"cnt ztag clearfix"></DIV></DIV>
+<DIV class=3Dauthor>
+<H4 class=3D"bdwb bds2 bdc0 fc07 fs0">=D7=EE=BD=FC=B6=C1=D5=DF</H4>
+<DIV class=3D"cnt ztag clearfix"></DIV></DIV>
+<DIV class=3Dcomment>
+<H4 class=3D"bdwb bds2 bdc0 fc07 fs0">=C6=C0=C2=DB</H4><A =
+id=3DblogComment=20
+name=3DblogComment></A>
+<DIV class=3Dztag></DIV></DIV></DIV>
+<DIV class=3D"cite ztag fc03"></DIV></DIV></DIV></DIV></DIV>
+<DIV class=3D"phide nb-init"><TEXTAREA name=3Djs>    this.p=3D{  m:2,
+              b:2,
+              =
+id:'fks_081069085083080071081081087095085081081074086080083066093',
+              blogTitle:'=A1=B6C++ Primer =
+=B5=DA=CB=C4=B0=E6=A1=B7=B1=CA=BC=C7=D3=EB=BF=B1=CE=F31',
+              blogUrl:'blog/static/17092651920072238500672',
+              isPublished:1,
+              istop:false,
+              type:0,
+              modifyTime:0,
+              publishTime:1174611000672,
+              permalink:'blog/static/17092651920072238500672',
+              commentCount:0,
+              mainCommentCount:0,
+              recommendCount:0,
+              friendstatus:'none',
+              followstatus:'unFollow',
+              pubSucc:''
+            }
+  </TEXTAREA> <TEXTAREA id=3Dm-3-jst-1 name=3Djst>    {list a as x}
+    {if !!x}
+    &lt;div class=3D"iblock nbw-fce nbw-f40"&gt;
+      &lt;a class=3D"fc03 noul" target=3D"_blank" hidefocus=3D"true" =
+href=3D"http://blog.163.com/${x.visitorName}/"&gt;
+      &lt;img alt=3D"${x.visitorNickname|escape}" =
+onerror=3D"location.f40" class=3D"cwd bdwa bdc0" =
+src=3D"${fn1(x.visitorName)}"/&gt;
+      &lt;/a&gt;
+      &lt;div class=3D"cwd vname thide"&gt;
+        {if x.moveFrom=3D=3D'wap'}
+          &lt;a class=3D"noul pnt" target=3D"_blank" =
+href=3D"http://blog.163.com/services/wapblog.html?frompersonalbloghome"&g=
+t;&lt;span title=3D"=CD=A8=B9=FD=CA=D6=BB=FA=B2=A9=BF=CD=B7=C3=CE=CA" =
+class=3D"iblock icn0 icn0-417"&gt;&nbsp;&lt;/span&gt;&lt;/a&gt;
+        {/if}
+        &lt;a class=3D"fc03 m2a"  target=3D"_blank" hidefocus=3D"true" =
+href=3D"http://blog.163.com/${x.visitorName}/"&gt;
+          ${fn(x.visitorNickname,8)|escape}
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    {/if}
+    {/list}
+  </TEXTAREA> <TEXTAREA id=3Dm-3-jst-2 name=3Djst>    {if !!a}
+    &lt;a href=3D"http://blog.163.com/${a.userName}/"&gt;&lt;img =
+class=3D"bdwa bdc0 pnt" onerror=3D"location.f60" =
+src=3D"${fn1(a.userName)}"/&gt;&lt;/a&gt;
+    &lt;a class=3D"fc03 m2a" =
+href=3D"http://blog.163.com/${a.userName}/"&gt;${fn(a.nickname,8)|escape}=
+&lt;/a&gt;
+    &lt;div class=3D"intro fc05"&gt;${a.selfIntro|escape}&lt;/div&gt;
+	    &lt;div class=3D"acts ztag"&gt;&lt;/div&gt;
+    {/if}
+  </TEXTAREA> &lt;#--=D7=EE=D0=C2=C8=D5=D6=BE--&gt; <TEXTAREA =
+id=3Dm-3-jst-3 name=3Djst>    {list a as x}
+    {if !!x}
+    &lt;li class=3D"thide"&gt;&lt;a class=3D"fc03 m2a" =
+href=3D"${furl()}${x.permalink}/?latestBlog"&gt;${fn(x.title,26)|escape}&=
+lt;/a&gt;&lt;/li&gt;
+    {/if}
+    {/list}
+  </TEXTAREA> &lt;#--=CD=C6=BC=F6=C8=D5=D6=BE--&gt; <TEXTAREA =
+id=3Dm-3-jst-4 name=3Djst>    &lt;p =
+class=3D"fc06"&gt;=CD=C6=BC=F6=B9=FD=D5=E2=C6=AA=C8=D5=D6=BE=B5=C4=C8=CB=A3=
+=BA&lt;/p&gt;
+    &lt;div&gt;
+      {list a as x}
+      {if !!x}
+      &lt;div class=3D"iblock nbw-fce nbw-f40"&gt;
+        &lt;a class=3D"fc03 noul" target=3D"_blank" hidefocus=3D"true" =
+href=3D"http://blog.163.com/${x.recommenderName}/"&gt;
+        &lt;img alt=3D"${x.recommenderNickname}" =
+onerror=3D"location.f40" class=3D"cwd bdwa bdc0" =
+src=3D"${fn1(x.recommenderName)}"/&gt;
+        &lt;/a&gt;
+        &lt;div class=3D"cwd thide"&gt;
+          &lt;a class=3D"fc03 m2a" target=3D"_blank" hidefocus=3D"true" =
+href=3D"http://blog.163.com/${x.recommenderName}/"&gt;
+            ${fn(x.recommenderNickname,6)|escape}
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      {/if}
+      {/list}
+    &lt;/div&gt;
+    {if !!b&amp;&amp;b.length&gt;0}
+    &lt;p  =
+class=3D"fc06"&gt;=CB=FB=C3=C7=BB=B9=CD=C6=BC=F6=C1=CB=A3=BA&lt;/p&gt;
+    &lt;ul&gt;
+    {list b as y}
+      {if !!y}
+        &lt;li class=3D"rrb"&gt;&lt;span =
+class=3D"iblock"&gt;=A1=A4&lt;/span&gt;&lt;a class=3D"fc03 m2a" =
+target=3D"_blank" =
+href=3D"http://blog.163.com/${y.recommendBlogPermalink}/?from=3Dblog/stat=
+ic/17092651920072238500672"&gt;${y.recommendBlogTitle}&lt;/a&gt;&lt;/li&g=
+t;
+      {/if}
+    {/list}
+    &lt;/ul&gt;
+    {/if}
+  </TEXTAREA> &lt;#--=D2=FD=D3=C3=BC=C7=C2=BC--&gt; <TEXTAREA =
+id=3Dm-3-jst-5 name=3Djst>    &lt;span class=3D"pleft =
+fc07"&gt;=D2=FD=D3=C3=BC=C7=C2=BC=A3=BA&lt;/span&gt;
+    &lt;ul class=3D"tbac"&gt;
+    {list d as x}
+      &lt;li class=3D"clearfix"&gt;
+        &lt;span class=3D"pleft iblock"&gt;=A1=A4&lt;/span&gt;
+        &lt;div class=3D"tbl thide pleft"&gt;&lt;span&gt;&lt;a =
+target=3D"_blank" class=3D"fc07 m2a" =
+href=3D"${x.referBlogUrl}"&gt;${x.referBlogTitle}&lt;/a&gt;&lt;/span&gt;&=
+lt;/div&gt;
+        &lt;div class=3D"tbr pleft"&gt;&lt;span&gt;&lt;a =
+target=3D"_blank" class=3D"fc07 m2a" =
+href=3D"${x.referHomePage}"&gt;${x.referUserName}&lt;/a&gt;&lt;/span&gt;&=
+lt;/div&gt;
+      &lt;/li&gt;
+    {/list}
+    &lt;/ul&gt;
+  </TEXTAREA> &lt;#--=B2=A9=D6=F7=CD=C6=BC=F6--&gt; <TEXTAREA =
+id=3Dm-3-jst-6 name=3Djst>    {list a as x}
+    {if !!x}
+    &lt;li class=3D"thide"&gt;&lt;a class=3D"fc03 m2a" =
+href=3D"http://blog.163.com/${x.userName}/${x.permalink}/?recommendBlog" =
+title=3D"${x.title|default:""|escape}"&gt;${x.title|default:""|escape}&lt=
+;/a&gt;&lt;/li&gt;
+    {/if}
+    {/list}
+  </TEXTAREA> &lt;#--=CB=E6=BB=FA=D4=C4=B6=C1--&gt; <TEXTAREA =
+id=3Dm-3-jst-7 name=3Djst>    {list a as x}
+    {if !!x}
+    &lt;li class=3D"thide"&gt;&lt;a class=3D"fc03 m2a" =
+href=3D"http://blog.163.com/${x.userName}/${x.permalink}/?personalRecomBl=
+og" =
+title=3D"${x.title|default:""|escape}"&gt;${x.title|default:""|escape}&lt=
+;/a&gt;&lt;/li&gt;
+    {/if}
+    {/list}
+  </TEXTAREA> &lt;#--=CA=D7=D2=B3=CD=C6=BC=F6--&gt; <TEXTAREA =
+id=3Dm-3-jst-8 name=3Djst>    {list a as x}
+    {if !!x}
+    &lt;li class=3D"thide"&gt;&lt;a class=3D"fc03 m2a" target=3D"_blank" =
+href=3D"${x.blogUrl|default:""|escape}?recommendReader" =
+title=3D"${x.blogTile|default:""|escape}"&gt;${x.blogTile|default:""|esca=
+pe}&lt;/a&gt;&lt;/li&gt;
+    {/if}
+    {/list}
+  </TEXTAREA> &lt;#--=CF=E0=B9=D8=CE=C4=D5=C2--&gt; <TEXTAREA =
+id=3Dm-3-jst-9 name=3Djst>    &lt;ul&gt;
+      {list a as x}
+      {if x_index&gt;9}{break}{/if}
+      {if !!x}
+        &lt;li class=3D"thide fc03"&gt;
+          &lt;a class=3D"m2a" target=3D"_blank"  =
+href=3D"${x.url|default:""}?fromdm&amp;fromSearch&amp;isFromSearchEngine=3D=
+${isFromSearchEngine|default:"no"}"  =
+title=3D"${x.title|default:""|escape}"&gt;${x.title|default:""|escape}&lt=
+;/a&gt;&lt;span class=3D"fc07"&gt;${fn2(parseInt(x.date),'yyyy-MM-dd =
+HH:mm:ss')}&lt;/span&gt;
+        &lt;/li&gt;
+      {/if}
+      {/list}
+    &lt;/ul&gt;
+  </TEXTAREA> &lt;#--=C0=FA=CA=B7=C9=CF=B5=C4=BD=F1=CC=EC--&gt; =
+<TEXTAREA id=3Dm-3-jst-10 name=3Djst>    &lt;ul&gt;
+      {list a as x}
+      {if x_index&gt;4}{break}{/if}
+      {if !!x}
+        &lt;li class=3D"thide fc03"&gt;
+          &lt;a class=3D"m2a" target=3D"_blank"  =
+href=3D"http://blog.163.com/${x.userName}/${x.permalink|default:""}"  =
+title=3D"${x.title|default:""|escape}"&gt;${x.title|default:""|escape}&lt=
+;/a&gt;&lt;span class=3D"fc07"&gt;${fn2(x.publishTime,'yyyy-MM-dd =
+HH:mm:ss')}&lt;/span&gt;
+        &lt;/li&gt;
+      {/if}
+      {/list}
+    &lt;/ul&gt;
+  </TEXTAREA> &lt;#--=D3=D2=B1=DF=C4=A3=BF=E9=BD=E1=B9=B9--&gt; =
+<TEXTAREA id=3Dm-3-txt-0 name=3Dtxt>    &lt;div class=3D"uinfo =
+ztag"&gt;&lt;/div&gt;
+    &lt;h4 class=3D"fc07 fs0 ltt"&gt;=D7=EE=D0=C2=C8=D5=D6=BE&lt;/h4&gt;
+    &lt;ul class=3D"ztag blst"&gt;&lt;/ul&gt;
+    &lt;h4 class=3D"fc07 fs0 ltt phide =
+ztag"&gt;=B2=A9=D6=F7=CD=C6=BC=F6&lt;/h4&gt;
+    &lt;ul class=3D"ztag blst"&gt;&lt;/ul&gt;
+    &lt;h4 class=3D"fc07 fs0 ltt phide =
+ztag"&gt;=CF=E0=B9=D8=C8=D5=D6=BE&lt;/h4&gt;
+    &lt;ul class=3D"ztag blst"&gt;&lt;/ul&gt;
+    &lt;h4 class=3D"fc07 fs0 ltt phide =
+ztag"&gt;=CB=E6=BB=FA=D4=C4=B6=C1&lt;/h4&gt;
+    &lt;ul class=3D"ztag blst"&gt;&lt;/ul&gt;
+    &lt;h4 class=3D"fc07 fs0 ltt phide =
+ztag"&gt;=CA=D7=D2=B3=CD=C6=BC=F6&lt;/h4&gt;
+    &lt;ul class=3D"ztag blst"&gt;&lt;/ul&gt;
+    &lt;div class=3D"more"&gt;&lt;a target=3D"_blank" class=3D"fc03 m2a" =
+href=3D"http://blog.163.com"&gt;=B8=FC=B6=E0&gt;&gt;&lt;/a&gt;&lt;/div&gt=
+;
+  </TEXTAREA> &lt;#--=C6=C0=C2=DB=C4=A3=BF=E9=BD=E1=B9=B9--&gt; =
+<TEXTAREA id=3Dm-3-txt-1 name=3Dtxt>    &lt;div class=3D"publish =
+ztag"&gt;&lt;/div&gt;
+    &lt;div class=3D"ztag bdwt bds2 bdc0"&gt;
+      &lt;div class=3D"case"&gt;&lt;/div&gt;
+      &lt;div class=3D"clearfix"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  </TEXTAREA> &lt;#--=D2=FD=D3=C3=C4=A3=BF=E9=BD=E1=B9=B9--&gt; =
+<TEXTAREA id=3Dm-3-txt-2 name=3Djst>     &lt;div class=3D"close"&gt;
+       &lt;span class=3D"ztag iblock icn0 =
+icn0-57"&gt;&nbsp;&lt;/span&gt;
+     &lt;/div&gt;
+	 &lt;div&gt;
+	   &lt;span class=3D"iblock"&gt;=A3=AD&lt;/span&gt;
+	   &lt;a target=3D"_blank" class=3D"noul ztag" =
+href=3D"${curl}"&gt;=D2=FD=D3=C3=B4=CB=C6=AA=C8=D5=D6=BE=B5=BD=CE=D2=B5=C4=
+=B2=A9=BF=CD&lt;/a&gt;
+	 &lt;/div&gt;
+	 &lt;div class=3D"ztag phide"&gt;&lt;/div&gt;
+	 &lt;div&gt;
+	   &lt;span class=3D"iblock"&gt;=A3=AD&lt;/span&gt;
+	   &lt;a href=3D"javascript:return false;" class=3D"ztag =
+noul"&gt;=B8=B4=D6=C6=B4=CB=C6=AA=C8=D5=D6=BE=CD=F8=D6=B7&lt;/a&gt;
+	   &lt;input class=3D"ads ztag phide" type=3D"text" /&gt;
+	 &lt;/div&gt;
+	 &lt;div&gt;
+	   &lt;span class=3D"iblock"&gt;=A3=AD&lt;/span&gt;
+	   &lt;span =
+class=3D"ztag"&gt;=B7=A2=CB=CD=B8=F8=B2=A9=D3=D1&lt;/span&gt;
+	 &lt;/div&gt;
+  </TEXTAREA> </DIV></DIV>
+<DIV class=3D"l cl h100">&nbsp;</DIV>
+<DIV class=3D"r cr h100">&nbsp;</DIV></DIV>
+<DIV class=3D"nb-mb lcr bh space">
+<DIV class=3D"l bl bh">&nbsp;</DIV>
+<DIV class=3D"r br bh">&nbsp;</DIV>
+<DIV class=3D"c bc bh lcr">&nbsp;</DIV></DIV></DIV></DIV>
+<DIV class=3D"l wl g lg h100">&nbsp;</DIV>
+<DIV class=3D"l wl t lt">&nbsp;</DIV>
+<DIV class=3D"l wl b lb">&nbsp;</DIV>
+<DIV class=3D"r wr g rg h100">&nbsp;</DIV>
+<DIV class=3D"r wr t rt">&nbsp;</DIV>
+<DIV class=3D"r wr b rb">&nbsp;</DIV></DIV></DIV>
+<DIV class=3D"nb-are nb-smb">
+<DIV class=3D"wkg h space">
+<DIV class=3D"l h">&nbsp;</DIV>
+<DIV class=3D"r h">&nbsp;</DIV>
+<DIV class=3D"c h">&nbsp;</DIV></DIV></DIV>
+<DIV class=3D"nb-are nb-fot">
+<DIV class=3D"wkg h">
+<H2>=D2=B3=BD=C5</H2>
+<DIV class=3Dk><A class=3D"m2a fc08" =
+href=3D"http://corp.163.com/index_gb.html"=20
+target=3D_blank>=B9=AB=CB=BE=BC=F2=BD=E9</A> <SPAN class=3D"p =
+fc10">-</SPAN> <A class=3D"m2a fc08"=20
+href=3D"http://gb.corp.163.com/gb/contactus.html" =
+target=3D_blank>=C1=AA=CF=B5=B7=BD=B7=A8</A> <SPAN=20
+class=3D"p fc10">-</SPAN> <A class=3D"m2a fc08"=20
+href=3D"http://corp.163.com/gb/job/job.html" =
+target=3D_blank>=D5=D0=C6=B8=D0=C5=CF=A2</A> <SPAN=20
+class=3D"p fc10">-</SPAN> <A class=3D"m2a fc08" =
+href=3D"http://help.163.com/?b13abk1"=20
+target=3D_blank>=BF=CD=BB=A7=B7=FE=CE=F1</A> <SPAN class=3D"p =
+fc10">-</SPAN> <A class=3D"m2a fc08"=20
+href=3D"http://corp.163.com/gb/legal/legal.html" =
+target=3D_blank>=CF=E0=B9=D8=B7=A8=C2=C9</A> <LINK=20
+title=3DRSS rel=3Dalternate type=3Dapplication/rss+xml=20
+href=3D"http://sroply.blog.163.com/rss/"><SPAN class=3D"p =
+fc10">-</SPAN><SPAN=20
+id=3D$_foot_subscribe class=3Dfc08><SPAN=20
+class=3D"iblock m2a icn0 icn0-919">&nbsp;</SPAN><A=20
+class=3D"m2a fc08">=B6=A9=D4=C4=B4=CB=B2=A9=BF=CD</A></SPAN> </DIV>
+<P =
+class=3Dfc08>=CD=F8=D2=D7=B9=AB=CB=BE=B0=E6=C8=A8=CB=F9=D3=D0&nbsp;&copy;=
+1997-2010</P></DIV></DIV></DIV><!--[if lte IE =
+6]></div><![endif]--><!--[if lte IE 6]></div><![endif]-->
+<DIV id=3Dblog-163-com-layer class=3Dnb-layer></DIV>
+<DIV id=3Dblog-163-com-template class=3D"nb-tpl nb-init phide"><TEXTAREA =
+id=3Dnb-jst-a1 rows=3D1 cols=3D1 name=3Djst>  &lt;a class=3D"pr" =
+target=3D"_blank" =
+href=3D"http://help.163.com/special/007525FT/blog.html?b13aze1"&gt;=B0=EF=
+=D6=FA&lt;/a&gt;
+  &lt;span class=3D"fr iblock space icn1 icn1-4"&gt;&nbsp;&lt;/span&gt;
+  &lt;a class=3D"pr" target=3D"_blank" =
+href=3D"http://blog.163.com/activation.do?host=3Dactivation&amp;&amp;user=
+name=3D${u}"&gt;${u}&lt;/a&gt;
+</TEXTAREA> <TEXTAREA id=3Dnb-jst-d0 rows=3D1 cols=3D1 name=3Djst>      =
+{list wl as x}
+        &lt;div class=3D"grp"&gt;${x.g}&lt;/div&gt;
+        {list x.l as y}
+        &lt;a class=3D"itm noul" href=3D"#" hidefocus=3D"true" =
+name=3D"{if =
+typeof(y.v)=3D=3D'string'}${y.v}{else}${y_index}{/if}"&gt;${y.n}&lt;/a&gt=
+;
+        {/list}
+      {/list}
+</TEXTAREA> <TEXTAREA id=3Dnb-jst-d1 rows=3D1 cols=3D1 name=3Djst>	{if =
+defined('wl')}
+        {list wl as x}&lt;a class=3D"itm noul" href=3D"#" =
+hidefocus=3D"true" name=3D"${x.v}"&gt;${x.n}&lt;/a&gt;{/list}
+    {/if}
+</TEXTAREA> </DIV></DIV></BODY></HTML>

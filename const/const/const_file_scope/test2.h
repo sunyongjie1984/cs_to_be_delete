@@ -1,0 +1,1 @@
+int const i = 30;

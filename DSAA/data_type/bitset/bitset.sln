@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bitset", "bitset\bitset.vcproj", "{0CBBD1C1-350F-400D-8049-8E3226A5E036}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "none_test", "none_test\none_test.vcproj", "{04E88E99-28B7-47A6-99BE-EC9E405C6B9F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flip_test", "flip_test\flip_test.vcproj", "{75DA93F1-B06C-4E3F-97A0-1C636CE6520E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CBBD1C1-350F-400D-8049-8E3226A5E036}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0CBBD1C1-350F-400D-8049-8E3226A5E036}.Debug|Win32.Build.0 = Debug|Win32
+		{0CBBD1C1-350F-400D-8049-8E3226A5E036}.Release|Win32.ActiveCfg = Release|Win32
+		{0CBBD1C1-350F-400D-8049-8E3226A5E036}.Release|Win32.Build.0 = Release|Win32
+		{04E88E99-28B7-47A6-99BE-EC9E405C6B9F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{04E88E99-28B7-47A6-99BE-EC9E405C6B9F}.Debug|Win32.Build.0 = Debug|Win32
+		{04E88E99-28B7-47A6-99BE-EC9E405C6B9F}.Release|Win32.ActiveCfg = Release|Win32
+		{04E88E99-28B7-47A6-99BE-EC9E405C6B9F}.Release|Win32.Build.0 = Release|Win32
+		{75DA93F1-B06C-4E3F-97A0-1C636CE6520E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{75DA93F1-B06C-4E3F-97A0-1C636CE6520E}.Debug|Win32.Build.0 = Debug|Win32
+		{75DA93F1-B06C-4E3F-97A0-1C636CE6520E}.Release|Win32.ActiveCfg = Release|Win32
+		{75DA93F1-B06C-4E3F-97A0-1C636CE6520E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

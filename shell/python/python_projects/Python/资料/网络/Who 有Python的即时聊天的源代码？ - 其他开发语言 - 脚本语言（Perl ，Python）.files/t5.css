@@ -1,0 +1,585 @@
+BODY {
+	MARGIN: 0px auto; FONT: 12px simsun; TEXT-ALIGN: center
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+INPUT {
+	FONT: 12px simsun; COLOR: #666
+}
+BUTTON {
+	FONT: 12px simsun; COLOR: #666
+}
+TEXTAREA {
+	FONT: 12px simsun; COLOR: #666
+}
+SELECT {
+	COLOR: black
+}
+.clear {
+	CLEAR: both
+}
+.divclear:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 100%; content: "."
+}
+A {
+	COLOR: #002d93; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #b00; TEXT-DECORATION: underline
+}
+#bbscsdn_wrap {
+	BACKGROUND: #fff; MARGIN: 0px auto; WIDTH: 960px
+}
+ HTML #bbscsdn_wrap {
+	BACKGROUND: #fff; MARGIN: 0px auto; WIDTH: 963px
+}
+.tad {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.nav {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.loc {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.fm {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.tit {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.mframe {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.sq {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.comt {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.pub_footer {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.gbtxtad {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.tad UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.nav UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.fm UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.mframe UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.comt UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.mframe2 UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.tad UL {
+	FONT-SIZE: 1px; FLOAT: left; WIDTH: 960px
+}
+.tad UL LI.l {
+	FLOAT: left
+}
+.tad UL LI.r {
+	FLOAT: right
+}
+.nav {
+	BORDER-RIGHT: #a9cbee 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #a9cbee 1px solid; PADDING-LEFT: 0px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_titbg.gif) no-repeat right top; PADDING-BOTTOM: 5px; BORDER-LEFT: #a9cbee 1px solid; WIDTH: 958px; PADDING-TOP: 5px; BORDER-BOTTOM: #a9cbee 1px solid
+}
+.nav IMG.logo {
+	FLOAT: left; MARGIN: 0px 0px 0px 10px; WIDTH: 146px; HEIGHT: 54px
+}
+.nav UL.txt {
+	FLOAT: right; MARGIN: 5px 5px 0px 0px
+}
+.nav UL.txt LI {
+	FLOAT: left
+}
+.nav UL.txt LI A {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; PADDING-BOTTOM: 0px; COLOR: #333; PADDING-TOP: 0px
+}
+.nav UL.user {
+	FONT-WEIGHT: bold; FLOAT: right; MARGIN: 15px 5px 0px 0px
+}
+.nav UL.user LI {
+	FONT-WEIGHT: normal; COLOR: #000
+}
+.nav UL.user LI A {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; PADDING-BOTTOM: 0px; COLOR: #000; PADDING-TOP: 0px
+}
+.nav UL.user #vName {
+	FONT-WEIGHT: bold; COLOR: #000
+}
+.nav UL.user INPUT.btn {
+	MARGIN: 0px 3px -5px 0px
+}
+.loc {
+	BORDER-RIGHT: #a9cbee 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #a9cbee 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #a9cbee 1px solid; WIDTH: 948px; PADDING-TOP: 5px; BORDER-BOTTOM: #a9cbee 1px solid
+}
+.loc P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; LINE-HEIGHT: 35px; PADDING-TOP: 0px
+}
+.loc P IMG {
+	FLOAT: right
+}
+.loc P A {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; COLOR: #333; PADDING-TOP: 0px
+}
+.fm {
+	BORDER-RIGHT: #a9cbee 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #a9cbee 1px solid; PADDING-LEFT: 5px; BACKGROUND: #fafafb; PADDING-BOTTOM: 5px; BORDER-LEFT: #a9cbee 1px solid; WIDTH: 948px; PADDING-TOP: 5px; BORDER-BOTTOM: #a9cbee 1px solid
+}
+.fm UL.menu {
+	FLOAT: left; WIDTH: 500px
+}
+.fm UL.menu LI {
+	BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/bbspage_addpic1.gif) repeat-x; FLOAT: left; MARGIN: 0px 4px 0px 0px
+}
+.fm UL.menu TABLE {
+	Z-INDEX: 100; LEFT: -45px; POSITION: relative; TOP: 1px; BORDER-COLLAPSE: collapse
+}
+.fm UL.menu LI A {
+	BORDER-RIGHT: #0c61b0 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #0c61b0 1px solid; DISPLAY: block; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; BORDER-LEFT: #0c61b0 1px solid; WIDTH: 80px; COLOR: #333; LINE-HEIGHT: 22px; PADDING-TOP: 0px; BORDER-BOTTOM: #0c61b0 1px solid; HEIGHT: 22px; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.fm UL.menu LI :visited {
+	BORDER-RIGHT: #0c61b0 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #0c61b0 1px solid; DISPLAY: block; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; BORDER-LEFT: #0c61b0 1px solid; WIDTH: 80px; COLOR: #333; LINE-HEIGHT: 22px; PADDING-TOP: 0px; BORDER-BOTTOM: #0c61b0 1px solid; HEIGHT: 22px; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+UNKNOWN {
+	LINE-HEIGHT: 23px
+}
+.fm UL.menu LI :hover {
+	Z-INDEX: 110; BACKGROUND: #e5ecf3
+}
+.fm UL.menu UL {
+	BORDER-TOP-WIDTH: 0px; VISIBILITY: hidden; MARGIN: 0px; WIDTH: 85px; POSITION: absolute
+}
+.fm UL.menu UL LI {
+	BACKGROUND: #e5ecf3; COLOR: #fff; BORDER-BOTTOM: #bdd9e8 1px solid
+}
+.fm UL.menu UL LI A {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: #000; BORDER-RIGHT-WIDTH: 0px
+}
+.fm UL.menu UL LI :visited {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: #000; BORDER-RIGHT-WIDTH: 0px
+}
+.fm UL.menu UL LI A {
+	FONT-WEIGHT: normal; COLOR: #000
+}
+.fm UL.menu UL LI :hover {
+	BACKGROUND: #e5ecf3
+}
+.fm UL.menu LI:hover UL {
+	VISIBILITY: visible; COLOR: #fff
+}
+.fm UL.menu A:hover UL {
+	VISIBILITY: visible; COLOR: #fff
+}
+.fm UL.menu LI A.bt1 {
+	BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/bbspage_addpic2.gif) no-repeat 0px -2px
+}
+.fm UL.menu LI A.bt2 {
+	BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_04.gif) no-repeat 3px 4px; COLOR: #b00
+}
+.fm UL.menu LI A.bt3 {
+	BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_01.gif) no-repeat 3px 4px
+}
+.fm UL.menu LI A.bt4 {
+	BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_08.gif) no-repeat 3px 3px; COLOR: #b00
+}
+.fm UL.plist {
+	FLOAT: right; HEIGHT: 22px
+}
+.fm UL.plist LI {
+	FLOAT: left; MARGIN: 0px 3px
+}
+.fm UL.plist LI A {
+	DISPLAY: block; FLOAT: left; COLOR: #333; LINE-HEIGHT: 22px; HEIGHT: 22px
+}
+.fm UL.plist LI EM {
+	FONT-STYLE: normal
+}
+.fm UL.plist LI EM A {
+	BORDER-RIGHT: #1e7dd5 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #1e7dd5 1px solid; DISPLAY: block; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 0px; BORDER-LEFT: #1e7dd5 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #1e7dd5 1px solid
+}
+.fm UL.plist LI EM A:hover {
+	BACKGROUND: #bfdaf2; TEXT-DECORATION: none
+}
+.fm UL.plist LI EM A.on {
+	BACKGROUND: #bfdaf2
+}
+.tit {
+	BORDER-RIGHT: #2c6189 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #2c6189 1px solid; PADDING-LEFT: 5px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_titbg02.gif) #347ea1 repeat-x; PADDING-BOTTOM: 3px; BORDER-LEFT: #2c6189 1px solid; WIDTH: 948px; PADDING-TOP: 3px; BORDER-BOTTOM: #2c6189 1px solid
+}
+.tit H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #fff; PADDING-TOP: 3px
+}
+.tit H1 EM {
+	MARGIN: 0px 0px 0px 3px; FONT: bold 14px simsun; COLOR: #f00
+}
+.tit H1 CITE {
+	FLOAT: right
+}
+.tit DFN A {
+	DISPLAY: block; FONT-SIZE: 12px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/bbsbtn_fav.gif) no-repeat; FLOAT: right; MARGIN: -3px 0px 0px 5px; WIDTH: 52px; TEXT-INDENT: -1000em; FONT-STYLE: normal; HEIGHT: 22px
+}
+.tit DFN A:visited {
+	DISPLAY: block; FONT-SIZE: 12px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/bbsbtn_fav.gif) no-repeat; FLOAT: right; MARGIN: -3px 0px 0px 5px; WIDTH: 52px; TEXT-INDENT: -1000em; FONT-STYLE: normal; HEIGHT: 22px
+}
+.tit CODE A {
+	DISPLAY: block; FONT-SIZE: 12px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/bbsbtn_share.gif) no-repeat; FLOAT: right; MARGIN: -3px 0px 0px 5px; WIDTH: 52px; TEXT-INDENT: -1000em; FONT-STYLE: normal; HEIGHT: 22px
+}
+.tit CODE A:visited {
+	DISPLAY: block; FONT-SIZE: 12px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/bbsbtn_share.gif) no-repeat; FLOAT: right; MARGIN: -3px 0px 0px 5px; WIDTH: 52px; TEXT-INDENT: -1000em; FONT-STYLE: normal; HEIGHT: 22px
+}
+.mframe {
+	FLOAT: left; MARGIN: 2px 0px; WIDTH: 960px; TEXT-ALIGN: left
+}
+.mframe UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+.mframe {
+	BORDER-RIGHT: #a9cbee 1px solid; BORDER-TOP: #a9cbee 1px solid; BORDER-LEFT: #a9cbee 1px solid; BORDER-BOTTOM: #a9cbee 1px solid
+}
+.mframe TD.lf {
+	BORDER-RIGHT: #a9cbee 1px solid; PADDING-RIGHT: 10px; PADDING-LEFT: 15px; BACKGROUND: #f6f9fe; PADDING-BOTTOM: 13px; VERTICAL-ALIGN: top; WIDTH: 162px; PADDING-TOP: 20px
+}
+.mframe TD.lf DIV.df {
+	WIDTH: 162px
+}
+.mframe TD.lf UL LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 4px; PADDING-TOP: 4px
+}
+.mframe TD.lf UL LI.center {
+	TEXT-ALIGN: left
+}
+.mframe TD.lf UL LI.center IMG {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}
+.mframe TD.lf UL LI DFN {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT-STYLE: normal; TEXT-ALIGN: left
+}
+.mframe TD.lf UL LI DFN A {
+	COLOR: #333
+}
+.mframe TD.lf UL LI CITE {
+	DISPLAY: block; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/bbspage_addpic4.gif) no-repeat right 50%; FLOAT: left; MARGIN: 0px 3px 0px 0px; LINE-HEIGHT: 25px; FONT-STYLE: normal; HEIGHT: 25px
+}
+.mframe TD.lf UL LI CITE A {
+	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/bbspage_addpic3.gif) no-repeat left 50%; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.mframe TD.lf UL LI CITE A:hover {
+	TEXT-DECORATION: none
+}
+.mframe TD.lf UL LI EM {
+	FLOAT: left; MARGIN: 23px 0px 0px; FONT-STYLE: normal
+}
+.mframe TD.lf UL LI EM A {
+	COLOR: #000
+}
+.mframe TD.lf UL LI DIV.medalregion {
+	FLOAT: left
+}
+.mframe TD.lf UL LI DIV.medalregion DIV {
+	FLOAT: left
+}
+.mframe TD.lf UL LI DIV.medalregion DIV P.medalnum {
+	MARGIN: 2px 0px 0px 19px; FONT: bold 9px Tahoma,simsun; COLOR: #fff
+}
+.mframe TD.rw {
+	VERTICAL-ALIGN: top
+}
+.mtxt {
+	PADDING-RIGHT: 20px; PADDING-LEFT: 20px; FONT-SIZE: 14px; PADDING-BOTTOM: 10px; MARGIN: 10px 0px; WIDTH: 100%; LINE-HEIGHT: 23px; PADDING-TOP: 10px
+}
+.mtxt P.unlog {
+	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 50px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_09.gif) #efefef no-repeat 10px 20px; PADDING-BOTTOM: 30px; MARGIN: 30px 0px 0px; FONT: bold 14px simsun; BORDER-LEFT: #ccc 1px solid; PADDING-TOP: 30px; BORDER-BOTTOM: #ccc 1px solid
+}
+.mtxt P.unlog A {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; COLOR: #c30; PADDING-TOP: 0px
+}
+.mtxt P.be {
+	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 15px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 15px; FONT-SIZE: 12px; BACKGROUND: #efefef; PADDING-BOTTOM: 5px; MARGIN: 10px 0px; BORDER-LEFT: #ccc 1px solid; WIDTH: 250px; COLOR: #b00; PADDING-TOP: 5px; BORDER-BOTTOM: #ccc 1px solid; WHITE-SPACE: nowrap; TEXT-ALIGN: left
+}
+.msgfont {
+	OVERFLOW-X: hidden; WIDTH: 718px; WORD-BREAK: break-all
+}
+.msgfont SPAN {
+	LINE-HEIGHT: 150%
+}
+.mtxt FIELDSET {
+	BORDER-RIGHT: #cad9ea 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #cad9ea 1px solid; PADDING-LEFT: 10px; OVERFLOW-X: hidden; PADDING-BOTTOM: 10px; MARGIN: 10px; FONT: 12px/19px simsun; BORDER-LEFT: #cad9ea 1px solid; WIDTH: 620px; WORD-BREAK: break-all; PADDING-TOP: 10px; BORDER-BOTTOM: #cad9ea 1px solid
+}
+.mtxt FIELDSET LEGEND {
+	FONT: bold 12px simsun; COLOR: #666
+}
+.fbart {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; PADDING-BOTTOM: 3px; LINE-HEIGHT: 18px; PADDING-TOP: 3px; BORDER-BOTTOM: #a9cbee 1px solid; HEIGHT: 18px
+}
+.fbart EM {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FLOAT: right; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT-STYLE: normal
+}
+.fbart DFN {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FLOAT: right; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT-STYLE: normal
+}
+.fbart DFN CODE {
+	COLOR: #c30; FONT-STYLE: normal
+}
+.mframe TD.rb {
+	VERTICAL-ALIGN: bottom
+}
+.fbarb {
+	CLEAR: both; PADDING-RIGHT: 6px; BORDER-TOP: #a9cbee 1px solid; PADDING-LEFT: 6px; BACKGROUND: #f6f9fe; PADDING-BOTTOM: 3px; LINE-HEIGHT: 18px; PADDING-TOP: 3px; HEIGHT: 18px
+}
+.fbarb UL {
+	FLOAT: right
+}
+.fbarb UL LI {
+	FLOAT: left
+}
+.fbarb UL LI A {
+	BORDER-RIGHT: #666 1px solid; PADDING-RIGHT: 6px; PADDING-LEFT: 6px; PADDING-BOTTOM: 0px; COLOR: #000; PADDING-TOP: 0px; TEXT-DECORATION: none
+}
+.fbarb UL LI A.nob {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+.fbarb UL LI A.dr {
+	COLOR: #b00
+}
+.fbarb UL LI A.gr {
+	COLOR: #002d93
+}
+.fbarb DIV.rt {
+	OVERFLOW: hidden; WIDTH: 440px; WHITE-SPACE: nowrap
+}
+.sq {
+	BORDER-RIGHT: #a9cbee 1px solid; BORDER-TOP: #a9cbee 1px solid; FLOAT: left; BORDER-LEFT: #a9cbee 1px solid; WIDTH: 958px; BORDER-BOTTOM: #a9cbee 1px solid
+}
+.sq DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 958px; PADDING-TOP: 0px
+}
+.sq DT {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 14px; BACKGROUND: #f6f9fe; PADDING-BOTTOM: 5px; MARGIN: 0px 0px 5px; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: #a9cbee 1px solid
+}
+.sq DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 19px; FONT-SIZE: 14px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_dot.gif) no-repeat 8px 8px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 1px 2px; OVERFLOW: hidden; WIDTH: 450px; LINE-HEIGHT: 20px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; HEIGHT: 20px
+}
+.sq DD A {
+	COLOR: #002d93; TEXT-DECORATION: underline
+}
+.sq DD A:hover {
+	COLOR: #b00; TEXT-DECORATION: underline
+}
+.comt {
+	BORDER-RIGHT: #a9cbee 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #a9cbee 1px solid; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 2px; BORDER-LEFT: #a9cbee 1px solid; WIDTH: 960px; PADDING-TOP: 10px; BORDER-BOTTOM: #a9cbee 1px solid
+}
+.c_rc {
+	DISPLAY: inline; FLOAT: right; WIDTH: 730px
+}
+.c_rc H6 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 5px; FONT: 12px/22px simsun; COLOR: #333; PADDING-TOP: 0px
+}
+.c_rc H6 EM {
+	FONT-WEIGHT: bold; MARGIN: 0px 15px 0px 0px; FONT-STYLE: normal
+}
+.c_rc H6 A {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; COLOR: #b00; PADDING-TOP: 0px
+}
+.c_rc P {
+	BORDER-RIGHT: #ebebeb 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #ebebeb 1px solid; PADDING-LEFT: 10px; BACKGROUND: #f6f6f6; PADDING-BOTTOM: 0px; MARGIN: 3px 0px; BORDER-LEFT: #ebebeb 1px solid; COLOR: #070c70; LINE-HEIGHT: 23px; PADDING-TOP: 0px; BORDER-BOTTOM: #ebebeb 1px solid
+}
+IMG.grade {
+	BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/rank.gif) no-repeat
+}
+IMG.user1 {
+	WIDTH: 11px; HEIGHT: 9px
+}
+IMG.user2 {
+	WIDTH: 22px; HEIGHT: 9px
+}
+IMG.user3 {
+	WIDTH: 33px; HEIGHT: 9px
+}
+IMG.user4 {
+	WIDTH: 44px; HEIGHT: 9px
+}
+IMG.user5 {
+	WIDTH: 55px; HEIGHT: 9px
+}
+IMG.star1 {
+	BACKGROUND-POSITION: 0px -12px; WIDTH: 10px; HEIGHT: 9px
+}
+IMG.star2 {
+	BACKGROUND-POSITION: 0px -12px; WIDTH: 20px; HEIGHT: 9px
+}
+IMG.star3 {
+	BACKGROUND-POSITION: 0px -12px; WIDTH: 30px; HEIGHT: 9px
+}
+IMG.star4 {
+	BACKGROUND-POSITION: 0px -12px; WIDTH: 40px; HEIGHT: 9px
+}
+IMG.star5 {
+	BACKGROUND-POSITION: 0px -12px; WIDTH: 50px; HEIGHT: 9px
+}
+IMG.diam1 {
+	BACKGROUND-POSITION: 0px -24px; WIDTH: 16px; HEIGHT: 13px
+}
+IMG.diam2 {
+	BACKGROUND-POSITION: 0px -24px; WIDTH: 32px; HEIGHT: 13px
+}
+IMG.diam3 {
+	BACKGROUND-POSITION: 0px -24px; WIDTH: 48px; HEIGHT: 13px
+}
+IMG.diam4 {
+	BACKGROUND-POSITION: 0px -24px; WIDTH: 64px; HEIGHT: 13px
+}
+IMG.diam5 {
+	BACKGROUND-POSITION: 0px -24px; WIDTH: 80px; HEIGHT: 13px
+}
+.gbtxtad DIV.gbl {
+	FLOAT: left; WIDTH: 468px
+}
+.gbtxtad DIV.gbr {
+	FLOAT: right; WIDTH: 468px
+}
+.pub_footer {
+	PADDING-RIGHT: 0px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+.pub_footer DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 5px; TEXT-ALIGN: center
+}
+.pub_footer DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; PADDING-TOP: 0px
+}
+.pub_footer DD A {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.pub_footer DD A {
+	COLOR: #000; TEXT-DECORATION: none
+}
+.pub_footer DD A:hover {
+	COLOR: #015fb6; TEXT-DECORATION: underline
+}
+DL.code {
+	FONT-SIZE: 12px; OVERFLOW: auto; WIDTH: 718px
+}
+DL.code DT {
+	FONT-WEIGHT: bold; COLOR: #333333; TEXT-INDENT: 6px; LINE-HEIGHT: 24px; HEIGHT: 24px; BACKGROUND-COLOR: #f5f5f5
+}
+DL.code DD {
+	BORDER-RIGHT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; MARGIN: 0px; BORDER-LEFT: #dddddd 1px solid; BORDER-BOTTOM: #dddddd 1px solid
+}
+.medalregion {
+	FONT: bold 8px Tahoma,sans-serif; COLOR: white; font-size-adjust: none
+}
+.moremedal {
+	PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: black; LINE-HEIGHT: 55px; FONT-FAMILY: simsun
+}
+.askfra {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BACKGROUND: #aacbee; BORDER-BOTTOM-WIDTH: 0px; MARGIN: 0px auto; WIDTH: 960px; BORDER-RIGHT-WIDTH: 0px
+}
+.askfra A {
+	COLOR: #03c
+}
+.askfra TH.atit {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 56px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 56px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_23.gif) repeat-x; PADDING-BOTTOM: 7px; BORDER-LEFT: #fff 1px solid; COLOR: #fff; PADDING-TOP: 7px; BORDER-BOTTOM: #fff 1px solid; HEIGHT: 15px
+}
+.askfra TD {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: #fff; PADDING-BOTTOM: 10px; VERTICAL-ALIGN: middle; PADDING-TOP: 10px
+}
+.askfra TD.bg {
+	FONT-WEIGHT: bold; BACKGROUND: #f6f9fe; WIDTH: 15%; TEXT-ALIGN: right
+}
+.askfra TD.boxtit INPUT {
+	BORDER-RIGHT: #cde2f8 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #cde2f8 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; FONT: 20px simsun; BORDER-LEFT: #cde2f8 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #cde2f8 1px solid
+}
+.askfra TD UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.askfra TD EM {
+	COLOR: #f00; FONT-STYLE: normal
+}
+.askfra TD INPUT.point {
+	BORDER-RIGHT: #cde2f8 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #cde2f8 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: #cde2f8 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #cde2f8 1px solid
+}
+.askfra TD UL.abtn:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 1px; content: "."
+}
+.askfra TD UL.abtn LI {
+	BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/btn_01.gif) no-repeat; FLOAT: left; MARGIN: 0px 6px 0px 0px; WIDTH: 82px; LINE-HEIGHT: 28px; HEIGHT: 28px; TEXT-ALIGN: center
+}
+.askfra TD UL.abtn LI A {
+	COLOR: #000
+}
+.askfra TD UL.abtn LI A:hover {
+	TEXT-DECORATION: none
+}
+.askfra TD OL {
+	CLEAR: both; BORDER-RIGHT: #b9b9b9 1px solid; PADDING-RIGHT: 30px; BORDER-TOP: #b9b9b9 1px solid; PADDING-LEFT: 30px; BACKGROUND: #f7f7f7; PADDING-BOTTOM: 5px; MARGIN: 10px 0px 0px; BORDER-LEFT: #b9b9b9 1px solid; COLOR: #070c70; LINE-HEIGHT: 150%; PADDING-TOP: 5px; BORDER-BOTTOM: #b9b9b9 1px solid
+}
+.mtxt TD P.login {
+	BORDER-RIGHT: #cdcdcd 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #cdcdcd 1px solid; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 14px; BACKGROUND: #f7f6f6; PADDING-BOTTOM: 20px; MARGIN: 20px 0px 0px; VERTICAL-ALIGN: bottom; BORDER-LEFT: #cdcdcd 1px solid; WIDTH: 720px; COLOR: #000000; PADDING-TOP: 20px; BORDER-BOTTOM: #cdcdcd 1px solid; TEXT-ALIGN: center
+}
+.mtxt TD P.login IMG {
+	VERTICAL-ALIGN: middle
+}
+.mtxt TD P.login A {
+	COLOR: #b70505
+}
+.mtxt TD P.login A:link {
+	COLOR: #b70505; TEXT-DECORATION: none
+}
+.mtxt TD P.login A:hover {
+	COLOR: #b70505; TEXT-DECORATION: underline
+}
+.prime {
+	COLOR: red
+}
+.lock {
+	COLOR: red
+}
+.chout {
+	DISPLAY: none; FLOAT: left; OVERFLOW: visible; POSITION: absolute; max-width: 400px; max-height: 22px
+}
+.chout DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 1px; MARGIN: 0px 2px; PADDING-TOP: 1px
+}
+.chout .menu {
+	BORDER-RIGHT: #bdd9e8 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #bdd9e8 1px solid; PADDING-LEFT: 8px; FLOAT: left; PADDING-BOTTOM: 4px; MARGIN: 0px; BORDER-LEFT: #bdd9e8 1px solid; WIDTH: 80px; PADDING-TOP: 4px; BORDER-BOTTOM: #bdd9e8 1px solid; HEIGHT: 14px; BACKGROUND-COLOR: #e5ecf3
+}
+.chout .menu A {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: black; PADDING-TOP: 0px
+}
+.chout .arrow {
+	COLOR: #ffb943
+}
+.c_rc OL {
+	BORDER-RIGHT: #ebebeb 1px solid; PADDING-RIGHT: 20px; BORDER-TOP: #ebebeb 1px solid; PADDING-LEFT: 20px; BACKGROUND: #f6f6f6; PADDING-BOTTOM: 6px; MARGIN: 10px 0px 0px; BORDER-LEFT: #ebebeb 1px solid; PADDING-TOP: 6px; BORDER-BOTTOM: #ebebeb 1px solid
+}
+.c_rc OL LI {
+	MARGIN: 0px 0px 0px 15px; COLOR: #070c70; LINE-HEIGHT: 23px
+}
+.c_rc OL LI A {
+	TEXT-DECORATION: underline
+}
+.c_lc DL LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 10px; BACKGROUND: url(http://c.csdn.net/bbs/t/5/i/pic_dot.gif) no-repeat 0px 8px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 200px; LINE-HEIGHT: 21px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; LIST-STYLE-TYPE: none
+}
+UL .honor {
+	DISPLAY: none
+}
+.hidden {
+	DISPLAY: none
+}

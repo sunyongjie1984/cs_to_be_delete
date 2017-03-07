@@ -1,0 +1,60 @@
+BODY {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+TD {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+PRE {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+H3 {
+	MARGIN-TOP: 0px; FONT-WEIGHT: bold; FONT-SIZE: 13pt; MARGIN-BOTTOM: 4px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+H4 {
+	MARGIN-TOP: 10px; FONT-WEIGHT: bold; FONT-SIZE: 11pt; MARGIN-BOTTOM: 2px; COLOR: #222222; FONT-FAMILY: Arial, Helvetica
+}
+.FormItem {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.TextArea {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+TH {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ffffff; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+A:link {
+	COLOR: #000080
+}
+A:visited {
+	COLOR: #000080
+}
+A:active {
+	COLOR: #000080
+}
+A:hover {
+	COLOR: #bb0000
+}
+.NoUnderline {
+	TEXT-DECORATION: none
+}
+INPUT.radio {
+	BACKGROUND: #dddddd; COLOR: #dddddd
+}
+.3dLook {
+	BORDER-RIGHT: #555555 thin inset; BORDER-TOP: white thin outset; BORDER-LEFT: white thin outset; BORDER-BOTTOM: #555555 thin inset
+}
+.Button_sel {
+	BORDER-RIGHT: #555555 thin inset; BORDER-TOP: white thin outset; BORDER-LEFT: white thin outset; BORDER-BOTTOM: #555555 thin inset
+}
+.Button_unsel {
+	BORDER-RIGHT: #d8d8d8 thin solid; BORDER-TOP: #d8d8d8 thin solid; BORDER-LEFT: #d8d8d8 thin solid; BORDER-BOTTOM: #d8d8d8 thin solid
+}
+.skin0 {
+	BORDER-RIGHT: #555555 thin inset; BORDER-TOP: white thin outset; Z-INDEX: 100; VISIBILITY: hidden; BORDER-LEFT: white thin outset; WIDTH: 130px; CURSOR: default; LINE-HEIGHT: 18px; BORDER-BOTTOM: #555555 thin inset; POSITION: absolute; BACKGROUND-COLOR: #cccccc
+}
+.menuitems {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; FONT-SIZE: 8px; FONT-FAMILY: MS Sans serif, Arial, Helvetica
+}
+.tooltip {
+	BORDER-RIGHT: black 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: black 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 8pt; VISIBILITY: hidden; PADDING-BOTTOM: 1px; BORDER-LEFT: black 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: black 1px solid; POSITION: absolute; BACKGROUND-COLOR: lightyellow
+}

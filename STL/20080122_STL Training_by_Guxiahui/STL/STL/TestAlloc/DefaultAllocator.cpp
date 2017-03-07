@@ -1,0 +1,18 @@
+// DefaultAllocator.cpp: implementation of the DefaultAllocator class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "TestAlloc.h"
+#include "TestAllocView.h"
+#include "DefaultAllocator.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////

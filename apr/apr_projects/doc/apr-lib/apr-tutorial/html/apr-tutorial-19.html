@@ -1,0 +1,555 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: Container APIs</TITLE>
+ <LINK HREF="apr-tutorial-20.html" REL=next>
+ <LINK HREF="apr-tutorial-18.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc19" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-20.html">Next</A>
+<A HREF="apr-tutorial-18.html">Previous</A>
+<A HREF="apr-tutorial.html#toc19">Contents</A>
+<HR>
+<H2><A NAME="s19">19.</A> <A HREF="apr-tutorial.html#toc19">Container APIs</A></H2>
+
+<P>libapr provides some container(a.k.a. collection) APIs.</P>
+
+<H2><A NAME="ss19.1">19.1</A> <A HREF="apr-tutorial.html#toc19.1">dynamic array</A>
+</H2>
+
+<P>Array is the most general container type in C language. However, array size is noramally fixed. It's not flexible. libapr provides dynamic-sized array. The APIs are declared in apr_tables.h.</P>
+<P>As container type, dynamic array has the following features.</P>
+<P>
+<BR><CENTER>
+<TABLE BORDER><TR><TD>
+append</TD><TD>efficient(API support)</TD></TR><TR><TD>
+insert/prepend</TD><TD>inefficient(no API support)</TD></TR><TR><TD>
+delete</TD><TD>inefficient(no API support)</TD></TR><TR><TD>
+delete(only the first element)</TD><TD>efficient(API support)</TD></TR><TR><TD>
+search(lookup)</TD><TD>inefficient, but depends(no API support)</TD></TR><TR><TD>
+iteration</TD><TD>efficient(no API support)
+</TD></TR></TABLE>
+<CAPTION>array</CAPTION>
+</CENTER><BR>
+</P>
+<P>'No API support' above means that you have to touch apr_array_header_t::elts directly. This is not a good attitude as a progammer, but we should accept it as a pragmatic programmer.</P>
+<P>The dynamic array type is apr_array_header_t. The object is created by apr_array_make() as follows:</P>
+<P>/* excerpted from 
+<A HREF="../sample/array-sample.c">array-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+apr_array_header_t *arr;
+arr = apr_array_make(mp, ARRAY_INIT_SZ, sizeof(const char*));
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The first argument is memory pool to use. Both array itself and elements are allocated in the memory pool. The second argument is an initial size of the array. The third argument is the size of element. The third argument is important for code readers, because it tells them what the container's type objects are. Unlike STL, apr_array_header_t is not type-safe. Therefore, it is important to declare the type clearly. In the sample above, we know that the array is an array of string pointers(const char*).</P>
+<P><EM>REMARK</EM>: If you're familiar with the other libapr's APIs, you would feel weird because it doesn't use a result argument for a newly created object. Don't care.</P>
+<P>We have to call apr_array_push() to append a new elememnt to the array.</P>
+<P>/* excerpted from 
+<A HREF="../sample/array-sample.c">array-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+*(const char**)apr_array_push(arr) = "123";
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>Iteration is important interface for array. We can do as follows:</P>
+<P>/* excerpted from 
+<A HREF="../sample/array-sample.c">array-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+apr_array_header_t *arr;
+int i;
+for (i = 0; i &lt; arr->nelts; i++) {
+    const char *s = ((const char**)arr->elts)[i];
+    printf("%d: %s\n", i, s);
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>I have to say that the APIs above are not so intuitive. Fortunately they are very small interfaces, so you become familiar with them soon. Here, I show you generic form of array APIs. </P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* generic form of apr_array_header_t usages. 'T' is a type name. */
+apr_array_header_t *arr = apr_array_make(mp, ARRAY_INIT_SZ, sizeof(T));/* array of T objects */
+
+/* add an element */
+T elem;
+*(T*)apr_array_push(arr) = elem;
+
+/* iteration */
+for (i = 0; i &lt; arr->nelts; i++) {
+    T elem = ((T*)arr->elts)[i];
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>Let's take a look at 
+<A HREF="../sample/array-sample.c">array-sample.c</A>. In 
+<A HREF="../sample/array-sample.c">array-sample.c</A>, the array is an array of pointer. The array elements are allocated in the memory pool passed to apr_array_make(), but only pointer's memories are allocated. The objects that the pointers refer to are not allocated. So, the following sample code has a bug, because the strings in the array are not persistent.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* BUGGY sample of apr_array_header_t usage */
+void func(apr_array_header_t *str_arr)
+{
+    char str[32];
+    strcpy(str, "foobar");
+    *(const char**)apr_array_push(str_arr) = str;/* BUG, if function caller uses this array */
+    return;
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>In most cases, the array itself and the elements are same lifetime, so that it might be better to allocate the objects in the same memory pool as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* fix example of above bug */
+void func(apr_array_header_t *str_arr)
+{
+    const char *str = apr_pstrdup(str_arr->pool, "foobar");
+    *(const char**)apr_array_push(str_arr) = str;
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>As you have seen, apr_array_header_t works with arbitrary type. Obviously, string array becomes more powerful than others. The reason is apr_array_pstrcat(). It works with string array, i.e. 'T is char*' or 'T is const char*' in the generic form above. apr_array_pstrcat() concatenates all the elements in the array and make a new string. The following example shows how to make one string from string chunks.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* pseudo code to make one string from string chunks */
+apr_array_header_t *html_arr = apr_array_make(mp, ARRAY_INIT_SZ, sizeof(const char*));
+*(const char**)apr_array_push(html_arr) = "&lt;html&gt;";
+*(const char**)apr_array_push(html_arr) = "&lt;head&gt;&lt;title&gt;foo&lt;/title&gt;&lt;/head&gt;";
+*(const char**)apr_array_push(html_arr) = "&lt;body&gt;&lt;ul&gt;";
+for (i = 0; i &lt; NUM_LIST; i++) {
+    *(const char**)apr_array_push(html_arr) = apr_psprintf(mp, "&lt;li&gt;%d&lt;/li&gt;", i);
+}
+*(const char**)apr_array_push(html_arr) = "&lt;/ul&gt;&lt;/body&gt;";
+*(const char**)apr_array_push(html_arr) = "&lt;/html&gt;";
+
+const char *html_str = apr_array_pstrcat(mp, html_arr, '\0');
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>You might intend to sort the elements in the array. I mentioned that search on array isn't so effiecient above, but it can be efficient by bsearch(3) if it's sorted. I show you how to use qsort(3) with array.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* qsort(3) sample with array */
+/* we assume arr is an array of string */
+qsort(arr->elts, arr->nelts, arr->elt_size, cmp_string);
+
+/* compare function for qsort(3) */
+static int cmp_string(const void *v1, const void *v2)
+{
+    const char *s1 = *(const char**)v1;
+    const char *s2 = *(const char**)v2;
+    return strcmp(s1, s2);
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>There is one more API that I have to point out. It is apr_array_pop(). By apr_array_pop(), we can use array as stack, which is known as first-in, last-out container. Please take a look at 
+<A HREF="../sample/array-sample.c">array-sample.c</A> about the usage.</P>
+
+
+<H2><A NAME="ss19.2">19.2</A> <A HREF="apr-tutorial.html#toc19.2">table</A>
+</H2>
+
+<P>Table is container of key-value pairs. It assumes key is character string. Value is allowed to be any type, but it is almost assumed to be character string. In the following description, we assume both key and value are character strings.</P>
+<P>As container type, table has the following features.</P>
+<P>
+<BR><CENTER>
+<TABLE BORDER><TR><TD>
+append</TD><TD>efficient(API support)</TD></TR><TR><TD>
+insert/prepend</TD><TD>inefficient(API support)</TD></TR><TR><TD>
+delete</TD><TD>inefficient(API support)</TD></TR><TR><TD>
+search(lookup)</TD><TD>almost efficient(API support)</TD></TR><TR><TD>
+iteration</TD><TD>efficient(API support)
+</TD></TR></TABLE>
+<CAPTION>table</CAPTION>
+</CENTER><BR>
+</P>
+<P>As you see, the features are almost same as array. This is natural, because table internally relies on array. Table has additional better features, though. First, table has better API supports. Second, table is more efficient for search(lookup). Table uses internal checksums for efficient search. Although it is not so efficient as hash table described later, it is better enough.</P>
+<P>Table type is apr_table_t. We call apr_table_make() to create a new object as follows:</P>
+<P>/* excerpted from 
+<A HREF="../sample/table-sample.c">table-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+apr_table_t *tab;
+tab = apr_table_make(mp, TABLE_INIT_SZ);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The first argument is memory pool to use. Like apr_array_header_t, both table itself and elements are allocated in the memory pool. The second argument is an initial size of table. As same as dynamic array, table size is dynamic. So, the initial size is just a hint.</P>
+<P>There are four API to append elements to table as follows:</P>
+<P>/* excerpted from apr_tables.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(void) apr_table_set(apr_table_t *t, const char *key, const char *val);
+APR_DECLARE(void) apr_table_setn(apr_table_t *t, const char *key, const char *val);
+APR_DECLARE(void) apr_table_add(apr_table_t *t, const char *key, const char *val);
+APR_DECLARE(void) apr_table_addn(apr_table_t *t, const char *key, const char *val);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The difference between 'set' and 'add' is that we allow multiple values for the same key or not. By 'set' calls, we don't allow multiple values for the same key. So, if another value already exists for the key, both apr_table_set() and apr_table_setn() over-write the old value. In contrast, both apr_table_add() and apr_table_addn() allow multiple values for the same key. Thus, the old values are still left.</P>
+<P>The difference between 'with-n' and 'without-n' is that key and value's memories are duplicated or not. By 'without-n' calls, APIs duplicate both key and value string's memory. By 'with-n' calls, APIs don't duplicate them. 'With-n' APIs are more efficient, so when you know the string duplication is not necessary, you should use apr_table_setn() or apr_table_addn(). I show such examples:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* examples we can call apr_table_setn() or apr_table_addn() */
+apr_table_setn(tab, "foo", "bar"); /* string literals don't require duplication */
+apr_table_setn(tab, apr_pstrdup(mp, "foo"), apr_pstrdup(mp, "bar")); /* since the strings are already allocated in the same memory pool, we don't need double duplications */
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>To search value by key, we call apr_table_get(). The prototype declaration is as follows:</P>
+<P>/* excerpted from apr_tables.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(const char *) apr_table_get(const apr_table_t *t, const char *key);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>If the key exists in the table, the associated value is returned. Otherwise, the return value is NULL. As mentioned earlier, 'add' APIs allow multiple values for a key. However, apr_table_get() can't return multiple values. It just returns the first value. Allowing multiple values does make sense when we iterate over the table, which I'll describe later.</P>
+<P><EM>REMARK</EM>: Table key is case-insensitive. Historically, table was developed for HTTP headers.</P>
+<P>apr_table_get()'s return value is just a pointer. I mean it doesn't duplicate the value string. So, the following sample code is buggy code.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* BUGGY sample */
+apr_table_setn(tab, "mykey", strdup("myval"));/* apr_table_setn() doesn't duplicate the strings */
+
+const char *v = apr_table_get(tab, "mykey");
+assert(strcmp(v, "myval") == 0);  /* v's value should be "myval" */
+
+/* v is a string allocated by strdup(3), so calling free(v) is a proper operation.
+ * However, since the element still exists in the table, free(v) leaves an invalid memory in the table */
+free(v);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>On the other hand, when you remove an element from the table, you must free the string memory to get around memory leak.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* The similar situation above */
+const char *v = apr_table_get(tab, "mykey");
+apr_table_unset(tab, "mykey");
+free(v);/* XXX If we forget this, it causes memory leak... */
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>A simple solution is to use memory pool. If all keys and values strings are allocated in the same memory pool of the table, all you have to do is to call apr_pool_destroy().</P>
+<P>There are two ways to do iteration over table. One is to use callback function. The other is to use internal apr_array_header_t directly.</P>
+<P>To use callback function for iteration, we call apr_table_do(). The prototype declaration and usage are as follows:</P>
+<P>/* excerpted from apr_tables.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE_NONSTD(int) apr_table_do(apr_table_do_callback_fn_t *comp,
+                                     void *rec, const apr_table_t *t, ...);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>/* excerpted from 
+<A HREF="../sample/table-sample.c">table-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+apr_table_do(tab_cb, "label1", tab, NULL);
+apr_table_do(tab_cb, "label2", tab, "key1", "key2", NULL);/* iteration with filters */
+
+/* table iteration callback */
+static int tab_cb(void *data, const char *key, const char *value)
+{
+    const char *label = data;
+    printf("callback[%s]: %s %s\n", label, key, value);
+    return TRUE;/* TRUE:continue iteration. FALSE:stop iteration */
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The first argument of apr_table_do() is callback function. The second argument is context object passed to callback function. The third argument is table object. The remained arguments work as filters for keys.</P>
+<P>The other iteration style is to use apr_array_header_t directly. This seems a bad attitude, because it depends on the internal implementaion. It might be bad, but you can be pragmatic. </P>
+<P>Table internally has apr_table_entry_t object. If you understand libapr's dynamic array described above, you can understand the following example.</P>
+<P>/* excerpted from 
+<A HREF="../sample/table-sample.c">table-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+const apr_array_header_t *tarr = apr_table_elts(tab);
+const apr_table_entry_t *telts = (const apr_table_entry_t*)tarr->elts;
+int i;
+
+for (i = 0; i &lt; tarr->nelts; i++) {
+    printf("key = %s, val = %s\n", telts[i].key, telts[i].val);
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+
+<H2><A NAME="ss19.3">19.3</A> <A HREF="apr-tutorial.html#toc19.3">hash table</A>
+</H2>
+
+<P>Hash table is a yet another container type of key and value pairs. As container type, hash table has the following features.</P>
+<P>
+<BR><CENTER>
+<TABLE BORDER><TR><TD>
+append/insert/prepend</TD><TD>almost efficient(API support)</TD></TR><TR><TD>
+delete</TD><TD>almost inefficient(API support)</TD></TR><TR><TD>
+search(lookup)</TD><TD>efficient(API support)</TD></TR><TR><TD>
+iteration</TD><TD>almost inefficient(API support)
+</TD></TR></TABLE>
+<CAPTION>hash table</CAPTION>
+</CENTER><BR>
+</P>
+<P>Obviously, search(lookup) is efficient and scalable. The other operations are not so bad. As a result, if we require a container with many read(lookup) operations and less write(insert/append/prepend/delete) operations, hash table can be the best choice.</P>
+<P>Hash table type is apr_hash_t. We call apr_hash_make() to create a new object. The argument is only one, memory pool to use.</P>
+<P>/* excerpted from apr_hash.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_hash_t *) apr_hash_make(apr_pool_t *pool);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>Hash table has two basic operations, 'set' and 'get'. Their prototype declarations are as follows:</P>
+<P>/* excerpted from apr_hash.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(void) apr_hash_set(apr_hash_t *ht, const void *key,
+                               apr_ssize_t klen, const void *val);
+APR_DECLARE(void *) apr_hash_get(apr_hash_t *ht, const void *key,
+                                 apr_ssize_t klen);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>key is normally a character string, but it allows any type. 'apr_ssize_t klen' is length of the key. val is a value, which is sometimes a character string, but any type is allowed as same as key. Both key and val are just pointers. Later, I'll describe cautions about memory managements of them.</P>
+<P>If key is a character string, we can set klen to APR_HASH_KEY_STRING. Internally, it just calls strlen(3) for key. </P>
+<P>For comparison of keys, hash table does memory comparison of values of keys rather than comparison of pointer values. More precisely, it calls memcmp(3) for keys with their length by klen. When keys are character strings, everything is straightforward. The following sample code works as you expect.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* works as you expect */
+apr_hash_t *ht = apr_hash_make(mp);
+const char *k1 = apr_pstrdup(mp, "foo");
+const char *v1 = apr_pstrdup(mp, "bar");
+apr_hash_set(ht, k1, APR_HASH_KEY_STRING, v1); /* "foo"=>"bar" */
+
+const char *k2 = apr_pstrdup(mp, "foo");
+assert(k1 != k2); /* key pointers are different */
+assert(strcmp(k1, k2) == 0); /* key strings are same. hash table does the almost same comparison */
+
+const char *v2 = apr_hash_get(ht, k2, APR_HASH_KEY_STRING);
+assert(v1 == v2); /* hash table keeps the pointers. This equation is true */
+assert(strcmp(v1, v2) == 0); /* needless to say, this is also true */
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>If keys are not character strings, it wouldn't work as you expect. See the following example.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* Bit weird code. This doesn't work as you expect */
+typedef struct _key_t {
+    int ki;
+    const char *ks;
+} key_t;
+key_t k1 = { 0, apr_pstrdup(mp, "foo") };
+key_t k2 = { 0, apr_pstrdup(mp, "foo") };
+
+const char *v = apr_pstrdup(mp, "bar");
+apr_hash_set(ht, &amp;k1, sizeof(key_t), v);/* this is legal */
+
+const char *v1 = apr_hash_get(ht, &amp;k1, sizeof(key_t));
+assert(v1 == v); /* works as you expect */
+
+const char *v2 = apr_hash_get(ht, &amp;k2, sizeof(key_t));
+/* Do you think v2 equals to v ? */
+/* No. hash table calls memcmp(&amp;k1, &amp;k2, sizeof(key_t) internally.
+   By this comparison, k1::ks doesn't equal to k2:ks, so that v2 doesn't equal to v1. */
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>In my experience, types other than character strings are rarely used for keys. So, don't care so much.</P>
+<P>In the examples above, I did apr_pstrdup() for both keys and values. Hash table keeps only pointers, so we have to take care of string memories by ourselves. The following sample is a typical buggy code.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* BUGGY code: an invalid entry exists in hash table */
+void func(apr_hash_t *ht)
+{
+    char key[32];
+    strcpy(key, "foo");
+    apr_hash_set(ht, key, APR_HASH_KEY_STRING, "bar");/* key is going to be invalid out of this function */
+    return;
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>When we delete an entry, we just pass NULL to 'val' as follows:</P>
+<P>/* excerpted from 
+<A HREF="../sample/hashtab-sample.c">hashtab-sample.c</A>. Delete an entry from hash table */
+<BLOCKQUOTE><CODE>
+<PRE>
+apr_hash_set(ht, "to-del", APR_HASH_KEY_STRING, NULL);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>In some cases, key string and value object may not be allocated in memory pool. We must be careful about their memory managements. Note that we should take care of thier memory after deleting the entry from hash table as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* A case value objects require own memory management */
+typedef struct _ht_obj_t { /* value object type */
+    const char *key;
+    int val;
+} ht_obj_t;
+
+/* create an object value */
+ht_obj_t *obj = malloc(sizeof(ht_obj_t));
+obj->key = strdup("foo");
+obj->val = 0;
+
+apr_hash_set(ht, obj->key, APR_HASH_KEY_STRING, obj);
+
+
+/* [1] typical memory leak bug in deleting entry */
+{ 
+    apr_hash_set(ht, "foo", APR_HASH_KEY_STRING, NULL);
+    /* if we forget to free @obj related to "foo", we have memory leak bug */
+}
+
+/* [2] workaround of memory leak */
+{
+    ht_obj_t *obj = apr_hash_get(ht, "foo", APR_HASH_KEY_STRING);
+    apr_hash_set(ht, "foo", APR_HASH_KEY_STRING, NULL);
+    destroy_obj(obj);/* assuming this takes care of free(obj->key) and free(obj) */    
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>If we add a new entry to hash table and the same key already exists, what happen? The answer is the old value is overwritten(it's intuitive). However, the old key isn't overwritten, neither. This sometimes causes a bug. The following code shows it.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* BUGGY code (very confusable) */
+const char *old_key = strdup("foo");
+const char *old_val = strdup("bar");
+apr_hash_set(ht, old_key, APR_HASH_KEY_STRING, old_val);
+
+/* overwrite with a new key, but the same key */
+const char *new_key = apr_pstrdup(mp, "foo");
+const char *new_val = apr_pstrdup(mp, "BAR");
+apr_hash_set(ht, new_key, APR_HASH_KEY_STRING, new_val);/* this overwrites old entry as you expect except that @old_key is still alive... */
+
+const char *v = apr_hash_get(ht, "foo", APR_HASH_KEY_STRING);
+assert(v == new_val &amp;&amp; v != old_val); /* We find the new value in hash table */
+
+/* We would think both old key and old val have no reference... */
+free(key);  /* BUGGY... */
+free(val);
+
+/* What happened? 
+ * The current entry in hash table consists of old_key and new_val, so that it causes disaster. */
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+<P>The iteration code on hash table looks as follows:</P>
+<P>/* excerpted from 
+<A HREF="../sample/hashtab-sample.c">hashtab-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+apr_hash_index_t *hi;
+for (hi = apr_hash_first(NULL, ht); hi; hi = apr_hash_next(hi)) {
+    const char *k;
+    const char *v;
+    
+    apr_hash_this(hi, (const void**)&amp;k, NULL, (void**)&amp;v);
+    printf("ht iteration: key=%s, val=%s\n", k, v);
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P><EM>REMARK</EM>: The latest libapr has freelist in hash table, but the old version didn't. So, it caused memory leak to keep adding and deleting various entries with unique keys. If you use an older libapr, I recommend you to upgrade a newer version(after apache-2.0.54). If upgrading is difficult(e.g. you're developing apache modules and you can't easily upgrade the apache), I suggest you to update only apr_hash.c..</P>
+
+
+<H2><A NAME="ss19.4">19.4</A> <A HREF="apr-tutorial.html#toc19.4">ring (cyclic doubly linked list)</A>
+</H2>
+
+<P>Ring is cyclic doubly linked list. As container type, linked list has the following features.</P>
+<P>
+<BR><CENTER>
+<TABLE BORDER><TR><TD>
+append/insert/prepend</TD><TD>almost efficient(API support)</TD></TR><TR><TD>
+delete</TD><TD>almost efficient(API support)</TD></TR><TR><TD>
+search(lookup)</TD><TD>depends(API support)</TD></TR><TR><TD>
+iteration</TD><TD>almost efficient(API support)
+</TD></TR></TABLE>
+<CAPTION>ring</CAPTION>
+</CENTER><BR>
+</P>
+<P>Linked list is good at modifications, such as append, insert, prepend, delete. Such operations usually work better than other container types. Moreover, other operations, such as search and iteration, usually work almost efficiently. Since we can easily make sorted linked list, search operation works much faster. I think linked list is often a good choice for you.</P>
+<P>apr_ring is a little bit different from the other container types mentioned above. apr_ring is not a container type by itself. It helps you to make linked list data structure. </P>
+<P>At first, we have to define our own types, element type and its container type. In the following example, my_elem_t is an element type name, and my_ring_t is a container type name. Putting APR_RING_ENTRY() macro in a structure type means that the type becomes element of ring container. APR_RING_HEAD() defines our own ring container type. </P>
+<P>/* excerpted from 
+<A HREF="../sample/ring-sample.c">ring-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+/* type definitions sample of ring */
+typedef struct _my_elem_t {
+    APR_RING_ENTRY(_my_elem_t) link;
+    int num;
+    const char *str;
+} my_elem_t;
+
+typedef struct _my_ring_t my_ring_t;
+APR_RING_HEAD(_my_ring_t, _my_elem_t);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>Next, we create a ring container object. The type is complete, so we can create an object explicitly. Note that we shouldn't rely on my_ring_t's internals, and we must call only APIs to use it. After we create a ring container object, we initialize it by APR_RING_INIT(). APR_RING_INIT() requires three arguments, the ring container object, element type name, and the name of APR_RING_ENTRY() in the element type. </P>
+<P>/* excerpted from 
+<A HREF="../sample/ring-sample.c">ring-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+my_ring_t *ring;
+ring = apr_palloc(mp, sizeof(my_ring_t));
+APR_RING_INIT(ring, _my_elem_t, link);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>Now, we are ready to use ring. To append an element to ring, we call APR_RING_INSERT_TAIL(). To prepend, we call APR_RING_INSERT_HEAD(). To insert, we call APR_RING_INSERT_BEFORE() or APR_RING_INSERT_AFTER(). Please take a look at 
+<A HREF="../sample/ring-sample.c">ring-sample.c</A> about the usage.</P>
+<P>We can handle a set of elements simultaneously. To insert elements to ring, we call APR_RING_SPLICE_AFTER() or APR_RING_SPLICE_BEFORE(). We can easily merge two rings to one ring. To do so, we call APR_RING_CONCAT().</P>
+<P>To remove elements from ring, we call APR_RING_UNSPLICE().</P>
+<P>We can do iteration over ring. The following sample code shows the most basic iteration. </P>
+<P>/* excerpted from 
+<A HREF="../sample/ring-sample.c">ring-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+const my_elem_t *ep;
+for (ep = APR_RING_FIRST(ring); ep != APR_RING_SENTINEL(ring, _my_elem_t, link); ep = APR_RING_NEXT(ep, link)) {
+    printf("elem: num=%d, str=%s\n", ep->num, ep->str);
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>As ring is doubly linked list, we can do reverse iteration, too. Furthermore, ring is cyclic linked list, so we can continue the iteration beyond the end of list. Please take a look at 
+<A HREF="../sample/ring-sample.c">ring-sample.c</A> about the usage.</P>
+<P><EM>REMARK</EM>: As you can see, all ring APIs are implemented as macros.</P>
+<P><EM>REMARK</EM>: If the ring object's lifetime is long and you allocate the elements in memory pool, it is a good idea to use freelist. You can easily implement freelist by ring. By freelist, you can avoid memory leak. In addition, adding a new element becomes faster.</P>
+
+
+<HR>
+<A HREF="apr-tutorial-20.html">Next</A>
+<A HREF="apr-tutorial-18.html">Previous</A>
+<A HREF="apr-tutorial.html#toc19">Contents</A>
+</BODY>
+</HTML>

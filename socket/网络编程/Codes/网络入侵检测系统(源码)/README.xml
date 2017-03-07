@@ -1,0 +1,204 @@
+Snort XML Output Plug-in 
+
+I. Summary
+
+The XML plug-in enables snort to log in SNML - simple network markup
+language aka (snort markup language) to a file or over a network.  The
+DTD is available in the contrib directory of the snort distribution
+and at: http://www.cert.org/DTD/snml-1.0.dtd. You can use this plug-in
+with on one or more snort sensors to log to a central database and
+create highly configurable intrusion detection infrastructures within
+your network. The plugin will also enable you to automatically report
+alerts to the CERT Coordination Center, your response team, or your
+managed IDS provider.
+
+This plugin was developed by Jed Pickel and Roman Danyliw at the CERT
+Coordination Center as part of the AIRCERT project.
+
+Be aware that the SNML DTD is in its early phases of development and
+is likely to be modified as it undergoes public scrutiny.
+
+See http://www.cert.org/kb/snortxml for the most up to date
+information and documentation about this plugin.
+
+II. Configuration
+
+You must add some information to the snort configuration file
+to enable database logging. The configuration file distributed
+with snort has some sample configuration lines.
+
+The configuration line will be of the following format:
+
+   output xml: [log | alert], [parameter list]
+
+Arguments:
+
+   [log | alert ] - specify log or alert to connect the xml
+       plugin to the log or alert facility.
+
+   [parameter list] - The parameter list consists of key value 
+       pairs. The proper format is a list of key=value pairs each
+       separated a space.
+
+       file     - when this is the only parameter it will log to
+                  a file on the local machine.  Otherwise, if
+                  http or https is employed (see protocol), this is 
+                  the script which is to be executed on the remote
+                  host.
+
+       protocol - The possible values for this field are 
+ 
+                  http  - send a POST over HTTP to a webserver
+                          (required: a [file] parameter)
+ 
+                  https - just like http but ssl encrypted and 
+                          mutually authenticated.
+                          (required: a [file], [cert], [key]
+                           parameter)
+
+                  tcp   - A simple tcp connection. You need to 
+                          use some sort of listener
+                          (required: a [port] parameter)
+                      
+                  iap   - An implementation of the Intrusion Alert 
+                          Protocol (This does not work yet)
+
+       host     - remote host where the logs are to be sent
+ 
+       port     - The port number to connect to
+                  (default ports are)
+                  http  80
+                  https 443
+                  tcp   9000
+                  iap   9000
+ 
+       cert     - the client X.509 certificate to use with https 
+                  (PEM formatted)
+
+       key      - the client private key to use with https 
+                  (PEM formatted)
+
+       ca       - the CA certificate used to validate the https
+                  server's certificate (PEM formatted)
+
+       server   - the file containing a list of valid servers with
+                  which to communicate. It is used so that Snort can
+                  authenticate the peer server. Each server is 
+                  identified by a string formed by concatenating 
+                  the subject of the server's X.509 certificate. 
+                  This string can be created by:
+
+                    % openssl x509 -subject -in <server certificate>.
+
+                  Typically only someone deploying the HTTPS will have
+                  to perform this task (since they have access to the
+                  server certificate). This entitity should publish
+                  this subject string for configuration inside each
+                  snort sensor.
+
+       sanitize - The argument is a a network/netmask combination for 
+                  an IP range you wish to be sanitized. Any IP address
+                  within the range you specify will be represented as
+                  "xxx.xxx.xxx.xxx". Also, for sanitized alerts, no
+                  packet payload will be logged. You can use the
+                  sanitize parameter multiple times to represent
+                  multiple IP ranges.
+  
+       encoding - Packet payload and option data is binary and
+                  there is not one standard way to represent it as
+                  ASCII text. You can choose the binary encoding
+                  option that is best suited for your environment.
+                  Each has its own advantages and disadvantages:
+ 
+             hex: (default) Represent binary data as a hex string.
+ 
+                  storage requirements - 2x the size of the binary
+ 
+                  searchability....... - very good
+ 
+                  human readability... - not readable unless you 
+                                           are a true geek
+                                         requires post processing
+ 
+             base64: Represent binary data as a base64 string.
+ 
+                  storage requirements - ~1.3x the size of the binary
+ 
+                  searchability....... - impossible without post 
+                                           processing
+ 
+                  human readability... - not readable
+                                         requires post processing
+  
+             ascii: Represent binary data as an ascii string. This is
+                    the only option where you will actually loose
+                    data.  Non ascii data is represented as a ".". If
+                    you choose this option then data for ip and tcp
+                    options will still be represented as "hex" because
+                    it does not make any sense for that data to be
+                    ascii.
+ 
+                  storage requirements - Slightly larger than the
+                                         binary because some characters
+                                         are escaped (&,<,>)
+  
+                  searchability....... - very good for searching for 
+                                           a text string
+                                         impossible if you want to 
+                                           search for binary
+ 
+                  human readability... - very good
+  
+       detail - How much detailed data do you want to store? The options
+                are:
+ 
+                  full: (default) log all details of a packet that 
+                        caused an alert (including ip/tcp options and 
+                        the payload)
+ 
+                  fast: log only a minimum amount of data. You severely 
+                        limit the potential of some analysis
+                        applications if you choose this option, but
+                        this is still the best choice for some
+                        applications. The following fields are logged
+                        - (timestamp, signature, source ip,
+                        destination ip, source port, destination
+                        port, tcp flags, and protocol)
+ 
+Examples:
+
+output xml: log,   file=output
+output xml: log,   protocol=https host=air.cert.org file=alert.snort cert=mycert.crt key=mykey.pem ca=ca.crt server=srv_list.lst
+
+ 
+     PROTOCOL     tcp        http       https      iap
+    =======================================================
+    | file   ||    no    | required | required |    no    |
+    | -------||----------|----------|----------|----------|
+    | host   || required | required | required | required |
+    |--------||----------|----------|----------|----------|
+    | port   || required | optional | optional | optional |
+    |--------||----------|----------|----------|----------|
+    | cert   ||    no    |    no    | required | optional |
+    |--------||----------|----------|----------|----------|
+    | key    ||    no    |    no    | required | optional |
+    |--------||----------|----------|----------|----------|
+    | ca     ||    no    |    no    | required | optional |
+    |--------||----------|----------|----------|----------|
+    |server  ||    no    |    no    | required |    no    |
+    |--------||----------|----------|----------|----------|
+    |sanitize|| optional | optional | optional | optional |
+    =======================================================
+
+III. Change Log
+
+    08/25/2000 : Added "encoding" and "detail" configuration options
+    08/14/2000 : Initial Release
+
+IV. TODO
+
+  * still need to get IAP working
+  * add expiration dates/CRL into server certificate validation
+  * support multiple HTTPS servers
+  * real queue management on alerts: batching, using congestion
+    feedback

@@ -1,0 +1,449 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Splitter.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#include ""l.chs\\afxprint.rc""        // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\x.ico"
+IDR_SPLITTTYPE          ICON    DISCARDABLE     "res\\SplitterDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "新建(&N)\tCtrl+N",            ID_FILE_NEW, GRAYED
+        MENUITEM "打开(&O)...\tCtrl+O",         ID_FILE_OPEN, GRAYED
+        MENUITEM "保存(&S)\tCtrl+S",            ID_FILE_SAVE, GRAYED
+        MENUITEM "另存为(&A)...",               ID_FILE_SAVE_AS, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "打印(&P)...\tCtrl+P",         ID_FILE_PRINT, GRAYED
+        MENUITEM "打印预览(&V)",                ID_FILE_PRINT_PREVIEW
+        , GRAYED
+        MENUITEM "打印设置(&R)...",             ID_FILE_PRINT_SETUP, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "最近文件",                    ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "编辑(&E)"
+    BEGIN
+        MENUITEM "撤消(&U)\tCtrl+Z",            ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "剪切(&T)\tCtrl+X",            ID_EDIT_CUT
+        MENUITEM "复制(&C)\tCtrl+C",            ID_EDIT_COPY
+        MENUITEM "粘贴(&P)\tCtrl+V",            ID_EDIT_PASTE
+    END
+    POPUP "查看(&V)"
+    BEGIN
+        MENUITEM "工具栏(&T)",                  ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(&S)",                  ID_VIEW_STATUS_BAR
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 Splitter(&A)...",        ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 63
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 Splitter"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Splitter  Version  1.1.0.0",IDC_STATIC,56,11,105,8,
+                    SS_NOPREFIX
+    LTEXT           "    版权所有  (C)   2001-03-17             ",IDC_STATIC,
+                    39,25,122,10
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+    LTEXT           " ICBCCD 技保处软件一科 幸云",IDC_STATIC,51,36,123,13,
+                    SS_CENTERIMAGE
+END
+
+IDD_SPLITTER_FORM DIALOGEX 0, 0, 323, 234
+STYLE DS_SYSMODAL | WS_CHILD
+EXSTYLE WS_EX_CLIENTEDGE | WS_EX_STATICEDGE
+FONT 9, "宋体"
+BEGIN
+    EDITTEXT        IDC_SPLITEDIT,80,50,170,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "浏览(*．*)",IDC_BROWSE1,254,50,44,14
+    GROUPBOX        "分割文件",IDC_STATIC1,18,40,285,102
+    EDITTEXT        IDC_SPLITNUM,80,75,17,12,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    GROUPBOX        "合并文件",IDC_STATIC2,18,150,285,63
+    LTEXT           "要分割的文件",IDC_STATIC,28,51,48,10
+    LTEXT           "分割份数 N =",IDC_STATIC,28,77,51,10
+    LTEXT           "需要合并的 XXQ文件",IDC_STATIC,28,162,78,10
+    EDITTEXT        IDC_REBUILDEDIT,106,159,129,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "浏览(*．XXQ)",IDC_BROWSE2,242,159,56,15
+    PUSHBUTTON      "开始分割",IDC_SPLIT,140,118,40,14
+    PUSHBUTTON      "开始合并",IDC_REBUILD,141,196,39,14
+    PUSHBUTTON      "增加 N",IDC_INCREASEBUTTON,99,67,33,13
+    PUSHBUTTON      "减少 N",IDC_DECREASEBUTTON,99,83,33,13
+    EDITTEXT        IDC_SELECTFOLDEREDITREBUILD,106,177,129,14,
+                    ES_AUTOHSCROLL
+    LTEXT           "合并后存放的文件夹",IDC_STATIC,28,180,74,11
+    CTEXT           "前 N-1个文件大小",IDC_AVERAGELENGTH,135,68,68,12,
+                    SS_CENTERIMAGE
+    CTEXT           "最后一个文件大小",IDC_LASTLENGTH,135,83,68,12,
+                    SS_CENTERIMAGE
+    RTEXT           "",IDC_AVFILELENGTH,205,67,52,12,SS_SUNKEN
+    RTEXT           "",IDC_LASTFILELENGTH,205,83,52,12,SS_SUNKEN
+    PUSHBUTTON      "<< 选取文件夹",IDC_SELECTFOLDERREBUILD,242,177,55,15
+    EDITTEXT        IDC_SELECTFOLDEREDITSPLIT,96,100,142,13,ES_AUTOHSCROLL
+    LTEXT           "分割后存放文件夹",IDC_STATIC,27,103,65,11
+    PUSHBUTTON      "<< 选取文件夹",IDC_SELECTFOLDERSPLIT,243,99,55,14
+    LTEXT           "Bytes",IDC_STATIC,265,69,21,12
+    LTEXT           "Bytes",IDC_STATIC,265,84,21,12
+    LTEXT           "敬告各位：本程序“菜单”及“工具按钮”大多数没有实用价值，但未删除。                         不好意思！见谅见谅！  ＾－＾",
+                    IDC_STATIC,22,15,277,19
+    CTEXT           "软件制作：幸云           Email：ssy_xing@163.net",
+                    IDC_STATIC,24,219,277,9,SS_CENTERIMAGE
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "Splitter Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "Splitter\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2001\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Splitter.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Splitter 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+
+    IDD_SPLITTER_FORM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 316
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 228
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "Splitter\n\nSplitt\n\n\nSplitter.Document\nSplitt Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Splitter"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "扩展名"
+    ID_INDICATOR_CAPS       "大写"
+    ID_INDICATOR_NUM        "数字"
+    ID_INDICATOR_SCRL       "滚动"
+    ID_INDICATOR_OVR        "改写"
+    ID_INDICATOR_REC        "记录"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "建立新文档\n新建"
+    ID_FILE_OPEN            "打开一个现有文档\n打开"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+    ID_FILE_SAVE_AS         "将活动文档以一个新文件名保存\n另存为"
+    ID_FILE_PAGE_SETUP      "改变打印选项\n页面设置"
+    ID_FILE_PRINT_SETUP     "改变打印机及打印选项\n打印设置"
+    ID_FILE_PRINT           "打印活动文档\n打印"
+    ID_FILE_PRINT_PREVIEW   "显示整页\n打印预览"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "显示程序信息，版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "打开该文档"
+    ID_FILE_MRU_FILE2       "打开该文档"
+    ID_FILE_MRU_FILE3       "打开该文档"
+    ID_FILE_MRU_FILE4       "打开该文档"
+    ID_FILE_MRU_FILE5       "打开该文档"
+    ID_FILE_MRU_FILE6       "打开该文档"
+    ID_FILE_MRU_FILE7       "打开该文档"
+    ID_FILE_MRU_FILE8       "打开该文档"
+    ID_FILE_MRU_FILE9       "打开该文档"
+    ID_FILE_MRU_FILE10      "打开该文档"
+    ID_FILE_MRU_FILE11      "打开该文档"
+    ID_FILE_MRU_FILE12      "打开该文档"
+    ID_FILE_MRU_FILE13      "打开该文档"
+    ID_FILE_MRU_FILE14      "打开该文档"
+    ID_FILE_MRU_FILE15      "打开该文档"
+    ID_FILE_MRU_FILE16      "打开该文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回前一个窗格\n前一窗格"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "将活动的窗口分隔成窗格\n分隔"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "删除被选对象\n删除"
+    ID_EDIT_CLEAR_ALL       "全部删除\n全部删除"
+    ID_EDIT_COPY            "复制被选对象并将其置于剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切被选对象并将其置于剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的正文\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_REPEAT          "重复上一步操作\n重复"
+    ID_EDIT_REPLACE         "用不同的正文替换指定的正文\n替换"
+    ID_EDIT_SELECT_ALL      "选择整个文档\n选择全部"
+    ID_EDIT_UNDO            "撤消最后一步操作\n撤消"
+    ID_EDIT_REDO            "重新执行先前已撤消的操作\n重新执行"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n显隐工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n显隐状态栏"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "改变窗口大小"
+    AFX_IDS_SCMOVE          "改变窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小成图标"
+    AFX_IDS_SCMAXIMIZE      "把窗口放大到最大尺寸"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到先前的文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动的窗口并提示保存所有文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "把窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务表"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预阅"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\Splitter.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#include "l.chs\afxprint.rc"        // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

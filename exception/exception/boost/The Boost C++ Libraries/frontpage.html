@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highscore - The Boost C++ Libraries</title>
+<link rel="stylesheet" href="css/highscore.css" type="text/css">
+<link rev="made" href="mailto:boris@highscore.de">
+<link rel="home" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="next" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="chapter" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="chapter" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="chapter" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="chapter" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="chapter" href="serialization.html" title="Chapter 11: Serialization">
+<link rel="chapter" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="containers.html" title="Chapter 13: Containers">
+<link rel="chapter" href="datastructures.html" title="Chapter 14: Data Structures">
+<link rel="chapter" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="castoperators.html" title="Chapter 16: Cast Operators">
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1) gen true for "http://highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1))'>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link href="http://www.highscore.de/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script><script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script><script type="text/javascript" src="js/highscore.js"></script>
+</head>
+<body>
+<div class="docbook book" lang="en">
+<p class="author"><a href="mailto:boris@highscore.de">Boris Schäling</a></p>
+<script type="text/javascript">
+          var titlepage = "Front page";
+        
+      var titles = new Array(titlepage,
+      
+        "Chapter 1: Introduction",
+      
+        "Chapter 2: Smart Pointers",
+      
+        "Chapter 3: Function Objects",
+      
+        "Chapter 4: Event Handling",
+      
+        "Chapter 5: String Handling",
+      
+        "Chapter 6: Multithreading",
+      
+        "Chapter 7: Asynchronous Input and Output",
+      
+        "Chapter 8: Interprocess Communication",
+      
+        "Chapter 9: Filesystem",
+      
+        "Chapter 10: Date and Time",
+      
+        "Chapter 11: Serialization",
+      
+        "Chapter 12: Parser",
+      
+        "Chapter 13: Containers",
+      
+        "Chapter 14: Data Structures",
+      
+        "Chapter 15: Error Handling",
+      
+        "Chapter 16: Cast Operators",
+      
+      "");
+
+      
+          var titlehtml = "frontpage.html";
+        
+      var filenames = new Array(titlehtml,
+      
+        "introduction.html",
+      
+        "smartpointers.html",
+      
+        "functionobjects.html",
+      
+        "eventhandling.html",
+      
+        "stringhandling.html",
+      
+        "multithreading.html",
+      
+        "asio.html",
+      
+        "interprocesscommunication.html",
+      
+        "filesystem.html",
+      
+        "datetime.html",
+      
+        "serialization.html",
+      
+        "parser.html",
+      
+        "containers.html",
+      
+        "datastructures.html",
+      
+        "errorhandling.html",
+      
+        "castoperators.html",
+      
+      "");
+
+      
+      document.open();
+      document.write('<form action="" class="toc">');
+      document.write('<select size="1" onchange="location.href=options[selectedIndex].value">');
+      for (var i = 0; i < titles.length && i < filenames.length; ++i) {
+        if (titles[i] != "" && filenames[i] != "") {
+          document.write('<option');
+          document.write(' value="' + filenames[i] + '"');
+          var expr = new RegExp('[/\]' + filenames[i] + '$');
+          if (expr.test(location.href)) {
+            document.write(' selected="selected"');
+          }
+          document.write('>' + titles[i] + '<\/option>');
+        }
+      }
+      document.write('<\/select>');
+      document.write('<\/form>');
+      document.close();
+      
+    </script><noscript><p class="toc"><a href="toc.html">Table of Contents</a></p></noscript>
+<hr class="hrhead">
+<h1>The Boost C++ Libraries</h1>
+<hr>
+<div class="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><a href="introduction.html">Chapter 1: Introduction</a></li>
+<li><a href="smartpointers.html">Chapter 2: Smart Pointers</a></li>
+<li><a href="functionobjects.html">Chapter 3: Function Objects</a></li>
+<li><a href="eventhandling.html">Chapter 4: Event Handling</a></li>
+<li><a href="stringhandling.html">Chapter 5: String Handling</a></li>
+<li><a href="multithreading.html">Chapter 6: Multithreading</a></li>
+<li><a href="asio.html">Chapter 7: Asynchronous Input and Output</a></li>
+<li><a href="interprocesscommunication.html">Chapter 8: Interprocess Communication</a></li>
+<li><a href="filesystem.html">Chapter 9: Filesystem</a></li>
+<li><a href="datetime.html">Chapter 10: Date and Time</a></li>
+<li><a href="serialization.html">Chapter 11: Serialization</a></li>
+<li><a href="parser.html">Chapter 12: Parser</a></li>
+<li><a href="containers.html">Chapter 13: Containers</a></li>
+<li><a href="datastructures.html">Chapter 14: Data Structures</a></li>
+<li><a href="errorhandling.html">Chapter 15: Error Handling</a></li>
+<li><a href="castoperators.html">Chapter 16: Cast Operators</a></li>
+</ul>
+</div>
+<p class="license"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top"><img src="img/88x31_cc_logo.gif" alt="" width="88" height="31"></a> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top">Creative Commons License</a>.</p>
+<p class="pdf"><a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-pdf-en"><img src="img/32x32_pdficon.gif" alt="" width="32" height="32" style="margin-right:5px"></a><a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-epub-en"><img src="img/49x32_epubicon.png" alt="" width="49" height="32"></a>
+            You can buy this book as a 
+            <a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-pdf-en">PDF file in A4 and US Letter format</a>
+            or as an 
+            <a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-epub-en">ePub file for eBook readers</a>.
+          </p>
+<p class="othercredit">This book has been translated from German to English by 
+          <a href="mailto:boost@andreasmasur.com">Andreas Masur</a> (<a href="http://www.andreasmasur.com/" target="_top">Homepage</a>).</p>
+<hr>
+<h2>Content</h2>
+<div class="preface">
+<h3>What you will learn</h3>
+<p>This book is an introduction to the Boost C++ Libraries which complement the C++ standard by adding functions helpful in practice. As the Boost C++ Libraries are based on the C++ standard, they are implemented using state-of-the-art C++. They are platform independent and are supported on many operating systems including Windows and Linux by a large developer community.</p>
+<p>The Boost C++ Libraries enable you to boost your productivity as a C++ developer. For example, you can benefit from smart pointers which help you to write more reliable code or use one of the many libraries to develop platform independent network applications. Since many Boost C++ Libraries are going to be incorporated into the next version of the C++ standard, you can prepare yourself starting today.</p>
+</div>
+<hr>
+<h2>Requirements</h2>
+<div class="preface">
+<h3>What you should know</h3>
+<p>Since the Boost C++ Libraries are based on as well as extending the C++ standard, you should know the C++ standard well. You should understand and be able to use containers, iterators and algorithms and ideally should have heard of concepts such as RAII, function objects or predicates. The better you know the C++ standard, the more you are able to benefit form the Boost C++ Libraries.</p>
+</div>
+</div>
+<hr class="hrfoot">
+<p class="copyright">Copyright © 2008-2010 
+        <a class="link" href="mailto:boris@highscore.de">Boris Schäling</a>
+      <br>Version
+        1.0
+        /
+        01 April 2010<br><a href="http://en.highscore.de/cpp/boost/" target="_top">http://en.highscore.de/cpp/boost/</a></p>
+</body>
+</html>

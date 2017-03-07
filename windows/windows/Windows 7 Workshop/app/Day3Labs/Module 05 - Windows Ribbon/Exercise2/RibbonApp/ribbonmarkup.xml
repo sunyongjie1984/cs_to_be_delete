@@ -1,0 +1,44 @@
+<!--
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//
+// Copyright (c) Microsoft Corporation. All rights reserved
+-->
+
+<Application xmlns="http://schemas.microsoft.com/windows/2009/Scenic/Intent">
+
+  <Application.Commands>
+    <Command Name="TabHome" Symbol="cmdTabHome" Id="30000" LabelTitle="Home" />
+    <Command Name="GroupMain" Symbol="cmdGroupMain" Id="30001" LabelTitle="Main" />
+    <Command Name="MyButton" Symbol="cmdMyButton" Id="30002" LabelTitle="My Button">
+      <Command.TooltipTitle>My Button</Command.TooltipTitle>
+      <Command.TooltipDescription>Click on My Button</Command.TooltipDescription>
+      <Command.LargeImages>
+        <Image Source="Button_Image.bmp"/>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="MyChoice" Symbol="cmdMyChoice" Id="30003" LabelTitle="My Choice">
+      <Command.TooltipTitle>My Choice</Command.TooltipTitle>
+      <Command.TooltipDescription>Select My Choice!</Command.TooltipDescription>
+      <Command.LargeImages>
+        <Image Source="Button_Image.bmp"/>
+      </Command.LargeImages>
+    </Command>
+  </Application.Commands>
+
+  <Application.Views>
+    <Ribbon>
+      <Ribbon.Tabs>
+        <Tab CommandName="TabHome">
+          <Group CommandName="GroupMain" SizeDefinition="TwoButtons">
+            <ToggleButton CommandName="MyChoice"/>
+            <Button CommandName="MyButton"/>
+          </Group>
+        </Tab>
+      </Ribbon.Tabs>      
+    </Ribbon>
+  </Application.Views>
+
+</Application>

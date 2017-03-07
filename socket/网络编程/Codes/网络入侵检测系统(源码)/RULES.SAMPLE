@@ -1,0 +1,487 @@
+##############################################################################
+# PLEASE REFER TO http://www.snort.org/snort_rules.html FOR THE
+# OFFICIAL SNORT RULES WRITING DOCUMENT, THIS DOCUMENT IS NOW DEPRECATED!
+#
+# As of version 0.99rc6, there are completely new rule options, your old rules
+# will no longer work with this new version
+#
+# A RULE MUST ONLY BE ON A SINGLE LINE, THE PARSER WILL NOT WORK ON MULTI-
+# LINE RULES!
+#
+# You can use "#" for comments
+#
+# USE NUMBERS FOR ALL IP ADDRESSES AND PORTS, THIS SYSTEM DOESN'T DO
+# LOOKUPS 
+#
+# The format of a rule is:
+# func proto src_ip/mask src_port_range -> dst_ip/mask dst_port_range (options)
+#
+# Use "any" for an IP address wildcard or port wildcard.  
+#
+# As of version 1.2.1, you may use a "!" on the source or dest IP addresses to
+# indicate an exception case.  This will allow logging by exception for IP 
+# addresses and networks without having to use Pass rules.  See the end of this
+# file for usage examples!
+#
+# As of version 1.3 you can use the negation operator (!) on source and dest 
+# TCP/UDP ports.  This will allow you to do things like avoiding looking at
+# traffic coming from your DNS server, etc.
+#
+# Bidirectional rules were added in version 1.3.1.  These allow a rule's 
+# address/port pairs to be considered from either "side" of the direction
+# indicator in the rule with a "<>" operator between the source and
+# destination information.
+#
+# As of version 1.5 you can specify include files and substitution variables
+# in Snort rules files.  See the 1.5 modifications section for more 
+# information on this cool new functionality from Christian Lademann.
+#
+# The rules are applied to traffic in the following order:
+# Alert Rules
+# Pass Rules
+# Log Rules
+#
+# The new rule options are enclosed in parenthesis and seperated by semi colons
+#
+# Valid rule options are:
+#   msg => message to output in the alert/log files
+#   flags => TCP flags, use 0 for no flags at all
+#   ttl => the TTL value you want to key on (nice for catching traceroutes)
+#   content => the packet application layer, look for buffer overflows here
+#   itype => the NUMBER of the ICMP type 
+#   icode => the NUMBER of the ICMP code
+#   minfrag => minimum fragment payload size
+#   seq => tcp sequence number
+#   ack => tcp ack number
+#   id => IP header fragment ID number
+#   logto => file to log specific alerts to
+#   dsize => match on the packet payload size
+#   offset => start a content search <offset> bytes into the payload
+#   depth => only search <depth> bytes into the payload for a pattern match
+#   session => record the session traffic from clear text protocols like
+#              ftp or telnet
+#   ipopts => check for a specific IP option
+##############################################################################
+#
+# Here are some examples:
+#
+
+##############################################################################
+# This rule logs telnet traffic from any computer on any network to a specific 
+# IP address on your (notional) network
+
+log tcp any any -> 192.168.1.1/32 23
+
+
+
+##############################################################################
+# To log the data in both directions, you need to use the "bidirectional 
+# operator":
+
+log tcp any any <> 192.168.1.1/32 23
+
+# Note the new (as of version 1.3) bidirectional rule operator "<>".  This 
+# tells Snort to apply the rule in both "directions", trying the source
+# address as the destination address and vice versa when it attempts a rule
+# match if the initial straight match doesn't work
+
+
+
+##############################################################################
+# This one logs all ICMP traffic to your local class C address.  Notice
+# the port wildcards, even ICMP traffic needs to have something entered for 
+# ports so the rules parser doesn't get confused.
+
+log icmp any any -> 192.168.1.0/24 any
+
+##############################################################################
+# this rule will pass all outgoing web browsing done by your site 
+# bidirectionally.  
+
+pass tcp any 80 <> 192.168.1.0/24 any
+
+##############################################################################
+# This example shows what an alert rule looks like, with a "rule option" added
+# at the end of the rule:
+
+alert tcp 192.168.1.0/24 any -> any 111 (msg:"Portmapper call";)
+
+##############################################################################
+# We will now take a look at how port ranges are specified
+# This one logs all TCP traffic from anywhere to the local class C coming from
+# and going to ports below 1024 (inclusive)
+
+log tcp any :1024 -> 192.168.1.0/24 :1024
+
+##############################################################################
+# This one monitors a port range (X Windows) from any computer to your class C
+
+log tcp any 6000:6010 -> 192.168.1.0/24 6000:6010
+
+##############################################################################
+# This one passes traffic to/from ports greater than 1024
+
+pass udp any 1024: -> 192.168.1.0/24 1024:
+
+##############################################################################
+# These next rules get into the options section of the rules
+# TCP flags can be searched on 
+# Flag values are as follows: 
+#             S = SYN
+#             F = FIN
+#             A = ACK
+#             U = URG
+#             P = PSH
+#             R = RST
+#             0 = NULL
+#             1 = Reserved bit 1
+#             2 = Reserved bit 2
+
+# This rule will find SYN FIN scans
+
+alert tcp any any -> 192.168.1.0/24 any (msg:"SYN-FIN scan!"; flags: SF;)
+
+# This one will find TCP NULL scans
+
+alert tcp any any -> 192.168.1.0/24 any (msg:"Null scan!"; flags: 0;)
+
+# This one will find Queso OS fingerprinting attempts
+# You can watch the reserved bits in the flag field of TCP packets.  This 
+# allows you to detect things like Queso scans.  The new bits are specified
+# with a "1" and "2".  See the TCP example above for usage.
+
+alert tcp any any -> 192.168.1.0/24 any (msg:"Queso fingerprint";flags: S12;)
+
+##############################################################################
+# Here is an example of content based alerting
+
+alert tcp any any -> 192.168.1.0/24 143 (msg:"IMAP Buffer overflow!"; content:"|90E8 C0FF FFFF|/bin/sh";)
+
+# The content string will be matched against data contained in the packet 
+# payload.  This string can be either binary or text, with the binary section 
+# denoted by the pipe "|" symbol.  The actual "binary" code is written using 
+# hex notation.  If you want to put a pipe symbol into the content match string,
+# just use "\|" and that will put a single "|" into the pattern buffer.
+
+##############################################################################
+# here's an example of PHF attack detection where just a straight text string
+# is searched for in the app layer
+
+alert tcp any any -> 192.168.1.0/24 80 (msg:"PHF attempt"; content:"/cgi-bin/phf";)
+
+##############################################################################
+# here's an example of straight binary code (of an external mountd access 
+# attempt) in the application layer
+
+alert tcp any any -> 192.168.1.0/24 111 (msg:"External mountd access"; content:"|00 01 86 A5|";)
+
+##############################################################################
+# here's an example of how to detect a traceroute using 99rc6's new ttl 
+# option capability
+
+alert udp any any -> 192.168.1.0/24 any (msg:"Traceroute"; ttl:1;)
+
+##############################################################################
+# here's an example of using the new itype and icode detection capability
+# this one will detect pings coming to your network from the outside 
+# (presumably)
+
+alert icmp any any -> 10.1.1.0/24 any (msg:"Being Pinged"; itype: 8;) 
+
+# this next one will detect ICMP host unreachables, which may be of interest in
+# certain situations
+
+alert icmp any any -> any any (msg:"Port Unreachable"; itype: 3; icode: 1;)
+
+
+##############################################################################
+# NEW IN VERSION 1.1
+#
+# New rule option: logto
+# This option allows packets matching the rule to be logged to a special user
+# specified log file.  For example:
+
+log tcp any any -> 192.168.1.0/24 23 (logto:"telnets";)
+
+# would capture all inbound telnet traffic and put it in a file called telnets 
+# in the log directory
+
+##############################################################################
+# New rule option: ack
+# This option watches the ack field of TCP packets for the user specified 
+# value.  For example, nmap TCP "pings" have the TCP ACK flag set and the
+# acknowledge field set to 0.  A Snort rule can now be written to detect this:
+
+alert tcp any any -> 192.168.1.0/24 any (flags: A; ack: 0; msg:"NMAP TCP ping!";)
+
+##############################################################################
+# New rule option: seq
+# This one checks the sequence number of a TCP packet.  So far I don't have an
+# application for this rule thought up, but it's in there for the sake of 
+# completeness.  
+
+##############################################################################
+# New rule option: id
+# This rule looks at the ID field of the IP header.  Some attack/probe programs
+# set this value to something cute or, at least, "fingerprintable" value such
+# as 31337 or 262 or whatever.  This option field can be used to search out 
+# packets using predictable numbers.
+
+##############################################################################
+# Synthesis
+# Putting all these rules together to form a neat-o complete-o package can be
+# fun for the whole family.  For example, check this out:
+
+alert tcp any any -> 192.168.1.0/24 any (flags: A; ack: 0; msg:"NMAP TCP ping!"; logto:"nmap_probes";)
+
+alert tcp any any -> 192.168.1.0/24 any (msg:"Probable NMAP fingerprint attempt";flags: SFPU; logto:"nmap_probes";)
+
+# These two rules would both log their output to an nmap_probes file in the log
+# directory, allowing centralized collection of all detected nmap activity.
+# Other rule option types can be linked together like this to form specific
+# traffic type logging, such as port scans, CGI scans, etc.
+
+# Now you just need some imagination to figure out how you want to log things.
+
+
+##############################################################################
+# NEW IN VERSION 1.2.1
+# You can now specify the negation operator for source and dest IP addresses
+# in a rule.  For example:
+
+alert tcp !192.168.1.0/24 any -> 192.168.1.0/24 143 (flags: S; msg: "External IMAP access attempt!";)
+
+# This rule would generate alerts for all traffic that DOES NOT originate from
+# the "local" network and is headed for the local net on port 143 with the SYN
+# flag set.  This is a really nice capability to detect activity that
+# originates outside of a given address range, or that is headed to a range
+# you aren't interested in.  Thanks to Ron Snyder for this patch!
+
+
+##############################################################################
+# NEW IN VERSION 1.3
+# The negation operator is now available for use in port specifications.  Check
+# it out:
+
+alert udp any !53 -> 192.168.1.0/24 31337 (msg: "Back Orifice";)
+
+# This would alert on any UDP traffic going to port 31337 that doesn't 
+# originate at port 53.
+
+##############################################################################
+# NEW KEYWORD: dsize
+# This keyword checks the size of the packet payload (application layer) for 
+# a match.  For example, if you were searching for packets where the length of
+# the payload you were interested in was 80 bytes, you could write something
+# like this:
+
+alert tcp any any -> 192.168.1.0/24 any (msg:"80-byte packet!"; dsize: 80;)
+
+# This can be useful in combination with other option keywords.  Additionally, 
+# as of version 1.3.1 you can specify greater-than and less-than keywords.  
+# For example:
+
+alert tcp any any -> 192.168.1.0/24 any (msg:"80+ byte packet!"; dsize: >80;)
+
+# This rule will alert on all packets with a size greater than 80 bytes
+
+##############################################################################
+# NEW KEYWORD: offset
+# If you know what you're searching for in a packet payload a little more 
+# specifically, you can specify the starting offset and narrow down the amount
+# of data to search (and the amount of time required to do a search).
+
+alert tcp any any -> 192.168.1.0/24 80 (content: "cgi-bin/phf"; offset: 4; msg:"PHF probe/attack!";)
+
+# This rule will start the search for the string 4-bytes into the packet 
+# payload.  Generally this is useful for this case since the expected
+# string will look something like "GET /cgi-bin/phf...".  The only downside to
+# this is that you have to be careful to avoid tuning your rules too tightly
+# and allow for variations in how things may show up on the wire.  Be careful
+# with this one!
+
+##############################################################################
+# NEW KEYWORD: depth
+# This rule will instruct the content matcher to only examine <depth> bytes of
+# the payload.  It is used to good effect with the offset rule, for example:
+
+alert tcp any any -> 192.168.1.0/24 80 (content:"cgi-bin/phf"; offset: 4; depth: 12; msg: "PHF Probe/attack";)
+
+# This rule will begin searching the payload for the content string 4 bytes
+# into the payload and search the first 12 bytes.  You can save a lot of time
+# (and boost performance) by specifying appropriate rules like this, but don't
+# overdo it!  If you set your parameters too tightly, you won't detect
+# anything!
+
+
+#################
+# NEW IN VERSION 1.5
+#################
+
+#################
+# NEW CAPABILITY: include
+#################
+# You can now include other rules files with another rules file using the 
+# "include" capability.  For instance, if you wanted to keep all of your 
+# CGI probe rules in a separate file from your main rules file you can now
+# simply integrate all of its rules into another file.  The format of the 
+# command is simply "include <filename", where <filename> is the name of the
+# rules file.
+
+include web-lib
+
+#################
+# NEW CAPABILITY: var
+#################
+# With the addition of the "var" keyword, substitution variables can now be
+# added to Snort rules files.  This is a capability that gives you great
+# flexibility in setting up rules files!  The base format is simple:
+
+var HOME_NET 192.168.1.0/24
+
+# which is then referenced in rules like this:
+
+alert tcp any any -> $HOME_NET 32771 (msg: "SUNRPC highport access!";)
+
+# But wait, there's more!  You can define meta-variables using the "$"
+# operator.  These can be used with the variable modifier operators, "?" and 
+# "-". 
+
+# $var - define meta variable 
+# $(var) - replace with the contents of variable "var" 
+# $(var:-default) - replace with the contents of the variable "var" or with
+#                  "default" if "var" is undefined. 
+# $(var:?message) - replace with the contents of variable "var" or print out
+#                   the error message "message" and exit 
+
+# For example:
+
+var MY_NET $(MY_NET:-192.168.1.0/24) 
+
+log tcp any any -> $(MY_NET:?MY_NET is undefined!) 23 (session: printable;)
+
+#################
+# NEW KEYWORD: session
+#################
+# This keyword will cause the payloads of the packets which match the rule
+# to be logged to a session file.  There are two arguments for this keyword, 
+# "printable" and "all".  The "printable" argument will cause only printable
+# characters to be recorded.  The "all" argument will cause all printable and
+# non-printable characters to be stored in the session file.  Non-printable
+# characters are represented by "\XX" type values, where the XX is the 
+# hexidecimal value of the non-printable character.  The names of the files 
+# that the sessions are recorded in use the format "SESSION:<hi>-<lo>" where
+# "<hi>" is the high port number of the connection, and "<lo>" is the low port
+# number.
+
+log tcp any any <> 192.168.1.0/24 23 (session: printable;)
+
+# the above rule will record any telnet session's printable characters 
+# bidirectionally in real-time.  If you want to see what the person is typing
+# on the connection, simply "tail -f" the session file.  Pretty nifty, eh?
+
+#################
+# NEW KEYWORD: ipopts
+#################
+# Checks the IP options in packets that contain them for the specified type.  
+# This is really great for looking for things like source routing.  Valid
+# option arguments include: rr, eol, nop, ts, sec, lsrr, lsrre, satid, ssrr.
+
+alert tcp any any -> any any (ipopts: lsrr; msg: "Source Routed packet!";)
+
+#################
+# NEW FEATURE: multiple "content" strings per rule
+#################
+# You can now put multiple content keywords in a single rule specification, 
+# which enables searching for multiple patterns per packet payload.  This
+# can be used to increase the graularity and accuracy of the packet payload
+# matching rules.  For example, you can now search for a buffer overflow's
+# NOP codes, as well as the "exec" opcodes:
+
+alert tcp any any -> $HOME_NET 143 (content:"|9090 9090 9090 9090|"; content:"|E8 C0FF FFFF|"; msg:"IMAP Buffer Overflow!";)
+
+# note that if "depth" and "offset" keywords that are included in instances
+# where multiple content strings are being searched for, they must be grouped
+# with their own content keyword.  In other words, if there are two content
+# keywords in a rule and they both use depth and offset keywords, the first
+# set of depth and offset keywords must be in the rule *after* the first 
+# content string, but *before* the second one.  For example:
+
+alert tcp any any -> $HOME_NET 143 (content:"|9090 9090 9090 9090|"; depth: 16; offset: 5; content:"|E8 C0FF FFFF|"; depth: 10; offset: 200; msg:"IMAP Buffer Overflow!";)
+
+# It's just that easy. :)
+
+
+#################
+# NEW PREPROCESSOR: http_decode
+#################
+
+# http_decode "normalizes" web traffic, converting "escaped" characters back 
+# to their ASCII representation.  For example, a %20 converts to a space, etc.
+# Attackers and newer web scanners (like whisker.pl) attempt to hide their 
+# attacks from ID systems by obfuscating their probes/attacks with these
+# character substitutions, and this preprocessor defeats those attempts.
+
+# The preprocessor takes the port numbers that it's going to analyze as
+# arguments in the rules file.  In most cases, this will just be port 80,
+# but some places will have web servers running on multiple ports like in 
+# the example below
+
+# The preprocessor internally checks for the IIS unicode and the CGI NULL
+# byte attack. This can be disabled by providing "-unicode" or "-cginull"
+# arguments to the preprocessor.
+
+preprocessor http_decode: 80 443 8080
+
+
+#################
+# NEW PREPROCESSOR: minfrag
+#################
+
+# This preprocessor simply inspects fragmented traffic for "tiny fragments"
+# which is usually a sign that something fishy is going on.  The only argument
+# to this preprocessor is the threshold size of the fragments that an alert
+# will be generated on.  The example size of 128 bytes (below) is probably a 
+# pretty good size to stick with.
+
+preprocessor minfrag: 128
+
+
+##################
+# NEW KEYWORD: tos
+##################
+
+#
+# This keyword plugin intorduces `tos' keyword which checks against IP tos headers.
+#
+
+alert tcp $EXTERNAL any -> $INTERNAL any (tos: 201; msg: "Bubonic attack";)
+
+
+#########################
+# New in version 1.7
+#########################
+
+##########################
+# NEW PREDEFINED VARIABLE: <interface_name>_ADDRESS
+##########################
+#
+#  variable <intname>_ADDRESS will be intialised to IP address/mask of the network
+#  which is configured on interface. Please note that snort has to be running on
+#  this interface.
+#
+
+var MY_NET $eth0_ADDRESS
+
+###############
+# NEW SYNTAXIS: definition of multiple networks per variable
+###############
+#
+#  you can define multiple networks in single variable (or use them directly in rules)
+#
+
+var MY_NET [10.1.1.0/24,10.1.2.0/24,192.168.1.0/24]
+
+alert tcp $MY_NET any -> any any (msg: "TCP taffic from MY_NET";)
+alert tcp [10.2.2.0/24,10.2.21/0/24] any -> any any (msg: "TCP traffic from some other network";)
+

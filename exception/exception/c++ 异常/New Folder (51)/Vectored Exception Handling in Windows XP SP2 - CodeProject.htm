@@ -1,0 +1,1284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0048)http://www.codeproject.com/KB/exception/VEH.aspx -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Vectored Exception Handling in Windows XP SP2 - CodeProject</title> 
+	<link type="text/css" rel="stylesheet" href="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/CodeProject.min.css">
+
+	
+
+
+<meta name="Description" content="This article updates Matt Pietrek&#39;s Vectored Exception Handling article from the MSDN Magazine.; Author: zhzhtst; Updated: 1 Sep 2007; Section: Exception Handling; Chapter: General Programming; Updated: 1 Sep 2007">
+<meta name="Keywords" content="VC7.1, WinXP, VS.NET2003, C, Dev, Advanced,Exception Handling,General Programming,Free source code, tutorials">
+<meta name="Author" content="zhzhtst">
+<meta name="Rating" content="General">
+<meta name="Robots" content="index, follow, NOODP">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="The Code Project">
+<meta name="google-site-verification" content="RP2bNCUeOmNkkJesEnU8X3UyTbqIcCKP0CmdwU8in5k">
+
+<link rel="dns-prefetch" href="http://ajax.googleapis.com/"> 
+
+<link rel="canonical" href="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/Vectored Exception Handling in Windows XP SP2 - CodeProject.htm">
+
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - All Topics" href="http://www.codeproject.com/webservices/articlerss.aspx?cat=1">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - MFC/C++" href="http://www.codeproject.com/webservices/articlerss.aspx?cat=2">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - C#" href="http://www.codeproject.com/webservices/articlerss.aspx?cat=3">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - VB.NET" href="http://www.codeproject.com/webservices/articlerss.aspx?cat=6">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Mobile" href="http://www.codeproject.com/webservices/articlerss.aspx?cat=18">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - ASP.NET" href="http://www.codeproject.com/webservices/articlerss.aspx?cat=4">
+
+<link rel="alternate" type="application/rss+xml" title="CodeProject Lounge Postings" href="http://www.codeproject.com/webservices/LoungeRSS.aspx">
+<link rel="search" type="application/opensearchdescription+xml" title="CodeProject" href="http://www.codeproject.com/info/OpenSearch.xml">
+
+	<!--<base target="_top">--><base href="." target="_top">
+	<link rel="icon" href="http://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="shortcut icon" href="http://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="apple-touch-icon" href="http://www.codeproject.com/images/FavIcon-Apple.png" type="image/png">
+<script type="text/javascript" language="Javascript">//<![CDATA[
+if(top!=self)top.location.href=location.href; if(typeof(DemoUrl)!="undefined")document.write(unescape('%3Cme')+'ta http'+'-equiv="re' +'fresh" con'+'tent="1;url='+DemoUrl+unescape('"%3CE'));
+function SelfCheck(){ return window.confirm("You are about to reply to your own message. Is this really what you want?");}
+function MarkAns(MemberID,MsgID,gp,bp,mt,QID){
+ document.write(unescape("%3Ca href=\"#xx" + MsgID.toString() + "xx\"  onclick=\"RateMsg("+MemberID.toString()+","+MsgID.toString()+",6,"+QID.toString()+");\"%3E"));
+ document.write(unescape("%3Cimg height=\"20\" width=\"20\" src=\"/script/Forums/Images/good.png\" alt=\"good\" border=\"0\" align=\"absmiddle\" /%3E "+gp+" "+mt+"%3C/a%3E "));
+ document.write(" &nbsp;"); document.write(unescape("%3Ca href=\"#xx" + MsgID.toString() + "xx\"  onclick=\"RateMsg("+MemberID.toString()+","+MsgID.toString()+",7,"+QID.toString()+");\"%3E"));
+ document.write(unescape("%3Cimg height=\"20\" width=\"20\" src=\"/script/Forums/Images/bad.png\" alt=\"bad\" border=\"0\" align=\"absmiddle\" /%3E "+bp+" "+mt+"%3C/a%3E"));
+}
+
+function MsgVFrm(MemberID,MsgID,GB,gp,bp,mt){
+ if(!GB)document.write("Rate this message: ");
+ document.write(unescape("%3Ca href=\"#xx" + MsgID.toString() + "xx\" onclick=\"RateMsg(" + MemberID.toString() + ", " + MsgID.toString() + ","));document.write((GB?"5":"1")+unescape(",0);\"%3E"));
+ if(GB) document.write(unescape("%3Cimg height=\"20\" width=\"20\" src=\"/script/Forums/Images/good.png\" alt=\"good\" border=\"0\" align=\"absmiddle\" /%3E "+gp+" "+mt+"%3C/a%3E "));
+ else document.write(unescape("%3Cimg height=\"14px\" width=\"14px\" src=\"http://s.codeproject.com/script/Forums/Images/thumbs_down.gif\" alt=\"vote 1\" border=\"0\" align=\"middle\" /%3E%3C/a%3E "));
+ if(GB)document.write(" &nbsp;"); else for(var i=1; i<=5;i++)
+  document.write(unescape("%3Ca class=\"toolbar\" href=\"#xx" + MsgID.toString() + "xx\" title=\"vote this message a " + i.toString() + "\" onclick=\"RateMsg(" + MemberID.toString() + ", " + MsgID.toString() + ", " + i.toString() + ",0)\"%3E%3Cb%3E" + i.toString() + "%3C/b%3E%3C/a%3E "));
+ document.write(unescape("%3Ca href=\"#xx" + MsgID.toString() + "xx\" onclick=\"RateMsg(" + MemberID.toString() + ", " + MsgID.toString() + ","));document.write((GB?"1":"5")+unescape(",0);\"%3E"));
+ if(GB)document.write(unescape("%3Cimg height=\"20\" width=\"20\" src=\"/script/Forums/Images/bad.png\" alt=\"bad\" border=\"0\" align=\"absmiddle\" /%3E "+bp+" "+mt+"%3C/a%3E"));
+ else document.write(unescape("%3Cimg height=\"14px\" width=\"14px\" src=\"http://s.codeproject.com/script/Forums/Images/thumbs_up.gif\" border=\"0\" alt=\"vote 5\" align=\"middle\" /%3E%3C/a%3E "));
+}
+
+function ReportMsg(userid, msgid, score) {
+ if (confirm("Are you sure you want this message removed?"))
+  return RateMsg(userid, msgid, score, 0);
+ else return false;
+}
+function RateMsg(memberid, msgid, score, questionId) {
+ var req = new XMLHttpRequest();
+ req.onreadystatechange = function() {
+  if (req.readyState == 4){
+   if (req.status == 200){
+    var respText = req.responseText;
+    var re = new RegExp(unescape("\%3Cdiv\%3E(.*)\%3C/div\%3E"), "g");
+    var match = re.exec(respText);
+    voteStatus.innerHTML = unescape("%3Cb%3E") + (match&&match.length>1&&match[1])?match[1]:"An error occured" + unescape("%3C/b%3E");
+   } else
+    voteStatus.innerHTML = unescape("%3Cb style='color:red'%3EFailed!") + req.statusText + unescape("%3C/b%3E");
+  }
+ }
+ var voteStatus = document.getElementById("MVF" + msgid);
+ if (!voteStatus) return;
+ voteStatus.innerHTML = unescape("%3Cb style='color:green'%3EVoting...%3C/b%3E");
+ var strAction = "/script/Forums/Vote.aspx?js=1&fmid="+memberid.toString()+"&select="+msgid.toString()+"&score="+score.toString()+"&qid="+questionId.toString();
+ req.open("GET", strAction, true);
+ req.send(null);
+  return false;
+}
+
+//]]>
+</script>
+
+<script type="text/javascript" async="" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/ga.js"></script><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>	
+
+<body class="chrome chrome15">
+
+
+
+
+<a href="http://www.codeproject.com/KB/exception/VEH.aspx#Main"><img alt="Click here to Skip to main content" class="access-link" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/t.gif"></a>
+
+
+<div class="page-background">
+	<div id="A" class="container-content">
+
+		
+		
+
+		
+
+		
+		
+
+<div class="container nav-memberbar clearfix">
+<div class="member-stats float-left">8,259,322 members and growing! (43,552 online)</div>
+<div class="float-left"></div>
+<div class="float-right">
+<span id="ctl00_MemberMenu_CurRat" class="tooltip">
+		<a id="ctl00_MemberMenu_MyProfile" href="http://www.codeproject.com/Members/sunyongjie1984">sunyongjie1984</a><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/arrow-down-16.png" style="width:16px;height:16px;vertical-align:bottom">
+		<div class="tooltip-flyout" style="width:110px !important">
+			<div><a id="ctl00_MemberMenu_MySettingsNonSSL" href="http://www.codeproject.com/script/Membership/Modify.aspx">My Settings</a></div>
+			<div><a id="ctl00_MemberMenu_MySettings" href="https://www.codeproject.com/script/Membership/Modify.aspx"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/secure.png" width="13px" height="14px" style="vertical-align:middle;border:0">My Settings (SSL)</a></div>
+			<div><a id="ctl00_MemberMenu_MyContacts" href="http://www.codeproject.com/script/Membership/ListContacts.aspx">My Contact info</a></div>
+			<div><a id="ctl00_MemberMenu_MyBookmarks" href="http://www.codeproject.com/script/Bookmarks/List.aspx?obtid=2">My Bookmarks</a></div>
+			
+			<div><a id="ctl00_MemberMenu_MyCodeProject" href="http://www.codeproject.com/script/Membership/MyCodeProject.aspx">My Watched Items</a></div>
+			<div><a id="ctl00_MemberMenu_MyArticles" href="http://www.codeproject.com/script/Articles/MemberArticles.aspx?amid=6590118">My Articles</a></div>
+			<div><a id="ctl00_MemberMenu_MyMessages" href="http://www.codeproject.com/script/Forums/Messages.aspx?fmid=6590118">My Messages</a></div>
+			<div><a id="ctl00_MemberMenu_MyQuestions" href="http://www.codeproject.com/script/Answers/MemberPosts.aspx?tab=questions&mid=6590118&showall=True">My Questions</a></div>
+			<div><a id="ctl00_MemberMenu_MyAnswers" href="http://www.codeproject.com/script/Answers/MemberPosts.aspx?tab=answers&mid=6590118&showall=True">My Answers</a></div>
+			
+		</div>
+	</span><span id="ctl00_MemberMenu_TotalPoints" title="Total reputation points 283" class="member-rep-box bronze" style="margin-left:0"><a href="http://www.codeproject.com/script/Reputation/List.aspx?mid=6590118">283</a></span>
+	&nbsp;
+	<a id="ctl00_MemberMenu_Signout" href="http://www.codeproject.com/script/Membership/LogOff.aspx?rp=%2fKB%2fexception%2fVEH.aspx">Sign out</a>
+
+
+</div>
+
+</div>
+		
+
+		
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+		<tbody><tr>
+			<td class="header"><a href="http://www.codeproject.com/"><img id="ctl00_Logo" title="The Code Project" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/logo225x90.gif" alt="Home" style="border-width:0px;"></a></td>
+			<td class="header" align="right">
+				<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="77" lqm_format="728x90" lqm_country="CN" lqm_tags="VC7.1,WinXP,VS.NET2003,C,Dev,Advanced"><iframe id="lqmad1" width="728" height="90" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe></div>
+			</td>
+		</tr></tbody></table>
+
+		<table cellpadding="0" cellspacing="0" class="contrast1-background extended"><tbody><tr><td nowrap="nowrap">
+			
+
+<div class="navbar clearfix">
+<ul id="nav">
+
+<li><a id="ctl00_TopNavBar_Home" class="down" href="http://www.codeproject.com/">Home</a>
+
+
+</li><li><a id="ctl00_TopNavBar_Art" class="down selected" href="http://www.codeproject.com/script/Articles/Latest.aspx">Articles</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_ArtTopicList" class="fly last" onmouseover="ShowMap(this, &#39;siteMap&#39;);" href="http://www.codeproject.com/script/Content/SiteMap.aspx">Chapters and Sections</a><ul id="ctl00_TopNavBar_MapFlyout"><li>
+				<div id="siteMap" class="tooltip-flyout">
+					<img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/animated.gif" style="margin:150px;width:100px;height:100px;">
+				</div>
+			</li></ul>
+		</li>
+		<li><a id="ctl00_TopNavBar_ArtSearch" class="fly break" href="http://www.codeproject.com/search.aspx">Search</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestArts" class="fly" href="http://www.codeproject.com/script/Articles/Latest.aspx?at=1,3,7">Latest Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestTips" class="fly" href="http://www.codeproject.com/script/Articles/Latest.aspx?at=6,8">Latest Tips/Tricks</a></li>
+		<li><a id="ctl00_TopNavBar_ArtTop" class="fly" href="http://www.codeproject.com/script/Articles/TopArticles.aspx?ta_so=5">Top Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBeginner" class="fly" href="http://www.codeproject.com/search.aspx?aidlst=152&sa_us=True">Beginner Articles</a></li>
+		<li id="ctl00_TopNavBar_VideosLink">
+			<a id="ctl00_TopNavBar_ArtVideoArticles" class="fly" href="http://www.codeproject.com/script/Articles/VideoArticleList.aspx">Video Articles</a>
+		</li>
+		<li><a id="ctl00_TopNavBar_ArtBlogArticles" class="fly break" href="http://www.codeproject.com/script/Articles/BlogArticleList.aspx">Technical Blogs</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostArticle" class="fly" href="http://www.codeproject.com/script/Articles/Submit.aspx">Post an Article</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostTipTrick" class="fly" href="http://www.codeproject.com/Tips/post.aspx">Post Tip &amp; Trick</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostBlog" class="fly break" href="http://www.codeproject.com/script/Articles/BlogFeed.aspx">Post your Blog</a></li>
+		<li><a id="ctl00_TopNavBar_ArtGuide" class="fly" href="http://www.codeproject.com/info/Submit.aspx">Posting/Update Guidelines</a></li>
+		<li><a id="ctl00_TopNavBar_ArtCompetition" class="fly last" href="http://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1">Article Competition</a></li>
+	</ul>
+
+</li>
+
+
+
+<li><a id="ctl00_TopNavBar_Answers" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active">Quick Answers</a>
+	<ul>
+		<li id="ctl00_TopNavBar_AQL"><a id="ctl00_TopNavBar_ArticleQuestion" class="fly highlight" href="http://www.codeproject.com/KB/exception/VEH.aspx#_comments">Ask a Question about this article</a></li>
+
+		<li><a id="ctl00_TopNavBar_QAAsk" class="fly" href="http://www.codeproject.com/Questions/ask.aspx">Ask a Question</a></li>
+
+		
+		<li><a id="ctl00_TopNavBar_QAUnanswered" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=unanswered">View Unanswered Questions</a></li>
+		<li><a id="ctl00_TopNavBar_QALatest" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active">View All Questions...</a></li>
+		
+				<li><a id="ctl00_TopNavBar_QATR_ctl00_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=81" style="padding-left:30px">C# questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl01_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=85" style="padding-left:30px">ASP.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl02_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=842" style="padding-left:30px">VB.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl03_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=78" style="padding-left:30px">C++ questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl04_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=308" style="padding-left:30px">C#4.0 questions</a></li>
+			
+	</ul>
+
+</li>
+
+
+
+<li><a id="ctl00_TopNavBar_Forums" href="http://www.codeproject.com/script/Forums/List.aspx">Discussions</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_MessageBoardsAll" class="fly" href="http://www.codeproject.com/script/Forums/List.aspx">All Message Boards...</a></li>
+		<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1580997/Application-Lifecycle.aspx">Application Lifecycle<span class="fly-menu">&gt;</span></a>
+<ul><li><a class="fly" href="http://www.codeproject.com/Forums/369270/Design-and-Architecture.aspx">Design and Architecture</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1533717/Running-a-Business.aspx">Running a Business</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1533716/Sales-Marketing.aspx">Sales / Marketing</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1651/Collaboration-Beta-Testing.aspx">Collaboration / Beta Testing</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/3304/Work-Training-Issues.aspx">Work &amp; Training Issues</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1627782/Free-Tools.aspx">Free Tools</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1647/C-Cplusplus-MFC.aspx">C / C++ / MFC<span class="fly-menu">&gt;</span></a>
+<ul><li><a class="fly" href="http://www.codeproject.com/Forums/4486/ATL-WTL-STL.aspx">ATL /  WTL / STL</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/3785/Managed-Cplusplus-CLI.aspx">Managed C++/CLI</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1649/Csharp.aspx">C#</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1725/Database.aspx">Database</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/186301/Hardware-Devices.aspx">Hardware &amp; Devices<span class="fly-menu">&gt;</span></a>
+<ul><li><a class="fly" href="http://www.codeproject.com/Forums/1644/System-Admin.aspx">System Admin</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1606152/Hosting-and-Servers.aspx">Hosting and Servers</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1643/Java.aspx">Java</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1653293/NET-4-5-and-Visual-Studio-11.aspx">.NET 4.5 and Visual Studio 11</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1650/NET-Framework.aspx">.NET Framework</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/13695/Mobile.aspx">Mobile</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1540733/Sharepoint.aspx">Sharepoint</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1004257/Silverlight-WPF.aspx">Silverlight / WPF</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1646/Visual-Basic.aspx">Visual Basic</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1640/Web-Development.aspx">Web Development<span class="fly-menu">&gt;</span></a>
+<ul><li><a class="fly" href="http://www.codeproject.com/Forums/12076/ASP-NET.aspx">ASP.NET</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1580227/CSS.aspx">CSS</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1580226/JavaScript.aspx">JavaScript</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1213656/PHP.aspx">PHP</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1645/Site-Bugs-Suggestions.aspx">Site Bugs / Suggestions</a>
+</li>
+
+		<li class="heading">Other Languages<span class="fly-menu">&gt;</span>
+		<ul>
+		<li><a class="fly" href="http://www.codeproject.com/Forums/1580229/Hindi.aspx">General Indian Topics</a></li>
+		<li><a class="fly" href="http://www.codeproject.com/Forums/1580230/Chinese.aspx">General Chinese Topics</a></li>
+		</ul>
+		</li>
+		
+	</ul>
+
+</li>
+
+<li><a id="ctl00_TopNavBar_Zones" href="http://www.codeproject.com/Zones/index.aspx">Learning Zones</a>
+
+	<ul>
+		<!--<li class="heading">Zones</li>-->
+		<li><a href="http://www.codeproject.com/Zones/Commerce/" class="fly">The Commerce Zone</a></li><li><a href="http://www.codeproject.com/Zones/Mobile/" class="fly">The Mobile Zone</a></li><li><a href="http://www.codeproject.com/Zones/Cloud/" class="fly">The Cloud Zone</a></li><li><a href="http://www.codeproject.com/Zones/Hardware/" class="fly">The Hardware Zone</a></li><li><a href="http://www.codeproject.com/Zones/Parallelism/" class="fly">The Parallelism Zone</a></li><li><a href="http://www.codeproject.com/Zones/WPF-Silverlight/" class="fly">The WPF / Silverlight Zone</a></li><li><a href="http://www.codeproject.com/Zones/Flex-Flash/" class="fly">The Flex / Flash Zone</a></li><li><a href="http://www.codeproject.com/Zones/HTML-CSS/" class="fly">The HTML5 / CSS3 Zone</a></li><li><a href="http://www.codeproject.com/Zones/SqlServer/" class="fly">The SQL Zone</a></li><li><a href="http://www.codeproject.com/Zones/WhitePapers/" class="fly break">WhitePapers / Webcasts</a></li>
+		<li><a id="ctl00_TopNavBar_Solutions" class="fly last" href="http://www.codeproject.com/KB/solution-center/">Solutions Center</a></li>
+	</ul>
+
+</li>
+
+
+
+
+
+
+
+
+
+
+<li><a id="ctl00_TopNavBar_Features" href="http://www.codeproject.com/Feature/">Features</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_WhosWho" class="fly" href="http://www.codeproject.com/script/Membership/Profiles.aspx">Who's Who</a></li>
+		<li><a id="ctl00_TopNavBar_MVPs" class="fly" href="http://www.codeproject.com/script/Awards/MVPWinners.aspx">Most Valuable Professionals</a></li>
+		<li><a id="ctl00_TopNavBar_Companies" class="fly break" href="http://www.codeproject.com/script/Membership/Profiles.aspx?mgtid=1&mgm=True">Company Listings</a></li>
+		<li><a id="ctl00_TopNavBar_Catalog" class="fly" href="http://www.codeproject.com/script/Catalog/List.aspx">Component &amp; Service Catalog</a></li>
+		<li><a id="ctl00_TopNavBar_Comps" class="fly" href="http://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1&awsac=true">Competitions</a></li>
+		<li><a id="ctl00_TopNavBar_News" class="fly" href="http://www.codeproject.com/script/News/List.aspx">News</a></li>
+		<li><a id="ctl00_TopNavBar_TechSummit" class="fly" href="http://www.codeproject.com/TechSummit/">Tech Summits</a></li>
+		<li><a id="ctl00_TopNavBar_Insider" class="fly" href="http://www.codeproject.com/Feature/Insider/">Daily Insider</a></li>
+		<li><a id="ctl00_TopNavBar_Newsletters" class="fly" href="http://www.codeproject.com/script/Mailouts/Archive.aspx?mtpid=1">Newsletter archive</a></li>
+		<li><a id="ctl00_TopNavBar_PressRelease" class="fly" href="http://www.codeproject.com/script/PressReleases/Preview.aspx">Press Releases</a></li>
+		<li><a id="ctl00_TopNavBar_Surveys" class="fly" href="http://www.codeproject.com/script/Surveys/List.aspx">Surveys</a></li>
+		<li><a id="ctl00_TopNavBar_Stuff" class="fly" href="http://www.codeproject.com/Info/Stuff.aspx">CodeProject Stuff</a></li>
+		<li><a id="ctl00_TopNavBar_AddIn" class="fly last" href="http://www.codeproject.com/Services/Addins/">The Code Project VS 2008 add-in</a></li>
+	</ul>
+
+</li>
+
+
+<li><a id="ctl00_TopNavBar_Help" href="http://www.codeproject.com/KB/FAQs/">Help!</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_HelpWhatIs" class="fly" href="http://www.codeproject.com/info/guide.aspx">What is 'The Code Project'?</a></li>
+		<li><a id="ctl00_TopNavBar_HelpGeneral" class="fly" href="http://www.codeproject.com/KB/FAQs/">General FAQ</a></li>
+		<li><a id="ctl00_TopNavBar_HelpPostQuestion" class="fly" href="http://www.codeproject.com/Questions/ask.aspx">Post a Question</a></li>
+		<li><a id="ctl00_TopNavBar_HelpBugs" class="fly" href="http://www.codeproject.com/Forums/1645/Site-Bugs-Suggestions.aspx">Bugs and Suggestions</a></li>
+		<li><a id="ctl00_TopNavBar_HelpSiteMap" class="fly" href="http://www.codeproject.com/script/Content/SiteMap.aspx">Site Directory</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAdvertise" class="fly" href="http://lakequincy.com/">Advertise with us</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutUs" class="fly last" href="http://www.codeproject.com/info/about.aspx">About Us</a></li>
+	</ul>
+
+</li>
+
+
+<li style="margin-left:10px">
+<a id="ctl00_TopNavBar_Lounge" class="simple" href="http://www.codeproject.com/Lounge.aspx">The Lounge</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_InsiderLnk" class="fly" href="http://www.codeproject.com/insider.aspx">The Insider News</a></li>
+		<li><a id="ctl00_TopNavBar_LoungeLnk" class="fly" href="http://www.codeproject.com/Lounge.aspx">The Lounge &nbsp;</a></li>
+		<li><a id="ctl00_TopNavBar_CleverLnk" class="fly" href="http://www.codeproject.com/feature/CleverCode.aspx">Clever Code</a></li>
+		<li><a id="ctl00_TopNavBar_ShameLnk" class="fly" href="http://www.codeproject.com/feature/HallOfSHame.aspx">Hall of Shame</a></li>
+		<li><a id="ctl00_TopNavBar_SoapBoxLnk" class="fly" href="http://www.codeproject.com/Forums/1536756/The-Soapbox.aspx">The Soapbox</a></li>
+	</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+<script type="text/javascript">
+
+function ShowMap(prnt, elmId) {
+	var map = $('#' + elmId);
+	
+	if (!prnt.populated && !prnt.populating) {
+		prnt.populating = true;
+		map.css( { 'height': '400px', 'width': '400px' });
+		map.load("/script/content/ajax/SiteMap.aspx", function() { prnt.populated = true; });
+		prnt.populated = true;
+		prnt.populating = false;
+	}
+
+	if (prnt.populated) {
+		var left = Math.max(map.parent().offset().left, 200);
+		var top = Math.max(map.parent().offset().top, 0);
+		var width = Math.min((($(window).width()-left) * 0.9), 1000);
+		var height = Math.min((($(window).height()-top) * 0.9), 700);
+		map.css('width', width + 'px');
+		map.css('height', height + 'px');
+		map.css('overflow', 'auto');
+		map.css('margin', '0');
+	}
+}
+
+</script>
+		</td><td align="right">
+			
+
+<div class="search-bar">
+
+<form method="get" action="http://www.codeproject.com/search.aspx" name="Search" class="tight">
+
+
+<table border="0" cellspacing="0" cellpadding="0" class="search"><tbody><tr><td><input tabindex="2" class="search  subdue" id="sb_tb" value="" name="q"></td><td><input type="image" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/search.gif"></td></tr></tbody></table>
+
+<div class="hover-container">
+	<div id="SearchFilter" class="search-advanced small-text align-left" style="display: none; ">
+	<b>Search within:<br></b>
+		
+		<input type="radio" id="sb_kw" name="sbo" value="kw" checked="true"><label for="sb_kw">Articles</label><br>
+<input type="radio" id="sb_qa" name="sbo" value="qa"><label for="sb_qa">Quick Answers</label><br>
+<input type="radio" id="sb_fm" name="sbo" value="fm"><label for="sb_fm">Messages</label><br>
+<input type="radio" id="sb_ctlk" name="sbo" value="ctlk"><label for="sb_ctlk">Product Catalog</label><br>
+
+
+		
+		
+	</div>
+</div>
+</form>
+
+</div>
+		</td></tr></tbody></table>
+		
+
+		
+		<div class="container-article hreview-aggregate">
+		
+			
+			<div class="container-header">
+				<div id="ctl00_Header" class="header">
+
+					<a name="Main"></a>
+
+					
+					<a name="_articleTop" id="_articleTop"></a>
+					
+
+<div class="clearfix hover-container">
+
+	<div class="container">
+		
+		<div class="breadcrumb float-left"><a href="http://www.codeproject.com/script/Content/SiteMap.aspx"><span class="sitemap-anchor" onmouseover="ShowMap(this,&#39;map&#39;);"><img width="16px" height="16px" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/sitemap16.png" border="0" alt="Site map" style="vertical-align:middle"><div id="map" class="tooltip-flyout"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/animated.gif" style="margin:150px;width:100px;height:100px;border:0;"></div></span></a> » <a href="http://www.codeproject.com/Chapters/6/General-Programming.aspx">General Programming</a> » <a href="http://www.codeproject.com/KB/exception/">Exception Handling</a> » <a href="http://www.codeproject.com/KB/exception/#General">General</a></div>
+	</div>
+
+	
+	<div id="ctl00_TitleArea_InfoArea" class="float-right">
+		
+
+<div class="infobox">
+	<table class="tight small-text" cellpadding="0" cellspacing="1">
+	<tbody><tr><td>Licence&nbsp;</td><td><a href="http://www.codeproject.com/info/cpol10.aspx" title="The Code Project Open License (CPOL)">CPOL</a></td></tr>
+	
+	<tr><td>First Posted&nbsp;</td><td nowrap="nowrap"><b>1 Sep 2007</b></td></tr>
+	<tr><td>Views&nbsp;</td><td><b>14,495</b></td></tr>
+	
+	<tr><td>Downloads&nbsp;</td><td><b>32</b></td></tr>
+		
+	
+	<tr><td>Bookmarked&nbsp;</td><td><b>8 times</b></td></tr>
+	
+
+	
+	
+	</tbody></table>
+</div>	
+	</div>
+
+	
+	<div class="item">
+	<h1 id="ctl00_TitleArea_ArticleTitle" class="fn">Vectored Exception Handling in Windows XP SP2</h1>
+	</div>
+
+	
+	<div class="author">
+		By <b><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=2941634">zhzhtst</a></b> | 
+		1 Sep 2007 
+		
+
+		
+		
+	</div>
+	
+	<div class="tags">
+	<span id="ctl00_TitleArea_TagsList_TagWrp" class="tags">
+	
+	
+	
+	<span id="ctl00_TitleArea_TagsList_VisibleTags"><span class="t"><a href="http://www.codeproject.com/search.aspx?aidlst=7">VC7.1</a></span><span class="t"><a href="http://www.codeproject.com/search.aspx?aidlst=24">WinXP</a></span><span class="t"><a href="http://www.codeproject.com/search.aspx?aidlst=38">VS.NET2003</a></span><span class="t"><a href="http://www.codeproject.com/search.aspx?aidlst=80">C</a></span><span class="t"><a href="http://www.codeproject.com/search.aspx?aidlst=118">Dev</a></span><span class="t"><a href="http://www.codeproject.com/search.aspx?aidlst=154">Advanced</a></span></span> 
+
+	
+	
+</span>
+
+	</div>
+
+	
+	<div class="abstract summary"><span id="ctl00_TitleArea_ArticleDescr">This article updates Matt Pietrek's Vectored Exception Handling article from the MSDN Magazine.</span></div>
+</div>
+
+
+
+					
+
+				</div>
+
+				<div id="ctl00_HeadSide" class="header-sidebar">
+					<div class="align-left" style="height:24px">
+						
+
+
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+					</div>
+
+					
+
+<div class="bold pad-top">See Also</div>
+<ul class="outdent small-text" style="margin-left:5px">
+	<li><a id="ctl00_SeeAlso_LikeThis" href="http://www.codeproject.com/search.aspx?q=Vectored+Exception+Handling+in+Windows+XP+SP2">More like this</a></li>
+	<li><a id="ctl00_SeeAlso_ByAuthor" href="http://www.codeproject.com/script/Articles/MemberArticles.aspx?amid=2941634">More by this author</a></li>
+</ul>
+
+				</div>
+
+			</div>
+			
+
+			
+			<div id="ctl00_Nav" class="container-nav">
+				<div id="ctl00_TabContainer" class="tabs-container clearfix">
+
+					
+					<div class="float-right action-links"> 
+						<a id="ctl00_ActionLinks_PrintLnk" class="tooltip" href="http://www.codeproject.com/KB/exception/VEH.aspx?display=Print">
+	<img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/print.gif" width="24px" height="24px" style="vertical-align:middle;border:0">
+	<div class="speech-bubble-container-up">
+		<div class="speech-bubble-up">Print Article</div>
+		<div class="speech-bubble-pointer-up">
+			<div class="speech-bubble-pointer-up-inner"></div>
+		</div>
+	</div>
+</a>
+
+<span id="SBI"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/share_drop24.png" id="ctl00_ActionLinks_AddTo_Img" width="37" height="24" alt="add" style="vertical-align:middle">
+</span>
+<div id="ATD" class="list-socialbookmark" style="left: 618px; top: 193px; "><div><a class="AddTo" title="Add this page to Twitter" onclick="return socialLinks.addto(0);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Twitter.gif" width="16px" height="16px" border="0"> Twitter</a> </div><div><a class="AddTo" title="Add this page to Digg" onclick="return socialLinks.addto(1);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Digg.png" width="16px" height="16px" border="0"> Digg</a> </div><div><a class="AddTo" title="Add this page to Facebook" onclick="return socialLinks.addto(2);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Facebook.png" width="16px" height="16px" border="0"> Facebook</a> </div><div><a class="AddTo" title="Add this page to Del.icio.us" onclick="return socialLinks.addto(3);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Delicious.png" width="16px" height="16px" border="0"> Del.icio.us</a> </div><div><a class="AddTo" title="Add this page to Reddit" onclick="return socialLinks.addto(4);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Reddit.png" width="16px" height="16px" border="0"> Reddit</a> </div><div><a class="AddTo" title="Add this page to Stumbleupon" onclick="return socialLinks.addto(5);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_stumbleupon.png" width="16px" height="16px" border="0"> Stumbleupon</a> </div><div><a class="AddTo" title="Add this page to Newsvine" onclick="return socialLinks.addto(6);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Newsvine.png" width="16px" height="16px" border="0"> Newsvine</a> </div><div><a class="AddTo" title="Add this page to Technorati" onclick="return socialLinks.addto(7);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Technorati.png" width="16px" height="16px" border="0"> Technorati</a> </div><div><a class="AddTo" title="Add this page to Mr. Wong" onclick="return socialLinks.addto(8);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_MrWong.png" width="16px" height="16px" border="0"> Mr. Wong</a> </div><div><a class="AddTo" title="Add this page to Yahoo!" onclick="return socialLinks.addto(9);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Yahoo.png" width="16px" height="16px" border="0"> Yahoo!</a> </div><div><a class="AddTo" title="Add this page to Google" onclick="return socialLinks.addto(10);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Google.png" width="16px" height="16px" border="0"> Google</a> </div><div><a class="AddTo" title="Add this page to Windows Live" onclick="return socialLinks.addto(11);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/AddTo_Live.png" width="16px" height="16px" border="0"> Windows Live</a> </div><div><a class="AddTo" title="Send as Email" onclick="return socialLinks.addto(12);" href="http://www.codeproject.com/KB/exception/VEH.aspx#"><img align="absmiddle" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/envelope.gif" width="16px" height="16px" border="0"> Send as Email</a> </div></div> 
+ 
+
+<span class="tooltip">
+	<a id="ctl00_ActionLinks_ArticleBmk_ImgBt" title="Bookmark" alternatetext="Bookmark" name="bm_20303_2" onclick="return bookmarkMe(20303,2,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=20303&amp;obtid=2&amp;action=AddBookmark&amp;bio=true&#39;,true);" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=20303&obtid=2&action=AddBookmark&bio=true" style="display:inline-block;height:24px;width:24px;vertical-align:middle;border:0"><img title="Bookmark" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/bookmark.png" alt="" style="border-width:0px;"></a>
+
+
+<span id="ctl00_ActionLinks_ArticleBmk_StatusMsg" class="tiny-text" style="display:none" name="bm_20303_2"></span>
+ 
+	<div class="speech-bubble-container-up">
+		<div class="speech-bubble-up">Add to your CodeProject bookmarks</div>
+		<div class="speech-bubble-pointer-up">
+			<div class="speech-bubble-pointer-up-inner"></div>
+		</div>
+	</div>
+</span>
+
+<a id="discussAnch" href="http://www.codeproject.com/KB/exception/VEH.aspx#_comments" class="tooltip anchorLink">
+	
+	<img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/discuss.gif" width="24px" height="24px" alt="Discuss" style="vertical-align:middle;border:0">
+	<div class="speech-bubble-container-up">
+		<div class="speech-bubble-up">Discuss this article</div>
+		<div class="speech-bubble-pointer-up">
+			<div class="speech-bubble-pointer-up-inner"></div>
+		</div>
+	</div>
+</a>
+<span id="ctl00_ActionLinks_cmtcnt" class="subdue small-text align-middle" style="margin-left:-4px">1</span>
+
+
+
+
+
+					</div>
+
+					<div class="float-left">
+						
+						
+
+<div class="tabs float-left"><table cellpadding="0" cellspacing="0"><tbody><tr>
+	<td class="tab-selected">Article</td><td class="tab-unselected"><a href="http://www.codeproject.com/script/Articles/ViewDownloads.aspx?aid=20303">Browse Code</a></td><td class="tab-unselected"><a href="http://www.codeproject.com/script/Articles/Statistics.aspx?aid=20303">Stats</a></td><td class="tab-unselected"><a href="http://www.codeproject.com/script/Articles/ListVersions.aspx?aid=20303">Revisions (3)</a></td>
+</tr></tbody></table></div>	
+
+
+						
+						<div class="float-left" style="margin-left:15px">
+							<div id="ctl00_CurRat" class="tooltip" name="CurRat_20303">
+								
+
+<table cellpadding="0" cellspacing="0" class="small-text">
+<tbody><tr>
+	
+	<td class="nowrap">
+
+		<span id="ctl00_ArticleRating_VI">
+		<div class="nowrap rating-stars" style="height:24px;width:120px;position:relative;">
+	<div class="clipped align-left float-left" style="height:24px;width:24px;">
+		<img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/stars-fill.png" style="border-width:0px;">
+	</div><div class="clipped" style="height:24px;width:96px;position:relative;">
+		<img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/stars-empty.png" style="border-width:0px;position:absolute;top:0;right:0;">
+	</div>
+</div>
+		</span>
+
+		
+	</td>
+	
+	<td id="ctl00_ArticleRating_VR" class="nowrap">
+		&nbsp;<span id="ctl00_ArticleRating_VotesR">&nbsp;<span class="rating">1.00</span> (<span class="count">1 vote</span>)</span>
+		
+	</td>
+
+</tr>
+
+</tbody></table>
+
+								<div id="ctl00_RB" class="speech-bubble-container-up">
+									<div class="speech-bubble-up" style="width:150px !important">
+										            
+<div>
+<table class="feature" width="100%" height="50px" title="Voting Distribution. Recent data only" cellpadding="0" cellspacing="0"><tbody><tr><td class="chart-column"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/pollcol.gif" width="20pxpx" height="50px" border="0px" alt="1 vote, 100.0%" title="1 vote, 100.0%"><br><span title="1 vote">1</span></td>
+<td class="chart-column"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/t(1).gif" width="20pxpx" height="1px" border="0px" alt="" title=""><br><span title="0 votes">2</span></td>
+<td class="chart-column"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/t(1).gif" width="20pxpx" height="1px" border="0px" alt="" title=""><br><span title="0 votes">3</span></td>
+<td class="chart-column"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/t(1).gif" width="20pxpx" height="1px" border="0px" alt="" title=""><br><span title="0 votes">4</span></td>
+<td class="chart-column"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/t(1).gif" width="20pxpx" height="1px" border="0px" alt="" title=""><br><span title="0 votes">5</span></td>
+</tr></tbody></table><div class="small-text align-center">1.00/5 - 1 vote</div><div class="small-text align-center subdue">&#956; 1.00, &#963;<sub>a</sub> 5.00 [<a href="http://www.codeproject.com/KB/FAQs/RatingReputationFAQ.aspx#noisefilter">?</a>]</div>
+</div>
+									</div>
+									<div class="speech-bubble-pointer-up">
+										<div class="speech-bubble-pointer-up-inner"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div id="ctl00_HeadSideFoot" class="tabs-sidebar">
+					<div>Sponsored Links</div>
+				</div>
+			</div>
+			
+
+			
+			<div class="container-text">
+
+				<div id="AT" class="text">
+					
+					
+					
+					
+
+					   
+
+						
+							
+			
+					<form name="aspnetForm" method="post" action="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/Vectored Exception Handling in Windows XP SP2 - CodeProject.htm" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjExOTQzNjk4Mw9kFgJmD2QWAgIGD2QWCAIRD2QWAgIBD2QWBmYPDxYCHgtOYXZpZ2F0ZVVybAUyL3NjcmlwdC9BcnRpY2xlcy9BZG1pbi9FZGl0b3JDaG9pY2UuYXNweD9haWQ9MjAzMDNkZAICDw8WAh8ABTgvc2NyaXB0L0F3YXJkcy9BZG1pbi9Bd2FyZE9iamVjdC5hc3B4P29iaWQ9MjAzMDMmb2J0aWQ9MmRkAgoPDxYCHwAFLy9zY3JpcHQvQXJ0aWNsZXMvQWRtaW4vUXVldWVFZGl0LmFzcHg/YWlkPTIwMzAzZGQCEw9kFgICAQ9kFgICAQ9kFgZmDw8WAh8ABSQvS0IvZXhjZXB0aW9uL1ZFSC5hc3B4P2Rpc3BsYXk9UHJpbnRkZAIEDxYCHglpbm5lcmh0bWwFATFkAgUPDxYCHwAFJi9zY3JpcHQvQXJ0aWNsZXMvUmVwb3J0LmFzcHg/YWlkPTIwMzAzZGQCFQ9kFgICDQ9kFgYCAg8WAh4GYWN0aW9uBRYvS0IvZXhjZXB0aW9uL1ZFSC5hc3B4FggCAQ9kFgICAQ8WAh4HVmlzaWJsZWhkAgMPZBYCAgIPZBYCAgEPEGRkFgBkAgsPFgIeC18hSXRlbUNvdW50AgFkAg0PZBYCAgEPFgIeBFRleHQFPTxhICBocmVmPSIvS0IvZXhjZXB0aW9uL1ZFSC5hc3B4I19hcnRpY2xlVG9wIj5BcnRpY2xlIFRvcDwvYT5kAgkPDxYEHwUFCVBlcm1hbGluax8ABRYvS0IvZXhjZXB0aW9uL1ZFSC5hc3B4ZGQCGA8WAh8FBRlDb3B5cmlnaHQgMjAwNyBieSB6aHpodHN0ZAIXD2QWAgIFDw8WAh8DaGRkZFT+wuel25CNEc/OljucQP20lipH">
+</div>
+
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCAL5xNPzAQLAlMXDBwLBlMXDBwLClMXDBwLDlMXDBwLElMXDBwLP+++tCwK5upDkC9dU/Ojmxo4KpC9qsOn29PwZWDfg">
+</div>
+
+						<!-- Article Text Start -->
+						<div id="contentdiv">
+						
+
+
+
+<!-- Article Starts -->
+
+
+<ul class="download">
+<li><a href="http://www.codeproject.com/KB/exception/VEH/VEH.zip">Download source code - 1.46 KB</a></li>
+</ul>
+
+<h2>Introduction</h2>
+
+<p>In <a href="http://msdn.microsoft.com/msdnmag/issues/01/09/hood/">September 2001, under The Hood column in MSDN Magazine</a>, Matt Pietrek covered a new feature introduced in Windows XP - Vectored Exception Handling (VEH). Matt explained in detail the VEH and gave us a useful example. When I examined this issue in Windows XP SP2, the most popular OS currently, I found some problems.</p>
+
+<p>First, the demo program crashes when I run it. As follows:</p>
+
+<p><img width="532" height="234" alt="Screenshot - crash.jpg" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/crash.jpg" complete="true"></p>
+
+<p>According to the "Application Error" dialog, we know the error is a single step exception. I examined the source carefully, but couldn't find any problems. When I attached the Visual Studio .NET 2003 debugger to the crashed program, I found the error address is the second instruction of the <code>LoadLibraryExW</code> function. Why is the single step flag still here? Didn't we have it removed? Finally, I have found the reason. In the previous Windows Operation System, almost all system functions have a standard stack frame. The first instruction of these functions is "<code lang="asm"><span class="code-keyword">PUSH</span> EBP</code>" and its opcode is 55h, that is 1 byte. But in Windows XP SP2, the standard prolog code for the SEH stack frame of the system function has been replaced with the <code>_SEH_prolog</code> function. I have found that the first instruction of these functions push the count of memory that local variables of these functions take into stack. For <code>LoadLibraryExW</code>, it's "<code lang="asm"><span class="code-keyword">PUSH</span> 34h</code>" and its opcode is 6Ah 34h, that is 2 bytes. In the demo program, if the single step flag wants to be removed, it must satisfy two conditions: first, the exception code must be <code>STATUS_SINGLE_STEP</code>; second, the exception address must be the next address of <code>LoadLibraryExW</code>'s address. But it's impossible in Windows XP SP2, because the first instruction of <code>LoadLibraryExW</code> is 2 bytes. If we replace 1 in the source with 2, we can solve this problem.</p>
+
+<p>Second, in that article, Matt said that the Vectored Exception Handling linked list is a "Circular Linked List", but I have found it is a "Doubly Linked List". Moreover, the <code>RtlpCalloutEntryList</code> global variable is the head of this linked list. This global variable is a <code>LIST_ENTRY</code> structure (8 bytes), not a <code>VECTORED_EXCEPTION_NODE</code> pointer. How did I find this? When I used SoftICE to see its value, I found the following:</p>
+
+<p><img width="442" height="111" alt="Screenshot - gv.jpg" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/gv.jpg" complete="true"></p>
+
+<p>Obviously, the variable takes 8 bytes. When you think of the style that Windows processes the linked list, you will get it.</p>
+
+<p>As is well known, Windows XP SP2 enhances the security of the system. Many globally available pointers are encoded so that it is difficult to use these pointers to exploit. Exception handling is the first to be affected. Windows XP SP2 supplies a common way to do this. It is the <code>EncodePointer</code> API. In fact, this API is forwarded to <code>RtlEncodePointer</code> in <em>NTDLL.DLL</em>. Of course, there is <code>DecodePointer</code>, and it's forwarded to <code>RtlDecodePointer</code> in <em>NTDLL.DLL</em>.</p>
+
+<p>Based on Matt's pseudocode, I have written the pseudocode for these API:</p>
+
+<div class="Caption">VEH.H file:</div>
+
+<div class="pre-action-link" id="premain0" width="100%" style="display:block"><img id="preimg0" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/minus.gif" style="cursor: pointer; " height="9" width="9" preid="0"><span id="precollapse0" style="cursor: pointer; margin-bottom: 0px; " preid="0"> Collapse</span><span> | </span><a href="http://www.codeproject.com/KB/exception/VEH.aspx#" preid="0">Copy Code</a></div><pre lang="C++" id="pre0" style="margin-top: 0px; "><span class="code-keyword">typedef</span> <span class="code-keyword">struct</span> _VECTORED_EXCEPTION_NODE {
+    LIST_ENTRY ListEntry;
+    PVECTORED_EXCEPTION_HANDLER    pfnHandler;
+    <span class="code-comment">//</span><span class="code-comment"> for security, this pointer has been encoded
+</span>} VECTORED_EXCEPTION_NODE, *PVECTORED_EXCEPTION_NODE;
+
+<span class="code-comment">//</span><span class="code-comment"> The following two global variables are initialized by Windows loader
+</span><span class="code-comment">//</span><span class="code-comment"> (In fact, it's LdrpInitializeProcess routine)
+</span>
+<span class="code-comment">//</span><span class="code-comment"> this variable is response to protect insert and delete operation from
+</span><span class="code-comment">//</span><span class="code-comment"> linked list, Windows loader call RtlInitializeCriticalSection to init it
+</span>RTL_CRITICAL_SECTION RtlpCalloutEntryLock;
+
+<span class="code-comment">//</span><span class="code-comment"> this variable is the head of the Vectored Exception Handling linked list
+</span><span class="code-comment">//</span><span class="code-comment"> Windows loader call InitializeListHead to init it
+</span><span class="code-comment">//</span><span class="code-comment"> please refer to the section "Singly- and Doubly-Linked Lists" in DDK documents
+</span>LIST_ENTRY RtlpCalloutEntryList;</pre>
+
+<div class="Caption">VEH.C file:</div>
+
+<div class="pre-action-link" id="premain1" width="100%" style="display:block"><img id="preimg1" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/minus.gif" style="cursor: pointer; " height="9" width="9" preid="1"><span id="precollapse1" style="cursor: pointer; margin-bottom: 0px; " preid="1"> Collapse</span><span> | </span><a href="http://www.codeproject.com/KB/exception/VEH.aspx#" preid="1">Copy Code</a></div><pre lang="C++" id="pre1" style="margin-top: 0px; "><span class="code-preprocessor">#include</span><span class="code-preprocessor"> <span class="code-keyword">&lt;</span><span class="code-leadattribute">ntddk.h</span><span class="code-keyword">&gt;</span>
+</span>
+<span class="code-preprocessor">#include</span><span class="code-preprocessor"> <span class="code-string">"</span><span class="code-string">veh.h"</span>
+</span>
+
+<span class="code-comment">//</span><span class="code-comment"> the prototype comes from winbase.h in Windows Server 2003 R2 SDK
+</span>PVOID WINAPI RtlAddVectoredExceptionHandler(
+            ULONG First,
+            PVECTORED_EXCEPTION_HANDLER Handler)
+{
+    PVECTORED_EXCEPTION_NODE pCurrentNode = (PVECTORED_EXCEPTION_NODE)
+        RtlAllocateHeap( GetProcessHeap(), <span class="code-digit">0</span>, <span class="code-keyword">sizeof</span>(VECTORED_EXCEPTION_NODE) );
+
+    <span class="code-keyword">if</span> (!pCurrentNode)
+    {
+        <span class="code-keyword">return</span> <span class="code-digit">0</span>;
+    }
+
+    pCurrentNode-<span class="code-keyword">&gt;</span>pfnHandler = RtlEncodePointer(Handler);    <span class="code-comment">//</span><span class="code-comment"> encode for security
+</span>
+    RtlEnterCriticalSection(&amp;RtlpCalloutEntryLock);
+
+    <span class="code-keyword">if</span> (First)
+    {
+        InsertHeadList(&amp;RtlpCalloutEntryList, &amp;pCurrentNode-<span class="code-keyword">&gt;</span>ListEntry);
+    }
+    <span class="code-keyword">else</span>
+    {
+        InsertTailList(&amp;RtlpCalloutEntryList, &amp;pCurrentNode-<span class="code-keyword">&gt;</span>ListEntry);
+    }
+
+    RtlLeaveCriticalSection(&amp;RtlpCalloutEntryLock);
+
+    <span class="code-keyword">return</span> pCurrentNode;
+}
+
+
+<span class="code-comment">//</span><span class="code-comment"> SDK document says Handler is PVOID, but according to the return value of
+</span><span class="code-comment">//</span><span class="code-comment"> AddVectoredExceptionHandler API, it is PVECTORED_EXCEPTION_NODE actually.
+</span>ULONG WINAPI RemoveVectoredExceptionHandler(PVOID Handler)
+{
+    PVECTORED_EXCEPTION_NODE pCurrentNode, pRemovedNode;
+    BOOL bHandlerExist = FALSE;
+
+    RtlEnterCriticalSection(&amp;RtlpCalloutEntryLock);
+
+    <span class="code-keyword">for</span> ((PLIST_ENTRY)pCurrentNode  = RtlpCalloutEntryList.Flink;
+         (PLIST_ENTRY)pCurrentNode != &amp;RtlpCalloutEntryList;
+         (PLIST_ENTRY)pCurrentNode  = pCurrentNode-<span class="code-keyword">&gt;</span>ListEntry.Flink)
+    {
+        <span class="code-keyword">if</span> (pCurrentNode == (PVECTORED_EXCEPTION_NODE)Handler)
+        {
+            pRemovedNode = pCurrentNode;
+            RemoveEntryList(&amp;pCurrentNode-<span class="code-keyword">&gt;</span>ListEntry);
+
+            bHandlerExist = TRUE;
+            <span class="code-keyword">break</span>;
+        }
+    }
+
+    RtlLeaveCriticalSection(&amp;RtlpCalloutEntryLock);
+
+    <span class="code-keyword">if</span> (bHandlerExist)
+    {
+        RtlFreeHeap(GetProcessHeap(), <span class="code-digit">0</span>, (LPVOID)pRemovedNode);
+
+        <span class="code-keyword">return</span> <span class="code-digit">1</span>;
+    }
+
+    <span class="code-keyword">return</span> <span class="code-digit">0</span>;
+}
+
+
+<span class="code-keyword">int</span> WINAPI RtlCallVectoredExceptionHanlers(
+                PEXCEPTION_RECORD pExcptRec,
+                PCONTEXT pContext)
+{
+    EXCEPTION_POINTERS ExceptionPointers;
+
+    <span class="code-comment">//</span><span class="code-comment"> Is the list empty ?
+</span>    <span class="code-keyword">if</span> (RtlpCalloutEntryList.Flink == &amp;RtlpCalloutEntryList)
+    {
+        <span class="code-keyword">return</span> <span class="code-digit">0</span>;
+    }
+    <span class="code-keyword">else</span>
+    {
+        PVECTORED_EXCEPTION_NODE pCurrentNode;
+        <span class="code-SDKkeyword">BYTE</span> retValue = <span class="code-digit">0</span>;
+
+        ExceptionPointers.ExceptionRecord = pExcptRec;
+        ExceptionPointers.ContextRecord   = pContext;
+
+        RtlEnterCriticalSection(&amp;RtlpCalloutEntryLock);
+
+        <span class="code-keyword">for</span> ((PLIST_ENTRY)pCurrentNode  = RtlpCalloutEntryList.Flink;
+             (PLIST_ENTRY)pCurrentNode != &amp;RtlpCalloutEntryList;
+             (PLIST_ENTRY)pCurrentNode  = pCurrentNode-<span class="code-keyword">&gt;</span>ListEntry.Flink)
+        {
+            LONG disposition = ((PVECTORED_EXCEPTION_HANDLER)(
+              RtlDecodePointer(pCurrentNode-<span class="code-keyword">&gt;</span>pfnHandler)))(&amp;ExceptionPointers);
+            <span class="code-keyword">if</span> (disposition == EXCEPTION_CONTINUE_EXECUTION)
+            {
+                retValue = <span class="code-digit">1</span>;
+                <span class="code-keyword">break</span>;
+            }
+        }
+
+        RtlLeaveCriticalSection(&amp;RtlpCalloutEntryLock);
+
+        <span class="code-keyword">return</span> retValue;
+    }
+}</pre>
+
+
+
+
+
+
+						</div>
+						<!-- Article Text End -->
+
+						
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+
+						
+						<h2 id="ctl00_AboutHeading">About the Author</h2>
+
+						<div class="float-right">
+						<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="77" lqm_format="300x250" lqm_country="CN" lqm_tags="VC7.1,WinXP,VS.NET2003,C,Dev,Advanced"><iframe id="lqmad2" width="300" height="250" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe></div>
+						</div>
+
+						
+						
+   
+<table cellpadding="0" cellspacing="5" border="0">
+<tbody><tr valign="top">
+<td id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhotoTable" valign="top" style="width:155px;">
+	<b><a id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberProfileLink" href="http://www.codeproject.com/Members/zhzhtst">zhzhtst</a></b><br><br>
+	<center></center>
+
+	<div class="small-text">
+		<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberJobTitle"></span><br>
+		<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberCompany"></span><br>
+		<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberLocation"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/CN.gif" alt="China" width="16px" height="11px"> China</span><br>
+		<br>
+		<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberType">Member</span><br>
+		
+
+		
+	</div>
+</td>
+
+<td>
+	zhzhtst is a college student in China. He is interested in reverse engineering and virus analysis.<br>	
+</td>
+</tr>
+</tbody></table><br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						
+						<div id="ctl00_RateArticleRow" class="clearfix voting-bar">
+						<div class="float-left" style="padding-top:8px"><a href="http://www.codeproject.com/KB/exception/VEH.aspx#_articleTop">Article Top</a></div>
+						<div class="float-right align-right">
+							<div id="ctl00_RateArticle_RateItemWrapper" class="small-text" name="RateItem_20303">
+
+	<table width="100%" cellpadding="0" cellspacing="0" class="small-text">
+	<tbody><tr>
+		<td id="ctl00_RateArticle_VoteResultDiv" nowrap="nowrap" align="right">
+			<span class="voteRes"></span>
+			<img class="loaderImg" width="16px" alt="loading..." height="16px" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/ajax-loader.gif" style="display:none;"> 
+		</td>
+
+	
+		<td class="voteTbl" style="white-space:nowrap" align="right">
+			<table class="small-text">
+			<tbody><tr>
+				
+				<td id="ctl00_RateArticle_RateText" class="rating-prompt">
+					Rate this:
+				</td>
+
+				<td id="ctl00_RateArticle_StartForm" align="right" nowrap="nowrap">
+					<i>&nbsp;&nbsp;Poor</i>
+				</td>
+
+				<td id="ctl00_RateArticle_VoteFormDiv" class="nowrap">
+					
+
+					<span id="ctl00_RateArticle_RB" class="tooltip ajaxHist radio voting">
+						<span id="ctl00_RateArticle_VoteRBL"><input id="ctl00_RateArticle_VoteRBL_0" type="radio" name="ctl00$RateArticle$VoteRBL" value="1" onclick="ChkRtctl00_RateArticle(1, 20303);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"><input id="ctl00_RateArticle_VoteRBL_1" type="radio" name="ctl00$RateArticle$VoteRBL" value="2" onclick="ChkRtctl00_RateArticle(2, 20303);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"><input id="ctl00_RateArticle_VoteRBL_2" type="radio" name="ctl00$RateArticle$VoteRBL" value="3" onclick="ChkRtctl00_RateArticle(3, 20303);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"><input id="ctl00_RateArticle_VoteRBL_3" type="radio" name="ctl00$RateArticle$VoteRBL" value="4" onclick="ChkRtctl00_RateArticle(4, 20303);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"><input id="ctl00_RateArticle_VoteRBL_4" type="radio" name="ctl00$RateArticle$VoteRBL" value="5" onclick="ChkRtctl00_RateArticle(5, 20303);
+$(&#39;#ctl00_RateArticle_RCD&#39;).show();
+;"></span> 
+
+						
+					</span>
+
+				</td>
+
+				<td id="ctl00_RateArticle_EndForm" align="left">
+					<i>Excellent</i>
+				</td>
+
+				<td>	
+					<input type="submit" name="ctl00$RateArticle$SubmitRateBtn" value="Vote" onclick="return PostBack_ctl00_RateArticle_RateItemWrapper();" id="ctl00_RateArticle_SubmitRateBtn" class="button">
+				</td>
+			</tr>
+			</tbody></table>
+			<span id="ctl00_RateArticle_ErrorMessage" class="error"></span>
+		</td>
+	</tr>
+	</tbody></table>
+	<div class="hover-container">
+		<div id="ctl00_RateArticle_RCD" class="rating-comment align-left float-right">
+			Add a reason or comment to your vote: <a href="http://www.codeproject.com/KB/exception/VEH.aspx#" id="clear-rate_ctl00_RateArticle_RCD" title="close">x</a><br>
+			<textarea class="RateComment" rows="5" cols="60" style="width:98%;"></textarea>
+			<span id="ctl00_RateArticle_CommentReq" class="subdue">Votes of 3 or less require a comment</span>
+		</div>
+	</div>
+</div>
+
+						</div>
+						</div>
+						
+
+					</form>
+
+					
+					<div style="margin:auto;padding:0px 10px;white-space:nowrap;overflow:hidden;width:468px;height:60px">		  
+						<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="77" lqm_format="468x60" lqm_country="CN" lqm_tags="VC7.1,WinXP,VS.NET2003,C,Dev,Advanced"><iframe id="lqmad3" width="468" height="60" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe></div>
+						
+					</div>
+					
+
+					
+					
+					<h2>Comments and Discussions</h2>
+					<a name="_comments" id="_comments">&nbsp;</a><table id="ForumTable" class="box forum" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td><table width="100%" border="0" cellpadding="3px" cellspacing="0">
+<tbody><tr class="forum-header1">
+<td style="white-space:nowrap;"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/info-16.gif" alt="FAQ" style="border-width:0;width:16px;height:16px;vertical-align:middle;">&nbsp;<a href="http://www.codeproject.com/KB/FAQs/MessageBoardsFAQ.aspx"><b>FAQ</b></a>&nbsp;</td><td colspan="2" style="white-space:nowrap;text-align:right;"><form action="http://www.codeproject.com/Search.aspx?fid=0" method="get" style="margin:0;padding:0;">
+<input type="hidden" name="fid" value="455076"><input type="text" class="Frm_Input" name="qf">&nbsp;<input type="submit" value="Search" class="button">
+</form></td>
+</tr><tr class="forum-header2">
+<td colspan="3" style="width:100%;"><div style="text-align:right;">
+<form action="http://www.codeproject.com/script/Forums/SetOptions.aspx?floc=%2fKB%2fexception%2fVEH.aspx&fid=455076&df=90&mpp=50&noise=3&prof=False&sort=Position&view=Expanded" method="get" style="margin:0;padding:0;">
+<input type="hidden" name="fid" value="455076"><input type="hidden" name="currentQS" value="?floc=%2fKB%2fexception%2fVEH.aspx&amp;fid=455076&amp;df=90&amp;mpp=50&amp;noise=3&amp;prof=False&amp;sort=Position&amp;view=Expanded"><input type="hidden" name="floc" value="/KB/exception/VEH.aspx"><input type="checkbox" name="prof" id="prof" style="vertical-align:middle;"><label for="prof">Profile popups</label>&nbsp;&nbsp;&nbsp;&nbsp;Noise level<select size="1" class="Frm_DropDown" name="noise">
+<option value="1">Very High</option><option value="2">High</option><option selected="" value="3">Medium</option><option value="4">Low</option><option value="5">Very Low</option>
+</select>&nbsp;&nbsp;Layout<select size="1" class="Frm_DropDown" name="view">
+<option value="Quick">Normal</option><option value="Topic">Expand Posts only</option><option selected="" value="Expanded">Expand Posts &amp; Replies</option><option value="Thread">Thread View</option><option value="Normal">No Javascript</option><option value="Preview">No JS + Preview</option>
+</select>&nbsp;&nbsp;Per page<select size="1" class="Frm_DropDown" name="mpp">
+<option value="10">10</option><option value="25">25</option><option selected="" value="50">50</option>
+</select>&nbsp;&nbsp;&nbsp;<input type="submit" value="Update" name="SetOpt" class="button">
+</form>
+</div></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><a name="xx0xx"></a><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+<tbody><tr class="forum-navbar">
+<td><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/forum_newmsg.gif" alt="new" width="16px" height="16px" border="0" align="top"><a href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=455076&floc=/KB/exception/VEH.aspx" class="toolbar" name="Frm_HoverNL" title="Create a new message thread" target="_top"><b>New Message</b></a></td><td> <a href="http://www.codeproject.com/KB/exception/VEH.aspx?fid=455076&df=90&mpp=50&noise=3&prof=False&sort=Position&view=Expanded">Refresh</a></td><td style="text-align:right;white-space:nowrap;"><span class="subdue">First</span> <span class="subdue">Prev</span> <span class="subdue">Next</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%" class="fixed-layout blank-background">
+<tbody><tr>
+<td><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/t(2).gif" border="0" width="1px" height="5px" alt=""></td>
+</tr><tr class="MsgHd LoVote Rt HdUnSel ">
+<td width="100%"><table class="expandedHd" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr class="hover-row">
+<td width="16px" class="Frm_MsgIndent"><a name="xx2208870xx"></a><img height="16px" width="16px" align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_general.gif" alt="General"></td><td class="Frm_MsgSubject hover-container">that's good</td><td class="Frm_MsgIcon"><img border="0" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/member_sm.gif" title="member" alt="member" height="16px"></td><td class="Frm_MsgAuthor"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=3237501">BUGHOHO</a></td><td class="Frm_MsgDate" style="vertical-align:top;white-space:nowrap;">3:57 2 Sep '07 &nbsp;</td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td width="100%"><table class="expandedBd" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td class="Frm_MsgIndent" style="width:16px;"><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/t(2).gif" height="1px" width="16px" alt=""></td><td class="MsgBd BdUnSel "><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">in your blog,in pediy,in driverdevelop,	<br>
+&#21040;&#22788;&#37117;&#26377;&#20320;&#32763;&#35793;&#30340;&#25991;&#31456;,&#36825;&#31687;&#26159;&#20320;&#21407;&#21019;&#20040;?&#24456;&#19981;&#38169;&#22043;.hehe. <br></td>
+</tr><tr style="vertical-align:middle;">
+<td class="msg-footer"><a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=455076&select=2208870&floc=/KB/exception/VEH.aspx&action=r" title="Reply">Reply</a>·<a class="toolbar" href="http://www.codeproject.com/script/Forums/Edit.aspx?fid=455076&select=2208870&floc=/KB/exception/VEH.aspx&action=e" title="Email">Email</a>·<a class="toolbar" href="http://www.codeproject.com/KB/exception/VEH.aspx?fid=455076&df=90&mpp=50&sort=Position&tid=2208870" title="View Thread">View&nbsp;Thread</a>·<a class="toolbar" href="http://www.codeproject.com/Messages/2208870/thats-good.aspx" title="Get permanent link">Permalink</a>·<a class="toolbar" href="http://www.codeproject.com/script/Bookmarks/Add.aspx?obid=2208870&obtid=3&action=AddBookmark&bio=false" title="Bookmark this post">Bookmark</a></td><td class="msg-footer" style="text-align:right;"><span id="MVF2208870" style="white-space:nowrap;">2.00/5 (1 vote) <script type="text/javascript">
+MsgVFrm(3237501,2208870,false,"","","");
+</script>Rate this message: <a href="http://www.codeproject.com/KB/exception/VEH.aspx#xx2208870xx" onclick="RateMsg(3237501, 2208870,1,0);"><img height="14px" width="14px" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/thumbs_down.gif" alt="vote 1" border="0" align="middle"></a> <a class="toolbar" href="http://www.codeproject.com/KB/exception/VEH.aspx#xx2208870xx" title="vote this message a 1" onclick="RateMsg(3237501, 2208870, 1,0)"><b>1</b></a> <a class="toolbar" href="http://www.codeproject.com/KB/exception/VEH.aspx#xx2208870xx" title="vote this message a 2" onclick="RateMsg(3237501, 2208870, 2,0)"><b>2</b></a> <a class="toolbar" href="http://www.codeproject.com/KB/exception/VEH.aspx#xx2208870xx" title="vote this message a 3" onclick="RateMsg(3237501, 2208870, 3,0)"><b>3</b></a> <a class="toolbar" href="http://www.codeproject.com/KB/exception/VEH.aspx#xx2208870xx" title="vote this message a 4" onclick="RateMsg(3237501, 2208870, 4,0)"><b>4</b></a> <a class="toolbar" href="http://www.codeproject.com/KB/exception/VEH.aspx#xx2208870xx" title="vote this message a 5" onclick="RateMsg(3237501, 2208870, 5,0)"><b>5</b></a> <a href="http://www.codeproject.com/KB/exception/VEH.aspx#xx2208870xx" onclick="RateMsg(3237501, 2208870,5,0);"><img height="14px" width="14px" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/thumbs_up.gif" border="0" alt="vote 5" align="middle"></a> </span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><img src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/t(2).gif" border="0" width="1px" height="5px" alt=""></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><table width="100%" cellpadding="2px" cellspacing="0">
+<tbody><tr class="forum-footer">
+<td>Last Visit: 18:27 18 Nov '11  &nbsp; &nbsp; Last Update: 18:26 18 Nov '11 </td><td style="text-align:right;white-space:nowrap;"><input id="_mbnUrl" type="hidden" value="/KB/exception/VEH.aspx?fid=455076&amp;df=90&amp;mpp=50&amp;noise=3&amp;prof=False&amp;sort=Position&amp;view=Expanded&amp;fr=2"><b>1</b></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table><p class="small-text"><img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_general.gif" width="16px" height="16px" alt="General"> General &nbsp;&nbsp; <img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_news.gif" width="16px" height="16px" alt="News"> News &nbsp;&nbsp; <img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_idea.gif" width="16px" height="16px" alt="Suggestion"> Suggestion &nbsp;&nbsp; <img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_question.gif" width="16px" height="16px" alt="Question"> Question &nbsp;&nbsp; <img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_bug.gif" width="16px" height="16px" alt="Bug"> Bug &nbsp;&nbsp; <img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_answer.gif" width="16px" height="16px" alt="Answer"> Answer &nbsp;&nbsp; <img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_joke.gif" width="16px" height="16px" alt="Joke"> Joke &nbsp;&nbsp; <img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_rant.gif" width="16px" height="16px" alt="Rant"> Rant &nbsp;&nbsp; <img align="top" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/msg_admin.gif" width="16px" height="16px" alt="Admin"> Admin &nbsp;&nbsp; </p>
+
+					
+					<div class="theme1-background" style="height:2px"></div>
+
+					<div class="extended tiny-text">
+						<div class="row">
+							<div class="float-left">
+								<a id="ctl00_PermaLink" href="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/Vectored Exception Handling in Windows XP SP2 - CodeProject.htm">Permalink</a> | 
+								<a id="ctl00_AdvertiseLink" href="http://lakequincy.com/">Advertise </a> |
+								<a id="ctl00_PrivacyLink" href="http://www.codeproject.com/info/privacy.aspx">Privacy</a> |
+								<a id="ctl00_Mobile" rel="nofollow" href="http://www.codeproject.com/KB/exception/VEH.aspx?display=Mobile">Mobile</a>
+								<br>
+								
+								Web03 |
+								2.5.111110.1 |
+								Last Updated 1 Sep 2007								
+							</div>
+							<div class="float-right align-right">
+								Article Copyright 2007 by zhzhtst<br>Everything else
+								Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2011 <br>
+								<a id="ctl00_TermsOfUseLink" href="http://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a>
+							</div>
+
+							
+
+
+<div class="page-width">
+Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" href="http://www.codeproject.com/KB/exception/VEH.aspx?PageFlow=FixedWidth">fixed</a>
+|
+<a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="http://www.codeproject.com/KB/exception/VEH.aspx?PageFlow=Fluid">fluid</a>
+</div>
+
+
+
+						</div>
+					</div>
+					
+
+				<br clear="all">
+		
+				
+				</div>
+
+				<div id="ctl00_ContentSide" class="text-sidebar">
+					<script type="text/javascript">document.write(unescape('%0d%0a%0d%0a%3cdiv class%3d%22results%22%3e%0d%0a%0d%0a%09%3cdiv class%3d%22container-adwords%22%3e%0d%0a%09%09%3ca id%3d%22ctl00_RelatedAds_RelatedResults_ctl01_Link%22 href%3d%22%2fscript%2fCatalog%2fRedir.aspx%3fctid%3d2695%26amp%3bcttype%3d2%22 target%3d%22_blank%22%3e%3cspan id%3d%22ctl00_RelatedAds_RelatedResults_ctl01_Title%22 class%3d%22title%22%3edisk free%3c%2fspan%3e%3cbr %2f%3e%0d%0a%09%09%09%3cspan id%3d%22ctl00_RelatedAds_RelatedResults_ctl01_Teaser%22 class%3d%22desc%22%3efor disk free%3c%2fspan%3e%3cbr %2f%3e%0d%0a%09%09%09%3cspan id%3d%22ctl00_RelatedAds_RelatedResults_ctl01_Url%22 class%3d%22link%22%3ediskfree.co.cc%3c%2fspan%3e%3c%2fa%3e%0d%0a%09%3c%2fdiv%3e%0d%0a%0d%0a%09%3cdiv class%3d%22container-adwords%22%3e%0d%0a%09%09%3ca id%3d%22ctl00_RelatedAds_RelatedResults_ctl02_Link%22 href%3d%22%2fscript%2fCatalog%2fRedir.aspx%3fctid%3d3294%26amp%3bcttype%3d2%22 target%3d%22_blank%22%3e%3cspan id%3d%22ctl00_RelatedAds_RelatedResults_ctl02_Title%22 class%3d%22title%22%3eFPS Icons Pack%3c%2fspan%3e%3cbr %2f%3e%0d%0a%09%09%09%3cspan id%3d%22ctl00_RelatedAds_RelatedResults_ctl02_Teaser%22 class%3d%22desc%22%3eA set of 180 hand-crafted icons in vector format.%0d%0a%0d%0aWe strive to offer...%3c%2fspan%3e%3cbr %2f%3e%0d%0a%09%09%09%3cspan id%3d%22ctl00_RelatedAds_RelatedResults_ctl02_Url%22 class%3d%22link%22%3efpscomponents.com%3c%2fspan%3e%3c%2fa%3e%0d%0a%09%3c%2fdiv%3e%0d%0a%0d%0a%3c%2fdiv%3e%0d%0a'));</script>
+
+<div class="results">
+
+	<div class="container-adwords">
+		<a id="ctl00_RelatedAds_RelatedResults_ctl01_Link" href="http://www.codeproject.com/script/Catalog/Redir.aspx?ctid=2695&cttype=2" target="_blank"><span id="ctl00_RelatedAds_RelatedResults_ctl01_Title" class="title">disk free</span><br>
+			<span id="ctl00_RelatedAds_RelatedResults_ctl01_Teaser" class="desc">for disk free</span><br>
+			<span id="ctl00_RelatedAds_RelatedResults_ctl01_Url" class="link">diskfree.co.cc</span></a>
+	</div>
+
+	<div class="container-adwords">
+		<a id="ctl00_RelatedAds_RelatedResults_ctl02_Link" href="http://www.codeproject.com/script/Catalog/Redir.aspx?ctid=3294&cttype=2" target="_blank"><span id="ctl00_RelatedAds_RelatedResults_ctl02_Title" class="title">FPS Icons Pack</span><br>
+			<span id="ctl00_RelatedAds_RelatedResults_ctl02_Teaser" class="desc">A set of 180 hand-crafted icons in vector format.
+
+We strive to offer...</span><br>
+			<span id="ctl00_RelatedAds_RelatedResults_ctl02_Url" class="link">fpscomponents.com</span></a>
+	</div>
+
+</div>
+
+
+					
+
+					
+
+					<div style="width:160px;margin: 10px 0;">
+						<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="77" lqm_format="160x600" lqm_country="CN" lqm_tags="VC7.1,WinXP,VS.NET2003,C,Dev,Advanced"><iframe id="lqmad4" width="160" height="600" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe></div>
+					</div>
+
+					
+	<div class="announce">
+	<div id="ctl00_RelatedArticles_RelatedResults_ctl00_header" class="announce-header">See Also...</div>
+	<div class="announce-content">	
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl02_Link" class="title" href="http://www.codeproject.com/KB/exception/ExceptionHandlingInVCPP.aspx">Effective Exception Handling in Visual C++</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl03_Link" class="title" href="http://www.codeproject.com/KB/system/soviet_kernel_hack.aspx">Entering the kernel without a driver and getting interrupt information from APIC</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl04_Link" class="title" href="http://www.codeproject.com/KB/exception/excv2.aspx">Better exception handling for C++</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl05_Link" class="title" href="http://www.codeproject.com/KB/stl/vector_vs_deque.aspx">An In-Depth Study of the STL Deque Container</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl06_Link" class="title" href="http://www.codeproject.com/KB/security/Securefunctionpointer.aspx">Secure Function Pointer and Callbacks in Windows Programming</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl07_Link" class="title" href="http://www.codeproject.com/KB/system/soviet_direct_hooking.aspx">Hooking the kernel directly</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl08_Link" class="title" href="http://www.codeproject.com/KB/system/XWinVer.aspx">XWinVer - Simple class to get Windows OS version</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl09_Link" class="title" href="http://www.codeproject.com/KB/Parallel_Programming/parallelcpp.aspx">Concurrency Runtime in Visual C++ 2010</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl10_Link" class="title" href="http://www.codeproject.com/KB/openGL/TranslationController.aspx">Interactive Techniques in Three-dimensional Scenes (Part 1): Moving 3D Objects with the Mouse using OpenGL 2.1</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl11_Link" class="title" href="http://www.codeproject.com/KB/winsdk/Remote.aspx">Remote Library</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl12_Link" class="title" href="http://www.codeproject.com/KB/system/interrupthook.aspx">Interrupt Hooking and retrieving device information on Windows NT/2000/XP</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl13_Link" class="title" href="http://www.codeproject.com/KB/dialog/cicondialogapi.aspx">CIconDialog - Selecting Icons</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl14_Link" class="title" href="http://www.codeproject.com/KB/web-security/WSIISSecurityHurdles.aspx">Web Service and IIS Security hurdles</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl15_Link" class="title" href="http://www.codeproject.com/KB/IP/enable_disable_firewall.aspx">Programmatically disable/enable Windows firewall</a>
+		
+	</div>
+	
+	<div class="container-related-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl16_Link" class="title" href="http://www.codeproject.com/KB/vista/AeroGlassLegacyWindowsApp.aspx">Adding or Retrofitting Aero Glass into Legacy Windows Applications</a>
+		
+	</div>
+	
+	</div>
+	</div>
+	
+
+
+					
+
+					
+<div class="announce">
+<div class="announce-header">The Daily Insider</div>
+<div class="announce-content">
+
+<div><a id="ctl00_News_News_ctl01_Link" href="http://citizen428.net/archives/434">30 free programming books</a></div>
+
+Daily News: <a id="ctl00_News_News_ctl02_Subscribe" href="http://www.codeproject.com/Feature/Insider/">Signup now</a>.
+</div>
+</div>
+		
+
+				</div>
+
+			</div>
+			
+
+		</div>
+		
+
+	</div>
+</div>
+
+
+<div style="display:none;" id="lqm_AdTable">
+	
+</div>
+
+<script type="text/javascript" language="Javascript" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/jquery.min.js"></script><script type="text/javascript">//<![CDATA[
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='/script/JS/jquery-1.6.2.min.js' type='text/javascript' %3E%3C/script%3E"));
+}//]]></script>
+<script type="text/javascript" language="Javascript" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/article.min.js"></script>
+<script type="text/javascript" language="Javascript" src="./Vectored Exception Handling in Windows XP SP2 - CodeProject_files/m.min.js"></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+var socialLinks = new social();
+socialLinks.PlaceholderId="ATD";socialLinks.ObjectId=20303;
+socialLinks.ObjectTypeId=2;
+socialLinks.addtoMethod=1;
+socialLinks.Horizontal=false;
+socialLinks.Showname=true;
+socialLinks.setupLinks("socialLinks", escape(document.location.href),escape(document.title), 100, 0, "small-text Bold", "AddTo");
+socialLinks.setupMenu();
+if($.LqmAds)$.LqmAds();
+var oSrchFlt = false, oSrchBox=false,srchBoxFoc=false;
+$(document).ready(function() {
+ InitWatermark('sb_tb', 'Search');
+ var sbar = $('#sb_tb'); 
+ var sfilter = $('#SearchFilter');
+ if (sbar && sfilter) {
+  sfilter.removeClass('popup'); sfilter.hide();
+  sbar.blur(function() { if (!oSrchFlt)sfilter.hide();srchBoxFoc=false; });
+  sbar.focus(function() { oSrchFlt=false;srchBoxFoc=true;sfilter.show(); });
+  sbar.mouseleave(function() { oSrchBox=false; });
+  sbar.mouseover(function() { oSrchBox=true; });
+  sfilter.mouseleave(function() { oSrchFlt=false; if (!srchBoxFoc&&!oSrchBox)sfilter.hide();});
+  sfilter.mouseover(function() { oSrchFlt=true; });
+ }
+});
+$(document).ready(function() { anchorAnimate(); });
+$("#ctl00_RateArticle_RateItemWrapper").removeClass("container-rating");$('#clear-rate_ctl00_RateArticle_RCD').click(function () { $('#ctl00_RateArticle_RCD').hide(); return false;});
+function PostBack_ctl00_RateArticle_RateItemWrapper() {
+  return rateItem(20303,2,1,true,true,3);
+}
+function ChkRtctl00_RateArticle(val, objId) {if (val<=3||true) {
+$('div[name=RateItem_' + objId + '] .rating-comment').css("display","");}
+else $('div[name=RateItem_' + objId + '] .rating-comment').css("display","none");}
+
+
+//]]>
+</script>
+
+
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1735123-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_setDomainName', 'www.codeproject.com']);
+	_gaq.push(['_setSessionTimeout', '1200']); 
+
+	(function () {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})(); 
+</script>
+
+
+
+<canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body><embed type="application/x-cooliris-page" hidden="true" id="coolirisBridge"></html>

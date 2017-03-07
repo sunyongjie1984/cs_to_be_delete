@@ -1,0 +1,67 @@
+# $Id: scan-lib,v 1.3 2000/11/18 08:25:04 roesch Exp $ 
+# this library is for hostile scans and protocol pokes
+
+# look for stealth port scans/sweeps
+alert tcp any any -> $HOME_NET any (flags: A; ack: 0; msg:"NMAP TCP ping!";)
+
+# detect fingerprinting attempts
+alert tcp any any -> $HOME_NET any (msg:"Possible NMAP Fingerprint attempt"; flags: SFPU;)
+alert tcp any any -> $HOME_NET any (msg:"Possible Queso Fingerprint attempt"; flags: S12;)
+
+# Windows Traceroutes
+alert icmp any any -> $HOME_NET any (msg:"Windows Traceroute"; TTL: 1; itype: 8;)
+
+# Standard Traceroutes
+alert udp any any -> $HOME_NET any (msg:"Traceroute"; TTL: 1;)
+
+# Watch for WinGate Scans
+alert tcp any any -> $HOME_NET 1080 (msg:"WinGate 1080 Attempt"; flags: S;)
+alert tcp any any -> $HOME_NET 8080 (msg:"WinGate 8080 Attempt"; flags: S;)
+
+
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth Mode 8- Handler CGI access attempt"; content:"/cgi-bin\\handler"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth Mode 8- Web Distribution access attempt"; content:"/cgi-bin\\webdist.cgi"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- mlog access attempt"; content:"/mlog.phtml"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- mylog access attempt"; content:"/mylog.phtml"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth Mode 8- Start Stop Web access attempt"; content:"/cfide\\administrator\\startstop.html"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth Mode 8- cfappman access attempt"; content:"/cfappman\\index.cfm"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth Mode 8- Mall log order access attempt"; content:"/mall_log_files\\order.log"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- IIS search97 access attempt"; content:"/search97.vts"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- BigConf access attempt"; content:"/bigconf.cgi"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- Shopping cart access attempt"; content:"/quikstore.cfg"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth Mode 8- Order log access attempt"; content:"/admin_files\\order.log"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- WS_FTP.INI access attempt "; content:"/ws_ftp.ini"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- Order log access attempt"; content:"/admin_files/order.log"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth Mode 8- wrap CGI access attempt"; content:"/cgi-bin\\wrap"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth - Mall log order access attempt"; content:"/mall_log_files/order.log"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- cfappman access attempt"; content:"/cfappman/index.cfm"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth- Start Stop Web access attempt"; content:"/cfide/administrator/startstop.html"; nocase; flags: PA;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (dsize: > 512; msg:"SCAN - Whisker Stealth Mode 4- head"; content:"|68 65 61 64|"; offset: 0; depth: 4;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (dsize: > 512; msg:"SCAN - Whisker Stealth Mode 4- HEAD"; content:"HEAD"; offset: 0; depth: 4; nocase;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN - Whisker Stealth Mode 8- DBML Parser access attempt"; content:"/cfide\\administrator\\startstop.html"; nocase; flags: PA;) 
+alert udp $EXTERNAL_NET any -> $HOME_NET 53 (msg:"IDS277 - NAMED Iquery Probe"; content: "|0980 0000 0001 0000 0000|"; offset: 2; depth: 16;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"IDS132 - CVE-1999-0612 - Cybercop Finger Query"; content: "|0A 20 20 20 20 20|"; flags: AP; depth: 10;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 32771: (msg:"IDS26 - NFS Showmount"; flags:PA; content: "|00 01 86 A5 00 00 00 01 00 00 00 05 00 00 00 01|"; offset: 16; depth: 32;) 
+alert udp $EXTERNAL_NET any -> $HOME_NET 53 (msg:"IDS278 - NAMED Version Probe"; content: "|07|version|04|bind|00 0010 0008|"; nocase; offset: 13; depth: 32;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"IDS005 - SCAN-Possible NMAP Fingerprint attempt";flags:SFPU;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"SCAN-ISS-FTPcheck";flags:PA; content:"pass -iss@iss";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"SCAN-pISS-FTPcheck";flags:PA; content:"pass -cklaus";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"SCAN-SAINT-FTPcheck";flags:PA; content:"pass -saint";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"SCAN-SATAN-FTPcheck";flags:PA; content:"pass -satan";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"SCAN-Cybercop-SMTPehlo";flags:PA; content:"ehlo cybercop|0a|quit|0a|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"SCAN-Cybercop-SMTPexpn";flags:PA; content:"expn cybercop";) 
+alert udp $EXTERNAL_NET any -> $HOME_NET 7 (msg:"SCAN-Cybercop-UDP-bomb"; content:"cybercop";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN-Cybercop-WEB";flags:PA; content:"get /cybercop";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"SCAN-Whisker!";flags:PA; content:"HEAD/./";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"IDS236 - SCAN-IP Eye SYN Scan"; flags: S; seq: 1958810375;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"IDS004 - SCAN-NULL Scan";flags:0; seq:0; ack:0;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"IDS029 - SCAN-Possible Queso Fingerprint attempt";flags:S12;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"SCAN-SYN FIN";flags:SF;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"NMAP XMAS scan"; flags: FPU;)
+alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"SCAN-ICMP Sniffer Pro/NetXRay network scan"; content:"|43696e636f204e6574776f726b2c20496e632e|"; itype: 8; depth: 32;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"IDS149 - SCAN-Cybercop OS Probe pa12"; content: "AAAAAAAAAAAAAAAA"; flags: AP12; depth: 16;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"IDS146 - SCAN-Cybercop OS Probe sf12"; flags: SF12; dsize: 0;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 80 (msg:"IDS145 - SCAN-Cybercop-OS-Probe sfp"; content: "AAAAAAAAAAAAAAAA"; flags: SFP; ack: 0; depth: 16;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"IDS150 - SCAN-Cybercop OS Probe sfu12"; content: "AAAAAAAAAAAAAAAA"; flags: SFU12; ack: 0; depth: 16;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"IDS027 - SCAN-FIN"; flags: F;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"SCAN-ADM-FTPcheck";flags:PA; content:"PASS ddd@|0a|";) 

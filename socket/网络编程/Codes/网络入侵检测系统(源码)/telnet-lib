@@ -1,0 +1,12 @@
+# $Id: telnet-lib,v 1.2 2000/11/18 08:25:04 roesch Exp $
+
+alert tcp $HOME_NET 23 -> $EXTERNAL_NET any (msg:"TELNET - Attempted SU from wrong group"; content: "|74 6F 20 73 75 20 72 6F 6F 74 2E|"; logto:"TELNET";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 23 (msg:"TELNET - resolv_host_conf";flags:PA; content:"resolv_host_conf";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 23 (msg:"TELNET - Livingston-DoS";flags:PA; content:"|fff3 fff3 fff3 fff3 fff3|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 23 (msg:"TELNET - ld_preload";flags:PA; content:"ld_preload";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 23 (msg:"TELNET - ld_library_path";flags:PA; content:"ld_library_path";) 
+alert tcp $HOME_NET 23 -> $EXTERNAL_NET any (msg:"TELNET - WinGate-Active"; content:"WinGate>";) 
+alert tcp $HOME_NET 23 -> $EXTERNAL_NET any (msg:"TELNET - NotOnConsole"; content:"not on system console";) 
+alert tcp $HOME_NET 23 -> $EXTERNAL_NET any (msg:"IDS127 - TELNET - Login Incorrect"; content:"Login incorrect"; logto:"TELNET";) 
+alert tcp $HOME_NET 23 -> $EXTERNAL_NET any (msg:"IDS008 - TELNET - daemon-active";flags:PA; content:"|FF FD 18 FF FD 1F FF FD 23 FF FD 27 FF FD 24|";) 
+

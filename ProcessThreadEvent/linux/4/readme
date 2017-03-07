@@ -1,0 +1,5 @@
+g++ -o main main.cpp -lpthread
+gcc -o main main.c -lpthread
+
+and there are differences between c file and cpp file
+in c++ linux thread function declare

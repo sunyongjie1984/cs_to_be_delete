@@ -1,0 +1,10 @@
+// #include <iostream> // 这个明显是不需要的，因为类的定义中已经包含了
+#include "Sales_item.h" // 库iostream
+using namespace std;
+int main()
+{
+     Sales_item item1;
+    cin >> item1;
+    cout << item1 << endl;
+    return 0;
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>list - C++ Reference</title>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="main23.css" tppabs="http://www.cplusplus.com/main23.css">
+
+<style type="text/css">.hierarchy DIV {width:100px; height:24px; text-align:center; padding-top:8px; border:black 1px solid} </style>
+<script src="main23.js" tppabs="http://www.cplusplus.com/main23.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+var dynamic; var here; function InitJS() { lb=document.getElementById('loginbox'); dynamic=1; here='/reference/stl/list/'; LoginBox(); DrawButtons(); }  function DrawButtons() { if (( (access&256)==256 )||(user=='Juan Soulie')) document.getElementById('suopt').innerHTML=' [<a href="http://www.cplusplus.com/admin/publish.form?what=edit&itemid=574">Edit this document<\/a>]  [<a href="http://www.cplusplus.com/admin/publish.form?what=new&itemparent=574">Add a new page under this folder<\/a>]'; else document.getElementById('suopt').innerHTML=''; }
+//-->
+</script>
+</head>
+<body onLoad="InitJS()">
+
+<div id="header">
+	<a href="javascript:if(confirm('http://www.cplusplus.com/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/'" tppabs="http://www.cplusplus.com/"><img src="cpp-logo.png" tppabs="http://www.cplusplus.com/img/cpp-logo.png" alt="cplusplus.com" width="198" height="75"></a>
+	<div id="bar">
+		<b><a href="javascript:if(confirm('http://www.cplusplus.com/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/'" tppabs="http://www.cplusplus.com/">C++</a> : <a href="javascript:if(confirm('http://www.cplusplus.com/reference/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/'" tppabs="http://www.cplusplus.com/reference/">Reference</a> : <a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/'" tppabs="http://www.cplusplus.com/reference/stl/">STL Containers</a> : list</b>
+	</div>
+	
+	<div id="searchbox">
+		<form id="search" action="javascript:if(confirm('http://www.cplusplus.com/query/search.cgi?q=Search  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/query/search.cgi?q=Search'" tppabs="http://www.cplusplus.com/query/search.cgi?q=Search" method="get">
+		Search: <input name="q" size="13" class="txt"> <input type="submit" value="Search" class="btn">
+		</form>
+	</div>
+	<div id="loginbox">
+	</div>
+</div>
+<div id="container">
+	<div id="nav">
+<table class="box">
+	<tr><th><a href="javascript:if(confirm('http://www.cplusplus.com/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/'" tppabs="http://www.cplusplus.com/">C++</a></th></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/info/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/info/'" tppabs="http://www.cplusplus.com/info/"><b>Information</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/doc/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/doc/'" tppabs="http://www.cplusplus.com/doc/"><b>Documentation</b></a></td></tr>
+	<tr><td><span class="selected"><a href="javascript:if(confirm('http://www.cplusplus.com/reference/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/'" tppabs="http://www.cplusplus.com/reference/"><b>Reference</b></a></span></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/articles/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/articles/'" tppabs="http://www.cplusplus.com/articles/"><b>Articles</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/src/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/src/'" tppabs="http://www.cplusplus.com/src/"><b>Sourcecode</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/forum/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/forum/'" tppabs="http://www.cplusplus.com/forum/"><b>Forums</b></a></td></tr>
+</table>
+<table class="box">
+	<tr><th><a href="javascript:if(confirm('http://www.cplusplus.com/reference/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/'" tppabs="http://www.cplusplus.com/reference/">Reference</a></th></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/clibrary/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/clibrary/'" tppabs="http://www.cplusplus.com/reference/clibrary/"><b>C Library</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/iostream/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/iostream/'" tppabs="http://www.cplusplus.com/reference/iostream/"><b>IOstream Library</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/string/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/string/'" tppabs="http://www.cplusplus.com/reference/string/"><b>Strings library</b></a></td></tr>
+	<tr><td><span class="selected"><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/'" tppabs="http://www.cplusplus.com/reference/stl/"><b>STL Containers</b></a></span></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/algorithm/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/algorithm/'" tppabs="http://www.cplusplus.com/reference/algorithm/"><b>STL Algorithms</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/std/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/std/'" tppabs="http://www.cplusplus.com/reference/std/"><b>Miscellaneous</b></a></td></tr>
+</table>
+<table class="box">
+	<tr><th><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/'" tppabs="http://www.cplusplus.com/reference/stl/">STL Containers</a></th></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/bitset/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/bitset/'" tppabs="http://www.cplusplus.com/reference/stl/bitset/"><b>bitset</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/deque/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/deque/'" tppabs="http://www.cplusplus.com/reference/stl/deque/"><b>deque</b></a></td></tr>
+	<tr><td><span class="selected"><b>list</b></span></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/map/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/map/'" tppabs="http://www.cplusplus.com/reference/stl/map/"><b>map</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/multimap/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/multimap/'" tppabs="http://www.cplusplus.com/reference/stl/multimap/"><b>multimap</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/multiset/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/multiset/'" tppabs="http://www.cplusplus.com/reference/stl/multiset/"><b>multiset</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/priority_queue/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/priority_queue/'" tppabs="http://www.cplusplus.com/reference/stl/priority_queue/"><b>priority_queue</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/queue/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/queue/'" tppabs="http://www.cplusplus.com/reference/stl/queue/"><b>queue</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/set/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/set/'" tppabs="http://www.cplusplus.com/reference/stl/set/"><b>set</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/stack/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/stack/'" tppabs="http://www.cplusplus.com/reference/stl/stack/"><b>stack</b></a></td></tr>
+	<tr><td><a href="javascript:if(confirm('http://www.cplusplus.com/reference/stl/vector/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/reference/stl/vector/'" tppabs="http://www.cplusplus.com/reference/stl/vector/"><b>vector</b></a></td></tr>
+</table>
+<table class="box">
+	<tr><th><a href="index.htm" tppabs="http://www.cplusplus.com/reference/stl/list/">list</a></th></tr>
+	<tr><td><a href="index-1.htm" tppabs="http://www.cplusplus.com/reference/stl/list/operators/">comparison operators</a></td></tr>
+	<tr><td><a href="index-2.htm" tppabs="http://www.cplusplus.com/reference/stl/list/list/">list::list</a></td></tr>
+	<tr><td><a href="index-3.htm" tppabs="http://www.cplusplus.com/reference/stl/list/~list/">list::~list</a></td></tr>
+	<tr><td><b>member functions:</b></td></tr>
+	<tr><td>&middot; <a href="index-4.htm" tppabs="http://www.cplusplus.com/reference/stl/list/assign/">list::assign</a></td></tr>
+	<tr><td>&middot; <a href="index-5.htm" tppabs="http://www.cplusplus.com/reference/stl/list/back/">list::back</a></td></tr>
+	<tr><td>&middot; <a href="index-6.htm" tppabs="http://www.cplusplus.com/reference/stl/list/begin/">list::begin</a></td></tr>
+	<tr><td>&middot; <a href="index-7.htm" tppabs="http://www.cplusplus.com/reference/stl/list/clear/">list::clear</a></td></tr>
+	<tr><td>&middot; <a href="index-8.htm" tppabs="http://www.cplusplus.com/reference/stl/list/empty/">list::empty</a></td></tr>
+	<tr><td>&middot; <a href="index-9.htm" tppabs="http://www.cplusplus.com/reference/stl/list/end/">list::end</a></td></tr>
+	<tr><td>&middot; <a href="index-10.htm" tppabs="http://www.cplusplus.com/reference/stl/list/erase/">list::erase</a></td></tr>
+	<tr><td>&middot; <a href="index-11.htm" tppabs="http://www.cplusplus.com/reference/stl/list/front/">list::front</a></td></tr>
+	<tr><td>&middot; <a href="index-12.htm" tppabs="http://www.cplusplus.com/reference/stl/list/get_allocator/">list::get_allocator</a></td></tr>
+	<tr><td>&middot; <a href="index-13.htm" tppabs="http://www.cplusplus.com/reference/stl/list/insert/">list::insert</a></td></tr>
+	<tr><td>&middot; <a href="index-14.htm" tppabs="http://www.cplusplus.com/reference/stl/list/max_size/">list::max_size</a></td></tr>
+	<tr><td>&middot; <a href="index-15.htm" tppabs="http://www.cplusplus.com/reference/stl/list/merge/">list::merge</a></td></tr>
+	<tr><td>&middot; <a href="index-16.htm" tppabs="http://www.cplusplus.com/reference/stl/list/operator=/">list::operator=</a></td></tr>
+	<tr><td>&middot; <a href="index-17.htm" tppabs="http://www.cplusplus.com/reference/stl/list/pop_back/">list::pop_back</a></td></tr>
+	<tr><td>&middot; <a href="index-18.htm" tppabs="http://www.cplusplus.com/reference/stl/list/pop_front/">list::pop_front</a></td></tr>
+	<tr><td>&middot; <a href="index-19.htm" tppabs="http://www.cplusplus.com/reference/stl/list/push_back/">list::push_back</a></td></tr>
+	<tr><td>&middot; <a href="index-20.htm" tppabs="http://www.cplusplus.com/reference/stl/list/push_front/">list::push_front</a></td></tr>
+	<tr><td>&middot; <a href="index-21.htm" tppabs="http://www.cplusplus.com/reference/stl/list/rbegin/">list::rbegin</a></td></tr>
+	<tr><td>&middot; <a href="index-22.htm" tppabs="http://www.cplusplus.com/reference/stl/list/remove/">list::remove</a></td></tr>
+	<tr><td>&middot; <a href="index-23.htm" tppabs="http://www.cplusplus.com/reference/stl/list/remove_if/">list::remove_if</a></td></tr>
+	<tr><td>&middot; <a href="index-24.htm" tppabs="http://www.cplusplus.com/reference/stl/list/rend/">list::rend</a></td></tr>
+	<tr><td>&middot; <a href="index-25.htm" tppabs="http://www.cplusplus.com/reference/stl/list/resize/">list::resize</a></td></tr>
+	<tr><td>&middot; <a href="index-26.htm" tppabs="http://www.cplusplus.com/reference/stl/list/reverse/">list::reverse</a></td></tr>
+	<tr><td>&middot; <a href="index-27.htm" tppabs="http://www.cplusplus.com/reference/stl/list/size/">list::size</a></td></tr>
+	<tr><td>&middot; <a href="index-28.htm" tppabs="http://www.cplusplus.com/reference/stl/list/sort/">list::sort</a></td></tr>
+	<tr><td>&middot; <a href="index-29.htm" tppabs="http://www.cplusplus.com/reference/stl/list/splice/">list::splice</a></td></tr>
+	<tr><td>&middot; <a href="index-30.htm" tppabs="http://www.cplusplus.com/reference/stl/list/swap/">list::swap</a></td></tr>
+	<tr><td>&middot; <a href="index-31.htm" tppabs="http://www.cplusplus.com/reference/stl/list/unique/">list::unique</a></td></tr>
+</table>
+<br>
+
+	</div>
+	<div id="main">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script><br>
+
+<div class="auto"><div class="doctop"><h1>list</h1><div class="right"><br>class template</div></div><div class="docsubtop"><div class="right"><code>&lt;list&gt;</code></div>
+<div class="prototype"></div>
+</div><p><strong>List</strong></p>
+</div><div id="content">Lists are a kind of sequence containers. As such, their elements are ordered following a linear sequence.<br>
+<br>
+List containers are implemented as doubly-linked lists; Doubly linked lists can store each of the elements they contain in different and unrelated storage locations. The ordering is kept by the association to each element of a link to the element preceding it and a link to the element following it.<br>
+<br>
+This provides the following advantages to <tt>list</tt> containers:<br>
+<ul>
+<li>Efficient insertion and removal of elements anywhere in the container (constant time).</li>
+<li>Efficient moving elements and block of elements within the container or even between different containers (constant time).</li>
+<li>Iterating over the elements in forward or reverse order (linear time).</li>
+</ul><br>
+<br>
+Compared to other base standard sequence containers (<a href="javascript:if(confirm('http://www.cplusplus.com/vector  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/vector'" tppabs="http://www.cplusplus.com/vector">vector</a>s and <a href="javascript:if(confirm('http://www.cplusplus.com/deque  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/deque'" tppabs="http://www.cplusplus.com/deque">deque</a>s), lists perform generally better in inserting, extracting and moving elements in any position within the container, and therefore also in algorithms that make intensive use of these, like sorting algorithms.<br>
+<br>
+The main drawback of <a href="javascript:if(confirm('http://www.cplusplus.com/list  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/list'" tppabs="http://www.cplusplus.com/list">list</a>s compared to these other sequence containers is that they lack direct access to the elements by their position; For example, to access the sixth element in a <a href="javascript:if(confirm('http://www.cplusplus.com/list  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/list'" tppabs="http://www.cplusplus.com/list">list</a> one has to iterate from a known position (like the beginning or the end) to that position, which takes linear time in the distance between these. They also consume some extra memory to keep the linking information associated to each element (which may be an important factor for large lists of small-sized elements).<br>
+<br>
+Storage is handled automatically by the class, allowing lists to be expanded and contracted as needed.<br>
+<br>
+In their implementation in the C++ Standard Template Library lists take two template parameters:<br>
+<div class="auto"><table class="snippet"><tr><td class="rownum"><tt>&nbsp;</tt></td>
+<td class="source"><pre><code><var>template</var> &lt; <var>class</var> T, <var>class</var> Allocator = allocator&lt;T&gt; &gt; <var>class</var> list;</code></pre></td></tr></table></div>
+<br>
+Where the template parameters have the following meanings:<br>
+<ul>
+<li><b><tt>T</tt>:</b> Type of the elements.</li>
+<li><b><tt>Allocator</tt>:</b> Type of the allocator object used to define the storage allocation model. By default, the <tt>allocator</tt> class template for type <tt>T</tt> is used, which defines the simplest memory allocation model and is value-independent.</li>
+</ul><br>
+In the reference for the <tt>list</tt> member functions, these same names are assumed for the template parameters.<br>
+<br>
+<h3>Member functions</h3>
+<div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-2.htm" tppabs="http://www.cplusplus.com/reference/stl/list/list/"><b>(constructor)</b></a></td><td class="des"> Construct list <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-3.htm" tppabs="http://www.cplusplus.com/reference/stl/list/~list/"><b>(destructor)</b></a></td><td class="des"> List destructor <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-16.htm" tppabs="http://www.cplusplus.com/reference/stl/list/operator=/"><b>operator=</b></a></td><td class="des"> Copy container content <span class="typ">(public member function)</span></td></tr></table></div><br>
+<br>
+<b>Iterators</b>:<br>
+<div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-6.htm" tppabs="http://www.cplusplus.com/reference/stl/list/begin/"><b>begin</b></a></td><td class="des"> Return iterator to beginning <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-9.htm" tppabs="http://www.cplusplus.com/reference/stl/list/end/"><b>end</b></a></td><td class="des"> Return iterator to end <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-21.htm" tppabs="http://www.cplusplus.com/reference/stl/list/rbegin/"><b>rbegin</b></a></td><td class="des"> Return reverse iterator to reverse beginning <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-24.htm" tppabs="http://www.cplusplus.com/reference/stl/list/rend/"><b>rend</b></a></td><td class="des"> Return reverse iterator to reverse end <span class="typ">(public member function)</span></td></tr></table></div><br>
+<br>
+<b>Capacity</b>:<br>
+<div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-8.htm" tppabs="http://www.cplusplus.com/reference/stl/list/empty/"><b>empty</b></a></td><td class="des"> Test whether container is empty <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-27.htm" tppabs="http://www.cplusplus.com/reference/stl/list/size/"><b>size</b></a></td><td class="des"> Return size <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-14.htm" tppabs="http://www.cplusplus.com/reference/stl/list/max_size/"><b>max_size</b></a></td><td class="des"> Return maximum size <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-25.htm" tppabs="http://www.cplusplus.com/reference/stl/list/resize/"><b>resize</b></a></td><td class="des"> Change size <span class="typ">(public member function)</span></td></tr></table></div><br>
+<br>
+<b>Element access</b>:<br>
+<div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-11.htm" tppabs="http://www.cplusplus.com/reference/stl/list/front/"><b>front</b></a></td><td class="des"> Access first element <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-5.htm" tppabs="http://www.cplusplus.com/reference/stl/list/back/"><b>back</b></a></td><td class="des"> Access last element <span class="typ">(public member function)</span></td></tr></table></div><br>
+<br>
+<b>Modifiers</b>:<br>
+<div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-4.htm" tppabs="http://www.cplusplus.com/reference/stl/list/assign/"><b>assign</b></a></td><td class="des"> Assign new content to container <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-20.htm" tppabs="http://www.cplusplus.com/reference/stl/list/push_front/"><b>push_front</b></a></td><td class="des"> Insert element at beginning <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-18.htm" tppabs="http://www.cplusplus.com/reference/stl/list/pop_front/"><b>pop_front</b></a></td><td class="des"> Delete first element <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-19.htm" tppabs="http://www.cplusplus.com/reference/stl/list/push_back/"><b>push_back</b></a></td><td class="des"> Add element at the end <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-17.htm" tppabs="http://www.cplusplus.com/reference/stl/list/pop_back/"><b>pop_back</b></a></td><td class="des"> Delete last element <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-13.htm" tppabs="http://www.cplusplus.com/reference/stl/list/insert/"><b>insert</b></a></td><td class="des"> Insert elements <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-10.htm" tppabs="http://www.cplusplus.com/reference/stl/list/erase/"><b>erase</b></a></td><td class="des"> Erase elements <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-30.htm" tppabs="http://www.cplusplus.com/reference/stl/list/swap/"><b>swap</b></a></td><td class="des"> Swap content <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-7.htm" tppabs="http://www.cplusplus.com/reference/stl/list/clear/"><b>clear</b></a></td><td class="des"> Clear content <span class="typ">(public member function)</span></td></tr></table></div><br>
+<br>
+<b>Operations</b>:<br>
+<div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-29.htm" tppabs="http://www.cplusplus.com/reference/stl/list/splice/"><b>splice</b></a></td><td class="des"> Move elements from list to list <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-22.htm" tppabs="http://www.cplusplus.com/reference/stl/list/remove/"><b>remove</b></a></td><td class="des"> Remove elements with specific value <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-23.htm" tppabs="http://www.cplusplus.com/reference/stl/list/remove_if/"><b>remove_if</b></a></td><td class="des"> Remove elements fulfilling condition <span class="typ">(public member function template)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-31.htm" tppabs="http://www.cplusplus.com/reference/stl/list/unique/"><b>unique</b></a></td><td class="des"> Remove duplicate values <span class="typ">(member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-15.htm" tppabs="http://www.cplusplus.com/reference/stl/list/merge/"><b>merge</b></a></td><td class="des"> Merge sorted lists <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-28.htm" tppabs="http://www.cplusplus.com/reference/stl/list/sort/"><b>sort</b></a></td><td class="des"> Sort elements in container <span class="typ">(public member function)</span></td></tr></table></div><div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-26.htm" tppabs="http://www.cplusplus.com/reference/stl/list/reverse/"><b>reverse</b></a></td><td class="des"> Reverse the order of elements <span class="typ">(public member function)</span></td></tr></table></div><br>
+<br>
+<b>Allocator</b>:<br>
+<div class="auto"><table class="keywordlink"><tr><td class="tit"><a href= "index-12.htm" tppabs="http://www.cplusplus.com/reference/stl/list/get_allocator/"><b>get_allocator</b></a></td><td class="des"> Get allocator <span class="typ">(public member function)</span></td></tr></table></div><br>
+<br>
+<h3>Member types</h3>
+of <tt>template &lt;class T, class Allocator=allocator&lt;T&gt; &gt; class list;</tt><br>
+<br>
+<table class="boxed">
+<tr><th>member type</th><th>definition</th></tr>
+<tr><td><tt>reference</tt></td><td><tt>Allocator::reference</tt></td></tr>
+<tr><td><tt>const_reference</tt></td><td><tt>Allocator::const_reference</tt></td></tr>
+<tr><td><tt>iterator</tt></td><td><i>Bidirectional iterator</i></td></tr>
+<tr><td><tt>const_iterator</tt></td><td><i>Constant bidirectional iterator</i></td></tr>
+<tr><td><tt>size_type</tt></td><td><i>Unsigned integral type</i> (usually same as <a href="javascript:if(confirm('http://www.cplusplus.com/size_t  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/size_t'" tppabs="http://www.cplusplus.com/size_t">size_t</a>)</td></tr>
+<tr><td><tt>difference_type</tt></td><td><i>Signed integral type</i> (usually same as <a href="javascript:if(confirm('http://www.cplusplus.com/ptrdiff_t  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/ptrdiff_t'" tppabs="http://www.cplusplus.com/ptrdiff_t">ptrdiff_t</a>)</td></tr>
+<tr><td><tt>value_type</tt></td><td><tt>T</tt></td></tr>
+<tr><td><tt>allocator_type</tt></td><td><tt>Allocator</tt></td></tr>
+<tr><td><tt>pointer</tt></td><td><tt>Allocator::pointer</tt></td></tr>
+<tr><td><tt>const_pointer</tt></td><td><tt>Allocator::const_pointer</tt></td></tr>
+<tr><td><tt>reverse_iterator</tt></td><td><tt>reverse_iterator&lt;iterator&gt;</tt></td></tr>
+<tr><td><tt>const_reverse_iterator</tt></td><td><tt>reverse_iterator&lt;const_iterator&gt;</tt></td></tr>
+</table><br>
+</div>
+<p>&nbsp;</p>
+<div id="suopt">
+</div>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7973859818";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+	</div>
+	<div id="footer">
+		<a href="javascript:if(confirm('http://www.cplusplus.com/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/'" tppabs="http://www.cplusplus.com/">Home page</a> | <a href="javascript:if(confirm('http://www.cplusplus.com/member/privacy.cgi  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/member/privacy.cgi'" tppabs="http://www.cplusplus.com/member/privacy.cgi">Privacy policy</a><br>&copy; cplusplus.com, 2000-2010 - All rights reserved - <i>v2.3</i><br><a href="javascript:if(confirm('http://www.cplusplus.com/member/contact.form?referrer=http://www.cplusplus.com/reference/stl/list/  \n\n该文件未被 Teleport Pro 下载，因为 它位于起始地址以设置的边界以外的域或路径中。  \n\n你想要从服务器打开它吗?'))window.location='http://www.cplusplus.com/member/contact.form?referrer=http://www.cplusplus.com/reference/stl/list/'" tppabs="http://www.cplusplus.com/member/contact.form?referrer=http://www.cplusplus.com/reference/stl/list/">Spotted an error? contact us</a>
+	</div>
+</div>
+
+<script src="urchin.js" tppabs="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-521783-1";
+urchinTracker();
+</script>
+</body>
+</html>

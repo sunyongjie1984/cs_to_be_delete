@@ -1,0 +1,7 @@
+makefile is used for static library:
+    make
+	make clean
+
+makefile2 is used for common use:
+    make -f makefile2
+	make clean -f makefile2

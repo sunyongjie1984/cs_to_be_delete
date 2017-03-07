@@ -1,0 +1,57 @@
+#jquery-overlay {
+	Z-INDEX: 90; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 500px
+}
+#jquery-lightbox {
+	Z-INDEX: 100; LEFT: 0px; WIDTH: 100%; LINE-HEIGHT: 0; POSITION: absolute; TOP: 0px; TEXT-ALIGN: center
+}
+#jquery-lightbox A IMG {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+#lightbox-container-image-box {
+	MARGIN: 0px auto; WIDTH: 250px; POSITION: relative; HEIGHT: 250px; BACKGROUND-COLOR: #fff
+}
+#lightbox-container-image {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+#lightbox-loading {
+	LEFT: 0%; WIDTH: 100%; LINE-HEIGHT: 0; POSITION: absolute; TOP: 40%; HEIGHT: 25%; TEXT-ALIGN: center
+}
+#lightbox-nav {
+	Z-INDEX: 10; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 100%
+}
+UNKNOWN {
+	LEFT: 0px
+}
+#lightbox-nav A {
+	outline: none
+}
+#lightbox-nav-btnPrev {
+	DISPLAY: block; WIDTH: 49%; ZOOM: 1; HEIGHT: 100%
+}
+#lightbox-nav-btnNext {
+	DISPLAY: block; WIDTH: 49%; ZOOM: 1; HEIGHT: 100%
+}
+#lightbox-nav-btnPrev {
+	LEFT: 0px; FLOAT: left
+}
+#lightbox-nav-btnNext {
+	RIGHT: 0px; FLOAT: right
+}
+#lightbox-container-image-data-box {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px auto; FONT: 12px/1.4em "ËÎÌו",Verdana, Helvetica, sans-serif; OVERFLOW: auto; WIDTH: 100%; PADDING-TOP: 0px; BACKGROUND-COLOR: #fff
+}
+#lightbox-container-image-data {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 0px; COLOR: #666; PADDING-TOP: 0px
+}
+#lightbox-container-image-data #lightbox-image-details {
+	FLOAT: left; WIDTH: 70%; TEXT-ALIGN: left
+}
+#lightbox-image-details-caption {
+	FONT-WEIGHT: bold
+}
+#lightbox-image-details-currentNumber {
+	CLEAR: left; DISPLAY: block; PADDING-BOTTOM: 1em
+}
+#lightbox-secNav-btnClose {
+	FLOAT: right; PADDING-BOTTOM: 0.7em; WIDTH: 66px
+}

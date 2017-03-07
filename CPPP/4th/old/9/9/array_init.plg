@@ -1,0 +1,28 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: array_init - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSPC0C6.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/array_init.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\My Documents\专业学习\C++ Primer\9\9\array_init.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC0C6.TMP" 
+<h3>Output Window</h3>
+Compiling...
+array_init.cpp
+C:\My Documents\专业学习\C++ Primer\9\9\array_init.cpp(48) : error C2664: '__thiscall std::list<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > >::std::list<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > >(unsigned int,const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > &)' : cannot convert parameter 1 from 'char *[4]' to 'unsigned int'
+        This conversion requires a reinterpret_cast, a C-style cast or function-style cast
+执行 cl.exe 时出错.
+
+
+
+<h3>Results</h3>
+array_init.obj - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

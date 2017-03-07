@@ -1,0 +1,20 @@
+# $Id: smtp-lib,v 1.2 2000/11/18 08:25:04 roesch Exp $
+
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS032 - SMTP-expn-decode";flags:PA; content:"expn decode";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS124 - SMTP-exploit8610ha";flags:PA; content:"Croot|09090909090909|Mprog,P=/bin";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS139 - CVE-1999-0204 - SMTP-exploit869a;flags:PA; content:"|0a|C|3a|daemon|0a|R";) 
+alert tcp $EXTERNAL_NET 113 -> $HOME_NET 25 (msg:"IDS140 - CVE-1999-0204 - SMTP-exploit869b";flags:PA; content:"|0a|D/";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS142 - CVE-1999-0204 - SMTP-exploit869d";flags:PA; content:"|0a|Croot|0a|Mprog";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS120 - SMTP-exploit41";flags:PA; content:"rcpt to|3a207c| sed '1,/^$/d'|7c|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS119 - SMTP-exploit555";flags:PA; content:"mail from|3a20227c|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS123 - SMTP-exploit8610";flags:PA; content:"Croot|0d0a|Mprog, P=/bin/";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS122 - SMTP-exploit565";flags:PA; content:"MAIL FROM|3a207c|/usr/ucb/tail";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS266 - CAN-1999-0261 - SMTP Chameleon Overflow"; content: "HELP"; nocase; flags: AP; dsize: >500; depth: 10;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS031 - SMTP-expn-root";flags:PA; content:"expn root";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS143 - CVE-1999-0208 - SMTP-MajordomoIFS";flags:PA; content:"eply-to|3a| a~.`/bin/";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"SMTP-vrfy-decode";flags:PA; content:"vrfy decode";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS141 - CVE-1999-0204 - SMTP-exploit869c";flags:PA; content:"|0a|Croot|0d0a|Mprog";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS172 - CVE-1999-0095 - SMTP Exploit558"; flags: PA; content: "|7c 73 65 64 20 2d 65 20 27 31 2c 2f 5e 24 2f 27|";) 
+alert tcp $HOME_NET 25 -> $EXTERNAL_NET any (msg:"IDS249 - SMTP Relaying Denied"; flags:AP; content: "5.7.1"; depth:70;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 25 (msg:"IDS121 - SMTP-exploit564";flags:PA; content:"rcpt to|3a| decode";) 
+

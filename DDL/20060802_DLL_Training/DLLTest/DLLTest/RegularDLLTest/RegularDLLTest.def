@@ -1,0 +1,7 @@
+; RegularDLLTest.def : Declares the module parameters for the DLL.
+
+;LIBRARY      "RegularDLLTest"
+DESCRIPTION  'RegularDLLTest Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here

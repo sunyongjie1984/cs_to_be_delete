@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0079)http://download.oracle.com/javase/tutorial/essential/exceptions/advantages.html -->
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Advantages of Exceptions (The Java™ Tutorials &gt;        
+            Essential Classes &gt; Exceptions)
+</title>
+
+     <meta name="description" content="This Java tutorial describes exceptions, basic input/output, concurrency, regular expressions, and the platform environment">
+     <meta name="keywords" content="java programming, learn java, java sample code, java exception, java input output, java threads, java regex, regular expressions, path, classpath, environment variable">
+        
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #F90000;
+    }    
+    #PageContent{
+        margin: 0 5px 0 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+        margin-right: 10px;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .footertext {
+        font-size: 10px;
+        font-family: sans-serif; 
+        margin-top: 1px;
+    }
+    
+    #Footer2 {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;        
+    }
+    
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #F90000;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h1, h2, h3, h4, h5 {
+        color: #F90000;
+        font-family: sans-serif;
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 12px;
+    }
+
+
+    #ToggleLeft {
+        display: none;
+    }
+    
+    .note {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .codeblock {
+        margin: 0 30px 0px 30px;
+    }
+    
+    .tocli {
+        list-style-type:none;
+    }
+
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+
+    function showCode(displayCodePage, codePath) {
+        var codePathEls = codePath.split("/");
+        var currDocPathEls = location.href.split("/");
+        //alert ("codePathEls = " + codePathEls + "\n" + "currDocPathEls = " + currDocPathEls);
+        currDocPathEls.pop(); // remove file name at the end
+        while (codePathEls.length > 0) {
+            if (codePathEls[0] == "..") {
+                codePathEls.shift();
+                currDocPathEls.pop();
+            } else {
+                break;
+            }
+        }
+        var fullCodePath = currDocPathEls.join("/") + "/" + codePathEls.join("/");
+        //alert ("fullCodePath = " + fullCodePath );
+        if (codePath.indexOf(".java") != -1 || codePath.indexOf(".jnlp") != -1) {
+            window.location.href = displayCodePage + "?code=" + encodeURI(fullCodePath);
+        } else {
+            window.location.href = fullCodePath;
+        }
+    }
+/* ]]> */    
+</script>
+
+
+    <script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>
+<body onload="load()">
+    <noscript>
+        A browser with JavaScript enabled is required for this page to operate properly.
+    </noscript>
+
+    <div id="TopBar"> <div id="TopBar_tr"> <div id="TopBar_tl"> <div id="TopBar_br"> <div id="TopBar_bl"> 
+                        <div id="TopBar_right"> 
+                            <a target="_blank" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download
+                                the JDK</a>
+                            <br>
+                            <a href="http://download.oracle.com/javase/tutorial/search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a href="javascript:toggleLeft()" id="ToggleLeft" style="display: inline; ">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class="PrintHeaders">
+        <b>Trail:</b> Essential Classes
+        <br><b>Lesson:</b> Exceptions
+    </div>
+
+    <div id="LeftBar" class="LeftBar_shown">
+        <div id="Contents">
+            <div class="linkLESSON"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/index.html">Exceptions</a></div>
+<div class="linkAHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/definition.html">What Is an Exception?</a></div>
+<div class="linkAHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/catchOrDeclare.html">The Catch or Specify Requirement</a></div>
+<div class="linkAHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/handling.html">Catching and Handling Exceptions</a></div>
+<div class="linkBHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/try.html">The try Block</a></div>
+<div class="linkBHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/catch.html">The catch Blocks</a></div>
+<div class="linkBHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/finally.html">The finally Block</a></div>
+<div class="linkBHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">The try-with-resources Statement</a></div>
+<div class="linkBHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/putItTogether.html">Putting It All Together</a></div>
+<div class="linkAHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/declaring.html">Specifying the Exceptions Thrown by a Method</a></div>
+<div class="linkAHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/throwing.html">How to Throw Exceptions</a></div>
+<div class="linkBHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/chained.html">Chained Exceptions</a></div>
+<div class="linkBHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/creating.html">Creating Exception Classes</a></div>
+<div class="linkAHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/runtime.html">Unchecked Exceptions — The Controversy</a></div>
+<div class="nolinkAHEAD">Advantages of Exceptions</div>
+<div class="linkAHEAD"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/summary.html">Summary</a></div>
+<div class="linkQUESTIONS"><a href="http://download.oracle.com/javase/tutorial/essential/exceptions/QandE/questions.html">Questions and Exercises</a></div>
+</div>
+    </div>
+    <div id="MainFlow" class="MainFlow_indented">
+            <span id="BreadCrumbs">
+                <a href="http://download.oracle.com/javase/tutorial/index.html" target="_top">Home Page</a>
+                &gt;
+                <a href="http://download.oracle.com/javase/tutorial/essential/index.html" target="_top">Essential Classes</a>
+                &gt;
+                <a href="http://download.oracle.com/javase/tutorial/essential/exceptions/index.html" target="_top">Exceptions</a>
+            </span>
+            <div class="NavBit">
+                <a target="_top" href="http://download.oracle.com/javase/tutorial/essential/exceptions/runtime.html">«&nbsp;Previous</a>&nbsp;•&nbsp;<a target="_top" href="http://download.oracle.com/javase/tutorial/essential/TOC.html">Trail</a>&nbsp;•&nbsp;<a target="_top" href="http://download.oracle.com/javase/tutorial/essential/exceptions/summary.html">Next&nbsp;»</a>
+            </div>
+            <div id="PageTitle"><h1>Advantages of Exceptions</h1></div>
+            <div id="PageContent">
+
+<p>Now that you know what exceptions are and how to use them, it's time to learn the advantages of using exceptions in your programs.</p>
+<h2>Advantage 1: Separating Error-Handling Code from "Regular" Code</h2>
+<p>Exceptions provide the means to separate the details of what to do when something out of the ordinary happens from the main logic of a program. In traditional programming, error detection, reporting, and handling often lead to confusing spaghetti code. For example, consider the pseudocode method here that reads an entire file into memory.</p>
+<div class="codeblock"><pre>readFile {
+    <b><em>open the file;
+    determine its size;
+    allocate that much memory;
+    read the file into memory;
+    close the file;</em></b>
+}
+</pre></div>
+<p>At first glance, this function seems simple enough, but it ignores all the following potential errors.</p>
+<ul>
+<li>What happens if the file can't be opened?</li>
+<li>What happens if the length of the file can't be determined?</li>
+<li>What happens if enough memory can't be allocated?</li>
+<li>What happens if the read fails?</li>
+<li>What happens if the file can't be closed?</li>
+</ul>
+<p>To handle such cases, the <code>readFile</code> function must have more code to do error detection, reporting, and handling. Here is an example of what the function might look like.</p>
+<div class="codeblock"><pre>errorCodeType <b>readFile {</b>
+    initialize errorCode = 0;
+    
+    <b><em>open the file;</em></b>
+    if (<em>theFileIsOpen</em>) {
+        <b><em>determine the length of the file;</em></b>
+        if (<em>gotTheFileLength</em>) {
+            <b><em>allocate that much memory;</em></b>
+            if (<em>gotEnoughMemory</em>) {
+                <b><em>read the file into memory;</em></b>
+                if (<em>readFailed</em>) {
+                    errorCode = -1;
+                }
+            } else {
+                errorCode = -2;
+            }
+        } else {
+            errorCode = -3;
+        }
+        <b><em>close the file;</em></b>
+        if (<em>theFileDidntClose</em> &amp;&amp; <em>errorCode</em> == 0) {
+            errorCode = -4;
+        } else {
+            errorCode = errorCode and -4;
+        }
+    } else {
+        errorCode = -5;
+    }
+    return errorCode;
+}
+</pre></div>
+<p>There's so much error detection, reporting, and returning here that the original seven lines of code are lost in the clutter. Worse yet, the logical flow of the code has also been lost, thus making it difficult to tell whether the code is doing the right thing: Is the file really being closed if the function fails to allocate enough memory? It's even more difficult to ensure that the code continues to do the right thing when you modify the method three months after writing it. Many programmers solve this problem by simply ignoring it — errors are reported when their programs crash.</p>
+<p>Exceptions enable you to write the main flow of your code and to deal with the exceptional cases elsewhere. If the <code>readFile</code> function used exceptions instead of traditional error-management techniques, it would look more like the following.</p>
+<div class="codeblock"><pre><b><em>readFile</em></b> {
+    try {
+        <b><em>open the file;
+        determine its size;
+        allocate that much memory;
+        read the file into memory;
+        close the file;</em></b>
+    } catch (<em>fileOpenFailed</em>) {
+       <b><em>doSomething;</em></b>
+    } catch (<em>sizeDeterminationFailed</em>) {
+        <b><em>doSomething;</em></b>
+    } catch (<em>memoryAllocationFailed</em>) {
+        <b><em>doSomething;</em></b>
+    } catch (<em>readFailed</em>) {
+        <b><em>doSomething;</em></b>
+    } catch (<em>fileCloseFailed</em>) {
+        <b><em>doSomething;</em></b>
+    }
+}
+</pre></div>
+<p>Note that exceptions don't spare you the effort of doing the work of detecting, reporting, and handling errors, but they do help you organize the work more effectively.</p>
+<h2>Advantage 2: Propagating Errors Up the Call Stack</h2>
+<p>A second advantage of exceptions is the ability to propagate error reporting up the call stack of methods. Suppose that the <code>readFile</code> method is the fourth method in a series of nested method calls made by the main program: <code>method1</code> calls <code>method2</code>, which calls <code>method3</code>, which finally calls <code>readFile</code>.</p>
+<div class="codeblock"><pre>method1 {
+    <b><em>call method2;</em></b>
+}
+
+method2 {
+    <b><em>call method3;</em></b>
+}
+
+method3 {
+    <b><em>call readFile;</em></b>
+}
+</pre></div>
+<p>Suppose also that <code>method1</code> is the only method interested in the errors that might occur within <code>readFile</code>. Traditional error-notification techniques force <code>method2</code> and <code>method3</code> to propagate the error codes returned by <code>readFile</code> up the call stack until the error codes finally reach <code>method1</code>—the only method that is interested in them.</p>
+<div class="codeblock"><pre><b>method1</b> {
+    errorCodeType error;
+    error = <b><em>call method2;</em></b>
+    if (error)
+        <b><em>doErrorProcessing;</em></b>
+    else
+        <b><em>proceed;</em></b>
+<b>}</b>
+
+errorCodeType <b>method2 {</b>
+    errorCodeType error;
+    error = call <b>method3;</b>
+    if (error)
+        return error;
+    else
+        <b><em>proceed;</em></b>
+<b>}</b>
+
+errorCodeType <b>method3 {</b>
+    errorCodeType error;
+    error = <b>call readFile;</b>
+    if (error)
+        return error;
+    else
+        <b><em>proceed;</em></b>
+<b>}</b>
+</pre></div>
+<p>Recall that the Java runtime environment searches backward through the call stack to find any methods that are interested in handling a particular exception. A method can duck any exceptions thrown within it, thereby allowing a method farther up the call stack to catch it. Hence, only the methods that care about errors have to worry about detecting errors.</p>
+<div class="codeblock"><pre><b>method1</b> {
+    try {
+        <b><em>call method2;</em></b>
+    } catch (<em>exception</em> e) {
+        <b><em>doErrorProcessing;</em></b>
+    }
+}
+
+<b>method2</b> throws <em>exception</em> {
+    <b><em>call method3;</em></b>
+}
+
+<b>method3</b> throws exception <b>{
+    <em>call readFile;</em>
+}</b>
+</pre></div>
+<p>However, as the pseudocode shows, ducking an exception requires some effort on the part of the middleman methods. Any checked exceptions that can be thrown within a method must be specified in its <code>throws</code> clause.</p>
+<h2>Advantage 3: Grouping and Differentiating Error Types</h2>
+<p>Because all exceptions thrown within a program are objects, the grouping or categorizing of exceptions is a natural outcome of the class hierarchy. An example of a group of related exception classes in the Java platform are those defined in <code>java.io</code> — <code>IOException</code> and its descendants. <code>IOException</code> is the most general and represents any type of error that can occur when performing I/O. Its descendants represent more specific errors. For example, <code>FileNotFoundException</code> means that a file could not be located on disk.</p>
+<p>A method can write specific handlers that can handle a very specific exception. The <code>FileNotFoundException</code> class has no descendants, so the following handler can handle only one type of exception.</p>
+<div class="codeblock"><pre>catch (FileNotFoundException e) {
+    ...
+}
+</pre></div>
+<p>A method can catch an exception based on its group or general type by specifying any of the exception's superclasses in the <code>catch</code> statement. For example, to catch all I/O exceptions, regardless of their specific type, an exception handler specifies an <code>IOException</code> argument.</p>
+<div class="codeblock"><pre>catch (IOException e) {
+    ...
+}
+</pre></div> 
+<p>This handler will be able to catch all I/O exceptions, including <code>FileNotFoundException</code>, <code>EOFException</code>, and so on. You can find details about what occurred by querying the argument passed to the exception handler. For example, use the following to print the stack trace.</p>
+<div class="codeblock"><pre>catch (IOException e) {
+    e.printStackTrace();  //Output goes to System.err.
+    e.printStackTrace(System.out);  //Send trace to stdout.
+}
+</pre></div>
+<p>You could even set up an exception handler that handles any <code>Exception</code> with the handler here.</p>
+<div class="codeblock"><pre>catch (Exception e) {    //<em>A (too) general exception handler</em>
+    ...
+}
+</pre></div>
+<p>The <code>Exception</code> class is close to the top of the <code>Throwable</code> class hierarchy. Therefore, this handler will catch many other exceptions in addition to those that the handler is intended to catch. You may want to handle exceptions this way if all you want your program to do, for example, is print out an error message for the user and then exit.</p>
+<p>In most situations, however, you want exception handlers to be as specific as possible. The reason is that the first thing a handler must do is determine what type of exception occurred before it can decide on the best recovery strategy. In effect, by not catching specific errors, the handler must accommodate any possibility. Exception handlers that are too general can make code more error-prone by catching and handling exceptions that weren't anticipated by the programmer and for which the handler was not intended.</p>
+<p>As noted, you can create groups of exceptions and handle exceptions in a general fashion, or you can use the specific exception type to differentiate exceptions and handle exceptions in an exact fashion.</p>
+
+
+        </div>
+        <div class="NavBit">
+            <a target="_top" href="http://download.oracle.com/javase/tutorial/essential/exceptions/runtime.html">« Previous</a>
+            •
+            <a target="_top" href="http://download.oracle.com/javase/tutorial/essential/TOC.html">Trail</a>
+            •
+            <a target="_top" href="http://download.oracle.com/javase/tutorial/essential/exceptions/summary.html">Next »</a>
+        </div>
+    </div>
+    <div id="Footer2">
+<hr>
+<div id="TagNotes">
+    <p class="footertext">Problems with the examples? Try <a target="_blank" href="http://download.oracle.com/javase/tutorial/information/run-examples.html">Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank" href="http://download.oracle.com/javase/feedback.html">Give
+    us your feedback</a>.
+    </p>
+</div> 
+
+<div id="Footer">
+<p class="footertext"><a name="license_info">Your use of this</a> page and all the material on pages under "The Java Tutorials" banner 
+ is subject to these <a href="http://download.oracle.com/javase/tutorial/information/cpyr.html">legal notices</a>.
+</p>
+<table border="0" cellspacing="0" cellpadding="5" summary="">
+    <tbody><tr>
+         <td headers="h1" width="20%">
+	 <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tbody><tr>
+              <td headers="h1" align="center"><img id="duke" src="./Advantages of Exceptions (The Java™ Tutorials   Essential Classes   Exceptions)_files/DukeWave.gif" width="55" height="55" alt="duke image"></td>
+              <td headers="h2" align="left" valign="middle"><img id="oracle" src="./Advantages of Exceptions (The Java™ Tutorials   Essential Classes   Exceptions)_files/logo_oracle_footer.gif" width="100" height="29" alt="Oracle logo"></td>
+           </tr>
+          </tbody></table>
+          </td>
+
+          <td width="55%" valign="middle" align="center">
+		<p class="footertext"><a href="http://www.oracle.com/us/corporate/index.html">About Oracle</a> | <a href="http://www.oracle.com/technology/index.html">Oracle Technology Network</a> | <a href="https://www.samplecode.oracle.com/servlets/CompulsoryClickThrough?type=TermsOfService">Terms of Service</a></p> 
+	 </td>
+          <td width="25%" valign="middle" align="right">
+      		<p class="footertext">Copyright © 1995, 2011 Oracle and/or its affiliates. All rights reserved.</p>
+	 </td>
+     </tr>     
+</tbody></table>
+</div>
+    </div>
+    <div class="PrintHeaders">
+        <b>Previous page:</b> Unchecked Exceptions — The Controversy
+        <br><b>Next page:</b> Summary
+    </div>
+<!-- Start SiteCatalyst code   -->
+<script type="text/javascript" language="JavaScript" src="./Advantages of Exceptions (The Java™ Tutorials   Essential Classes   Exceptions)_files/s_code_download.js"></script>
+<script type="text/javascript" language="JavaScript" src="./Advantages of Exceptions (The Java™ Tutorials   Essential Classes   Exceptions)_files/s_code.js"></script>
+<noscript>
+A browser with JavaScript enabled is required for this page to operate properly.
+</noscript>
+
+<!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+<!--  Below code will send the info to Omniture server -->
+<script type="text/javascript" language="javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+<!-- End SiteCatalyst code -->
+
+ 
+</body></html>

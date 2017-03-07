@@ -1,0 +1,538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highscore - The Boost C++ Libraries - Interprocess Communication</title>
+<link rel="stylesheet" href="css/highscore.css" type="text/css">
+<link rev="made" href="mailto:boris@highscore.de">
+<link rel="home" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="up" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="prev" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="next" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="chapter" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="chapter" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="chapter" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="chapter" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="chapter" href="serialization.html" title="Chapter 11: Serialization">
+<link rel="chapter" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="containers.html" title="Chapter 13: Containers">
+<link rel="chapter" href="datastructures.html" title="Chapter 14: Data Structures">
+<link rel="chapter" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="castoperators.html" title="Chapter 16: Cast Operators">
+<link rel="section" href="interprocesscommunication.html#interprocesscommunication_general" title="8.1 General">
+<link rel="section" href="interprocesscommunication.html#interprocesscommunication_shared_memory" title="8.2 Shared Memory">
+<link rel="section" href="interprocesscommunication.html#interprocesscommunication_managed_shared_memory" title="8.3 Managed Shared Memory">
+<link rel="section" href="interprocesscommunication.html#interprocesscommunication_synchronization" title="8.4 Synchronization">
+<link rel="section" href="interprocesscommunication.html#interprocesscommunication_exercises" title="8.5 Exercises">
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1) gen true for "http://highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1))'>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link href="http://www.highscore.de/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script><script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script><script type="text/javascript" src="js/highscore.js"></script>
+</head>
+<body>
+<div lang="en" class="docbook chapter" title="Chapter 8: Interprocess Communication">
+<p class="title">The Boost C++ Libraries</p>
+<script type="text/javascript">
+          var titlepage = "Front page";
+        
+      var titles = new Array(titlepage,
+      
+        "Chapter 1: Introduction",
+      
+        "Chapter 2: Smart Pointers",
+      
+        "Chapter 3: Function Objects",
+      
+        "Chapter 4: Event Handling",
+      
+        "Chapter 5: String Handling",
+      
+        "Chapter 6: Multithreading",
+      
+        "Chapter 7: Asynchronous Input and Output",
+      
+        "Chapter 8: Interprocess Communication",
+      
+        "Chapter 9: Filesystem",
+      
+        "Chapter 10: Date and Time",
+      
+        "Chapter 11: Serialization",
+      
+        "Chapter 12: Parser",
+      
+        "Chapter 13: Containers",
+      
+        "Chapter 14: Data Structures",
+      
+        "Chapter 15: Error Handling",
+      
+        "Chapter 16: Cast Operators",
+      
+      "");
+
+      
+          var titlehtml = "frontpage.html";
+        
+      var filenames = new Array(titlehtml,
+      
+        "introduction.html",
+      
+        "smartpointers.html",
+      
+        "functionobjects.html",
+      
+        "eventhandling.html",
+      
+        "stringhandling.html",
+      
+        "multithreading.html",
+      
+        "asio.html",
+      
+        "interprocesscommunication.html",
+      
+        "filesystem.html",
+      
+        "datetime.html",
+      
+        "serialization.html",
+      
+        "parser.html",
+      
+        "containers.html",
+      
+        "datastructures.html",
+      
+        "errorhandling.html",
+      
+        "castoperators.html",
+      
+      "");
+
+      
+      document.open();
+      document.write('<form action="" class="toc">');
+      document.write('<select size="1" onchange="location.href=options[selectedIndex].value">');
+      for (var i = 0; i < titles.length && i < filenames.length; ++i) {
+        if (titles[i] != "" && filenames[i] != "") {
+          document.write('<option');
+          document.write(' value="' + filenames[i] + '"');
+          var expr = new RegExp('[/\]' + filenames[i] + '$');
+          if (expr.test(location.href)) {
+            document.write(' selected="selected"');
+          }
+          document.write('>' + titles[i] + '<\/option>');
+        }
+      }
+      document.write('<\/select>');
+      document.write('<\/form>');
+      document.close();
+      
+    </script><noscript><p class="toc"><a href="toc.html">Table of Contents</a></p></noscript>
+<hr class="hrhead">
+<h1 class="title">
+<a name="interprocesscommunication"></a><small>Chapter 8:</small> Interprocess Communication</h1>
+<hr>
+<div class="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><span class="sect1"><a href="interprocesscommunication.html#interprocesscommunication_general">8.1 General</a></span></li>
+<li><span class="sect1"><a href="interprocesscommunication.html#interprocesscommunication_shared_memory">8.2 Shared Memory</a></span></li>
+<li><span class="sect1"><a href="interprocesscommunication.html#interprocesscommunication_managed_shared_memory">8.3 Managed Shared Memory</a></span></li>
+<li><span class="sect1"><a href="interprocesscommunication.html#interprocesscommunication_synchronization">8.4 Synchronization</a></span></li>
+<li><span class="sect1"><a href="interprocesscommunication.html#interprocesscommunication_exercises">8.5 Exercises</a></span></li>
+</ul>
+</div>
+<p class="license"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top"><img src="img/88x31_cc_logo.gif" alt="" width="88" height="31"></a> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top">Creative Commons License</a>.</p>
+<hr>
+<h2 class="title">
+<a name="interprocesscommunication_general"></a>8.1 General</h2>
+<div class="sect1">
+<p>Interprocess communication describes mechanisms to exchange data between different applications running on the same computer. This does not include network communication though. If data is required to be exchanged between applications running on different computers connected via network, take a look at <a class="xref" href="asio.html" title="Chapter 7: Asynchronous Input and Output">Chapter 7, <i>Asynchronous Input and Output</i></a> which covers the Boost.Asio library.</p>
+<p>This chapter presents the <a class="link" href="http://www.boost.org/libs/interprocess/">Boost.Interprocess</a> library that contains numerous classes providing an abstract layer for operating system specific interprocess communication interfaces. Even though the concepts of interprocess communication are closely related between different operating systems, the interfaces can vary greatly. Boost.Interprocess allows a platform independent access to these functions from C++.</p>
+<p>While Boost.Asio can be used for exchanging data between applications running on the same computer as well, the performance using Boost.Interprocess is usually better. Boost.Interprocess actually accesses operating system functions optimized for the data exchange between applications running on the same computer and thus should be the first choice whenever data exchange without a network is required.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="interprocesscommunication_shared_memory"></a>8.2 Shared Memory</h2>
+<div class="sect1">
+<p>Shared memory is typically the fastest form of interprocess communication. It provides a memory area that is shared between different applications. One application can write data to the area while another application can read the same data accordingly.</p>
+<p>Such a memory area is represented in Boost.Interprocess by the <code class="classname">boost::interprocess::shared_memory_object</code> class. To use this class, the <code class="filename">boost/interprocess/shared_memory_object.hpp</code> header file needs to be included.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/shared_memory_object.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object shdmem(boost::interprocess::open_or_create, "Highscore", boost::interprocess::read_write); 
+  shdmem.truncate(1024); 
+  std::cout &lt;&lt; shdmem.get_name() &lt;&lt; std::endl; 
+  boost::interprocess::offset_t size; 
+  if (shdmem.get_size(size)) 
+    std::cout &lt;&lt; size &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.2.1/main.cpp">Download source code</a></li></ul>
+<p>The constructor of <code class="classname">boost::interprocess::shared_memory_object</code> expects three parameters. The first one specifies whether the shared memory should be created or just opened. The above example actually does it either way: using <code class="code">boost::interprocess::open_or_create</code>, the shared memory is opened if it already exists, otherwise it will be created.</p>
+<p>Opening an existing shared memory assumes that it has been created before. To uniquely identify a shared memory, a name is being assigned accordingly. The second parameter passed to the constructor of <code class="classname">boost::interprocess::shared_memory_object</code> specifies that name.</p>
+<p>The third and last parameter determines how an application can access the shared memory. The shown application can both read from and write to the shared memory due to the <code class="code">boost::interprocess::read_write</code> value.</p>
+<p>After creating an object of type <code class="classname">boost::interprocess::shared_memory_object</code>, a corresponding shared memory exists within the operating system. The size of this memory area, however, is initially 0. In order to utilize the area, the <code class="methodname">truncate()</code> method needs to be called, passing the requested size of the shared memory in bytes. For the above example, the shared memory provides space for 1,024 bytes.</p>
+<p>Please note that the <code class="methodname">truncate()</code> method can only be called if the shared memory has been opened with <code class="code">boost::interprocess::read_write</code>. If not, an exception of type <code class="exceptionname">boost::interprocess::interprocess_exception</code> will be thrown.</p>
+<p>In order to adjust the size of the shared memory, the <code class="methodname">truncate()</code> method can be called repeatedly.</p>
+<p>After creating a shared memory, methods such as <code class="methodname">get_name()</code> and <code class="methodname">get_size()</code> can be used to query the name and the size, respectively.</p>
+<p>Since shared memory is used to exchange data between different applications, each application needs to map the shared memory into its address space which is done via the <code class="classname">boost::interprocess::mapped_region</code> class.</p>
+<p>It may come as a surprise that two classes are actually used in order to access the shared memory. However, the <code class="classname">boost::interprocess::mapped_region</code> class can also be used to map different objects into the address space of a particular application. For example, Boost.Interprocess provides a <code class="classname">boost::interprocess::file_mapping</code> class which essentially represents a shared memory for a particular file. Thus, an object of type <code class="classname">boost::interprocess::file_mapping</code> corresponds to a file. Data written to such an object is automatically saved in the associated physical file. Since <code class="classname">boost::interprocess::file_mapping</code> does not load the file completely but rather maps arbitrary parts into the address space using <code class="classname">boost::interprocess::mapped_region</code>, it is possible to process files of several gigabytes in size that can not be completely loaded into memory on 32-bit systems otherwise.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/shared_memory_object.hpp&gt; 
+#include &lt;boost/interprocess/mapped_region.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object shdmem(boost::interprocess::open_or_create, "Highscore", boost::interprocess::read_write); 
+  shdmem.truncate(1024); 
+  boost::interprocess::mapped_region region(shdmem, boost::interprocess::read_write); 
+  std::cout &lt;&lt; std::hex &lt;&lt; "0x" &lt;&lt; region.get_address() &lt;&lt; std::endl; 
+  std::cout &lt;&lt; std::dec &lt;&lt; region.get_size() &lt;&lt; std::endl; 
+  boost::interprocess::mapped_region region2(shdmem, boost::interprocess::read_only); 
+  std::cout &lt;&lt; std::hex &lt;&lt; "0x" &lt;&lt; region2.get_address() &lt;&lt; std::endl; 
+  std::cout &lt;&lt; std::dec &lt;&lt; region2.get_size() &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.2.2/main.cpp">Download source code</a></li></ul>
+<p>In order to use the <code class="classname">boost::interprocess::mapped_region</code> class, the header <code class="filename">boost/interprocess/mapped_region.hpp</code> needs to be included. An object of type <code class="classname">boost::interprocess::shared_memory_object</code> must be passed as the first argument to the constructor of <code class="classname">boost::interprocess::mapped_region</code>. The second argument determines whether the memory area can be accessed read-only or whether applications are allowed to write to it as well.</p>
+<p>The above example creates two objects of type <code class="classname">boost::interprocess::mapped_region</code>: The shared memory named Highscore is mapped twice into the address space of the process. The address as well as the size of the mapped memory area is written to the standard output stream using the <code class="methodname">get_address()</code> and <code class="methodname">get_size()</code> methods. While <code class="methodname">get_size()</code> returns <code class="computeroutput">1024</code> in both cases, the return value of <code class="methodname">get_address()</code> is different.</p>
+<p>The following example uses the mapped memory area to write and read a number.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/shared_memory_object.hpp&gt; 
+#include &lt;boost/interprocess/mapped_region.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object shdmem(boost::interprocess::open_or_create, "Highscore", boost::interprocess::read_write); 
+  shdmem.truncate(1024); 
+  boost::interprocess::mapped_region region(shdmem, boost::interprocess::read_write); 
+  int *i1 = static_cast&lt;int*&gt;(region.get_address()); 
+  *i1 = 99; 
+  boost::interprocess::mapped_region region2(shdmem, boost::interprocess::read_only); 
+  int *i2 = static_cast&lt;int*&gt;(region2.get_address()); 
+  std::cout &lt;&lt; *i2 &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.2.3/main.cpp">Download source code</a></li></ul>
+<p>By means of <var>region</var>, the number 99 is written to the beginning of the shared memory. <var>region2</var> then accesses the same location of the shared memory to write the number to the standard output stream. Even though <var>region</var> and <var>region2</var> represent different memory areas within the process as seen by the return value of <code class="methodname">get_address()</code> in the previous example, the program prints <code class="computeroutput">99</code> since both memory areas access the same underlying shared memory.</p>
+<p>Usually, multiple objects of type <code class="classname">boost::interprocess::mapped_region</code> would not be used for the shared memory within the same application. There is actually not much sense accessing the same shared memory using two different memory areas. The above example is only meant for illustration purposes.</p>
+<p>In order to delete a particular shared memory, <code class="classname">boost::interprocess::shared_memory_object</code>  offers the static <code class="methodname">remove()</code> method which takes the name of the shared memory to be deleted as its argument.</p>
+<p>Boost.Interprocess kind of supports the RAII concept known from the chapter about smart pointers using a separate class named <code class="classname">boost::interprocess::remove_shared_memory_on_destroy</code>. Its constructor expects the name of an existing shared memory. If an object of this class is destroyed, the contained shared memory is automatically deleted within the destructor.</p>
+<p>Please note that the constructor of <code class="classname">boost::interprocess::remove_shared_memory_on_destroy</code> does not create or open the shared memory. Therefore, this class is not a typical representative of the RAII concept.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/shared_memory_object.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  bool removed = boost::interprocess::shared_memory_object::remove("Highscore"); 
+  std::cout &lt;&lt; removed &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.2.4/main.cpp">Download source code</a></li></ul>
+<p>If <code class="methodname">remove()</code> is not being called at all, the shared memory continues to exist even if the application is terminated. Whether or not the shared memory is deleted depends on the underlying operating system. While many Unix operating systems, including Linux, automatically delete a shared memory once the system is restarted, <code class="methodname">remove()</code> must be called while working with Windows or Mac OS X. Both systems actually store the shared memory as a persistent file which is still available after a restart.</p>
+<p>Windows provides a special kind of shared memory that is automatically deleted once the last application using it has been terminated. In order to use it, the <code class="classname">boost::interprocess::windows_shared_memory</code> class, defined in <code class="filename">boost/interprocess/windows_shared_memory.hpp</code>, is provided.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/windows_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/mapped_region.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::windows_shared_memory shdmem(boost::interprocess::open_or_create, "Highscore", boost::interprocess::read_write, 1024); 
+  boost::interprocess::mapped_region region(shdmem, boost::interprocess::read_write); 
+  int *i1 = static_cast&lt;int*&gt;(region.get_address()); 
+  *i1 = 99; 
+  boost::interprocess::mapped_region region2(shdmem, boost::interprocess::read_only); 
+  int *i2 = static_cast&lt;int*&gt;(region2.get_address()); 
+  std::cout &lt;&lt; *i2 &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.2.5/main.cpp">Download source code</a></li></ul>
+<p>Please note that <code class="classname">boost::interprocess::windows_shared_memory</code> does not provide a <code class="methodname">truncate()</code> method. Instead, the size of the shared memory needs to be passed as the fourth argument to the constructor.</p>
+<p>Even though the <code class="classname">boost::interprocess::windows_shared_memory</code> class is not portable and can only be used within Windows, it is helpful while exchanging data between different applications that use this special kind of shared memory.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="interprocesscommunication_managed_shared_memory"></a>8.3 Managed Shared Memory</h2>
+<div class="sect1">
+<p>The previous section introduced the class <code class="classname">boost::interprocess::shared_memory_object</code> used to create and manage a shared memory. In practice, this class is hardly used though since it requires to read and write individual bytes from and to the shared memory. Conceptually, C++ rather promotes creating objects of classes and hiding the specifics of where and how they are stored in memory.</p>
+<p>Boost.Interprocess provides a concept named managed shared memory through the <code class="classname">boost::interprocess::managed_shared_memory</code> class defined in <code class="filename">boost/interprocess/managed_shared_memory.hpp</code>. With the aid of this class, objects can be instantiated in a way that the memory required by the individual object is located in shared memory making each object automatically available to other applications accessing the same shared memory.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove("Highscore"); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "Highscore", 1024); 
+  int *i = managed_shm.construct&lt;int&gt;("Integer")(99); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  std::pair&lt;int*, std::size_t&gt; p = managed_shm.find&lt;int&gt;("Integer"); 
+  if (p.first) 
+    std::cout &lt;&lt; *p.first &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.3.1/main.cpp">Download source code</a></li></ul>
+<p>The above example opens the shared memory named Highscore with a size of 1,024 bytes. In case it does not exist, it will be automatically created.</p>
+<p>While in a regular shared memory individual bytes are being directly accessed in order to read or write data, managed shared memory uses methods such as <code class="methodname">construct()</code>. This method expects a data type as its template argument - in the example type <code class="type">int</code> is declared. The method itself expects a name to denote the object created in the managed shared memory. The example uses the name 'Integer'.</p>
+<p>Since <code class="methodname">construct()</code> returns a proxy object, arguments can be passed to it in order to initialize the created object. The syntax looks like a call to a constructor. This ensures that objects not only can be created in a managed shared memory but also can be initialized as desired.</p>
+<p>To access a particular object in the managed shared memory, the <code class="methodname">find()</code> method is used. By passing the name of the object to find, <code class="methodname">find()</code> returns either a pointer to the particular object or 0 in case no object with the given name was found.</p>
+<p>As seen in the above example, <code class="methodname">find()</code> actually returns an object of type <code class="classname">std::pair</code>. The pointer to the object is provided as the <var>first</var> property. What is provided as the <var>second</var> property though?</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove("Highscore"); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "Highscore", 1024); 
+  int *i = managed_shm.construct&lt;int&gt;("Integer")[10](99); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  std::pair&lt;int*, std::size_t&gt; p = managed_shm.find&lt;int&gt;("Integer"); 
+  if (p.first) 
+  { 
+    std::cout &lt;&lt; *p.first &lt;&lt; std::endl; 
+    std::cout &lt;&lt; p.second &lt;&lt; std::endl; 
+  } 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.3.2/main.cpp">Download source code</a></li></ul>
+<p>This time, an array for ten elements of type <code class="type">int</code> is created by providing the value 10 enclosed by square brackets after the call to <code class="methodname">construct()</code>. The same <code class="computeroutput">10</code> is written to the standard output stream using the <var>second</var> property. Using this property, objects returned by the <code class="methodname">find()</code> method can be distinguished between single objects and array objects. For the former, <var>second</var> is set to 1 while for the latter it will specify the number of elements in the array.</p>
+<p>Please note that all ten elements within the array are initialized with the value 99. It is not possible to initialize individual elements with different values.</p>
+<p><code class="methodname">construct()</code> will fail if there exists an object with the given name in the managed shared memory already. In this case, <code class="methodname">construct()</code> returns 0. If the existing object should be reused in case it already exists, the <code class="methodname">find_or_construct()</code> method can be used which returns a pointer to the existing object if found. In this case, no initialization happens.</p>
+<p>There are other cases that cause <code class="methodname">construct()</code> to fail as shown in the following example.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    boost::interprocess::shared_memory_object::remove("Highscore"); 
+    boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "Highscore", 1024); 
+    int *i = managed_shm.construct&lt;int&gt;("Integer")[4096](99); 
+  } 
+  catch (boost::interprocess::bad_alloc &amp;ex) 
+  { 
+    std::cerr &lt;&lt; ex.what() &lt;&lt; std::endl; 
+  } 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.3.3/main.cpp">Download source code</a></li></ul>
+<p>The application tries to create an array of type <code class="type">int</code> containing 4,096 elements. The managed shared memory, however, only contains 1,024 bytes. Therefore, the requested memory cannot be provided by the shared memory causing an exception of type <code class="classname">boost::interprocess::bad_alloc</code> to be thrown.</p>
+<p>Once objects have been created in a managed shared memory, they can be deleted using the <code class="methodname">destroy()</code> method.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove("Highscore"); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "Highscore", 1024); 
+  int *i = managed_shm.find_or_construct&lt;int&gt;("Integer")(99); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  managed_shm.destroy&lt;int&gt;("Integer"); 
+  std::pair&lt;int*, std::size_t&gt; p = managed_shm.find&lt;int&gt;("Integer"); 
+  std::cout &lt;&lt; p.first &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.3.4/main.cpp">Download source code</a></li></ul>
+<p>As its single argument, the name of the object to be deleted is passed to <code class="methodname">destroy()</code>. If required, the return value of type <code class="type">bool</code> can be checked to verify whether the given object has been found and deleted successfully. Since an object will always be deleted if found, the return value of <code class="literal">false</code> indicates that no object with the given name was found.</p>
+<p>Besides <code class="methodname">destroy()</code>, another method named <code class="methodname">destroy_ptr()</code> is provided which can be used to pass a pointer to an object in the managed shared memory. It also can be used to delete arrays.</p>
+<p>Since managed shared memory makes it fairly easy to store objects shared between different applications, it seems natural to use the containers from the C++ Standard Template Library as well. These containers allocate required memory independently using <code class="code">new</code> though. In order to use these containers in managed shared memory, they need to be advised to rather allocate the memory in the shared memory.</p>
+<p>Unfortunately, many implementations of the C++ Standard Template Library are not flexible enough to use the provided containers such as <code class="classname">std::string</code> or <code class="classname">std::list</code> together with Boost.Interprocess. One example for such an implementation is the one that ships with Microsoft Visual Studio 2008.</p>
+<p>In order to allow developers the possibility to use the containers known from the C++ standard, Boost.Interprocess offers more flexible implementations of them in the namespace <code class="code">boost::interprocess</code>. For example, <code class="classname">boost::interprocess::string</code>  acts exactly as its C++ counterpart <code class="classname">std::string</code> with the advantage that its objects can be safely stored in a managed shared memory.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/allocators/allocator.hpp&gt; 
+#include &lt;boost/interprocess/containers/string.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove("Highscore"); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "Highscore", 1024); 
+  typedef boost::interprocess::allocator&lt;char, boost::interprocess::managed_shared_memory::segment_manager&gt; CharAllocator; 
+  typedef boost::interprocess::basic_string&lt;char, std::char_traits&lt;char&gt;, CharAllocator&gt; string; 
+  string *s = managed_shm.find_or_construct&lt;string&gt;("String")("Hello!", managed_shm.get_segment_manager()); 
+  s-&gt;insert(5, ", world"); 
+  std::cout &lt;&lt; *s &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.3.5/main.cpp">Download source code</a></li></ul>
+<p>To create a string that will allocate required memory within the same managed shared memory it resides, a corresponding data type must be defined in order to use a different allocator, provided by Boost.Interprocess, rather than the default allocator provided by the C++ standard.</p>
+<p>For this purpose, Boost.Interprocess offers the class <code class="classname">boost::interprocess::allocator</code> defined in <code class="filename">boost/interprocess/allocators/allocator.hpp</code>. Using this class, an allocator can be created that internally uses the so-called segment manager of the managed shared memory. The segment manager is responsible for the management of the memory within a managed shared memory. Using the newly created allocator, a corresponding data type for the string can be defined. As indicated above, it uses <code class="classname">boost::interprocess::basic_string</code> rather than <code class="classname">std::basic_string</code>. The new data type - in the example simply named <code class="classname">string</code> - is based on <code class="classname">boost::interprocess::basic_string</code> and accesses the segment manager via its allocator. In order to let the particular instance of <code class="classname">string</code>, created by a call to <code class="methodname">find_or_construct()</code>, know which segment manager it should access, a pointer to the corresponding segment manager is passed as the second argument to the constructor.</p>
+<p>Alongside <code class="classname">boost::interprocess::string</code>, Boost.Interprocess provides implementations for many other containers known from the C++ standard. For example, <code class="classname">boost::interprocess::vector</code> and <code class="classname">boost::interprocess::map</code> defined in <code class="filename">boost/interprocess/containers/vector.hpp</code> and <code class="filename">boost/interprocess/containers/map.hpp</code>, respectively.</p>
+<p>Whenever the same managed shared memory is accessed from different applications, operations such as creating, finding and destroying objects are automatically synchronized. If two applications try to create objects with different names in the managed shared memory, the access is serialized accordingly. In order to execute multiple operations at once without being interrupted by operations from a different application, the <code class="methodname">atomic_func()</code> method can be used.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/bind.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void construct_objects(boost::interprocess::managed_shared_memory &amp;managed_shm) 
+{ 
+  managed_shm.construct&lt;int&gt;("Integer")(99); 
+  managed_shm.construct&lt;float&gt;("Float")(3.14); 
+} 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove("Highscore"); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "Highscore", 1024); 
+  managed_shm.atomic_func(boost::bind(construct_objects, boost::ref(managed_shm))); 
+  std::cout &lt;&lt; *managed_shm.find&lt;int&gt;("Integer").first &lt;&lt; std::endl; 
+  std::cout &lt;&lt; *managed_shm.find&lt;float&gt;("Float").first &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.3.6/main.cpp">Download source code</a></li></ul>
+<p><code class="methodname">atomic_func()</code> expects a function, taking no arguments and not returning any value, as its single argument. The passed function will be called in a fashion that ensures exclusive access to the managed shared memory - but only for operations such as creating, finding or deleting objects. If another application has a pointer to an object within the managed shared memory, it can access and modify this object using its pointer.</p>
+<p>Boost.Interprocess can also be used to synchronize object access. Since Boost.Interprocess does not know who can access the individual objects at what point in time, the synchronization needs to be explicitly stated. The classes provided for synchronization are introduced in the following section.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="interprocesscommunication_synchronization"></a>8.4 Synchronization</h2>
+<div class="sect1">
+<p>Boost.Interprocess allows multiple applications to use a shared memory concurrently. Since shared memory is by definition "shared" between these applications, Boost.Interprocess needs to support some form of synchronization.</p>
+<p>While thinking about synchronization, the library Boost.Thread certainly comes to mind. As can be seen in <a class="xref" href="multithreading.html" title="Chapter 6: Multithreading">Chapter 6, <i>Multithreading</i></a>, Boost.Thread indeed provides different concepts such as mutex objects and conditional variables to synchronize threads. Unfortunately, these classes can only be used to synchronize threads within the same application; they do not support the synchronization of different applications. Since the challenge in both cases is the same, the concepts are no different.</p>
+<p>While synchronization objects such as mutex objects and conditional variables reside within the same address space in multithreaded applications and therefore are available to all threads, the challenge with shared memory is that independent applications need to share these objects appropriately. For example, if one application creates a mutex object, it needs to be accessible from a different application somehow.</p>
+<p>Boost.Interprocess offers two kinds of synchronization objects: Anonymous objects are directly stored in the shared memory which makes them automatically available to all applications. Named objects are managed by the operating system and thus are not stored in the shared memory. They can be referenced by applications via their  name.</p>
+<p>The following example creates and uses a named mutex object by using the <code class="classname">boost::interprocess::named_mutex</code> class defined in <code class="filename">boost/interprocess/sync/named_mutex.hpp</code>.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/sync/named_mutex.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "shm", 1024); 
+  int *i = managed_shm.find_or_construct&lt;int&gt;("Integer")(); 
+  boost::interprocess::named_mutex named_mtx(boost::interprocess::open_or_create, "mtx"); 
+  named_mtx.lock(); 
+  ++(*i); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  named_mtx.unlock(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.4.1/main.cpp">Download source code</a></li></ul>
+<p>Besides a parameter specifying whether the mutex object should be created or opened, the constructor of <code class="classname">boost::interprocess::named_mutex</code> expects a name for it. Every application that knows that name is able to open the same mutex object. In order to get access to the data in the shared memory, the application needs to take ownership of the mutex object by calling the <code class="methodname">lock()</code> method. Since mutex objects can only be owned by one application at any time, another application may need to wait until the mutex object has been released using the <code class="methodname">unlock()</code> method by the first application. Once an application obtained ownership of a mutex object, it has exclusive access to the resource it guards. In the above example the resource is a variable of type <code class="type">int</code> that is incremented and written to the standard output stream.</p>
+<p>If the application is started multiple times, every instance will print a value incremented by 1 compared to the previous value. Thanks to the mutex object, the access to the shared memory and the variable itself is synchronized between the different applications.</p>
+<p>The following application uses an anonymous mutex object of type <code class="classname">boost::interprocess::interprocess_mutex</code> defined in <code class="filename">boost/interprocess/sync/interprocess_mutex.hpp</code>. In order to be accessible for all applications, it is stored in the shared memory.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/sync/interprocess_mutex.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "shm", 1024); 
+  int *i = managed_shm.find_or_construct&lt;int&gt;("Integer")(); 
+  boost::interprocess::interprocess_mutex *mtx = managed_shm.find_or_construct&lt;boost::interprocess::interprocess_mutex&gt;("mtx")(); 
+  mtx-&gt;lock(); 
+  ++(*i); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  mtx-&gt;unlock(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.4.2/main.cpp">Download source code</a></li></ul>
+<p>The application behaves exactly like the previous one. The only difference is the mutex object which is now stored directly in the shared memory using the <code class="methodname">construct()</code> or <code class="methodname">find_or_construct()</code> method of the <code class="classname">boost::interprocess::managed_shared_memory</code> class.</p>
+<p>Besides the <code class="methodname">lock()</code> method, both <code class="classname">boost::interprocess::named_mutex</code> and <code class="classname">boost::interprocess::interprocess_mutex</code> provide the <code class="methodname">try_lock()</code> and <code class="methodname">timed_lock()</code> methods. They behave exactly like their counterparts provided by the mutex classes of Boost.Thread.</p>
+<p>In case recursive mutex objects are required, Boost.Interprocess offers the two classes <code class="classname">boost::interprocess::named_recursive_mutex</code> and <code class="classname">boost::interprocess::interprocess_recursive_mutex</code>.</p>
+<p>While mutex objects guarantee exclusive access to a shared resource, conditional variables control who has to have exclusive access at what time. In general, the conditional variables provided by Boost.Interprocess work the same way as the ones provided by Boost.Thread. They also have very similar interfaces which makes users of Boost.Thread feel immediately at home when using these variables in Boost.Interprocess.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/sync/named_mutex.hpp&gt; 
+#include &lt;boost/interprocess/sync/named_condition.hpp&gt; 
+#include &lt;boost/interprocess/sync/scoped_lock.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "shm", 1024); 
+  int *i = managed_shm.find_or_construct&lt;int&gt;("Integer")(0); 
+  boost::interprocess::named_mutex named_mtx(boost::interprocess::open_or_create, "mtx"); 
+  boost::interprocess::named_condition named_cnd(boost::interprocess::open_or_create, "cnd"); 
+  boost::interprocess::scoped_lock&lt;boost::interprocess::named_mutex&gt; lock(named_mtx); 
+  while (*i &lt; 10) 
+  { 
+    if (*i % 2 == 0) 
+    { 
+      ++(*i); 
+      named_cnd.notify_all(); 
+      named_cnd.wait(lock); 
+    } 
+    else 
+    { 
+      std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+      ++(*i); 
+      named_cnd.notify_all(); 
+      named_cnd.wait(lock); 
+    } 
+  } 
+  named_cnd.notify_all(); 
+  boost::interprocess::shared_memory_object::remove("shm"); 
+  boost::interprocess::named_mutex::remove("mtx"); 
+  boost::interprocess::named_condition::remove("cnd"); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.4.3/main.cpp">Download source code</a></li></ul>
+<p>The example uses a conditional variable of type <code class="classname">boost::interprocess::named_condition</code> defined in <code class="filename">boost/interprocess/sync/named_condition.hpp</code>. Since it is a named variable, it does not need to be stored in shared memory.</p>
+<p>The application uses a <code class="code">while</code> loop to increment a variable of type <code class="type">int</code> that is stored in shared memory. While the variable is incremented with each iteration of the loop, it will only be written to the standard output stream with every second iteration: Only odd numbers are written.</p>
+<p>Every time, the variable has been incremented by 1, the <code class="methodname">wait()</code> method of the conditional variable <var>named_cnd</var> is called. A so-called lock - in the example the variable <var>lock</var> - is passed to this method. The lock has the same meaning as it does in Boost.Thread: It is based on the RAII concept by taking ownership of a mutex object inside the constructor and releasing it inside the destructor.</p>
+<p>The lock is created before the <code class="code">while</code> loop and thus takes ownership of the mutex object for the complete execution of the application. However, if passed to the <code class="methodname">wait()</code> method as an argument, it is automatically released.</p>
+<p>Conditional variables are used to wait for a signal indicating that the wait is now over. The synchronization is controlled by the <code class="methodname">wait()</code> and <code class="methodname">notify_all()</code> methods. If an application calls the <code class="methodname">wait()</code> method, the ownership of the corresponding mutex object is released before it waits until the <code class="methodname">notify_all()</code> method is called for the same conditional variable.</p>
+<p>If started, the application does not seem to do much: While the variable is incremented from 0 to 1 within the <code class="code">while</code> loop, the application then waits for a signal using the <code class="methodname">wait()</code> method. In order to provide the signal, the application needs to be started a second time.</p>
+<p>The second instance of the application is going to try to take ownership of the same mutex object before entering the <code class="code">while</code> loop. This succeeds since the first instance of the application released ownership of the mutex object by calling <code class="methodname">wait()</code>. Since the variable has been incremented once, the second instance will now execute the <code class="code">else</code> branch of the <code class="code">if</code> expression which will write the current value to the standard output stream before incrementing it by 1.</p>
+<p>Now the second instance also calls the <code class="methodname">wait()</code> method. However, before it does, it calls the <code class="methodname">notify_all()</code> method which is important in order to have the two instances cooperate correctly. The first instance is notified and tries to take ownership of the mutex object again, which is still owned by the second instance though. Since the second instance calls the <code class="methodname">wait()</code> method right after <code class="methodname">notify_all()</code>, which automatically releases the ownership, the first instance can take the ownership at that point.</p>
+<p>Both instances alternate, incrementing the variable in the shared memory. Only one instance writes the value to the standard output stream though. As soon as the variable reaches the value 10, the <code class="code">while</code> loop is finished. In order to have the other instance not waiting for a signal forever, <code class="methodname">notify_all()</code> is called one more time after the loop. Before terminating, the shared memory, the mutex object as well as the conditional variable is destroyed.</p>
+<p>Just like there are two types of mutex objects - an anonymous type that must be stored in shared memory as well as a named type - there also exists two type of conditional variables. The previous example is now rewritten using an anonymous conditional variable instead.</p>
+<pre class="programlisting">#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/sync/interprocess_mutex.hpp&gt; 
+#include &lt;boost/interprocess/sync/interprocess_condition.hpp&gt; 
+#include &lt;boost/interprocess/sync/scoped_lock.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, "shm", 1024); 
+    int *i = managed_shm.find_or_construct&lt;int&gt;("Integer")(0); 
+    boost::interprocess::interprocess_mutex *mtx = managed_shm.find_or_construct&lt;boost::interprocess::interprocess_mutex&gt;("mtx")(); 
+    boost::interprocess::interprocess_condition *cnd = managed_shm.find_or_construct&lt;boost::interprocess::interprocess_condition&gt;("cnd")(); 
+    boost::interprocess::scoped_lock&lt;boost::interprocess::interprocess_mutex&gt; lock(*mtx); 
+    while (*i &lt; 10) 
+    { 
+      if (*i % 2 == 0) 
+      { 
+        ++(*i); 
+        cnd-&gt;notify_all(); 
+        cnd-&gt;wait(lock); 
+      } 
+      else 
+      { 
+        std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+        ++(*i); 
+        cnd-&gt;notify_all(); 
+        cnd-&gt;wait(lock); 
+      } 
+    } 
+    cnd-&gt;notify_all(); 
+  } 
+  catch (...) 
+  { 
+  } 
+  boost::interprocess::shared_memory_object::remove("shm"); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/8.4.4/main.cpp">Download source code</a></li></ul>
+<p>The application works exactly like the previous one and thus needs to be started twice as well in order to increment the variable ten times. The differences between the two examples are minimal. Whether anonymous or named conditional variables are used is essentially irrelevant.</p>
+<p>Besides mutex objects and conditional variables, Boost.Interprocess also supports so-called semaphores and file locks. Semaphores behave similar to conditional variables with the exception that they do not distinguish between two states but rather are based upon a counter. File locks on the other hand behave like mutex objects although they are not about objects in memory but rather about files in the file system.</p>
+<p>Just like Boost.Thread distinguishes between different types of mutex objects and locks, Boost.Interprocess also provides several mutex objects and locks. For example, mutex objects that not only can be owned exclusive but also non-exclusive. This is helpful if multiple applications need to read data simultaneously but write the data exclusively. Different classes for locks are available to apply the RAII concept to the individual mutex objects.</p>
+<p>Please note that names should be unique unless anonymous synchronization objects are used. Even though mutex objects and conditional variables are objects based on different classes, this may not necessarily hold true for the operating system dependent interfaces prescinded by Boost.Interprocess. In Windows, the same operating system functions are used for both mutex objects and conditional variables. If the same name is used for both these objects, the application will not behave correctly in Windows.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="interprocesscommunication_exercises"></a>8.5 Exercises</h2>
+<div class="sect1">
+<p class="solution">
+              You can buy 
+              <a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-solution">solutions to all exercises</a>
+              in this book as a ZIP file. 
+            </p>
+<ol><li class="listitem"><p>Create a client/server application that communicates via shared memory. The name of a file should be passed as a command line parameter to the client application. This file should be sent to the server application via shared memory where it is saved locally in the same directory from which the server application was started.</p></li></ol>
+</div>
+</div>
+<hr class="hrfoot">
+<p class="copyright">Copyright © 2008-2010 
+        <a class="link" href="mailto:boris@highscore.de">Boris Schäling</a>
+      </p>
+</body>
+</html>

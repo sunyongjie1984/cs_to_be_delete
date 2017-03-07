@@ -1,0 +1,41 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CMyException	myException.h	/^	CMyException(string s) : info(s) { }$/;"	f	class:CMyException
+CMyException	myException.h	/^class CMyException : public exception {$/;"	c
+SINGLY_LINKED_LIST	sll.h	2;"	d
+SINGLY_LINKED_LIST_NODE	slln.h	2;"	d
+addToHead	sll.h	/^template <class Type> void sll<Type>::addToHead(Type el)$/;"	f	class:sll
+addToTail	sll.h	/^template <class Type> void sll<Type>::addToTail(Type el)$/;"	f	class:sll
+deleteFromHead	sll.h	/^template <class Type> bool sll<Type>::deleteFromHead()$/;"	f	class:sll
+deleteFromTail	sll.h	/^template <class Type> bool sll<Type>::deleteFromTail()$/;"	f	class:sll
+deleteNode	sll.h	/^template <class Type> bool sll<Type>::deleteNode(Type el)$/;"	f	class:sll
+destroy	sll.h	/^template <class Type> void sll<Type>::destroy()$/;"	f	class:sll
+getHead	sll.h	/^	slln<Type>* getHead() const { return head; }$/;"	f	class:sll
+getTail	sll.h	/^	slln<Type>* getTail() const { return tail; }$/;"	f	class:sll
+globalPrint	sll.h	/^template <class Type> ostream& globalPrint(ostream& os, const sll<Type>& object)$/;"	f
+head	sll.h	/^	slln<Type>* head;$/;"	m	class:sll
+info	myException.h	/^	string info;$/;"	m	class:CMyException
+info	slln.h	/^	Type info;$/;"	m	class:slln
+isEmpty	sll.h	/^	bool isEmpty() const { return head == 0; }$/;"	f	class:sll
+isInList	sll.h	/^template <class Type> bool sll<Type>::isInList(Type el) const$/;"	f	class:sll
+main	main.cpp	/^int main()$/;"	f
+next	slln.h	/^	slln* next;$/;"	m	class:slln
+operator <<	sll.h	/^template <class Type> ostream& operator<<(ostream& os, const sll<Type>& object)$/;"	f
+operator >>	sll.h	/^template <class Type> istream& operator>>(istream& is, sll<Type>& object)$/;"	f
+setHead	sll.h	/^	void setHead(slln<Type>* p) { head = p; }$/;"	f	class:sll
+setTail	sll.h	/^	void setTail(slln<Type>* p) { tail = p; }$/;"	f	class:sll
+sll	sll.h	/^	sll(): head(0), tail(0) { }$/;"	f	class:sll
+sll	sll.h	/^	sll(const sll& object)$/;"	f	class:sll
+sll	sll.h	/^	sll(istream& is) { is >> *this; }$/;"	f	class:sll
+sll	sll.h	/^template <class Type> class sll {$/;"	c
+sll	sll.h	/^template <class Type> sll<Type>::sll(int n)$/;"	f	class:sll
+slln	slln.h	/^	slln() : info(Type()), next(NULL) { } \/\/ the change is typical$/;"	f	class:slln
+slln	slln.h	/^	slln(Type i, slln* in = NULL) : info(i), next(in) { }$/;"	f	class:slln
+slln	slln.h	/^template <class Type> class slln {$/;"	c
+tail	sll.h	/^	slln<Type>* tail;$/;"	m	class:sll
+~CMyException	myException.h	/^	~CMyException() throw() { }$/;"	f	class:CMyException
+~sll	sll.h	/^template <class Type> sll<Type>::~sll()$/;"	f	class:sll

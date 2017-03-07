@@ -1,0 +1,1039 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0046)http://developer.51cto.com/art/200509/3679.htm -->
+<HTML xmlns="http://www.w3.org/1999/xhtml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office"><HEAD><TITLE>Python介绍 - 51CTO.COM</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=x-ua-compatible content=ie=7>
+<META 
+content=Python(派森)语言是一种面向对象的用途非常广泛的编程语言，具有非常清晰的语法特点，适用于多种操作系统，可以在Windows和Unix这样的系统中运行。 
+name=description>
+<META content=Python name=keywords><LINK 
+href="Python介绍 - 51CTO_COM_files/news_09.css" type=text/css rel=stylesheet><LINK 
+href="Python介绍 - 51CTO_COM_files/master_top.css" type=text/css rel=stylesheet>
+<SCRIPT language=javaScript 
+src="Python介绍 - 51CTO_COM_files/validate2.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="Python介绍 - 51CTO_COM_files/fb_words_list.htm"></SCRIPT>
+
+<SCRIPT language=javaScript src="Python介绍 - 51CTO_COM_files/base6.js"></SCRIPT>
+
+<SCRIPT language=javaScript 
+src="Python介绍 - 51CTO_COM_files/dialog_utf8.js"></SCRIPT>
+
+<SCRIPT language=javaScript src="Python介绍 - 51CTO_COM_files/mail.js"></SCRIPT>
+
+<SCRIPT language=javascript 
+src="Python介绍 - 51CTO_COM_files/article.js"></SCRIPT>
+
+<SCRIPT src="Python介绍 - 51CTO_COM_files/index_1_down.js"></SCRIPT>
+
+<SCRIPT>
+var thistid=3679;
+</SCRIPT>
+
+<META content="MSHTML 6.00.3790.4504" name=GENERATOR></HEAD>
+<BODY onresize=set_sreach() onload=set_sreach()>
+<DIV class=top>
+<DIV class=top_nav>
+<DIV class=top_nav_logo title="51CTO.COM - 技术成就梦想 -  中国领先的IT技术网站"></DIV>
+<DIV class=top_nav_r><A href="http://www.51cto.com/">51CTO首页</A> | <A 
+href="http://news.51cto.com/">新闻</A> | <A 
+href="http://www.51cto.com/col/35">专题</A> | <A 
+href="http://bbs.51cto.com/">论坛</A> | <A href="http://blog.51cto.com/">博客</A> | 
+<A href="http://down.51cto.com/">下载</A> | <A href="http://g.51cto.com/">技术圈</A> 
+| <A href="http://book.51cto.com/">读书</A> | <A class=top_nav_r1 
+onmouseover=show(1,this) onmouseout=popupClose() 
+href="http://www.51cto.com/col/35/">技术频道 </A>| <A 
+href="http://www.cioage.com/">CIO </A>| <A href="http://www.watchstor.com/">存储 
+</A>| <A href="http://www.hc3i.cn/">HC3i </A>| <A 
+href="http://www.51cto.com/about/map.htm">地图</A> </DIV></DIV></DIV>
+<DIV class=subMenu1 id=s1 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://network.51cto.com/">组网</A> 
+  <LI><A href="http://netsecurity.51cto.com/">安全</A> 
+  <LI><A href="http://developer.51cto.com/">开发</A> 
+  <LI><A href="http://database.51cto.com/">数据库</A> 
+  <LI><A href="http://server.51cto.com/">服务器</A> 
+  <LI><A href="http://os.51cto.com/">系统</A> 
+  <LI><A href="http://virtual.51cto.com/">虚拟化</A> 
+  <LI><A href="http://cloud.51cto.com/">云计算</A> 
+  <LI><A href="http://developer.51cto.com/embed/">嵌入式</A> </LI></UL></DIV>
+<DIV class=subMenu1 id=s1 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://network.51cto.com/">组网建网</A> 
+  <LI><A href="http://netsecurity.51cto.com/">网络安全</A> 
+  <LI><A href="http://server.51cto.com/">服务器</A> 
+  <LI><A href="http://os.51cto.com/">操作系统</A> 
+  <LI><A href="http://virtual.51cto.com/">虚拟化</A> 
+  <LI><A href="http://developer.51cto.com/">开发</A></LI></UL></DIV>
+<DIV class=subMenu2 id=s2 onmouseover=popupNoClose( onmouseout=popupClose() )>
+<UL>
+  <LI><A href="http://www.cioage.com/news">资讯前沿</A> 
+  <LI><A href="http://www.cioage.com/insight">业界观察</A> 
+  <LI><A href="http://www.cioage.com/exp">应用体验</A> 
+  <LI><A href="http://www.cioage.com/tech">杀手技术</A></LI></UL></DIV>
+<DIV class=subMenu3 id=s3 onmouseover=popupNoClose() onmouseout=popupClose()>
+<UL>
+  <LI><A href="http://news.watchstor.com/">新闻资讯</A> 
+  <LI><A href="http://tech.watchstor.com/">技术中心</A> 
+  <LI><A href="http://video.watchstor.com/">互动视频</A> 
+  <LI><A href="http://special.watchstor.com/">专题汇聚</A></LI></UL></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=banner>
+<DIV class=banner_l id=tonglanad></DIV>
+<DIV class=banner_r>
+<UL>
+  <LI id=wordlinkad1>
+  <LI id=wordlinkad2>
+  <LI id=wordlinkad3>
+  <LI id=wordlinkad4></LI></UL></DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV id=subNav>
+<DIV class=subNav_logo><IMG 
+src="Python介绍 - 51CTO_COM_files/kaifa_logo.gif"></DIV>
+<DIV class=subNav_l><A href="http://developer.51cto.com/">首页</A> | <A 
+href="http://developer.51cto.com/java/">Java</A> | <A 
+href="http://developer.51cto.com/net/">.NET</A> | <A 
+href="http://developer.51cto.com/web/">Web</A> | <A 
+href="http://developer.51cto.com/col/1315/">XML</A> | <A 
+href="http://developer.51cto.com/col/585/">语言工具</A> | <A 
+href="http://developer.51cto.com/col/1312/">测试</A> | <A 
+href="http://developer.51cto.com/col/1314/" target=_blank>游戏</A> | <A 
+href="http://developer.51cto.com/col/583/" target=_blank>移动</A> | <A 
+href="http://developer.51cto.com/col/1308/">架构</A> | <A 
+href="http://developer.51cto.com/col/586/">项目管理</A> | <A 
+href="http://publish.51cto.com/list/460/">全部文章</A></DIV>
+<DIV class=search>
+<FORM 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" 
+name=searchform action=http://www.51cto.com/php/search.php method=post>
+<DL>
+  <DT><INPUT class=new_te1 name=keyword> </DT>
+  <DD><INPUT type=image 
+src="Python介绍 - 51CTO_COM_files/search.gif"></DD></DL></FORM></DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV id=container>
+<DIV id=left>
+<DIV class=title>
+<DIV class=breadcrumb>您所在的位置：<A href="http://www.51cto.com/" 
+target=_blank>首页</A> &gt; <A href="http://developer.51cto.com/">开发</A> &gt; <A 
+href="http://developer.51cto.com/col/585/">语言&amp;工具</A> &gt; </DIV>
+<DIV class=con>
+<UL>
+  <LI>
+  <H1>Python介绍</H1>
+  <LI class=msg><SPAN><A 
+  href="http://developer.51cto.com/">http://developer.51cto.com/</A> 
+  &nbsp;2005-09-26 09:33 &nbsp;51cto.com整理 &nbsp;51cto.com &nbsp;<A 
+  href="http://www.51cto.com/php/feedbackt.php?id=3679">我要评论(<SPAN 
+  id=pinglun_1>0</SPAN>)</A></SPAN> </LI></UL></DIV></DIV>
+<DIV class=BR_3></DIV>
+<DIV class=container>
+<DIV class=sum>
+<UL 
+  class=summary>Python(派森)语言是一种面向对象的用途非常广泛的编程语言，具有非常清晰的语法特点，适用于多种操作系统，可以在Windows和Unix这样的系统中运行。</UL></DIV>
+<UL class=con>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">“Python”</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">这个英文单词的发音似</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">“</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">派森</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">”</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，因此中文可以称之为派森。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">是一个有</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">10</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">年历史的</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Windows</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">编程语言。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的创始人为</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Guido 
+  van Rossum</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'"></SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">是一种即译式的，互动的，面向对象的编程语言，它包含了模组式的操作，异常处理，动态资料形态，十分高层次的动态资料结构，以及类别的使用。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">揉合了简单的语法和强大的功能。它的语法表达优美易读。它具有很多优秀的脚本语言的特点：解释的，面向对象的，内建的高级数据结构，支持模块和包，支持多种平台，可扩展。而且它还支持交互式方式运行，图形方式运行。它拥有众多的编程界面支持各种操作系统平台以及众多的各类函数库。利用</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">C</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">和</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">C++</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">可以对它进行扩充。个别的应用软件如果需要有一个可程序化界面也可以利用它来做为扩展语言用。最后，</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的可移植度非常高</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">:</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">它可以在许多的</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Unix</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">类平台上运行，在</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Mac,MS-DOS,</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">视窗</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Windows</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Windows 
+  NT</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">OS/2</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">BeOS</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，以至</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">RISCOS</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">上都有相关的</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">版本。</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'"></SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">核心网站是</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">:&nbsp;<A 
+  href="http://www.python.org/"> http://www.python.org/</A> </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，其中你可以找到很多资料。如果您第一次使用</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"> 
+  Python, </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">可以下载一个试试。目前，</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">已经有成百上千的公共资源可以供你调用。</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"> 
+  </SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"></SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN></B><B><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">作用</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">可以用在许多场合。当你需要大量的动态调整，要容易使用，功能强大并且富有弹性的情况，</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">可以发挥很好的功效。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B><SPAN 
+  style="FONT-SIZE: 12pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">一个宏编程语言</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你可以用<SPAN 
+  lang=EN-US>Python</SPAN>给现有的应用程序添加一个宏语言或底稿编制（<SPAN 
+  lang=EN-US>scripting</SPAN>）能力。经过稍微的训练，它使用户级别的底稿编制变得简单。发展一种新的语言常常被认为是大公司独家专利。<SPAN 
+  lang=EN-US>Python</SPAN>是一个你可以加入你现有工具的宏语言并适合不同的层次的人使用。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">一个快速的对象模型和算法的原型开发工具</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">开发软件花费钱财需要很多时间才能达到很好的效果。在<SPAN 
+  lang=EN-US>Python</SPAN>下创建对象，你可以比我们知道的任何语言用更短的代码和更少的时间，并且全部支持继承，密封和多形性。一个比较流行的办法是在<SPAN 
+  lang=EN-US>Python</SPAN>中原型一个程序，直到你相信设计是正确的再换到<SPAN 
+  lang=EN-US>C++</SPAN>中，一个更好的办法是将<SPAN lang=EN-US>Python</SPAN>应用程序轮廓化，然后在<SPAN 
+  lang=EN-US>C++</SPAN>中重写速度至关重要的部分。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><BR></SPAN><B><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">一个调试工具</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">新程序和代码库需要测试。有经验的开发人员知道给一个新功能或程序建立一个测试套件会节约时间并减少麻烦。如果一个程序可以与输入输出文件工作，<SPAN 
+  lang=EN-US>Python 
+  </SPAN>可以生成输入，运行这个程序，然后检查输出并进行分析。如果问题在于数据，你可以编写一次性的脚本来检查数据是否一致。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">数据清除和转换</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">你可能会将数据由一个数据库移到一个新的数据库，或新建一个界面让数据在互不兼容的系统中流动。如果人工来做，这会是一个很繁琐而且容易犯错误的过程，你总会遗漏东西，到头来你还得重做以前的工作。<SPAN 
+  lang=EN-US>Python</SPAN>对列表和字典的本地支持使复杂的数据转换更加容易。而且这种交互式模式可以让编程人员在转换过程的每一阶段观看数据。还可以编写由源到目标的数据转换的脚本并按需要不断运行，直到它正确完成工作。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN></B><B><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">作为粘合剂</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">互不兼容的系统常常需要被联在一起，而且这个过程需要自动进行。<SPAN 
+  lang=EN-US>Python</SPAN>支持所有的集成关键技术。同时也很好的与文件，协议，<SPAN 
+  lang=EN-US>DLLs</SPAN>及<SPAN lang=EN-US>COM</SPAN>对象工作。<SPAN 
+  lang=EN-US>Python</SPAN>还提供广泛的库帮助你得到几乎任何种类的数据。它还是很好的控制其他套件、进行系统管理以及控制其他系统数据流动的工具。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">运行方式</SPAN></B></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'"></SPAN></B><B 
+  style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></B>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">可以以命令行方式运行，也可以交互式方式运行，还具有图形集成环境，这样开发<SPAN 
+  lang=EN-US>Python</SPAN>就相当方便。现在已经出现了许多用<SPAN 
+  lang=EN-US>Python</SPAN>编写的可视化编程软件，用于实现象<SPAN 
+  lang=EN-US>Delphi</SPAN>一样的功能。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p>&nbsp;</o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">面向对象</SPAN></B></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></B>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">是一个真正的面向对象语言。它甚至支持异常的处理。如果学过<SPAN 
+  lang=EN-US>Java</SPAN>，应该对这个不陌生。但其它的脚本语言，如<SPAN 
+  lang=EN-US>PHP</SPAN>，好象就没有。这使得程序的编写更加清晰，而不需要许多的错误检查了。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-char-indent-count: 2.0" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p>&nbsp;</o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">模块和包</SPAN></B></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></B>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">这一点更象是<SPAN 
+  lang=EN-US>Java</SPAN>。对于<SPAN lang=EN-US>Java</SPAN>的支持，大家可以了解<SPAN 
+  lang=EN-US>JPython</SPAN>。<SPAN lang=EN-US>JPython</SPAN>是用<SPAN 
+  lang=EN-US>Java</SPAN>写的<SPAN lang=EN-US>Python</SPAN>，它完全支持<SPAN 
+  lang=EN-US>Java</SPAN>，在这个环境下使用<SPAN lang=EN-US>Python</SPAN>可以随意地使用<SPAN 
+  lang=EN-US>Java</SPAN>的类库。语言扩展可以用<SPAN lang=EN-US>C</SPAN>、<SPAN 
+  lang=EN-US>C++</SPAN>或<SPAN lang=EN-US>Java</SPAN>为<SPAN 
+  lang=EN-US>Python</SPAN>编写新的新言模块，如函数。或者与<SPAN 
+  lang=EN-US>Python</SPAN>直接编译在一起，或者采用动态库装入方式实现。也专门有人编写了一个工具，可以实现为<SPAN 
+  lang=EN-US>Python</SPAN>自动实现函数接口封装，这就是<SPAN lang=EN-US>SWIG</SPAN>（<SPAN 
+  lang=EN-US>Simplified Wrapper and Interface 
+  Generator)</SPAN>，或称做简单封装和接口生成器<SPAN lang=EN-US>(</SPAN>可以在<SPAN lang=EN-US><A 
+  href="http://sourceforge.net/projects/swig/"><SPAN 
+  style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none">http://sourceforge.net/projects/swig/</SPAN></A>)</SPAN>。<SPAN 
+  lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p>&nbsp;</o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">有趣的语法</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Guido</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">认为<SPAN 
+  lang=EN-US>Python</SPAN>的语法是非常优美的。其中一点就是，块语句的表示不是<SPAN 
+  lang=EN-US>C</SPAN>语言常用的<SPAN 
+  lang=EN-US>{}</SPAN>对，或其它符号对，而是采用缩近表示法！有趣吧。就这一点来说，<SPAN 
+  lang=EN-US>Guido</SPAN>的解释是：首先，使用缩近表示法减少了视觉上的混乱，并且使程序变短，这样就减少了需要对基本代码单元注意的范围；其次，它减少了程序员的自由度，更有利于统一风格，使得阅读别人的程序更容易。感觉还是不错的，就<SPAN 
+  lang=EN-US>C</SPAN>语言来说，在<SPAN 
+  lang=EN-US>if</SPAN>语句后面大括号的写法就好几种，不同的人喜欢不同的样子，还不如统一起来，都不会看得别扭。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">在每个类或函数的定义后面，第一行可以是说明语句，根本不需要注释符标记。对于后面跟块语句的语句，后面应跟上一个冒号。一行语句不能太长，因为没有行结束符，如果超长则要使用续行符</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">(\)</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。还有一些有趣的比如说，象下面的一个比较处理，用</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">C</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">语言为：</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><SPAN 
+  style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;</SPAN></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><SPAN 
+  style="mso-spacerun: yes">&nbsp;</SPAN><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">if 
+  (2<A&&A<5)<O:P></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">用</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">可以表示为</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">if 
+  (2<A<></SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">什么是<SPAN 
+  lang=EN-US>Zope?</SPAN></SPAN></B><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Zope</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">是一个开放源代码的</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Web</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">应用服务器，采用</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">语言开发，使用它您可以方便的构建内容管理、内部网、门户网站、和其他的定制应用。</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'"></SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">高度面向对象的</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Web</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">开发平台</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">,</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">采用</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">语言开发。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">可以运行在几乎所有流行的操作系统上</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">,</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">支持多语言。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">能集成到其他流行的服务器，也自带服务器。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">提供清晰的数据</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">/</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">逻辑</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">/</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">表示的分离。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">带有可扩展的内置对象和强大的集成安全模块。</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'"></SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;</SPAN><B><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">什么是<SPAN 
+  lang=EN-US>Plone?</SPAN></SPAN></B></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><B><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><SPAN 
+  lang=EN-US></SPAN></SPAN></B><B style="mso-bidi-font-weight: normal"><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></B>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Pone</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">是一个</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Zope</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">上的一个用户友好、功能强大的开放源代码内容管理系统。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Plone</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">适合用作内部网</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">/</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">外部网的服务器、文档发布系统、门户服务器和异地协同群件工具，到目前，</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Plone</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">其实已经发展成为了一个应用开发平台。</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'"></SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">是一种功能强大的开放源码</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">(Open 
+  Source)</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">内容管理系统</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">(CMS)</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">通过</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Web</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">浏览器来访问、编辑内容和管理</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">,</SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">易于更新内容。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">无需编程，即可创建新的内容类型。</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&#61548;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">协同的编辑和发布机制。</SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: left; mso-pagination: widow-orphan; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" 
+  align=left><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'"></SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN>&nbsp;</P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Python</SPAN></B><B><SPAN 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">的<SPAN 
+  lang=EN-US>IDE</SPAN>开发环境<SPAN lang=EN-US>:</SPAN></SPAN></B><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">&nbsp;<o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p>&nbsp;</o:p></SPAN></B></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">Wingide</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">:<A 
+  href="http://www.wingide.com/"><SPAN 
+  style="COLOR: #666666; TEXT-DECORATION: none; text-underline: none">http:// 
+  www.wingide.com</SPAN></A></SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体"><o:p></o:p></SPAN></P>
+  <P class=MsoNormal 
+  style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 150%; TEXT-ALIGN: left; mso-pagination: widow-orphan" 
+  align=left><B style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">ipython</SPAN></B><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 12pt; COLOR: black; LINE-HEIGHT: 150%; FONT-FAMILY: 宋体; mso-font-kerning: 0pt; mso-bidi-font-family: 宋体">: 
+  <A href="http://ipython.scipy.org/"><SPAN 
+  style="COLOR: #666666; TEXT-DECORATION: none; text-underline: none">http://ipython.scipy.org/</SPAN></A>&nbsp;<o:p></o:p></SPAN></P></A&&A<5)<O:P><BR></UL>
+<DIV class=BR_20></DIV>
+<DIV class=zhus>
+<DL>
+  <DT>原文：<A href="http://developer.51cto.com/art/200509/3679.htm">Python介绍</A> 
+  </DT>
+  <DD>标 签：&nbsp;&nbsp;<A 
+  href="http://www.51cto.com/php/search.php?keyword=Python" 
+  target=_blank>Python</A> </DD></DL></DIV>
+<DIV class=lij><SPAN>上一篇： <A 
+href="http://developer.51cto.com/art/200509/3647.htm" target=_self>将程序从托管扩展 C++ 
+迁移到 C++/CLI</A> 下一篇： <A href="http://developer.51cto.com/art/200509/3686.htm" 
+target=_self>使用C来扩展python功能</A></SPAN></DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=review>
+<DIV class=tit>
+<H3>网友评论</H3><SPAN><A 
+href="http://www.51cto.com/php/feedbackt.php?id=3679">查看所有评论（<EM 
+id=pinglun_2></EM>）</A></SPAN></DIV>
+<DIV id=artcomments>
+<SCRIPT src="Python介绍 - 51CTO_COM_files/artcomment0910.htm"></SCRIPT>
+</DIV>
+<DIV class=con1>
+<DIV class=sp1>
+<SCRIPT src="Python介绍 - 51CTO_COM_files/authart.htm"></SCRIPT>
+</DIV>
+<SCRIPT src="Python介绍 - 51CTO_COM_files/developer.htm"></SCRIPT>
+</DIV></DIV>
+<DIV class=BR_8></DIV>
+<DIV class=mary>
+<UL class=le1>
+  <OL class=tit>读 书</OL>
+  <LI><A title=敏捷项目管理 
+  href="http://book.51cto.com/art/201003/191311.htm">敏捷项目管理</A> 
+  <LI><A title="ASP.NET AJAX服务器控件高级编程（.NET 3.5版）" 
+  href="http://book.51cto.com/art/200910/156496.htm">ASP.NET AJAX服务器控件高级编程（.NET 
+  3.5版）</A> 
+  <LI><A title=全国计算机考点分析、题解与模拟：四级数据库工程师 
+  href="http://book.51cto.com/art/200912/172675.htm">全国计算机考点分析、题解与模拟：四级数据库工..</A> 
+
+  <LI><A title=Java从入门到实践（12小时高清晰、交互式视频教学） 
+  href="http://book.51cto.com/art/200909/154772.htm">Java从入门到实践（12小时高清晰、交互式视频教..</A> 
+
+  <LI><A title=Web服务：原理和技术 
+  href="http://book.51cto.com/art/200911/164778.htm">Web服务：原理和技术</A> </LI></UL>
+<UL class=le2>
+  <OL class=tit>论 坛</OL>
+  <LI><A title=Linux源代码分析 href="http://bbs.51cto.com/thread-198688-1.html" 
+  target=_blank>Linux源代码分析</A>
+  <LI><A title="arp -a 出现网关mac地址为00-00-00-00-00-00" 
+  href="http://bbs.51cto.com/thread-198682-1.html" target=_blank>arp -a 
+  出现网关mac地址为00-00-00-..</A>
+  <LI><A title=Linux源代码分析 href="http://bbs.51cto.com/thread-198681-1.html" 
+  target=_blank>Linux源代码分析</A>
+  <LI><A title="服务器租用托管 VPS虚拟服务器 游戏私服建设 网络推广 智能建站" 
+  href="http://bbs.51cto.com/thread-198612-1.html" target=_blank>服务器租用托管 
+  VPS虚拟服务器 游戏..</A>
+  <LI><A title=DHCP服务器全攻略（不错不错） href="http://bbs.51cto.com/thread-198553-1.html" 
+  target=_blank>DHCP服务器全攻略（不错不错）</A> </LI></UL>
+<DIV class=BR_line></DIV>
+<UL class=le1>
+  <OL class=tit>博 客</OL>
+  <LI><A title="SQL SERVER 数据库复制之事务性复制" 
+  href="http://xiaosi.blog.51cto.com/450464/164892/" target=_blank>SQL SERVER 
+  数据库复制之事务性复制</A>
+  <LI><A title=中国网络技术联盟(附20个群群号和论坛地址) 
+  href="http://matthewfjnd.blog.51cto.com/379064/164750/" 
+  target=_blank>中国网络技术联盟(附20个群群号和论..</A>
+  <LI><A title=pam_rootok的使用（九） 
+  href="http://jasonyong.blog.51cto.com/47753/164494/" 
+  target=_blank>pam_rootok的使用（九）</A>
+  <LI><A title=使用DynamipsGUI+SecureCRT搭建思科实验室简易教程 
+  href="http://matthewfjnd.blog.51cto.com/379064/164490/" 
+  target=_blank>使用DynamipsGUI+SecureCRT搭建思科..</A>
+  <LI><A title="解密Windows 7中的XP Mode " 
+  href="http://hackerjx.blog.51cto.com/383839/164485/" target=_blank>解密Windows 
+  7中的XP Mode </A></LI></UL>
+<UL class=le2>
+  <OL class=tit>下 载</OL>
+  <LI><A title=无法安装vmware-tool的视频解决方案~~~ 
+  href="http://down.51cto.com/data/30663/" 
+  target=_blank>无法安装vmware-tool的视频解决方案..</A>
+  <LI><A title=Linux系统管理技术手册（中文第二版） href="http://down.51cto.com/data/30662/" 
+  target=_blank>Linux系统管理技术手册（中文第二版..</A>
+  <LI><A title="linux系统管理技术手册 第一版 chm" href="http://down.51cto.com/data/30661/" 
+  target=_blank>linux系统管理技术手册 第一版 chm</A>
+  <LI><A title="RedHat AS5 下DNS 配置指南" href="http://down.51cto.com/data/30659/" 
+  target=_blank>RedHat AS5 下DNS 配置指南</A>
+  <LI><A title="Linux 命令大全" href="http://down.51cto.com/data/30658/" 
+  target=_blank>Linux 命令大全</A> </LI></UL>
+<DIV class=BR></DIV></DIV></DIV>
+<DIV id=right>
+<DIV class=hot>
+<UL>
+  <LI class=tit><EM>关注</EM> <A 
+  href="http://developer.51cto.com/art/201006/203035.htm">Oracle推出首个Java 
+  7闭包版本</A> 
+  <LI class=con>
+  <DL>
+    <DT><A href="http://developer.51cto.com/art/201006/203035.htm"><IMG 
+    src="Python介绍 - 51CTO_COM_files/093528713.jpg" border=0></A> </DT>
+    <DD>在这个版本中，我们可以看到Java的一些语法丰富和函数类型特性增强 </DD></DL></LI></UL></DIV>
+<DIV class=bann id=MyMoveAd 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 300px; PADDING-TOP: 0px; HEIGHT: 1px">
+<SCRIPT language=JavaScript src="Python介绍 - 51CTO_COM_files/ad.js"></SCRIPT>
+</DIV>
+<DIV class=top10>
+<DIV class=tab><A id=top_1 onmouseover=change_top10(1);>24小时</A><A id=top_2 
+onmouseover=change_top10(2);>本周</A><A id=top_3 
+onmouseover=change_top10(3);>本月</A></DIV>
+<DIV class=list id=top10_1 style="DISPLAY: block">
+<UL>
+  <LI><A title=Java规范第二次面临分裂危机 
+  href="http://developer.51cto.com/art/201005/202530.htm" 
+  target=_blank>Java规范第二次面临分裂危机</A> </LI>
+  <LI><A title=10款最流行的开源Web设计工具 
+  href="http://developer.51cto.com/art/201005/201947.htm" 
+  target=_blank>10款最流行的开源Web设计工具</A> </LI>
+  <LI><A title=5月编程语言排行榜：动态语言的前世今生 
+  href="http://developer.51cto.com/art/201005/200250.htm" 
+  target=_blank>5月编程语言排行榜：动态语言的前世今..</A> </LI>
+  <LI><A title=程序员的十大技术烦恼 
+  href="http://developer.51cto.com/art/201005/202715.htm" 
+  target=_blank>程序员的十大技术烦恼</A> </LI>
+  <LI><A title=Web开发者必备的十大网站资源 
+  href="http://developer.51cto.com/art/201005/200444.htm" 
+  target=_blank>Web开发者必备的十大网站资源</A> </LI>
+  <LI><A title="Oracle推出首个Java 7闭包版本" 
+  href="http://developer.51cto.com/art/201006/203035.htm" 
+  target=_blank>Oracle推出首个Java 7闭包版本</A> </LI>
+  <LI><A title="三步学会Java Socket编程" 
+  href="http://developer.51cto.com/art/200902/108179.htm" target=_blank>三步学会Java 
+  Socket编程</A> </LI>
+  <LI><A title=UML类图详解 href="http://developer.51cto.com/art/200601/17308.htm" 
+  target=_blank>UML类图详解</A> </LI>
+  <LI><A title=实例讲解：ASP.NET水晶报表教程 
+  href="http://developer.51cto.com/art/200907/140477.htm" 
+  target=_blank>实例讲解：ASP.NET水晶报表教程</A> </LI>
+  <LI><A title=Tomcat下JSP经典配置实例 
+  href="http://developer.51cto.com/art/200902/108709.htm" 
+  target=_blank>Tomcat下JSP经典配置实例</A> </LI></UL></DIV>
+<DIV class=list id=top10_2 style="DISPLAY: none">
+<UL>
+  <LI><A title=Java规范第二次面临分裂危机 
+  href="http://developer.51cto.com/art/201005/202530.htm" 
+  target=_blank>Java规范第二次面临分裂危机</A> </LI>
+  <LI><A title="Tomcat 7 快来了" 
+  href="http://developer.51cto.com/art/201005/202049.htm" target=_blank>Tomcat 7 
+  快来了</A> </LI>
+  <LI><A title="Web 3.0时代：网络对你无所不知" 
+  href="http://developer.51cto.com/art/201005/202496.htm" target=_blank>Web 
+  3.0时代：网络对你无所不知</A> </LI>
+  <LI><A title="Java云计算缓存 程序全部运行在内存中" 
+  href="http://developer.51cto.com/art/201005/202295.htm" 
+  target=_blank>Java云计算缓存 程序全部运行在内存中</A> </LI>
+  <LI><A title="Tomcat 7 应用实测：声明式Servlet 3.0" 
+  href="http://developer.51cto.com/art/201005/202144.htm" target=_blank>Tomcat 7 
+  应用实测：声明式Servlet 3.0</A> </LI>
+  <LI><A title=Google与Spring推出合作版Insight 
+  href="http://developer.51cto.com/art/201005/202725.htm" 
+  target=_blank>Google与Spring推出合作版Insight</A> </LI>
+  <LI><A title=提高Web网站性能：JavaScript优化细节 
+  href="http://developer.51cto.com/art/201005/202515.htm" 
+  target=_blank>提高Web网站性能：JavaScript优化细节</A> </LI>
+  <LI><A title="深入理解Java Servlet与Web容器之间的关系" 
+  href="http://developer.51cto.com/art/201005/202412.htm" target=_blank>深入理解Java 
+  Servlet与Web容器之间的..</A> </LI>
+  <LI><A title="Spring发布dm Server最新版 已进驻Eclipse项目" 
+  href="http://developer.51cto.com/art/201005/202497.htm" 
+  target=_blank>Spring发布dm Server最新版 已进驻Ecl..</A> </LI>
+  <LI><A title=5种方法教你用jQuery重写表单验证 
+  href="http://developer.51cto.com/art/201005/202280.htm" 
+  target=_blank>5种方法教你用jQuery重写表单验证</A> </LI></UL></DIV>
+<DIV class=list id=top10_3 style="DISPLAY: none">
+<UL>
+  <LI><A title=5月编程语言排行榜：动态语言的前世今生 
+  href="http://developer.51cto.com/art/201005/200250.htm" 
+  target=_blank>5月编程语言排行榜：动态语言的前世今..</A> </LI>
+  <LI><A title=Web开发者必备的十大网站资源 
+  href="http://developer.51cto.com/art/201005/200444.htm" 
+  target=_blank>Web开发者必备的十大网站资源</A> </LI>
+  <LI><A title="Java程序员的未来 走向混合编程时代" 
+  href="http://developer.51cto.com/art/201005/198279.htm" 
+  target=_blank>Java程序员的未来 走向混合编程时代</A> </LI>
+  <LI><A title=详解.NET中六个你必须知道的重要概念 
+  href="http://developer.51cto.com/art/201005/197729.htm" 
+  target=_blank>详解.NET中六个你必须知道的重要概念</A> </LI>
+  <LI><A title="Nginx + PHP-FPM + APC=绝妙的组合" 
+  href="http://developer.51cto.com/art/201005/198527.htm" target=_blank>Nginx + 
+  PHP-FPM + APC=绝妙的组合</A> </LI>
+  <LI><A title="印度软件产业还处于吃奶阶段 阻碍程序员成长的五大原因" 
+  href="http://developer.51cto.com/art/201005/200522.htm" 
+  target=_blank>印度软件产业还处于吃奶阶段 阻碍程序..</A> </LI>
+  <LI><A title=早该知道的7个JavaScript技巧 
+  href="http://developer.51cto.com/art/201005/201607.htm" 
+  target=_blank>早该知道的7个JavaScript技巧</A> </LI>
+  <LI><A title="更好的选择 细数Apache服务器的四个替代者" 
+  href="http://developer.51cto.com/art/201005/199144.htm" target=_blank>更好的选择 
+  细数Apache服务器的四个替..</A> </LI>
+  <LI><A title="菜鸟向左，老鸟向右 软件开发中的技术代沟" 
+  href="http://developer.51cto.com/art/201005/200643.htm" 
+  target=_blank>菜鸟向左，老鸟向右 软件开发中的技术..</A> </LI>
+  <LI><A title="Oracle动作频频 Java或浴火重生" 
+  href="http://developer.51cto.com/art/201005/199125.htm" 
+  target=_blank>Oracle动作频频 Java或浴火重生</A> </LI></UL></DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=tag>
+<DIV class=con><A title=刀片服务器专区 href="http://server.51cto.com/Blade" 
+target=_blank>刀片服务器</A>&nbsp;&nbsp; <A title=云计算频道全新上线 
+href="http://cloud.51cto.com/" target=_blank>云计算</A>&nbsp;&nbsp; <A 
+title=ARP攻击与防御 href="http://netsecurity.51cto.com/art/200609/31897.htm" 
+target=_blank>ARP攻防</A>&nbsp;&nbsp; <A title=思科培训技术专区 
+href="http://training.51cto.com/cisco" 
+target=_blank>思科培训</A>&nbsp;&nbsp;</DIV></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=dingy>
+<TABLE cellSpacing=0 cellPadding=0 width=280 border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2 height=56>&nbsp;</TD></TR>
+  <TR>
+    <TD align=right colSpan=2><A 
+      href="http://news.51cto.com/col/1323/">点击这里查看样刊</A></TD></TR>
+  <TR>
+    <TD colSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <FORM onsubmit="return mail_process(email.value)" 
+    action=http://newsletter2.51cto.com/new/newsletter/mailm.php method=post>
+    <TD align=right width=223><INPUT class=new_te5 onfocus=this.select() 
+      onclick="this.value=''" name=email><INPUT type=hidden name=mailsub></TD>
+    <TD align=right width=57><INPUT onclick=submit(); type=image 
+      src="Python介绍 - 51CTO_COM_files/dingy.gif"></TD></FORM></TR></TBODY></TABLE></DIV>
+<DIV class=BR_10></DIV>
+<DIV class=redian>
+<DIV class=list>
+<UL>
+  <LI><A title="封杀Windows漏洞 堵住黑客入侵途径" 
+  href="http://netsecurity.51cto.com/art/200707/51410.htm">封杀Windows漏洞 
+  堵住黑客入侵途径</A> </LI>
+  <LI><A title=端口扫描工具nmap使用介绍 
+  href="http://netsecurity.51cto.com/art/200801/63660.htm">端口扫描工具nmap使用介绍</A> 
+  </LI>
+  <LI><A title="绿色比拼:Linux与Windows Server 2008" 
+  href="http://os.51cto.com/art/200806/77658.htm">绿色比拼:Linux与Windows Server 
+  2008</A> </LI>
+  <LI><A title=青岛市教育系统服务器案例 
+  href="http://server.51cto.com/Cases-17794.htm">青岛市教育系统服务器案例</A> </LI>
+  <LI><A title=使用JAVA建立稳定的多线程服务器 
+  href="http://developer.51cto.com/art/200510/8980.htm">使用JAVA建立稳定的多线程服务器</A> 
+  </LI>
+  <LI><A title="7月第4周安全回顾 Web安全威胁目标转移 Excel成垃圾新贵" 
+  href="http://news.51cto.com/art/200707/52386.htm">7月第4周安全回顾 Web安全威胁目标转移 
+  Ex..</A> </LI>
+  <LI><A title="西门子否认收购北电网络 称媒体报道失实" 
+  href="http://news.51cto.com/art/200510/7884.htm">西门子否认收购北电网络 称媒体报道失实</A> </LI>
+  <LI><A title=网吧培训教程(第三篇) 
+  href="http://course.51cto.com/art/200508/2037.htm">网吧培训教程(第三篇)</A> </LI>
+  <LI><A title="SOA破解集成难题 新一代软件架构迁移" 
+  href="http://tech.51cto.com/art/200602/21097.htm">SOA破解集成难题 新一代软件架构迁移</A> 
+</LI>
+  <LI><A title="[c++] 处理 for 循环作用域规则" 
+  href="http://developer.51cto.com/art/200508/2044.htm">[c++] 处理 for 循环作用域规则</A> 
+  </LI></UL></DIV></DIV>
+<DIV class=BR_10></DIV><IFRAME class=bann 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 300px; PADDING-TOP: 0px; HEIGHT: 250px; BACKGROUND-COLOR: #dbdbdb" 
+src="Python介绍 - 51CTO_COM_files/4.htm" frameBorder=0 scrolling=no></IFRAME>
+<DIV class=BR_10></DIV></DIV>
+<DIV class=BR></DIV></DIV>
+<DIV class=BR_20></DIV>
+<DIV id=foot>
+<SCRIPT src="Python介绍 - 51CTO_COM_files/copy_right.js"></SCRIPT>
+</DIV><!--弹出窗口-->
+<DIV id=tanc style="DISPLAY: none; LEFT: 0px; TOP: 0px; BACKGROUND-COLOR: #fff">
+<DIV class=tit>
+<DL>
+  <DT>更多关于“<SPAN id=search_title></SPAN>”的推荐</DT>
+  <DD><IMG onclick=close_this(); 
+src="Python介绍 - 51CTO_COM_files/ico2.gif"></DD></DL></DIV>
+<DIV class=con>
+<OL>51CTO还有以下内容可能满足您的需求</OL>
+<UL id=search_body></UL><SPAN><A id=search_url 
+href="http://developer.51cto.com/art/200509/3679.htm#">站内搜索更多 <EM 
+id=search_foot></EM>的内容</A></SPAN></DIV></DIV><!--弹出窗口End--><!-- 新监测代码 -->
+<SCRIPT type=text/javascript>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+try {
+var pageTracker = _gat._getTracker("UA-10766765-6");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>
+
+<DIV style="DISPLAY: none">
+<SCRIPT type=text/javascript>
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6d49a084fadc0a02616d836ba8b4a72e' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT src="Python介绍 - 51CTO_COM_files/tongji.js" 
+type=text/javascript></SCRIPT>
+<NOSCRIPT><A href="http://www.linezing.com/"><IMG 
+src="Python介绍 - 51CTO_COM_files/tongji.gif"></A></NOSCRIPT> </DIV><!-- 新监测代码 -->
+<DIV style="DISPLAY: none"><SPAN id=wordlink_1>
+<SCRIPT src="Python介绍 - 51CTO_COM_files/wordlink1.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_2>
+<SCRIPT src="Python介绍 - 51CTO_COM_files/wordlink2.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_3>
+<SCRIPT src="Python介绍 - 51CTO_COM_files/wordlink3.js"></SCRIPT>
+</SPAN><SPAN id=wordlink_4>
+<SCRIPT src="Python介绍 - 51CTO_COM_files/wordlink4.js"></SCRIPT>
+</SPAN><SPAN id=pinglun>
+<SCRIPT language=JavaScript 
+src="Python介绍 - 51CTO_COM_files/getArtCount.htm"></SCRIPT>
+</SPAN>
+<SCRIPT 
+src="E:\Downloads\新建文件夹\新建文件夹\新建文件夹\Python介绍 - 51CTO_COM_files\ad(1).js"></SCRIPT>
+<SPAN id=tonglan>
+<SCRIPT language=JavaScript 
+src="E:\Downloads\新建文件夹\新建文件夹\新建文件夹\Python介绍 - 51CTO_COM_files\ad(2).js"></SCRIPT>
+</SPAN><SPAN id=wordlink>
+<SCRIPT language=JavaScript 
+src="E:\Downloads\新建文件夹\新建文件夹\新建文件夹\Python介绍 - 51CTO_COM_files\ad(1).js"></SCRIPT>
+</SPAN></DIV>
+<SCRIPT>
+	document.getElementById('pinglun_1').innerHTML = document.getElementById("pinglun").innerHTML;
+	document.getElementById('pinglun_2').innerHTML = document.getElementById("pinglun").innerHTML;
+	document.getElementById('tonglanad').innerHTML=document.getElementById('tonglan').innerHTML;
+    document.getElementById('tonglan').innerHTML="";
+	function refimg(){
+		var randval = Math.random();
+		document.getElementById('secunum').src='http://www.51cto.com/php/seccode.php?rnum='+randval;
+	}
+</SCRIPT>
+
+<SCRIPT src="Python介绍 - 51CTO_COM_files/count.js"></SCRIPT>
+
+<SCRIPT language=javascript src="Python介绍 - 51CTO_COM_files/count.htm"></SCRIPT>
+
+<SCRIPT src="Python介绍 - 51CTO_COM_files/new_art_dev.js" 
+type=text/javascript></SCRIPT>
+</BODY></HTML>

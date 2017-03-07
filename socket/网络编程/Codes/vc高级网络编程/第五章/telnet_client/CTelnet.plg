@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CTelnet - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP50A3.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /FR"Debug/" /Fp"Debug/CTelnet.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\VC高级网络编程\例程\telnet_client\CTelnetView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP50A3.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP50A4.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/CTelnet.pdb" /debug /machine:I386 /out:"Debug/CTelnet.exe" /pdbtype:sept 
+".\Debug\ClientSocket.obj"
+".\Debug\CTelnet.obj"
+".\Debug\CTelnetDoc.obj"
+".\Debug\CTelnetView.obj"
+".\Debug\HostDialog.obj"
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
+".\Debug\CTelnet.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP50A4.TMP"
+<h3>Output Window</h3>
+Compiling...
+CTelnetView.cpp
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/CTelnet.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\ClientSocket.sbr" ".\Debug\CTelnet.sbr" ".\Debug\CTelnetDoc.sbr" ".\Debug\CTelnetView.sbr" ".\Debug\HostDialog.sbr" ".\Debug\MainFrm.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+CTelnet.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

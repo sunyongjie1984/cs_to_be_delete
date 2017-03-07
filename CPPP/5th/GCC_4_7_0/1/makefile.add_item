@@ -1,0 +1,6 @@
+add_item: add_item.o
+	g++ -std=c++0x add_item.o -g -o add_item
+add_item.o: add_item.cc Sales_item.h
+	g++ -std=c++0x -g -c add_item.cc -o add_item.o
+clean:
+	rm add_item.o add_item

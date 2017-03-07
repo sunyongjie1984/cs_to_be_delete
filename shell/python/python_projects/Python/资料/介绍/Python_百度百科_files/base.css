@@ -1,0 +1,1140 @@
+BODY {
+	BACKGROUND: #fff; FONT: 12px arial; COLOR: #000
+}
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+UL {
+	LIST-STYLE-TYPE: none
+}
+A {
+	COLOR: #36c
+}
+.w984 {
+	WIDTH: 984px
+}
+.w996 {
+	WIDTH: 996px
+}
+.red {
+	COLOR: red
+}
+#pop-shadow {
+	Z-INDEX: 65534; BACKGROUND: #000; FILTER: alpha(opacity=25); LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 100%; opacity: .25
+}
+#pop-shadow-iframe {
+	FILTER: alpha(opacity=0); LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 100%; opacity: 0
+}
+#pop-main {
+	Z-INDEX: 65535; LEFT: 300px; WIDTH: 500px; LINE-HEIGHT: 20px; POSITION: absolute; TOP: 200px
+}
+#pop-shadow-bg {
+	Z-INDEX: -1; BACKGROUND: #000; FILTER: alpha(opacity=0); LEFT: 5px; WIDTH: 100%; POSITION: absolute; TOP: 5px; opacity: .25
+}
+#pop-close {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BACKGROUND: url(http://img.baidu.com/hi/img/dialogclose.gif) no-repeat; FLOAT: right; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 3px 0px 0px; WIDTH: 19px; CURSOR: pointer; PADDING-TOP: 0px; HEIGHT: 19px; BORDER-RIGHT-WIDTH: 0px
+}
+.p-bg {
+	BORDER-RIGHT: #709cd2 1px solid; BORDER-TOP: #709cd2 1px solid; BORDER-LEFT: #709cd2 1px solid; BORDER-BOTTOM: #709cd2 1px solid
+}
+.p-top {
+	BACKGROUND: #709cd2; HEIGHT: 24px
+}
+.p-title {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; COLOR: #fff; LINE-HEIGHT: 24px; PADDING-TOP: 0px; HEIGHT: 24px
+}
+#p-title {
+	moz-user-select: none
+}
+.p-body {
+	PADDING-LEFT: 10px; FONT-SIZE: 14px; BACKGROUND: #fff; ZOOM: 1
+}
+.p-body-inner {
+	PADDING-RIGHT: 10px
+}
+.p-r1 {
+	OVERFLOW: hidden; WIDTH: 10px; HEIGHT: 5px
+}
+.p-r2 {
+	OVERFLOW: hidden; WIDTH: 10px; HEIGHT: 5px
+}
+.p-r3 {
+	OVERFLOW: hidden; WIDTH: 10px; HEIGHT: 5px
+}
+.p-r4 {
+	OVERFLOW: hidden; WIDTH: 10px; HEIGHT: 5px
+}
+.p-r1 {
+	BACKGROUND-POSITION: 0px -62px; FLOAT: left
+}
+.p-r2 {
+	BACKGROUND-POSITION: -10px -62px; FLOAT: right
+}
+.p-r3 {
+	BACKGROUND-POSITION: 0px -67px; FLOAT: left; HEIGHT: 10px
+}
+.p-r4 {
+	BACKGROUND-POSITION: -10px -67px; FLOAT: right; HEIGHT: 10px
+}
+.p-bottom {
+	BACKGROUND: #fff; HEIGHT: 10px
+}
+#pop-iframe-content {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+#pop-text-content {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+#usrbar {
+	FONT-SIZE: 12px; RIGHT: 10px; POSITION: absolute; TOP: 8px; TEXT-ALIGN: right
+}
+#usrbar A {
+	COLOR: #00c
+}
+.usrbar-split {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+IMG.down-arrow {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; BORDER-LEFT: #fff 1px solid; CURSOR: pointer; BORDER-BOTTOM: #fff 1px solid
+}
+IMG.down-arrow-hover {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BACKGROUND: #f7f7f7; BORDER-LEFT: #999 1px solid; CURSOR: pointer; BORDER-BOTTOM: #999 1px solid
+}
+#nav_extra {
+	FONT-SIZE: 12px; Z-INDEX: 65535; PADDING-BOTTOM: 2px; WIDTH: 80px; POSITION: absolute; TEXT-ALIGN: left
+}
+#nav_extra A {
+	FONT-SIZE: 12px; COLOR: #00c
+}
+#nav_extra .top {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; FONT-SIZE: 12px; Z-INDEX: 65531; BACKGROUND: #fff; BORDER-LEFT: #999 1px solid; WIDTH: 77px; TEXT-INDENT: 5px; LINE-HEIGHT: 18px; BORDER-BOTTOM: #999 1px; POSITION: absolute; HEIGHT: 21px
+}
+#nav_extra .body {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; Z-INDEX: 65530; BACKGROUND: #fff; BORDER-LEFT: #999 1px solid; WIDTH: 77px; LINE-HEIGHT: 18px; BORDER-BOTTOM: #999 1px solid; POSITION: absolute; TOP: 20px
+}
+#nav_extra .body A {
+	DISPLAY: block; WIDTH: 100%; TEXT-INDENT: 5px; LINE-HEIGHT: 20px; HEIGHT: 20px
+}
+#nav_extra .body A:hover {
+	BACKGROUND: #e4e4e4
+}
+#header {
+	MARGIN-TOP: 26px
+}
+#search {
+	WIDTH: 780px
+}
+#search A {
+	COLOR: #00c
+}
+#logo {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 8px; PADDING-BOTTOM: 0px; WIDTH: 146px; PADDING-TOP: 3px; ZOOM: 1; POSITION: relative
+}
+#logo IMG {
+	DISPLAY: block
+}
+#logo .logo-xjd {
+	POSITION: absolute; TOP: -20px
+}
+#logo {
+	FLOAT: left
+}
+#search-content {
+	FLOAT: left
+}
+#help {
+	FLOAT: left
+}
+#word {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 3px; MARGIN: 0px 7px 0px 0px; FONT: 16px arial; WIDTH: 358px; PADDING-TOP: 3px
+}
+.search-btn {
+	MARGIN: 0px 7px 0px 0px; WIDTH: 78px; LINE-HEIGHT: 24px; HEIGHT: 28px
+}
+.nv {
+	MARGIN: 0px 0px 3px
+}
+.nv A {
+	FONT-SIZE: 14px; MARGIN-RIGHT: 7px
+}
+.nv STRONG {
+	FONT-SIZE: 14px; MARGIN-RIGHT: 7px
+}
+.search-btn {
+	FONT-SIZE: 14px; MARGIN-RIGHT: 7px
+}
+#help {
+	MARGIN-TOP: 27px
+}
+#help A {
+	MARGIN-RIGHT: 7px
+}
+.book {
+	BACKGROUND: url(http://img.baidu.com/img/baike/CBannerBook.gif) no-repeat right 23px
+}
+.book #search {
+	MARGIN-BOTTOM: 16px
+}
+#path {
+	BACKGROUND: url(http://img.baidu.com/img/baike/CBannerBg.gif) repeat-x; MARGIN: 0px 0px 19px; WIDTH: 100%; WHITE-SPACE: nowrap
+}
+#path UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(http://img.baidu.com/img/baike/CBannerBg.gif) repeat-x; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 960px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#path UL LI {
+	PADDING-RIGHT: 18px; PADDING-LEFT: 12px; FONT-WEIGHT: bold; FONT-SIZE: 14px; FLOAT: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 27px; PADDING-TOP: 0px
+}
+#path UL LI A {
+	COLOR: #fff; WHITE-SPACE: nowrap; TEXT-DECORATION: none
+}
+#path-ext {
+	Z-INDEX: -1; BACKGROUND: url(http://img.baidu.com/img/baike/CBannerBg.gif) repeat-x 0px -38px; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 115px; HEIGHT: 62px
+}
+#lemma-nav-expo {
+	PADDING-LEFT: 18px; BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://img.baidu.com/img/baike/icons/expo.png"); MARGIN-LEFT: 10px; WIDTH: 94px; HEIGHT: 27px; TEXT-ALIGN: left
+}
+#lemma-nav-expo A {
+	DISPLAY: block; WIDTH: 60px; POSITION: absolute
+}
+#lemma-nav-ppqw {
+	MARGIN-LEFT: 10px
+}
+#lemma-nav-ppqw-hot {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://img.baidu.com/img/baike/icons/hot.png"); LEFT: 787px; WIDTH: 24px; POSITION: relative; TOP: -53px; HEIGHT: 15px
+}
+#content-wrap {
+	PADDING-LEFT: 10px
+}
+#content {
+	PADDING-RIGHT: 16px; PADDING-LEFT: 16px; FONT-SIZE: 14px; FLOAT: left; PADDING-BOTTOM: 16px; OVERFLOW: hidden; WIDTH: 696px; WORD-BREAK: break-all; PADDING-TOP: 0px; WORD-WRAP: break-word
+}
+#footer {
+	CLEAR: both; MARGIN-TOP: 10px; FONT: 12px/1.5 Arial; COLOR: #77c; WHITE-SPACE: nowrap; TEXT-ALIGN: center
+}
+#footer A:link {
+	CLEAR: both; MARGIN-TOP: 10px; FONT: 12px/1.5 Arial; COLOR: #77c; WHITE-SPACE: nowrap; TEXT-ALIGN: center
+}
+#footer A:visited {
+	CLEAR: both; MARGIN-TOP: 10px; FONT: 12px/1.5 Arial; COLOR: #77c; WHITE-SPACE: nowrap; TEXT-ALIGN: center
+}
+#side {
+	MARGIN-TOP: 5px; FLOAT: right; WIDTH: 256px
+}
+.card-title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 14px; PADDING-BOTTOM: 4px; MARGIN: 15px 0px 0px; PADDING-TOP: 4px
+}
+.card-summary {
+	FONT-SIZE: 14px; LINE-HEIGHT: 22px
+}
+.card-summary .pic {
+	BORDER-RIGHT: #dedfe1 1px solid; PADDING-RIGHT: 8px; BORDER-TOP: #dedfe1 1px solid; PADDING-LEFT: 8px; FONT-SIZE: 0px; FLOAT: left; PADDING-BOTTOM: 8px; MARGIN: 2px 15px 0px 0px; BORDER-LEFT: #dedfe1 1px solid; PADDING-TOP: 8px; BORDER-BOTTOM: #dedfe1 1px solid; ZOOM: 1; POSITION: relative; BACKGROUND-COLOR: #fff; TEXT-ALIGN: center
+}
+.card-summary .pic DIV {
+	FONT-SIZE: 12px; LINE-HEIGHT: 15px; POSITION: relative; TOP: 3px; TEXT-ALIGN: center
+}
+.card-info {
+	MARGIN: 0px 0px 15px
+}
+.card-info-inner {
+	BORDER-TOP: #dedfe1 1px solid; OVERFLOW: hidden; WIDTH: 695px; BORDER-BOTTOM: #dedfe1 1px solid
+}
+.card-info TABLE.tableWrap {
+	MARGIN-TOP: -1px; BORDER-COLLAPSE: collapse
+}
+.card-info TD.seperateTd {
+	VERTICAL-ALIGN: top; WIDTH: 347px
+}
+.card-info TD.seperateTd TABLE {
+	BORDER-COLLAPSE: collapse
+}
+.card-info TD.seperateTd TABLE TD {
+	BORDER-TOP: #dedfe1 1px solid; LINE-HEIGHT: 23px
+}
+DIV.oneHeightDiv {
+	FONT-SIZE: 1px; LINE-HEIGHT: 1px; HEIGHT: 1px
+}
+.card-info TD.cardFirstTd {
+	PADDING-LEFT: 2px; FONT-WEIGHT: bold; FONT-SIZE: 13px; VERTICAL-ALIGN: top; WIDTH: 100px
+}
+.card-info TD.cardSecondTd {
+	PADDING-RIGHT: 2px; FONT-SIZE: 13px; TEXT-ALIGN: right
+}
+#lemmaContent {
+	LINE-HEIGHT: 24px
+}
+#lemmaContent TABLE.editorTable {
+	BORDER-RIGHT: #888 1px solid; BORDER-TOP: #888 1px solid; MARGIN-BOTTOM: 2px; BORDER-LEFT: #888 1px solid; BORDER-BOTTOM: #888 1px solid; BORDER-COLLAPSE: collapse; WORD-WRAP: break-word
+}
+#lemmaContent TABLE.editorTable TD {
+	BORDER-RIGHT: #888 1px solid; BORDER-TOP: #888 1px solid; BORDER-LEFT: #888 1px solid; BORDER-BOTTOM: #888 1px solid; BORDER-COLLAPSE: collapse
+}
+#lemmaContent SUP {
+	MARGIN-LEFT: 2px; CURSOR: pointer; COLOR: #36c
+}
+#lemmaContent H3 {
+	FONT-SIZE: 16px; MARGIN: 15px 0px; LINE-HEIGHT: 22px; FONT-FAMILY: Arial
+}
+#lemmaContent .text_pic H3 {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; MARGIN: 3px 0px 0px; OVERFLOW: hidden; COLOR: #666; WORD-BREAK: break-all; LINE-HEIGHT: 18px; FONT-STYLE: normal; TEXT-ALIGN: center; WORD-WRAP: break-word
+}
+#lemmaContent .text_pic H3  {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+#lemmaContent TABLE {
+	BORDER-RIGHT: #888 1px solid; BORDER-TOP: #888 1px solid; MARGIN: 5px 0px; BORDER-LEFT: #888 1px solid; WORD-BREAK: break-all; BORDER-BOTTOM: #888 1px solid; BORDER-COLLAPSE: collapse; WORD-WRAP: break-word; border-spacing: 0
+}
+#lemmaContent TD {
+	BORDER-RIGHT: #888 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #888 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 3px; VERTICAL-ALIGN: top; BORDER-LEFT: #888 1px solid; LINE-HEIGHT: 18px; PADDING-TOP: 3px; BORDER-BOTTOM: #888 1px solid
+}
+.ref DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; Z-INDEX: 4; PADDING-BOTTOM: 8px; PADDING-TOP: 8px
+}
+.ref DT {
+	FONT-WEIGHT: bold
+}
+.ref DD {
+	COLOR: #666; WORD-BREAK: break-all; WORD-WRAP: break-word
+}
+.ref DT SPAN {
+	FONT-WEIGHT: normal
+}
+.ref .add {
+	FONT-WEIGHT: normal; Z-INDEX: 8; RIGHT: 15px; MARGIN: 0px; COLOR: #36c; POSITION: absolute; TOP: 8px
+}
+.ref_more {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 0px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat -90px -260px; FLOAT: right; PADDING-BOTTOM: 0px; MARGIN: 0px 19px 0px 0px; COLOR: #333; LINE-HEIGHT: 16px; PADDING-TOP: 3px; WHITE-SPACE: nowrap; TEXT-DECORATION: none
+}
+.line {
+	BACKGROUND: #c1c1c1; MARGIN: 10px 0px; OVERFLOW: hidden; HEIGHT: 1px
+}
+.ref DIV.lemma-ext-area {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; PADDING-TOP: 0px
+}
+.ref .lemma-ext-bottom {
+	MARGIN-LEFT: 5px; LINE-HEIGHT: 22px
+}
+.ref-highlight {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; Z-INDEX: 10; BACKGROUND: #f5f5f5; PADDING-BOTTOM: 5px; MARGIN: 10px 0px; LINE-HEIGHT: 22px; PADDING-TOP: 0px; ZOOM: 1; POSITION: relative
+}
+.ref-highlight DL {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 8px; PADDING-TOP: 8px
+}
+.ref-highlight .line {
+	MARGIN: 5px 15px 10px
+}
+.new-ref UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.new-ref UL LI {
+	MARGIN-TOP: 5px; WIDTH: 100%
+}
+.new-ref UL LI A .ref-url-text {
+	TEXT-DECORATION: underline
+}
+.new-ref UL LI A IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+.new-ref UL LI .refNum {
+	FLOAT: left; WIDTH: 20px; TEXT-ALIGN: right
+}
+.new-ref UL LI A.refTop {
+	BACKGROUND: url(http://img.baidu.com/img/baike/bg_toolbar.gif) no-repeat -2px -609px; FLOAT: left; MARGIN: 5px 5px 0px 10px; OVERFLOW: hidden; WIDTH: 12px; HEIGHT: 12px
+}
+.new-ref UL LI A.refTop:hover {
+	BACKGROUND-POSITION: -2px -631px
+}
+.new-ref UL LI P {
+	MARGIN-LEFT: 48px
+}
+.new-ref UL LI P.refUrl {
+	MARGIN-LEFT: 51px
+}
+.r {
+	FLOAT: right
+}
+.try {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; COLOR: #666; PADDING-TOP: 10px
+}
+.try .edit {
+	PADDING-LEFT: 20px; FONT-WEIGHT: bold; FONT-SIZE: 14px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 0px -26px; MARGIN: 0px 5px
+}
+.box2 {
+	MARGIN-BOTTOM: 15px
+}
+.box2 H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; PADDING-TOP: 2px
+}
+.box2 H5 SPAN {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; FLOAT: right; MARGIN: 5px 8px 0px 0px; LINE-HEIGHT: 18px
+}
+.box2-inner {
+	BORDER-RIGHT: #cce0ee 1px solid; BORDER-TOP: #cce0ee 1px solid; BACKGROUND: #fff; BORDER-LEFT: #cce0ee 1px solid; BORDER-BOTTOM: #cce0ee 1px solid
+}
+.box2-inner .edit_it {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; FLOAT: right; MARGIN: 5px 8px 0px 0px; LINE-HEIGHT: 18px
+}
+.box2-inner .more_right {
+	FONT-WEIGHT: normal; FLOAT: right; LINE-HEIGHT: 18px
+}
+#mabox .box2-inner {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 12px; PADDING-BOTTOM: 12px; PADDING-TOP: 6px
+}
+.pr12 {
+	PADDING-RIGHT: 12px
+}
+#oneLineSpan A {
+	MARGIN-RIGHT: 10px
+}
+.bgusr {
+	PADDING-RIGHT: 10px; FONT-SIZE: 12px; LINE-HEIGHT: 19px; FONT-FAMILY: Arial; HEIGHT: 19px
+}
+.bgusr A {
+	COLOR: #261cdc
+}
+.bgusr A:visited {
+	COLOR: #800080
+}
+.ChTit {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; COLOR: black; LINE-HEIGHT: 18px; FONT-FAMILY: arial; HEIGHT: 21px
+}
+.ChTit A {
+	COLOR: #261cdc
+}
+.ChTit .i {
+	FONT-SIZE: 16px; FONT-FAMILY: arial
+}
+.formfont {
+	FONT-SIZE: 16px; FONT-FAMILY: arial
+}
+.bds {
+	VERTICAL-ALIGN: middle; PADDING-TOP: 1px; HEIGHT: 24px
+}
+.fB {
+	FONT-WEIGHT: bold
+}
+.f12 {
+	FONT-SIZE: 12px
+}
+.f12 TD {
+	FONT-SIZE: 12px
+}
+.f12 TH {
+	FONT-SIZE: 12px
+}
+.f12 DIV {
+	FONT-SIZE: 12px
+}
+.l24 {
+	LINE-HEIGHT: 24px
+}
+.clear {
+	CLEAR: both; FONT-SIZE: 0px; VISIBILITY: visible; LINE-HEIGHT: 0; HEIGHT: 0px
+}
+.nav {
+	PADDING-RIGHT: 10px; MARGIN-TOP: 8px; PADDING-LEFT: 10px; BACKGROUND: #dedfe1; MARGIN-BOTTOM: 15px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-TOP: 0px
+}
+.endLinks {
+	CLEAR: both; FONT-SIZE: 12px; MARGIN: 5px 0px 0px; WIDTH: 350px; LINE-HEIGHT: 20px
+}
+.endLinks A {
+	MARGIN-LEFT: 22px
+}
+.endLinks-share A {
+	MARGIN-LEFT: 22px
+}
+.endLinks-share {
+	FONT-SIZE: 12px; MARGIN: 15px 0px 0px; WIDTH: 350px
+}
+.endLinks-share LI {
+	DISPLAY: inline; FLOAT: left; WIDTH: 150px; LINE-HEIGHT: 20px
+}
+.endLinks LI {
+	DISPLAY: inline; FLOAT: left; WIDTH: 150px; LINE-HEIGHT: 20px
+}
+.itieBa {
+	BACKGROUND: url(http://img.baidu.com/img/baike/bgs4.gif) no-repeat 0px -58px
+}
+.tieba_i {
+	FONT: bold 14px "宋体"
+}
+.cang {
+	BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 0px 1px
+}
+.tsina {
+	BACKGROUND: url(http://img.baidu.com/img/baike/bgs4.gif) no-repeat 0px -122px
+}
+.tdouban {
+	BACKGROUND: url(http://img.baidu.com/img/baike/bgs4.gif) no-repeat 0px -145px
+}
+.r1_1 {
+	DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif); OVERFLOW: hidden; WIDTH: 5px; HEIGHT: 4px
+}
+.r1_2 {
+	DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif); OVERFLOW: hidden; WIDTH: 5px; HEIGHT: 4px
+}
+.r1_3 {
+	DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif); OVERFLOW: hidden; WIDTH: 5px; HEIGHT: 4px
+}
+.r1_4 {
+	DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif); OVERFLOW: hidden; WIDTH: 5px; HEIGHT: 4px
+}
+.r1_1 {
+	BACKGROUND-POSITION: 0px -52px; FLOAT: left
+}
+.r1_2 {
+	BACKGROUND-POSITION: -5px -52px; FLOAT: right
+}
+.r1_3 {
+	BACKGROUND-POSITION: 0px -56px; MARGIN-TOP: -4px; FLOAT: left
+}
+.r1_4 {
+	BACKGROUND-POSITION: -5px -56px; MARGIN-TOP: -4px; FLOAT: right
+}
+.r2_1 {
+	DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif); OVERFLOW: hidden; WIDTH: 6px; HEIGHT: 6px
+}
+.r2_2 {
+	DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif); OVERFLOW: hidden; WIDTH: 6px; HEIGHT: 6px
+}
+.r2_3 {
+	DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif); OVERFLOW: hidden; WIDTH: 6px; HEIGHT: 6px
+}
+.r2_4 {
+	DISPLAY: block; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif); OVERFLOW: hidden; WIDTH: 6px; HEIGHT: 6px
+}
+.r2_1 {
+	BACKGROUND-POSITION: -20px -52px; FLOAT: left
+}
+.r2_2 {
+	BACKGROUND-POSITION: -26px -52px; FLOAT: right
+}
+.r2_3 {
+	BACKGROUND-POSITION: -20px -58px; MARGIN-TOP: -6px; FLOAT: left
+}
+.r2_4 {
+	BACKGROUND-POSITION: -26px -58px; MARGIN-TOP: -6px; FLOAT: right
+}
+.text {
+	CLEAR: both; LINE-HEIGHT: 24px
+}
+.text H1 {
+	MARGIN-TOP: -6px; WIDTH: 580px; LINE-HEIGHT: 49px; PADDING-TOP: 8px; FONT-FAMILY: "黑体"
+}
+.text H2 {
+	CLEAR: both; FONT-WEIGHT: bold; FONT-SIZE: 18px; PADDING-BOTTOM: 6px; MARGIN: 0px 0px 20px; LINE-HEIGHT: 24px; BORDER-BOTTOM: #dedfe1 1px solid
+}
+.text H2.first {
+	CLEAR: none
+}
+.text .t_edit1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 0px -22px; FLOAT: right; PADDING-BOTTOM: 2px; MARGIN: 7px 5px 0px 0px; FONT: bold 14px "Arial"; PADDING-TOP: 3px
+}
+.text .t_edit2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 25px; BACKGROUND: url(http://img.baidu.com/img/baike/cardIcon.gif) no-repeat 5px -42px; FLOAT: right; PADDING-BOTTOM: 2px; MARGIN: 8px 5px 0px 0px; FONT: bold 14px "Arial"; PADDING-TOP: 3px
+}
+.text .t_polysemy {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 22px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs4.gif) no-repeat 0px -27px; FLOAT: right; PADDING-BOTTOM: 2px; MARGIN: 8px 12px 0px 0px; FONT: bold 14px "Arial"; PADDING-TOP: 3px
+}
+.lock {
+	MARGIN-TOP: 8px; FONT-WEIGHT: normal; FONT-SIZE: 14px; FLOAT: right; FONT-STYLE: normal; FONT-FAMILY: arial
+}
+.lock A {
+	PADDING-LEFT: 18px; BACKGROUND: url(http://img.baidu.com/img/baike/lock_edit.gif) no-repeat; MARGIN-RIGHT: 5px; PADDING-TOP: 2px
+}
+.text_edit {
+	PADDING-LEFT: 16px; FONT-WEIGHT: normal; FONT-SIZE: 12px; FLOAT: right; MARGIN: 3px 2px 0px 0px; COLOR: #36c
+}
+.text_pic {
+	BORDER-RIGHT: #e8e8e8 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #e8e8e8 1px solid; PADDING-LEFT: 10px; BACKGROUND: #f6f6f6; PADDING-BOTTOM: 10px; MARGIN: 5px; BORDER-LEFT: #e8e8e8 1px solid; PADDING-TOP: 10px; BORDER-BOTTOM: #e8e8e8 1px solid
+}
+.text_pic H3 {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; MARGIN: 3px 0px 0px; OVERFLOW: hidden; COLOR: #666; WORD-BREAK: break-all; LINE-HEIGHT: 18px; FONT-STYLE: normal; TEXT-ALIGN: center; WORD-WRAP: break-word
+}
+.text_pic H3  {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+.text_vote1 {
+	DISPLAY: block; FONT-SIZE: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 0px -134px; WIDTH: 124px; CURSOR: pointer; COLOR: #666; PADDING-TOP: 7px; HEIGHT: 45px; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.text_vote2 {
+	DISPLAY: block; FONT-SIZE: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 0px -134px; WIDTH: 124px; CURSOR: pointer; COLOR: #666; PADDING-TOP: 7px; HEIGHT: 45px; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.text_vote1 B {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 50px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; COLOR: #2aa8e3; PADDING-TOP: 2px; FONT-FAMILY: "Tahoma"; TEXT-ALIGN: left
+}
+.text_vote2 B {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 50px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; COLOR: #2aa8e3; PADDING-TOP: 2px; FONT-FAMILY: "Tahoma"; TEXT-ALIGN: left
+}
+.text_vote2 {
+	BACKGROUND-POSITION: 0px -196px; COLOR: #fff
+}
+.text_vote2 B {
+	COLOR: #fff
+}
+.spctrl {
+	LINE-HEIGHT: 10px; HEIGHT: 10px
+}
+.bpctrl {
+	LINE-HEIGHT: 35px; HEIGHT: 35px
+}
+.end {
+	CLEAR: both; MARGIN: 30px 0px 20px 5px; ZOOM: 1; POSITION: relative
+}
+.declare {
+	FONT-SIZE: 12px; FLOAT: right; MARGIN: 5px 200px 0px 0px; WIDTH: 336px; COLOR: #666; LINE-HEIGHT: 1.6em
+}
+.backtop {
+	MARGIN-TOP: 20px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat -44px -51px; FLOAT: right; OVERFLOW: hidden; WIDTH: 9px; HEIGHT: 8px
+}
+.ref {
+	CLEAR: both; PADDING-RIGHT: 0px; BORDER-TOP: #ccc 1px dashed; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; ZOOM: 1; POSITION: relative
+}
+.no-border {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+#relatedLemmaDown {
+	Z-INDEX: 5; ZOOM: 1; POSITION: relative
+}
+.word_more1 {
+	BORDER-RIGHT: #f5f5f5 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #f5f5f5 1px solid; DISPLAY: block; PADDING-LEFT: 5px; FONT-SIZE: 12px; Z-INDEX: 1; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 34px -259px; LEFT: 621px; PADDING-BOTTOM: 0px; BORDER-LEFT: #f5f5f5 1px solid; WIDTH: 42px; CURSOR: pointer; COLOR: #333; LINE-HEIGHT: 16px; PADDING-TOP: 3px; BORDER-BOTTOM: #f5f5f5 1px; POSITION: absolute; TOP: -1px; HEIGHT: 17px
+}
+.word_more2 {
+	BORDER-RIGHT: #f5f5f5 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #f5f5f5 1px solid; DISPLAY: block; PADDING-LEFT: 5px; FONT-SIZE: 12px; Z-INDEX: 1; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 34px -259px; LEFT: 621px; PADDING-BOTTOM: 0px; BORDER-LEFT: #f5f5f5 1px solid; WIDTH: 42px; CURSOR: pointer; COLOR: #333; LINE-HEIGHT: 16px; PADDING-TOP: 3px; BORDER-BOTTOM: #f5f5f5 1px; POSITION: absolute; TOP: -1px; HEIGHT: 17px
+}
+.word_more2 {
+	BORDER-RIGHT: #dedfe1 1px solid; BORDER-TOP: #dedfe1 1px solid; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) #fff no-repeat -23px -259px; BORDER-LEFT: #dedfe1 1px solid; BORDER-BOTTOM: #dedfe1 1px
+}
+.word_more_con {
+	BORDER-RIGHT: #dedfe1 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #dedfe1 1px solid; PADDING-LEFT: 10px; Z-INDEX: 5; BACKGROUND: #fff; LEFT: -14px; PADDING-BOTTOM: 10px; BORDER-LEFT: #dedfe1 1px solid; WIDTH: 673px; PADDING-TOP: 10px; BORDER-BOTTOM: #dedfe1 1px solid; ZOOM: 1; POSITION: absolute; TOP: 19px
+}
+.word_more_con A {
+	MARGIN-RIGHT: 10px
+}
+#co-editors {
+	COLOR: #000
+}
+DIV.onelineOnly {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 616px; ZOOM: 1; POSITION: relative; HEIGHT: 20px
+}
+DIV.onelineOnly UL {
+	WIDTH: 615px; LIST-STYLE-TYPE: none
+}
+DIV.onelineOnly UL LI {
+	FLOAT: left; MARGIN: 0px 5px; LINE-HEIGHT: 22px
+}
+DIV.onelineOnly A {
+	WHITE-SPACE: nowrap
+}
+DIV.onelineOnly UL.onelineOnlyDun LI {
+	MARGIN: 0px
+}
+DIV.materialLib {
+	MARGIN: 12px 15px 5px
+}
+.mp3Material {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 25px; OVERFLOW: hidden; PADDING-TOP: 0px; ZOOM: 1; POSITION: relative; HEIGHT: 23px
+}
+.mp3Material UL {
+	LEFT: 70px; WIDTH: 560px; LIST-STYLE-TYPE: none; POSITION: relative; TOP: -23px
+}
+.mp3Material UL LI {
+	FLOAT: left; MARGIN: 0px 5px; WHITE-SPACE: nowrap
+}
+.mp3Material A {
+	WHITE-SPACE: nowrap
+}
+.moreMaterial {
+	CLEAR: both; PADDING-RIGHT: 21px; FONT-SIZE: 12px; MARGIN: 0px 0px 10px 5px; LINE-HEIGHT: 15px; HEIGHT: 18px
+}
+.moreMaterial A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 0px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat -68px -260px; FLOAT: right; PADDING-BOTTOM: 0px; COLOR: #333; PADDING-TOP: 3px; TEXT-DECORATION: none
+}
+.videoMaterial {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; Z-INDEX: 2; LEFT: 25px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; POSITION: relative
+}
+.singleVideo {
+	PADDING-RIGHT: 16px; PADDING-LEFT: 0px; Z-INDEX: 2; BACKGROUND: url(http://img.baidu.com/img/head.gif) no-repeat; FLOAT: left; PADDING-BOTTOM: 6px; MARGIN: 10px 8px 0px 10px; WIDTH: 128px; PADDING-TOP: 13px; POSITION: relative
+}
+.videoTitle {
+	FONT-SIZE: 12px; LINE-HEIGHT: 25px; TEXT-ALIGN: center
+}
+.videoTitleACut {
+	WHITE-SPACE: nowrap
+}
+.box2 {
+	MARGIN-BOTTOM: 15px
+}
+.box2 H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; PADDING-TOP: 2px
+}
+.box2 H2 SPAN {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; FLOAT: right; MARGIN: 5px 8px 0px 0px; LINE-HEIGHT: 18px
+}
+.pad14 {
+	PADDING-RIGHT: 14px; PADDING-LEFT: 14px; PADDING-BOTTOM: 12px; PADDING-TOP: 6px
+}
+.info {
+	COLOR: #666; LINE-HEIGHT: 22px
+}
+.topuser {
+	COLOR: #666; LINE-HEIGHT: 24px
+}
+.topuser TD {
+	PADDING-TOP: 2px
+}
+.topuser .usertitle {
+	MARGIN-TOP: -1px
+}
+.topuser TH {
+	TEXT-ALIGN: left
+}
+.topuser TD A {
+	COLOR: #000
+}
+.more1 {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: normal; FONT-SIZE: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat -92px -259px; FLOAT: right; TEXT-DECORATION: none
+}
+.more2 {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: normal; FONT-SIZE: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat -92px -259px; FLOAT: right; TEXT-DECORATION: none
+}
+.more2 {
+	BACKGROUND-POSITION: 26px -258px
+}
+.task {
+	MARGIN-BOTTOM: 15px; COLOR: #333
+}
+.task DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+.task DD IMG {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}
+.notice {
+	COLOR: #333
+}
+.notice DD {
+	PADDING-LEFT: 12px; FONT-SIZE: 14px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 2px -99px; LINE-HEIGHT: 22px
+}
+.notice SUP {
+	COLOR: #f00; LINE-HEIGHT: 12px
+}
+.relative {
+	POSITION: relative
+}
+.relatedHelp {
+	PADDING-LEFT: 18px; BACKGROUND: url(http://img.baidu.com/img/baike/ico_bz.gif) no-repeat
+}
+.rel_word LI {
+	PADDING-LEFT: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 2px -326px; LINE-HEIGHT: 20px
+}
+.rel_word LI A.cutWord {
+	WORD-BREAK: break-all; WORD-WRAP: break-word
+}
+.myedit {
+	PADDING-LEFT: 15px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 0px -80px; MARGIN: 0px
+}
+.pcixin {
+	MARGIN-TOP: 3px; COLOR: #a00
+}
+.ptitle {
+	MARGIN-TOP: 3px; FONT-WEIGHT: bold
+}
+.pexplain {
+	MARGIN-TOP: 3px; MARGIN-LEFT: 20px
+}
+.synonyms1 {
+	BORDER-RIGHT: #eee 5px solid; PADDING-RIGHT: 8px; BORDER-TOP: #eee 5px solid; PADDING-LEFT: 8px; FONT-SIZE: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/icon_synonyms.gif) no-repeat 8px 10px; FLOAT: left; PADDING-BOTTOM: 8px; MARGIN: 5px 0px 20px; BORDER-LEFT: #eee 5px solid; TEXT-INDENT: 22px; LINE-HEIGHT: 20px; PADDING-TOP: 8px; BORDER-BOTTOM: #eee 5px solid
+}
+.synonyms2 {
+	BORDER-RIGHT: #eee 5px solid; PADDING-RIGHT: 8px; BORDER-TOP: #eee 5px solid; PADDING-LEFT: 8px; FONT-SIZE: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/icon_synonyms.gif) no-repeat 8px 10px; FLOAT: left; PADDING-BOTTOM: 8px; MARGIN: 5px 0px 20px; BORDER-LEFT: #eee 5px solid; TEXT-INDENT: 22px; LINE-HEIGHT: 20px; PADDING-TOP: 8px; BORDER-BOTTOM: #eee 5px solid
+}
+.synonyms2 {
+	BACKGROUND-POSITION: 8px -53px
+}
+.synonyms1 .syntit {
+	FONT: bold 14px arial
+}
+.synonyms2 .syntit {
+	FONT: bold 14px arial
+}
+.searchRedirect SPAN {
+	FONT: bold 14px arial
+}
+.searchRedirect {
+	BORDER-RIGHT: #eee 5px solid; PADDING-RIGHT: 8px; BORDER-TOP: #eee 5px solid; PADDING-LEFT: 8px; FONT-SIZE: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs4.gif) no-repeat 8px -81px; FLOAT: left; PADDING-BOTTOM: 8px; MARGIN: 5px 0px 20px; BORDER-LEFT: #eee 5px solid; TEXT-INDENT: 23px; LINE-HEIGHT: 20px; PADDING-TOP: 8px; BORDER-BOTTOM: #eee 5px solid; WHITE-SPACE: nowrap
+}
+IMG.down-arrow {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; BORDER-LEFT: #fff 1px solid; CURSOR: pointer; BORDER-BOTTOM: #fff 1px solid
+}
+IMG.down-arrow-hover {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BACKGROUND: #f7f7f7; BORDER-LEFT: #999 1px solid; CURSOR: pointer; BORDER-BOTTOM: #999 1px solid
+}
+#nav_extra {
+	FONT-SIZE: 12px; Z-INDEX: 65535; PADDING-BOTTOM: 2px; WIDTH: 80px; POSITION: absolute; TEXT-ALIGN: left
+}
+#nav_extra A {
+	FONT-SIZE: 12px; COLOR: #00c
+}
+#nav_extra .top {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; FONT-SIZE: 12px; Z-INDEX: 65531; BACKGROUND: #fff; BORDER-LEFT: #999 1px solid; WIDTH: 77px; TEXT-INDENT: 5px; LINE-HEIGHT: 18px; BORDER-BOTTOM: #999 1px; POSITION: absolute; HEIGHT: 21px
+}
+#nav_extra .body {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; Z-INDEX: 65530; BACKGROUND: #fff; BORDER-LEFT: #999 1px solid; WIDTH: 77px; LINE-HEIGHT: 18px; BORDER-BOTTOM: #999 1px solid; POSITION: absolute; TOP: 20px
+}
+#nav_extra .body A {
+	DISPLAY: block; WIDTH: 100%; TEXT-INDENT: 5px; LINE-HEIGHT: 20px; HEIGHT: 20px
+}
+#nav_extra .body A:hover {
+	BACKGROUND: #e4e4e4
+}
+.text_dir {
+	BORDER-RIGHT: #dedfe1 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #dedfe1 1px solid; DISPLAY: inline; PADDING-LEFT: 0px; BACKGROUND: #fff; PADDING-BOTTOM: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: #dedfe1 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #dedfe1 1px solid; POSITION: relative
+}
+.text_dir P {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; MARGIN: 12px 0px 4px; LINE-HEIGHT: 30px; PADDING-TOP: 0px
+}
+.text_dir P SPAN {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; MARGIN-LEFT: 5px; COLOR: #36c
+}
+.text_dir DL {
+	PADDING-RIGHT: 20px; PADDING-LEFT: 15px; BACKGROUND: #fff; PADDING-BOTTOM: 20px; PADDING-TOP: 0px
+}
+.text_dir DD {
+	PADDING-LEFT: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) no-repeat 2px -327px; LINE-HEIGHT: 20px; POSITION: relative
+}
+.text_dir OL {
+	PADDING-RIGHT: 0px; DISPLAY: none; PADDING-LEFT: 0px; FILTER: Alpha(Opacity=10); PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; TEXT-INDENT: 20px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none; opacity: .1
+}
+.text_dir DL.arr {
+	BACKGROUND: url(http://img.baidu.com/img/baike/word_arr.gif) #fff no-repeat right bottom
+}
+.text_dir #holder2 {
+	BORDER-RIGHT: #dedfe1 1px solid; BORDER-TOP: #dedfe1 1px; DISPLAY: none; LEFT: -1px; BORDER-LEFT: #dedfe1 1px solid; BORDER-BOTTOM: #dedfe1 1px solid; POSITION: absolute; TOP: 47px
+}
+.text_dir .temp {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+.text_dir .data LI {
+	PADDING-LEFT: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs3.gif) #fff no-repeat 2px -327px; ZOOM: 1
+}
+.text_dir .data LI LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.text_dir A {
+	WHITE-SPACE: nowrap
+}
+DIV.polysemy {
+	PADDING-RIGHT: 0px; BORDER-TOP: #ddd 2px solid; PADDING-LEFT: 35px; FONT-SIZE: 12px; BACKGROUND: url(http://img.baidu.com/img/baike/bgs4.gif) no-repeat 5px 6px; MARGIN-BOTTOM: 10px; PADDING-BOTTOM: 0px; OVERFLOW: hidden; LINE-HEIGHT: 35px; PADDING-TOP: 0px; BORDER-BOTTOM: #ddd 2px solid; HEIGHT: 36px
+}
+DIV.polysemy A {
+	FONT-SIZE: 14px
+}
+DIV.polysemyContentDiv {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 15px; LINE-HEIGHT: 25px; PADDING-TOP: 15px
+}
+DIV.polysemyContentDiv INPUT {
+	WIDTH: 360px
+}
+SPAN.polysemyExp {
+	FONT-SIZE: 12px; COLOR: #aaa
+}
+SPAN.polysemyRed {
+	FONT-SIZE: 12px; COLOR: #f66
+}
+.authority {
+	CLEAR: both; FONT-SIZE: 12px; FLOAT: left; MARGIN: 8px 0px 2px; OVERFLOW: hidden; LINE-HEIGHT: 20px; WHITE-SPACE: nowrap
+}
+.authority A {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #36c; WHITE-SPACE: nowrap
+}
+.authority SPAN.authorityImg {
+	PADDING-RIGHT: 55px; DISPLAY: inline-block; PADDING-LEFT: 0px; PADDING-BOTTOM: 15px; PADDING-TOP: 17px; ZOOM: 1; WHITE-SPACE: nowrap; POSITION: relative
+}
+.authorityLogo {
+	DISPLAY: inline-block; RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=image,src="http://img.baidu.com/img/baike/authority/authorityLogo.png"); WIDTH: 36px; ZOOM: 1; POSITION: absolute; TOP: 0px; HEIGHT: 47px
+}
+.authImg {
+	OVERFLOW: hidden; WIDTH: 226px; TEXT-ALIGN: left
+}
+.authContent P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 12px 0px 0px; PADDING-TOP: 0px
+}
+.authContent P A {
+	FONT-SIZE: 14px; COLOR: #1852c7; TEXT-DECORATION: none
+}
+.authContent SPAN {
+	LINE-HEIGHT: 20px
+}
+.tangram_sug_wpr {
+	BORDER-RIGHT: #817f82 1px solid; BORDER-TOP: #817f82 1px solid; Z-INDEX: 9999; LEFT: 0px; BORDER-LEFT: #817f82 1px solid; BORDER-BOTTOM: #817f82 1px solid; POSITION: absolute; TOP: 28px
+}
+.tangram_sug_wpr TABLE {
+	BACKGROUND: #fff; WIDTH: 100%; CURSOR: default
+}
+.tangram_sug_wpr TD {
+	FONT: 14px verdana
+}
+.tangram_sug_mo {
+	BACKGROUND: #36c; COLOR: #fff
+}
+.tangram_sug_ml {
+	BACKGROUND: #fff; COLOR: #000
+}
+.tangram_sug_app {
+	BACKGROUND: #fff
+}
+.tangram_sug_pre {
+	BACKGROUND: #fff
+}
+.sug_close {
+	PADDING-RIGHT: 2px; LINE-HEIGHT: 20px; TEXT-ALIGN: right
+}
+.sug_close A {
+	FONT-SIZE: 14px; COLOR: #00c
+}
+#hd .tangram_sug_wpr TD {
+	FONT: 14px verdana
+}
+IMG {
+	ms-interpolation-mode: bicubic
+}
+.usertitle {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BACKGROUND: url(http://img.baidu.com/img/baike/titles.gif) no-repeat; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 60px; HEIGHT: 16px; BORDER-RIGHT-WIDTH: 0px
+}
+.level2 {
+	BACKGROUND-POSITION: 0px -23px
+}
+.level3 {
+	BACKGROUND-POSITION: 0px -46px
+}
+.level4 {
+	BACKGROUND-POSITION: 0px -68px
+}
+.level5 {
+	BACKGROUND-POSITION: 0px -89px
+}
+.level6 {
+	BACKGROUND-POSITION: 0px -121px
+}
+.level7 {
+	BACKGROUND-POSITION: 0px -144px
+}
+.level8 {
+	BACKGROUND-POSITION: 0px -167px
+}
+.level9 {
+	BACKGROUND-POSITION: 0px -190px
+}
+.level10 {
+	BACKGROUND-POSITION: 0px -214px
+}
+.level11 {
+	BACKGROUND-POSITION: 0px -248px
+}
+.level12 {
+	BACKGROUND-POSITION: 0px -271px
+}
+.level13 {
+	BACKGROUND-POSITION: 0px -294px
+}
+.level14 {
+	BACKGROUND-POSITION: 0px -317px
+}
+.level15 {
+	BACKGROUND-POSITION: 0px -340px; WIDTH: 75px
+}
+#userInfoDiv A {
+	TEXT-DECORATION: none
+}
+#userInfoDiv {
+	DISPLAY: none; ZOOM: 1; POSITION: relative
+}
+#userMessage {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 11px; BACKGROUND: #edf5fb; PADDING-BOTTOM: 12px; MARGIN: 1px 1px 0px; PADDING-TOP: 8px; BORDER-BOTTOM: #e0ebf5 1px solid; ZOOM: 1
+}
+#userPic {
+	BORDER-RIGHT: #e1e1e2 1px solid; BORDER-TOP: #e1e1e2 1px solid; MARGIN-TOP: 2px; FLOAT: left; BORDER-LEFT: #e1e1e2 1px solid; MARGIN-RIGHT: 8px; BORDER-BOTTOM: #e1e1e2 1px solid
+}
+#userDetail {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 160px
+}
+#userDetail P {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; WHITE-SPACE: nowrap
+}
+#userDetail P STRONG {
+	FONT-SIZE: 12px; VERTICAL-ALIGN: bottom
+}
+#userTitle {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 2px
+}
+#kedoutuanPic {
+	DISPLAY: none; MARGIN-RIGHT: 3px
+}
+#userTitle IMG {
+	MARGIN-TOP: -2px
+}
+#masterPic {
+	DISPLAY: none; MARGIN-RIGHT: 3px
+}
+#highVersionNum {
+	VERTICAL-ALIGN: -3px
+}
+#goodVersionNum {
+	VERTICAL-ALIGN: -3px
+}
+#gotoBaike {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 12px; PADDING-TOP: 12px; TEXT-ALIGN: center
+}
+#userTitleLink {
+	FONT-WEIGHT: bold; VERTICAL-ALIGN: 5px; COLOR: #36c; TEXT-DECORATION: none
+}
+#userProcessBack {
+	MARGIN-TOP: 5px; FONT-SIZE: 0px; BACKGROUND: url(http://img.baidu.com/img/baike/views/userinfo/userinfo_bg.gif) no-repeat 0px -94px; WIDTH: 157px; LINE-HEIGHT: 0; HEIGHT: 13px
+}
+#userProcess {
+	FONT-SIZE: 0px; BACKGROUND: url(http://img.baidu.com/img/baike/views/userinfo/userinfo_bg.gif) no-repeat 0px -108px; WIDTH: 33px; LINE-HEIGHT: 0; HEIGHT: 12px
+}
+#hotWord {
+	PADDING-RIGHT: 8px; DISPLAY: none; PADDING-LEFT: 12px; PADDING-BOTTOM: 0px; PADDING-TOP: 8px; POSITION: relative
+}
+#effort {
+	PADDING-RIGHT: 8px; DISPLAY: none; PADDING-LEFT: 12px; PADDING-BOTTOM: 0px; PADDING-TOP: 8px; POSITION: relative
+}
+#gotoBaike {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+#hotWord H3 A {
+	FONT-SIZE: 14px; FLOAT: left; COLOR: #36c; LINE-HEIGHT: 18px; MARGIN-RIGHT: 10px; TEXT-DECORATION: none
+}
+#effort H3 A {
+	FONT-SIZE: 14px; FLOAT: left; COLOR: #36c; LINE-HEIGHT: 18px; MARGIN-RIGHT: 10px; TEXT-DECORATION: none
+}
+#hotWord H3 #hotWordRefresh {
+	DISPLAY: inline; BACKGROUND: url(http://img.baidu.com/img/baike/views/userinfo/userinfo_bg.gif) no-repeat 0px -39px; FLOAT: right; WIDTH: 18px; MARGIN-RIGHT: 0px; HEIGHT: 19px
+}
+#hotWord H3 #hotWordRefresh:hover {
+	BACKGROUND: url(http://img.baidu.com/img/baike/views/userinfo/userinfo_bg.gif) no-repeat -23px -39px
+}
+#hotHelp {
+	DISPLAY: inline; BACKGROUND: url(http://img.baidu.com/img/baike/views/userinfo/userinfo_bg.gif) no-repeat 0px -122px; WIDTH: 16px; HEIGHT: 16px
+}
+#goToUserCenterLink {
+	DISPLAY: block; FONT-SIZE: 14px; BACKGROUND: url(http://img.baidu.com/img/baike/views/userinfo/userinfo_bg.gif) no-repeat 0px -139px; MARGIN: 0px auto; WIDTH: 127px; TEXT-DECORATION: none
+}
+#hotWords {
+	FONT-SIZE: 12px; MARGIN: 6px 0px 0px; OVERFLOW: hidden; WIDTH: 100%; COLOR: #999; FONT-FAMILY: "宋体"; LIST-STYLE-TYPE: none
+}
+#efforts {
+	FONT-SIZE: 12px; MARGIN: 6px 0px 0px; OVERFLOW: hidden; WIDTH: 100%; COLOR: #999; FONT-FAMILY: "宋体"; LIST-STYLE-TYPE: none
+}
+#hotWords SPAN {
+	FONT-SIZE: 12px; FONT-FAMILY: "arial"
+}
+#efforts SPAN {
+	FONT-SIZE: 12px; FONT-FAMILY: "arial"
+}
+#efforts .ef-type {
+	COLOR: #000
+}
+#efforts .ef-type:hover {
+	COLOR: #36c
+}
+#hotWords LI SPAN {
+	COLOR: #000
+}
+#effort LI SPAN {
+	COLOR: #000
+}
+#hotWords LI A {
+	FONT-SIZE: 12px; COLOR: #36c; LINE-HEIGHT: 20px; FONT-FAMILY: "arial"; TEXT-DECORATION: none
+}
+#effort LI A {
+	FONT-SIZE: 12px; COLOR: #36c; LINE-HEIGHT: 20px; FONT-FAMILY: "arial"; TEXT-DECORATION: none
+}
+#hotWords LI A:hover {
+	TEXT-DECORATION: underline
+}
+#effort LI A:hover {
+	TEXT-DECORATION: underline
+}
+#highVersionLink {
+	DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/baike/hotword_img.gif) no-repeat 0px -72px; MARGIN: 0px 3px; VERTICAL-ALIGN: middle; WIDTH: 12px; HEIGHT: 17px
+}
+#goodVersionLink {
+	DISPLAY: inline-block; BACKGROUND: url(http://img.baidu.com/img/baike/hotword_img.gif) no-repeat -32px -72px; MARGIN: 0px 3px; VERTICAL-ALIGN: middle; WIDTH: 12px; HEIGHT: 17px
+}
+.tipMain {
+	BORDER-RIGHT: #ffd4ad 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #ffd4ad 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 0px; BORDER-LEFT: #ffd4ad 1px solid; COLOR: #535353; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BORDER-BOTTOM: #ffd4ad 1px solid; BACKGROUND-COLOR: #fff7f0
+}
+.tip {
+	DISPLAY: none; POSITION: absolute
+}
+.reason-tip {
+	LEFT: 100px; WHITE-SPACE: nowrap
+}
+#userTip {
+	LEFT: 30px; WIDTH: 216px; TOP: 81px; HEIGHT: 78px
+}
+#userTipArrow {
+	Z-INDEX: 99; BACKGROUND: url(http://img.baidu.com/img/baike/views/userinfo/userinfo_bg.gif) no-repeat -59px -42px; LEFT: 94px; WIDTH: 16px; POSITION: absolute; TOP: 0px; HEIGHT: 7px
+}
+#userTipMain {
+	WIDTH: 216px; POSITION: absolute; TOP: 6px; HEIGHT: 78px
+}
+#userTipMain P {
+	FONT-SIZE: 12px; MARGIN: 8px
+}
+#hotHelpTip {
+	LEFT: 115px; WIDTH: 166px; LINE-HEIGHT: 15px; TOP: 30px
+}
+#completeTip {
+	LEFT: 40px
+}
+#completeTipMain {
+	min-width: 200px
+}
+#completeTipMain SPAN {
+	COLOR: red
+}
+.userin-split {
+	MARGIN-TOP: 10px; BORDER-BOTTOM: #ddd 1px dashed
+}

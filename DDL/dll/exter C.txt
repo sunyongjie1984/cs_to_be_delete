@@ -1,0 +1,1 @@
+给dll加上extern “C”之后，在dumpbin里面看到的就不会加入一些前缀了，在动态链接的时候估计就可以用GetProcAddress，就是说不用再写def文件，就可以使用loadlibrary的方法加载dll了。

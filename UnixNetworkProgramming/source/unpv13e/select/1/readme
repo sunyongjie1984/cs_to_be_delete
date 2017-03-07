@@ -1,0 +1,4 @@
+this programe send stdin to the server
+and it can detects the close connection action from the server
+
+gcc -o main abc.c abcd.c -I ../../lib ../../libunp.a

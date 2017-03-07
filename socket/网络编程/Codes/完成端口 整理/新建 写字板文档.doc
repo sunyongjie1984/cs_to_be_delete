@@ -1,0 +1,534 @@
+{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fmodern\fprq6\fcharset134 \'cb\'ce\'cc\'e5;}}
+{\*\generator Msftedit 5.41.15.1507;}\viewkind4\uc1\pard\lang2052\f0\fs20\'cd\'f8\'c2\'e7I/O\'c4\'a3\'bf\'e9\'b5\'c4IOCP\'c0\'a9\'d5\'b92007\'c4\'ea01\'d4\'c227\'c8\'d5 \'d0\'c7\'c6\'da\'c1\'f9 15:240 \'b9\'a6\'c4\'dc\'ba\'af\'ca\'fd\par
+\par
+    0.1 socket\'b9\'a4\'b3\'a7 \'a3\'a8\'b4\'b4\'bd\'a8socket\'a3\'ac\'b0\'f3\'b6\'a8\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'daCreateIoCompletionPort\'a3\'a9\par
+\par
+-------------------------------------------------\'d6\'f7\'cf\'df\'b3\'cc-----------------------------------------------\par
+\par
+1.\'b3\'f5\'ca\'bc\'bb\'af\par
+\par
+    1.1 \'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\par
+\par
+    1.2 \'b4\'b4\'bd\'a8\'cf\'df\'b3\'cc\'b3\'d8\par
+\par
+2.\'b4\'b4\'bd\'a8\'b0\'f3\'b6\'a8socket\par
+\par
+    2.1 \'b5\'f7\'d3\'c30.1   \'a3\'a8\'b4\'b4\'bd\'a8ListenSocket\'a3\'a9\par
+\par
+    2.3 \'b0\'f3\'b6\'a8\'b6\'cb\'bf\'da\par
+\par
+3.\'c9\'e8\'d6\'c3\'ce\'aa\'b1\'bb\'b6\'af\'bb\'f2\'d6\'f7\'b6\'af\par
+\par
+    3.1 listen\par
+\par
+    3.2 \'bb\'f1\'b5\'c3AcceptEx\'d6\'b8\'d5\'eb\par
+\par
+    3.3 \'b5\'f7\'d3\'c30.1\'a3\'a8\'b4\'b4\'bd\'a8AcceptSocket\'a3\'a9\par
+\par
+    3.4 \'b5\'f7\'d3\'c3AcceptEx\'a3\'a8\'b8\'f9\'be\'dd\'c9\'e8\'d6\'c3\'c8\'b7\'b6\'a8\'b3\'f5\'ca\'bc\'cd\'b6\'b5\'dd\'b6\'e0\'c9\'d9\'b8\'f6\'a3\'a9\'a3\'ac\'c9\'e8\'d6\'c3\'b5\'da\'c8\'fd\'b8\'f6\'b2\'ce\'ca\'fd\'ce\'aa0\par
+\par
+4.while(1)\{\par
+\par
+5.\'d6\'b4\'d0\'d0\'c4\'b3\'d6\'d6\'d7\'e8\'c8\'fb\'b5\'f7\'d3\'c3\par
+\par
+    5.1 \'b5\'f7\'d3\'c3WSAEventSelect\'a3\'ac\'bc\'e0\'cc\'fdFD_ACCEPT\'ca\'c2\'bc\'fe\'a3\'a8\'bc\'e0\'cc\'fd\'b5\'bd\'ca\'b1\'a3\'ac\'d4\'da\'d7\'dcAcceptEx \'c7\'eb\'c7\'f3\'d0\'a1\'d3\'da\'c9\'e8\'d6\'c3\'b5\'c4\'d7\'ee\'b4\'f3\'d6\'b5\'b5\'c4\'c7\'e9\'bf\'f6\'cf\'c2\'a3\'ac\'cd\'b6\'b5\'dd\'d2\'bb\'b8\'f6\'d0\'c2\'b5\'c4AcceptEx\'c7\'eb\'c7\'f3\'a3\'a9\'a3\'ac\'b2\'a2\'c9\'e8\'d6\'c3\'d2\'bb\'b8\'f6\'b3\'ac\'ca\'b1\'a3\'a8\'bf\'c9\'c5\'e4\'d6\'c3\'b5\'c4\'a3\'a9\'a3\'ac\'b3\'ac\'ca\'b1\'b5\'c4\'bb\'b0\'a3\'ac\'bc\'ec\'b2\'e9\'b5\'b1\'c7\'b0\'bb\'ee\'b6\'af\'cf\'df\'b3\'cc\'ca\'fd\'a3\'ac\'bf\'b4\'ca\'c7\'b7\'f1\'d2\'aa\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'d0\'c2\'b5\'c4\'b9\'a4\'d7\'f7\'d5\'df\'cf\'df\'b3\'cc\'a3\'a8\'b4\'b4\'bd\'a8\'d0\'c2\'b5\'c4\'cf\'df\'b3\'cc\'b2\'bb\'bb\'e1\'ca\'b9\'d7\'dc\'cf\'df\'b3\'cc\'ca\'fd\'b3\'ac\'b9\'fd\'c9\'e8\'d6\'c3\'b5\'c4\'d7\'ee\'b4\'f3\'d6\'b5\'a3\'a9\par
+\par
+\'c8\'e7\'cf\'c2\'a3\'ba\par
+\par
+WSAEventSelect\'a3\'a8\'a3\'a9\'a3\'bb\par
+\par
+if\'a3\'a8\'b3\'ac\'ca\'b1||time_last-time()>\'b3\'ac\'ca\'b1\'d6\'b5\'a3\'a9 \{\par
+\par
+\'bc\'ec\'b2\'e9\'b5\'b1\'c7\'b0\'bb\'ee\'b6\'af\'cf\'df\'b3\'cc\'ca\'fd\'a3\'ac\'bd\'d3\'bd\'fc\'d7\'dc\'cf\'df\'b3\'cc\'ca\'fd\'ca\'b1\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'d0\'c2\'b5\'c4\'b9\'a4\'d7\'f7\'d5\'df\'cf\'df\'b3\'cc\par
+\par
+\'b5\'f7\'d3\'c3\'d3\'c3\'bb\'a7\'cc\'e1\'b9\'a9\'b5\'c4\'bb\'d8\'b5\'f7\'ba\'af\'ca\'fd\'a3\'ac\'c2\'fa\'d7\'e3\'d3\'c3\'bb\'a7\'b5\'c4\'b6\'a8\'ca\'b1\'d0\'e8\'c7\'f3\'a3\'a8\'d5\'e2\'b8\'f6\'b6\'a8\'ca\'b1\'ca\'c7\'d2\'bb\'b8\'f6\'b2\'bb\'ce\'c8\'b6\'a8\'b5\'c4\'b6\'a8\'ca\'b1[t,2t)\'a3\'a9\'a1\'a3\par
+\par
+time_last=time();\par
+\par
+\}\par
+\par
+if\'a3\'a8FD_ACCEPT\'a3\'a9\{\par
+\par
+\'d6\'b4\'d0\'d00.1\'a3\'ac\'cd\'b6\'b5\'dd\'d2\'bb\'b8\'f6AcceptEx\par
+\par
+\}\par
+\par
+\'b5\'b1\'bd\'d3\'ca\'d5\'b5\'bd\'b9\'d8\'b1\'d5\'d0\'c5\'ba\'c5\'ca\'b1\'a3\'ac\'cf\'f2\'b9\'a4\'d7\'f7\'d5\'df\'cf\'df\'b3\'cc\'cd\'b6\'b5\'dd\'b9\'d8\'b1\'d5\'d0\'c5\'ba\'c5\par
+\par
+ \par
+\par
+--------------------------------------------\'b9\'a4\'d7\'f7\'d5\'df\'cf\'df\'b3\'cc-----------------------------------------------\par
+\par
+1. \'d2\'bb\'d0\'a9\'b3\'f5\'ca\'bc\'bb\'af\par
+\par
+2.while\'a3\'a81\'a3\'a9\{\par
+\par
+GetQueuedCompletionStatus\par
+\par
+\'b5\'b1\'bd\'d3\'ca\'d5\'b5\'bdAcceptEx\'cd\'ea\'b3\'c9\'b0\'fc\'ca\'b1\'a3\'ac\'cd\'b6\'b5\'dd\'d2\'bb\'b8\'f6\'d0\'c2\'b5\'c4AcceptEx\'c7\'eb\'c7\'f3\par
+\par
+\'b5\'b1\'bd\'d3\'ca\'d5\'b5\'bdRead\'cd\'ea\'b3\'c9\'b0\'fc\'ca\'b1\'a3\'ac\'a1\'ad\'a1\'ad\'a1\'ad\'a1\'ad\'a1\'ad\'a1\'ad\par
+\par
+\}\par
+ \par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'ea\'bd\'e2(1)2007\'c4\'ea01\'d4\'c227\'c8\'d5 \'d0\'c7\'c6\'da\'c1\'f9 15:31\'cd\'a8\'b3\'a3\'d2\'aa\'bf\'aa\'b7\'a2\'cd\'f8\'c2\'e7\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b2\'a2\'b2\'bb\'ca\'c7\'d2\'bb\'bc\'fe\'c7\'e1\'cb\'c9\'b5\'c4\'ca\'c2\'c7\'e9\'a3\'ac\'b2\'bb\'b9\'fd\'a3\'ac\'ca\'b5\'bc\'ca\'c9\'cf\'d6\'bb\'d2\'aa\'d5\'c6\'ce\'d5\'bc\'b8\'b8\'f6\'b9\'d8\'bc\'fc\'b5\'c4\'d4\'ad\'d4\'f2\'d2\'b2\'be\'cd\'bf\'c9\'d2\'d4\'c1\'cb\emdash\emdash\'b4\'b4\'bd\'a8\'ba\'cd\'c1\'ac\'bd\'d3\'d2\'bb\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'a3\'ac\'b3\'a2\'ca\'d4\'bd\'f8\'d0\'d0\'c1\'ac\'bd\'d3\'a3\'ac\'c8\'bb\'ba\'f3\'ca\'d5\'b7\'a2\'ca\'fd\'be\'dd\'a1\'a3\'d5\'e6\'d5\'fd\'c4\'d1\'b5\'c4\'ca\'c7\'d2\'aa\'d0\'b4\'b3\'f6\'d2\'bb\'b8\'f6\'bf\'c9\'d2\'d4\'bd\'d3\'c4\'c9\'c9\'d9\'d4\'f2\'d2\'bb\'b8\'f6\'a3\'ac\'b6\'e0\'d4\'f2\'ca\'fd\'c7\'a7\'b8\'f6\'c1\'ac\'bd\'d3\'b5\'c4\'cd\'f8\'c2\'e7\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'a1\'a3\'b1\'be\'ce\'c4\'bd\'ab\'cc\'d6\'c2\'db\'c8\'e7\'ba\'ce\'cd\'a8\'b9\'fdWinsock2\'d4\'daWindows NT \'ba\'cd Windows 2000\'c9\'cf\'bf\'aa\'b7\'a2\'b8\'df\'c0\'a9\'d5\'b9\'c4\'dc\'c1\'a6\'b5\'c4Winsock\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'a1\'a3\'ce\'c4\'d5\'c2\'d6\'f7\'d2\'aa\'b5\'c4\'bd\'b9\'b5\'e3\'d4\'da\'bf\'cd\'bb\'a7\'bb\'fa/\'b7\'fe\'ce\'f1\'c6\'f7\'c4\'a3\'d0\'cd\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'d5\'e2\'d2\'bb\'b7\'bd\'a3\'ac\'b5\'b1\'c8\'bb\'a3\'ac\'c6\'e4\'d6\'d0\'b5\'c4\'d0\'ed\'b6\'e0\'d2\'aa\'b5\'e3\'b6\'d4\'c4\'a3\'d0\'cd\'b5\'c4\'cb\'ab\'b7\'bd\'b6\'bc\'ca\'ca\'d3\'c3\'a1\'a3\par
+\par
+      API\'d3\'eb\'cf\'ec\'d3\'a6\'b9\'e6\'c4\'a3\par
+\par
+      \'cd\'a8\'b9\'fdWin32\'b5\'c4\'d6\'d8\'b5\'feI/O\'bb\'fa\'d6\'c6\'a3\'ac\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'bf\'c9\'d2\'d4\'cc\'e1\'c7\'eb\'d2\'bb\'cf\'eeI/O\'b2\'d9\'d7\'f7\'a3\'ac\'d6\'d8\'b5\'fe\'b5\'c4\'b2\'d9\'d7\'f7\'c7\'eb\'c7\'f3\'d4\'da\'ba\'f3\'cc\'a8\'cd\'ea\'b3\'c9\'a3\'ac\'b6\'f8\'cd\'ac\'d2\'bb\'ca\'b1\'bc\'e4\'cc\'e1\'c7\'eb\'b2\'d9\'d7\'f7\'b5\'c4\'cf\'df\'b3\'cc\'c8\'a5\'d7\'f6\'c6\'e4\'cb\'fb\'b5\'c4\'ca\'c2\'c7\'e9\'a1\'a3\'b5\'c8\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'cd\'ea\'b3\'c9\'ba\'f3\'cf\'df\'b3\'cc\'ca\'d5\'b5\'bd\'d3\'d0\'b9\'d8\'b5\'c4\'cd\'a8\'d6\'aa\'a1\'a3\'d5\'e2\'d6\'d6\'bb\'fa\'d6\'c6\'b6\'d4\'c4\'c7\'d0\'a9\'ba\'c4\'ca\'b1\'b5\'c4\'b2\'d9\'d7\'f7\'b6\'f8\'d1\'d4\'cc\'d8\'b1\'f0\'d3\'d0\'d3\'c3\'a1\'a3\'b2\'bb\'b9\'fd\'a3\'ac\'cf\'f1Windows 3.1\'c9\'cf\'b5\'c4WSAAsyncSelect()\'bc\'b0Unix\'cf\'c2\'b5\'c4select()\'c4\'c7\'d1\'f9\'b5\'c4\'ba\'af\'ca\'fd\'cb\'e4\'c8\'bb\'d2\'d7\'d3\'da\'ca\'b9\'d3\'c3\'a3\'ac\'b5\'ab\'ca\'c7\'cb\'fc\'c3\'c7\'b2\'bb\'c4\'dc\'c2\'fa\'d7\'e3\'cf\'ec\'d3\'a6\'b9\'e6\'c4\'a3\'b5\'c4\'d0\'e8\'d2\'aa\'a1\'a3\'b6\'f8\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'bb\'fa\'d6\'c6\'ca\'c7\'d5\'eb\'b6\'d4\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'c4\'da\'b2\'bf\'bd\'f8\'d0\'d0\'c1\'cb\'d3\'c5\'bb\'af\'a3\'ac\'d4\'daWindows NT \'ba\'cd Windows 2000\'c9\'cf\'a3\'ac\'ca\'b9\'d3\'c3\'c1\'cb\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'d6\'d8\'b5\'feI/O\'bb\'fa\'d6\'c6\'b2\'c5\'c4\'dc\'b9\'bb\'d5\'e6\'d5\'fd\'c0\'a9\'b4\'f3\'cf\'b5\'cd\'b3\'b5\'c4\'cf\'ec\'d3\'a6\'b9\'e6\'c4\'a3\'a1\'a3\par
+\par
+      \'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\par
+\par
+      \'d2\'bb\'b8\'f6\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'c6\'e4\'ca\'b5\'be\'cd\'ca\'c7\'d2\'bb\'b8\'f6\'cd\'a8\'d6\'aa\'b6\'d3\'c1\'d0\'a3\'ac\'d3\'c9\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'b0\'d1\'d2\'d1\'be\'ad\'cd\'ea\'b3\'c9\'b5\'c4\'d6\'d8\'b5\'feI/O\'c7\'eb\'c7\'f3\'b5\'c4\'cd\'a8\'d6\'aa\'b7\'c5\'c8\'eb\'c6\'e4\'d6\'d0\'a1\'a3\'b5\'b1\'c4\'b3\'cf\'eeI/O\'b2\'d9\'d7\'f7\'d2\'bb\'b5\'a9\'cd\'ea\'b3\'c9\'a3\'ac\'c4\'b3\'b8\'f6\'bf\'c9\'d2\'d4\'b6\'d4\'b8\'c3\'b2\'d9\'d7\'f7\'bd\'e1\'b9\'fb\'bd\'f8\'d0\'d0\'b4\'a6\'c0\'ed\'b5\'c4\'b9\'a4\'d7\'f7\'d5\'df\'cf\'df\'b3\'cc\'be\'cd\'bb\'e1\'ca\'d5\'b5\'bd\'d2\'bb\'d4\'f2\'cd\'a8\'d6\'aa\'a1\'a3\'b6\'f8\'cc\'d7\'bd\'d3\'d7\'d6\'d4\'da\'b1\'bb\'b4\'b4\'bd\'a8\'ba\'f3\'a3\'ac\'bf\'c9\'d2\'d4\'d4\'da\'c8\'ce\'ba\'ce\'ca\'b1\'ba\'f2\'d3\'eb\'c4\'b3\'b8\'f6\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'bd\'f8\'d0\'d0\'b9\'d8\'c1\'aa\'a1\'a3\par
+\par
+      \'cd\'a8\'b3\'a3\'c7\'e9\'bf\'f6\'cf\'c2\'a3\'ac\'ce\'d2\'c3\'c7\'bb\'e1\'d4\'da\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d6\'d0\'b4\'b4\'bd\'a8\'d2\'bb\'b6\'a8\'ca\'fd\'c1\'bf\'b5\'c4\'b9\'a4\'d7\'f7\'d5\'df\'cf\'df\'b3\'cc\'c0\'b4\'b4\'a6\'c0\'ed\'d5\'e2\'d0\'a9\'cd\'a8\'d6\'aa\'a1\'a3\'cf\'df\'b3\'cc\'ca\'fd\'c1\'bf\'c8\'a1\'be\'f6\'d3\'da\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'c4\'cc\'d8\'b6\'a8\'d0\'e8\'d2\'aa\'a1\'a3\'c0\'ed\'cf\'eb\'b5\'c4\'c7\'e9\'bf\'f6\'ca\'c7\'a3\'ac\'cf\'df\'b3\'cc\'ca\'fd\'c1\'bf\'b5\'c8\'d3\'da\'b4\'a6\'c0\'ed\'c6\'f7\'b5\'c4\'ca\'fd\'c1\'bf\'a3\'ac\'b2\'bb\'b9\'fd\'d5\'e2\'d2\'b2\'d2\'aa\'c7\'f3\'c8\'ce\'ba\'ce\'cf\'df\'b3\'cc\'b6\'bc\'b2\'bb\'d3\'a6\'b8\'c3\'d6\'b4\'d0\'d0\'d6\'ee\'c8\'e7\'cd\'ac\'b2\'bd\'b6\'c1\'d0\'b4\'a1\'a2\'b5\'c8\'b4\'fd\'ca\'c2\'bc\'fe\'cd\'a8\'d6\'aa\'b5\'c8\'d7\'e8\'c8\'fb\'d0\'cd\'b5\'c4\'b2\'d9\'d7\'f7\'a3\'ac\'d2\'d4\'c3\'e2\'cf\'df\'b3\'cc\'d7\'e8\'c8\'fb\'a1\'a3\'c3\'bf\'b8\'f6\'cf\'df\'b3\'cc\'b6\'bc\'bd\'ab\'b7\'d6\'b5\'bd\'d2\'bb\'b6\'a8\'b5\'c4CPU\'ca\'b1\'bc\'e4\'a3\'ac\'d4\'da\'b4\'cb\'c6\'da\'bc\'e4\'b8\'c3\'cf\'df\'b3\'cc\'bf\'c9\'d2\'d4\'d4\'cb\'d0\'d0\'a3\'ac\'c8\'bb\'ba\'f3\'c1\'ed\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'bd\'ab\'b7\'d6\'b5\'bd\'d2\'bb\'b8\'f6\'ca\'b1\'bc\'e4\'c6\'ac\'b2\'a2\'bf\'aa\'ca\'bc\'d6\'b4\'d0\'d0\'a1\'a3\'c8\'e7\'b9\'fb\'c4\'b3\'b8\'f6\'cf\'df\'b3\'cc\'d6\'b4\'d0\'d0\'c1\'cb\'d7\'e8\'c8\'fb\'d0\'cd\'b5\'c4\'b2\'d9\'d7\'f7\'a3\'ac\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'bd\'ab\'b0\'fe\'b6\'e1\'c6\'e4\'ce\'b4\'ca\'b9\'d3\'c3\'b5\'c4\'ca\'a3\'d3\'e0\'ca\'b1\'bc\'e4\'c6\'ac\'b2\'a2\'c8\'c3\'c6\'e4\'cb\'fc\'cf\'df\'b3\'cc\'bf\'aa\'ca\'bc\'d6\'b4\'d0\'d0\'a1\'a3\'d2\'b2\'be\'cd\'ca\'c7\'cb\'b5\'a3\'ac\'c7\'b0\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'c3\'bb\'d3\'d0\'b3\'e4\'b7\'d6\'ca\'b9\'d3\'c3\'c6\'e4\'ca\'b1\'bc\'e4\'c6\'ac\'a3\'ac\'b5\'b1\'b7\'a2\'c9\'fa\'d5\'e2\'d1\'f9\'b5\'c4\'c7\'e9\'bf\'f6\'ca\'b1\'a3\'ac\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d3\'a6\'b8\'c3\'d7\'bc\'b1\'b8\'c6\'e4\'cb\'fc\'cf\'df\'b3\'cc\'c0\'b4\'b3\'e4\'b7\'d6\'c0\'fb\'d3\'c3\'d5\'e2\'d0\'a9\'ca\'b1\'bc\'e4\'c6\'ac\'a1\'a3\par
+\par
+      \'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'ca\'b9\'d3\'c3\'b7\'d6\'ce\'aa\'c1\'bd\'b2\'bd\'a1\'a3\'ca\'d7\'cf\'c8\'b4\'b4\'bd\'a8\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'a3\'ac\'c8\'e7\'d2\'d4\'cf\'c2\'b4\'fa\'c2\'eb\'cb\'f9\'ca\'be\'a3\'ba\par
+\par
+      HANDLE\'a1\'a1\'a1\'a1hIocp;\par
+\par
+      hIocp = CreateIoCompletionPort(\par
+      \'a1\'a1\'a1\'a1INVALID_HANDLE_VALUE,\par
+      \'a1\'a1\'a1\'a1NULL,\par
+      \'a1\'a1\'a1\'a1(ULONG_PTR)0,\par
+      \'a1\'a1\'a1\'a10);\par
+      if (hIocp == NULL) \{\par
+      \'a1\'a1\'a1\'a1// Error\par
+      \}\par
+\par
+\par
+      \'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b4\'b4\'bd\'a8\'ba\'f3\'a3\'ac\'d2\'aa\'b0\'d1\'bd\'ab\'ca\'b9\'d3\'c3\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'cc\'d7\'bd\'d3\'d7\'d6\'d3\'eb\'d6\'ae\'b9\'d8\'c1\'aa\'c6\'f0\'c0\'b4\'a1\'a3\'b7\'bd\'b7\'a8\'ca\'c7\'d4\'d9\'b4\'ce\'b5\'f7\'d3\'c3CreateIoCompletionPort ()\'ba\'af\'ca\'fd\'a3\'ac\'b5\'da\'d2\'bb\'b8\'f6\'b2\'ce\'ca\'fdFileHandle\'c9\'e8\'ce\'aa\'cc\'d7\'bd\'d3\'d7\'d6\'b5\'c4\'be\'e4\'b1\'fa\'a3\'ac\'b5\'da\'b6\'fe\'b8\'f6\'b2\'ce\'ca\'fdExistingCompletionPort \'c9\'e8\'ce\'aa\'b8\'d5\'b8\'d5\'b4\'b4\'bd\'a8\'b5\'c4\'c4\'c7\'b8\'f6\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'be\'e4\'b1\'fa\'a1\'a3\par
+      \'d2\'d4\'cf\'c2\'b4\'fa\'c2\'eb\'b4\'b4\'bd\'a8\'c1\'cb\'d2\'bb\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'a3\'ac\'b2\'a2\'b0\'d1\'cb\'fc\'ba\'cd\'c7\'b0\'c3\'e6\'b4\'b4\'bd\'a8\'b5\'c4\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b9\'d8\'c1\'aa\'c6\'f0\'c0\'b4\'a3\'ba\par
+\par
+      SOCKET\'a1\'a1\'a1\'a1s;\par
+\par
+      s = socket(AF_INET, SOCK_STREAM, 0);\par
+      if (s == INVALID_SOCKET) \{\par
+      \'a1\'a1\'a1\'a1// Error\par
+      if (CreateIoCompletionPort((HANDLE)s,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 hIocp,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 (ULONG_PTR)0,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 0) == NULL)\par
+       \{\par
+       // Error\par
+       \}\par
+       ???\par
+      \}\par
+\par
+\par
+      \'d5\'e2\'ca\'b1\'be\'cd\'cd\'ea\'b3\'c9\'c1\'cb\'cc\'d7\'bd\'d3\'d7\'d6\'d3\'eb\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'b9\'d8\'c1\'aa\'b2\'d9\'d7\'f7\'a1\'a3\'d4\'da\'d5\'e2\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'c9\'cf\'bd\'f8\'d0\'d0\'b5\'c4\'c8\'ce\'ba\'ce\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'b6\'bc\'bd\'ab\'cd\'a8\'b9\'fd\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b7\'a2\'b3\'f6\'cd\'ea\'b3\'c9\'cd\'a8\'d6\'aa\'a1\'a3\'d7\'a2\'d2\'e2\'a3\'acCreateIoCompletionPort()\'ba\'af\'ca\'fd\'d6\'d0\'b5\'c4\'b5\'da\'c8\'fd\'b8\'f6\'b2\'ce\'ca\'fd\'d3\'c3\'c0\'b4\'c9\'e8\'d6\'c3\'d2\'bb\'b8\'f6\'d3\'eb\'b8\'c3\'cc\'d7\'bd\'d3\'d7\'d6\'cf\'e0\'b9\'d8\'b5\'c4\ldblquote\'cd\'ea\'b3\'c9\'bc\'fc(completion key)\rdblquote (\'d2\'eb\'d5\'df\'d7\'a2\'a3\'ba\'cd\'ea\'b3\'c9\'bc\'fc\'bf\'c9\'d2\'d4\'ca\'c7\'c8\'ce\'ba\'ce\'ca\'fd\'be\'dd\'c0\'e0\'d0\'cd)\'a1\'a3\'c3\'bf\'b5\'b1\'cd\'ea\'b3\'c9\'cd\'a8\'d6\'aa\'b5\'bd\'c0\'b4\'ca\'b1\'a3\'ac\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'bf\'c9\'d2\'d4\'b6\'c1\'c8\'a1\'cf\'e0\'d3\'a6\'b5\'c4\'cd\'ea\'b3\'c9\'bc\'fc\'a3\'ac\'d2\'f2\'b4\'cb\'a3\'ac\'cd\'ea\'b3\'c9\'bc\'fc\'bf\'c9\'d3\'c3\'c0\'b4\'b8\'f8\'cc\'d7\'bd\'d3\'d7\'d6\'b4\'ab\'b5\'dd\'d2\'bb\'d0\'a9\'b1\'b3\'be\'b0\'d0\'c5\'cf\'a2\'a1\'a3\par
+\par
+      \'d4\'da\'b4\'b4\'bd\'a8\'c1\'cb\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'a1\'a2\'bd\'ab\'d2\'bb\'b8\'f6\'bb\'f2\'b6\'e0\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'d3\'eb\'d6\'ae\'cf\'e0\'b9\'d8\'c1\'aa\'d6\'ae\'ba\'f3\'a3\'ac\'ce\'d2\'c3\'c7\'be\'cd\'d2\'aa\'b4\'b4\'bd\'a8\'c8\'f4\'b8\'c9\'b8\'f6\'cf\'df\'b3\'cc\'c0\'b4\'b4\'a6\'c0\'ed\'cd\'ea\'b3\'c9\'cd\'a8\'d6\'aa\'a1\'a3\'d5\'e2\'d0\'a9\'cf\'df\'b3\'cc\'b2\'bb\'b6\'cf\'d1\'ad\'bb\'b7\'b5\'f7\'d3\'c3GetQueuedCompletionStatus()\'ba\'af\'ca\'fd\'b2\'a2\'b7\'b5\'bb\'d8\'cd\'ea\'b3\'c9\'cd\'a8\'d6\'aa\'a1\'a3\par
+\par
+      \'cf\'c2\'c3\'e6\'a3\'ac\'ce\'d2\'c3\'c7\'cf\'c8\'c0\'b4\'bf\'b4\'bf\'b4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'c8\'e7\'ba\'ce\'b8\'fa\'d7\'d9\'d5\'e2\'d0\'a9\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'a1\'a3\'b5\'b1\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'f7\'d3\'c3\'d2\'bb\'b8\'f6\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'ba\'af\'ca\'fd\'ca\'b1\'a3\'ac\'d2\'aa\'b0\'d1\'d6\'b8\'cf\'f2\'d2\'bb\'b8\'f6overlapped\'bd\'e1\'b9\'b9\'b5\'c4\'d6\'b8\'d5\'eb\'b0\'fc\'c0\'a8\'d4\'da\'c6\'e4\'b2\'ce\'ca\'fd\'d6\'d0\'a1\'a3\'b5\'b1\'b2\'d9\'d7\'f7\'cd\'ea\'b3\'c9\'ba\'f3\'a3\'ac\'ce\'d2\'c3\'c7\'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fdGetQueuedCompletionStatus()\'ba\'af\'ca\'fd\'d6\'d0\'c4\'c3\'bb\'d8\'d5\'e2\'b8\'f6\'d6\'b8\'d5\'eb\'a1\'a3\'b2\'bb\'b9\'fd\'a3\'ac\'b5\'a5\'ca\'c7\'b8\'f9\'be\'dd\'d5\'e2\'b8\'f6\'d6\'b8\'d5\'eb\'cb\'f9\'d6\'b8\'cf\'f2\'b5\'c4overlapped\'bd\'e1\'b9\'b9\'a3\'ac\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b2\'a2\'b2\'bb\'c4\'dc\'b7\'d6\'b1\'e6\'be\'bf\'be\'b9\'cd\'ea\'b3\'c9\'b5\'c4\'ca\'c7\'c4\'c4\'b8\'f6\'b2\'d9\'d7\'f7\'a1\'a3\'d2\'aa\'ca\'b5\'cf\'d6\'b6\'d4\'b2\'d9\'d7\'f7\'b5\'c4\'b8\'fa\'d7\'d9\'a3\'ac\'c4\'e3\'bf\'c9\'d2\'d4\'d7\'d4\'bc\'ba\'b6\'a8\'d2\'e5\'d2\'bb\'b8\'f6OVERLAPPED\'bd\'e1\'b9\'b9\'a3\'ac\'d4\'da\'c6\'e4\'d6\'d0\'bc\'d3\'c8\'eb\'cb\'f9\'d0\'e8\'b5\'c4\'b8\'fa\'d7\'d9\'d0\'c5\'cf\'a2\'a1\'a3\par
+\par
+      \'ce\'de\'c2\'db\'ba\'ce\'ca\'b1\'b5\'f7\'d3\'c3\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'ba\'af\'ca\'fd\'ca\'b1\'a3\'ac\'d7\'dc\'ca\'c7\'bb\'e1\'cd\'a8\'b9\'fd\'c6\'e4lpOverlapped\'b2\'ce\'ca\'fd\'b4\'ab\'b5\'dd\'d2\'bb\'b8\'f6OVERLAPPEDPLUS\'bd\'e1\'b9\'b9(\'c0\'fd\'c8\'e7WSASend\'a1\'a2WSARecv\'b5\'c8\'ba\'af\'ca\'fd)\'a1\'a3\'d5\'e2\'be\'cd\'d4\'ca\'d0\'ed\'c4\'e3\'ce\'aa\'c3\'bf\'d2\'bb\'b8\'f6\'d6\'d8\'b5\'fe\'b5\'f7\'d3\'c3\'b2\'d9\'d7\'f7\'c9\'e8\'d6\'c3\'c4\'b3\'d0\'a9\'b2\'d9\'d7\'f7\'d7\'b4\'cc\'ac\'d0\'c5\'cf\'a2\'a3\'ac\'b5\'b1\'b2\'d9\'d7\'f7\'bd\'e1\'ca\'f8\'ba\'f3\'a3\'ac\'c4\'e3\'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fdGetQueuedCompletionStatus()\'ba\'af\'ca\'fd\'bb\'f1\'b5\'c3\'c4\'e3\'d7\'d4\'b6\'a8\'d2\'e5\'bd\'e1\'b9\'b9\'b5\'c4\'d6\'b8\'d5\'eb\'a1\'a3\'d7\'a2\'d2\'e2OVERLAPPED\'d7\'d6\'b6\'ce\'b2\'bb\'d2\'aa\'c7\'f3\'d2\'bb\'b6\'a8\'ca\'c7\'d5\'e2\'b8\'f6\'c0\'a9\'d5\'b9\'ba\'f3\'b5\'c4\'bd\'e1\'b9\'b9\'b5\'c4\'b5\'da\'d2\'bb\'b8\'f6\'d7\'d6\'b6\'ce\'a1\'a3\'b5\'b1\'b5\'c3\'b5\'bd\'c1\'cb\'d6\'b8\'cf\'f2OVERLAPPED\'bd\'e1\'b9\'b9\'b5\'c4\'d6\'b8\'d5\'eb\'d2\'d4\'ba\'f3\'a3\'ac\'bf\'c9\'d2\'d4\'d3\'c3CONTAINING_RECORD\'ba\'ea\'c8\'a1\'b3\'f6\'c6\'e4\'d6\'d0\'d6\'b8\'cf\'f2\'c0\'a9\'d5\'b9\'bd\'e1\'b9\'b9\'b5\'c4\'d6\'b8\'d5\'eb(\'d2\'eb\'d5\'df\'d7\'a2\'a3\'ba\'d2\'d4\'c9\'cf\'c1\'bd\'d0\'a1\'b6\'ce\'d2\'bb\'bb\'e1\'ca\'c7OVERLAPPEDPLUS\'bd\'e1\'b9\'b9\'a3\'ac\'d2\'bb\'bb\'e1\'ca\'c7OVERLAPPED\'bd\'e1\'b9\'b9\'a3\'ac\'b1\'be\'c8\'cb\'d2\'b2\'bf\'b4\'b2\'bb\'cc\'ab\'b6\'ae\'a3\'ac\'c7\'eb\'b8\'df\'ca\'d6\'b4\'cd\'bd\'cc)\'a1\'a3\par
+\par
+      OVERLAPPED \'bd\'e1\'b9\'b9\'b5\'c4\'b6\'a8\'d2\'e5\'c8\'e7\'cf\'c2\'a3\'ba\par
+\par
+      typedef struct _OVERLAPPEDPLUS \{\par
+      \'a1\'a1\'a1\'a1OVERLAPPED\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1ol;\par
+      \'a1\'a1\'a1\'a1SOCKET\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1s, sclient;\par
+      \'a1\'a1\'a1\'a1int\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 OpCode;\par
+      \'a1\'a1\'a1\'a1WSABUF\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1wbuf;\par
+      \'a1\'a1\'a1\'a1DWORD\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 dwBytes, dwFlags;\par
+      \'a1\'a1\'a1\'a1// other useful information\par
+      \} OVERLAPPEDPLUS;\par
+\par
+      #define OP_READ\'a1\'a1\'a1\'a1 0\par
+      #define OP_WRITE\'a1\'a1\'a1\'a11\par
+      #define OP_ACCEPT\'a1\'a1 2\par
+\par
+\par
+      \'cf\'c2\'c3\'e6\'c8\'c3\'ce\'d2\'c3\'c7\'c0\'b4\'bf\'b4\'bf\'b4Figure2\'c0\'ef\'b9\'a4\'d7\'f7\'d5\'df\'cf\'df\'b3\'cc\'b5\'c4\'c7\'e9\'bf\'f6\'a1\'a3\par
+\par
+      Figure 2 Worker Thread \par
+\par
+      DWORD WINAPI WorkerThread(LPVOID lpParam)\par
+      \{\'a1\'a1\'a1\'a1\par
+      \'a1\'a1\'a1\'a1ULONG_PTR\'a1\'a1\'a1\'a1\'a1\'a1 *PerHandleKey;\par
+      \'a1\'a1\'a1\'a1OVERLAPPED\'a1\'a1\'a1\'a1\'a1\'a1*Overlap;\par
+      \'a1\'a1\'a1\'a1OVERLAPPEDPLUS\'a1\'a1*OverlapPlus,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1*newolp;\par
+      \'a1\'a1\'a1\'a1DWORD\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 dwBytesXfered;\par
+\par
+      \'a1\'a1\'a1\'a1while (1)\par
+      \'a1\'a1\'a1\'a1\{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1ret = GetQueuedCompletionStatus(\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1hIocp,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&dwBytesXfered,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1(PULONG_PTR)&PerHandleKey,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&Overlap,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1INFINITE);\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1if (ret == 0)\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Operation failed\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1continue;\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\}\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1OverlapPlus = CONTAINING_RECORD(Overlap, OVERLAPPEDPLUS, ol);\par
+      \'a1\'a1\'a1\'a1\par
+      \'a1\'a1\'a1\'a1switch (OverlapPlus-> OpCode)\par
+      \'a1\'a1\'a1\'a1\{\par
+      \'a1\'a1\'a1\'a1case OP_ACCEPT:\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Client socket is contained in OverlapPlus.sclient\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Add client to completion port\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1CreateIoCompletionPort(\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1(HANDLE)OverlapPlus-> sclient,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1hIocp,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1(ULONG_PTR)0,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a10);\par
+\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1//\'a1\'a1Need a new OVERLAPPEDPLUS structure\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1//\'a1\'a1for the newly accepted socket. Perhaps\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1//\'a1\'a1keep a look aside list of free structures.\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1newolp = AllocateOverlappedPlus();\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1if (!newolp)\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Error\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\}\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1newolp-> s = OverlapPlus-> sclient;\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1newolp-> OpCode = OP_READ;\par
+\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// This function prepares the data to be sent\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1PrepareSendBuffer(&newolp-> wbuf);\par
+      \'a1\'a1\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1ret = WSASend(\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1newolp-> s,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&newolp-> wbuf,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a11,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&newolp-> dwBytes,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a10,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&newolp.ol,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1NULL);\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1if (ret == SOCKET_ERROR)\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1if (WSAGetLastError() != WSA_IO_PENDING)\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Error\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\}\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\}\par
+\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Put structure in look aside list for later use\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1FreeOverlappedPlus(OverlapPlus);\par
+\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Signal accept thread to issue another AcceptEx\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1SetEvent(hAcceptThread);\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1break;\par
+\par
+      \'a1\'a1\'a1\'a1case OP_READ:\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Process the data read\'a1\'a1\'a1\'a1\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// &#8226;&#8226;&#8226;\par
+\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Repost the read if necessary, reusing the same\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// receive buffer as before\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1memset(&OverlapPlus-> ol, 0, sizeof(OVERLAPPED));\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1ret = WSARecv(\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1OverlapPlus-> s,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&OverlapPlus-> wbuf,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a11,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&OverlapPlus-> dwBytes,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&OverlapPlus-> dwFlags,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1&OverlapPlus-> ol,\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1NULL);\par
+\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1if (ret == SOCKET_ERROR)\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1if (WSAGetLastError() != WSA_IO_PENDING)\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Error\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\}\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\}\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1break;\par
+\par
+      \'a1\'a1\'a1\'a1case OP_WRITE:\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1// Process the data sent, etc.\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1break;\par
+      \'a1\'a1\'a1\'a1\} // switch\par
+      \'a1\'a1\'a1\'a1\} // while\par
+      \}\'a1\'a1// WorkerThread\par
+\par
+\par
+      \'c6\'e4\'d6\'d0\'c3\'bf\'be\'e4\'b1\'fa\'bc\'fc(PerHandleKey)\'b1\'e4\'c1\'bf\'b5\'c4\'c4\'da\'c8\'dd\'a3\'ac\'ca\'c7\'d4\'da\'b0\'d1\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'d3\'eb\'cc\'d7\'bd\'d3\'d7\'d6\'bd\'f8\'d0\'d0\'b9\'d8\'c1\'aa\'ca\'b1\'cb\'f9\'c9\'e8\'d6\'c3\'b5\'c4\'cd\'ea\'b3\'c9\'bc\'fc\'b2\'ce\'ca\'fd\'a3\'bbOverlap\'b2\'ce\'ca\'fd\'b7\'b5\'bb\'d8\'b5\'c4\'ca\'c7\'d2\'bb\'b8\'f6\'d6\'b8\'cf\'f2\'b7\'a2\'b3\'f6\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'ca\'b1\'cb\'f9\'ca\'b9\'d3\'c3\'b5\'c4\'c4\'c7\'b8\'f6OVERLAPPEDPLUS\'bd\'e1\'b9\'b9\'b5\'c4\'d6\'b8\'d5\'eb\'a1\'a3\par
+\par
+      \'d2\'aa\'bc\'c7\'d7\'a1\'a3\'ac\'c8\'e7\'b9\'fb\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'b5\'f7\'d3\'c3\'ca\'a7\'b0\'dc\'ca\'b1(\'d2\'b2\'be\'cd\'ca\'c7\'cb\'b5\'a3\'ac\'b7\'b5\'bb\'d8\'d6\'b5\'ca\'c7SOCKET_ERROR\'a3\'ac\'b2\'a2\'c7\'d2\'b4\'ed\'ce\'f3\'d4\'ad\'d2\'f2\'b2\'bb\'ca\'c7WSA_IO_PENDING)\'a3\'ac\'c4\'c7\'c3\'b4\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'bd\'ab\'b2\'bb\'bb\'e1\'ca\'d5\'b5\'bd\'c8\'ce\'ba\'ce\'cd\'ea\'b3\'c9\'cd\'a8\'d6\'aa\'a1\'a3\'c8\'e7\'b9\'fb\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'b5\'f7\'d3\'c3\'b3\'c9\'b9\'a6\'a3\'ac\'bb\'f2\'d5\'df\'b7\'a2\'c9\'fa\'d4\'ad\'d2\'f2\'ca\'c7WSA_IO_PENDING\'b5\'c4\'b4\'ed\'ce\'f3\'ca\'b1\'a3\'ac\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'bd\'ab\'d7\'dc\'ca\'c7\'c4\'dc\'b9\'bb\'ca\'d5\'b5\'bd\'cd\'ea\'b3\'c9\'cd\'a8\'d6\'aa\'a1\'a3\par
+\par
+      Windows NT\'ba\'cdWindows 2000\'b5\'c4\'cc\'d7\'bd\'d3\'d7\'d6\'bc\'dc\'b9\'b9\'b6\'d4\'d3\'da\'bf\'aa\'b7\'a2\'b4\'f3\'cf\'ec\'d3\'a6\'b9\'e6\'c4\'a3\'b5\'c4Winsock\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b6\'f8\'d1\'d4\'a3\'ac\'b6\'d4Windows NT\'ba\'cdWindows 2000\'b5\'c4\'cc\'d7\'bd\'d3\'d7\'d6\'bc\'dc\'b9\'b9\'d3\'d0\'bb\'f9\'b1\'be\'b5\'c4\'c1\'cb\'bd\'e2\'ca\'c7\'ba\'dc\'d3\'d0\'b0\'ef\'d6\'fa\'b5\'c4\'a1\'a3\par
+\par
+      \'d3\'eb\'c6\'e4\'cb\'fc\'c0\'e0\'d0\'cd\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'b2\'bb\'cd\'ac\'a3\'acWindows NT\'ba\'cdWindows 2000\'b5\'c4\'b4\'ab\'ca\'e4\'d0\'ad\'d2\'e9\'c3\'bb\'d3\'d0\'d2\'bb\'d6\'d6\'b7\'e7\'b8\'f1\'cf\'f1\'cc\'d7\'bd\'d3\'d7\'d6\'c4\'c7\'d1\'f9\'b5\'c4\'a1\'a2\'bf\'c9\'d2\'d4\'ba\'cd\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d6\'b1\'bd\'d3\'bd\'bb\'cc\'b8\'b5\'c4\'bd\'e7\'c3\'e6\'a3\'ac\'b6\'f8\'ca\'c7\'b2\'c9\'d3\'c3\'c1\'cb\'d2\'bb\'d6\'d6\'b8\'fc\'ce\'aa\'b5\'d7\'b2\'e3\'b5\'c4API\'a3\'ac\'bd\'d0\'d7\'f6\'b4\'ab\'ca\'e4\'c7\'fd\'b6\'af\'b3\'cc\'d0\'f2\'bd\'e7\'c3\'e6(Transport Driver Interface,TDI)\'a1\'a3Winsock\'b5\'c4\'ba\'cb\'d0\'c4\'c4\'a3\'ca\'bd\'c7\'fd\'b6\'af\'b3\'cc\'d0\'f2\'b8\'ba\'d4\'f0\'c1\'ac\'bd\'d3\'ba\'cd\'bb\'ba\'b3\'e5\'c7\'f8\'b9\'dc\'c0\'ed\'a3\'ac\'d2\'d4\'b1\'e3\'cf\'f2\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'cc\'e1\'b9\'a9\'cc\'d7\'bd\'d3\'d7\'d6\'b7\'c2\'d5\'e6(\'d4\'daAFD.SYS\'ce\'c4\'bc\'fe\'d6\'d0\'ca\'b5\'cf\'d6)\'a3\'ac\'cd\'ac\'ca\'b1\'b8\'ba\'d4\'f0\'d3\'eb\'b5\'d7\'b2\'e3\'b4\'ab\'ca\'e4\'c7\'fd\'b6\'af\'b3\'cc\'d0\'f2\'b6\'d4\'bb\'b0\'a1\'a3 \par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'ea\'bd\'e2(2)2007\'c4\'ea01\'d4\'c227\'c8\'d5 \'d0\'c7\'c6\'da\'c1\'f9 15:31 \'cb\'ad\'c0\'b4\'b8\'ba\'d4\'f0\'b9\'dc\'c0\'ed\'bb\'ba\'b3\'e5\'c7\'f8\'a3\'bf\par
+\par
+      \'d5\'fd\'c8\'e7\'c9\'cf\'c3\'e6\'cb\'f9\'cb\'b5\'b5\'c4\'a3\'ac\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'cd\'a8\'b9\'fdWinsock\'c0\'b4\'ba\'cd\'b4\'ab\'ca\'e4\'d0\'ad\'d2\'e9\'c7\'fd\'b6\'af\'b3\'cc\'d0\'f2\'bd\'bb\'cc\'b8\'a3\'ac\'b6\'f8AFD.SYS\'b8\'ba\'d4\'f0\'ce\'aa\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'bd\'f8\'d0\'d0\'bb\'ba\'b3\'e5\'c7\'f8\'b9\'dc\'c0\'ed\'a1\'a3\'d2\'b2\'be\'cd\'ca\'c7\'cb\'b5\'a3\'ac\'b5\'b1\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'f7\'d3\'c3send()\'bb\'f2WSASend()\'ba\'af\'ca\'fd\'c0\'b4\'b7\'a2\'cb\'cd\'ca\'fd\'be\'dd\'ca\'b1\'a3\'acAFD.SYS\'bd\'ab\'b0\'d1\'ca\'fd\'be\'dd\'bf\'bd\'b1\'b4\'bd\'f8\'cb\'fc\'d7\'d4\'bc\'ba\'b5\'c4\'c4\'da\'b2\'bf\'bb\'ba\'b3\'e5\'c7\'f8(\'c8\'a1\'be\'f6\'d3\'daSO_SNDBUF\'c9\'e8\'b6\'a8\'d6\'b5)\'a3\'ac\'c8\'bb\'ba\'f3send()\'bb\'f2WSASend()\'ba\'af\'ca\'fd\'c1\'a2\'bc\'b4\'b7\'b5\'bb\'d8\'a1\'a3\'d2\'b2\'bf\'c9\'d2\'d4\'d5\'e2\'c3\'b4\'cb\'b5\'a3\'acAFD.SYS\'d4\'da\'ba\'f3\'cc\'a8\'b8\'ba\'d4\'f0\'b0\'d1\'ca\'fd\'be\'dd\'b7\'a2\'cb\'cd\'b3\'f6\'c8\'a5\'a1\'a3\'b2\'bb\'b9\'fd\'a3\'ac\'c8\'e7\'b9\'fb\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d2\'aa\'c7\'f3\'b7\'a2\'b3\'f6\'b5\'c4\'ca\'fd\'be\'dd\'b3\'ac\'b9\'fd\'c1\'cbSO_SNDBUF\'c9\'e8\'b6\'a8\'b5\'c4\'bb\'ba\'b3\'e5\'c7\'f8\'b4\'f3\'d0\'a1\'a3\'ac\'c4\'c7\'c3\'b4WSASend()\'ba\'af\'ca\'fd\'bb\'e1\'d7\'e8\'c8\'fb\'a3\'ac\'d6\'b1\'d6\'c1\'cb\'f9\'d3\'d0\'ca\'fd\'be\'dd\'b7\'a2\'cb\'cd\'cd\'ea\'b1\'cf\'a1\'a3\par
+\par
+      \'b4\'d3\'d4\'b6\'b3\'cc\'bf\'cd\'bb\'a7\'b6\'cb\'bd\'d3\'ca\'d5\'ca\'fd\'be\'dd\'b5\'c4\'c7\'e9\'bf\'f6\'d2\'b2\'c0\'e0\'cb\'c6\'a1\'a3\'d6\'bb\'d2\'aa\'b2\'bb\'d3\'c3\'b4\'d3\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'c4\'c7\'c0\'ef\'bd\'d3\'ca\'d5\'b4\'f3\'c1\'bf\'b5\'c4\'ca\'fd\'be\'dd\'a3\'ac\'b6\'f8\'c7\'d2\'c3\'bb\'d3\'d0\'b3\'ac\'b3\'f6SO_RCVBUF\'c9\'e8\'b6\'a8\'b5\'c4\'d6\'b5\'a3\'acAFD.SYS\'bd\'ab\'b0\'d1\'ca\'fd\'be\'dd\'cf\'c8\'bf\'bd\'b1\'b4\'b5\'bd\'c6\'e4\'c4\'da\'b2\'bf\'bb\'ba\'b3\'e5\'c7\'f8\'d6\'d0\'a1\'a3\'b5\'b1\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'f7\'d3\'c3recv()\'bb\'f2WSARecv()\'ba\'af\'ca\'fd\'ca\'b1\'a3\'ac\'ca\'fd\'be\'dd\'bd\'ab\'b4\'d3\'c4\'da\'b2\'bf\'bb\'ba\'b3\'e5\'bf\'bd\'b1\'b4\'b5\'bd\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'cc\'e1\'b9\'a9\'b5\'c4\'bb\'ba\'b3\'e5\'c7\'f8\'a1\'a3\par
+\par
+      \'b6\'e0\'ca\'fd\'c7\'e9\'bf\'f6\'cf\'c2\'a3\'ac\'d5\'e2\'d1\'f9\'b5\'c4\'bc\'dc\'b9\'b9\'d4\'cb\'d0\'d0\'c1\'bc\'ba\'c3\'a3\'ac\'cc\'d8\'b1\'f0\'d4\'da\'ca\'c7\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b2\'c9\'d3\'c3\'b4\'ab\'cd\'b3\'b5\'c4\'cc\'d7\'bd\'d3\'d7\'d6\'cf\'c2\'b7\'c7\'d6\'d8\'b5\'fe\'b5\'c4send()\'ba\'cdreceive()\'c4\'a3\'ca\'bd\'b1\'e0\'d0\'b4\'b5\'c4\'ca\'b1\'ba\'f2\'a1\'a3\'b2\'bb\'b9\'fd\'b3\'cc\'d0\'f2\'d4\'b1\'d2\'aa\'d0\'a1\'d0\'c4\'b5\'c4\'ca\'c7\'a3\'ac\'be\'a1\'b9\'dc\'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fdsetsockopt()\'d5\'e2\'b8\'f6API\'c0\'b4\'b0\'d1SO_SNDBUF\'ba\'cdSO_RCVBUF\'d1\'a1\'cf\'ee\'d6\'b5\'c9\'e8\'b3\'c90(\'b9\'d8\'b1\'d5\'c4\'da\'b2\'bf\'bb\'ba\'b3\'e5\'c7\'f8)\'a3\'ac\'b5\'ab\'ca\'c7\'b3\'cc\'d0\'f2\'d4\'b1\'b1\'d8\'d0\'eb\'ca\'ae\'b7\'d6\'c7\'e5\'b3\'fe\'b0\'d1AFD.SYS\'b5\'c4\'c4\'da\'b2\'bf\'bb\'ba\'b3\'e5\'c7\'f8\'b9\'d8\'b5\'f4\'bb\'e1\'d4\'ec\'b3\'c9\'ca\'b2\'c3\'b4\'ba\'f3\'b9\'fb\'a3\'ac\'b1\'dc\'c3\'e2\'ca\'d5\'b7\'a2\'ca\'fd\'be\'dd\'ca\'b1\'d3\'d0\'b9\'d8\'b5\'c4\'bb\'ba\'b3\'e5\'c7\'f8\'bf\'bd\'b1\'b4\'bf\'c9\'c4\'dc\'d2\'fd\'c6\'f0\'b5\'c4\'cf\'b5\'cd\'b3\'b1\'c0\'c0\'a3\'a1\'a3\par
+\par
+      \'be\'d9\'c0\'fd\'c0\'b4\'cb\'b5\'a3\'ac\'d2\'bb\'b8\'f6\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'cd\'a8\'b9\'fd\'c9\'e8\'b6\'a8SO_SNDBUF\'ce\'aa0\'b0\'d1\'bb\'ba\'b3\'e5\'c7\'f8\'b9\'d8\'b1\'d5\'a3\'ac\'c8\'bb\'ba\'f3\'b7\'a2\'b3\'f6\'d2\'bb\'b8\'f6\'d7\'e8\'c8\'fbsend()\'b5\'f7\'d3\'c3\'a1\'a3\'d4\'da\'d5\'e2\'d1\'f9\'b5\'c4\'c7\'e9\'bf\'f6\'cf\'c2\'a3\'ac\'cf\'b5\'cd\'b3\'c4\'da\'ba\'cb\'bb\'e1\'b0\'d1\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'c4\'bb\'ba\'b3\'e5\'c7\'f8\'cb\'f8\'b6\'a8\'a3\'ac\'d6\'b1\'b5\'bd\'bd\'d3\'ca\'d5\'b7\'bd\'c8\'b7\'c8\'cf\'ca\'d5\'b5\'bd\'c1\'cb\'d5\'fb\'b8\'f6\'bb\'ba\'b3\'e5\'c7\'f8\'ba\'f3send()\'b5\'f7\'d3\'c3\'b2\'c5\'b7\'b5\'bb\'d8\'a1\'a3\'cb\'c6\'ba\'f5\'d5\'e2\'ca\'c7\'d2\'bb\'d6\'d6\'c5\'d0\'b6\'a8\'c4\'e3\'b5\'c4\'ca\'fd\'be\'dd\'ca\'c7\'b7\'f1\'d2\'d1\'be\'ad\'ce\'aa\'b6\'d4\'b7\'bd\'c8\'ab\'b2\'bf\'ca\'d5\'b5\'bd\'b5\'c4\'bc\'f2\'bd\'e0\'b5\'c4\'b7\'bd\'b7\'a8\'a3\'ac\'ca\'b5\'bc\'ca\'c9\'cf\'c8\'b4\'b2\'a2\'b7\'c7\'c8\'e7\'b4\'cb\'a1\'a3\'cf\'eb\'cf\'eb\'bf\'b4\'a3\'ac\'bc\'b4\'ca\'b9\'d4\'b6\'b6\'cbTCP\'cd\'a8\'d6\'aa\'ca\'fd\'be\'dd\'d2\'d1\'be\'ad\'ca\'d5\'b5\'bd\'a3\'ac\'c6\'e4\'ca\'b5\'d2\'b2\'b8\'f9\'b1\'be\'b2\'bb\'b4\'fa\'b1\'ed\'ca\'fd\'be\'dd\'d2\'d1\'be\'ad\'b3\'c9\'b9\'a6\'cb\'cd\'b8\'f8\'bf\'cd\'bb\'a7\'b6\'cb\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'a3\'ac\'b1\'c8\'c8\'e7\'b6\'d4\'b7\'bd\'bf\'c9\'c4\'dc\'b7\'a2\'c9\'fa\'d7\'ca\'d4\'b4\'b2\'bb\'d7\'e3\'b5\'c4\'c7\'e9\'bf\'f6\'a3\'ac\'b5\'bc\'d6\'c2AFD.SYS\'b2\'bb\'c4\'dc\'b0\'d1\'ca\'fd\'be\'dd\'bf\'bd\'b1\'b4\'b8\'f8\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'a1\'a3\'c1\'ed\'d2\'bb\'b8\'f6\'b8\'fc\'d2\'aa\'bd\'f4\'b5\'c4\'ce\'ca\'cc\'e2\'ca\'c7\'a3\'ac\'d4\'da\'c3\'bf\'b8\'f6\'cf\'df\'b3\'cc\'d6\'d0\'c3\'bf\'b4\'ce\'d6\'bb\'c4\'dc\'bd\'f8\'d0\'d0\'d2\'bb\'b4\'ce\'b7\'a2\'cb\'cd\'b5\'f7\'d3\'c3\'a3\'ac\'d0\'a7\'c2\'ca\'bc\'ab\'c6\'e4\'b5\'cd\'cf\'c2\'a1\'a3\par
+\par
+      \'b0\'d1SO_RCVBUF\'c9\'e8\'ce\'aa0\'a3\'ac\'b9\'d8\'b1\'d5AFD.SYS\'b5\'c4\'bd\'d3\'ca\'d5\'bb\'ba\'b3\'e5\'c7\'f8\'d2\'b2\'b2\'bb\'c4\'dc\'c8\'c3\'d0\'d4\'c4\'dc\'b5\'c3\'b5\'bd\'cc\'e1\'c9\'fd\'a3\'ac\'d5\'e2\'d6\'bb\'bb\'e1\'c6\'c8\'ca\'b9\'bd\'d3\'ca\'d5\'b5\'bd\'b5\'c4\'ca\'fd\'be\'dd\'d4\'da\'b1\'c8Winsock\'b8\'fc\'b5\'cd\'b5\'c4\'b2\'e3\'b4\'ce\'bd\'f8\'d0\'d0\'bb\'ba\'b3\'e5\'a3\'ac\'b5\'b1\'c4\'e3\'b7\'a2\'b3\'f6receive\'b5\'f7\'d3\'c3\'ca\'b1\'a3\'ac\'cd\'ac\'d1\'f9\'d2\'aa\'bd\'f8\'d0\'d0\'bb\'ba\'b3\'e5\'c7\'f8\'bf\'bd\'b1\'b4\'a3\'ac\'d2\'f2\'b4\'cb\'c4\'e3\'b1\'be\'c0\'b4\'cf\'eb\'b1\'dc\'c3\'e2\'bb\'ba\'b3\'e5\'c7\'f8\'bf\'bd\'b1\'b4\'b5\'c4\'d2\'f5\'c4\'b1\'b2\'bb\'bb\'e1\'b5\'c3\'b3\'d1\'a1\'a3\par
+\par
+      \'cf\'d6\'d4\'da\'ce\'d2\'c3\'c7\'d3\'a6\'b8\'c3\'c7\'e5\'b3\'fe\'c1\'cb\'a3\'ac\'b9\'d8\'b1\'d5\'bb\'ba\'b3\'e5\'c7\'f8\'b6\'d4\'d3\'da\'b6\'e0\'ca\'fd\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b6\'f8\'d1\'d4\'b2\'a2\'b2\'bb\'ca\'c7\'ca\'b2\'c3\'b4\'ba\'c3\'d6\'f7\'d2\'e2\'a1\'a3\'d6\'bb\'d2\'aa\'d2\'aa\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d7\'a2\'d2\'e2\'cb\'e6\'ca\'b1\'d4\'da\'c4\'b3\'b8\'f6\'c1\'ac\'bd\'d3\'c9\'cf\'b1\'a3\'b3\'d6\'bc\'b8\'b8\'f6WSARecvs\'d6\'d8\'b5\'fe\'b5\'f7\'d3\'c3\'a3\'ac\'c4\'c7\'c3\'b4\'cd\'a8\'b3\'a3\'c3\'bb\'d3\'d0\'b1\'d8\'d2\'aa\'b9\'d8\'b1\'d5\'bd\'d3\'ca\'d5\'bb\'ba\'b3\'e5\'c7\'f8\'a1\'a3\'c8\'e7\'b9\'fbAFD.SYS\'d7\'dc\'ca\'c7\'d3\'d0\'d3\'c9\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'cc\'e1\'b9\'a9\'b5\'c4\'bb\'ba\'b3\'e5\'c7\'f8\'bf\'c9\'d3\'c3\'a3\'ac\'c4\'c7\'c3\'b4\'cb\'fc\'bd\'ab\'c3\'bb\'d3\'d0\'b1\'d8\'d2\'aa\'ca\'b9\'d3\'c3\'c4\'da\'b2\'bf\'bb\'ba\'b3\'e5\'c7\'f8\'a1\'a3\par
+\par
+      \'b8\'df\'d0\'d4\'c4\'dc\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'bf\'c9\'d2\'d4\'b9\'d8\'b1\'d5\'b7\'a2\'cb\'cd\'bb\'ba\'b3\'e5\'c7\'f8\'a3\'ac\'cd\'ac\'ca\'b1\'b2\'bb\'bb\'e1\'cb\'f0\'ca\'a7\'d0\'d4\'c4\'dc\'a1\'a3\'b2\'bb\'b9\'fd\'a3\'ac\'d5\'e2\'d1\'f9\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b1\'d8\'d0\'eb\'ca\'ae\'b7\'d6\'d0\'a1\'d0\'c4\'a3\'ac\'b1\'a3\'d6\'a4\'cb\'fc\'d7\'dc\'ca\'c7\'b7\'a2\'b3\'f6\'b6\'e0\'b8\'f6\'d6\'d8\'b5\'fe\'b7\'a2\'cb\'cd\'b5\'f7\'d3\'c3\'a3\'ac\'b6\'f8\'b2\'bb\'ca\'c7\'b5\'c8\'b4\'fd\'c4\'b3\'b8\'f6\'d6\'d8\'b5\'fe\'b7\'a2\'cb\'cd\'bd\'e1\'ca\'f8\'c1\'cb\'b2\'c5\'b7\'a2\'b3\'f6\'cf\'c2\'d2\'bb\'b8\'f6\'a1\'a3\'c8\'e7\'b9\'fb\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'ca\'c7\'b0\'b4\'d2\'bb\'b8\'f6\'b7\'a2\'cd\'ea\'d4\'d9\'b7\'a2\'cf\'c2\'d2\'bb\'b8\'f6\'b5\'c4\'cb\'b3\'d0\'f2\'c0\'b4\'b2\'d9\'d7\'f7\'a3\'ac\'c4\'c7\'c0\'cb\'b7\'d1\'b5\'f4\'c1\'bd\'b4\'ce\'b7\'a2\'cb\'cd\'d6\'d0\'bc\'e4\'b5\'c4\'bf\'d5\'b5\'b5\'ca\'b1\'bc\'e4\'a3\'ac\'d7\'dc\'d6\'ae\'ca\'c7\'d2\'aa\'b1\'a3\'d6\'a4\'b4\'ab\'ca\'e4\'c7\'fd\'b6\'af\'b3\'cc\'d0\'f2\'d4\'da\'b7\'a2\'cb\'cd\'cd\'ea\'d2\'bb\'b8\'f6\'bb\'ba\'b3\'e5\'c7\'f8\'ba\'f3\'a3\'ac\'c1\'a2\'bf\'cc\'bf\'c9\'d2\'d4\'d7\'aa\'cf\'f2\'c1\'ed\'d2\'bb\'b8\'f6\'bb\'ba\'b3\'e5\'c7\'f8\'a1\'a3\par
+\par
+\par
+\par
+      \'d7\'ca\'d4\'b4\'b5\'c4\'cf\'de\'d6\'c6\'cc\'f5\'bc\'fe \par
+\par
+      \'d4\'da\'c9\'e8\'bc\'c6\'c8\'ce\'ba\'ce\'b7\'fe\'ce\'f1\'c6\'f7\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'ca\'b1\'a3\'ac\'c6\'e4\'c7\'bf\'bd\'a1\'d0\'d4\'ca\'c7\'d6\'f7\'d2\'aa\'b5\'c4\'c4\'bf\'b1\'ea\'a1\'a3\'d2\'b2\'be\'cd\'ca\'c7\'cb\'b5\'a3\'ac\'c4\'e3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d2\'aa\'c4\'dc\'b9\'bb\'d3\'a6\'b6\'d4\'c8\'ce\'ba\'ce\'cd\'bb\'b7\'a2\'b5\'c4\'ce\'ca\'cc\'e2\'a3\'ac\'c0\'fd\'c8\'e7\'b2\'a2\'b7\'a2\'bf\'cd\'bb\'a7\'c7\'eb\'c7\'f3\'ca\'fd\'b4\'ef\'b5\'bd\'b7\'e5\'d6\'b5\'a1\'a2\'bf\'c9\'d3\'c3\'c4\'da\'b4\'e6\'c1\'d9\'ca\'b1\'b3\'f6\'cf\'d6\'b2\'bb\'d7\'e3\'a1\'a2\'d2\'d4\'bc\'b0\'c6\'e4\'cb\'fc\'b6\'cc\'ca\'b1\'bc\'e4\'b5\'c4\'cf\'d6\'cf\'f3\'a1\'a3\'d5\'e2\'be\'cd\'d2\'aa\'c7\'f3\'b3\'cc\'d0\'f2\'b5\'c4\'c9\'e8\'bc\'c6\'d5\'df\'d7\'a2\'d2\'e2Windows NT\'ba\'cd2000\'cf\'b5\'cd\'b3\'cf\'c2\'b5\'c4\'d7\'ca\'d4\'b4\'cf\'de\'d6\'c6\'cc\'f5\'bc\'fe\'b5\'c4\'ce\'ca\'cc\'e2\'a3\'ac\'b4\'d3\'c8\'dd\'b5\'d8\'b4\'a6\'c0\'ed\'cd\'bb\'b7\'a2\'d0\'d4\'ca\'c2\'bc\'fe\'a1\'a3\par
+\par
+      \'c4\'e3\'bf\'c9\'d2\'d4\'d6\'b1\'bd\'d3\'bf\'d8\'d6\'c6\'b5\'c4\'a1\'a2\'d7\'ee\'bb\'f9\'b1\'be\'b5\'c4\'d7\'ca\'d4\'b4\'be\'cd\'ca\'c7\'cd\'f8\'c2\'e7\'b4\'f8\'bf\'ed\'a1\'a3\'cd\'a8\'b3\'a3\'a3\'ac\'ca\'b9\'d3\'c3\'d3\'c3\'bb\'a7\'ca\'fd\'be\'dd\'b1\'a8\'d0\'ad\'d2\'e9(UDP)\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b6\'bc\'bf\'c9\'c4\'dc\'bb\'e1\'b1\'c8\'bd\'cf\'d7\'a2\'d2\'e2\'b4\'f8\'bf\'ed\'b7\'bd\'c3\'e6\'b5\'c4\'cf\'de\'d6\'c6\'a3\'ac\'d2\'d4\'d7\'ee\'b4\'f3\'cf\'de\'b6\'c8\'b5\'d8\'bc\'f5\'c9\'d9\'b0\'fc\'b5\'c4\'b6\'aa\'ca\'a7\'a1\'a3\par
+      \'c8\'bb\'b6\'f8\'a3\'ac\'d4\'da\'ca\'b9\'d3\'c3TCP\'c1\'ac\'bd\'d3\'ca\'b1\'a3\'ac\'b7\'fe\'ce\'f1\'c6\'f7\'b1\'d8\'d0\'eb\'ca\'ae\'b7\'d6\'d0\'a1\'d0\'c4\'b5\'d8\'bf\'d8\'d6\'c6\'ba\'c3\'a3\'ac\'b7\'c0\'d6\'b9\'cd\'f8\'c2\'e7\'b4\'f8\'bf\'ed\'b9\'fd\'d4\'d8\'b3\'ac\'b9\'fd\'d2\'bb\'b6\'a8\'b5\'c4\'ca\'b1\'bc\'e4\'a3\'ac\'b7\'f1\'d4\'f2\'bd\'ab\'d0\'e8\'d2\'aa\'d6\'d8\'b7\'a2\'b4\'f3\'c1\'bf\'b5\'c4\'b0\'fc\'bb\'f2\'d4\'ec\'b3\'c9\'b4\'f3\'c1\'bf\'c1\'ac\'bd\'d3\'d6\'d0\'b6\'cf\'a1\'a3\'b9\'d8\'d3\'da\'b4\'f8\'bf\'ed\'b9\'dc\'c0\'ed\'b5\'c4\'b7\'bd\'b7\'a8\'d3\'a6\'b8\'f9\'be\'dd\'b2\'bb\'cd\'ac\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b6\'f8\'b6\'a8\'a3\'ac\'d5\'e2\'b3\'ac\'b3\'f6\'c1\'cb\'b1\'be\'ce\'c4\'cc\'d6\'c2\'db\'b5\'c4\'b7\'b6\'ce\'a7\'a1\'a3\par
+\par
+      \'d0\'e9\'c4\'e2\'c4\'da\'b4\'e6\'b5\'c4\'ca\'b9\'d3\'c3\'d2\'b2\'b1\'d8\'d0\'eb\'ba\'dc\'d0\'a1\'d0\'c4\'b5\'d8\'b9\'dc\'c0\'ed\'a1\'a3\'cd\'a8\'b9\'fd\'bd\'f7\'c9\'f7\'b5\'d8\'c9\'ea\'c7\'eb\'ba\'cd\'ca\'cd\'b7\'c5\'c4\'da\'b4\'e6\'a3\'ac\'bb\'f2\'d5\'df\'d3\'a6\'d3\'c3lookaside lists(\'d2\'bb\'d6\'d6\'b8\'df\'cb\'d9\'bb\'ba\'b4\'e6)\'bc\'bc\'ca\'f5\'c0\'b4\'d6\'d8\'d0\'c2\'ca\'b9\'d3\'c3\'d2\'d1\'b7\'d6\'c5\'e4\'b5\'c4\'c4\'da\'b4\'e6\'a3\'ac\'bd\'ab\'d3\'d0\'d6\'fa\'d3\'da\'bf\'d8\'d6\'c6\'b7\'fe\'ce\'f1\'c6\'f7\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'c4\'c4\'da\'b4\'e6\'bf\'aa\'cf\'fa(\'d4\'ad\'ce\'c4\'ce\'aa\ldblquote\'c8\'c3\'b7\'fe\'ce\'f1\'c6\'f7\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'c1\'f4\'cf\'c2\'b5\'c4\'bd\'c5\'d3\'a1\'d0\'a1\'d2\'bb\'b5\'e3\rdblquote )\'a3\'ac\'b1\'dc\'c3\'e2\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'c6\'b5\'b7\'b1\'b5\'d8\'bd\'ab\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'c9\'ea\'c7\'eb\'b5\'c4\'ce\'ef\'c0\'ed\'c4\'da\'b4\'e6\'bd\'bb\'bb\'bb\'b5\'bd\'d0\'e9\'c4\'e2\'c4\'da\'b4\'e6\'d6\'d0(\'d4\'ad\'ce\'c4\'ce\'aa\ldblquote\'c8\'c3\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'c4\'dc\'b9\'bb\'d7\'dc\'ca\'c7\'b0\'d1\'b8\'fc\'b6\'e0\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'d8\'d6\'b7\'bf\'d5\'bc\'e4\'b8\'fc\'b6\'e0\'b5\'d8\'b1\'a3\'c1\'f4\'d4\'da\'c4\'da\'b4\'e6\'d6\'d0\rdblquote )\'a1\'a3\'c4\'e3\'d2\'b2\'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fdSetWorkingSetSize()\'d5\'e2\'b8\'f6Win32 API\'c8\'c3\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'b7\'d6\'c5\'e4\'b8\'f8\'c4\'e3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b8\'fc\'b6\'e0\'b5\'c4\'ce\'ef\'c0\'ed\'c4\'da\'b4\'e6\'a1\'a3\par
+\par
+      \'d4\'da\'ca\'b9\'d3\'c3Winsock\'ca\'b1\'bb\'b9\'bf\'c9\'c4\'dc\'c5\'f6\'b5\'bd\'c1\'ed\'cd\'e2\'c1\'bd\'b8\'f6\'b7\'c7\'d6\'b1\'bd\'d3\'b5\'c4\'d7\'ca\'d4\'b4\'b2\'bb\'d7\'e3\'c7\'e9\'bf\'f6\'a1\'a3\'d2\'bb\'b8\'f6\'ca\'c7\'b1\'bb\'cb\'f8\'b6\'a8\'b5\'c4\'c4\'da\'b4\'e6\'d2\'b3\'c3\'e6\'b5\'c4\'bc\'ab\'cf\'de\'a1\'a3\'c8\'e7\'b9\'fb\'c4\'e3\'b0\'d1AFD.SYS\'b5\'c4\'bb\'ba\'b3\'e5\'b9\'d8\'b1\'d5\'a3\'ac\'b5\'b1\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'ca\'d5\'b7\'a2\'ca\'fd\'be\'dd\'ca\'b1\'a3\'ac\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'bb\'ba\'b3\'e5\'c7\'f8\'b5\'c4\'cb\'f9\'d3\'d0\'d2\'b3\'c3\'e6\'bd\'ab\'b1\'bb\'cb\'f8\'b6\'a8\'b5\'bd\'ce\'ef\'c0\'ed\'c4\'da\'b4\'e6\'d6\'d0\'a1\'a3\'d5\'e2\'ca\'c7\'d2\'f2\'ce\'aa\'c4\'da\'ba\'cb\'c7\'fd\'b6\'af\'b3\'cc\'d0\'f2\'d0\'e8\'d2\'aa\'b7\'c3\'ce\'ca\'d5\'e2\'d0\'a9\'c4\'da\'b4\'e6\'a3\'ac\'d4\'da\'b4\'cb\'c6\'da\'bc\'e4\'d5\'e2\'d0\'a9\'d2\'b3\'c3\'e6\'b2\'bb\'c4\'dc\'bd\'bb\'bb\'bb\'b3\'f6\'c8\'a5\'a1\'a3\'c8\'e7\'b9\'fb\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'d0\'e8\'d2\'aa\'b8\'f8\'c6\'e4\'cb\'fc\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b7\'d6\'c5\'e4\'d2\'bb\'d0\'a9\'bf\'c9\'b7\'d6\'d2\'b3\'b5\'c4\'ce\'ef\'c0\'ed\'c4\'da\'b4\'e6\'a3\'ac\'b6\'f8\'d3\'d6\'c3\'bb\'d3\'d0\'d7\'e3\'b9\'bb\'b5\'c4\'c4\'da\'b4\'e6\'ca\'b1\'be\'cd\'bb\'e1\'b7\'a2\'c9\'fa\'ce\'ca\'cc\'e2\'a1\'a3\'ce\'d2\'c3\'c7\'b5\'c4\'c4\'bf\'b1\'ea\'ca\'c7\'d2\'aa\'b7\'c0\'d6\'b9\'d0\'b4\'b3\'f6\'d2\'bb\'b8\'f6\'b2\'a1\'cc\'ac\'b5\'c4\'a1\'a2\'cb\'f8\'b6\'a8\'cb\'f9\'d3\'d0\'ce\'ef\'c0\'ed\'c4\'da\'b4\'e6\'a1\'a2\'c8\'c3\'cf\'b5\'cd\'b3\'b1\'c0\'c0\'a3\'b5\'c4\'b3\'cc\'d0\'f2\'a1\'a3\'d2\'b2\'be\'cd\'ca\'c7\'cb\'b5\'a3\'ac\'c4\'e3\'b5\'c4\'b3\'cc\'d0\'f2\'cb\'f8\'b6\'a8\'c4\'da\'b4\'e6\'ca\'b1\'a3\'ac\'b2\'bb\'d2\'aa\'b3\'ac\'b3\'f6\'cf\'b5\'cd\'b3\'b9\'e6\'b6\'a8\'b5\'c4\'c4\'da\'b4\'e6\'b7\'d6\'d2\'b3\'bc\'ab\'cf\'de\'a1\'a3\par
+\par
+      \'d4\'daWindows NT\'ba\'cd2000\'cf\'b5\'cd\'b3\'c9\'cf\'a3\'ac\'cb\'f9\'d3\'d0\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d7\'dc\'b9\'b2\'bf\'c9\'d2\'d4\'cb\'f8\'b6\'a8\'b5\'c4\'c4\'da\'b4\'e6\'b4\'f3\'d4\'bc\'ca\'c7\'ce\'ef\'c0\'ed\'c4\'da\'b4\'e6\'b5\'c41/8(\'b2\'bb\'b9\'fd\'d5\'e2\'d6\'bb\'ca\'c7\'d2\'bb\'b8\'f6\'b4\'f3\'b8\'c5\'b5\'c4\'b9\'c0\'bc\'c6\'a3\'ac\'b2\'bb\'ca\'c7\'c4\'e3\'bc\'c6\'cb\'e3\'c4\'da\'b4\'e6\'b5\'c4\'d2\'c0\'be\'dd)\'a1\'a3\'c8\'e7\'b9\'fb\'c4\'e3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b2\'bb\'d7\'a2\'d2\'e2\'d5\'e2\'d2\'bb\'b5\'e3\'a3\'ac\'b5\'b1\'c4\'e3\'b5\'c4\'b7\'a2\'b3\'f6\'cc\'ab\'b6\'e0\'b5\'c4\'d6\'d8\'b5\'fe\'ca\'d5\'b7\'a2\'b5\'f7\'d3\'c3\'a3\'ac\'b6\'f8\'c7\'d2I/O\'c3\'bb\'c0\'b4\'b5\'c3\'bc\'b0\'cd\'ea\'b3\'c9\'ca\'b1\'a3\'ac\'be\'cd\'bf\'c9\'c4\'dc\'c5\'bc\'b6\'fb\'b7\'a2\'c9\'faERROR_INSUFFICIENT_RESOURCES\'b5\'c4\'b4\'ed\'ce\'f3\'a1\'a3\'d4\'da\'d5\'e2\'d6\'d6\'c7\'e9\'bf\'f6\'cf\'c2\'c4\'e3\'d2\'aa\'b1\'dc\'c3\'e2\'b9\'fd\'b6\'c8\'cb\'f8\'b6\'a8\'c4\'da\'b4\'e6\'a1\'a3\'cd\'ac\'ca\'b1\'d2\'aa\'d7\'a2\'d2\'e2\'a3\'ac\'cf\'b5\'cd\'b3\'bb\'e1\'cb\'f8\'b6\'a8\'b0\'fc\'ba\'ac\'c4\'e3\'b5\'c4\'bb\'ba\'b3\'e5\'c7\'f8\'cb\'f9\'d4\'da\'b5\'c4\'d5\'fb\'b8\'f6\'c4\'da\'b4\'e6\'d2\'b3\'c3\'e6\'a3\'ac\'d2\'f2\'b4\'cb\'bb\'ba\'b3\'e5\'c7\'f8\'bf\'bf\'bd\'fc\'d2\'b3\'b1\'df\'bd\'e7\'ca\'b1\'ca\'c7\'d3\'d0\'b4\'fa\'bc\'db\'b5\'c4(\'d2\'eb\'d5\'df\'c0\'ed\'bd\'e2\'a3\'ac\'bb\'ba\'b3\'e5\'c7\'f8\'c8\'e7\'b9\'fb\'d5\'fd\'ba\'c3\'b3\'ac\'b9\'fd\'d2\'b3\'c3\'e6\'b1\'df\'bd\'e7\'a3\'ac\'c4\'c7\'c5\'c2\'ca\'c71\'b8\'f6\'d7\'d6\'bd\'da\'a3\'ac\'b3\'ac\'b3\'f6\'b5\'c4\'d5\'e2\'b8\'f6\'d7\'d6\'bd\'da\'cb\'f9\'d4\'da\'b5\'c4\'d2\'b3\'c3\'e6\'d2\'b2\'bb\'e1\'b1\'bb\'cb\'f8\'b6\'a8)\'a1\'a3\par
+\par
+      \'c1\'ed\'cd\'e2\'d2\'bb\'b8\'f6\'cf\'de\'d6\'c6\'ca\'c7\'c4\'e3\'b5\'c4\'b3\'cc\'d0\'f2\'bf\'c9\'c4\'dc\'bb\'e1\'d3\'f6\'b5\'bd\'cf\'b5\'cd\'b3\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'d7\'ca\'d4\'b4\'b2\'bb\'d7\'e3\'b5\'c4\'c7\'e9\'bf\'f6\'a1\'a3\'cb\'f9\'ce\'bd\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'ca\'c7\'d2\'bb\'bf\'e9\'d3\'c0\'d4\'b6\'b2\'bb\'b1\'bb\'bd\'bb\'bb\'bb\'b3\'f6\'c8\'a5\'b5\'c4\'c4\'da\'b4\'e6\'c7\'f8\'d3\'f2\'a3\'ac\'d5\'e2\'bf\'e9\'c4\'da\'b4\'e6\'d3\'c3\'c0\'b4\'b4\'e6\'b4\'a2\'d2\'bb\'d0\'a9\'b9\'a9\'b8\'f7\'d6\'d6\'c4\'da\'ba\'cb\'d7\'e9\'bc\'fe\'b7\'c3\'ce\'ca\'b5\'c4\'ca\'fd\'be\'dd\'a3\'ac\'c6\'e4\'d6\'d0\'d3\'d0\'b5\'c4\'c4\'da\'ba\'cb\'d7\'e9\'bc\'fe\'ca\'c7\'b2\'bb\'c4\'dc\'b7\'c3\'ce\'ca\'c4\'c7\'d0\'a9\'b1\'bb\'bd\'bb\'bb\'bb\'b3\'f6\'c8\'a5\'b5\'c4\'d2\'b3\'c3\'e6\'bf\'d5\'bc\'e4\'b5\'c4\'a1\'a3Windows NT\'ba\'cd2000\'b5\'c4\'c7\'fd\'b6\'af\'b3\'cc\'d0\'f2\'c4\'dc\'b9\'bb\'b4\'d3\'d5\'e2\'b8\'f6\'cc\'d8\'b6\'a8\'b5\'c4\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'b7\'d6\'c5\'e4\'c4\'da\'b4\'e6\'a1\'a3\par
+\par
+      \'b5\'b1\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6(\'bb\'f2\'d5\'df\'ca\'c7\'c0\'e0\'cb\'c6\'b5\'c4\'b4\'f2\'bf\'aa\'c4\'b3\'b8\'f6\'ce\'c4\'bc\'fe)\'ca\'b1\'a3\'ac\'c4\'da\'ba\'cb\'bb\'e1\'b4\'d3\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'d6\'d0\'b7\'d6\'c5\'e4\'d2\'bb\'b6\'a8\'ca\'fd\'c1\'bf\'b5\'c4\'c4\'da\'b4\'e6\'a3\'ac\'b6\'f8\'c7\'d2\'d4\'da\'b0\'f3\'b6\'a8\'a1\'a2\'c1\'ac\'bd\'d3\'cc\'d7\'bd\'d3\'d7\'d6\'ca\'b1\'a3\'ac\'c4\'da\'ba\'cb\'d3\'d6\'bb\'e1\'b4\'d3\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'d6\'d0\'d4\'d9\'b7\'d6\'c5\'e4\'d2\'bb\'d0\'a9\'c4\'da\'b4\'e6\'a1\'a3\'b5\'b1\'c4\'e3\'d7\'a2\'d2\'e2\'b9\'db\'b2\'ec\'d5\'e2\'d6\'d6\'d0\'d0\'ce\'aa\'ca\'b1\'c4\'e3\'bd\'ab\'b7\'a2\'cf\'d6\'a3\'ac\'c8\'e7\'b9\'fb\'c4\'e3\'b7\'a2\'b3\'f6\'c4\'b3\'d0\'a9I/O\'c7\'eb\'c7\'f3\'ca\'b1(\'c0\'fd\'c8\'e7\'ca\'d5\'b7\'a2\'ca\'fd\'be\'dd)\'a3\'ac\'c4\'e3\'bb\'e1\'b4\'d3\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'c0\'ef\'d4\'d9\'b7\'d6\'c5\'e4\'b6\'e0\'d2\'bb\'d0\'a9\'c4\'da\'b4\'e6(\'b1\'c8\'c8\'e7\'d2\'aa\'d7\'b7\'d7\'d9\'c4\'b3\'b8\'f6\'b4\'fd\'be\'f6\'b5\'c4I/O\'b2\'d9\'d7\'f7\'a3\'ac\'c4\'e3\'bf\'c9\'c4\'dc\'d0\'e8\'d2\'aa\'b8\'f8\'d5\'e2\'b8\'f6\'b2\'d9\'d7\'f7\'cc\'ed\'bc\'d3\'d2\'bb\'b8\'f6\'d7\'d4\'b6\'a8\'d2\'e5\'bd\'e1\'b9\'b9\'a3\'ac\'c8\'e7\'c7\'b0\'ce\'c4\'cb\'f9\'cc\'e1\'bc\'b0\'b5\'c4)\'a1\'a3\'d7\'ee\'ba\'f3\'d5\'e2\'be\'cd\'bf\'c9\'c4\'dc\'bb\'e1\'d4\'ec\'b3\'c9\'d2\'bb\'b6\'a8\'b5\'c4\'ce\'ca\'cc\'e2\'a3\'ac\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'bb\'e1\'cf\'de\'d6\'c6\'ce\'b4\'b7\'d6\'d2\'b3\'c4\'da\'b4\'e6\'b5\'c4\'d3\'c3\'c1\'bf\'a1\'a3\par
+\par
+      \'d4\'daWindows NT\'ba\'cd2000\'d5\'e2\'c1\'bd\'d6\'d6\'b2\'d9\'d7\'f7\'cf\'b5\'cd\'b3\'c9\'cf\'a3\'ac\'b8\'f8\'c3\'bf\'b8\'f6\'c1\'ac\'bd\'d3\'b7\'d6\'c5\'e4\'b5\'c4\'ce\'b4\'b7\'d6\'d2\'b3\'c4\'da\'b4\'e6\'b5\'c4\'be\'df\'cc\'e5\'ca\'fd\'c1\'bf\'ca\'c7\'b2\'bb\'cd\'ac\'b5\'c4\'a3\'ac\'ce\'b4\'c0\'b4\'b0\'e6\'b1\'be\'b5\'c4Windows\'ba\'dc\'bf\'c9\'c4\'dc\'d2\'b2\'b2\'bb\'cd\'ac\'a1\'a3\'ce\'aa\'c1\'cb\'ca\'b9\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b5\'c4\'c9\'fa\'c3\'fc\'c6\'da\'b8\'fc\'b3\'a4\'a3\'ac\'c4\'e3\'be\'cd\'b2\'bb\'d3\'a6\'b8\'c3\'bc\'c6\'cb\'e3\'b6\'d4\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'c4\'da\'b4\'e6\'b5\'c4\'be\'df\'cc\'e5\'d0\'e8\'c7\'f3\'c1\'bf\'a1\'a3\par
+\par
+      \'c4\'e3\'b5\'c4\'b3\'cc\'d0\'f2\'b1\'d8\'d0\'eb\'b7\'c0\'d6\'b9\'cf\'fb\'ba\'c4\'b5\'bd\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'b5\'c4\'bc\'ab\'cf\'de\'a1\'a3\'b5\'b1\'cf\'b5\'cd\'b3\'d6\'d0\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'ca\'a3\'d3\'e0\'bf\'d5\'bc\'e4\'cc\'ab\'d0\'a1\'ca\'b1\'a3\'ac\'c4\'b3\'d0\'a9\'d3\'eb\'c4\'e3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'ba\'c1\'ce\'de\'b9\'d8\'cf\'b5\'b5\'c4\'c4\'da\'ba\'cb\'c7\'fd\'b6\'af\'be\'cd\'bb\'e1\'b7\'a2\'b7\'e8\'a3\'ac\'c9\'f5\'d6\'c1\'d4\'ec\'b3\'c9\'cf\'b5\'cd\'b3\'b1\'c0\'c0\'a3\'a3\'ac\'cc\'d8\'b1\'f0\'ca\'c7\'b5\'b1\'cf\'b5\'cd\'b3\'d6\'d0\'d3\'d0\'b5\'da\'c8\'fd\'b7\'bd\'c9\'e8\'b1\'b8\'bb\'f2\'c7\'fd\'b6\'af\'b3\'cc\'d0\'f2\'ca\'b1\'a3\'ac\'b8\'fc\'c8\'dd\'d2\'d7\'b7\'a2\'c9\'fa\'d5\'e2\'d1\'f9\'b5\'c4\'b2\'d2\'be\'e7(\'b6\'f8\'c7\'d2\'ce\'de\'b7\'a8\'d4\'a4\'b2\'e2)\'a1\'a3\'cd\'ac\'ca\'b1\'c4\'e3\'bb\'b9\'d2\'aa\'bc\'c7\'d7\'a1\'a3\'ac\'cd\'ac\'d2\'bb\'cc\'a8\'b5\'e7\'c4\'d4\'c9\'cf\'bb\'b9\'bf\'c9\'c4\'dc\'d4\'cb\'d0\'d0\'d3\'d0\'c6\'e4\'cb\'fc\'cd\'ac\'d1\'f9\'cf\'fb\'ba\'c4\'ce\'b4\'b7\'d6\'d2\'b3\'b3\'d8\'b5\'c4\'c6\'e4\'cb\'fc\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'a3\'ac\'d2\'f2\'b4\'cb\'d4\'da\'c9\'e8\'bc\'c6\'c4\'e3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'ca\'b1\'a3\'ac\'b6\'d4\'d7\'ca\'d4\'b4\'c1\'bf\'b5\'c4\'d4\'a4\'b9\'c0\'d2\'aa\'cc\'d8\'b1\'f0\'b1\'a3\'ca\'d8\'ba\'cd\'bd\'f7\'c9\'f7\'a1\'a3\par
+\par
+      \'b4\'a6\'c0\'ed\'d7\'ca\'d4\'b4\'b2\'bb\'d7\'e3\'b5\'c4\'ce\'ca\'cc\'e2\'ca\'c7\'ca\'ae\'b7\'d6\'b8\'b4\'d4\'d3\'b5\'c4\'a3\'ac\'d2\'f2\'ce\'aa\'b7\'a2\'c9\'fa\'c9\'cf\'ca\'f6\'c7\'e9\'bf\'f6\'ca\'b1\'c4\'e3\'b2\'bb\'bb\'e1\'ca\'d5\'b5\'bd\'cc\'d8\'b1\'f0\'b5\'c4\'b4\'ed\'ce\'f3\'b4\'fa\'c2\'eb\'a3\'ac\'cd\'a8\'b3\'a3\'c4\'e3\'d6\'bb\'c4\'dc\'ca\'d5\'b5\'bd\'d2\'bb\'b0\'e3\'d0\'d4\'b5\'c4WSAENOBUFS\'bb\'f2\'d5\'dfERROR_INSUFFICIENT_RESOURCES \'b4\'ed\'ce\'f3\'a1\'a3\'d2\'aa\'b4\'a6\'c0\'ed\'d5\'e2\'d0\'a9\'b4\'ed\'ce\'f3\'a3\'ac\'ca\'d7\'cf\'c8\'a3\'ac\'b0\'d1\'c4\'e3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b9\'a4\'d7\'f7\'c5\'e4\'d6\'c3\'b5\'f7\'d5\'fb\'b5\'bd\'ba\'cf\'c0\'ed\'b5\'c4\'d7\'ee\'b4\'f3\'d6\'b5(\'d2\'eb\'d5\'df\'d7\'a2\'a3\'ba\'cb\'f9\'ce\'bd\'b9\'a4\'d7\'f7\'c5\'e4\'d6\'c3\'a3\'ac\'ca\'c7\'d6\'b8\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b8\'f7\'b2\'bf\'b7\'d6\'d4\'cb\'d0\'d0\'d6\'d0\'cb\'f9\'d0\'e8\'b5\'c4\'c4\'da\'b4\'e6\'d3\'c3\'c1\'bf\'a3\'ac\'c7\'eb\'b2\'ce\'bf\'bc http://msdn.microsoft.com/msdnmag/issues/1000/Bugslayer/Bugslayer1000.asp  \'a3\'ac\'b9\'d8\'d3\'da\'c4\'da\'b4\'e6\'d3\'c5\'bb\'af\'a3\'ac\'d2\'eb\'d5\'df\'c1\'ed\'d3\'d0\'d2\'eb\'ce\'c4)\'a3\'ac\'c8\'e7\'b9\'fb\'b4\'ed\'ce\'f3\'bc\'cc\'d0\'f8\'b3\'f6\'cf\'d6\'a3\'ac\'c4\'c7\'c3\'b4\'d7\'a2\'d2\'e2\'bc\'ec\'b2\'e9\'ca\'c7\'b7\'f1\'ca\'c7\'cd\'f8\'c2\'e7\'b4\'f8\'bf\'ed\'b2\'bb\'d7\'e3\'b5\'c4\'ce\'ca\'cc\'e2\'a1\'a3\'d6\'ae\'ba\'f3\'a3\'ac\'c7\'eb\'c8\'b7\'c8\'cf\'c4\'e3\'c3\'bb\'d3\'d0\'cd\'ac\'ca\'b1\'b7\'a2\'b3\'f6\'cc\'ab\'b6\'e0\'b5\'c4\'ca\'d5\'b7\'a2\'b5\'f7\'d3\'c3\'a1\'a3\'d7\'ee\'ba\'f3\'a3\'ac\'c8\'e7\'b9\'fb\'bb\'b9\'ca\'c7\'ca\'d5\'b5\'bd\'d7\'ca\'d4\'b4\'b2\'bb\'d7\'e3\'b5\'c4\'b4\'ed\'ce\'f3\'a3\'ac\'c4\'c7\'be\'cd\'ba\'dc\'bf\'c9\'c4\'dc\'ca\'c7\'d3\'f6\'b5\'bd\'c1\'cb\'ce\'b4\'b7\'d6\'d2\'b3\'c4\'da\'b4\'e6\'b3\'d8\'b2\'bb\'d7\'e3\'b5\'c4\'ce\'ca\'cc\'e2\'c1\'cb\'a1\'a3\'d2\'aa\'ca\'cd\'b7\'c5\'ce\'b4\'b7\'d6\'d2\'b3\'c4\'da\'b4\'e6\'b3\'d8\'bf\'d5\'bc\'e4\'a3\'ac\'c7\'eb\'b9\'d8\'b1\'d5\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d6\'d0\'cf\'e0\'b5\'b1\'b2\'bf\'b7\'d6\'b5\'c4\'c1\'ac\'bd\'d3\'a3\'ac\'b5\'c8\'b4\'fd\'cf\'b5\'cd\'b3\'d7\'d4\'d0\'d0\'b6\'c9\'b9\'fd\'ba\'cd\'d0\'de\'d5\'fd\'d5\'e2\'b8\'f6\'cb\'b2\'ca\'b1\'b5\'c4\'b4\'ed\'ce\'f3\'a1\'a3 \par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'ea\'bd\'e2(3)2007\'c4\'ea01\'d4\'c227\'c8\'d5 \'d0\'c7\'c6\'da\'c1\'f9 15:34\'bd\'d3\'ca\'dc\'c1\'ac\'bd\'d3\'c7\'eb\'c7\'f3\par
+ \par
+      \'b7\'fe\'ce\'f1\'c6\'f7\'d2\'aa\'d7\'f6\'b5\'c4\'d7\'ee\'c6\'d5\'cd\'a8\'b5\'c4\'ca\'c2\'c7\'e9\'d6\'ae\'d2\'bb\'be\'cd\'ca\'c7\'bd\'d3\'ca\'dc\'c0\'b4\'d7\'d4\'bf\'cd\'bb\'a7\'b6\'cb\'b5\'c4\'c1\'ac\'bd\'d3\'c7\'eb\'c7\'f3\'a1\'a3\'d4\'da\'cc\'d7\'bd\'d3\'d7\'d6\'c9\'cf\'ca\'b9\'d3\'c3\'d6\'d8\'b5\'feI/O\'bd\'d3\'ca\'dc\'c1\'ac\'bd\'d3\'b5\'c4\'ce\'a9\'d2\'bbAPI\'be\'cd\'ca\'c7AcceptEx()\'ba\'af\'ca\'fd\'a1\'a3\'d3\'d0\'c8\'a4\'b5\'c4\'ca\'c7\'a3\'ac\'cd\'a8\'b3\'a3\'b5\'c4\'cd\'ac\'b2\'bd\'bd\'d3\'ca\'dc\'ba\'af\'ca\'fdaccept()\'b5\'c4\'b7\'b5\'bb\'d8\'d6\'b5\'ca\'c7\'d2\'bb\'b8\'f6\'d0\'c2\'b5\'c4\'cc\'d7\'bd\'d3\'d7\'d6\'a3\'ac\'b6\'f8AcceptEx()\'ba\'af\'ca\'fd\'d4\'f2\'d0\'e8\'d2\'aa\'c1\'ed\'cd\'e2\'d2\'bb\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'d7\'f7\'ce\'aa\'cb\'fc\'b5\'c4\'b2\'ce\'ca\'fd\'d6\'ae\'d2\'bb\'a1\'a3\'d5\'e2\'ca\'c7\'d2\'f2\'ce\'aaAcceptEx()\'ca\'c7\'d2\'bb\'b8\'f6\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'a3\'ac\'cb\'f9\'d2\'d4\'c4\'e3\'d0\'e8\'d2\'aa\'ca\'c2\'cf\'c8\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6(\'b5\'ab\'b2\'bb\'d2\'aa\'b0\'f3\'b6\'a8\'bb\'f2\'c1\'ac\'bd\'d3\'cb\'fc)\'a3\'ac\'b2\'a2\'b0\'d1\'d5\'e2\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'cd\'a8\'b9\'fd\'b2\'ce\'ca\'fd\'b4\'ab\'b8\'f8AcceptEx()\'a1\'a3\'d2\'d4\'cf\'c2\'ca\'c7\'d2\'bb\'d0\'a1\'b6\'ce\'b5\'e4\'d0\'cd\'b5\'c4\'ca\'b9\'d3\'c3AcceptEx()\'b5\'c4\'ce\'b1\'b4\'fa\'c2\'eb\'a3\'ba\par
+\par
+      do \{\par
+      \'a1\'a1\'a1\'a1-\'b5\'c8\'b4\'fd\'c9\'cf\'d2\'bb\'b8\'f6 AcceptEx \'cd\'ea\'b3\'c9\par
+      \'a1\'a1\'a1\'a1-\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'d0\'c2\'cc\'d7\'bd\'d3\'d7\'d6\'b2\'a2\'d3\'eb\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'bd\'f8\'d0\'d0\'b9\'d8\'c1\'aa\par
+      \'a1\'a1\'a1\'a1-\'c9\'e8\'d6\'c3\'b1\'b3\'be\'b0\'bd\'e1\'b9\'b9\'b5\'c8\'b5\'c8\par
+      \'a1\'a1\'a1\'a1-\'b7\'a2\'b3\'f6\'d2\'bb\'b8\'f6 AcceptEx \'c7\'eb\'c7\'f3\par
+      \}while(TRUE); \par
+\par
+      \'d7\'f7\'ce\'aa\'d2\'bb\'b8\'f6\'b8\'df\'cf\'ec\'d3\'a6\'c4\'dc\'c1\'a6\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'a3\'ac\'cb\'fc\'b1\'d8\'d0\'eb\'b7\'a2\'b3\'f6\'d7\'e3\'b9\'bb\'b5\'c4AcceptEx\'b5\'f7\'d3\'c3\'a3\'ac\'ca\'d8\'ba\'f2\'d7\'c5\'a3\'ac\'d2\'bb\'b5\'a9\'b3\'f6\'cf\'d6\'bf\'cd\'bb\'a7\'b6\'cb\'c1\'ac\'bd\'d3\'c7\'eb\'c7\'f3\'be\'cd\'c1\'a2\'bf\'cc\'cf\'ec\'d3\'a6\'a1\'a3\'d6\'c1\'d3\'da\'b7\'a2\'b3\'f6\'b6\'e0\'c9\'d9\'b8\'f6AcceptEx\'b2\'c5\'b9\'bb\'a3\'ac\'be\'cd\'c8\'a1\'be\'f6\'d3\'da\'c4\'e3\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'b3\'cc\'d0\'f2\'cb\'f9\'c6\'da\'b4\'fd\'b5\'c4\'cd\'a8\'d0\'c5\'bd\'bb\'cd\'a8\'c0\'e0\'d0\'cd\'a1\'a3\'b1\'c8\'c8\'e7\'a3\'ac\'c8\'e7\'b9\'fb\'bd\'f8\'c8\'eb\'c1\'ac\'bd\'d3\'c2\'ca\'b8\'df\'b5\'c4\'c7\'e9\'bf\'f6(\'d2\'f2\'ce\'aa\'c1\'ac\'bd\'d3\'b3\'d6\'d0\'f8\'ca\'b1\'bc\'e4\'bd\'cf\'b6\'cc\'a3\'ac\'bb\'f2\'d5\'df\'b3\'f6\'cf\'d6\'bd\'bb\'cd\'a8\'b8\'df\'b7\'e5)\'a3\'ac\'c4\'c7\'c3\'b4\'cb\'f9\'d0\'e8\'d2\'aa\'ca\'d8\'ba\'f2\'b5\'c4AcceptEx\'b5\'b1\'c8\'bb\'d2\'aa\'b1\'c8\'c4\'c7\'d0\'a9\'c5\'bc\'b6\'fb\'bd\'f8\'c8\'eb\'b5\'c4\'bf\'cd\'bb\'a7\'b6\'cb\'c1\'ac\'bd\'d3\'b5\'c4\'c7\'e9\'bf\'f6\'d2\'aa\'b6\'e0\'a1\'a3\'b4\'cf\'c3\'f7\'b5\'c4\'d7\'f6\'b7\'a8\'ca\'c7\'a3\'ac\'d3\'c9\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'c0\'b4\'b7\'d6\'ce\'f6\'bd\'bb\'cd\'a8\'d7\'b4\'bf\'f6\'a3\'ac\'b2\'a2\'b5\'f7\'d5\'fbAcceptEx\'ca\'d8\'ba\'f2\'b5\'c4\'ca\'fd\'c1\'bf\'a3\'ac\'b6\'f8\'b2\'bb\'ca\'c7\'b9\'cc\'b6\'a8\'d4\'da\'c4\'b3\'b8\'f6\'ca\'fd\'c1\'bf\'c9\'cf\'a1\'a3\par
+\par
+      \'b6\'d4\'d3\'daWindows2000\'a3\'acWinsock\'cc\'e1\'b9\'a9\'c1\'cb\'d2\'bb\'d0\'a9\'bb\'fa\'d6\'c6\'a3\'ac\'b0\'ef\'d6\'fa\'c4\'e3\'c5\'d0\'b6\'a8AcceptEx\'b5\'c4\'ca\'fd\'c1\'bf\'ca\'c7\'b7\'f1\'d7\'e3\'b9\'bb\'a1\'a3\'d5\'e2\'be\'cd\'ca\'c7\'a3\'ac\'d4\'da\'b4\'b4\'bd\'a8\'bc\'e0\'cc\'fd\'cc\'d7\'bd\'d3\'d7\'d6\'ca\'b1\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'ca\'c2\'bc\'fe\'a3\'ac\'cd\'a8\'b9\'fdWSAEventSelect()\'d5\'e2\'b8\'f6API\'b2\'a2\'d7\'a2\'b2\'e1FD_ACCEPT\'ca\'c2\'bc\'fe\'cd\'a8\'d6\'aa\'c0\'b4\'b0\'d1\'cc\'d7\'bd\'d3\'d7\'d6\'ba\'cd\'d5\'e2\'b8\'f6\'ca\'c2\'bc\'fe\'b9\'d8\'c1\'aa\'c6\'f0\'c0\'b4\'a1\'a3\'d2\'bb\'b5\'a9\'cf\'b5\'cd\'b3\'ca\'d5\'b5\'bd\'d2\'bb\'b8\'f6\'c1\'ac\'bd\'d3\'c7\'eb\'c7\'f3\'a3\'ac\'c8\'e7\'b9\'fb\'cf\'b5\'cd\'b3\'d6\'d0\'c3\'bb\'d3\'d0AcceptEx()\'d5\'fd\'d4\'da\'b5\'c8\'b4\'fd\'bd\'d3\'ca\'dc\'c1\'ac\'bd\'d3\'a3\'ac\'c4\'c7\'c3\'b4\'c9\'cf\'c3\'e6\'b5\'c4\'ca\'c2\'bc\'fe\'bd\'ab\'ca\'d5\'b5\'bd\'d2\'bb\'b8\'f6\'d0\'c5\'ba\'c5\'a1\'a3\'cd\'a8\'b9\'fd\'d5\'e2\'b8\'f6\'ca\'c2\'bc\'fe\'a3\'ac\'c4\'e3\'be\'cd\'bf\'c9\'d2\'d4\'c5\'d0\'b6\'cf\'c4\'e3\'d3\'d0\'c3\'bb\'d3\'d0\'b7\'a2\'b3\'f6\'d7\'e3\'b9\'bb\'b5\'c4AcceptEx()\'a3\'ac\'bb\'f2\'d5\'df\'bc\'ec\'b2\'e2\'b3\'f6\'d2\'bb\'b8\'f6\'b7\'c7\'d5\'fd\'b3\'a3\'b5\'c4\'bf\'cd\'bb\'a7\'c7\'eb\'c7\'f3(\'cf\'c2\'ce\'c4\'ca\'f6)\'a1\'a3\'d5\'e2\'d6\'d6\'bb\'fa\'d6\'c6\'b6\'d4Windows NT 4.0\'b2\'bb\'ca\'ca\'d3\'c3\'a1\'a3\par
+\par
+      \'ca\'b9\'d3\'c3AcceptEx()\'b5\'c4\'d2\'bb\'b4\'f3\'ba\'c3\'b4\'a6\'ca\'c7\'a3\'ac\'c4\'e3\'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fd\'d2\'bb\'b4\'ce\'b5\'f7\'d3\'c3\'be\'cd\'cd\'ea\'b3\'c9\'bd\'d3\'ca\'dc\'bf\'cd\'bb\'a7\'b6\'cb\'c1\'ac\'bd\'d3\'c7\'eb\'c7\'f3\'ba\'cd\'bd\'d3\'ca\'dc\'ca\'fd\'be\'dd(\'cd\'a8\'b9\'fd\'b4\'ab\'cb\'cdlpOutputBuffer\'b2\'ce\'ca\'fd)\'c1\'bd\'bc\'fe\'ca\'c2\'c7\'e9\'a1\'a3\'d2\'b2\'be\'cd\'ca\'c7\'cb\'b5\'a3\'ac\'c8\'e7\'b9\'fb\'bf\'cd\'bb\'a7\'b6\'cb\'d4\'da\'b7\'a2\'b3\'f6\'c1\'ac\'bd\'d3\'b5\'c4\'cd\'ac\'ca\'b1\'b4\'ab\'ca\'e4\'ca\'fd\'be\'dd\'a3\'ac\'c4\'e3\'b5\'c4AcceptEx()\'b5\'f7\'d3\'c3\'d4\'da\'c1\'ac\'bd\'d3\'b4\'b4\'bd\'a8\'b2\'a2\'bd\'d3\'ca\'d5\'c1\'cb\'bf\'cd\'bb\'a7\'b6\'cb\'ca\'fd\'be\'dd\'ba\'f3\'be\'cd\'bf\'c9\'d2\'d4\'c1\'a2\'bf\'cc\'b7\'b5\'bb\'d8\'a1\'a3\'d5\'e2\'d1\'f9\'bf\'c9\'c4\'dc\'ca\'c7\'ba\'dc\'d3\'d0\'d3\'c3\'b5\'c4\'a3\'ac\'b5\'ab\'ca\'c7\'d2\'b2\'bf\'c9\'c4\'dc\'bb\'e1\'d2\'fd\'b7\'a2\'ce\'ca\'cc\'e2\'a3\'ac\'d2\'f2\'ce\'aaAcceptEx()\'b1\'d8\'d0\'eb\'b5\'c8\'c8\'ab\'b2\'bf\'bf\'cd\'bb\'a7\'b6\'cb\'ca\'fd\'be\'dd\'b6\'bc\'ca\'d5\'b5\'bd\'c1\'cb\'b2\'c5\'b7\'b5\'bb\'d8\'a1\'a3\'be\'df\'cc\'e5\'c0\'b4\'cb\'b5\'a3\'ac\'c8\'e7\'b9\'fb\'c4\'e3\'d4\'da\'b7\'a2\'b3\'f6AcceptEx()\'b5\'f7\'d3\'c3\'b5\'c4\'cd\'ac\'ca\'b1\'b4\'ab\'b5\'dd\'c1\'cblpOutputBuffer\'b2\'ce\'ca\'fd\'a3\'ac\'c4\'c7\'c3\'b4AcceptEx()\'b2\'bb\'d4\'d9\'ca\'c7\'d2\'bb\'cf\'ee\'d4\'ad\'d7\'d3\'d0\'cd\'b5\'c4\'b2\'d9\'d7\'f7\'a3\'ac\'b6\'f8\'ca\'c7\'b7\'d6\'b3\'c9\'c1\'cb\'c1\'bd\'b2\'bd\'a3\'ba\'bd\'d3\'ca\'dc\'bf\'cd\'bb\'a7\'c1\'ac\'bd\'d3\'a3\'ac\'b5\'c8\'b4\'fd\'bd\'d3\'ca\'d5\'ca\'fd\'be\'dd\'a1\'a3\'b5\'b1\'c8\'b1\'c9\'d9\'d2\'bb\'d6\'d6\'bb\'fa\'d6\'c6\'c0\'b4\'cd\'a8\'d6\'aa\'c4\'e3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'cb\'f9\'b7\'a2\'c9\'fa\'b5\'c4\'d5\'e2\'d6\'d6\'c7\'e9\'bf\'f6\'a3\'ba\ldblquote\'c1\'ac\'bd\'d3\'d2\'d1\'be\'ad\'bd\'a8\'c1\'a2\'c1\'cb\'a3\'ac\'d5\'fd\'d4\'da\'b5\'c8\'b4\'fd\'bf\'cd\'bb\'a7\'b6\'cb\'ca\'fd\'be\'dd\rdblquote\'a3\'ac\'d5\'e2\'bd\'ab\'d2\'e2\'ce\'b6\'d7\'c5\'d3\'d0\'bf\'c9\'c4\'dc\'b3\'f6\'cf\'d6\'bf\'cd\'bb\'a7\'b6\'cb\'d6\'bb\'b7\'a2\'b3\'f6\'c1\'ac\'bd\'d3\'c7\'eb\'c7\'f3\'a3\'ac\'b5\'ab\'ca\'c7\'b2\'bb\'b7\'a2\'cb\'cd\'ca\'fd\'be\'dd\'a1\'a3\'c8\'e7\'b9\'fb\'c4\'e3\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'ca\'d5\'b5\'bd\'cc\'ab\'b6\'e0\'d5\'e2\'d6\'d6\'c0\'e0\'d0\'cd\'b5\'c4\'c1\'ac\'bd\'d3\'ca\'b1\'a3\'ac\'cb\'fc\'bd\'ab\'be\'dc\'be\'f8\'c1\'ac\'bd\'d3\'b8\'fc\'b6\'e0\'b5\'c4\'ba\'cf\'b7\'a8\'bf\'cd\'bb\'a7\'b6\'cb\'c7\'eb\'c7\'f3\'a1\'a3\'d5\'e2\'be\'cd\'ca\'c7\'ba\'da\'bf\'cd\'bd\'f8\'d0\'d0\ldblquote\'be\'dc\'be\'f8\'b7\'fe\'ce\'f1\rdblquote\'b9\'a5\'bb\'f7\'b5\'c4\'b3\'a3\'bc\'fb\'ca\'d6\'b7\'a8\'a1\'a3\par
+\par
+      \'d2\'aa\'d4\'a4\'b7\'c0\'b4\'cb\'c0\'e0\'b9\'a5\'bb\'f7\'a3\'ac\'bd\'d3\'ca\'dc\'c1\'ac\'bd\'d3\'b5\'c4\'cf\'df\'b3\'cc\'d3\'a6\'b8\'c3\'b2\'bb\'ca\'b1\'b5\'d8\'cd\'a8\'b9\'fd\'b5\'f7\'d3\'c3getsockopt()\'ba\'af\'ca\'fd(\'d1\'a1\'cf\'ee\'b2\'ce\'ca\'fd\'ce\'aaSO_CONNECT_TIME)\'c0\'b4\'bc\'ec\'b2\'e9AcceptEx()\'c0\'ef\'ca\'d8\'ba\'f2\'b5\'c4\'cc\'d7\'bd\'d3\'d7\'d6\'a1\'a3getsockopt()\'ba\'af\'ca\'fd\'b5\'c4\'d1\'a1\'cf\'ee\'d6\'b5\'bd\'ab\'b1\'bb\'c9\'e8\'d6\'c3\'ce\'aa\'cc\'d7\'bd\'d3\'d7\'d6\'b1\'bb\'c1\'ac\'bd\'d3\'b5\'c4\'ca\'b1\'bc\'e4\'a3\'ac\'bb\'f2\'d5\'df\'c9\'e8\'d6\'c3\'ce\'aa-1(\'b4\'fa\'b1\'ed\'cc\'d7\'bd\'d3\'d7\'d6\'c9\'d0\'ce\'b4\'bd\'a8\'c1\'a2\'c1\'ac\'bd\'d3)\'a1\'a3\'d5\'e2\'ca\'b1\'a3\'acWSAEventSelect()\'b5\'c4\'cc\'d8\'d0\'d4\'be\'cd\'bf\'c9\'d2\'d4\'ba\'dc\'ba\'c3\'b5\'d8\'c0\'fb\'d3\'c3\'c0\'b4\'d7\'f6\'d5\'e2\'d6\'d6\'bc\'ec\'b2\'e9\'a1\'a3\'c8\'e7\'b9\'fb\'b7\'a2\'cf\'d6\'c1\'ac\'bd\'d3\'d2\'d1\'be\'ad\'bd\'a8\'c1\'a2\'a3\'ac\'b5\'ab\'ca\'c7\'ba\'dc\'be\'c3\'b6\'bc\'c3\'bb\'d3\'d0\'ca\'d5\'b5\'bd\'ca\'fd\'be\'dd\'b5\'c4\'c7\'e9\'bf\'f6\'a3\'ac\'c4\'c7\'c3\'b4\'be\'cd\'d3\'a6\'b8\'c3\'d6\'d5\'d6\'b9\'c1\'ac\'bd\'d3\'a3\'ac\'b7\'bd\'b7\'a8\'be\'cd\'ca\'c7\'b9\'d8\'b1\'d5\'d7\'f7\'ce\'aa\'b2\'ce\'ca\'fd\'cc\'e1\'b9\'a9\'b8\'f8AcceptEx()\'b5\'c4\'c4\'c7\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'a1\'a3\'d7\'a2\'d2\'e2\'a3\'ac\'d4\'da\'b6\'e0\'ca\'fd\'b7\'c7\'bd\'f4\'bc\'b1\'c7\'e9\'bf\'f6\'cf\'c2\'a3\'ac\'c8\'e7\'b9\'fb\'cc\'d7\'bd\'d3\'d7\'d6\'d2\'d1\'be\'ad\'b4\'ab\'b5\'dd\'b8\'f8AcceptEx()\'b2\'a2\'bf\'aa\'ca\'bc\'ca\'d8\'ba\'f2\'a3\'ac\'b5\'ab\'bb\'b9\'ce\'b4\'bd\'a8\'c1\'a2\'c1\'ac\'bd\'d3\'a3\'ac\'c4\'c7\'c3\'b4\'c4\'e3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'b2\'bb\'d3\'a6\'b8\'c3\'b9\'d8\'b1\'d5\'cb\'fc\'c3\'c7\'a1\'a3\'d5\'e2\'ca\'c7\'d2\'f2\'ce\'aa\'bc\'b4\'ca\'b9\'b9\'d8\'b1\'d5\'c1\'cb\'d5\'e2\'d0\'a9\'cc\'d7\'bd\'d3\'d7\'d6\'a3\'ac\'b3\'f6\'d3\'da\'cc\'e1\'b8\'df\'cf\'b5\'cd\'b3\'d0\'d4\'c4\'dc\'b5\'c4\'bf\'bc\'c2\'c7\'a3\'ac\'d4\'da\'c1\'ac\'bd\'d3\'bd\'f8\'c8\'eb\'d6\'ae\'c7\'b0\'a3\'ac\'bb\'f2\'d5\'df\'bc\'e0\'cc\'fd\'cc\'d7\'bd\'d3\'d7\'d6\'d7\'d4\'c9\'ed\'b1\'bb\'b9\'d8\'b1\'d5\'d6\'ae\'c7\'b0\'a3\'ac\'cf\'e0\'d3\'a6\'b5\'c4\'c4\'da\'ba\'cb\'c4\'a3\'ca\'bd\'b5\'c4\'ca\'fd\'be\'dd\'bd\'e1\'b9\'b9\'d2\'b2\'b2\'bb\'bb\'e1\'b1\'bb\'b8\'c9\'be\'bb\'b5\'d8\'c7\'e5\'b3\'fd\'a1\'a3\par
+\par
+      \'b7\'a2\'b3\'f6AcceptEx()\'b5\'f7\'d3\'c3\'b5\'c4\'cf\'df\'b3\'cc\'a3\'ac\'cb\'c6\'ba\'f5\'d3\'eb\'c4\'c7\'b8\'f6\'bd\'f8\'d0\'d0\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b9\'d8\'c1\'aa\'b2\'d9\'d7\'f7\'a1\'a2\'b4\'a6\'c0\'ed\'c6\'e4\'cb\'fcI/O\'cd\'ea\'b3\'c9\'cd\'a8\'d6\'aa\'b5\'c4\'cf\'df\'b3\'cc\'ca\'c7\'cd\'ac\'d2\'bb\'b8\'f6\'a3\'ac\'b5\'ab\'ca\'c7\'a3\'ac\'b1\'f0\'cd\'fc\'bc\'c7\'cf\'df\'b3\'cc\'c0\'ef\'d3\'a6\'b8\'c3\'be\'a1\'c1\'a6\'b1\'dc\'c3\'e2\'d6\'b4\'d0\'d0\'d7\'e8\'c8\'fb\'d0\'cd\'b5\'c4\'b2\'d9\'d7\'f7\'a1\'a3Winsock2\'b7\'d6\'b2\'e3\'bd\'e1\'b9\'b9\'b5\'c4\'d2\'bb\'b8\'f6\'b8\'b1\'d7\'f7\'d3\'c3\'ca\'c7\'b5\'f7\'d3\'c3socket()\'bb\'f2WSASocket() API\'b5\'c4\'c9\'cf\'b2\'e3\'bc\'dc\'b9\'b9\'bf\'c9\'c4\'dc\'ba\'dc\'d6\'d8\'d2\'aa(\'d2\'eb\'d5\'df\'b2\'bb\'cc\'ab\'c3\'f7\'b0\'d7\'d4\'ad\'ce\'c4\'d2\'e2\'cb\'bc\'a3\'ac\'b1\'a7\'c7\'b8)\'a1\'a3\'c3\'bf\'b8\'f6AcceptEx()\'b5\'f7\'d3\'c3\'b6\'bc\'d0\'e8\'d2\'aa\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'d0\'c2\'cc\'d7\'bd\'d3\'d7\'d6\'a3\'ac\'cb\'f9\'d2\'d4\'d7\'ee\'ba\'c3\'d3\'d0\'d2\'bb\'b8\'f6\'b6\'c0\'c1\'a2\'b5\'c4\'cf\'df\'b3\'cc\'d7\'a8\'c3\'c5\'b5\'f7\'d3\'c3AcceptEx()\'a3\'ac\'b6\'f8\'b2\'bb\'b2\'ce\'d3\'eb\'c6\'e4\'cb\'fcI/O\'b4\'a6\'c0\'ed\'a1\'a3\'c4\'e3\'d2\'b2\'bf\'c9\'d2\'d4\'c0\'fb\'d3\'c3\'d5\'e2\'b8\'f6\'cf\'df\'b3\'cc\'c0\'b4\'d6\'b4\'d0\'d0\'c6\'e4\'cb\'fc\'c8\'ce\'ce\'f1\'a3\'ac\'b1\'c8\'c8\'e7\'ca\'c2\'bc\'fe\'bc\'c7\'c2\'bc\'a1\'a3\par
+\par
+      \'d3\'d0\'b9\'d8AcceptEx()\'b5\'c4\'d7\'ee\'ba\'f3\'d2\'bb\'b8\'f6\'d7\'a2\'d2\'e2\'ca\'c2\'cf\'ee\'a3\'ba\'d2\'aa\'ca\'b5\'cf\'d6\'d5\'e2\'d0\'a9API\'a3\'ac\'b2\'a2\'b2\'bb\'d0\'e8\'d2\'aa\'c6\'e4\'cb\'fc\'cc\'e1\'b9\'a9\'c9\'cc\'cc\'e1\'b9\'a9\'b5\'c4Winsock2\'ca\'b5\'cf\'d6\'a1\'a3\'d5\'e2\'d2\'bb\'b5\'e3\'b6\'d4\'ce\'a2\'c8\'ed\'cc\'d8\'d3\'d0\'b5\'c4\'c6\'e4\'cb\'fcAPI\'d2\'b2\'cd\'ac\'d1\'f9\'ca\'ca\'d3\'c3\'a3\'ac\'b1\'c8\'c8\'e7TransmitFile()\'ba\'cdGetAcceptExSockAddrs()\'a3\'ac\'d2\'d4\'bc\'b0\'c6\'e4\'cb\'fc\'bf\'c9\'c4\'dc\'bb\'e1\'b1\'bb\'bc\'d3\'c8\'eb\'b5\'bd\'d0\'c2\'b0\'e6Windows\'b5\'c4API. \'d4\'daWindowsNT\'ba\'cd2000\'c9\'cf\'a3\'ac\'d5\'e2\'d0\'a9API\'ca\'c7\'d4\'da\'ce\'a2\'c8\'ed\'b5\'c4\'b5\'d7\'b2\'e3\'cc\'e1\'b9\'a9\'d5\'dfDLL(mswsock.dll)\'d6\'d0\'ca\'b5\'cf\'d6\'b5\'c4\'a3\'ac\'bf\'c9\'cd\'a8\'b9\'fd\'d3\'ebmswsock.lib\'b1\'e0\'d2\'eb\'c1\'ac\'bd\'d3\'bd\'f8\'d0\'d0\'b5\'f7\'d3\'c3\'a3\'ac\'bb\'f2\'d5\'df\'cd\'a8\'b9\'fdWSAIoctl() (\'d1\'a1\'cf\'ee\'b2\'ce\'ca\'fd\'ce\'aaSIO_GET_EXTENSION_FUNCTION_POINTER)\'b6\'af\'cc\'ac\'bb\'f1\'b5\'c3\'ba\'af\'ca\'fd\'b5\'c4\'d6\'b8\'d5\'eb\'a1\'a3\par
+\par
+      \'c8\'e7\'b9\'fb\'d4\'da\'c3\'bb\'d3\'d0\'ca\'c2\'cf\'c8\'bb\'f1\'b5\'c3\'ba\'af\'ca\'fd\'d6\'b8\'d5\'eb\'b5\'c4\'c7\'e9\'bf\'f6\'cf\'c2\'d6\'b1\'bd\'d3\'b5\'f7\'d3\'c3\'ba\'af\'ca\'fd(\'d2\'b2\'be\'cd\'ca\'c7\'cb\'b5\'a3\'ac\'b1\'e0\'d2\'eb\'ca\'b1\'be\'b2\'cc\'ac\'c1\'ac\'bd\'d3mswsock.lib\'a3\'ac\'d4\'da\'b3\'cc\'d0\'f2\'d6\'d0\'d6\'b1\'bd\'d3\'b5\'f7\'d3\'c3\'ba\'af\'ca\'fd)\'a3\'ac\'c4\'c7\'c3\'b4\'d0\'d4\'c4\'dc\'bd\'ab\'ba\'dc\'ca\'dc\'d3\'b0\'cf\'ec\'a1\'a3\'d2\'f2\'ce\'aa      AcceptEx()\'b1\'bb\'d6\'c3\'d3\'daWinsock2\'bc\'dc\'b9\'b9\'d6\'ae\'cd\'e2\'a3\'ac\'c3\'bf\'b4\'ce\'b5\'f7\'d3\'c3\'ca\'b1\'cb\'fc\'b6\'bc\'b1\'bb\'c6\'c8\'cd\'a8\'b9\'fdWSAIoctl()\'c8\'a1\'b5\'c3\'ba\'af\'ca\'fd\'d6\'b8\'d5\'eb\'a1\'a3\'d2\'aa\'b1\'dc\'c3\'e2\'d5\'e2\'d6\'d6\'d0\'d4\'c4\'dc\'cb\'f0\'ca\'a7\'a3\'ac\'d0\'e8\'d2\'aa\'ca\'b9\'d3\'c3\'d5\'e2\'d0\'a9API\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d3\'a6\'b8\'c3\'cd\'a8\'b9\'fd\'b5\'f7\'d3\'c3WSAIoctl()\'d6\'b1\'bd\'d3\'b4\'d3\'b5\'d7\'b2\'e3\'b5\'c4\'cc\'e1\'b9\'a9\'d5\'df\'c4\'c7\'c0\'ef\'c8\'a1\'b5\'c3\'ba\'af\'ca\'fd\'b5\'c4\'d6\'b8\'d5\'eb\'a1\'a3\par
+\par
+      \'b2\'ce\'bc\'fbFigure 3 \'cc\'d7\'bd\'d3\'d7\'d6\'bc\'dc\'b9\'b9\'a3\'ba\par
+\par
+      application\par
+      \'a1\'a1||\par
+      \\||/\par
+      \'a1\'a1\\/\par
+      winsock 2.0 dll (ws2_32.dll)\par
+      \'a1\'a1||\par
+      \\||/\par
+      \'a1\'a1\\/\par
+      layered/Base Providers\par
+      RSVP | Proxy | Default Microsoft Providers (mswsock.dll/msafd.dll)\par
+      \'a1\'a1||\par
+      \\||/\par
+      \'a1\'a1\\/\par
+      Windows Sockets kernel-mode driver (afd.sys)\par
+      \'a1\'a1||\par
+      \\||/\par
+      \'a1\'a1\\/\par
+      Tramsport Protocols\par
+      TCP/IP | ATM | Other\par
+\par
+\par
+      TransmitFile \'ba\'cd TransmitPackets \par
+      Winsock \par
+\par
+      \'cc\'e1\'b9\'a9\'c1\'bd\'b8\'f6\'d7\'a8\'c3\'c5\'ce\'aa\'ce\'c4\'bc\'fe\'ba\'cd\'c4\'da\'b4\'e6\'ca\'fd\'be\'dd\'b4\'ab\'ca\'e4\'bd\'f8\'d0\'d0\'c1\'cb\'d3\'c5\'bb\'af\'b5\'c4\'ba\'af\'ca\'fd\'a1\'a3\'c6\'e4\'d6\'d0TransmitFile()\'d5\'e2\'b8\'f6API\'ba\'af\'ca\'fd\'d4\'daWindows NT 4.0 \'ba\'cd Windows 2000\'c9\'cf\'b6\'bc\'bf\'c9\'d2\'d4\'ca\'b9\'d3\'c3\'a3\'ac\'b6\'f8TransmitPackets()\'d4\'f2\'bd\'ab\'d4\'da\'ce\'b4\'c0\'b4\'b0\'e6\'b1\'be\'b5\'c4Windows\'d6\'d0\'ca\'b5\'cf\'d6\'a1\'a3\par
+\par
+      TransmitFile()\'d3\'c3\'c0\'b4\'b0\'d1\'ce\'c4\'bc\'fe\'c4\'da\'c8\'dd\'cd\'a8\'b9\'fdWinsock\'bd\'f8\'d0\'d0\'b4\'ab\'ca\'e4\'a1\'a3\'cd\'a8\'b3\'a3\'b7\'a2\'cb\'cd\'ce\'c4\'bc\'fe\'b5\'c4\'d7\'f6\'b7\'a8\'ca\'c7\'a3\'ac\'cf\'c8\'b5\'f7\'d3\'c3CreateFile()\'b4\'f2\'bf\'aa\'d2\'bb\'b8\'f6\'ce\'c4\'bc\'fe\'a3\'ac\'c8\'bb\'ba\'f3\'b2\'bb\'b6\'cf\'d1\'ad\'bb\'b7\'b5\'f7\'d3\'c3ReadFile() \'ba\'cdWSASend ()\'d6\'b1\'d6\'c1\'ca\'fd\'be\'dd\'b7\'a2\'cb\'cd\'cd\'ea\'b1\'cf\'a1\'a3\'b5\'ab\'ca\'c7\'d5\'e2\'d6\'d6\'b7\'bd\'b7\'a8\'ba\'dc\'c3\'bb\'d3\'d0\'d0\'a7\'c2\'ca\'a3\'ac\'d2\'f2\'ce\'aa\'c3\'bf\'b4\'ce\'b5\'f7\'d3\'c3ReadFile() \'ba\'cd WSASend ()\'b6\'bc\'bb\'e1\'c9\'e6\'bc\'b0\'d2\'bb\'b4\'ce\'b4\'d3\'d3\'c3\'bb\'a7\'c4\'a3\'ca\'bd\'b5\'bd\'c4\'da\'ba\'cb\'c4\'a3\'ca\'bd\'b5\'c4\'d7\'aa\'bb\'bb\'a1\'a3\'c8\'e7\'b9\'fb\'bb\'bb\'b3\'c9TransmitFile()\'a3\'ac\'c4\'c7\'c3\'b4\'d6\'bb\'d0\'e8\'d2\'aa\'b8\'f8\'cb\'fc\'d2\'bb\'b8\'f6\'d2\'d1\'b4\'f2\'bf\'aa\'ce\'c4\'bc\'fe\'b5\'c4\'be\'e4\'b1\'fa\'ba\'cd\'d2\'aa\'b7\'a2\'cb\'cd\'b5\'c4\'d7\'d6\'bd\'da\'ca\'fd\'a3\'ac\'b6\'f8\'cb\'f9\'c9\'e6\'bc\'b0\'b5\'c4\'c4\'a3\'ca\'bd\'d7\'aa\'bb\'bb\'b2\'d9\'d7\'f7\'bd\'ab\'d6\'bb\'d4\'da\'b5\'f7\'d3\'c3CreateFile()\'b4\'f2\'bf\'aa\'ce\'c4\'bc\'fe\'ca\'b1\'b7\'a2\'c9\'fa\'d2\'bb\'b4\'ce\'a3\'ac\'c8\'bb\'ba\'f3TransmitFile()\'ca\'b1\'d4\'d9\'b7\'a2\'c9\'fa\'d2\'bb\'b4\'ce\'a1\'a3\'d5\'e2\'d1\'f9\'d0\'a7\'c2\'ca\'be\'cd\'b8\'df\'b6\'e0\'c1\'cb\'a1\'a3\par
+\par
+      TransmitPackets()\'b1\'c8TransmitFile()\'b8\'fc\'bd\'f8\'d2\'bb\'b2\'bd\'a3\'ac\'cb\'fc\'d4\'ca\'d0\'ed\'d3\'c3\'bb\'a7\'d6\'bb\'b5\'f7\'d3\'c3\'d2\'bb\'b4\'ce\'be\'cd\'bf\'c9\'d2\'d4\'b7\'a2\'cb\'cd\'d6\'b8\'b6\'a8\'b5\'c4\'b6\'e0\'b8\'f6\'ce\'c4\'bc\'fe\'ba\'cd\'c4\'da\'b4\'e6\'bb\'ba\'b3\'e5\'c7\'f8\'a1\'a3\'ba\'af\'ca\'fd\'d4\'ad\'d0\'cd\'c8\'e7\'cf\'c2\'a3\'ba\par
+      BOOL TransmitPackets(\par
+      \'a1\'a1SOCKET hSocket,\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 \par
+      \'a1\'a1LPTRANSMIT_PACKET_ELEMENT lpPacketArray,\par
+      \'a1\'a1DWORD nElementCount,\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\par
+      \'a1\'a1DWORD nSendSize,\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\par
+      \'a1\'a1LPOVERLAPPED lpOverlapped,\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\par
+      \'a1\'a1DWORD dwFlags\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 \par
+      ; \par
+      \'c6\'e4\'d6\'d0\'a3\'aclpPacketArray\'ca\'c7\'d2\'bb\'b8\'f6\'bd\'e1\'b9\'b9\'b5\'c4\'ca\'fd\'d7\'e9\'a3\'ac\'c6\'e4\'d6\'d0\'b5\'c4\'c3\'bf\'b8\'f6\'d4\'aa\'cb\'d8\'bc\'c8\'bf\'c9\'d2\'d4\'ca\'c7\'d2\'bb\'b8\'f6\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'bb\'f2\'d5\'df\'c4\'da\'b4\'e6\'bb\'ba\'b3\'e5\'c7\'f8\'a3\'ac\'b8\'c3\'bd\'e1\'b9\'b9\'b6\'a8\'d2\'e5\'c8\'e7\'cf\'c2\'a3\'ba\par
+      typedef struct _TRANSMIT_PACKETS_ELEMENT \{ \par
+      \'a1\'a1\'a1\'a1DWORD dwElFlags; \par
+      \'a1\'a1\'a1\'a1DWORD cLength; \par
+      \'a1\'a1\'a1\'a1union \{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1struct \{\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1LARGE_INTEGER\'a1\'a1\'a1\'a1 nFileOffset;\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1HANDLE\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1hFile;\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\};\par
+      \'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1PVOID\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1\'a1 pBuffer;\par
+      \'a1\'a1\'a1\'a1\};\par
+      \} TRANSMIT_FILE_BUFFERS;\par
+      \'c6\'e4\'d6\'d0\'b8\'f7\'d7\'d6\'b6\'ce\'ca\'c7\'d7\'d4\'c3\'e8\'ca\'f6\'d0\'cd\'b5\'c4(self explanatory)\'a1\'a3\par
+      dwElFlags\'d7\'d6\'b6\'ce\'a3\'ba\'d6\'b8\'b6\'a8\'b5\'b1\'c7\'b0\'d4\'aa\'cb\'d8\'ca\'c7\'d2\'bb\'b8\'f6\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'bb\'b9\'ca\'c7\'c4\'da\'b4\'e6\'bb\'ba\'b3\'e5\'c7\'f8(\'b7\'d6\'b1\'f0\'cd\'a8\'b9\'fd\'b3\'a3\'c1\'bfTF_ELEMENT_FILE\'ba\'cdTF_ELEMENT_MEMORY\'d6\'b8\'b6\'a8)\'a3\'bb\par
+      cLength\'d7\'d6\'b6\'ce\'a3\'ba\'d6\'b8\'b6\'a8\'bd\'ab\'b4\'d3\'ca\'fd\'be\'dd\'d4\'b4\'b7\'a2\'cb\'cd\'b5\'c4\'d7\'d6\'bd\'da\'ca\'fd(\'c8\'e7\'b9\'fb\'ca\'c7\'ce\'c4\'bc\'fe\'a3\'ac\'d5\'e2\'b8\'f6\'d7\'d6\'b6\'ce\'d6\'b5\'ce\'aa0\'b1\'ed\'ca\'be\'b7\'a2\'cb\'cd\'d5\'fb\'b8\'f6\'ce\'c4\'bc\'fe)\'a3\'bb\par
+      \'bd\'e1\'b9\'b9\'d6\'d0\'b5\'c4\'ce\'de\'c3\'fb\'c1\'aa\'ba\'cf\'cc\'e5\'a3\'ba\'b0\'fc\'ba\'ac\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'b5\'c4\'c4\'da\'b4\'e6\'bb\'ba\'b3\'e5\'c7\'f8(\'d2\'d4\'bc\'b0\'bf\'c9\'c4\'dc\'b5\'c4\'c6\'ab\'d2\'c6\'c1\'bf)\'a1\'a3\par
+\par
+      \'ca\'b9\'d3\'c3\'d5\'e2\'c1\'bd\'b8\'f6API\'b5\'c4\'c1\'ed\'d2\'bb\'b8\'f6\'ba\'c3\'b4\'a6\'a3\'ac\'ca\'c7\'bf\'c9\'d2\'d4\'cd\'a8\'b9\'fd\'d6\'b8\'b6\'a8TF_REUSE_SOCKET\'ba\'cdTF_DISCONNECT\'b1\'ea\'d6\'be\'c0\'b4\'d6\'d8\'d3\'c3\'cc\'d7\'bd\'d3\'d7\'d6\'be\'e4\'b1\'fa\'a1\'a3\'c3\'bf\'b5\'b1API\'cd\'ea\'b3\'c9\'ca\'fd\'be\'dd\'b5\'c4\'b4\'ab\'ca\'e4\'b9\'a4\'d7\'f7\'ba\'f3\'a3\'ac\'be\'cd\'bb\'e1\'d4\'da\'b4\'ab\'ca\'e4\'b2\'e3\'bc\'b6\'b1\'f0\'b6\'cf\'bf\'aa\'c1\'ac\'bd\'d3\'a3\'ac\'d5\'e2\'d1\'f9\'d5\'e2\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'be\'cd\'d3\'d6\'bf\'c9\'d2\'d4\'d6\'d8\'d0\'c2\'cc\'e1\'b9\'a9\'b8\'f8AcceptEx()\'ca\'b9\'d3\'c3\'a1\'a3\'b2\'c9\'d3\'c3\'d5\'e2\'d6\'d6\'d3\'c5\'bb\'af\'b5\'c4\'b7\'bd\'b7\'a8\'b1\'e0\'b3\'cc\'a3\'ac\'bd\'ab\'bc\'f5\'c7\'e1\'c4\'c7\'b8\'f6\'d7\'a8\'c3\'c5\'d7\'f6\'bd\'d3\'ca\'dc\'b2\'d9\'d7\'f7\'b5\'c4\'cf\'df\'b3\'cc\'b4\'b4\'bd\'a8\'cc\'d7\'bd\'d3\'d7\'d6\'b5\'c4\'d1\'b9\'c1\'a6(\'c7\'b0\'ce\'c4\'ca\'f6\'bc\'b0)\'a1\'a3\par
+\par
+      \'d5\'e2\'c1\'bd\'b8\'f6API\'d2\'b2\'b6\'bc\'d3\'d0\'d2\'bb\'b8\'f6\'b9\'b2\'cd\'ac\'b5\'c4\'c8\'f5\'b5\'e3\'a3\'baWindows NT Workstation \'bb\'f2 Windows 2000 \'d7\'a8\'d2\'b5\'b0\'e6\'d6\'d0\'a3\'ac\'ba\'af\'ca\'fd\'c3\'bf\'b4\'ce\'d6\'bb\'c4\'dc\'b4\'a6\'c0\'ed\'c1\'bd\'b8\'f6\'b5\'f7\'d3\'c3\'c7\'eb\'c7\'f3\'a3\'ac\'d6\'bb\'d3\'d0\'d4\'daWindows NT\'a1\'a2Windows 2000\'b7\'fe\'ce\'f1\'c6\'f7\'b0\'e6\'a1\'a2Windows 2000\'b8\'df\'bc\'b6\'b7\'fe\'ce\'f1\'c6\'f7\'b0\'e6\'bb\'f2 Windows 2000 Data Center\'d6\'d0\'b2\'c5\'bb\'f1\'b5\'c3\'cd\'ea\'c8\'ab\'d6\'a7\'b3\'d6\'a1\'a3 \par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'ea\'bd\'e2(4)2007\'c4\'ea01\'d4\'c227\'c8\'d5 \'d0\'c7\'c6\'da\'c1\'f9 15:34\'b7\'c5\'d4\'da\'d2\'bb\'c6\'f0\'bf\'b4\'bf\'b4\par
+\par
+      \'d2\'d4\'c9\'cf\'b8\'f7\'bd\'da\'d6\'d0\'a3\'ac\'ce\'d2\'c3\'c7\'cc\'d6\'c2\'db\'c1\'cb\'bf\'aa\'b7\'a2\'b8\'df\'d0\'d4\'c4\'dc\'b5\'c4\'a1\'a2\'b4\'f3\'cf\'ec\'d3\'a6\'b9\'e6\'c4\'a3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'cb\'f9\'d0\'e8\'b5\'c4\'ba\'af\'ca\'fd\'a1\'a2\'b7\'bd\'b7\'a8\'ba\'cd\'bf\'c9\'c4\'dc\'d3\'f6\'b5\'bd\'b5\'c4\'d7\'ca\'d4\'b4\'c6\'bf\'be\'b1\'ce\'ca\'cc\'e2\'a1\'a3\'d5\'e2\'d0\'a9\'b6\'d4\'c4\'e3\'d2\'e2\'ce\'b6\'d7\'c5\'ca\'b2\'c3\'b4\'c4\'d8\'a3\'bf\'c6\'e4\'ca\'b5\'a3\'ac\'d5\'e2\'c8\'a1\'be\'f6\'d3\'da\'c4\'e3\'c8\'e7\'ba\'ce\'b9\'b9\'d4\'ec\'c4\'e3\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'ba\'cd\'bf\'cd\'bb\'a7\'b6\'cb\'a1\'a3\'b5\'b1\'c4\'e3\'c4\'dc\'b9\'bb\'d4\'da\'b7\'fe\'ce\'f1\'c6\'f7\'ba\'cd\'bf\'cd\'bb\'a7\'b6\'cb\'c9\'e8\'bc\'c6\'c9\'cf\'bd\'f8\'d0\'d0\'b8\'fc\'ba\'c3\'b5\'d8\'bf\'d8\'d6\'c6\'ca\'b1\'a3\'ac\'c4\'c7\'c3\'b4\'c4\'e3\'d4\'bd\'c4\'dc\'b9\'bb\'b1\'dc\'bf\'aa\'c6\'bf\'be\'b1\'ce\'ca\'cc\'e2\'a1\'a3\par
+\par
+      \'c0\'b4\'bf\'b4\'d2\'bb\'b8\'f6\'ca\'be\'b7\'b6\'b5\'c4\'bb\'b7\'be\'b3\'a1\'a3\'ce\'d2\'c3\'c7\'d2\'aa\'c9\'e8\'bc\'c6\'d2\'bb\'b8\'f6\'b7\'fe\'ce\'f1\'c6\'f7\'c0\'b4\'cf\'ec\'d3\'a6\'bf\'cd\'bb\'a7\'b6\'cb\'b5\'c4\'c1\'ac\'bd\'d3\'a1\'a2\'b7\'a2\'cb\'cd\'c7\'eb\'c7\'f3\'a1\'a2\'bd\'d3\'ca\'d5\'ca\'fd\'be\'dd\'d2\'d4\'bc\'b0\'b6\'cf\'bf\'aa\'c1\'ac\'bd\'d3\'a1\'a3\'c4\'c7\'c3\'b4\'a3\'ac\'b7\'fe\'ce\'f1\'c6\'f7\'bd\'ab\'d0\'e8\'d2\'aa\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'bc\'e0\'cc\'fd\'cc\'d7\'bd\'d3\'d7\'d6\'a3\'ac\'b0\'d1\'cb\'fc\'d3\'eb\'c4\'b3\'b8\'f6\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'bd\'f8\'d0\'d0\'b9\'d8\'c1\'aa\'a3\'ac\'ce\'aa\'c3\'bf\'bf\'c5CPU\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'b9\'a4\'d7\'f7\'cf\'df\'b3\'cc\'a1\'a3\'d4\'d9\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'d7\'a8\'c3\'c5\'d3\'c3\'c0\'b4\'b7\'a2\'b3\'f6AcceptEx()\'a1\'a3\'ce\'d2\'c3\'c7\'d6\'aa\'b5\'c0\'bf\'cd\'bb\'a7\'b6\'cb\'bb\'e1\'d4\'da\'b7\'a2\'b3\'f6\'c1\'ac\'bd\'d3\'c7\'eb\'c7\'f3\'ba\'f3\'c1\'a2\'bf\'cc\'b4\'ab\'cb\'cd\'ca\'fd\'be\'dd\'a3\'ac\'cb\'f9\'d2\'d4\'c8\'e7\'b9\'fb\'ce\'d2\'c3\'c7\'d7\'bc\'b1\'b8\'ba\'c3\'bd\'d3\'ca\'d5\'bb\'ba\'b3\'e5\'c7\'f8\'bb\'e1\'ca\'b9\'ca\'c2\'c7\'e9\'b1\'e4\'b5\'c3\'b8\'fc\'ce\'aa\'c8\'dd\'d2\'d7\'a1\'a3\'b5\'b1\'c8\'bb\'a3\'ac\'b2\'bb\'d2\'aa\'cd\'fc\'bc\'c7\'b2\'bb\'ca\'b1\'b5\'d8\'c2\'d6\'d1\'afAcceptEx()\'b5\'f7\'d3\'c3\'d6\'d0\'ca\'b9\'d3\'c3\'b5\'c4\'cc\'d7\'bd\'d3\'d7\'d6(\'ca\'b9\'d3\'c3SO_CONNECT_TIME\'d1\'a1\'cf\'ee\'b2\'ce\'ca\'fd)\'c0\'b4\'c8\'b7\'b1\'a3\'c3\'bb\'d3\'d0\'b6\'f1\'d2\'e2\'b3\'ac\'ca\'b1\'b5\'c4\'c1\'ac\'bd\'d3\'a1\'a3\par
+\par
+      \'b8\'c3\'c9\'e8\'bc\'c6\'d6\'d0\'d3\'d0\'d2\'bb\'b8\'f6\'d6\'d8\'d2\'aa\'b5\'c4\'ce\'ca\'cc\'e2\'d2\'aa\'bf\'bc\'c2\'c7\'a3\'ac\'ce\'d2\'c3\'c7\'d3\'a6\'b8\'c3\'d4\'ca\'d0\'ed\'b6\'e0\'c9\'d9\'b8\'f6AcceptEx()\'bd\'f8\'d0\'d0\'ca\'d8\'ba\'f2\'a1\'a3\'d5\'e2\'ca\'c7\'d2\'f2\'ce\'aa\'a3\'ac\'c3\'bf\'b7\'a2\'b3\'f6\'d2\'bb\'b8\'f6AcceptEx()\'ca\'b1\'ce\'d2\'c3\'c7\'b6\'bc\'cd\'ac\'ca\'b1\'d0\'e8\'d2\'aa\'ce\'aa\'cb\'fc\'cc\'e1\'b9\'a9\'d2\'bb\'b8\'f6\'bd\'d3\'ca\'d5\'bb\'ba\'b3\'e5\'c7\'f8\'a3\'ac\'c4\'c7\'c3\'b4\'c4\'da\'b4\'e6\'d6\'d0\'bd\'ab\'bb\'e1\'b3\'f6\'cf\'d6\'ba\'dc\'b6\'e0\'b1\'bb\'cb\'f8\'b6\'a8\'b5\'c4\'d2\'b3\'c3\'e6(\'c7\'b0\'ce\'c4\'cb\'b5\'b9\'fd\'c1\'cb\'a3\'ac\'c3\'bf\'b8\'f6\'d6\'d8\'b5\'fe\'b2\'d9\'d7\'f7\'b6\'bc\'bb\'e1\'cf\'fb\'ba\'c4\'d2\'bb\'d0\'a1\'b2\'bf\'b7\'d6\'ce\'b4\'b7\'d6\'d2\'b3\'c4\'da\'b4\'e6\'b3\'d8\'a3\'ac\'cd\'ac\'ca\'b1\'bb\'b9\'bb\'e1\'cb\'f8\'b6\'a8\'cb\'f9\'d3\'d0\'c9\'e6\'bc\'b0\'b5\'c4\'bb\'ba\'b3\'e5\'c7\'f8)\'a1\'a3\'d5\'e2\'b8\'f6\'ce\'ca\'cc\'e2\'ba\'dc\'c4\'d1\'bb\'d8\'b4\'f0\'a3\'ac\'c3\'bb\'d3\'d0\'d2\'bb\'b8\'f6\'c8\'b7\'c7\'d0\'b5\'c4\'b4\'f0\'b0\'b8\'a1\'a3\'d7\'ee\'ba\'c3\'b5\'c4\'b7\'bd\'b7\'a8\'ca\'c7\'b0\'d1\'d5\'e2\'b8\'f6\'d6\'b5\'d7\'f6\'b3\'c9\'bf\'c9\'d2\'d4\'b5\'f7\'d5\'fb\'b5\'c4\'a3\'ac\'cd\'a8\'b9\'fd\'b7\'b4\'b8\'b4\'d7\'f6\'d0\'d4\'c4\'dc\'b2\'e2\'ca\'d4\'a3\'ac\'c4\'e3\'be\'cd\'bf\'c9\'d2\'d4\'b5\'c3\'b3\'f6\'d4\'da\'b5\'e4\'d0\'cd\'d3\'a6\'d3\'c3\'bb\'b7\'be\'b3\'d6\'d0\'d7\'ee\'bc\'d1\'b5\'c4\'d6\'b5\'a1\'a3\par
+\par
+      \'ba\'c3\'c1\'cb\'a3\'ac\'b5\'b1\'c4\'e3\'b2\'e2\'cb\'e3\'c7\'e5\'b3\'fe\'ba\'f3\'a3\'ac\'cf\'c2\'c3\'e6\'be\'cd\'ca\'c7\'b7\'a2\'cb\'cd\'ca\'fd\'be\'dd\'b5\'c4\'ce\'ca\'cc\'e2\'c1\'cb\'a3\'ac\'bf\'bc\'c2\'c7\'b5\'c4\'d6\'d8\'b5\'e3\'ca\'c7\'c4\'e3\'cf\'a3\'cd\'fb\'b7\'fe\'ce\'f1\'c6\'f7\'cd\'ac\'ca\'b1\'b4\'a6\'c0\'ed\'b6\'e0\'c9\'d9\'b8\'f6\'b2\'a2\'b7\'a2\'b5\'c4\'c1\'ac\'bd\'d3\'a1\'a3\par
+      \'cd\'a8\'b3\'a3\'c7\'e9\'bf\'f6\'cf\'c2\'a3\'ac\'b7\'fe\'ce\'f1\'c6\'f7\'d3\'a6\'b8\'c3\'cf\'de\'d6\'c6\'b2\'a2\'b7\'a2\'c1\'ac\'bd\'d3\'b5\'c4\'ca\'fd\'c1\'bf\'d2\'d4\'bc\'b0\'b5\'c8\'ba\'f2\'b4\'a6\'c0\'ed\'b5\'c4\'b7\'a2\'cb\'cd\'b5\'f7\'d3\'c3\'a1\'a3\'d2\'f2\'ce\'aa\'b2\'a2\'b7\'a2\'c1\'ac\'bd\'d3\'ca\'fd\'c1\'bf\'d4\'bd\'b6\'e0\'a3\'ac\'cb\'f9\'cf\'fb\'ba\'c4\'b5\'c4\'ce\'b4\'b7\'d6\'d2\'b3\'c4\'da\'b4\'e6\'b3\'d8\'d2\'b2\'d4\'bd\'b6\'e0\'a3\'bb\'b5\'c8\'ba\'f2\'b4\'a6\'c0\'ed\'b5\'c4\'b7\'a2\'cb\'cd\'b5\'f7\'d3\'c3\'d4\'bd\'b6\'e0\'a3\'ac\'b1\'bb\'cb\'f8\'b6\'a8\'b5\'c4\'c4\'da\'b4\'e6\'d2\'b3\'c3\'e6\'d2\'b2\'d4\'bd\'b6\'e0(\'d0\'a1\'d0\'c4\'b1\'f0\'b3\'ac\'b9\'fd\'c1\'cb\'bc\'ab\'cf\'de)\'a1\'a3\'d5\'e2\'cd\'ac\'d1\'f9\'d2\'b2\'d0\'e8\'d2\'aa\'b7\'b4\'b8\'b4\'b2\'e2\'ca\'d4\'b2\'c5\'d6\'aa\'b5\'c0\'b4\'f0\'b0\'b8\'a1\'a3\par
+\par
+      \'b6\'d4\'d3\'da\'c9\'cf\'ca\'f6\'bb\'b7\'be\'b3\'a3\'ac\'cd\'a8\'b3\'a3\'b2\'bb\'d0\'e8\'d2\'aa\'b9\'d8\'b1\'d5\'b5\'a5\'b8\'f6\'cc\'d7\'bd\'d3\'d7\'d6\'b5\'c4\'bb\'ba\'b3\'e5\'c7\'f8\'a3\'ac\'d2\'f2\'ce\'aa\'d6\'bb\'d4\'daAcceptEx()\'d6\'d0\'d3\'d0\'d2\'bb\'b4\'ce\'bd\'d3\'ca\'d5\'ca\'fd\'be\'dd\'b5\'c4\'b2\'d9\'d7\'f7\'a3\'ac\'b6\'f8\'d2\'aa\'b1\'a3\'d6\'a4\'b8\'f8\'c3\'bf\'b8\'f6\'b5\'bd\'c0\'b4\'b5\'c4\'c1\'ac\'bd\'d3\'cc\'e1\'b9\'a9\'bd\'d3\'ca\'d5\'bb\'ba\'b3\'e5\'c7\'f8\'b2\'a2\'b2\'bb\'ca\'c7\'cc\'ab\'c4\'d1\'b5\'c4\'ca\'c2\'c7\'e9\'a1\'a3\'b5\'ab\'ca\'c7\'a3\'ac\'c8\'e7\'b9\'fb\'bf\'cd\'bb\'a7\'bb\'fa\'d3\'eb\'b7\'fe\'ce\'f1\'c6\'f7\'bd\'bb\'bb\'a5\'b5\'c4\'b7\'bd\'ca\'bd\'b1\'e4\'d2\'bb\'b1\'e4\'a3\'ac\'bf\'cd\'bb\'a7\'bb\'fa\'d4\'da\'b7\'a2\'cb\'cd\'c1\'cb\'d2\'bb\'b4\'ce\'ca\'fd\'be\'dd\'d6\'ae\'ba\'f3\'a3\'ac\'bb\'b9\'d0\'e8\'d2\'aa\'b7\'a2\'cb\'cd\'b8\'fc\'b6\'e0\'b5\'c4\'ca\'fd\'be\'dd\'a3\'ac\'d4\'da\'d5\'e2\'d6\'d6\'c7\'e9\'bf\'f6\'cf\'c2\'b9\'d8\'b1\'d5\'bd\'d3\'ca\'d5\'bb\'ba\'b3\'e5\'be\'cd\'b2\'bb\'cc\'ab\'c3\'ee\'c1\'cb\'a3\'ac\'b3\'fd\'b7\'c7\'c4\'e3\'cf\'eb\'b0\'ec\'b7\'a8\'b1\'a3\'d6\'a4\'d4\'da\'c3\'bf\'b8\'f6\'c1\'ac\'bd\'d3\'c9\'cf\'b6\'bc\'b7\'a2\'b3\'f6\'c1\'cb\'d6\'d8\'b5\'fe\'bd\'d3\'ca\'d5\'b5\'f7\'d3\'c3\'c0\'b4\'bd\'d3\'ca\'d5\'b8\'fc\'b6\'e0\'b5\'c4\'ca\'fd\'be\'dd\'a1\'a3\par
+\par
+      \'bd\'e1\'c2\'db\par
+\par
+      \'bf\'aa\'b7\'a2\'b4\'f3\'cf\'ec\'d3\'a6\'b9\'e6\'c4\'a3\'b5\'c4Winsock\'b7\'fe\'ce\'f1\'c6\'f7\'b2\'a2\'b2\'bb\'ca\'c7\'ba\'dc\'bf\'c9\'c5\'c2\'a3\'ac\'c6\'e4\'ca\'b5\'d2\'b2\'be\'cd\'ca\'c7\'c9\'e8\'d6\'c3\'d2\'bb\'b8\'f6\'bc\'e0\'cc\'fd\'cc\'d7\'bd\'d3\'d7\'d6\'a1\'a2\'bd\'d3\'ca\'dc\'c1\'ac\'bd\'d3\'c7\'eb\'c7\'f3\'ba\'cd\'bd\'f8\'d0\'d0\'d6\'d8\'b5\'fe\'ca\'d5\'b7\'a2\'b5\'f7\'d3\'c3\'a1\'a3\'cd\'a8\'b9\'fd\'c9\'e8\'d6\'c3\'ba\'cf\'c0\'ed\'b5\'c4\'bd\'f8\'d0\'d0\'ca\'d8\'ba\'f2\'b5\'c4\'d6\'d8\'b5\'fe\'b5\'f7\'d3\'c3\'b5\'c4\'ca\'fd\'c1\'bf\'a3\'ac\'b7\'c0\'d6\'b9\'b3\'f6\'cf\'d6\'ce\'b4\'b7\'d6\'d2\'b3\'c4\'da\'b4\'e6\'b3\'d8\'b1\'bb\'ba\'c4\'be\'a1\'a3\'ac\'d5\'e2\'b2\'c5\'ca\'c7\'d7\'ee\'d6\'f7\'d2\'aa\'b5\'c4\'cc\'f4\'d5\'bd\'a1\'a3\'b0\'b4\'d5\'d5\'ce\'d2\'c3\'c7\'c7\'b0\'c3\'e6\'cc\'d6\'c2\'db\'b5\'c4\'d2\'bb\'d0\'a9\'d4\'ad\'d4\'f2\'a3\'ac\'c4\'e3\'be\'cd\'bf\'c9\'d2\'d4\'bf\'aa\'b7\'a2\'b3\'f6\'b4\'f3\'cf\'ec\'d3\'a6\'b9\'e6\'c4\'a3\'b5\'c4\'b7\'fe\'ce\'f1\'c6\'f7\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'a1\'a3\par
+\par
+\par
+      IO\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\par
+\par
+      \'cf\'c2\'c3\'e6\'d5\'aa\'b3\'ad\'d3\'daMSDN\'a1\'b6I/O Completion Ports\'a1\'b7\'a3\'acsmallfool\'b7\'ad\'d2\'eb\'a3\'ac\'d4\'ad\'ce\'c4\'c7\'eb\'b2\'ce\'bf\'bcCSDN\'ce\'c4\'b5\'b5\'d6\'d0\'d0\'c4\'ce\'c4\'d5\'c2\'a1\'b6I/O CompletionPorts\'a1\'b7\'a1\'a3\par
+      I/O\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'ca\'c7\'d2\'bb\'d6\'d6\'bb\'fa\'d6\'c6\'a3\'ac\'cd\'a8\'b9\'fd\'d5\'e2\'b8\'f6\'bb\'fa\'d6\'c6\'a3\'ac\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'d4\'da\'c6\'f4\'b6\'af\'ca\'b1\'bb\'e1\'ca\'d7\'cf\'c8\'b4\'b4\'bd\'a8\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'b3\'d8\'a3\'ac\'c8\'bb\'ba\'f3\'b8\'c3\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'ca\'b9\'d3\'c3\'cf\'df\'b3\'cc\'b3\'d8\'b4\'a6\'c0\'ed\'d2\'ec\'b2\'bdI/O\'c7\'eb\'c7\'f3\'a1\'a3\'d5\'e2\'d0\'a9\'cf\'df\'b3\'cc\'b1\'bb\'b4\'b4\'bd\'a8\'b5\'c4\'ce\'a8\'d2\'bb\'c4\'bf\'b5\'c4\'be\'cd\'ca\'c7\'d3\'c3\'d3\'da\'b4\'a6\'c0\'edI/O\'c7\'eb\'c7\'f3\'a1\'a3\'b6\'d4\'d3\'da\'b4\'a6\'c0\'ed\'b4\'f3\'c1\'bf\'b2\'a2\'b7\'a2\'d2\'ec\'b2\'bdI/O\'c7\'eb\'c7\'f3\'b5\'c4\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'c0\'b4\'cb\'b5\'a3\'ac\'cf\'e0\'b1\'c8\'d3\'da\'d4\'daI/O\'c7\'eb\'c7\'f3\'b7\'a2\'c9\'fa\'ca\'b1\'b4\'b4\'bd\'a8\'cf\'df\'b3\'cc\'c0\'b4\'cb\'b5\'a3\'ac\'ca\'b9\'d3\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da(s)\'cb\'fc\'be\'cd\'bf\'c9\'d2\'d4\'d7\'f6\'b5\'c4\'b8\'fc\'bf\'ec\'c7\'d2\'b8\'fc\'d3\'d0\'d0\'a7\'c2\'ca\'a1\'a3\par
+      CreateIoCompletionPort\'ba\'af\'ca\'fd\'bb\'e1\'ca\'b9\'d2\'bb\'b8\'f6I/O\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'d3\'eb\'d2\'bb\'b8\'f6\'bb\'f2\'b6\'e0\'b8\'f6\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'b7\'a2\'c9\'fa\'b9\'d8\'c1\'aa\'a1\'a3\'b5\'b1\'d3\'eb\'d2\'bb\'b8\'f6\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'e0\'b9\'d8\'b5\'c4\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'c9\'cf\'c6\'f4\'b6\'af\'b5\'c4\'d2\'ec\'b2\'bdI/O\'b2\'d9\'d7\'f7\'cd\'ea\'b3\'c9\'ca\'b1\'a3\'ac\'d2\'bb\'b8\'f6I/O\'cd\'ea\'b3\'c9\'b0\'fc\'be\'cd\'bb\'e1\'bd\'f8\'c8\'eb\'b5\'bd\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'b6\'d3\'c1\'d0\'d6\'d0\'a1\'a3\'b6\'d4\'d3\'da\'b6\'e0\'b8\'f6\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'c0\'b4\'cb\'b5\'a3\'ac\'d5\'e2\'d6\'d6\'bb\'fa\'d6\'c6\'bf\'c9\'d2\'d4\'d3\'c3\'c0\'b4\'b0\'d1\'b6\'e0\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'b5\'c4\'cd\'ac\'b2\'bd\'b5\'e3\'b7\'c5\'d4\'da\'b5\'a5\'b8\'f6\'b6\'d4\'cf\'f3\'d6\'d0\'a1\'a3\'a3\'a8\'d1\'d4\'cf\'c2\'d6\'ae\'d2\'e2\'a3\'ac\'c8\'e7\'b9\'fb\'ce\'d2\'c3\'c7\'d0\'e8\'d2\'aa\'b6\'d4\'c3\'bf\'b8\'f6\'be\'e4\'b1\'fa\'ce\'c4\'bc\'fe\'bd\'f8\'d0\'d0\'cd\'ac\'b2\'bd\'a3\'ac\'d2\'bb\'b0\'e3\'b6\'f8\'d1\'d4\'ce\'d2\'c3\'c7\'d0\'e8\'d2\'aa\'b6\'e0\'b8\'f6\'b6\'d4\'cf\'f3\'a3\'a8\'c8\'e7\'a3\'baEvent\'c0\'b4\'cd\'ac\'b2\'bd\'a3\'a9\'a3\'ac\'b6\'f8\'ce\'d2\'c3\'c7\'ca\'b9\'d3\'c3IOComplete Port \'c0\'b4\'ca\'b5\'cf\'d6\'d2\'ec\'b2\'bd\'b2\'d9\'d7\'f7\'a3\'ac\'ce\'d2\'c3\'c7\'bf\'c9\'d2\'d4\'cd\'ac\'b6\'e0\'b8\'f6\'ce\'c4\'bc\'fe\'cf\'e0\'b9\'d8\'c1\'aa\'a3\'ac\'c3\'bf\'b5\'b1\'d2\'bb\'b8\'f6\'ce\'c4\'bc\'fe\'d6\'d0\'b5\'c4\'d2\'ec\'b2\'bd\'b2\'d9\'d7\'f7\'cd\'ea\'b3\'c9\'a3\'ac\'be\'cd\'bb\'e1\'b0\'d1\'d2\'bb\'b8\'f6complete package\'b7\'c5\'b5\'bd\'b6\'d3\'c1\'d0\'d6\'d0\'a3\'ac\'d5\'e2\'d1\'f9\'ce\'d2\'c3\'c7\'be\'cd\'bf\'c9\'d2\'d4\'ca\'b9\'d3\'c3\'d5\'e2\'b8\'f6\'c0\'b4\'cd\'ea\'b3\'c9\'cb\'f9\'d3\'d0\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'b5\'c4\'cd\'ac\'b2\'bd\'a3\'a9\par
+      \'b5\'f7\'d3\'c3GetQueuedCompletionStatus\'ba\'af\'ca\'fd\'a3\'ac\'c4\'b3\'b8\'f6\'cf\'df\'b3\'cc\'be\'cd\'bb\'e1\'b5\'c8\'b4\'fd\'d2\'bb\'b8\'f6\'cd\'ea\'b3\'c9\'b0\'fc\'bd\'f8\'c8\'eb\'b5\'bd\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'b6\'d3\'c1\'d0\'d6\'d0\'a3\'ac\'b6\'f8\'b2\'bb\'ca\'c7\'d6\'b1\'bd\'d3\'b5\'c8\'b4\'fd\'d2\'ec\'b2\'bdI/O\'c7\'eb\'c7\'f3\'cd\'ea\'b3\'c9\'a1\'a3\'cf\'df\'b3\'cc\'a3\'a8\'c3\'c7\'a3\'a9\'be\'cd\'bb\'e1\'d7\'e8\'c8\'fb\'d3\'da\'cb\'fc\'c3\'c7\'b5\'c4\'d4\'cb\'d0\'d0\'d4\'da\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'a3\'a8\'b0\'b4\'d5\'d5\'ba\'f3\'bd\'f8\'cf\'c8\'b3\'f6\'b6\'d3\'c1\'d0\'cb\'b3\'d0\'f2\'b5\'c4\'b1\'bb\'ca\'cd\'b7\'c5\'a3\'a9\'a1\'a3\'d5\'e2\'be\'cd\'d2\'e2\'ce\'b6\'d7\'c5\'b5\'b1\'d2\'bb\'b8\'f6\'cd\'ea\'b3\'c9\'b0\'fc\'bd\'f8\'c8\'eb\'b5\'bd\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'b6\'d3\'c1\'d0\'d6\'d0\'ca\'b1\'a3\'ac\'cf\'b5\'cd\'b3\'bb\'e1\'ca\'cd\'b7\'c5\'d7\'ee\'bd\'fc\'b1\'bb\'d7\'e8\'c8\'fb\'d4\'da\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'cf\'df\'b3\'cc\'a1\'a3\par
+      \'b5\'f7\'d3\'c3GetQueuedCompletionStatus\'a3\'ac\'cf\'df\'b3\'cc\'be\'cd\'bb\'e1\'bd\'ab\'bb\'e1\'d3\'eb\'c4\'b3\'b8\'f6\'d6\'b8\'b6\'a8\'b5\'c4\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'bd\'a8\'c1\'a2\'c1\'aa\'cf\'b5\'a3\'ac\'d2\'bb\'d6\'b1\'d1\'d3\'d0\'f8\'c6\'e4\'b8\'c3\'cf\'df\'b3\'cc\'b5\'c4\'b4\'e6\'d4\'da\'d6\'dc\'c6\'da\'a3\'ac\'bb\'f2\'b1\'bb\'d6\'b8\'b6\'a8\'c1\'cb\'b2\'bb\'cd\'ac\'b5\'c4\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'a3\'ac\'bb\'f2\'d5\'df\'ca\'cd\'b7\'c5\'c1\'cb\'d3\'eb\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'c1\'aa\'cf\'b5\'a1\'a3\'d2\'bb\'b8\'f6\'cf\'df\'b3\'cc\'d6\'bb\'c4\'dc\'d3\'eb\'d7\'ee\'b6\'e0\'b2\'bb\'b3\'ac\'b9\'fd\'d2\'bb\'b8\'f6\'b5\'c4\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b7\'a2\'c9\'fa\'c1\'aa\'cf\'b5\'a1\'a3\par
+      \'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'d7\'ee\'d6\'d8\'d2\'aa\'b5\'c4\'cc\'d8\'d0\'d4\'be\'cd\'ca\'c7\'b2\'a2\'b7\'a2\'c1\'bf\'a1\'a3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'b2\'a2\'b7\'a2\'c1\'bf\'bf\'c9\'d2\'d4\'d4\'da\'b4\'b4\'bd\'a8\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'ca\'b1\'d6\'b8\'b6\'a8\'a1\'a3\'b8\'c3\'b2\'a2\'b7\'a2\'c1\'bf\'cf\'de\'d6\'c6\'c1\'cb\'d3\'eb\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'e0\'b9\'d8\'c1\'aa\'b5\'c4\'bf\'c9\'d4\'cb\'d0\'d0\'cf\'df\'b3\'cc\'b5\'c4\'ca\'fd\'c4\'bf\'a1\'a3\'b5\'b1\'d3\'eb\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'e0\'b9\'d8\'c1\'aa\'b5\'c4\'bf\'c9\'d4\'cb\'d0\'d0\'cf\'df\'b3\'cc\'b5\'c4\'d7\'dc\'ca\'fd\'c4\'bf\'b4\'ef\'b5\'bd\'c1\'cb\'b8\'c3\'b2\'a2\'b7\'a2\'c1\'bf\'a3\'ac\'cf\'b5\'cd\'b3\'be\'cd\'bb\'e1\'d7\'e8\'c8\'fb\'c8\'ce\'ba\'ce\'d3\'eb\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'e0\'b9\'d8\'c1\'aa\'b5\'c4\'ba\'f3\'d0\'f8\'cf\'df\'b3\'cc\'b5\'c4\'d6\'b4\'d0\'d0\'a3\'ac\'d6\'b1\'b5\'bd\'d3\'eb\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'e0\'b9\'d8\'c1\'aa\'b5\'c4\'bf\'c9\'d4\'cb\'d0\'d0\'cf\'df\'b3\'cc\'ca\'fd\'c4\'bf\'cf\'c2\'bd\'b5\'b5\'bd\'d0\'a1\'d3\'da\'b8\'c3\'b2\'a2\'b7\'a2\'c1\'bf\'ce\'aa\'d6\'b9\'a1\'a3\'d7\'ee\'d3\'d0\'d0\'a7\'b5\'c4\'bc\'d9\'cf\'eb\'ca\'c7\'b7\'a2\'c9\'fa\'d4\'da\'d3\'d0\'cd\'ea\'b3\'c9\'b0\'fc\'d4\'da\'b6\'d3\'c1\'d0\'d6\'d0\'b5\'c8\'b4\'fd\'a3\'ac\'b6\'f8\'c3\'bb\'d3\'d0\'b5\'c8\'b4\'fd\'b1\'bb\'c2\'fa\'d7\'e3\'a3\'ac\'d2\'f2\'ce\'aa\'b4\'cb\'ca\'b1\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b4\'ef\'b5\'bd\'c1\'cb\'c6\'e4\'b2\'a2\'b7\'a2\'c1\'bf\'b5\'c4\'bc\'ab\'cf\'de\'a1\'a3\'b4\'cb\'ca\'b1\'a3\'ac\'d2\'bb\'b8\'f6\'d5\'fd\'d4\'da\'d4\'cb\'d0\'d0\'d6\'d0\'b5\'c4\'cf\'df\'b3\'cc\'b5\'f7\'d3\'c3GetQueuedCompletionStatus\'ca\'b1\'a3\'ac\'cb\'fc\'be\'cd\'bb\'e1\'c1\'a2\'bf\'cc\'b4\'d3\'b6\'d3\'c1\'d0\'d6\'d0\'c8\'a1\'d7\'df\'b8\'c3\'cd\'ea\'b3\'c9\'b0\'fc\'a1\'a3\'d5\'e2\'d1\'f9\'be\'cd\'b2\'bb\'b4\'e6\'d4\'da\'d7\'c5\'bb\'b7\'be\'b3\'b5\'c4\'c7\'d0\'bb\'bb\'a3\'ac\'d2\'f2\'ce\'aa\'b8\'c3\'b4\'a6\'d3\'da\'d4\'cb\'d0\'d0\'d6\'d0\'b5\'c4\'cf\'df\'b3\'cc\'be\'cd\'bb\'e1\'c1\'ac\'d0\'f8\'b2\'bb\'b6\'cf\'b5\'d8\'b4\'d3\'b6\'d3\'c1\'d0\'d6\'d0\'c8\'a1\'d7\'df\'cd\'ea\'b3\'c9\'b0\'fc\'a3\'ac\'b6\'f8\'c6\'e4\'cb\'fb\'b5\'c4\'cf\'df\'b3\'cc\'be\'cd\'b2\'bb\'c4\'dc\'d4\'cb\'d0\'d0\'c1\'cb\'a1\'a3\par
+      \'b6\'d4\'d3\'da\'b2\'a2\'b7\'a2\'c1\'bf\'d7\'ee\'ba\'c3\'b5\'c4\'cc\'f4\'d1\'a1\'d6\'b5\'be\'cd\'ca\'c7\'c4\'fa\'bc\'c6\'cb\'e3\'bb\'fa\'d6\'d0CPU\'b5\'c4\'ca\'fd\'c4\'bf\'a1\'a3\'c8\'e7\'b9\'fb\'c4\'fa\'b5\'c4\'ca\'c2\'ce\'f1\'b4\'a6\'c0\'ed\'d0\'e8\'d2\'aa\'d2\'bb\'b8\'f6\'c2\'fe\'b3\'a4\'b5\'c4\'bc\'c6\'cb\'e3\'ca\'b1\'bc\'e4\'a3\'ac\'d2\'bb\'b8\'f6\'b1\'c8\'bd\'cf\'b4\'f3\'b5\'c4\'b2\'a2\'b7\'a2\'c1\'bf\'bf\'c9\'d2\'d4\'d4\'ca\'d0\'ed\'b8\'fc\'b6\'e0\'cf\'df\'b3\'cc\'c0\'b4\'d4\'cb\'d0\'d0\'a1\'a3\'cb\'e4\'c8\'bb\'cd\'ea\'b3\'c9\'c3\'bf\'b8\'f6\'ca\'c2\'ce\'f1\'b4\'a6\'c0\'ed\'d0\'e8\'d2\'aa\'bb\'a8\'b7\'d1\'b8\'fc\'b3\'a4\'b5\'c4\'ca\'b1\'bc\'e4\'a3\'ac\'b5\'ab\'b8\'fc\'b6\'e0\'b5\'c4\'ca\'c2\'ce\'f1\'bf\'c9\'d2\'d4\'cd\'ac\'ca\'b1\'b1\'bb\'b4\'a6\'c0\'ed\'a1\'a3\'b6\'d4\'d3\'da\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'c0\'b4\'cb\'b5\'a3\'ac\'ba\'dc\'c8\'dd\'d2\'d7\'cd\'a8\'b9\'fd\'b2\'e2\'ca\'d4\'b2\'a2\'b7\'a2\'c1\'bf\'c0\'b4\'bb\'f1\'b5\'c3\'d7\'ee\'ba\'c3\'b5\'c4\'d0\'a7\'b9\'fb\'a1\'a3\par
+      PostQueuedCompletionStatus\'ba\'af\'ca\'fd\'d4\'ca\'d0\'ed\'d3\'a6\'d3\'c3\'b3\'cc\'d0\'f2\'bf\'c9\'d2\'d4\'d5\'eb\'b6\'d4\'d7\'d4\'b6\'a8\'d2\'e5\'b5\'c4\'d7\'a8\'d3\'c3I/O\'cd\'ea\'b3\'c9\'b0\'fc\'bd\'f8\'d0\'d0\'c5\'c5\'b6\'d3\'a3\'ac\'b6\'f8\'ce\'de\'d0\'e8\'c6\'f4\'b6\'af\'d2\'bb\'b8\'f6\'d2\'ec\'b2\'bdI/O\'b2\'d9\'d7\'f7\'a1\'a3\'d5\'e2\'b5\'e3\'b6\'d4\'d3\'da\'cd\'a8\'d6\'aa\'cd\'e2\'b2\'bf\'ca\'c2\'bc\'fe\'b5\'c4\'b9\'a4\'d7\'f7\'d5\'df\'cf\'df\'b3\'cc\'c0\'b4\'cb\'b5\'ba\'dc\'d3\'d0\'d3\'c3\'a1\'a3\par
+      \'d4\'da\'c3\'bb\'d3\'d0\'b8\'fc\'b6\'e0\'b5\'c4\'d2\'fd\'d3\'c3\'d5\'eb\'b6\'d4\'c4\'b3\'b8\'f6\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'ca\'b1\'a3\'ac\'d0\'e8\'d2\'aa\'ca\'cd\'b7\'c5\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'a1\'a3\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'be\'e4\'b1\'fa\'d2\'d4\'bc\'b0\'d3\'eb\'b8\'c3\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'cf\'e0\'b9\'d8\'c1\'aa\'b5\'c4\'cb\'f9\'d3\'d0\'ce\'c4\'bc\'fe\'be\'e4\'b1\'fa\'b6\'bc\'d0\'e8\'d2\'aa\'b1\'bb\'ca\'cd\'b7\'c5\'a1\'a3\'b5\'f7\'d3\'c3CloseHandle\'bf\'c9\'d2\'d4\'ca\'cd\'b7\'c5\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'b5\'c4\'be\'e4\'b1\'fa\'a1\'a3\par
+\par
+      \'cf\'c2\'c3\'e6\'b5\'c4\'b4\'fa\'c2\'eb\'c0\'fb\'d3\'c3IO\'cd\'ea\'b3\'c9\'b6\'cb\'bf\'da\'d7\'f6\'c1\'cb\'d2\'bb\'b8\'f6\'bc\'f2\'b5\'a5\'b5\'c4\'cf\'df\'b3\'cc\'b3\'d8\'a1\'a3\par
+\par
+      /************************************************************************/\par
+      /* Test IOCompletePort.                                                 */\par
+      /************************************************************************/\par
+\par
+      DWORD WINAPI IOCPWorkThread(PVOID pParam)\par
+      \{\par
+          HANDLE CompletePort = (HANDLE)pParam;\par
+          PVOID UserParam;\par
+          WORK_ITEM_PROC UserProc;\par
+          LPOVERLAPPED pOverlapped;\par
+          \par
+          for(;\par
+          \{\par
+              BOOL bRet = GetQueuedCompletionStatus(\par
+                  CompletePort,\par
+                  (LPDWORD)&UserParam,\par
+                  (LPDWORD)&UserProc,\par
+                  &pOverlapped,\par
+                  INFINITE);\par
+\par
+              _ASSERT(bRet);\par
+\par
+              if(UserProc == NULL) // Quit signal.\par
+                  break;\par
+\par
+              // execute user's proc.        \par
+              UserProc(UserParam);        \par
+          \}\par
+\par
+          return 0;\par
+      \}\par
+\par
+      void TestIOCompletePort(BOOL bWaitMode, LONG ThreadNum)\par
+      \{\par
+          HANDLE CompletePort;\par
+          OVERLAPPED Overlapped = \{0, 0, 0, 0, NULL\};\par
+\par
+          CompletePort = CreateIoCompletionPort(\par
+              INVALID_HANDLE_VALUE,\par
+              NULL,\par
+              NULL,\par
+              0);\par
+          \par
+          // Create threads.\par
+          for(int i=0; i<ThreadNum; i++)\par
+          \{\par
+              HANDLE hThread = CreateThread(NULL,\par
+                  0,\par
+                  IOCPWorkThread,\par
+                  CompletePort,\par
+                  0,\par
+                  NULL);\par
+\par
+              CloseHandle(hThread);\par
+          \}\par
+\par
+\par
+          CompleteEvent = CreateEvent(NULL, FALSE, FALSE, NULL);\par
+          BeginTime = GetTickCount();\par
+          ItemCount = 20;\par
+\par
+          for(i=0; i<20; i++)\par
+          \{\par
+              PostQueuedCompletionStatus(\par
+                  CompletePort,\par
+                  (DWORD)bWaitMode,\par
+                  (DWORD)UserProc1,\par
+                  &Overlapped);\par
+          \}\par
+          \par
+          WaitForSingleObject(CompleteEvent, INFINITE);\par
+          CloseHandle(CompleteEvent);\par
+\par
+\par
+          // Destroy all threads.\par
+          for(i=0; i<ThreadNum; i++)\par
+          \{\par
+              PostQueuedCompletionStatus(\par
+                  CompletePort,\par
+                  NULL,\par
+                  NULL,\par
+                  &Overlapped);\par
+          \}\par
+\par
+          Sleep(1000); // wait all thread exit.\par
+\par
+          CloseHandle(CompletePort);\par
+      \}\par
+ \par
+}
+ 

@@ -1,0 +1,11 @@
+JMailDemo1 是邮件接收代码
+JMailDemo2 是邮件发送代码
+
+jmail.dll是 4.3版本的JMail组件
+
+运行程序前请先注册组件：
+regsvr32.exe jmail.dll
+
+VC知识库 2003.5
+http://www.vckbase.com
+http://www.vckbase.net

@@ -1,0 +1,172 @@
+--  Copyright (C) 2000 Carnegie Mellon University
+-- 
+--  Author(s): Mike Andersen <mike@src.no>, <mike.andersen@proseq.net>,
+--             Thomas Stenhaug <thomas@src.no>, <thomas.stenhaug@proseq.net>
+--  
+--  Based on the create_mysql file from:
+--             Jed Pickel <jpickel@cert.org>, <jed@pickel.net>
+-- 
+--  This program is free software; you can redistribute it and/or modify
+--  it under the terms of the GNU General Public License as published by
+--  the Free Software Foundation; either version 2 of the License, or
+--  (at your option) any later version.
+-- 
+--  This program is distributed in the hope that it will be useful,
+--  but WITHOUT ANY WARRANTY; without even the implied warranty of
+--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+--  GNU General Public License for more details.
+-- 
+--  You should have received a copy of the GNU General Public License
+--  along with this program; if not, write to the Free Software
+--  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+
+-- Comments on the conversion:
+--
+--  There's a trigger in place of the AUTO_INCREMENT-option for the 
+--  sensor.sid.  I don't fully understand how the NUMBER-type conversion
+--  works at this point.  
+
+--
+-- Oracles DATE seems "bit" more picky on the format than MySQL.
+-- 
+CREATE TABLE event (
+        sid             INT NOT NULL,
+        cid             INT NOT NULL,
+        signature       VARCHAR2(255), 
+        timestamp       VARCHAR2(24),
+        PRIMARY KEY (sid, cid));
+
+--
+--  store info about the sensor supplying data
+-- 
+CREATE TABLE sensor (
+        sid             INT NOT NULL,
+        hostname        VARCHAR2(100),
+        interface       VARCHAR2(100),
+        filter          VARCHAR2(100),
+        detail          INT,
+        encoding        INT,
+        PRIMARY KEY (sid));
+
+--
+--  auto-increment the sensor.sid
+-- 
+CREATE SEQUENCE seq_snort_sensor_id START WITH 0 INCREMENT BY 1;
+
+CREATE TRIGGER tr_snort_sensor_id
+        BEFORE INSERT ON sensor
+        FOR EACH ROW
+        BEGIN
+                SELECT seq_snort_sensor_id.nextval INTO :new.SID FROM dual;
+        END;
+/
+
+--  All of the fields of an ip header
+CREATE TABLE iphdr (
+        sid             INT NOT NULL,
+        cid             INT NOT NULL,
+        ip_src          INT NOT NULL,
+        ip_src0         INT,
+        ip_src1         INT,
+        ip_src2         INT,
+        ip_src3         INT,
+        ip_dst          INT NOT NULL,
+        ip_dst0         INT,
+        ip_dst1         INT,
+        ip_dst2         INT,
+        ip_dst3         INT,
+        ip_ver          INT,
+        ip_hlen         INT,
+        ip_tos          INT,
+        ip_len          INT,
+        ip_id           INT,
+        ip_flags        INT,
+        ip_off          INT,
+        ip_ttl          INT,
+        ip_proto        INT NOT NULL,
+        ip_csum         INT,
+        PRIMARY KEY (sid,cid));
+
+
+--  All of the fields of a tcp header
+CREATE TABLE tcphdr (
+        sid             INT NOT NULL,
+        cid             INT NOT NULL,
+        tcp_sport       INT NOT NULL,
+        tcp_dport       INT NOT NULL,
+        tcp_seq         INT,
+        tcp_ack         INT,
+        tcp_off         INT,
+        tcp_res         INT,
+        tcp_flags       INT NOT NULL,
+        tcp_win         INT,
+        tcp_csum        INT,
+        tcp_urp         INT,
+        PRIMARY KEY (sid,cid));
+
+
+--  All of the fields of a udp header
+CREATE TABLE udphdr (
+        sid             INT NOT NULL,
+        cid             INT NOT NULL,
+        udp_sport       INT NOT NULL,
+        udp_dport       INT NOT NULL,
+        udp_len         INT,
+        udp_csum        INT,
+        PRIMARY KEY (sid,cid));
+
+
+--  All of the fields of an icmp header
+CREATE TABLE icmphdr(
+        sid             INT NOT NULL,
+        cid             INT NOT NULL,
+        icmp_type       INT NOT NULL,
+        icmp_code       INT NOT NULL,
+        icmp_csum       INT,
+        icmp_id         INT,
+        icmp_seq        INT,
+        PRIMARY KEY (sid,cid));
+
+
+--  Protocol options
+CREATE TABLE opt (
+        sid             INT NOT NULL,
+        cid             INT NOT NULL,
+        optid           INT NOT NULL,
+        opt_proto       INT NOT NULL,
+        opt_code        INT NOT NULL,
+        opt_len         INT,
+        opt_data        LONG,
+        PRIMARY KEY (sid,cid,optid));
+        
+
+--  Packet payload
+CREATE TABLE data (
+        sid             INT NOT NULL,
+        cid             INT NOT NULL,
+        data_payload  LONG,
+        PRIMARY KEY (sid,cid));
+        
+
+--  encoding is a lookup table for storing encoding types
+CREATE TABLE encoding (
+        encoding_type   INT NOT NULL,
+        encoding_text   VARCHAR2(50) NOT NULL,
+        PRIMARY KEY (encoding_type));
+        
+INSERT INTO encoding (encoding_type, encoding_text) VALUES (0, 'hex');
+INSERT INTO encoding (encoding_type, encoding_text) VALUES (1, 'base64');
+INSERT INTO encoding (encoding_type, encoding_text) VALUES (2, 'ascii');
+
+
+--  detail is a lookup table for storing different detail levels
+CREATE TABLE detail (
+        detail_type     INT NOT NULL,
+        detail_text     VARCHAR2(50) NOT NULL,
+        PRIMARY KEY (detail_type));
+        
+INSERT INTO detail (detail_type, detail_text) VALUES (0, 'fast');
+INSERT INTO detail (detail_type, detail_text) VALUES (1, 'full');
+
+

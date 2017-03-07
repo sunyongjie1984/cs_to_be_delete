@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2", "2\2.vcproj", "{84103B85-D00C-4F32-8D24-56D3EFCE5AEB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "子类到父类的转换", "子类到父类的转换.vcproj", "{3A082CB0-F957-4C4E-B47F-55323AFA3F79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84103B85-D00C-4F32-8D24-56D3EFCE5AEB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{84103B85-D00C-4F32-8D24-56D3EFCE5AEB}.Debug|Win32.Build.0 = Debug|Win32
+		{84103B85-D00C-4F32-8D24-56D3EFCE5AEB}.Release|Win32.ActiveCfg = Release|Win32
+		{84103B85-D00C-4F32-8D24-56D3EFCE5AEB}.Release|Win32.Build.0 = Release|Win32
+		{3A082CB0-F957-4C4E-B47F-55323AFA3F79}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3A082CB0-F957-4C4E-B47F-55323AFA3F79}.Debug|Win32.Build.0 = Debug|Win32
+		{3A082CB0-F957-4C4E-B47F-55323AFA3F79}.Release|Win32.ActiveCfg = Release|Win32
+		{3A082CB0-F957-4C4E-B47F-55323AFA3F79}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,48 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TestClientByImplicitLinking - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/TestClientByImplicitLinking.res" /d "_DEBUG" /d "_AFXDLL" "D:\DLLSample\TestClientByImplicitLinking\TestClientByImplicitLinking.rc"" 
+Creating temporary file "C:\DOCUME~1\toshiba\LOCALS~1\Temp\RSP25D.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_UNICODE" /D "UNICODE" /Fp"Debug/TestClientByImplicitLinking.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\DLLSample\TestClientByImplicitLinking\TestClientByImplicitLinking.cpp"
+"D:\DLLSample\TestClientByImplicitLinking\TestClientByImplicitLinkingDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\toshiba\LOCALS~1\Temp\RSP25D.tmp" 
+Creating temporary file "C:\DOCUME~1\toshiba\LOCALS~1\Temp\RSP25E.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_UNICODE" /D "UNICODE" /Fp"Debug/TestClientByImplicitLinking.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\DLLSample\TestClientByImplicitLinking\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\toshiba\LOCALS~1\Temp\RSP25E.tmp" 
+Creating temporary file "C:\DOCUME~1\toshiba\LOCALS~1\Temp\RSP25F.tmp" with contents
+[
+Calculator.lib /nologo /entry:"wWinMainCRTStartup" /subsystem:windows /incremental:yes /pdb:"Debug/TestClientByImplicitLinking.pdb" /debug /machine:I386 /out:"Debug/TestClientByImplicitLinking.exe" /pdbtype:sept /libpath:"../Calculator/debug" 
+.\Debug\StdAfx.obj
+.\Debug\TestClientByImplicitLinking.obj
+.\Debug\TestClientByImplicitLinkingDlg.obj
+.\Debug\TestClientByImplicitLinking.res
+]
+Creating command line "link.exe @C:\DOCUME~1\toshiba\LOCALS~1\Temp\RSP25F.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+TestClientByImplicitLinking.cpp
+TestClientByImplicitLinkingDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+TestClientByImplicitLinking.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

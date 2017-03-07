@@ -1,0 +1,1 @@
+extern "C" __declspec(dllexport) int fun(int x1,int x2,int x3); 

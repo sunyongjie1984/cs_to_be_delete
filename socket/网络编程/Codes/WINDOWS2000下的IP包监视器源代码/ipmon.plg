@@ -1,0 +1,18 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ipmon - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Build : warning : failed to (or don't know how to) build '\\192.168.0.1\bluebird\Source Code\一般代码\code_FF\C&C++\网络通信类\WINDOWS2000下的IP包监视器源代码\ipmonDlg.cpp'
+
+
+
+
+<h3>Results</h3>
+ipmon.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

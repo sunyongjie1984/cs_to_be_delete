@@ -1,0 +1,138 @@
+<!--
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//
+// Copyright (c) Microsoft Corporation. All rights reserved
+-->
+
+<Application xmlns="http://schemas.microsoft.com/windows/2009/Scenic/Intent">
+
+  <Application.Commands>
+    <Command Name="TabHome" Symbol="cmdTabHome" Id="30000" LabelTitle="Home" />
+    <Command Name="GroupMain" Symbol="cmdGroupMain" Id="30001" LabelTitle="Main" />
+    <Command Name="MyButton" Symbol="cmdMyButton" Id="30002" LabelTitle="My Button">
+      <Command.TooltipTitle>My Button</Command.TooltipTitle>
+      <Command.TooltipDescription>Click on My Button</Command.TooltipDescription>
+      <Command.LargeImages>
+        <Image Source="Button_Image.bmp"/>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="MyChoice" Symbol="cmdMyChoice" Id="30003" LabelTitle="My Choice">
+      <Command.TooltipTitle>My Choice</Command.TooltipTitle>
+      <Command.TooltipDescription>Select My Choice!</Command.TooltipDescription>
+      <Command.LargeImages>
+        <Image Source="Button_Image.bmp"/>
+      </Command.LargeImages>
+    </Command>
+
+    <Command Name="GroupDatabase" Symbol="cmdGroupDatabase" Id="30004">
+      <Command.LabelTitle>Database</Command.LabelTitle>
+    </Command>
+    <Command Name="GroupClipboard" Symbol="cmdGroupClipboard" Id="30005">
+      <Command.LabelTitle>Clipboard</Command.LabelTitle>
+      <Command.LargeImages>
+        <Image Source="Paste.bmp"/>
+      </Command.LargeImages>
+    </Command>
+
+    <Command Name="AddTable" Symbol="cmdAddTable" Id="30006"
+    LabelTitle="Add Table">
+      <Command.TooltipTitle>Add Table</Command.TooltipTitle>
+      <Command.TooltipDescription>Add Table</Command.TooltipDescription>
+      <Command.LargeImages>
+        <Image Source="AddTableL.bmp"/>
+      </Command.LargeImages>
+      <Command.SmallImages>
+        <Image Source="AddTableS.bmp"/>
+      </Command.SmallImages>
+    </Command>
+
+    <Command Name="DeleteTable" Symbol="cmdDeleteTable" Id="30007" LabelTitle="Delete Table">
+      <Command.TooltipTitle>Delete Table</Command.TooltipTitle>
+      <Command.TooltipDescription>Delete Table</Command.TooltipDescription>
+      <Command.LargeImages>
+        <Image Source="DeleteTableL.bmp"/>
+      </Command.LargeImages>
+      <Command.SmallImages>
+        <Image Source="DeleteTableS.bmp"/>
+      </Command.SmallImages>
+    </Command>
+
+    <Command Name="PrintRelationships" Symbol="cmdPrintRelationships" Id="30008" LabelTitle="Print Relationships">
+      <Command.TooltipTitle>Print Relationships</Command.TooltipTitle>
+      <Command.TooltipDescription>Print Relationships</Command.TooltipDescription>
+      <Command.LargeImages>
+        <Image Source="PrintRelationshipsL.bmp"/>
+      </Command.LargeImages>
+      <Command.SmallImages>
+        <Image Source="PrintRelationshipsS.bmp"/>
+      </Command.SmallImages>
+    </Command>
+
+    <Command Name="Paste" Symbol="cmdPaste" Id="30009" LabelTitle="Paste">
+      <Command.TooltipTitle>Paste</Command.TooltipTitle>
+      <Command.TooltipDescription>Paste</Command.TooltipDescription>
+      <Command.LargeImages>
+        <Image Source="Paste.bmp"/>
+      </Command.LargeImages>
+    </Command>
+
+    <Command Name="Cut" Symbol="cmdCut" Id="30010" LabelTitle="Cut">
+      <Command.TooltipTitle>Cut</Command.TooltipTitle>
+      <Command.TooltipDescription>Cut</Command.TooltipDescription>
+      <Command.SmallImages>
+        <Image Source="Cut.bmp"/>
+      </Command.SmallImages>
+    </Command>
+
+    <Command Name="Copy" Symbol="cmdCopy" Id="30011" LabelTitle="Copy">
+      <Command.TooltipTitle>Copy</Command.TooltipTitle>
+      <Command.TooltipDescription>Copy</Command.TooltipDescription>
+      <Command.SmallImages>
+        <Image Source="Copy.bmp"/>
+      </Command.SmallImages>
+    </Command>
+  </Application.Commands>
+
+  <Application.Views>
+    <Ribbon>
+      <Ribbon.Tabs>
+        <Tab CommandName="TabHome">
+          <Tab.ScalingPolicy>
+            <ScalingPolicy>
+              <ScalingPolicy.IdealSizes>
+                <Scale Group="GroupMain" Size="Large"/>
+                <Scale Group ="GroupDatabase" Size="Large"/>
+                <Scale Group ="GroupClipboard" Size="Large"/>
+              </ScalingPolicy.IdealSizes>
+              <Scale Group ="GroupClipboard" Size="Medium"/>
+              <Scale Group ="GroupClipboard" Size="PopUp"/>
+              <Scale Group ="GroupDatabase" Size="Medium"/>
+            </ScalingPolicy>
+          </Tab.ScalingPolicy>
+          <Group CommandName="GroupMain" SizeDefinition="TwoButtons">
+            <ToggleButton CommandName="MyChoice"/>
+            <Button CommandName="MyButton"/>
+          </Group>
+          <Group CommandName="GroupDatabase" SizeDefinition="ThreeButtons">
+            <Button CommandName="AddTable"/>
+            <Button CommandName="DeleteTable"/>
+            <Button CommandName="PrintRelationships"/>
+          </Group>
+          <Group CommandName="GroupClipboard" SizeDefinition ="BigButtonsAndSmallButtonsOrInputs">
+            <ControlGroup>
+              <Button CommandName="Paste"/>
+            </ControlGroup>
+            <ControlGroup>
+              <Button CommandName="Cut"/>
+              <Button CommandName="Copy"/>
+            </ControlGroup>
+          </Group>
+        </Tab>
+      </Ribbon.Tabs>    
+    </Ribbon>
+  </Application.Views>
+
+</Application>

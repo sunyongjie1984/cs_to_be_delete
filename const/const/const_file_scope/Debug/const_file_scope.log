@@ -1,0 +1,4 @@
+﻿  main.cpp
+g:\centos\cs\code\const\const\const_file_scope\test.h(1): error C2370: 'i': redefinition; different storage class
+  g:\centos\cs\code\const\const\const_file_scope\test2.h(1): note: see declaration of 'i'
+g:\centos\cs\code\const\const\const_file_scope\main.cpp(7): error C2088: '<<': illegal for class

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calc", "Calc.vcproj", "{136FCE8E-D07D-42C3-A9AA-678CE6539C71}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UserOfCalc", "UserOfCalc.vcproj", "{E9D49A72-3582-444B-82D7-B3CB7C658314}"
+	ProjectSection(ProjectDependencies) = postProject
+		{136FCE8E-D07D-42C3-A9AA-678CE6539C71} = {136FCE8E-D07D-42C3-A9AA-678CE6539C71}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{136FCE8E-D07D-42C3-A9AA-678CE6539C71}.Debug|Win32.ActiveCfg = Debug|Win32
+		{136FCE8E-D07D-42C3-A9AA-678CE6539C71}.Debug|Win32.Build.0 = Debug|Win32
+		{136FCE8E-D07D-42C3-A9AA-678CE6539C71}.Release|Win32.ActiveCfg = Release|Win32
+		{136FCE8E-D07D-42C3-A9AA-678CE6539C71}.Release|Win32.Build.0 = Release|Win32
+		{E9D49A72-3582-444B-82D7-B3CB7C658314}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E9D49A72-3582-444B-82D7-B3CB7C658314}.Debug|Win32.Build.0 = Debug|Win32
+		{E9D49A72-3582-444B-82D7-B3CB7C658314}.Release|Win32.ActiveCfg = Release|Win32
+		{E9D49A72-3582-444B-82D7-B3CB7C658314}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

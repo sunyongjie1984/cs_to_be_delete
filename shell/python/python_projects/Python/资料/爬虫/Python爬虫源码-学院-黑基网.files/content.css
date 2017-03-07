@@ -1,0 +1,108 @@
+.content {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.content H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; WIDTH: 722px; COLOR: white; HEIGHT: 30px; TEXT-ALIGN: center
+}
+.content H2 {
+	PADDING-RIGHT: 100px; FONT-WEIGHT: normal; HEIGHT: 20px; TEXT-ALIGN: right
+}
+.content H3 {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; TEXT-ALIGN: right
+}
+.font_1 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; COLOR: #ffffff; LINE-HEIGHT: 17px; PADDING-TOP: 2px; HEIGHT: 17px; BACKGROUND-COLOR: #0099ff
+}
+#property {
+	PADDING-RIGHT: 3px; BORDER-TOP: #555 1px solid; MARGIN-TOP: 5px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #666666; PADDING-TOP: 3px; TEXT-ALIGN: center
+}
+#description {
+	BORDER-RIGHT: #999 1px dotted; PADDING-RIGHT: 5px; BORDER-TOP: #999 1px dotted; MARGIN-TOP: 10px; PADDING-LEFT: 5px; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; BORDER-LEFT: #999 1px dotted; LINE-HEIGHT: 150%; PADDING-TOP: 5px; BORDER-BOTTOM: #999 1px dotted
+}
+.introduce {
+	BORDER-RIGHT: #666 1px dotted; PADDING-RIGHT: 10px; BORDER-TOP: #666 1px dotted; PADDING-LEFT: 10px; FONT-SIZE: 14px; PADDING-BOTTOM: 10px; MARGIN: 5px 20px; BORDER-LEFT: #666 1px dotted; COLOR: #aaa; PADDING-TOP: 10px; BORDER-BOTTOM: #666 1px dotted
+}
+.introduce STRONG {
+	FONT-SIZE: 14px
+}
+.keywords {
+	BORDER-RIGHT: #666 0px dotted; PADDING-RIGHT: 10px; BORDER-TOP: #666 0px dotted; PADDING-LEFT: 10px; FONT-SIZE: 14px; PADDING-BOTTOM: 10px; MARGIN: 5px 20px; BORDER-LEFT: #666 0px dotted; COLOR: #aaa; PADDING-TOP: 10px; BORDER-BOTTOM: #666 0px dotted
+}
+.content_text {
+	PADDING-RIGHT: 20px; PADDING-LEFT: 20px; FONT-SIZE: 14px; PADDING-BOTTOM: 20px; COLOR: #808080; LINE-HEIGHT: 28px; PADDING-TOP: 20px
+}
+.content_text P {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-SIZE: 14px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+.down_content_text {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; COLOR: #808080; LINE-HEIGHT: 28px; PADDING-TOP: 5px
+}
+.down_content_text P {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.iconbox {
+	PADDING-RIGHT: 3px; BORDER-TOP: #eee 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; MARGIN: 10px auto 5px; PADDING-TOP: 3px; TEXT-ALIGN: center
+}
+.td_center {
+	MARGIN: 10px 0px; TEXT-ALIGN: center
+}
+#cont {
+	MARGIN-TOP: 0px; BACKGROUND: url(images/cont_bg.gif) repeat-y; WIDTH: 910px; PADDING-TOP: 0px; HEIGHT: auto
+}
+#left {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; WIDTH: 720px; PADDING-TOP: 1px
+}
+#right {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; OVERFLOW: hidden; WIDTH: 178px; PADDING-TOP: 1px
+}
+.cont_top {
+	CLEAR: both; BACKGROUND: url(images/cont_top.gif) no-repeat; OVERFLOW: hidden; HEIGHT: 1px
+}
+.cont_bottom {
+	CLEAR: both; BACKGROUND: url(images/cont_bottom.gif) no-repeat; OVERFLOW: hidden; HEIGHT: 5px
+}
+.yin {
+	MARGIN-BOTTOM: 30px
+}
+.re_shuang {
+	BORDER-RIGHT: #555 1px solid; BORDER-TOP: #555 1px solid; BORDER-LEFT: #555 1px solid; BORDER-BOTTOM: #555 1px solid
+}
+.re_shuang LI {
+	FLOAT: left; MARGIN: 0px 5px; OVERFLOW: hidden; WIDTH: 345px; LINE-HEIGHT: 20px; HEIGHT: 20px
+}
+.comment_header {
+	MARGIN-BOTTOM: 5px
+}
+.comment_header A {
+	BORDER-RIGHT: #333 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #333 1px solid; PADDING-LEFT: 3px; BACKGROUND: #333; PADDING-BOTTOM: 3px; BORDER-LEFT: #333 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #333 1px solid; TEXT-DECORATION: none
+}
+.commentbox {
+	BORDER-RIGHT: #ccc 0px solid; BORDER-TOP: #ccc 0px solid; FONT-SIZE: 12px; MARGIN: 5px; BORDER-LEFT: #ccc 0px solid; BORDER-BOTTOM: #ccc 0px solid; TEXT-ALIGN: left
+}
+.comment_title {
+	PADDING-LEFT: 30px; PADDING-TOP: 8px; BORDER-BOTTOM: #333 1px solid; HEIGHT: 26px
+}
+.comment_title A {
+	FONT-WEIGHT: bold
+}
+.comment_content {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; MARGIN: 10px 20px; PADDING-TOP: 3px; BORDER-BOTTOM: #add3ef 1px dotted
+}
+.comment {
+	BORDER-RIGHT: #888 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #888 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 5px; BORDER-LEFT: #888 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #888 1px solid; TEXT-ALIGN: left
+}
+.checkodestr {
+	LINE-HEIGHT: 30px; HEIGHT: 30px
+}
+#commentcontent {
+	WIDTH: 656px
+}
+.time {
+	PADDING-LEFT: 40px; COLOR: gray
+}
+.comment {
+	MARGIN: 5px
+}
+.text_ad {
+	BORDER-RIGHT: #555 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #555 1px solid; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 10px; BORDER-LEFT: #555 1px solid; WIDTH: 120px; PADDING-TOP: 10px; BORDER-BOTTOM: #555 1px solid; HEIGHT: 200px
+}

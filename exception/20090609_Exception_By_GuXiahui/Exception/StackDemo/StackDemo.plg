@@ -1,0 +1,48 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: StackDemo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\TEMP\RSP619.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/StackDemo.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ  /c 
+"H:\C++Community\StackDemo\StackDemo.cpp"
+"H:\C++Community\StackDemo\SimpleStack.cpp"
+"H:\C++Community\StackDemo\MyStack.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP619.tmp" 
+Creating temporary file "C:\TEMP\RSP61A.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/StackDemo.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ  /c 
+"H:\C++Community\StackDemo\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP61A.tmp" 
+Creating temporary file "C:\TEMP\RSP61B.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/StackDemo.pdb" /debug /machine:I386 /out:"Debug/StackDemo.exe" /pdbtype:sept 
+".\Debug\StdAfx.obj"
+".\Debug\StackDemo.obj"
+".\Debug\SimpleStack.obj"
+".\Debug\MyStack.obj"
+]
+Creating command line "link.exe @C:\TEMP\RSP61B.tmp"
+<h3>Output Window</h3>
+Compiling...
+StdAfx.cpp
+Compiling...
+StackDemo.cpp
+SimpleStack.cpp
+MyStack.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+StackDemo.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

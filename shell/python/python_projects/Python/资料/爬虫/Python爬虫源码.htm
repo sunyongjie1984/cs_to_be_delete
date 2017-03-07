@@ -1,0 +1,534 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0048)http://www.hackervip.com/Article/HTML/27790.html -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Python爬虫源码</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content=Python爬虫源码,代码编写,Python爬虫源码 name=Keywords>
+<META content="" name=Description><LINK media=screen 
+href="Python爬虫源码.files/css.css" type=text/css rel=stylesheet><LINK media=screen 
+href="Python爬虫源码.files/link.css" type=text/css rel=stylesheet>
+<SCRIPT src="Python爬虫源码.files/swap_sub.js" type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!--
+//改变图片大小
+function resizepic(thispic)
+{
+if(thispic.width>700) thispic.width=700;
+}
+//无级缩放图片大小
+function bbimg(o)
+{
+  var zoom=parseInt(o.style.zoom, 10)||100;
+  zoom+=event.wheelDelta/12;
+  if (zoom>0) o.style.zoom=zoom+'%';
+  return false;
+}
+-->
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY onload=Init();>
+<SCRIPT src="Python爬虫源码.files/webtop.js" type=text/javascript></SCRIPT>
+<!-- t2 --><!-- t3 -->
+<DIV class=stat>
+<UL>
+  <LI>您现在的位置：&nbsp;<A class=LinkPath 
+  href="http://www.chkh.com/">戴威尔网络安全培训</A>&nbsp;&gt;&gt;&nbsp;<A class=LinkPath 
+  href="http://www.hackervip.com/Article/Index.html">教程文章</A>&nbsp;&gt;&gt;&nbsp;<A 
+  class=LinkPath 
+  href="http://www.hackervip.com/Article/List_18.html">黑客技术</A>&nbsp;&gt;&gt;&nbsp;<A 
+  class=LinkPath 
+  href="http://www.hackervip.com/Article/List_26.html">代码编写</A>&nbsp;&gt;&gt;&nbsp;正文 
+  </LI></UL>
+<P class=fr><IMG alt=咨询电话：010-82823766 
+src="Python爬虫源码.files/top_tel.jpg"></P></DIV><!-- t3 -->
+<DIV></DIV><!-- top --><!-- l_n_s -->
+<DIV class=l_n_s>
+<DIV class=softlist><!--advert-->
+<SCRIPT language=javaScript src="Python爬虫源码.files/licen_ad.js" 
+type=text/javascript></SCRIPT>
+<!--advert--></DIV><!-- L1 --><!--L2 -->
+<DIV class=search>
+<UL>
+  <LI class=search_t>文章搜索 </LI>
+  <LI>
+  <SCRIPT language=javaScript src="Python爬虫源码.files/ShowSearchForm.js" 
+  type=text/javascript></SCRIPT>
+  </LI></UL></DIV><!--L2 --></DIV><!-- l_n_s --><!-- list_m -->
+<DIV class=list_m><!-- m1 -->
+<DIV class=lm_l><!-- t -->
+<DIV class=cont_t>Python爬虫源码</DIV><!-- t --><!-- t_i -->
+<DIV class=cont_ti>
+<UL>
+  <LI class=cont_tc>2009-10-22 14:42:43 </LI>
+  <LI class=cont_tt>发表时间: </LI>
+  <LI class=cont_tc>
+  <SCRIPT language=javascript src="Python爬虫源码.files/GetHits.htm"></SCRIPT>
+  </LI>
+  <LI class=cont_tt>浏览次数: </LI>
+  <LI class=cont_tc><A 
+  href="http://www.hackervip.com/ShowCopyFrom.asp?ChannelID=1&amp;SourceName=梦幻光芒">梦幻光芒</A> 
+  </LI>
+  <LI class=cont_tt>文章来源: </LI>
+  <LI class=cont_tc>佚名 </LI>
+  <LI class=cont_tt>作者: </LI></UL></DIV><!-- t_i --><!-- c_c -->
+<DIV class=con_c><!-- 1 ad -->
+<DIV class=con_ad><!-- x -->
+<P><IFRAME src="Python爬虫源码.files/flashslider1.htm" frameBorder=0 width=319 
+scrolling=no height=264></IFRAME></P><!-- x --></DIV><!-- 1 ad --><!-- 2 -->
+<P>
+<P>#IMPORTS--------------------------------------------------------------------------------------------------------------<BR>import 
+re,urllib,os</P>
+<P>#GLOBALS--------------------------------------------------------------------------------------------------------------<BR>#Global 
+that holds all our spidered URL'S<BR>siteSet = []</P>
+<P>#Open our log files<BR>siteLog = open("sitelog","w")<BR>mediaLog = 
+open("medialog","w")<BR>exceptionLog = open("exceptionlog","w")</P>
+<P>#Spider recursive paramaters RECURSION == "On" means depth first search, 
+"Off" == BFS <BR>RECURSION = "Off"<BR>MAXDEPTH = 1<BR>SITE_FILE = 
+"siteList2.txt"</P>
+<P>#REGEXS<BR>#Compile to regex one simple the other complex to allow for fairly 
+funky url's<BR>regex_URL_CONTAINS = ""<BR>regex_LOCAL_HREF = 
+"(\"\S+(.htm|.html)\")"<BR>#regex_HREF_Simple = "(<A 
+href="http:///S+(/.com|/.htm|/.html|/.net|/.org">http:///S+(/.com|/.htm|/.html|/.net|/.org</A>))"<BR>#regex_HREF_Complex 
+= "(<A 
+href="http:///S+(/.com|/.net|/.org|/.htm|/.html)/S*(/.com|/.net|/.org|/.htm|/.html)(/S*)(?=\">http:///S+(/.com|/.net|/.org|/.htm|/.html)/S*(/.com|/.net|/.org|/.htm|/.html)(/S*)(?=\</A>"))"<BR>regex_HREF_CONTAINS 
+= ""</P>
+<P>regex_HREF_Simple = "((<A 
+href="http:///S/?[^<>\&quot;'">http:///S/?[^&lt;&gt;\"'</A>]*))" 
+#IIIIIIdontkonw</P>
+<P><BR>#This can be anything you want try .rpm .txt .html .<A 
+class=channel_keylink href="http://www.chkh.com/Article/List_45.html">php</A> 
+.<A class=channel_keylink 
+href="http://www.chkh.com/Article/List_44.html">cgi</A> 
+.gzip<BR>regex_LOCAL_MEDIA = "(\"\S+(\.mpg|\.avi|\.mpeg|\.rm)\")" 
+<BR>regex_MEDIA = "(<A 
+href="http:///S+(/.mpg|/.avi|/.mpeg|/.rm">http:///S+(/.mpg|/.avi|/.mpeg|/.rm</A>))"<BR>#regex_MEDIA 
+= "(<A 
+href="http:///S+(/.mpg|/.avi|/.mpeg|/.rm">http:///S+(/.mpg|/.avi|/.mpeg|/.rm</A>))"<BR>regex_MEDIA_NAME_CONTAINS 
+= ""</P>
+<P>#----------------------------------------------------------------------------------------------------------------------</P>
+<P>def findRefs(site,lines=[]):<BR>&nbsp;&nbsp;&nbsp; hrefs = 
+[]<BR>&nbsp;&nbsp;&nbsp; try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #For 
+each line of the URL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for x in 
+lines:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#REGEX match for a simple and a complex HREF 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+matchSimple = 
+re.search(regex_HREF_Simple,x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mediaCheck = 
+re.search(regex_MEDIA,x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#matchComplex = 
+re.search(regex_HREF_Complex,x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Disable Local file naming EX: ./index.html vs <A 
+href="http://local/inde.html">http://local/inde.html</A> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+matchLocal =&nbsp; None 
+#re.search(regex_LOCAL_HREF,x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Make sure we got a 
+match<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(mediaCheck == "" or mediaCheck == 
+None):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (matchSimple != "" and matchSimple != None) or (matchLocal != "" and 
+matchLocal != 
+None):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Order the check to make sure the complex one isnt 
+overridden<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if matchLocal != None and matchLocal != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = 
+matchLocal.string[matchLocal.start():matchLocal.end()]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = site + '/' + url[1:-1]</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if matchSimple != None and matchSimple != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = 
+matchSimple.string[matchSimple.start():matchSimple.end()]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url=url.split(" 
+")[0]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#if url.find(" 
+"):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#&nbsp;&nbsp;&nbsp; temp=url.split(" 
+")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#&nbsp;&nbsp;&nbsp; 
+url=temp[0]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Here we need to check if hrefs is already in our set of to be spidered 
+sites<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+found = 
+"false"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for y in 
+siteSet:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if y == 
+url:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+found = 
+"true"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#print "Duplicate url!"</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#If the site is not in our list then add it to the set to be 
+spidered<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if found == 
+"false":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#print "New url appended to spider list = %s" % 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+siteSet.append(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+hrefs.append(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+siteLog.write(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+siteLog.write("\n")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #Flush the 
+contents of the buffer to the file<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+siteLog.flush()<BR>&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "Exception in 
+findRefs :("<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception in findRefs :(\n")<BR>&nbsp;&nbsp;&nbsp; #Return a 
+new list or HREFS to be spidered<BR>&nbsp;&nbsp;&nbsp; return 
+hrefs<BR>#----------------------------------------------------------------------------------------------------------------------<BR>def 
+findMedia(site,lines=[]):<BR>&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #The downloaded files we 
+found<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; media = 
+[]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for x in 
+lines:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Search for a media 
+match<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+match = 
+re.search(regex_MEDIA,x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_match = None #re.search(regex_LOCAL_MEDIA,x)</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+local_match != None and local_match != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = 
+local_match.string[local_match.start():local_match.end()]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Search to see if there is htm/html in the sites 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+temp_match = 
+re.search("\S+(.htm|.html)",x)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#if so then remove from the last / to 
+html<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if temp_match != None and temp_match != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+backPnt = 
+len(site)-1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+while site[backPnt] != 
+'/':<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--backPnt<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+site = 
+site[0:backPnt]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = site + '/' + 
+url[1:-1]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++changed url is 
+now " + 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if match 
+!= None and match != 
+"":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+url = match.string[match.start():match.end()]</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(local_match != None and local_match != "") or (match != None and match != 
+""):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end = 
+len(url)-1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Get the file name itself not just the whole 
+URL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+while end &gt; 0: 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if url[end] == '/': 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end = end + 1 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end = end - 1 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+name = url[end:] 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#We need to change this to check to see if it exists locally, if not then 
+download 
+it<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#&nbsp;&nbsp;&nbsp; this saves MUCH 
+time<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+existing = 
+os.listdir("./")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+found = 
+0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for x in 
+existing:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if x == 
+name:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+found = 
+1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#print "*****Duplicate File :| [%s] Source[ %s ]*****" % 
+(name,site)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if found == 
+0:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "*****New File :) [%s] downloading...*****" % 
+url<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+blankFile = 
+open(name,"w")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+urllib.urlretrieve(url,name) #And download 
+it<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+media.append(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mediaLog.write(url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mediaLog.write("\n")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Error: Downloading; File 
+Exception!"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Error downloading %s\n" % 
+url)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mediaLog.flush()<BR>&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "Exception in find 
+media :("<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception in find media 
+:(\n")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; return 
+media<BR>#----------------------------------------------------------------------------------------------------------------------<BR>#The 
+controlling recursive function spider using Depth First Recursion Breadth First 
+would be better.<BR>def spider(site,depth):&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+#Continue recursively untill we reach the maximum allowed 
+depth<BR>&nbsp;&nbsp;&nbsp; if depth &lt;= MAXDEPTH:&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if site != None and site != "" 
+:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Connect to the page, read all the 
+lines<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Current depth = %d site = %s" % 
+(depth,site)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+usock = 
+urllib.urlopen(site)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+lines = 
+usock.readlines()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+usock.close()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Find any media on the 
+page<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+media = 
+findMedia(site,lines)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Find any HREFS on the 
+page<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+hrefs = 
+findRefs(site,lines)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#For each HREF run spider on 
+it<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for x in 
+hrefs:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+spider(x,depth+1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Exception in spider 
+:("<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception in spider :( at %s depth %d\n" % 
+(site,depth))<BR>&nbsp;&nbsp;&nbsp; #else:<BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; #&nbsp;&nbsp;&nbsp; print "----maxdepth reached, 
+returning..."<BR>#----------------------------------------------------------------------------------------------------------------------<BR>#Try 
+to implement spider using BFS instead of DFS<BR>def BFSpider(L = 
+[]):<BR>&nbsp;&nbsp;&nbsp; #Connect to the page, read all the 
+lines<BR>&nbsp;&nbsp;&nbsp; try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+while(len(L) &gt; 0):</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+usock = 
+urllib.urlopen(L[0])<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Exception connecting to :( %s" % 
+L[0]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+del(L[0])<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+continue<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception connecting to :( %s" % 
+L[0])<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+lines = 
+usock.readlines()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+usock.close()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; media = 
+findMedia(L[0],lines)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+hrefs = 
+findRefs(L[0],lines)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print 
+"&lt;From %s&gt; Appended: %s \n{ Media: %s }" % (L[0], hrefs 
+,media)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+del(L[0])<BR>&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "Exception in 
+BFSpider :( %s" % L<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exceptionLog.write("Exception in BFSpider :( %s\n" % 
+L)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>#----------------------------------------------------------------------------------------------------------------------<BR># 
+Main Execution point <BR>def run():<BR>&nbsp;&nbsp;&nbsp; file = 
+open(SITE_FILE,"r")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #Open the 
+site file for reading (should be an argument)<BR>&nbsp;&nbsp;&nbsp; sites = 
+file.readlines()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#Read in all the lines from the file</P>
+<P>&nbsp;&nbsp;&nbsp; a = 0</P>
+<P>&nbsp;&nbsp;&nbsp; if RECURSION == 
+"On":<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for x in 
+sites:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+spider(x,a)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "Exception in Main :("<BR>&nbsp;&nbsp;&nbsp; else:&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+BFSpider(sites)<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+siteLog.close()<BR>&nbsp;&nbsp;&nbsp; mediaLog.close()<BR>&nbsp;&nbsp;&nbsp; 
+exceptionLog.close()</P>
+<P>#----------------------------------------------------------------------------------------------------------------------<BR>#<BR>#NOTES<BR>#</P>
+<P><BR>&nbsp;</P>
+<P></P><!-- 2 --></DIV><!-- c_c --><!-- t_i -->
+<DIV class=cont_ti>
+<UL>
+  <LI class=cont_tc>| </LI>
+  <LI class=cont_tc><A title=将这篇文章加入您的收藏夹 
+  href="javascript:window.external.addFavorite('http://www.enet.org.cn',%20'戴威尔-网络安全培训)">收藏本站</A> 
+  </LI>
+  <LI class=cont_tc>| </LI></UL></DIV><!-- t_i --><!-- t_s -->
+<DIV class=cont_tl>
+<UL>
+  <LI>上一篇文章： <A class=LinkPrevArticle 
+  title="文章标题：搜索跳板代码&#13;&#10;作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名&#13;&#10;更新时间：2009-10-15 14:14:15" 
+  href="http://www.hackervip.com/Article/HTML/27574.html">搜索跳板代码</A> </LI>
+  <LI>下一篇文章： <A class=LinkNextArticle 
+  title="文章标题：Ping实现代码(c#源码)&#13;&#10;作&nbsp;&nbsp;&nbsp;&nbsp;者：佚名&#13;&#10;更新时间：2009-10-22 14:44:16" 
+  href="http://www.hackervip.com/Article/HTML/27792.html">Ping实现代码(c#源码)</A> 
+  </LI></UL></DIV><!-- t_s --></DIV><!-- m1 --><!-- m2 -->
+<DIV class=lm_r><!--r1-->
+<DIV class=xrdown>
+<DIV class=xrd_shape><IMG alt=top src="Python爬虫源码.files/xrd_top.gif"></DIV><!-- 1 --><!-- x -->
+<DIV class=xrd_list><!-- title -->
+<DIV class=xrd_t>推荐导读</DIV><!-- title --><!-- img -->
+<DIV class=xrd_i><IMG alt=推荐导读 src="Python爬虫源码.files/sample_down01.gif"></DIV><!-- img -->
+<DIV class=tujiandaodubor>
+<SCRIPT language=javascript src="Python爬虫源码.files/tjdd.js" 
+type=text/javascript></SCRIPT>
+</DIV></DIV><!-- x --><!-- 2 -->
+<DIV class=xrd_shape><IMG alt=bottom src="Python爬虫源码.files/xrd_btm.gif"></DIV><!-- 2 --></DIV><!-- r1 --><!--r1-->
+<DIV class=xrdown>
+<DIV class=xrd_shape><IMG alt=top src="Python爬虫源码.files/xrd_top.gif"></DIV><!-- 1 --><!-- x -->
+<DIV class=xrd_list><!-- title -->
+<DIV class=xrd_t>最新文章</DIV><!-- title --><!-- img -->
+<DIV class=xrd_i><IMG alt=最新文章 src="Python爬虫源码.files/sample_down.gif"></DIV><!-- img -->
+<DIV class=tujiandaodubor>
+<SCRIPT language=javascript src="Python爬虫源码.files/Article_Hot2.js" 
+type=text/javascript></SCRIPT>
+</DIV></DIV><!-- x --><!-- 2 -->
+<DIV class=xrd_shape><IMG alt=bottom src="Python爬虫源码.files/xrd_btm.gif"></DIV><!-- 2 --></DIV><!-- r1 --><!-- r3 -->
+<DIV class=xrswap>
+<DIV class=xr_swap><!-- t -->
+<DIV class=xrs_t>
+<UL>
+  <LI class=xrs_title><A class=link_gn onmouseover="sublist(1); return false;" 
+  title=最新新闻 href="http://www.hackervip.com/">最新新闻</A> </LI>
+  <LI class=xrs_tl><A class=link_w onmouseover="sublist(2); return false;" 
+  title=基础入门 href="http://www.hackervip.com/">基础入门</A> </LI>
+  <LI class=xrs_tl><A class=link_w onmouseover="sublist(3); return false;" 
+  title=黑客技术 href="http://www.hackervip.com/">黑客技术</A> </LI></UL></DIV><!-- t --><!-- c -->
+<DIV class=xrs_c><!-- u1 -->
+<UL id=sublist1 style="DISPLAY: block">
+  <LI><A title=安全新闻 href="http://www.hackervip.com/Article/List_2.html">安全新闻</A> 
+  </LI>
+  <LI><A title=业界事件 href="http://www.hackervip.com/Article/List_3.html">业界事件</A> 
+  </LI>
+  <LI><A title=本站公告 href="http://www.hackervip.com/Article/List_4.html">本站公告</A> 
+  </LI>
+  <LI><A title=政策法规 href="http://www.hackervip.com/Article/List_5.html">政策法规</A> 
+  </LI>
+  <LI><A title=黑客现象 href="http://www.hackervip.com/Article/List_6.html">黑客现象</A> 
+  </LI></UL><!-- u1 --><!-- u2 -->
+<UL id=sublist2 style="DISPLAY: none">
+  <LI><A title=基础知识 
+  href="http://www.hackervip.com/Article/List_13.html">基础知识</A> </LI>
+  <LI><A title=工具介绍 
+  href="http://www.hackervip.com/Article/List_14.html">工具介绍</A> </LI>
+  <LI><A title=木马乐园 
+  href="http://www.hackervip.com/Article/List_15.html">木马乐园</A> </LI>
+  <LI><A title=QQ小技巧 
+  href="http://www.hackervip.com/Article/List_16.html">QQ小技巧</A> </LI>
+  <LI><A title=免费资源 
+  href="http://www.hackervip.com/Article/List_17.html">免费资源</A> </LI></UL><!-- u2 --><!-- u3 -->
+<UL id=sublist3 style="DISPLAY: none">
+  <LI><A title=经验心得 
+  href="http://www.hackervip.com/Article/List_19.html">经验心得</A> </LI>
+  <LI><A title=加密解密 
+  href="http://www.hackervip.com/Article/List_20.html">加密解密</A> </LI>
+  <LI><A title=病毒知识 
+  href="http://www.hackervip.com/Article/List_21.html">病毒知识</A> </LI>
+  <LI><A title=Exploit 
+  href="http://www.hackervip.com/Article/List_22.html">Exploit</A> </LI>
+  <LI><A title=脚本游戏 
+  href="http://www.hackervip.com/Article/List_23.html">脚本游戏</A> </LI>
+  <LI><A title=后门技术 
+  href="http://www.hackervip.com/Article/List_24.html">后门技术</A> </LI>
+  <LI><A title=脚本攻击 
+  href="http://www.hackervip.com/Article/List_25.html">脚本攻击</A> </LI>
+  <LI><A title=代码编写 
+  href="http://www.hackervip.com/Article/List_26.html">代码编写</A> </LI>
+  <LI><A title=攻防实战 
+  href="http://www.hackervip.com/Article/List_27.html">攻防实战</A> </LI></UL><!-- u3 --></DIV><!-- c --></DIV></DIV><!-- r3 --><!-- r4 -->
+<DIV class=xrswap>
+<DIV class=xr_swap><!-- t -->
+<DIV class=xrs_t>
+<UL>
+  <LI class=xrs_title><A class=link_gn onmouseover="sub_list(1); return false;" 
+  title=网络管理 href="http://www.hackervip.com/">网络管理</A> </LI>
+  <LI class=xrs_tl><A class=link_w onmouseover="sub_list(2); return false;" 
+  title=程序开发 href="http://www.hackervip.com/">程序开发</A> </LI>
+  <LI class=xrs_tl><A class=link_w onmouseover="sub_list(3); return false;" 
+  title=网页编程 href="http://www.hackervip.com/">网页编程</A> </LI></UL></DIV><!-- t --><!-- c -->
+<DIV class=xrs_c><!-- u1 -->
+<UL id=sub_list1 style="DISPLAY: block">
+  <LI><A title=应用安全 
+  href="http://www.hackervip.com/Article/List_29.html">应用安全</A> </LI>
+  <LI><A title=网络架设 
+  href="http://www.hackervip.com/Article/List_30.html">网络架设</A> </LI>
+  <LI><A title=入侵检测 
+  href="http://www.hackervip.com/Article/List_31.html">入侵检测</A> </LI>
+  <LI><A title=疑难技巧 
+  href="http://www.hackervip.com/Article/List_32.html">疑难技巧</A> </LI>
+  <LI><A title=数据恢复 
+  href="http://www.hackervip.com/Article/List_33.html">数据恢复</A> </LI>
+  <LI><A title=无盘网络 
+  href="http://www.hackervip.com/Article/List_34.html">无盘网络</A> </LI></UL><!-- u1 --><!-- u2 -->
+<UL id=sub_list2 style="DISPLAY: none">
+  <LI><A title=C和汇编 href="http://www.hackervip.com/Article/List_37.html">C和汇编 
+  </A></LI>
+  <LI><A title=vc和vb href="http://www.hackervip.com/Article/List_38.html">vc和vb 
+  </A></LI>
+  <LI><A title=delphi 
+  href="http://www.hackervip.com/Article/List_39.html">delphi</A> </LI>
+  <LI><A title=其它类别 
+  href="http://www.hackervip.com/Article/List_40.html">其它类别</A> </LI>
+  <LI><A title=IT考试 
+  href="http://www.hackervip.com/Article/List_41.html">IT考试</A> </LI></UL><!-- u2 --><!-- u3 -->
+<UL id=sub_list3 style="DISPLAY: none">
+  <LI><A title=ASP编程 
+  href="http://www.hackervip.com/Article/List_43.html">ASP编程</A> </LI>
+  <LI><A title=CGI编程 
+  href="http://www.hackervip.com/Article/List_44.html">CGI编程</A> </LI>
+  <LI><A title=PHP编程 
+  href="http://www.hackervip.com/Article/List_45.html">PHP编程</A> </LI>
+  <LI><A title=jsp编程 
+  href="http://www.hackervip.com/Article/List_46.html">jsp编程</A> </LI>
+  <LI><A title=数据库类 
+  href="http://www.hackervip.com/Article/List_47.html">数据库类</A> </LI>
+  <LI><A title=其它类别 
+  href="http://www.hackervip.com/Article/List_48.html">其它类别</A> </LI></UL><!-- u3 --></DIV><!-- c --></DIV></DIV><!-- r4 --></DIV><!-- m2 --></DIV><!-- list_m --><!-- bottom -->
+<SCRIPT src="Python爬虫源码.files/webdown.js" type=text/javascript></SCRIPT>
+<!-- bottom --><!-- google代码 -->
+<SCRIPT type=text/javascript>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+try {
+var pageTracker = _gat._getTracker("UA-3674974-2");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>
+<!-- google代码 --></SCRIPT><!-- 乐语代码 -->
+<SCRIPT language=javascript src="Python爬虫源码.files/j.htm" 
+type=text/javascript></SCRIPT>
+<!-- 乐语代码 --></BODY></HTML>

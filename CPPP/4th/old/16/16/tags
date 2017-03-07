@@ -1,0 +1,201 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+AndQuery	.\Query.h	/^    AndQuery(Query left, Query right): $/;"	f	class:AndQuery
+AndQuery	.\Query.h	/^class AndQuery: public BinaryQuery {$/;"	c
+BASKET_H	.\Basket.h	31;"	d
+Basket	.\Basket.h	/^class Basket {$/;"	c
+BinaryQuery	.\Query.h	/^    BinaryQuery(Query left, Query right, std::string op): $/;"	f	class:BinaryQuery
+BinaryQuery	.\Query.h	/^class BinaryQuery: public Query_base {$/;"	c
+Bulk_item	.\Basket.h	/^    Bulk_item(): min_qty(0), discount(0.0) { }$/;"	f	class:Bulk_item
+Bulk_item	.\Basket.h	/^    Bulk_item(const std::string& book, double sales_price, $/;"	f	class:Bulk_item
+Bulk_item	.\Basket.h	/^class Bulk_item : public Item_base {$/;"	c
+Handle	.\Handle.h	/^    Handle(T *p = 0): ptr(p), use(new size_t(1)) { }$/;"	f	class:Handle
+Handle	.\Handle.h	/^    Handle(const Handle& h): ptr(h.ptr), use(h.use) $/;"	f	class:Handle
+Handle	.\Handle.h	/^template <class T> class Handle {$/;"	c
+Item_base	.\Basket.h	/^    Item_base(const std::string &book = "", $/;"	f	class:Item_base
+Item_base	.\Basket.h	/^class Item_base {$/;"	c
+Lim_item	.\Basket.h	/^    Lim_item(const std::string& book = "", $/;"	f	class:Lim_item
+Lim_item	.\Basket.h	/^class Lim_item : public Item_base {$/;"	c
+NotQuery	.\Query.h	/^    NotQuery(Query q): query(q) { }$/;"	f	class:NotQuery
+NotQuery	.\Query.h	/^class NotQuery: public Query_base {$/;"	c
+OrQuery	.\Query.h	/^    OrQuery(Query left, Query right): $/;"	f	class:OrQuery
+OrQuery	.\Query.h	/^class OrQuery: public BinaryQuery {$/;"	c
+QUERY_H	.\Query.h	31;"	d
+QUEUE_H	.\MS_Queue.h	2;"	d
+QUEUE_H	.\Queue.h	31;"	d
+QUEUE_H	.\newQueue.h	31;"	d
+QUQUE_CHAR_H	.\char_queue.h	31;"	d
+Query	.\Query.h	/^    Query(Query_base *p): h(p) { }  \/\/ bind Handle to the given pointer$/;"	f	class:Query
+Query	.\Query.h	/^Query::Query(const std::string &s): h(new WordQuery(s)) { }$/;"	f	class:Query
+Query	.\Query.h	/^class Query {$/;"	c
+Query_base	.\Query.h	/^class Query_base {$/;"	c
+Queue	.\MS_Queue.h	/^    Queue(): head(0), tail(0) { }$/;"	f	class:Queue
+Queue	.\MS_Queue.h	/^    Queue(It beg, It end): $/;"	f	class:Queue
+Queue	.\MS_Queue.h	/^    Queue(const Queue &Q): head(0), tail(0) $/;"	f	class:Queue
+Queue	.\MS_Queue.h	/^template <class Type> class Queue {$/;"	c
+Queue	.\Queue.h	/^    Queue(): head(0), tail(0) { }$/;"	f	class:Queue
+Queue	.\Queue.h	/^    Queue(It beg, It end): $/;"	f	class:Queue
+Queue	.\Queue.h	/^    Queue(const Queue &Q): head(0), tail(0) $/;"	f	class:Queue
+Queue	.\Queue.h	/^template <class Type> class Queue {$/;"	c
+Queue	.\Queue_interface.h	/^template <class Type> class Queue {$/;"	c
+Queue	.\char_queue.h	/^template<> class Queue<const char*> {$/;"	c
+Queue	.\int-Queue.h	/^template <class Type> class Queue<int> {$/;"	c
+Queue	.\newQueue.h	/^    Queue() { }$/;"	f	class:Queue
+Queue	.\newQueue.h	/^    template <class It> Queue(It beg, It end): items(beg, end) { }$/;"	f	class:Queue
+Queue	.\newQueue.h	/^template <class Type> class Queue {$/;"	c
+QueueItem	.\MS_Queue.h	/^    QueueItem(const Type &t): item(t), next(0) { }$/;"	f	class:QueueItem
+QueueItem	.\MS_Queue.h	/^template <class Type> class QueueItem {$/;"	c
+QueueItem	.\Queue.h	/^    QueueItem(const Type &t): item(t), next(0) { }$/;"	f	class:QueueItem
+QueueItem	.\Queue.h	/^template <class Type> class QueueItem {$/;"	c
+Sales_item	.\Basket.h	/^    Sales_item(): h() { }$/;"	f	class:Sales_item
+Sales_item	.\Basket.h	/^    Sales_item(const Item_base &item): h(item.clone()) { }$/;"	f	class:Sales_item
+Sales_item	.\Basket.h	/^class Sales_item {$/;"	c
+SmallInt	.\Queue-assign.cpp	/^    SmallInt(int i = 0): val(i)$/;"	f	class:SmallInt
+SmallInt	.\Queue-assign.cpp	/^class SmallInt {$/;"	c	file:
+WordQuery	.\Query.h	/^    WordQuery(const std::string &s): query_word(s) { }$/;"	f	class:WordQuery
+WordQuery	.\Query.h	/^class WordQuery: public Query_base {$/;"	c
+add_item	.\Basket.h	/^    void add_item(const Sales_item &item) $/;"	f	class:Basket
+assign	.\MS_Queue.h	/^    template <class Iter> void assign(Iter beg, Iter end) $/;"	f	class:Queue
+assign	.\newQueue.h	/^    template <class Iter> void assign(Iter beg, Iter end)$/;"	f	class:Queue
+book	.\Basket.h	/^    std::string book() const { return isbn; }$/;"	f	class:Item_base
+clone	.\Basket.h	/^    Bulk_item* clone() const $/;"	f	class:Bulk_item
+clone	.\Basket.h	/^    Lim_item* clone() const { return new Lim_item(*this); }$/;"	f	class:Lim_item
+clone	.\Basket.h	/^    virtual Item_base* clone() const $/;"	f	class:Item_base
+compare	.\COMPARE.CPP	/^int compare(const T &v1, const T &v2)$/;"	f
+compare	.\COMPARE.CPP	/^int compare(const double &v1, const double &v2)$/;"	f
+compare	.\COMPARE.CPP	/^int compare(const string &v1, const string &v2)$/;"	f
+compare	.\COMPARE.CPP	/^int compare<const char*>(const char* const &v1, $/;"	f
+compare	.\OVERCOMP.CPP	/^int compare(const char* v1, const char* v2)$/;"	f
+compare	.\OVERCOMP.CPP	/^template <class U, class V> int compare(U beg1, U end1, V beg2)$/;"	f
+compare	.\OVERCOMP.CPP	/^template <typename T> int compare(const T &v1, const T &v2)$/;"	f
+compare	.\overcomp2.cpp	/^int compare(U beg1, U end1, V beg2)$/;"	f
+compare	.\overcomp2.cpp	/^int compare(char* v1, char* v2)$/;"	f
+compare	.\overcomp2.cpp	/^int compare(const T &v1, const T &v2)$/;"	f
+compare	.\overcomp2.cpp	/^int compare(const char* v1, const char* v2)$/;"	f
+compare2	.\OVERCOMP.CPP	/^int compare2(const char* v1, const char* v2)$/;"	f
+compare2	.\OVERCOMP.CPP	/^template <typename T> int compare2(T v1, T v2)$/;"	f
+const_iter	.\Basket.h	/^    typedef std::multiset<Sales_item>::const_iterator const_iter;$/;"	t	class:Basket
+copy_elems	.\MS_Queue.cpp	/^void Queue<Type>::copy_elems(const Queue &orig)$/;"	f	class:Queue
+copy_elems	.\MS_Queue.h	/^    template <class Iter> void copy_elems(Iter beg, Iter end) {$/;"	f	class:Queue
+destroy	.\MS_Queue.cpp	/^template <class Type> void Queue<Type>::destroy()$/;"	f	class:Queue
+discount	.\Basket.h	/^    double discount;       \/\/ fractional discount to apply$/;"	m	class:Bulk_item
+discount	.\Basket.h	/^    double discount;       \/\/ fractional discount to apply$/;"	m	class:Lim_item
+discount_policy	.\Basket.h	/^    std::pair<size_t, double> discount_policy() const$/;"	f	class:Bulk_item
+discount_policy	.\Basket.h	/^    std::pair<size_t, double> discount_policy() const$/;"	f	class:Lim_item
+display	.\Basket.cpp	/^void Basket::display(ostream &os) const$/;"	f	class:Basket
+display	.\Query.h	/^    std::ostream &display(std::ostream &os) const$/;"	f	class:Query
+display	.\Query.h	/^    std::ostream& display (std::ostream &os) const $/;"	f	class:WordQuery
+display	.\Query.h	/^    std::ostream& display(std::ostream &os) const$/;"	f	class:BinaryQuery
+display	.\Query.h	/^    std::ostream& display(std::ostream &os) const$/;"	f	class:NotQuery
+empty	.\MS_Queue.h	/^    bool empty() const {          \/\/ true if no elements in the Queue$/;"	f	class:Queue
+empty	.\Queue.h	/^    bool empty() const {          \/\/ true if no elements in the Queue$/;"	f	class:Queue
+empty	.\char_queue.h	/^    bool empty() const       {return real_queue.empty();}$/;"	f	class:Queue
+empty	.\newQueue.h	/^    bool empty() const       { return items.empty(); }$/;"	f	class:Queue
+eval	.\Query.cpp	/^AndQuery::eval(const TextQuery& file) const$/;"	f	class:AndQuery
+eval	.\Query.cpp	/^NotQuery::eval(const TextQuery& file) const$/;"	f	class:NotQuery
+eval	.\Query.cpp	/^OrQuery::eval(const TextQuery& file) const$/;"	f	class:OrQuery
+eval	.\Query.h	/^      eval(const TextQuery &t) const {return h->eval(t);}$/;"	f	class:Query
+eval	.\Query.h	/^    std::set<line_no> eval(const TextQuery &t) const$/;"	f	class:WordQuery
+f	.\COMPARE.CPP	/^int f(int v1, int v2)$/;"	f
+f	.\NONTYPE.CPP	/^void f() {$/;"	f
+front	.\MS_Queue.h	/^    Type& front()             { return head->item; }$/;"	f	class:Queue
+front	.\MS_Queue.h	/^    const Type &front() const { return head->item; }$/;"	f	class:Queue
+front	.\Queue.h	/^    Type& front()             { return head->item; }$/;"	f	class:Queue
+front	.\Queue.h	/^    const Type &front() const { return head->item; }$/;"	f	class:Queue
+front	.\char_queue.h	/^    const std::string &front() const $/;"	f	class:Queue
+front	.\char_queue.h	/^    std::string front()     {return real_queue.front();}$/;"	f	class:Queue
+front	.\newQueue.h	/^    Type& front()             { return items.front(); }$/;"	f	class:Queue
+front	.\newQueue.h	/^    const Type &front() const { return items.front(); }$/;"	f	class:Queue
+h	.\Basket.h	/^    Handle<Item_base> h;   \/\/ use-counted handle$/;"	m	class:Sales_item
+h	.\Query.h	/^    Handle<Query_base> h;           \/\/ use-counted handle$/;"	m	class:Query
+head	.\MS_Queue.h	/^    QueueItem<Type> *head;         \/\/ pointer to first element in Queue$/;"	m	class:Queue
+head	.\Queue.h	/^    QueueItem<Type> *head;         \/\/ pointer to first element in Queue$/;"	m	class:Queue
+head	.\int-Queue.h	/^    QueueItem<int> *head;     \/\/ use QueueItem of int$/;"	m	class:Queue
+isbn	.\Basket.h	/^    std::string isbn;   \/\/ identifier for the item$/;"	m	class:Item_base
+item	.\MS_Queue.h	/^    Type item;           \/\/ value stored in this element$/;"	m	class:QueueItem
+item	.\Queue.h	/^    Type item;           \/\/ value stored in this element$/;"	m	class:QueueItem
+item_count	.\Basket.h	/^    size_type item_count(const Sales_item &i) const$/;"	f	class:Basket
+items	.\Basket.h	/^    std::multiset<Sales_item> items;$/;"	m	class:Basket
+items	.\newQueue.h	/^    std::list<Type> items;$/;"	m	class:Queue
+lhs	.\Query.h	/^    Query lhs, rhs;   \/\/ right and left hand operands$/;"	m	class:BinaryQuery
+line_no	.\Query.h	/^    typedef TextQuery::line_no line_no;$/;"	t	class:Query_base
+main	.\Basket_main.cpp	/^int main()$/;"	f
+main	.\COMPARE.CPP	/^int main()$/;"	f
+main	.\NONTYPE.CPP	/^int main()$/;"	f
+main	.\OVERCOMP.CPP	/^int main()$/;"	f
+main	.\Queue-assign.cpp	/^int main()$/;"	f
+main	.\QueueMain.cpp	/^int main() $/;"	f
+main	.\QueueMain2.cpp	/^int main()$/;"	f
+main	.\QueueMain3.cpp	/^int main() {$/;"	f
+main	.\SPCL-MAX.CPP	/^int main()$/;"	f
+main	.\SWAP.CPP	/^int main()$/;"	f
+main	.\char_main.cpp	/^int main()$/;"	f
+main	.\char_main_push.cpp	/^int main()$/;"	f
+main	.\newQueueMain.cpp	/^int main() $/;"	f
+main	.\newQueueMain2.cpp	/^int main()$/;"	f
+main	.\newQueueMain3.cpp	/^int main() {$/;"	f
+main	.\overcomp2.cpp	/^int main()$/;"	f
+main	.\use-handle.cpp	/^int main()$/;"	f
+main	.\use-query-handle.cpp	/^int main(int, char **argv)$/;"	f
+max	.\SPCL-MAX.CPP	/^T max(T t1, T t2)$/;"	f
+max	.\SPCL-MAX.CPP	/^char* max<char*>(char* s1, char* s2)$/;"	f
+max_qty	.\Basket.h	/^    std::size_t max_qty;   \/\/ maximum number sold at discount$/;"	m	class:Lim_item
+min	.\SWAP.CPP	/^template <class T> T min(T a, T b) $/;"	f
+min_qty	.\Basket.h	/^    std::size_t min_qty;   \/\/ minimum purchase for discount to apply$/;"	m	class:Bulk_item
+net_price	.\Basket.cpp	/^double Bulk_item::net_price(size_t cnt) const$/;"	f	class:Bulk_item
+net_price	.\Basket.cpp	/^double Lim_item::net_price(size_t cnt) const$/;"	f	class:Lim_item
+net_price	.\Basket.h	/^    virtual double net_price(std::size_t n) const $/;"	f	class:Item_base
+next	.\MS_Queue.h	/^    QueueItem *next;     \/\/ pointer to next element in the Queue$/;"	m	class:QueueItem
+next	.\Queue.h	/^    QueueItem *next;     \/\/ pointer to next element in the Queue$/;"	m	class:QueueItem
+oper	.\Query.h	/^    std::string oper; \/\/ name of the operator$/;"	m	class:BinaryQuery
+operator &	.\Query.h	/^inline Query operator&(const Query &lhs, const Query &rhs)$/;"	f
+operator *	.\Basket.h	/^    const Item_base& operator*() const { return *h; }$/;"	f	class:Sales_item
+operator *	.\Handle.h	/^const T& Handle<T>::operator*() const$/;"	f	class:Handle
+operator *	.\Handle.h	/^template <class T> inline T& Handle<T>::operator*() $/;"	f	class:Handle
+operator ->	.\Basket.h	/^    const Item_base* operator->() const $/;"	f	class:Sales_item
+operator ->	.\Handle.h	/^const T* Handle<T>::operator->() const$/;"	f	class:Handle
+operator ->	.\Handle.h	/^template <class T> inline T* Handle<T>::operator->() $/;"	f	class:Handle
+operator <	.\Basket.h	/^operator<(const Item_base &lhs, const Item_base &rhs) $/;"	f
+operator <	.\Basket.h	/^operator<(const Sales_item &lhs, const Sales_item &rhs) $/;"	f
+operator <<	.\MS_Queue.cpp	/^ostream& operator<<(ostream &os, const Queue<Type> &q)$/;"	f
+operator <<	.\Query.h	/^operator<<(std::ostream &os, const Query &q)$/;"	f
+operator <<	.\char_queue.cpp	/^ostream& operator<<(ostream &os, const Queue<const char*> &q)$/;"	f
+operator <<	.\newQueue.h	/^std::ostream& operator<<(std::ostream &os, const Queue<Type> &q)$/;"	f
+operator =	.\Handle.h	/^inline Handle<T>& Handle<T>::operator=(const Handle &rhs)$/;"	f	class:Handle
+operator =	.\MS_Queue.cpp	/^Queue<Type>& Queue<Type>::operator=(const Queue &rhs)$/;"	f	class:Queue
+operator int	.\Queue-assign.cpp	/^    operator int() { return val; }$/;"	f	class:SmallInt
+operator |	.\Query.h	/^inline Query operator|(const Query &lhs, const Query &rhs)$/;"	f
+operator ~	.\Query.h	/^inline Query operator~(const Query &oper)$/;"	f
+pop	.\MS_Queue.cpp	/^template <class Type> void Queue<Type>::pop()$/;"	f	class:Queue
+pop	.\char_queue.h	/^    void pop()               {real_queue.pop();}$/;"	f	class:Queue
+pop	.\newQueue.h	/^    void pop()               { items.erase(items.begin()); }$/;"	f	class:Queue
+pop	.\queue_push_char.cpp	/^void Queue<const char*>::pop()$/;"	f	class:Queue
+price	.\Basket.h	/^    double price;       \/\/ normal, undiscounted price$/;"	m	class:Item_base
+print_total	.\Basket.cpp	/^void print_total(ostream &os, $/;"	f
+ptr	.\Handle.h	/^    T* ptr;          \/\/ shared object$/;"	m	class:Handle
+push	.\MS_Queue.cpp	/^template <class Type> void Queue<Type>::push(const Type &val)$/;"	f	class:Queue
+push	.\char_queue.h	/^void Queue<const char*>::push(const char* val)$/;"	f	class:Queue
+push	.\newQueue.h	/^    void push(const Type &t) { items.push_back(t); }$/;"	f	class:Queue
+push	.\queue_push_char.cpp	/^void Queue<const char*>::push(const char *const &val)$/;"	f	class:Queue
+query	.\Query.h	/^    Query query;$/;"	m	class:NotQuery
+query_word	.\Query.h	/^    std::string query_word;$/;"	m	class:WordQuery
+real_queue	.\char_queue.h	/^    Queue<std::string> real_queue; \/\/ forward calls to real_queue$/;"	m	class:Queue
+rem_ref	.\Handle.h	/^    void rem_ref() $/;"	f	class:Handle
+rhs	.\Query.h	/^    Query lhs, rhs;   \/\/ right and left hand operands$/;"	m	class:BinaryQuery
+size_type	.\Basket.h	/^    typedef std::multiset<Sales_item>::size_type size_type;$/;"	t	class:Basket
+swap	.\SWAP.CPP	/^void swap(T& val1, T& val2)$/;"	f
+tail	.\MS_Queue.h	/^    QueueItem<Type> *tail;         \/\/ pointer to last element in Queue$/;"	m	class:Queue
+tail	.\Queue.h	/^    QueueItem<Type> *tail;         \/\/ pointer to last element in Queue$/;"	m	class:Queue
+tail	.\int-Queue.h	/^    QueueItem<int> *tail;   $/;"	m	class:Queue
+total	.\Basket.cpp	/^double Basket::total() const$/;"	f	class:Basket
+use	.\Handle.h	/^    size_t *use;     \/\/ count of how many Handles point to *ptr$/;"	m	class:Handle
+val	.\Queue-assign.cpp	/^    std::size_t val;$/;"	m	class:SmallInt	file:
+~Handle	.\Handle.h	/^    ~Handle() { rem_ref(); }$/;"	f	class:Handle
+~Item_base	.\Basket.h	/^    virtual ~Item_base() { } $/;"	f	class:Item_base
+~Query_base	.\Query.h	/^    virtual ~Query_base() { }$/;"	f	class:Query_base
+~Queue	.\MS_Queue.h	/^    ~Queue() { destroy(); }$/;"	f	class:Queue
+~Queue	.\Queue.h	/^    ~Queue() { destroy(); }$/;"	f	class:Queue

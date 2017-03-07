@@ -1,0 +1,23 @@
+HKCR
+{
+	DemoServer.DemoDCOM.1 = s 'DemoDCOM Class'
+	{
+		CLSID = s '{FC774D47-E524-4C2B-9C24-91D219773707}'
+	}
+	DemoServer.DemoDCOM = s 'DemoDCOM Class'
+	{
+		CLSID = s '{FC774D47-E524-4C2B-9C24-91D219773707}'
+		CurVer = s 'DemoServer.DemoDCOM.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {FC774D47-E524-4C2B-9C24-91D219773707} = s 'DemoDCOM Class'
+		{
+			ProgID = s 'DemoServer.DemoDCOM.1'
+			VersionIndependentProgID = s 'DemoServer.DemoDCOM'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			'TypeLib' = s '{74A178D6-A0CC-48F4-AE09-845097265E94}'
+		}
+	}
+}

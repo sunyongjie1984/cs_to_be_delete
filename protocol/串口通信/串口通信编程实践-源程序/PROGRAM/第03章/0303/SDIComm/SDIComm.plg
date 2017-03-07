@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SDIComm - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/SDIComm.res" /d "_DEBUG" /d "_AFXDLL" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第03章\0303\SDIComm\SDIComm.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP69.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SDIComm.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第03章\0303\SDIComm\MainFrm.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第03章\0303\SDIComm\mscomm.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第03章\0303\SDIComm\SDIComm.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第03章\0303\SDIComm\SDICommDoc.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第03章\0303\SDIComm\SDICommView.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP69.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6A.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SDIComm.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第03章\0303\SDIComm\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6A.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6B.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/SDIComm.pdb" /debug /machine:I386 /out:"Debug/SDIComm.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\mscomm.obj"
+".\Debug\SDIComm.obj"
+".\Debug\SDICommDoc.obj"
+".\Debug\SDICommView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SDIComm.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP6B.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+mscomm.cpp
+SDIComm.cpp
+SDICommDoc.cpp
+SDICommView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+SDIComm.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

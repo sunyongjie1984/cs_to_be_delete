@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "c++_primer_3_chapter_6", "c++_primer_3_chapter_6\c++_primer_3_chapter_6.vcproj", "{F411220A-8A04-468D-B4E2-1D01051748D3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getline", "getline\getline.vcproj", "{452AF15A-18ED-4B67-9F95-46E9A18E7E14}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CTextQuery", "CTextQuery\CTextQuery.vcproj", "{D1F8F936-A2A7-406C-A82C-B090EA55E27C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F411220A-8A04-468D-B4E2-1D01051748D3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F411220A-8A04-468D-B4E2-1D01051748D3}.Debug|Win32.Build.0 = Debug|Win32
+		{F411220A-8A04-468D-B4E2-1D01051748D3}.Release|Win32.ActiveCfg = Release|Win32
+		{F411220A-8A04-468D-B4E2-1D01051748D3}.Release|Win32.Build.0 = Release|Win32
+		{452AF15A-18ED-4B67-9F95-46E9A18E7E14}.Debug|Win32.ActiveCfg = Debug|Win32
+		{452AF15A-18ED-4B67-9F95-46E9A18E7E14}.Debug|Win32.Build.0 = Debug|Win32
+		{452AF15A-18ED-4B67-9F95-46E9A18E7E14}.Release|Win32.ActiveCfg = Release|Win32
+		{452AF15A-18ED-4B67-9F95-46E9A18E7E14}.Release|Win32.Build.0 = Release|Win32
+		{D1F8F936-A2A7-406C-A82C-B090EA55E27C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1F8F936-A2A7-406C-A82C-B090EA55E27C}.Debug|Win32.Build.0 = Debug|Win32
+		{D1F8F936-A2A7-406C-A82C-B090EA55E27C}.Release|Win32.ActiveCfg = Release|Win32
+		{D1F8F936-A2A7-406C-A82C-B090EA55E27C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

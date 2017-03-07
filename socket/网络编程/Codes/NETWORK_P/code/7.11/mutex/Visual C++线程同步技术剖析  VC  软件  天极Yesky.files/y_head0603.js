@@ -1,0 +1,16 @@
+document.write('<link rel="stylesheet" href="http://www.yesky.com/TLimages/head/y_headlogo0603.css" type="text/css" media="all" />');
+document.write('<div class="head_head0603">');
+document.write('<div class="logo_head0603"><a href="http://www.yesky.com"><img src="http://www.yesky.com/TLimages/img/head/logo.gif" alt="天极Yesky" title="天极Yesky"/></a></div>');
+document.write('<div class="ad_head0603"><span id="ad1"></span></div>');
+document.write('<div class="other_head0603">');
+document.write('<div class="ss_head0603"><form name="search" method="get" action="http://search.yesky.com/search.do"><input id="searchzz" name="wd" size="11" onmouseover="this.focus()" onfocus="this.select()" type="text"/><input type="submit" value="天极搜索" name="btnsearch" /></form></div>');
+document.write('<div class="dqbody_head0603">');
+document.write('<div class="dqleft_head0603 dqgg_head0603">');
+document.write('<a href="http://bj.yesky.com/" class="topleft_head0603">北京</a> <a href="http://sh.yesky.com/" class="topleft_head0603">上海</a> <a href="http://gd.yesky.com/" class="topleft_head0603">广东</a><br />');
+document.write('<a href="http://cq.yesky.com/" class="topleft_head0603">重庆</a> <a href="http://cd.yesky.com/" class="topleft_head0603">成都</a> <a href="http://sy.yesky.com/" class="topleft_head0603">沈阳</a>');
+document.write('</div>');
+document.write('<div class="dqright_head0603 dqgg_head0603"><a href="http://my.yesky.com/" class="topleft_head0603">用户<br/>登录</a></div>');
+document.write('</div>');
+document.write('<div><a href="http://www.chinabyte.com" class="hgreen">Chinabyte.com</a><span style="font-size:10px;">|</span><a href="http://www.techtarget.com.cn" class="hblue">Techtarget.com.cn</a></div>');
+document.write('</div>');
+document.write('</div>');

@@ -1,0 +1,297 @@
+Socket基本编程
+
+最近由于要做一些Socket方面的项目，所以又温习了一下Socket和TCP协议编程的一些基本知识，整理一下放在这里。
+Socket基本编程
+服务端：
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+
+         
+         Thread mythread ;
+         Socket socket;
+
+// 清理所有正在使用的资源。
+         protected override void Dispose( bool disposing )
+         {
+              try 
+　            { 　　             
+　　          socket.Close();//释放资源 
+　　          mythread.Abort ( ) ;//中止线程 
+　            } 
+　            catch{ } 
+ 
+              if( disposing )
+              {
+                   if (components != null) 
+                   {
+                       components.Dispose();
+                   }
+              }
+              base.Dispose( disposing );
+         }        
+         public static IPAddress GetServerIP()
+         {
+              IPHostEntry ieh=Dns.GetHostByName(Dns.GetHostName());
+              return ieh.AddressList[0];
+         }
+         private void BeginListen()
+         {
+              IPAddress ServerIp=GetServerIP();
+              IPEndPoint iep=new IPEndPoint(ServerIp,8000);
+              socket=new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
+              
+              byte[] byteMessage=new byte[100];  
+              this.label1.Text=iep.ToString();
+              socket.Bind(iep);  
+//            do
+              while(true)
+              {
+                   try
+                   {
+                       socket.Listen(5);
+                       Socket newSocket=socket.Accept();
+                       newSocket.Receive(byteMessage);
+ 
+                       string sTime = DateTime.Now.ToShortTimeString ( ) ;
+                       string msg=sTime+":"+"Message from:";
+                       msg+=newSocket.RemoteEndPoint.ToString()+Encoding.Default.GetString(byteMessage);
+                       this.listBox1.Items.Add(msg);
+                       
+                   }
+                   catch(SocketException ex)
+                   {
+                       this.label1.Text+=ex.ToString();
+                   }
+              }
+//            while(byteMessage!=null);
+         }
+         //开始监听
+         private void button1_Click(object sender, System.EventArgs e)
+         {
+              try
+              {
+                   mythread = new Thread(new ThreadStart(BeginListen));
+                   mythread.Start();
+ 
+              }
+              catch(System.Exception er)
+              {
+                   MessageBox.Show(er.Message,"完成",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+              }            
+         }
+ 
+ 
+客户端：
+ 
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+ 
+         private void button1_Click(object sender, System.EventArgs e)
+         {
+              BeginSend();       
+         }
+         private void BeginSend()
+         {             
+              string ip=this.txtip.Text;
+              string port=this.txtport.Text;
+ 
+              IPAddress serverIp=IPAddress.Parse(ip);            
+              int serverPort=Convert.ToInt32(port);
+              IPEndPoint iep=new IPEndPoint(serverIp,serverPort);  
+              byte[] byteMessage;  
+//            do
+//            {
+                   Socket socket=new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
+                   socket.Connect(iep);
+              
+                   byteMessage=Encoding.ASCII.GetBytes(textBox1.Text);
+                   socket.Send(byteMessage);
+                   socket.Shutdown(SocketShutdown.Both);
+                   socket.Close();
+//            }
+//            while(byteMessage!=null);
+         }
+ 
+基于TCP协议的发送和接收端
+ 
+TCP协议的接收端
+ 
+
+using System.Net.Sockets ; //使用到TcpListen类
+using System.Threading ; //使用到线程  
+using System.IO ; //使用到StreamReader类
+ 
+         int port = 8000; //定义侦听端口号
+         private Thread thThreadRead; //创建线程，用以侦听端口号，接收信息
+         private TcpListener tlTcpListen; //侦听端口号
+         private bool blistener = true; //设定标示位，判断侦听状态
+         private NetworkStream nsStream; //创建接收的基本数据流  
+         private StreamReader srRead;
+         private System.Windows.Forms.StatusBar statusBar1;
+         private System.Windows.Forms.Button button1;
+         private System.Windows.Forms.ListBox listBox1; //从网络基础数据流中读取数据
+         private TcpClient tcClient ;
+ 
+         private void Listen ( ) 
+         { 
+              try 
+              { 
+                   tlTcpListen = new TcpListener ( port ) ; //以8000端口号来初始化TcpListener实例
+                   tlTcpListen.Start ( ) ; //开始监听
+                   statusBar1.Text = "正在监听..." ; 
+                   tcClient = tlTcpListen.AcceptTcpClient ( ) ; //通过TCP连接请求
+                   nsStream = tcClient.GetStream ( ) ; //获取用以发送、接收数据的网络基础数据流
+                   srRead=new StreamReader(nsStream);//以得到的网络基础数据流来初始化StreamReader实例
+                   statusBar1.Text = "已经连接！"; 
+ 
+                   while( blistener ) //循环侦听
+                   { 
+                       string sMessage = srRead.ReadLine();//从网络基础数据流中读取一行数据 
+                       if ( sMessage == "STOP" ) //判断是否为断开TCP连接控制码
+                       { 
+                            tlTcpListen.Stop(); //关闭侦听
+                            nsStream.Close(); //释放资源
+                            srRead.Close(); 
+                            statusBar1.Text = "连接已经关闭！" ; 
+                            thThreadRead.Abort(); //中止线程
+                            return; 
+                       } 
+ 
+                       string sTime = DateTime.Now.ToShortTimeString ( ) ; //获取接收数据时的时间
+                       listBox1.Items.Add ( sTime + " " + sMessage ) ; 
+                   } 
+              } 
+              catch ( System.Security.SecurityException ) 
+              { 
+                   MessageBox.Show ( "侦听失败！" , "错误" ) ; 
+              } 
+         }
+         //开始监听
+         private void button1_Click(object sender, System.EventArgs e)
+         {
+              thThreadRead = new Thread ( new ThreadStart ( Listen ) );
+              thThreadRead.Start();//启动线程           
+              button1.Enabled=false; 
+         }
+         // 清理所有正在使用的资源。
+         protected override void Dispose( bool disposing )
+         {
+              try 
+              { 
+                   tlTcpListen.Stop(); //关闭侦听 
+                   nsStream.Close();
+                   srRead.Close();//释放资源 
+                   thThreadRead.Abort();//中止线程 
+              } 
+              catch{}
+ 
+              if( disposing )
+              {
+                   if (components != null) 
+                   {
+                       components.Dispose();
+                   }
+              }
+              base.Dispose( disposing );
+         }
+ 
+ 
+TCP协议的发送端
+ 
+using System.Net.Sockets; //使用到TcpListen类
+using System.Threading; //使用到线程
+using System.IO; //使用到StreamWriter类
+using System.Net; //使用IPAddress类、IPHostEntry类等
+ 
+         private StreamWriter swWriter; //用以向网络基础数据流传送数据　
+         private NetworkStream nsStream; //创建发送数据的网络基础数据流　
+         private TcpClient tcpClient;
+         private System.Windows.Forms.Button button1;
+         private System.Windows.Forms.TextBox textBox1;
+         private System.Windows.Forms.Button button2;
+         private System.Windows.Forms.TextBox textBox2;
+         private System.Windows.Forms.StatusBar statusBar1;
+         private System.Windows.Forms.Label label1;
+         private System.Windows.Forms.Label label2; //通过它实现向远程主机提出TCP连接申请　
+         private bool tcpConnect = false; //定义标识符，用以表示TCP连接是否建立
+ 
+         //连接　
+         private void button1_Click(object sender, System.EventArgs e)
+         {
+              IPAddress ipRemote ; 
+              try 
+              { 
+                   ipRemote = IPAddress.Parse ( textBox1.Text ) ; 
+              } 
+              catch //判断给定的IP地址的合法性
+              { 
+                   MessageBox.Show ( "输入的IP地址不合法！" , "错误提示！" ) ; 
+                   return ; 
+              } 
+ 
+              IPHostEntry ipHost ; 
+              try 
+              { 
+                   ipHost = Dns.Resolve ( textBox1.Text ) ;　 
+              } 
+              catch //判断IP地址对应主机是否在线
+              { 
+                   MessageBox.Show ("远程主机不在线！" , "错误提示！" ) ; 
+                   return ; 
+              } 
+ 
+              string sHostName = ipHost.HostName ; 
+              try 
+              { 
+                   TcpClient tcpClient = new TcpClient(sHostName,8000);//对远程主机的8000端口提出TCP连接申请
+                   nsStream = tcpClient.GetStream();//通过申请，并获取传送数据的网络基础数据流　　
+                   swWriter = new StreamWriter(nsStream);//使用获取的网络基础数据流来初始化StreamWriter实例
+                   button1.Enabled = false ; 
+                   button2.Enabled = true ; 
+                   tcpConnect = true ; 
+                   statusBar1.Text = "已经连接！" ; 
+              } 
+              catch 
+              { 
+                   MessageBox.Show ( "无法和远程主机8000端口建立连接！" , "错误提示！" ) ; 
+                   return ; 
+              } 
+         }
+ 
+          //发送
+         private void button2_Click(object sender, System.EventArgs e)
+         {
+              if (textBox2.Text !="") 
+              { 
+                   swWriter.WriteLine(textBox2.Text);//刷新当前数据流中的数据
+                   swWriter.Flush(); 
+              } 
+              else 
+              {
+                   MessageBox.Show("发送信息不能为空！","错误提示！"); 
+              }
+         }
+         // 清理所有正在使用的资源。
+         protected override void Dispose( bool disposing )
+         {
+              if ( tcpConnect ) 
+              { 
+                   swWriter.WriteLine ( "STOP" ) ; //发送控制码　　
+                   swWriter.Flush (); //刷新当前数据流中的数据　　
+                   nsStream.Close (); //清除资源
+                   swWriter.Close (); 
+              } 
+              if( disposing )
+              {
+                   if (components != null) 
+                   {
+                       components.Dispose();
+                   }
+              }
+              base.Dispose( disposing );
+         }
+ 
+

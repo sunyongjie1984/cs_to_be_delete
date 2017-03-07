@@ -1,0 +1,360 @@
+<html>
+<head>
+<title>第一章</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td valign="middle" height="66" colspan="4" align="center"> 
+      <dl> 
+        <dt> 
+          <div align="center"><b><font face="隶书" size="+6" color="#0000A0">《自动控制理论》<font size="+2">多媒体网络课件</font></font></b></div>
+        </dt>
+      </dl>
+    </td>
+  </tr>
+  <tr> 
+    <td width="42" height="20"></td>
+    <td width="703" valign="top"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#8080FF">
+        <tr> 
+          <td width="87" height="20" valign="middle" align="center"><font color="#FFFFFF"><a href="prepare.htm"><font color="#FFFF80"><font color="#FFFFFF">预备知识</font></font></a></font></td>
+          <td width="88" valign="middle" align="center"><a href="important.htm"><font color="#FFFFFF">各章重点</font></a></td>
+          <td width="88" valign="middle" align="center"><font color="#FFFF00"><font color="#FF0000">上课内容</font></font></td>
+          <td width="88" valign="middle" align="center"><font color="#FFFF00"><a href="exercises.htm"><font color="#FFFFFF">习题精选</font></a></font></td>
+          <td width="88" valign="middle" align="center"><font color="#FFFF00"><a href="example.htm"><font color="#FFFFFF">例题选解</font></a></font></td>
+          <td width="88" valign="middle" align="center"><font color="#FFFF00"><a href="discuss.htm"><font color="#FFFFFF">课堂讨论</font></a></font></td>
+          <td width="88" valign="middle" align="center"><a href="BBS.htm"><font color="#FFFFFF">BBS交流</font></a></td>
+          <td width="88" valign="middle" align="center"><font color="#FFFF00"><a href="advice.htm"><font color="#FFFFFF">建议及意见</font></a></font></td>
+        </tr>
+      </table>
+    </td>
+    <td width="26"></td>
+    <td width="9"></td>
+  </tr>
+  <tr> 
+    <td height="26" colspan="3" valign="middle" align="left"><a href="index.htm"><font color="#0000FF">首页</font></a> 
+      -&gt; <a href="Content">上课内容</a> -&gt; 第一章</td>
+    <td></td>
+  </tr>
+  <tr> 
+    <td height="10"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="7553" colspan="2" valign="top"> 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="740" height="200" valign="top"> 
+            <h1 align="center"><font face="宋体" size="2"><a name="d"></a></font><font face="宋体" size="5">本章目录</font></h1>
+            <p><font face="宋体" size="2"><a href="Chapter1.htm#c1">1.1 控制理论发展综述</a><br>
+              </font></p>
+            <p><font face="宋体" size="2"><a href="Chapter1.htm#c2">1.2 自动控制系统的结构</a><br>
+              </font></p>
+            <p><font face="宋体" size="2"><a href="Chapter1.htm#c3">1.3 自动控制系统的组成和术语</a><br>
+              </font></p>
+            <p><font face="宋体" size="2"><a href="Chapter1.htm#c4">1.4 自动控制系统分类</a><br>
+              </font></p>
+            <p><font face="宋体" size="2"><a href="Chapter1.htm#c5">1.5对控制系统的性能要求和本课程的任务</a></font></p>
+            <p><font face="宋体" size="2"><a href="chapter1.htm#c6">习题</a><br>
+              </font> </p>
+          </td>
+          <td width="5"></td>
+        </tr>
+        <tr> 
+          <td height="14"></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="156" valign="top" align="left"> 
+            <p align="center"><font face="宋体" size="5"><b>本章简介</b></font></p>
+            <p> &nbsp;&nbsp;<font face="宋体" size="2">自动控制，是指在无人直接参与的情况下，利用控制装置（控制器）使被控对象(如生产过程中的位移、速度、温度，电力系统中电压、电流、功率等物理量或某些化合物的成分等)，依照预定的规律进行运动或变化。这种能对被控制对象的工作状态进行控制的系统称为自动控制系统。它一般由控制装置和被控对象组成。</font></p>
+            <p><font face="宋体" size="2">在已知控制系统结构和参数的基础上，求取系统的各项性能指标，并找出这些性能指标与系统参数间的关系，这就是自动控制系统的分析。而在给定对象特性的基础上，按照控制系统的应具备的性能指标要求，寻求能够全面满足这些性能指标要求的控制方案并合理确定控制器的参数，则是控制系统设计的任务。自动控制理论则是对自动控制系统进行分析和设计的一般性理论。<br>
+              </font><font face="宋体"> </font> </p>
+          </td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="458" valign="top"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="740" height="458" valign="top"> <b><a name="c1"></a>1.1 
+                  控制理论发展综述</b> <a href="chapter1.htm#d">回目录</a> 
+                  <p><font face="宋体" size="2">自动控制系统的早期应用可追溯到两千年前的古埃及的水钟控制和中国汉代的指南车控制。</font></p>
+                  <p><font face="宋体" size="2">1788年英国科学家James Watt为设计内燃机设计的飞锤调速器可以认为是最早的反馈控制系统的工程应用。由于当时应用的调整器出现振荡现象，所以产生了Maxwell 
+                    对微分方程系统的稳定性的理论研究，后来又出现了Routh 和Hurwitz等人的稳定性研究成果，控制器的设计问题是由Minorsky等人在1922年开始研究的，其研究成果可以看成是现在广泛应用的PID控制器的前身，而在1942年，Ziegler和Nichols提出了调节PID控制器参数的方法，其方法对当今的PID整定仍有影响。</font></p>
+                  <p><font face="宋体" size="2">系统的频域分析技术是在Nyquist、Bode等早期的关于通信学科的频域研究工作的基础上建立起来的，Harris于1942年提出了传递函数的概念首先将通信学科的频域技术移植到了控制领域，构成了控制系统频域分析技术的理论基础。Evens等在1946年提出的线性反馈系统的根轨迹分析技术是那个时代的另一个里程碑。</font></p>
+                  <p><font face="宋体" size="2">原苏联学者Pontryagin于1956年提出的极大值原理、Bellman的动态规划和Kalman的状态空间分析技术开创了控制理论研究的新时代，他们的理论当时统称为&quot;现代控制理论&quot;。在那个时期以后，控制理论研究中出现了线性二次型最优调节器、最优状态观测器及线性二次型（简称LQG）问题的研究，并在后来出现了引入回路传输恢复技术的LQG控制器。</font></p>
+                  <p><font face="宋体" size="2">鲁棒控制是控制系统设计中的另一个令人瞩目的领域，早在1981年，美国学者Zames提出了基于Hardy空间范数最小化方法的鲁棒最优控制理论，而1992年Doyle等人提出的最优控制的状态空间数值解法在这个领域有着重要的贡献。</font></p>
+                  <p><font face="宋体" size="2">本书将系统地演示计算机技术在反馈控制系统的分析与设计中的应用。控制系统计算机辅助分析与设计的早期应用可以在Jones和Melsa[19]在1970年出版的专著中发反映出来，该书中给出了大量的FORTRAN源程序，可以直接用于控制系统的分析与设计。这也被认为是第一代控制系统计算机辅助分析与设计软件。</font></p>
+                  <p><font face="宋体" size="2">第二代的系统分析与设计软件的一个显著的特点是其人机交互性，这类软件的典型代表是Moler开发的MATLAB软件环境（1980）和Astrom的INTRAC软件（1984）。这样的软件和当时流行的C与FORTRAN语言一样，往往需要用户掌握其编程方法，所不同的是，由于这些软件的专用性，故其集成度和编程效率大大高于C这类语言，从而得到广大使用者的喜爱。</font></p>
+                  <p><font face="宋体" size="2">当今的控制计算机辅助分析与设计软件的特点是其面向对象的程序设计结构，这种新的概念在MATLAB的语言和其支持工具Simulink中反映出来。<br>
+                    </font> </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="15"></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="882" colspan="2" valign="top"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td height="445" valign="top" colspan="3"> 
+                  <p><b><a name="c2"></a>1.2 自动控制系统的结构</b> <a href="chapter1.htm#d">回目录</a></p>
+                  <p><font size="2">在现实世界中，存在着大量的这类系统，如炮火自动跟踪和瞄准目标有效打击敌人；人造卫星或无人驾驶的航空器按设定的轨道运行；电动机转速保持恒定；电梯匀速运行并按指令平稳停留某个楼层等等，都是自动控制的结果。</font></p>
+                  <p><font size="2">因此，为完成控制系统的分析和设计，首先必须对控制对象、控制系统结构有个明确的了解。一般，可将控制系统分为两种基本形式：开环控制系统和闭环（反馈）控制系统。</font></p>
+                  <p><font size="2"><b>1.2.1 开环控制系统</b></font></p>
+                  <p><font size="2">开环控制系统是一种最简单的控制方式，在控制器和控制对象间只有正向控制作用，系统的输出量不会对控制器产生任何影响，如<font color="#0000A0">图1-1</font>所示。在该系统中，对于每一个输入量，就有一个与之对应的工作状态和输出量，系统的精度仅取决于元器件的精度和特性调整的精度。这类系统结构简单，成本低，容易控制，但是控制精度低，因为如果在控制器或控制对象上存在干扰，或者由于控制器元器件老化，控制对象结构或参数发生变化，均会导致系统输出的不稳定，使输出值偏离预期值。正因为如此，开环控制系统一般适用于干扰不强或可预测，控制精度要求不高的场合。 
+                    </font></p>
+                  <p><img src="image/p1-1.gif" width="476" height="97"></p>
+                  <p><font size="2" color="#0000FF">图1-2</font><font size="2">所示为一简单贮槽液面控制系统，这是一个典型的开环系统，要求贮槽的液面H能保持在允许的偏差范内。V1是液体流出阀，V2是液体流入阀。首先根据要求，液面的高度H及V1阀在单位时间内液体的流出量，整定好V2阀的开启程度，以达到预定的目的。但这是个不精确的控制系统，如果V1阀的输出流量和V2阀的输入量受到温度、液体浓度及其他各种因素的影响而发生了变化，不将液面控制在原标定的H值，而超过了允许的偏差，系统无法纠正偏差。</font></p>
+                  <p>&nbsp;</p>
+                </td>
+                <td width="5"></td>
+              </tr>
+              <tr> 
+                <td width="232" height="186"></td>
+                <td valign="top" width="204"><img src="image/p1-2.gif" width="190" height="186"></td>
+                <td width="304"></td>
+                <td></td>
+              </tr>
+              <tr> 
+                <td colspan="4" height="251" valign="top"> 
+                  <p><font size="2" color="#0000FF">图1-3</font><font size="2">所示为数控机床中广泛应用的定位系统的框图。这也是一个开环控制系统，工作台的位移是该系统的被控制量，它是跟随着控制信号（控制脉冲）而变化的。显然，这个系统没有抗扰动的功能。</font></p>
+                  <p><img src="image/p1-3.gif" width="582" height="126"></p>
+                  <p><font size="2">如果系统的给定输入与被控量之间的关系固定，且其内部参数或外来扰动的变化都较小，或这些扰动因素可以事先确定并能给予补偿，则采用开环控制也能取得较为满意的控制效果。</font></p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td height="2018" colspan="2" valign="top"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td colspan="3" height="1338" valign="top"><font size="2"><b>1.2.2.闭环控制系统 
+                  </b> </font> 
+                  <p><font size="2">如果在控制器和被控对象之间，不仅存在正向作用，而且存在着反向的作用，即系统的输出量对控制量具有直接的影响，那么这类控制称为闭环控制, 
+                    将检测出来的输出量送回到系统的输入端，并与输入信号比较，称为反馈。因此，闭环控制又称为反馈控制，其控制结构如<font color="#0000FF">图1-4</font>。在这样的结构下，系统的控制器和控制对象共同构成了前向通道，而反馈装置构成了系统的反馈通道。</font><br>
+                    <img src="image/p1-4.gif" width="539" height="178"> </p>
+                  <p><font size="2">在控制系统中，反馈的概念非常重要。在图1-4中，如果将反馈环节取得的实际输出信号加以处理，并在输入信号中减去这样的反馈量，再将结果输入到控制器中去控制被控对象，我们称这样的反馈为负反馈；反之，若由输入量和反馈量相加作为控制器的输入，则称为正反馈。</font></p>
+                  <p><font size="2">在一个实际的控制系统中，具有正反馈形式的系统一般是不能改进系统性能的，而且容易使系统的性能变坏，因此不被采用。而且有负反馈形式的系统，它通过自动修正偏离量，使系统趋向于给定值，并抑制系统回路中存在的内扰和外扰的影响，最终达到自动控制的目的。通常，反馈控制就是指负反馈控制。</font></p>
+                  <p><font size="2">与开环系统比较，闭环控制系统的最大特点是检测偏差，纠正偏差。从系统结构上看，闭环系统具有反向通道，即反馈；其次，从功能上看，1) 
+                    由于增加了反馈通道，系统的控制精度得到了提高，若采用开环控制，要达到同样的精度，则需高精度的控制器，从而大大增加了成本；2) 
+                    由于存在系统的反馈，可以较好地抑制系统各环节中可能存在的扰动和由于器件的老化而引起的结构和参数的不稳定性；3) 反馈环节的存在，同时可较好地改善系统的动态性能。当然，如果引入不适当的反馈，如正反馈，或者参数选择不恰当，不仅达不到改善系统性能的目的，甚至会导致一个稳定的系统变为不稳定的系统。</font></p>
+                  <p><font size="2">在现实世界中，反馈控制系统的形式是多样的，但一般均可化为<font color="#0000FF">图1-4</font>的形式。</font></p>
+                  <p><font size="2">一个水池水位自动控制系统如<font color="#0000FF">图1-5</font>所示。在这个水位控制系统中，水池的进水量Q1来自电动机控制开度的进水阀门，出水量Q2。在用户用水量Q2随意变化的情况下，保持水箱水位在希望的高度不变。</font></p>
+                  <p><font size="2">希望水位高度由电位器触头A设定，浮子测出实际水位高度。由浮子带动的电位计触头B的位置反映实际水位高度。A,B两点的电位差 
+                    反映希望水位与实际水位的偏差。当实际水位低于希望水位时， &gt;0，通过放大器驱使电动机转动，开大进水阀门，使进水量Q1增加，从而使水位上升。当实际水位上升到希望值时，A、B两个触头在同一位置， 
+                    =0，电动机停转，进水阀门开度不变，这时进水量Q1和出水量Q2达到了新的平衡。若实际水位高于希望水位， &lt;0，则电动机使进水阀门关小，进水量减少，实际水位下降。</font></p>
+                  <p><font size="2"><br>
+                    <img src="image/p1-5.gif" width="398" height="278"> </font></p>
+                  <p><font size="2">这个系统是个典型的镇定系统, 在该系统中:<br>
+                    控制量 希望水位的设定值<br>
+                    被控制量 实际水位<br>
+                    扰动量 出水量Q2<br>
+                    被控对象 水池<br>
+                    测量元件 浮子<br>
+                    比较元件 电位器<br>
+                    放大元件 放大器<br>
+                    执行元件 电动机,减速器,进水阀门</font></p>
+                  <p><font size="2">系统的方框图如<font color="#0000FF">1-6</font>所示。控制系统中各元件的分类和方框图的绘制不是唯一的，只要能正确反映其功能和运动规律即可。<br>
+                    </font> </p>
+                  <p><img src="image/p1-6.gif" width="624" height="196"> </p>
+                  <p><font size="2">一个位置自动控制系统如<font color="#0000FF">图1-7</font>所示，该系统的作用是使负载L(工作机械)的角位移随给定的角度的变化而变化，即要求被控量复现控制量 
+                    。</font></p>
+                </td>
+              </tr>
+              <tr> 
+                <td height="15" width="108"></td>
+                <td width="417"><img src="image/p1-7.gif" width="400" height="254"></td>
+                <td width="220"></td>
+              </tr>
+              <tr> 
+                <td height="424" colspan="3" valign="top"> 
+                  <p><font size="2">指令电位器和反馈电位器组成的桥式电路是测量比较环节，其作用就是测量控制量－输入角度和被控制量--－输出角度，变成电压信号和并相减，产生偏差电压 
+                    。</font></p>
+                  <p><font size="2">当负载的实际位置 与给定位置 相符时，则 ,电动机不转动。当负载的实际位置 与给定位置 
+                    不相符时， 和 也不相等，偏差电压 。偏差电压 经过放大器放大，使电动机转动，通过减速器移动负载L，使负载L和反馈电位器向减少偏差的方向转动。<br>
+                    </font></p>
+                  <p><font size="2">一个位置随动系统，系统的方框图如<font color="#0000FF">图1-8</font>所示。<img src="image/p1-8.gif" width="602" height="286"></font></p>
+                </td>
+              </tr>
+              <tr> 
+                <td height="2"></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td height="793" colspan="2" valign="top"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="745" height="73" valign="top"> 
+                  <p> </p>
+                  <p><b><a name="c3"></a>1.3 自动控制系统的组成和术语</b> <a href="chapter1.htm#d">回目录</a></p>
+                  <p><font size="2">通过对上面的实际控制系统的分析可以发现，不同的控制对象或生产过程，利用相应的控制元件组成不同的用途的控制系统，组成这些控制系统的元件可以是电气的、机械的或液压的。系统的结构也不尽相同，但这些系统一般均采用负反馈的基本结构，其典型的方块图如<font color="#0000FF">图1-9</font>所示。</font></p>
+                  <p><font size="2"><img src="image/p1-9.gif" width="548" height="218"><br>
+                    参考输入 ---是系统的参考输入元件产生的输入信号。</font></p>
+                  <p><font size="2">主反馈 -是被控量通过反馈元件产生的信号，它是被控量的函数。</font></p>
+                  <p><font size="2">比较元件-是将参考输入与主反馈进行比较产生的差值， ，该差值是系统的作用信号，也称为作用误差。所以比较元件也称作用误差检测器，并用符号 
+                    表示。</font></p>
+                  <p><font size="2">偏差-是参考输入与主反馈之差，用 表示。</font></p>
+                  <p><font size="2">控制元件-也称校正元件或控制器、调节器。由于作用误差往往十分微弱，一般需要放大，并将它转换成适于执行机构工作的信号；另外由于对系统性能的要求，须对作用误差信号进行运算处理。在一般的控制系统中，控制器常采用PID控制器。</font></p>
+                  <p><font size="2">执行元件-控制元件的输出作用到执行元件，执行元件再直接作用于被控对象，使被控对象随参考输入而变化。</font></p>
+                  <p><font size="2">被控对象-是系统被控制的设备或过程，它能完成特定的动作或生产任务。</font></p>
+                  <p><font size="2">被控量-是反馈系统被控制的物理量。</font></p>
+                  <p><font size="2">反馈元件-将被控量转换成主反馈量的装置，它可以对被控量进行测量并转换成能于参考输入进行比较的量值，以反馈元件也称测量元件。</font></p>
+                  <p><font size="2">理想化系统-能从参考输入直接产生理想输出的系统。</font></p>
+                  <p><font size="2">理想输出 -也称希望的响应值，它是理想化系统所产生的理想响应。</font></p>
+                  <p><font size="2">系统误差 -是希望的响应值(理想输出)与被控量之差。</font></p>
+                  <p><font size="2">典型自动控制系统一般都是由参考输入元件、比较元件、控制元件、执行元件、被控对象以及反馈元件六个基本单元组成。每个基本单元都用一个方块表示，信号传递方向用箭头表示，传递方向都是单方向不可逆的，指向方块的箭头表示输入信号，离开方块的箭头表示输出信号。</font><br>
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td height="9"></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="564" valign="top"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="740" height="563" valign="top"> 
+                  <p><b><a name="c4"></a>1.4 自动控制系统分类 </b><a href="chapter1.htm#d">回目录</a></p>
+                  <p><font size="2">对各种各样控制系统进行分类，从不同的观点出发可以有不同的分类方法：通常按下列方法进行划分。</font></p>
+                  <p><font size="2">一、线性控制系统和非线性控制系统</font></p>
+                  <p><font size="2">若组成控制系统的元件都具有线性特性，则称这种系统为线性控制系统。这种系统的输入与输出间的关系，一般用微分方程,传递函数来描述，也可以用状态空间表达式来表示。线性系统的主要特点是具有齐次性和适用叠加原理。如果线性系统中的参数不随时间而变化，则称为线性定常系统；反之，则称为线性时变系统。本书主要讨论线性定常系统。</font></p>
+                  <p><font size="2">在控制系统中，至少要一个元件具有非线性特性，则称该系统为非线性控制系统。非线性系统一般不具有齐次性，也不适用叠加原理，而且它的输出响应和稳定性与其初始态有很大关系。 
+                    </font></p>
+                  <p><font size="2">严格地说，绝对的线性控制系统(或元件)是不存在的，因为所用的物理系统和元件在不同的程度上都具有非线性特性。为了简化对系统的分析和设计，在一定的条件下，可以用分析线性系统的理论和方法对它进行研究。</font></p>
+                  <p><font size="2">工程上有时为了改善控制系统的性能，常常人为地引入某种非线性元件。例如为了实现最短时间控制,采用开关型(Bang-Bang)的控制方式；又如在由晶闸管组成的整流装置的直流调速系统中，为了改善系统的动态特性和限制电动机的最大电流，人们有意识地把速度调节器和电流调节器设计成具有饱和非线性的特性。 
+                    </font></p>
+                  <p><font size="2">二、恒值控制系统和随动系统</font></p>
+                  <p><font size="2">恒值控制系统的参考输入为常量，要求它的被控制量在任何扰动的作用下能尽快地恢复(或接近)到原有的稳态值。由于这类系统能自动地消除各种扰动对被控制量的影响，故它又名为自镇定系统。随动系统的参考输入是一个变化的量，一般是随机的，要求系统的被控制量能快速、准确地跟踪参考输入信号的变化而变化。</font></p>
+                  <p><font size="2">三.连续控制系统和离散控制系统</font></p>
+                  <p><font size="2">控制系统中各部分的信号若都是时间t的连续函数，则称这类系统为连续控制系统。前面所举的液面控制系统和随动系统都属于这类控制系统。 
+                    </font></p>
+                  <p><font size="2">在控制系统各部分的信号中只要有一个是时间t的离散信号，则称这种系统为离散控制系统。</font></p>
+                  <p><font size="2">应当指出，上述分类只是按常见分类法进行划分，此外还有其它分类方法：如集中参数系统和分布参数系统；单输入输出系统和多输入输出系统；时变系统和非时变系统；有静差系统和无静差系统；最优控制和次最优控制系统；自适应系统和自镇定控制系统，等等。</font><br>
+                  </p>
+                </td>
+              </tr>
+              <tr> 
+                <td height="1"></td>
+              </tr>
+            </table>
+          </td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="25"></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="805" valign="top"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="740" height="805" valign="top"> 
+                  <p> </p>
+                  <p><b><a name="c5"></a>1.5 对控制系统的性能要求和本课程的任务 </b><a href="chapter1.htm#d">回目录</a><br>
+                  </p>
+                  <p><font size="2"><b>1.5.1对控制系统性能的要求</b></font></p>
+                  <p><font size="2">为了实现自动控制，必须对控制系统提出一定的要求。对于一个闭环控制系统而言，当输入量和扰动量均不变时，系统输出量也恒定不变，这种状态称为平衡状态或静态、稳态。显然，系统在稳态时的输出量是我们关心的，当输入量或扰动量发生变化，反馈量将与输入量之间产生新的偏差，通过控制器的作用，从而使输出量最终稳定，即达到一个新的平衡。但由于系统中各环节总存在惯性，系统从一个平衡点到另一个平衡点无法瞬间完成，即存在一个过渡过程，称为动态过程或暂态过程。</font></p>
+                  <p><font size="2">过渡过程的形式不仅与系统的结构和参数有关，也与参考输入和外加扰动有关。一般有单调过程、衰减震荡过程、等幅振荡过程等形式；此外，我们关心系统会否稳定，如果会稳定，系统到达新的平衡状态需要多少时间。 
+                    通过上面的分析可知, 对于一个自动控制系统, 需要从如下三方面进行分析:</font></p>
+                  <p><font size="2">一﹑稳定性</font></p>
+                  <p><font size="2">稳定性是对控制系统最基本的要求。所谓系统稳定，一般指当系统受到扰动作用后，系统的被控制量偏离了原来的平衡状态，但当扰动撤离后，经过苦于时间，系统若仍能返回到原来的平衡状态，则称系统是稳定的。一个稳定的系统，在其内部参数发生微小变化或初始条件改变时，一般仍能正常进行地工作。考虑到系统在工作过程中的环境和参数可能产生的变化，因而要求系统不仅能稳定，而且在设计时还要留有一定的裕量。</font></p>
+                  <p><font size="2">二﹑准确性</font></p>
+                  <p><font size="2">系统稳态精度通常用它的稳态误差来表示。如果在参考输入信号作用下，当系统达到稳态后，其稳态输出与参考输入所要求的期望输出之差叫做给定稳态误差。显然，这种误差越小，表示系统输出跟踪输入的精度越高。系统在扰动信号作用下，其输出必然偏离原平衡状态，但由于系统自动调节的作用，其输出量会逐渐向原平衡状态方向恢复。当达到稳态后，系统的输出量若不能恢复到原平衡状态时的稳态值，由此所产生的差值称为扰动稳态误差。这种误差越小，表示系统抗扰动的能力越强，其稳态精度也越高。</font></p>
+                  <p><font size="2">三﹑快速性</font></p>
+                  <p><font size="2">控制系统不仅要稳定和并有较高的精度，而且还要求系统的响应具有一定的快速性，对于某些系统来说，这是一个十分重要的性能指标。有关系统响应速度定量的性能指标，一般可以用上升时间﹑调整时间和峰值时间来表示。</font></p>
+                  <p><font size="2">由于被控对象运行目的不同，各类系统对上述三方面性能要求的侧重点是有差异的。例如随动系统对快速性和稳态精度的要求较高，而恒值控制系统一般却侧重于稳定性能和抗扰动的能力。在同一个系统中,上述三个方面的性能要求通常也是相互制约的。例如为了提高系统的快速性和准确性，就需要增大系统的放大能力，而放大能力的增强，必然促使系统动态性能的变差，甚至会使系统变为不稳定。反之，若强调系统动态过程平稳性的要求，系统的放大倍数就应较小，从而导致系统稳态精度的降低和动态过程的变慢。由此可见，系统动态响应的快速性、高精度与系统稳定性之间存在着矛盾，在系统设计时须针对具体的系统要求，均衡考虑各指标。 
+                    </font></p>
+                  <p><font size="2"><b>1.5.2本课程的基本内容</b></font></p>
+                  <p><font size="2">本课程的主要内容可以分为三个方面:</font></p>
+                  <p><font size="2">1. 根据系统的结构和参数，分析系统的稳定性动态性能指标和稳态误差。为此，首先建立系统的模型，然后，依据建立模型的形式，分别采用时域法、根轨迹法和频域法对控制系统进行分析。（上述内容在本书第二章、第三章、第四章、第五章。） 
+                    </font></p>
+                  <p><font size="2">2. 按照所给的控制任务或系统具体的性能要求，设计一个合理的控制装置，并确定其结构和参数。（上述内容在本书第六章）</font></p>
+                  <p><font size="2">3. 利用计算机辅助分析和设计手段，利用Matlab软件工具，对反馈控制系统进行分析。这方面内容分布在相应各章。</font></p>
+                  <p><font size="2">此外，有关非线性系统的分析在第七章，离散时间系统的分析在本节第八章，第九章则对Matlab反馈控制系统分析、设计中使用到的有关函数进行了介绍。<br>
+                    </font> </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="17"></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="1488" colspan="2" valign="top"> 
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="745" height="174" valign="top"> 
+                  <p><b><a name="c6"></a>习题 </b><a href="chapter1.htm#d">回目录</a></p>
+                  <p><font size="2">1-1 电动机转速控制系统如<font color="#0000FF">图1-10</font>所示，Ua是电枢电压， 
+                    if 是激磁电流。试分析系统的工作原理，指出控制量和被控制量，画出系统的方框图，说明是闭环控制还是开环控制。</font></p>
+                  <p><img src="image/p1-10.gif" width="447" height="236"></p>
+                  <p><font size="2">1-2 电加热炉温度自动控制系统如<font color="#0000FF">图1-11</font>所示。电阻丝电源的通断由可控交流开关控制，温度的测量用电热偶。试分析系统工作原理，画出系统方框图。</font></p>
+                  <p><img src="image/p1-11.gif" width="426" height="272"></p>
+                  <p><font size="2">1-3 图1-12是一个带有测速负反馈的随动系统，试分析工作原理，并画出系统方框图。</font></p>
+                  <p><img src="image/pl-12.gif" width="516" height="345"></p>
+                  <p><font size="2"> 1-4 造纸机分部传动速度反馈控制系统如图1-13。含有大量水分的纸浆经过第一榨棍后，挤掉了大量水分，然后再进入第二榨棍。为防止纸浆断裂，要保证两个压榨棍速度协调。图中，M为电动机TG为测速电机，Ur为参数输入电压。试分析其工作原理并画出系统方框图。</font></p>
+                  <p><img src="image/p1-13.gif" width="459" height="362"></p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td height="29"></td>
+          <td></td>
+        </tr>
+        <tr> 
+          <td height="47" align="center"> 
+            <p><font color="#FF0033">制作人：颜文俊</font></p>
+            <p><font color="#0000FF" size="2">Monday, 2001-05-21</font></p>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="451"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

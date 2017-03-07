@@ -1,0 +1,8 @@
+-I ../../lib -o client udp.c ../../libunp.a
+-I ../../lib -o server udp_server.c ../../libunp.a
+
+run this program:
+./server &
+./client 172.16.16.244
+type: hehe
+there will be response hehe

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: libapr skeleton code</TITLE>
+ <LINK HREF="apr-tutorial-3.html" REL=next>
+ <LINK HREF="apr-tutorial-1.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc2" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-3.html">Next</A>
+<A HREF="apr-tutorial-1.html">Previous</A>
+<A HREF="apr-tutorial.html#toc2">Contents</A>
+<HR>
+<H2><A NAME="s2">2.</A> <A HREF="apr-tutorial.html#toc2">libapr skeleton code</A></H2>
+
+<P>I believe it is a good idea to write 'skeleton code' at first, when you start to learn a new library or a new framework programming. 'skeleton code' is the smallest source code, but you can compile and execute it (although it usually do nothing useful).</P>
+<P>Fortunately, libapr's skeleton code is much simpler than other modern frameworks. Let's take a look at apr-skeleton.c. We call apr_initialize() at the initialization, and call apr_terminate() at the finalization. That's all. As you can imagine, the code does nothing.</P>
+<P>libapr is not a framework library. Accordingly, libapr doesn't help you to design the whole structure of the source code. There are pros and cons. Pros is that it is easy to use libapr with the other existing code. Cons is that you need to design the whole structure of the code by yourself when you use libapr. </P>
+<P>Here, we have some libapr programming styles and rules:
+<UL>
+<LI>naming rule is very simple and clear.</LI>
+<LI>opaque data types are commonly used (a.k.a. incomplete types)</LI>
+<LI>most of return types are apr_status_t. As a result, result-arguments are commonly used.</LI>
+<LI>memory pool rules</LI>
+</UL>
+</P>
+<P>We are able to see these styles in the following code.</P>
+<P>/* excerpted from 
+<A HREF="../sample/mp-sample.c">mp-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+apr_status_t rv;
+apr_pool_t *mp;
+rv = apr_pool_create(&amp;mp, NULL);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>I will describe the meaning of the code. Here, please take a look at only style. You can see apr_ prefix. The apr_ prefix indicates that the symbol is in libapr naming scope. You can see _t suffix. It indicates that the symbol is a type name.</P>
+<P>apr_pool_t is opaque type. It means the type's structure is not public. By OO(Object Oriented) terminology, all member variables are private. You can't touch them directly. Furthermore, you can't see them in public header files. All you can do for the type is to call APIs such as apr_foo_bar() functions. Most importantly, you can't allocate their instance memories directly. All you can do is to call construct APIs. Only libapr knows how to construct and destruct the objects.</P>
+<P>As you see, apr_pool_create()'s return type is apr_status_t. apr_status_t is either status code or error code. apr_status_t is a commonly used as return types of most APIs. Accordingly, we can get results from functions by arguments. Such arguments are called result-argument. There are many result-arguments in the libapr world.</P>
+<P>In general, if you see apr_foo_t type, you will see apr_foo_bar() functions, which are related to apr_foo_t type.
+The following code is a typical pseudo code.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* pseudo code of libapr. error checks omitted */
+apr_status_t rv;
+apr_foo_t *foo;
+rv = apr_foo_create(&amp;foo, args...);/* create a @foo object by @args */
+rv = apr_foo_do_something(foo, args...); /* do something with @foo */
+apr_foo_destroy(foo); /* destroy the @foo object. Sometimes, this is done implicitly by destroying related memory pool. Please see below */
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+
+<HR>
+<A HREF="apr-tutorial-3.html">Next</A>
+<A HREF="apr-tutorial-1.html">Previous</A>
+<A HREF="apr-tutorial.html#toc2">Contents</A>
+</BODY>
+</HTML>

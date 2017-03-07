@@ -1,0 +1,594 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0035)http://www.javaeye.com/topic/134642 -->
+<HTML dir=ltr xml:lang="zh-CN" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<META 
+content="最近在做html页面转化成jsf页面的工作，尝试过使用正则表达式、dom4j等方法，都没有取得很好的结果。（html-->jsf会另写一篇文章进行讨论）现在在使用htmlparser对html进行解析，对于html页面的解析htmlparser是一个功能比较强大的工具（相关下载：http://sourceforge.net/projects/htmlparser/）。以下是经常使用的对页面解析 ..." 
+name=description>
+<META content="htmlparser  Java" name=keywords><LINK href="/images/favicon.ico" 
+type=image/x-icon rel="shortcut icon"><LINK title=JavaEye论坛 
+href="/rss/board/Java" type=application/rss+xml rel=alternate><LINK 
+title=JavaEye href="/open_search.xml" type=application/opensearchdescription+xml 
+rel=search><LINK media=screen 
+href="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/forum.css" 
+type=text/css rel=stylesheet>
+<SCRIPT 
+src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/application.js" 
+type=text/javascript></SCRIPT>
+<LINK media=screen 
+href="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/SyntaxHighlighter.css" 
+type=text/css rel=stylesheet>
+<SCRIPT 
+src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/shCoreCommon.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/hotkey.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/dragdrop.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY>
+<DIV id=page>
+<DIV id=header>
+<DIV class=clearfix>
+<DIV id=user_nav><A class=welcome title=登录 
+href="http://www.javaeye.com/login">您还未登录 !</A> <A style="COLOR: red" 
+href="http://www.javaeye.com/all">我的应用</A> <A 
+href="http://www.javaeye.com/login">登录</A> <A class=nobg 
+href="http://www.javaeye.com/signup">注册</A> </DIV></DIV>
+<DIV class=clearfix>
+<DIV id=branding><A href="http://www.javaeye.com/"><IMG 
+title=JavaEye-最棒的软件开发交流社区 alt=JavaEye-最棒的软件开发交流社区 
+src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/logo.gif"></A> 
+</DIV>
+<DIV id=gg></DIV></DIV></DIV>
+<DIV class=clearfix id=content>
+<DIV id=main>
+<DIV class=clearfix>
+<DIV class=crumbs><A href="http://www.javaeye.com/forums">论坛首页</A> <SPAN 
+class=arrow>→</SPAN> <A 
+href="http://www.javaeye.com/forums/board/Java">Java编程和Java企业应用版</A> <SPAN 
+class=arrow>→</SPAN> 
+<H1>HtmlParser初探--使用Nodefilter和Visitor进行网页分析</H1></DIV></DIV>
+<DIV id=forum_tag_list><A href="http://www.javaeye.com/forums/board/Java">全部</A> 
+<A href="http://www.javaeye.com/forums/tag/Hibernate">Hibernate</A> <A 
+href="http://www.javaeye.com/forums/tag/Spring">Spring</A> <A 
+href="http://www.javaeye.com/forums/tag/Struts">Struts</A> <A 
+href="http://www.javaeye.com/forums/tag/iBATIS">iBATIS</A> <A 
+href="http://www.javaeye.com/forums/tag/J2EE">企业应用</A> <A 
+href="http://www.javaeye.com/forums/tag/Design-Pattern">设计模式</A> <A 
+href="http://www.javaeye.com/forums/tag/DAO">DAO</A> <A 
+href="http://www.javaeye.com/forums/tag/Object-Domain">领域模型</A> <A 
+href="http://www.javaeye.com/forums/tag/OO">OO</A> <A 
+href="http://www.javaeye.com/forums/tag/Tomcat">Tomcat</A> <A 
+href="http://www.javaeye.com/forums/tag/SOA">SOA</A> <A 
+href="http://www.javaeye.com/forums/tag/JBoss">JBoss</A> <A 
+href="http://www.javaeye.com/forums/tag/Swing">Swing</A> <A 
+href="http://www.javaeye.com/forums/tag/Java">Java综合</A> </DIV>
+<DIV class=actions>
+<DIV class=buttons></DIV>
+<DIV class=wrapper>
+<DIV id=forum_recommended_f4><A href="http://www.javaeye.com/clicks/324" 
+target=_blank><SPAN 
+style="FONT-WEIGHT: bold; COLOR: red">myApps快速开发平台，配置即开发、所见即所得，节约85%工作量 
+</SPAN></A></DIV>
+<DIV class=info>浏览 5494 次</DIV></DIV></DIV>
+<TABLE id=forum_main cellSpacing=1>
+  <THEAD>
+  <TR>
+    <TH class=topic_title colSpan=2>
+      <DIV class=wrapper><SPAN class=locked>锁定老贴子</SPAN> <A 
+      href="http://www.javaeye.com/topic/134642">主题：HtmlParser初探--使用Nodefilter和Visitor进行网页分析</A></DIV>
+      <DIV id=topic_rate_box>精华帖 (0) :: 良好帖 (0) :: 新手帖 (1) :: 隐藏帖 
+(0)</DIV></TH></TR>
+  <TR>
+    <TD class=first_col>作者</TD>
+    <TD class=last_col>正文</TD></TR></THEAD>
+  <TBODY id=posts>
+  <TR id=399003>
+    <TD class=postauthor>
+      <UL>
+        <LI class=name>yongtree 
+        <LI>等级: <IMG title=一星会员 alt=一星会员 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/star1.gif"> 
+
+        <LI><A href="http://yongtree.javaeye.com/" target=_blank><IMG class=logo 
+        title="yongtree的博客: JavaTree" alt=yongtree的博客 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/efdc3aec-74d7-4e4e-ac5d-eb52a2c5fcd0.gif"></A> 
+
+        <LI>文章: 81 
+        <LI>积分: 121 
+        <LI>来自: 青岛 
+        <LI><IMG 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/offline.gif"> 
+        </LI></UL></TD>
+    <TD class=postcontent>
+      <DIV class=postactions>
+      <DIV class=description>&nbsp;&nbsp; 发表时间：2007-10-23&nbsp;&nbsp; </DIV>
+      <DIV class=links></DIV></DIV>
+      <DIV class="postbody clearfix">
+      <SCRIPT type=text/javascript>
+      var hunters = ["\u003Ca href='/jobs/628' target='_blank' style='color:#000;'\u003E\u003Cspan style='font-weight:bold;'\u003E\u4e0a\u6d77: \u003C/span\u003E \u4e0a\u6d77\uff0c\u5317\u4eac\uff1a\u62db\u8058java\u5f00\u53d1\u5de5\u7a0b\u5e08\u003C/a\u003E","\u003Ca href='/jobs/518' target='_blank' style='color:#000;'\u003E\u003Cspan style='font-weight:bold;'\u003E\u5b89\u5fbd: \u003C/span\u003E \u5408\u80a5,\u676d\u5dde,\u82cf\u5dde\uff1a\u8bda\u8058java\u67b6\u6784\u5e08\u003C/a\u003E","\u003Ca href='/jobs/519' target='_blank' style='color:#000;'\u003E\u003Cspan style='font-weight:bold;'\u003E\u5b89\u5fbd: \u003C/span\u003E \u5408\u80a5,\u676d\u5dde,\u82cf\u5dde\uff1a\u8bda\u8058java\u9ad8\u7ea7\u5f00\u53d1\u5de5\u7a0b\u5e08\u003C/a\u003E","\u003Ca href='/jobs/632' target='_blank' style='color:#000;'\u003E\u003Cspan style='font-weight:bold;'\u003E\u4e0a\u6d77: \u003C/span\u003E \u4e0a\u6d77\uff1a30\u4e07\u8d77\u5e74\u85aa\u8bda\u8058\u5e73\u53f0\u9ad8\u7ea7\u67b6\u6784\u5e08\u003C/a\u003E"]
+      var hunter_id = Math.ceil(Math.random() * hunters.length) - 1;
+      if(hunter_id == -1) hunter_id = 0;
+    </SCRIPT>
+
+      <DIV id=hunter_recommended 
+      style="BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 4px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 4px; BACKGROUND: #fff; MARGIN-BOTTOM: 10px; PADDING-BOTTOM: 4px; BORDER-LEFT: #ccc 1px solid; PADDING-TOP: 4px; BORDER-BOTTOM: #ccc 1px solid"><SPAN 
+      id=hunters_nav style="MARGIN-RIGHT: 5px"><A 
+      style="BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; BORDER-LEFT: #ccc 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc 1px solid; TEXT-DECORATION: none; size: 13px" 
+      onclick="hunter_id <= 0 ? hunter_id = hunters.length - 1 : hunter_id--; $('hunters').update(hunters[hunter_id]);return false;" 
+      href="http://www.javaeye.com/topic/134642#">&lt;</A> <A 
+      style="BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; BORDER-LEFT: #ccc 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc 1px solid; TEXT-DECORATION: none; size: 13px" 
+      onclick="hunter_id >= hunters.length - 1 ? hunter_id = 0 : hunter_id++; $('hunters').update(hunters[hunter_id]);return false;" 
+      href="http://www.javaeye.com/topic/134642#">&gt;</A> </SPAN>猎头职位: <SPAN 
+      id=hunters>
+      <SCRIPT type=text/javascript>document.write(hunters[hunter_id]);</SCRIPT>
+      </SPAN></DIV>
+      <DIV id=related_topics>相关文章: <SPAN class=close><A title=关闭 
+      onclick="$('related_topics').hide();if($('hunter_recommended')){$('hunter_recommended').style.width='780px';} return false;" 
+      href="http://www.javaeye.com/topic/134642#">&nbsp;</A></SPAN> 
+      <UL>
+        <LI><A title=lucene2.0+heritrix示例补充 
+        href="http://www.javaeye.com/topic/325722" 
+        target=_blank>lucene2.0+heritrix示例补充</A> 
+        <LI><A title="基于Spindle的增强HTTP Spider" 
+        href="http://www.javaeye.com/topic/177857" 
+        target=_blank>基于Spindle的增强HTTP Spider</A> 
+        <LI><A title=用htmlparser分析并抽取正文 
+        href="http://www.javaeye.com/topic/149493" 
+        target=_blank>用htmlparser分析并抽取正文</A> </LI></UL><BR><SPAN>推荐圈子: <A 
+      href="http://verticalse.group.javaeye.com/" target=_blank>垂直搜索</A></SPAN> 
+      <BR><A href="http://www.javaeye.com/wiki/topic/134642" 
+      target=_blank>更多相关推荐</A> </DIV>
+      <SCRIPT type=text/javascript>
+                if($('hunter_recommended')) {
+                  $('hunter_recommended').setStyle({cssFloat: 'left', width: '557px'})
+                }
+                new Draggable("related_topics");
+              </SCRIPT>
+
+      <P>最近在做html页面转化成jsf页面的工作，尝试过使用正则表达式、dom4j等方法，都没有取得很好的结果。（html--&gt;jsf会另写一篇文章进行讨论）现在在使用htmlparser对html进行解析，对于html页面的解析htmlparser是一个功能比较强大的工具（相关下载：<SPAN 
+      style="FONT-FAMILY: Arial"><A 
+      href="http://sourceforge.net/projects/htmlparser/">http://sourceforge.net/projects/htmlparser/</A></SPAN>）。以下是经常使用的对页面解析的两种方法，简单的总结了这两种方法的实现步骤，希望在这里抛砖引玉，有这方面编程经验的们，能参与讨论，怎样用它来进行html--&gt;jsf的转换。</P>
+      <P><SPAN 
+      style="FONT-FAMILY: Arial">一、利用NodeFilter对网页进行分析<BR>1、生成一个Parser<BR>a.通过url提取网络上的网页<BR>Parser 
+      parser = new 
+      Parser();<BR>parser.setURL("http://www.yahoo.com.cn");<BR>b.提取本地网页文件<BR>通过读文件把网页文件转化成字符串；<BR>Parser 
+      parser=Parser.createParser(html,charset);<BR>2、利用NodeFilter做一个filter<BR>a.利用Tag 
+      Name<BR>NodeFilter filter=new TagNameFilter("IMG");<BR>b.利用Tag 
+      Class<BR>NodeFilter filter = new 
+      NodeClassFilter(ImageTag.class);<BR>3、通过匹配filter，得到所有符合条件的Tag<BR>NodeList 
+      list=parser.extractAllNodesThat(filter);<BR>for(int i=0;i String 
+      content=list.elementAt(i).toHtml();//得到符合条件的Tag内容<BR>如果针对具体情况进行更加详细的处理，则：<BR>ImageTag 
+      imageTag=(ImageTag)list.elementAt(i);<BR>&nbsp;…………<BR>}<BR>然后根据需要做相应的处理。<BR>&nbsp; 
+      <BR>二、利用Visitor对网页进行分析 <BR>1、生成一个Parser&nbsp; 
+      <BR>a.通过url提取网络上的网页<BR>Parser parser = new 
+      Parser();<BR>parser.setURL("http://www.yahoo.com.cn");<BR>b.提取本地网页文件<BR>通过读文件把网页文件转化成字符串；<BR>Parser 
+      parser=Parser.createParser(html,charset);<BR>2、用visitor访问页面<BR>ex：ObjectFindingVisitor 
+      visitor=new ObjectFindingVisitor();<BR>&nbsp;&nbsp;&nbsp; 
+      parser.visitAllNodesWith(visitor);<BR>3、通过特定的visitor得到符合条件的Tag<BR>Node[] 
+      nodes=visitor.getTags();<BR>for(int i=0;i ImageTag 
+      imageTag=(ImageTag)nodes[i];<BR>&nbsp;…………<BR>//根据需要做特定处理<BR>}<BR></SPAN></P>
+      <P><SPAN style="FONT-FAMILY: Arial">相关文章：<SPAN 
+      style="FONT-FAMILY: Arial"><A 
+      href="http://www.blogjava.net/lostfire/archive/2006/07/02/56212.html">http://www.blogjava.net/lostfire/archive/2006/07/02/56212.html</A></SPAN></SPAN></P></DIV>
+      <DIV id=topic_copyright>声明：JavaEye文章版权属于作者，受法律保护。没有作者书面许可不得转载。 </DIV>
+      <DIV id=forum_recommended_f5><SPAN>推荐链接</SPAN>
+      <UL>
+        <LI><A href="http://www.javaeye.com/clicks/333" target=_blank><IMG 
+        height=60 alt=阿里巴巴 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/728x60.jpg" 
+        width=728> </A></LI></UL></DIV>
+      <DIV id=forum_recommended_f0>
+      <SCRIPT type=text/javascript><!--
+google_ad_client = "pub-1076724771190722";
+/* JE论坛文章728x90 */
+google_ad_slot = "4097489287";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</SCRIPT>
+
+      <SCRIPT 
+      src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/show_ads.js" 
+      type=text/javascript>
+</SCRIPT>
+      </DIV></TD></TR>
+  <TR>
+    <TD class=postauthor><A 
+      href="http://www.javaeye.com/topic/134642#">返回顶楼</A></TD>
+    <TD class=postcontent>
+      <DIV class=icons><A class=icon_www title=浏览作者的博客 
+      href="http://yongtree.javaeye.com/">&nbsp;</A> <A class=icon_profile 
+      title=浏览作者资料 href="http://yongtree.javaeye.com/blog/profile">&nbsp;</A> <A 
+      class=icon_pm title=发送站内短信 
+      href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=yongtree">&nbsp;</A> 
+      <A class=icon_guestbook title=给作者留言 
+      href="http://yongtree.javaeye.com/blog/guest_book">&nbsp;</A> <A 
+      class=icon_rss title=关注作者 
+      onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;" 
+      href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=yongtree">&nbsp;</A> 
+      </DIV></TD></TR>
+  <TR class=sep2>
+    <TD colSpan=2></TD></TR>
+  <TR id=520255>
+    <TD class=postauthor>
+      <UL>
+        <LI class=name>water84222 
+        <LI>等级: 初级会员 
+        <LI><A href="http://onlylove.javaeye.com/" target=_blank><IMG class=logo 
+        title="water84222的博客: onlyLove" alt=water84222的博客 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/507282e3-a3e5-37ef-9a91-fe0d956f8ec8.jpg"></A> 
+
+        <LI>文章: 107 
+        <LI>积分: 10 
+        <LI>来自: 大连 
+        <LI><IMG 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/offline.gif"> 
+        </LI></UL></TD>
+    <TD class=postcontent>
+      <DIV class=postactions>
+      <DIV class=description>&nbsp;&nbsp; 发表时间：2008-04-17&nbsp;&nbsp; </DIV>
+      <DIV class=links></DIV></DIV>
+      <DIV class="postbody clearfix">请问一下，怎样将修改过得html保存到文件中<BR>code如下<BR>parser 
+      = new Parser(getContentByLocalFile(file));<BR>NodeFilter nt = new 
+      NodeClassFilter(ImageTag.class) ;<BR>NodeList tmpImageList = (NodeList) 
+      parser.parse(nt);<BR><BR>/*linkTmpHash = new Hashtable();<BR>for (int i = 
+      0; i &lt; length; i++) {<BR>Element tmpElement = (Element) 
+      tmpNodeList.item(i);<BR>String href = 
+      tmpElement.getAttribute("href");<BR>if (href != null &amp;&amp; 
+      !href.equals("")) {<BR>linkTmpHash.put(href, 
+      "");<BR>}<BR>}<BR>data.setHrefs((String[]) 
+      linkTmpHash.keySet().toArray(new 
+      String[linkTmpHash.size()]));*/<BR>BufferedWriter writer = new 
+      BufferedWriter(new OutputStreamWriter (new FileOutputStream 
+      (file)));<BR>linkTmpHash = new Hashtable();<BR>for (int i = 0; i &lt; 
+      tmpImageList.size(); i++) {<BR>imgnode = 
+      (ImageTag)tmpImageList.elementAt(i);<BR>String src = 
+      imgnode.getImageURL();<BR>if (URLPathNameUtil.isAbsolutePath(src)) {<BR>if 
+      (testAbsolutePath) {<BR>testImagetag(file,src);<BR>}<BR>} else {<BR>if 
+      (testRelativePath) {<BR>testImagetag(file, 
+      src);<BR>}<BR>}<BR>if(getRealPath()!=null){<BR>imgnode.setImageURL(getRealPath());<BR>writer.write(tmpImageList.toHtml());<BR>}<BR>/*if 
+      (src != null &amp;&amp; !src.equals("")) {<BR>linkTmpHash.put(src, 
+      "");<BR>}*/<BR>}<BR>writer.flush();<BR>writer.close ();<BR><BR>谢谢了 
+    </DIV></TD></TR>
+  <TR>
+    <TD class=postauthor><A 
+      href="http://www.javaeye.com/topic/134642#">返回顶楼</A></TD>
+    <TD class=postcontent>
+      <DIV class=icons><A class=icon_www title=浏览作者的博客 
+      href="http://onlylove.javaeye.com/">&nbsp;</A> <A class=icon_profile 
+      title=浏览作者资料 href="http://onlylove.javaeye.com/blog/profile">&nbsp;</A> <A 
+      class=icon_pm title=发送站内短信 
+      href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=water84222">&nbsp;</A> 
+      <A class=icon_guestbook title=给作者留言 
+      href="http://onlylove.javaeye.com/blog/guest_book">&nbsp;</A> <A 
+      class=icon_rss title=关注作者 
+      onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;" 
+      href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=water84222">&nbsp;</A> 
+      <A title=water84222回帖:HtmlParser初探--使用Nodefilter和Visitor进行网页分析 
+      href="http://www.javaeye.com/topic/134642#520255">回帖地址</A> </DIV>
+      <DIV class=post_rate_box id=post_rate_box_520255><A class=good title=好 
+      onclick="return false;" href="http://www.javaeye.com/topic/134642#">0</A> 
+      <A class=hidden title=差 onclick="return false;" 
+      href="http://www.javaeye.com/topic/134642#">0</A> 请登录后投票</DIV></TD></TR>
+  <TR class=sep2>
+    <TD colSpan=2></TD></TR>
+  <TR id=534574>
+    <TD class=postauthor>
+      <UL>
+        <LI class=name>yongtree 
+        <LI>等级: <IMG title=一星会员 alt=一星会员 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/star1.gif"> 
+
+        <LI><A href="http://yongtree.javaeye.com/" target=_blank><IMG class=logo 
+        title="yongtree的博客: JavaTree" alt=yongtree的博客 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/efdc3aec-74d7-4e4e-ac5d-eb52a2c5fcd0.gif"></A> 
+
+        <LI>文章: 81 
+        <LI>积分: 121 
+        <LI>来自: 青岛 
+        <LI><IMG 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/offline.gif"> 
+        </LI></UL></TD>
+    <TD class=postcontent>
+      <DIV class=postactions>
+      <DIV class=description>&nbsp;&nbsp; 发表时间：2008-05-04&nbsp;&nbsp; </DIV>
+      <DIV class=links></DIV></DIV>
+      <DIV class="postbody clearfix">
+      <DIV class=quote_title>water84222 写道</DIV>
+      <DIV class=quote_div>请问一下，怎样将修改过得html保存到文件中 <BR>code如下 <BR>parser = new 
+      Parser(getContentByLocalFile(file)); <BR>NodeFilter nt = new 
+      NodeClassFilter(ImageTag.class) ; <BR>NodeList tmpImageList = (NodeList) 
+      parser.parse(nt); <BR><BR>/*linkTmpHash = new Hashtable(); <BR>for (int i 
+      = 0; i &lt; length; i++) { <BR>Element tmpElement = (Element) 
+      tmpNodeList.item(i); <BR>String href = tmpElement.getAttribute("href"); 
+      <BR>if (href != null &amp;&amp; !href.equals("")) { 
+      <BR>linkTmpHash.put(href, ""); <BR>} <BR>} <BR>data.setHrefs((String[]) 
+      linkTmpHash.keySet().toArray(new String[linkTmpHash.size()]));*/ 
+      <BR>BufferedWriter writer = new BufferedWriter(new OutputStreamWriter (new 
+      FileOutputStream (file))); <BR>linkTmpHash = new Hashtable(); <BR>for (int 
+      i = 0; i &lt; tmpImageList.size(); i++) { <BR>imgnode = 
+      (ImageTag)tmpImageList.elementAt(i); <BR>String src = 
+      imgnode.getImageURL(); <BR>if (URLPathNameUtil.isAbsolutePath(src)) { 
+      <BR>if (testAbsolutePath) { <BR>testImagetag(file,src); <BR>} <BR>} else { 
+      <BR>if (testRelativePath) { <BR>testImagetag(file, src); <BR>} <BR>} 
+      <BR>if(getRealPath()!=null){ <BR>imgnode.setImageURL(getRealPath()); 
+      <BR>writer.write(tmpImageList.toHtml()); <BR>} <BR>/*if (src != null 
+      &amp;&amp; !src.equals("")) { <BR>linkTmpHash.put(src, ""); <BR>}*/ <BR>} 
+      <BR>writer.flush(); <BR>writer.close (); 
+      <BR><BR>谢谢了</DIV><BR><BR><BR>通过写文件就可以了啊。 </DIV></TD></TR>
+  <TR>
+    <TD class=postauthor><A 
+      href="http://www.javaeye.com/topic/134642#">返回顶楼</A></TD>
+    <TD class=postcontent>
+      <DIV class=icons><A class=icon_www title=浏览作者的博客 
+      href="http://yongtree.javaeye.com/">&nbsp;</A> <A class=icon_profile 
+      title=浏览作者资料 href="http://yongtree.javaeye.com/blog/profile">&nbsp;</A> <A 
+      class=icon_pm title=发送站内短信 
+      href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=yongtree">&nbsp;</A> 
+      <A class=icon_guestbook title=给作者留言 
+      href="http://yongtree.javaeye.com/blog/guest_book">&nbsp;</A> <A 
+      class=icon_rss title=关注作者 
+      onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;" 
+      href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=yongtree">&nbsp;</A> 
+      <A title=yongtree回帖:HtmlParser初探--使用Nodefilter和Visitor进行网页分析 
+      href="http://www.javaeye.com/topic/134642#534574">回帖地址</A> </DIV>
+      <DIV class=post_rate_box id=post_rate_box_534574><A class=good title=好 
+      onclick="return false;" href="http://www.javaeye.com/topic/134642#">0</A> 
+      <A class=hidden title=差 onclick="return false;" 
+      href="http://www.javaeye.com/topic/134642#">0</A> 请登录后投票</DIV></TD></TR>
+  <TR class=sep2>
+    <TD colSpan=2></TD></TR>
+  <TR id=534638>
+    <TD class=postauthor>
+      <UL>
+        <LI class=name>nickcen 
+        <LI>等级: 初级会员 
+        <LI><A href="http://nickcen.javaeye.com/" target=_blank><IMG class=logo 
+        title="nickcen的博客: " alt=nickcen的博客 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/user-logo.gif"></A> 
+
+        <LI>文章: 21 
+        <LI>积分: 60 
+        <LI>来自: 北京 
+        <LI><IMG 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/offline.gif"> 
+        </LI></UL></TD>
+    <TD class=postcontent>
+      <DIV class=postactions>
+      <DIV class=description>&nbsp;&nbsp; 发表时间：2008-05-04&nbsp;&nbsp; </DIV>
+      <DIV class=links></DIV></DIV>
+      <DIV class="postbody clearfix">个人感觉要做这个还是Python的BeautifulSoup最好。 
+  </DIV></TD></TR>
+  <TR>
+    <TD class=postauthor><A 
+      href="http://www.javaeye.com/topic/134642#">返回顶楼</A></TD>
+    <TD class=postcontent>
+      <DIV class=icons><A class=icon_www title=浏览作者的博客 
+      href="http://nickcen.javaeye.com/">&nbsp;</A> <A class=icon_profile 
+      title=浏览作者资料 href="http://nickcen.javaeye.com/blog/profile">&nbsp;</A> <A 
+      class=icon_pm title=发送站内短信 
+      href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=nickcen">&nbsp;</A> 
+      <A class=icon_guestbook title=给作者留言 
+      href="http://nickcen.javaeye.com/blog/guest_book">&nbsp;</A> <A 
+      class=icon_rss title=关注作者 
+      onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;" 
+      href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=nickcen">&nbsp;</A> 
+      <A title=nickcen回帖:HtmlParser初探--使用Nodefilter和Visitor进行网页分析 
+      href="http://www.javaeye.com/topic/134642#534638">回帖地址</A> </DIV>
+      <DIV class=post_rate_box id=post_rate_box_534638><A class=good title=好 
+      onclick="return false;" href="http://www.javaeye.com/topic/134642#">0</A> 
+      <A class=hidden title=差 onclick="return false;" 
+      href="http://www.javaeye.com/topic/134642#">0</A> 请登录后投票</DIV></TD></TR>
+  <TR class=sep2>
+    <TD colSpan=2></TD></TR>
+  <TR id=534653>
+    <TD class=postauthor>
+      <UL>
+        <LI class=name>hysoft 
+        <LI>等级: 初级会员 
+        <LI><A href="http://hysoft.javaeye.com/" target=_blank><IMG class=logo 
+        title="hysoft的博客: hxsoft" alt=hysoft的博客 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/b1b444c3-254b-3e9b-be8a-5e54edccc1e4.jpg"></A> 
+
+        <LI>文章: 101 
+        <LI>积分: 0 
+        <LI>来自: HB 
+        <LI><IMG 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/offline.gif"> 
+        </LI></UL></TD>
+    <TD class=postcontent>
+      <DIV class=postactions>
+      <DIV class=description>&nbsp;&nbsp; 发表时间：2008-05-04&nbsp;&nbsp; </DIV>
+      <DIV class=links></DIV></DIV>
+      <DIV class="postbody clearfix">lz对 html里 通过ajax方式 显示的一些链接 有无好方法 获得？ 
+      <BR>这些链接在htm 通过查看源码得不到的 而是封装在一些数组里 </DIV></TD></TR>
+  <TR>
+    <TD class=postauthor><A 
+      href="http://www.javaeye.com/topic/134642#">返回顶楼</A></TD>
+    <TD class=postcontent>
+      <DIV class=icons><A class=icon_www title=浏览作者的博客 
+      href="http://hysoft.javaeye.com/">&nbsp;</A> <A class=icon_profile 
+      title=浏览作者资料 href="http://hysoft.javaeye.com/blog/profile">&nbsp;</A> <A 
+      class=icon_pm title=发送站内短信 
+      href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=hysoft">&nbsp;</A> 
+      <A class=icon_guestbook title=给作者留言 
+      href="http://hysoft.javaeye.com/blog/guest_book">&nbsp;</A> <A 
+      class=icon_rss title=关注作者 
+      onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;" 
+      href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=hysoft">&nbsp;</A> 
+      <A title=hysoft回帖:HtmlParser初探--使用Nodefilter和Visitor进行网页分析 
+      href="http://www.javaeye.com/topic/134642#534653">回帖地址</A> </DIV>
+      <DIV class=post_rate_box id=post_rate_box_534653><A class=good title=好 
+      onclick="return false;" href="http://www.javaeye.com/topic/134642#">0</A> 
+      <A class=hidden title=差 onclick="return false;" 
+      href="http://www.javaeye.com/topic/134642#">0</A> 请登录后投票</DIV></TD></TR>
+  <TR class=sep2>
+    <TD colSpan=2></TD></TR>
+  <TR id=538049>
+    <TD class=postauthor>
+      <UL>
+        <LI class=name>nickcen 
+        <LI>等级: 初级会员 
+        <LI><A href="http://nickcen.javaeye.com/" target=_blank><IMG class=logo 
+        title="nickcen的博客: " alt=nickcen的博客 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/user-logo.gif"></A> 
+
+        <LI>文章: 21 
+        <LI>积分: 60 
+        <LI>来自: 北京 
+        <LI><IMG 
+        src="HtmlParser初探--使用Nodefilter和Visitor进行网页分析 - Java - JavaEye论坛.files/offline.gif"> 
+        </LI></UL></TD>
+    <TD class=postcontent>
+      <DIV class=postactions>
+      <DIV class=description>&nbsp;&nbsp; 发表时间：2008-05-06&nbsp;&nbsp; </DIV>
+      <DIV class=links></DIV></DIV>
+      <DIV 
+      class="postbody clearfix">如果你只是想获得这些链接，而不是用Java获得这些链接，那么你可以写个greasemonkey的创建，或者用XUL。 
+      </DIV></TD></TR>
+  <TR>
+    <TD class=postauthor><A 
+      href="http://www.javaeye.com/topic/134642#">返回顶楼</A></TD>
+    <TD class=postcontent>
+      <DIV class=icons><A class=icon_www title=浏览作者的博客 
+      href="http://nickcen.javaeye.com/">&nbsp;</A> <A class=icon_profile 
+      title=浏览作者资料 href="http://nickcen.javaeye.com/blog/profile">&nbsp;</A> <A 
+      class=icon_pm title=发送站内短信 
+      href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=nickcen">&nbsp;</A> 
+      <A class=icon_guestbook title=给作者留言 
+      href="http://nickcen.javaeye.com/blog/guest_book">&nbsp;</A> <A 
+      class=icon_rss title=关注作者 
+      onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;" 
+      href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=nickcen">&nbsp;</A> 
+      <A title=nickcen回帖:HtmlParser初探--使用Nodefilter和Visitor进行网页分析 
+      href="http://www.javaeye.com/topic/134642#538049">回帖地址</A> </DIV>
+      <DIV class=post_rate_box id=post_rate_box_538049><A class=good title=好 
+      onclick="return false;" href="http://www.javaeye.com/topic/134642#">0</A> 
+      <A class=hidden title=差 onclick="return false;" 
+      href="http://www.javaeye.com/topic/134642#">0</A> 请登录后投票</DIV></TD></TR>
+  <TR class=sep2>
+    <TD colSpan=2></TD></TR></TBODY></TABLE>
+<DIV class=actions>
+<DIV class=buttons></DIV>
+<DIV class=wrapper></DIV></DIV>
+<DIV>
+<DIV class=crumbs><A href="http://www.javaeye.com/forums">论坛首页</A> <SPAN 
+class=arrow>→</SPAN> <A 
+href="http://www.javaeye.com/forums/board/Java">Java编程和Java企业应用版</A> 
+<BR><BR>跳转论坛:<SELECT id=forum_urlname 
+onchange="window.location='/forums/board/'+this.value" 
+  name=forum[urlname]><OPTION value=Java selected>Java编程和Java企业应用</OPTION> 
+  <OPTION value=web>Web前端技术</OPTION> <OPTION value=mobile>移动编程和手机应用开发</OPTION> 
+  <OPTION value=cpp>C/C++编程</OPTION> <OPTION value=Ruby>Ruby编程</OPTION> <OPTION 
+  value=Python>Python编程</OPTION> <OPTION value=PHP>PHP编程</OPTION> <OPTION 
+  value=Flash>Flash编程和RIA</OPTION> <OPTION value=dotnet>Microsoft .Net</OPTION> 
+  <OPTION value=Tech>综合技术</OPTION> <OPTION value=develop>软件开发和项目管理</OPTION> 
+  <OPTION value=Industry>行业应用</OPTION> <OPTION value=New>入门讨论</OPTION> <OPTION 
+  value=Job>招聘求职</OPTION> <OPTION value=Life>海阔天空</OPTION></SELECT> 
+<UL onmousemove="marqueeing = false;" id=recommended_jobs 
+style="BORDER-RIGHT: #f8aa4f 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #f8aa4f 1px solid; MARGIN-TOP: 5px; PADDING-LEFT: 0px; PADDING-BOTTOM: 7px; OVERFLOW: hidden; BORDER-LEFT: #f8aa4f 1px solid; WIDTH: 400px; PADDING-TOP: 7px; BORDER-BOTTOM: #f8aa4f 1px solid; LIST-STYLE-TYPE: none; HEIGHT: 110px" 
+onmouseout="marqueeing = true;">
+  <LI 
+  style="PADDING-LEFT: 20px; BACKGROUND: url(/images/board-tab-list.png) no-repeat left center; MARGIN-LEFT: 15px"><A 
+  title="北京:祖睿科技诚聘Senior Java Engineer" href="http://www.javaeye.com/jobs/648" 
+  target=_blank>北京: 祖睿科技诚聘Senior Java Engineer</A> 
+  <LI 
+  style="PADDING-LEFT: 20px; BACKGROUND: url(/images/board-tab-list.png) no-repeat left center; MARGIN-LEFT: 15px"><A 
+  title=上海:北京银证软件诚聘JAVA开发工程师 href="http://www.javaeye.com/jobs/675" 
+  target=_blank>上海: 北京银证软件诚聘JAVA开发工程师</A> 
+  <LI 
+  style="PADDING-LEFT: 20px; BACKGROUND: url(/images/board-tab-list.png) no-repeat left center; MARGIN-LEFT: 15px"><A 
+  title="北京:大杰致远诚聘 JAVA高级程序员" href="http://www.javaeye.com/jobs/669" 
+  target=_blank>北京: 大杰致远诚聘 JAVA高级程序员</A> 
+  <LI 
+  style="PADDING-LEFT: 20px; BACKGROUND: url(/images/board-tab-list.png) no-repeat left center; MARGIN-LEFT: 15px"><A 
+  title=上海:JavaEye猎头诚聘上海：30万起年薪诚聘平台高级架构师 href="http://www.javaeye.com/jobs/632" 
+  target=_blank>上海: JavaEye猎头诚聘上海：30万起年薪诚聘平台高</A> 
+  <LI 
+  style="PADDING-LEFT: 20px; BACKGROUND: url(/images/board-tab-list.png) no-repeat left center; MARGIN-LEFT: 15px"><A 
+  title=北京:去哪儿旅游搜索引擎诚聘java开发工程师 href="http://www.javaeye.com/jobs/523" 
+  target=_blank>北京: 去哪儿旅游搜索引擎诚聘java开发工程师</A> 
+  <LI 
+  style="PADDING-LEFT: 20px; BACKGROUND: url(/images/board-tab-list.png) no-repeat left center; MARGIN-LEFT: 15px"><A 
+  title=广东:恩瑞索诚聘java软件工程师 href="http://www.javaeye.com/jobs/633" 
+  target=_blank>广东: 恩瑞索诚聘java软件工程师</A> </LI></UL>
+<SCRIPT type=text/javascript>
+        var marqueeing = true;
+        function marquee(){
+          if(marqueeing) {
+            var container=document.getElementById("recommended_jobs");
+            container.appendChild(container.firstChild);
+          }
+        }
+        setInterval("marquee()", 4000);
+      </SCRIPT>
+</DIV></DIV>
+<DIV style="DISPLAY: none">
+<FORM id=post_rate_form 
+onsubmit="new Ajax.Request('/posts/rate', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;" 
+action=/posts/rate method=post><INPUT id=post_rate_id type=hidden name=id> 
+<INPUT id=post_rate_type type=hidden name=type> </FORM></DIV>
+<SCRIPT type=text/javascript>
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  fix_image_size($$('div.postbody img'), 760);
+
+  function rate_post(id, type) {
+    Element.update('post_rate_box_' + id, '提交中...');
+    new Ajax.Request('/posts/rate', {asynchronous:true, evalScripts:true, parameters:{"id":id, "type":type}});
+  }
+
+  function rate_topic(type) {
+    Element.update('topic_rate_box', '提交中...');
+    new Ajax.Request('/topics/rate', {asynchronous:true, evalScripts:true, parameters:{"id":134642, "type":type}});
+  }
+</SCRIPT>
+</DIV>
+<DIV id=nav>
+<DIV class=wrapper>
+<UL>
+  <LI><A href="http://www.javaeye.com/">首页</A> </LI>
+  <LI><A href="http://www.javaeye.com/news">新闻</A> </LI>
+  <LI><A class=selected href="http://www.javaeye.com/forums">论坛</A> </LI>
+  <LI><A href="http://www.javaeye.com/ask">问答</A> </LI>
+  <LI><A href="http://www.javaeye.com/wiki">专栏</A> </LI>
+  <LI><A href="http://www.javaeye.com/blogs">博客</A> </LI>
+  <LI><A href="http://www.javaeye.com/articles">文摘</A> </LI>
+  <LI><A href="http://www.javaeye.com/groups">圈子</A> </LI>
+  <LI><A href="http://www.javaeye.com/job">招聘</A> </LI>
+  <LI><A href="http://www.javaeye.com/index/service">服务</A> </LI>
+  <LI class=last><A href="http://www.javaeye.com/google_search">搜索</A> 
+</LI></UL></DIV></DIV>
+<DIV id=channel_nav>
+<UL>
+  <LI><A href="http://java.javaeye.com/">Java</A> </LI>
+  <LI><A href="http://webapp.javaeye.com/">Web</A> </LI>
+  <LI><A href="http://ruby.javaeye.com/">Ruby</A> </LI>
+  <LI><A href="http://python.javaeye.com/">Python</A> </LI>
+  <LI><A href="http://agile.javaeye.com/">敏捷</A> </LI>
+  <LI><A href="http://mysql.javaeye.com/">MySQL</A> </LI>
+  <LI><A href="http://runqian.javaeye.com/">润亁报表</A> </LI>
+  <LI class=last><A href="http://book.javaeye.com/">图书</A> </LI></UL></DIV></DIV>
+<DIV id=footer>
+<DIV id=site_nav>
+<UL>
+  <LI><A href="http://www.javaeye.com/index/service">广告服务</A> 
+  <LI><A href="http://webmaster.javaeye.com/">JavaEye黑板报</A> 
+  <LI><A href="http://www.javaeye.com/index/aboutus">关于我们</A> 
+  <LI><A href="http://www.javaeye.com/index/contactus">联系我们</A> 
+  <LI class=last><A href="http://www.javaeye.com/index/friend_links">友情链接</A> 
+  </LI></UL></DIV>
+<DIV id=copyright>© 2003-2010 JavaEye.com. 上海炯耐计算机软件有限公司版权所有 [ <A 
+href="http://www.miibeian.gov.cn/">沪ICP备05023328号</A> ] </DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+  document.write("<img src='http://stat.javaeye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&logged_in=no" + "' width='0' height='0' />");
+</SCRIPT>
+</BODY></HTML>

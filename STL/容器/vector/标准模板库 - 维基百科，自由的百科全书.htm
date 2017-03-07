@@ -1,0 +1,542 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0033)http://zh.wikipedia.org/zh-cn/STL -->
+<HTML lang=zh dir=ltr xml:lang="zh" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>标准模板库 - 维基百科，自由的百科全书</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv=Content-Style-Type content=text/css>
+<META content="MSHTML 6.00.2900.5848" name=GENERATOR><LINK 
+href="/zh-cn/%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93" rel=canonical><LINK 
+title=编辑本页 
+href="/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit" 
+type=application/x-wiki rel=alternate><LINK title=编辑本页 
+href="/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit" 
+rel=edit><LINK href="http://zh.wikipedia.org/apple-touch-icon.png" 
+rel=apple-touch-icon><LINK href="/favicon.ico" rel="shortcut icon"><LINK 
+title=中文维基百科 href="/w/opensearch_desc.php" 
+type=application/opensearchdescription+xml rel=search><LINK 
+href="http://creativecommons.org/licenses/by-sa/3.0/" rel=copyright><LINK 
+title=Wikipedia的RSS订阅 
+href="/w/index.php?title=Special:%E6%9C%80%E8%BF%91%E6%9B%B4%E6%94%B9&amp;feed=rss" 
+type=application/rss+xml rel=alternate><LINK title=Wikipedia的Atom订阅 
+href="/w/index.php?title=Special:%E6%9C%80%E8%BF%91%E6%9B%B4%E6%94%B9&amp;feed=atom" 
+type=application/atom+xml rel=alternate><LINK media=screen 
+href="标准模板库 - 维基百科，自由的百科全书.files/shared.css" type=text/css rel=stylesheet><LINK 
+media=print href="标准模板库 - 维基百科，自由的百科全书.files/commonPrint.css" type=text/css 
+rel=stylesheet><LINK media=screen href="标准模板库 - 维基百科，自由的百科全书.files/main.css" 
+type=text/css rel=stylesheet><LINK media=handheld 
+href="H:\1023\vector\标准模板库 - 维基百科，自由的百科全书.files\main(1).css" type=text/css 
+rel=stylesheet><!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE50Fixes.css?243z2" type="text/css" media="screen" /><![endif]--><!--[if IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE55Fixes.css?243z2" type="text/css" media="screen" /><![endif]--><!--[if IE 6]><LINK 
+media=screen href="标准模板库 - 维基百科，自由的百科全书.files/IE60Fixes.css" type=text/css 
+rel=stylesheet><![endif]--><!--[if IE 7]><link rel="stylesheet" href="/skins-1.5/monobook/IE70Fixes.css?243z2" type="text/css" media="screen" /><![endif]--><LINK 
+media=all href="标准模板库 - 维基百科，自由的百科全书.files/index.css" type=text/css 
+rel=stylesheet><LINK media=print 
+href="H:\1023\vector\标准模板库 - 维基百科，自由的百科全书.files\index(1).css" type=text/css 
+rel=stylesheet><LINK media=handheld 
+href="H:\1023\vector\标准模板库 - 维基百科，自由的百科全书.files\index(2).css" type=text/css 
+rel=stylesheet><LINK media=all 
+href="H:\1023\vector\标准模板库 - 维基百科，自由的百科全书.files\index(3).css" type=text/css 
+rel=stylesheet><LINK media=all 
+href="H:\1023\vector\标准模板库 - 维基百科，自由的百科全书.files\index(4).css" type=text/css 
+rel=stylesheet>
+<SCRIPT type=text/javascript>
+var skin="monobook",
+stylepath="/skins-1.5",
+wgArticlePath="/wiki/$1",
+wgScriptPath="/w",
+wgScriptExtension=".php",
+wgScript="/w/index.php",
+wgVariantArticlePath="/$2/$1",
+wgActionPaths={},
+wgServer="http://zh.wikipedia.org",
+wgCanonicalNamespace="",
+wgCanonicalSpecialPageName=false,
+wgNamespaceNumber=0,
+wgPageName="标准模板库",
+wgTitle="标准模板库",
+wgAction="view",
+wgArticleId=26421,
+wgIsArticle=true,
+wgUserName=null,
+wgUserGroups=null,
+wgUserLanguage="zh-cn",
+wgContentLanguage="zh",
+wgBreakFrames=false,
+wgCurRevisionId=11102035,
+wgVersion="1.16alpha-wmf",
+wgEnableAPI=true,
+wgEnableWriteAPI=true,
+wgSeparatorTransformTable=["", ""],
+wgDigitTransformTable=["", ""],
+wgMainPageTitle="Wikipedia:首页",
+wgFormattedNamespaces={"-2": "Media", "-1": "Special", "0": "", "1": "Talk", "2": "User", "3": "User talk", "4": "Wikipedia", "5": "Wikipedia talk", "6": "File", "7": "File talk", "8": "MediaWiki", "9": "MediaWiki talk", "10": "Template", "11": "Template talk", "12": "Help", "13": "Help talk", "14": "Category", "15": "Category talk", "100": "Portal", "101": "Portal talk"},
+wgNamespaceIds={"media": -2, "special": -1, "": 0, "talk": 1, "user": 2, "user_talk": 3, "wikipedia": 4, "wikipedia_talk": 5, "file": 6, "file_talk": 7, "mediawiki": 8, "mediawiki_talk": 9, "template": 10, "template_talk": 11, "help": 12, "help_talk": 13, "category": 14, "category_talk": 15, "portal": 100, "portal_talk": 101, "媒体": -2, "媒體": -2, "特殊": -1, "对话": 1, "對話": 1, "讨论": 1, "討論": 1, "用户": 2, "用戶": 2, "用户对话": 3, "用戶對話": 3, "用户讨论": 3, "用戶討論": 3, "图像": 6, "圖像": 6, "档案": 6, "檔案": 6, "文件": 6, "图像对话": 7, "圖像對話": 7, "图像讨论": 7, "圖像討論": 7, "档案对话": 7, "檔案對話": 7, "档案讨论": 7, "檔案討論": 7, "文件对话": 7, "文件對話": 7, "文件讨论": 7, "文件討論": 7, "模板": 10, "样板": 10, "樣板": 10, "模板对话": 11, "模板對話": 11, "模板讨论": 11, "模板討論": 11, "样板对话": 11, "樣板對話": 11, "样板讨论": 11, "樣板討論": 11, "帮助": 12, "幫助": 12, "帮助对话": 13, "幫助對話": 13, "帮助讨论": 13, "幫助討論": 13, "分类": 14, "分類": 14, "分类对话": 15, "分類對話": 15, "分类讨论": 15, "分類討論": 15, "维基百科": 4, "維基百科": 4, "wp": 4, "维基百科讨论": 5, "维基百科对话": 5, "維基百科討論": 5, "維基百科對話": 5, "image": 6, "image_talk": 7},
+wgUserVariant="zh-cn",
+wgMWSuggestTemplate="http://zh.wikipedia.org/w/api.php?action=opensearch\x26search={searchTerms}\x26namespace={namespaces}\x26suggest",
+wgDBname="zhwiki",
+wgSearchNamespaces=[0],
+wgMWSuggestMessages=["有建议", "无建议"],
+wgRestrictionEdit=[],
+wgRestrictionMove=[],
+wgNotice="",
+wgNoticeLocal="";
+</SCRIPT>
+
+<SCRIPT src="标准模板库 - 维基百科，自由的百科全书.files/wikibits.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT src="标准模板库 - 维基百科，自由的百科全书.files/ajax.js" type=text/javascript></SCRIPT>
+
+<SCRIPT src="标准模板库 - 维基百科，自由的百科全书.files/mwsuggest.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT src="标准模板库 - 维基百科，自由的百科全书.files/centralnotice.js" 
+type=text/javascript></SCRIPT>
+<!--[if lt IE 7]>
+<SCRIPT src="标准模板库 - 维基百科，自由的百科全书.files/IEFixes.js" 
+type=text/javascript></SCRIPT>
+
+<META http-equiv=imagetoolbar content=no><![endif]-->
+<SCRIPT src="标准模板库 - 维基百科，自由的百科全书.files/index.php" 
+type=text/javascript></SCRIPT>
+</HEAD>
+<BODY class="mediawiki ltr ns-0 ns-subject page-标准模板库 skin-monobook">
+<DIV id=globalWrapper>
+<DIV id=column-content>
+<DIV id=content><A id=top></A>
+<DIV id=siteNotice>
+<SCRIPT 
+type=text/javascript>if (wgNotice != '') document.writeln(wgNotice);</SCRIPT>
+</DIV>
+<H1 class=firstHeading id=firstHeading>标准模板库</H1>
+<DIV id=bodyContent>
+<H3 id=siteSub>维基百科，自由的百科全书</H3>
+<DIV id=contentSub>（重定向自<A title=STL 
+href="http://zh.wikipedia.org/w/index.php?title=STL&amp;redirect=no">STL</A>）</DIV>
+<DIV id=jump-to-nav>跳转到： <A 
+href="http://zh.wikipedia.org/zh-cn/STL#column-one">导航</A>, <A 
+href="http://zh.wikipedia.org/zh-cn/STL#searchInput">搜索</A></DIV><!-- start content -->
+<P><B>标准模板库</B>（STL，即Standard Template Library），是一个<A title=C++ 
+href="http://zh.wikipedia.org/zh-cn/C++">C++</A><A class=mw-redirect title=软件库 
+href="http://zh.wikipedia.org/zh-cn/è½¯ä»¶åº">软件库</A>，也是<A title=C++标准程式库 
+href="http://zh.wikipedia.org/zh-cn/C++æ¨æºç¨å¼åº«">C++标准程式库</A>的一部分。</P>
+<P><A title="模板 (C++)" 
+href="http://zh.wikipedia.org/zh-cn/æ¨¡æ¿_(C++)">模板</A>是C++程序设计语言的一个比较新的重要特征，而<B>标准模板库（STL）</B>正是基于此特征。<B>标准模板库（STL）</B>使得<A 
+title=C++ href="http://zh.wikipedia.org/zh-cn/C++">C++</A>编程语言在有了同<A title=Java 
+href="http://zh.wikipedia.org/zh-cn/Java">Java</A>一样强大的<A title=类库 
+href="http://zh.wikipedia.org/zh-cn/ç±»åº">类库</A>的同时，保有了更大的<A class=new 
+title=可扩展性（尚未撰写） 
+href="http://zh.wikipedia.org/w/index.php?title=%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7&amp;action=edit&amp;redlink=1">可扩展性</A>。</P>
+<TABLE class=toc id=toc>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV id=toctitle>
+      <H2>目录</H2></DIV>
+      <UL>
+        <LI class="toclevel-1 tocsection-1"><A 
+        href="http://zh.wikipedia.org/zh-cn/STL#.E6.AD.B7.E5.8F.B2"><SPAN 
+        class=tocnumber>1</SPAN> <SPAN class=toctext>历史</SPAN></A> 
+        <LI class="toclevel-1 tocsection-2"><A 
+        href="http://zh.wikipedia.org/zh-cn/STL#.E5.85.A7.E5.AE.B9"><SPAN 
+        class=tocnumber>2</SPAN> <SPAN class=toctext>内容</SPAN></A> 
+        <UL>
+          <LI class="toclevel-2 tocsection-3"><A 
+          href="http://zh.wikipedia.org/zh-cn/STL#.E5.AE.B9.E5.99.A8"><SPAN 
+          class=tocnumber>2.1</SPAN> <SPAN class=toctext>容器</SPAN></A> </LI></UL>
+        <LI class="toclevel-1 tocsection-4"><A 
+        href="http://zh.wikipedia.org/zh-cn/STL#.E5.8F.82.E8.A7.81"><SPAN 
+        class=tocnumber>3</SPAN> <SPAN class=toctext>参见</SPAN></A> 
+        <LI class="toclevel-1 tocsection-5"><A 
+        href="http://zh.wikipedia.org/zh-cn/STL#.E5.A4.96.E9.83.A8.E9.80.A3.E7.B5.90"><SPAN 
+        class=tocnumber>4</SPAN> <SPAN class=toctext>外部链接</SPAN></A> 
+  </LI></UL></TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+//<![CDATA[
+if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } 
+//]]>
+</SCRIPT>
+
+<H2><SPAN class=editsection>[<A title=编辑段落：历史 
+href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit&amp;section=1">编辑</A>]</SPAN> 
+<SPAN class=mw-headline id=.E6.AD.B7.E5.8F.B2>历史</SPAN></H2>
+<P>STL系由<A class=new title="Alexander Stepanov（尚未撰写）" 
+href="http://zh.wikipedia.org/w/index.php?title=Alexander_Stepanov&amp;action=edit&amp;redlink=1">Alexander 
+Stepanov</A>创造于1979年前后，这也正是<A title=比雅尼·斯特劳斯特鲁普 
+href="http://zh.wikipedia.org/zh-cn/æ¯éå°¼Â·æ¯ç¹å³æ¯ç¹é²æ®">比雅尼·斯特劳斯特鲁普</A>创造<A 
+title=C++ href="http://zh.wikipedia.org/zh-cn/C++">C++</A>的年代。</P>
+<P>虽然David R. Musser于<A title=1971年 
+href="http://zh.wikipedia.org/zh-cn/1971å¹´">1971年</A>开始即在计算机几何领域发展并倡导某些泛型程序设计观念，但早期并没有任何编程语言支援泛型程序设计。第一个支援泛型概念的语言是Ada 
+Alex和Musser曾于1987开发出一套相关的Ada library.</P>
+<P>STL之设计人Stepanov早期从事教育工作，<A title=1970年代 
+href="http://zh.wikipedia.org/zh-cn/1970å¹´ä»£">1970年代</A>研究泛型程序设计，那时他与其同事一起在GE公司开发出一个新的程序语言——Tecton。</P>
+<P><A title=1983年 
+href="http://zh.wikipedia.org/zh-cn/1983å¹´">1983年</A>，Stepanov先生转至Polytechnic大学教书，继续研究泛型程序设计，同时写了许多Scheme的程序，应用在graph与network的算法上，1985年又转至GE公司专门教授高阶程序设计，并将graph与network的Scheme程式，改用Ada写，用了Ada以后，他发现到一个动态（dynamically）类型的程序（如Scheme）与强制（strongly）类型的程序（如Ada）有多么的不同。</P>
+<P>在动态类型的程序中，所有类型都可以自由的转换成别的类型，而强制类型的程序却不能。但是，强制类型在除错时较容易发现程序错误。</P>
+<P><A title=1988年 
+href="http://zh.wikipedia.org/zh-cn/1988å¹´">1988年</A>Stepanov先生转至HP公司执行开发泛型程序库的工作。此时，他已经认识C语言中指针的威力，他表示一个程序员只要有些许硬件知识，就很容易接受C语言中指针的观念，同时也了解到C语言的所有数据结构均可以指针间接表示，这点是C与Ada、Scheme的最大不同。</P>
+<P>Steepanov并认为，虽然C++中的继承功能可以表示泛型设计，但终究有个限制。虽然可以在基础类型（superclass）定义算法和接口，但不可能要求所有物件皆是继承这些，而且庞大的继承体系将减低虚拟（virtual）函数的执行效率，这便违反的前面所说的“效率”原则。</P>
+<P>到了C++模版观念，Stepanov参加了许多有关的研讨会，与C++之父Bjarne讨论模版的设计细节。如，Stepanov认为C++的函数模版（function 
+template）应该像Ada一样，在声明其函数原型后，应该显式的声明一个函数模版之实例（instance）；Bjarne则不然，他认为可以透过C++的重载（overloading）功能来表达。</P>
+<P>Stepanov想像中的函数模版：</P><PRE>  in *.hpp
+  template&lt;class T&gt;
+  T square(T x) { return x*x; }
+
+  in *.cpp
+  double square(double);
+  cout &lt;&lt; square(3.3);
+  int square(int);
+  cout &lt;&lt; square(3);
+</PRE>
+<P>Bjarne认为的函数模版：</P><PRE>  in *.hpp
+  template&lt;class T&gt;
+  T square(T x) { return x*x; }
+
+  in *.cpp
+  cout &lt;&lt; square(3.3);
+  cout &lt;&lt; square(3);
+</PRE>
+<P>几经争辩，Stepanov发现Bjarne是对的（参考<A title=侯俊杰 
+href="http://zh.wikipedia.org/zh-cn/ä¾¯ä¿å">侯俊杰</A>《STL讲座·第三章》）。事后Stepanov回想起来非常同意Bjarne的作法。</P>
+<TABLE class=cquote 
+style="MARGIN: auto; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: transparent; BORDER-BOTTOM-STYLE: none">
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 35px; PADDING-BOTTOM: 10px; COLOR: #b2b7f2; PADDING-TOP: 10px; FONT-FAMILY: 'Times New Roman',serif; TEXT-ALIGN: left" 
+    vAlign=top width=20>“</TD>
+    <TD 
+    style="PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 4px; PADDING-TOP: 4px" 
+    vAlign=top>template 引数推导机制（arguments deduction ，在 STL中占非常重要的角色。Alexander 
+      Stepanov（STL 的创造者）在与Dr. Dobb's Journal进行的访谈中说道‘1992 
+      我重回generic-library的开发工作。这时候C++有了template 
+      <P>我发现Bjarne完成了一个非常美妙的设计。之前我在Bell 
+      Lab曾参与数次template的相关设计讨论，并且非常粗暴地要求Bjarne应该将C++ template设计得尽可能像Ada 
+      generics那样。我想由于我的争辩是如此地粗暴，他决定反对。我了解到在C++中除了拥有template classes之外还拥有template 
+      functions的重要性。然而我认为template function应该像Ada 
+      generics一样，也就是说它们应该是显式实例，Bjarne没有听进我的话，他设计了一个template 
+      function机制，其中的template是以一个重载化机制 （overloading 
+      mechanism来进行隐式实例这项特殊的技术对我的工作具有关键性的影响，因为我发现它使我得以完成Ada不可能完成的许多动作。我非常高兴Bjarne当初没有听我的意见。’（DDJ 
+      1995 年三月号）</P></TD>
+    <TD 
+    style="PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 36px; PADDING-BOTTOM: 10px; COLOR: #b2b7f2; PADDING-TOP: 10px; FONT-FAMILY: 'Times New Roman',serif; TEXT-ALIGN: right" 
+    vAlign=bottom width=20>”</TD></TR></TBODY></TABLE>
+<P>事实上，C++的模版，本身即是一套复杂的宏语言（macro 
+language），宏语言最大的特色为：所有工作在编译时期就已完成。显式的声明函数模版之实例，与直接透过C++的多载功能隐式声明，结果一样，并无很大区别，只是前者加重程序员的负担，使得程式变得累赘。</P>
+<P>1992年Meng Lee加入Alex的专案，成为另一位主要贡献者。</P>
+<P>1992年，HP泛型程序库计划结束，小组解散，只剩下Stepanov先生与Meng 
+Lee小姐（她是东方人，STL的名称其实是取STepanov与Lee而来），Lee先前研究的是编译器的制作，对C++的模版很熟，第一版的STL中许多程式都是Lee的杰作。</P>
+<P>1993年，Andy 
+Koenig到斯坦福演讲，Stepanov便向他介绍STL，Koenig听后，随即邀请Stepanov参加1993年11月的ANSI/ISO 
+C++标准化会议，并发表演讲。</P>
+<P>Bell实验室的Andrew Koenig于<A title=1993年 
+href="http://zh.wikipedia.org/zh-cn/1993å¹´">1993年</A>知道STL研究计划后，邀请Alex于是年11月的ANSI/ISO 
+C++标准委员会会议上展示其观念。并获得与会者热烈的回应。</P>
+<P>1994年1月6日，Koenig寄封电子邮件给Stepanov，表示如果Stepanov愿意将STL的说明文件撰写齐全，在1月25日前提出，便可能成为标准C++的一部份。Stepanov回信道："Andy, 
+are you crazy?" 。 Koenig便说："Well, yes I am crazy,but why not try it?"。</P>
+<P>Alex于是在次年夏天在Waterloo举行的会议前完成其正式的提案，并以百分之八十压倒性多数，一举让这个巨大的计划成为C++ 
+Standard的一部份。</P>
+<P>STL于1994年2月年正式成为ANSI/ISO C++的一部份，它的出现，促使C++程序员的思维方式更朝向泛型编程（generic 
+program）发展。</P>
+<H2><SPAN class=editsection>[<A title=编辑段落：内容 
+href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit&amp;section=2">编辑</A>]</SPAN> 
+<SPAN class=mw-headline id=.E5.85.A7.E5.AE.B9>内容</SPAN></H2>
+<H3><SPAN class=editsection>[<A title=编辑段落：容器 
+href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit&amp;section=3">编辑</A>]</SPAN> 
+<SPAN class=mw-headline id=.E5.AE.B9.E5.99.A8>容器</SPAN></H3>
+<P>STL 包含了序列容器（sequence containers）与关联容器（associative containers）。 序列容器包含了 
+<I>vector</I>, <I>deque</I> 和 <I>list</I>。至于关联容器则有 <I>set</I>, <I>multiset</I>, 
+<I>map</I> 和 <I>multimap</I>。</P>
+<TABLE class=wikitable style="MARGIN: 1em auto">
+  <TBODY>
+  <TR>
+    <TH>资料容器</TH>
+    <TH>描述</TH></TR>
+  <TR>
+    <TH colSpan=2>有序／<A class=new title="表 (computing)（尚未撰写）" 
+      href="http://zh.wikipedia.org/w/index.php?title=%E8%A1%A8_(computing)&amp;action=edit&amp;redlink=1">List</A>s 
+      - 有序集</TH></TR>
+  <TR>
+    <TD><B><A title="Vector (STL)" 
+      href="http://zh.wikipedia.org/zh-cn/Vector_(STL)">vector</A></B></TD>
+    <TD>C++提供了内建阵列的替代型态vector，vector 
+      可以如同阵列一样的存取方式，例如使用下标（Subscript）运算子，并记得自己的长度资讯（size），您也可以使用物件的方式来存取vector（push、pop）。使用vector可以轻易地定义二维可调整型阵列。要使用vector，必须含入vector表头档。</TD></TR>
+  <TR>
+    <TD><B>list</B></TD>
+    <TD>list容器是一个有序（Ordered）的数据结构（循序容器），其特性主要是实作串行数据结构。具有双向链结作用。</TD></TR>
+  <TR>
+    <TD><B>deque</B><BR>(<I><A title=双端队列 
+      href="http://zh.wikipedia.org/zh-cn/åç«¯éå">双端队列</A></I>)</TD>
+    <TD>一个在固定的时间分别往开头或结尾插入或删除的向量，但是它在修改之后缺乏迭代器有效性的保障。</TD></TR>
+  <TR>
+    <TH colSpan=2><A class=new title="Associative array（尚未撰写）" 
+      href="http://zh.wikipedia.org/w/index.php?title=Associative_array&amp;action=edit&amp;redlink=1">Associative</A> 
+      containers - 无序集</TH></TR>
+  <TR>
+    <TD><B>set</B></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><B>multiset</B></TD>
+    <TD>跟set具有相同功能，但允许重复的元素。</TD></TR>
+  <TR>
+    <TD><B><A class=new title="Map (C++ container)（尚未撰写）" 
+      href="http://zh.wikipedia.org/w/index.php?title=Map_(C%2B%2B_container)&amp;action=edit&amp;redlink=1">map</A></B></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><B>multimap</B></TD>
+    <TD>跟map具有相同功能，但允许重复的键值。</TD></TR>
+  <TR>
+    <TD><B>hash_set</B><BR><B>hash_multiset</B><BR><B>hash_map</B><BR><B>hash_multimap</B></TD>
+    <TD>分别类似于集合，多集合，映射，或者多重映射。但是，使用<A title=哈希表 
+      href="http://zh.wikipedia.org/zh-cn/åå¸è¡¨">哈希表</A>实现。它的键（Keys）没有把排序，但是必须存在一个对键值的哈希函数。这些容器并不是C++标准库的部分，但包含在SGI的STL扩展中，并且包含在公共类库，如在GNU 
+      C++类库的<CODE>__gnu_cxx</CODE>空间。它们可能在未来包含于C++标准。</TD></TR>
+  <TR>
+    <TH colSpan=2>其他类型的容器</TH></TR>
+  <TR>
+    <TD><B>bitset</B></TD>
+    <TD>存储系列位类似的固定大小的布尔向量。实现按位运算，缺乏迭代器，不是序列。</TD></TR>
+  <TR>
+    <TD><B>valarray</B></TD>
+    <TD>另外像数组一样向量的C，为高速数字设计但以一些简化编程和一般用途的开支做为代价。它有许多功能，可以在理想地符合在向量超级计算机和消费级的标量处理器的SIMD单元里的向量处理器，同时也减轻在标量计算机向量数学规划，甚至在标量计算机中。</TD></TR></TBODY></TABLE>
+<H2><SPAN class=editsection>[<A title=编辑段落：参见 
+href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit&amp;section=4">编辑</A>]</SPAN> 
+<SPAN class=mw-headline id=.E5.8F.82.E8.A7.81>参见</SPAN></H2>
+<UL>
+  <LI><A title=C++标准程式库 
+  href="http://zh.wikipedia.org/zh-cn/C++æ¨æºç¨å¼åº«">C++标准程式库</A> </LI></UL>
+<H2><SPAN class=editsection>[<A title=编辑段落：外部链接 
+href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit&amp;section=5">编辑</A>]</SPAN> 
+<SPAN class=mw-headline id=.E5.A4.96.E9.83.A8.E9.80.A3.E7.B5.90>外部链接</SPAN></H2>
+<UL>
+  <LI><A class="external text" href="http://cppreference.com/" 
+  rel=nofollow>C/C++ reference</A> includes a section on the STL 
+  <LI><A class="external text" href="http://www.sgi.com/tech/stl/" 
+  rel=nofollow>STL programmer's guide</A> official guide from <A 
+  class=mw-redirect title="Silicon Graphics" 
+  href="http://zh.wikipedia.org/zh-cn/Silicon_Graphics">SGI</A> 
+  <LI><A class="external text" 
+  href="http://www.research.att.com/~bs/DnE2005.pdf" rel=nofollow>Bjarne 
+  Stroustrup on The emergence of the STL</A> (Page 5, Section 3.1) 
+  <LI><A class="external text" href="http://incubator.apache.org/stdcxx/" 
+  rel=nofollow>Apache stdcxx</A> portable Open Source implementation based on <A 
+  class="external text" href="http://www.roguewave.com/" rel=nofollow>Rogue 
+  Wave</A> STL 
+  <LI><A class="external text" href="http://stlport.sourceforge.net/" 
+  rel=nofollow>STLport</A> multiplatform STL implementation 
+  <LI><A class="external text" href="http://www.dinkumware.com/" 
+  rel=nofollow>Dinkumware</A> commercial STL implementation (ships with <A 
+  class=mw-redirect title="Visual C++" 
+  href="http://zh.wikipedia.org/zh-cn/Visual_C++">Visual C++</A> and several 
+  other compilers) 
+  <LI><A class="external text" 
+  href="http://www.roguewave.com/support/docs/sourcepro/edition9/html/stdlibref/index.html" 
+  rel=nofollow>Rogue Wave STL Class Reference</A> 
+  <LI><A class="external text" href="http://spc.unige.ch/mptl" 
+  rel=nofollow>MPTL</A> shared-memory parallel extension of the STL using the <A 
+  title="Native POSIX Thread Library" 
+  href="http://zh.wikipedia.org/zh-cn/Native_POSIX_Thread_Library">Native POSIX 
+  Thread Library</A>。 
+  <LI><A class="external text" href="http://stxxl.sourceforge.net/" 
+  rel=nofollow>STXXL:</A> an STL implementation for external memory. 
+  <LI><A class="external text" href="http://stlsoft.org/" rel=nofollow>STLSoft 
+  libraries</A>：open-source, 100% header-only, C/C++ libraries of 
+  technology-specific facades and STL extensions. </LI></UL><!-- 
+NewPP limit report
+Preprocessor node count: 79/1000000
+Post-expand include size: 1662/2048000 bytes
+Template argument size: 1116/2048000 bytes
+Expensive parser function count: 0/500
+--><!-- Saved in parser cache with key zhwiki:pcache:idhash:26421-0!1!0!!zh-cn!2!zh-cn and timestamp 20091023032314 -->
+<DIV class=printfooter>取自“<A 
+href="http://zh.wikipedia.org/zh-cn/æ&nbsp;åæ¨¡æ¿åº">http://zh.wikipedia.org/zh-cn/æ&nbsp;åæ¨¡æ¿åº</A>”</DIV>
+<DIV class=catlinks id=catlinks>
+<DIV id=mw-normal-catlinks><A title=Special:页面分类 
+href="http://zh.wikipedia.org/zh-cn/Special:é¡µé¢åç±»">3个分类</A>: <SPAN 
+dir=ltr><A title=Category:C++ 
+href="http://zh.wikipedia.org/zh-cn/Category:C++">C++</A></SPAN> | <SPAN 
+dir=ltr><A title=Category:編程典範 
+href="http://zh.wikipedia.org/zh-cn/Category:ç·¨ç¨å¸ç¯">编程典范</A></SPAN> | 
+<SPAN dir=ltr><A title="Category:C++ Template Library" 
+href="http://zh.wikipedia.org/zh-cn/Category:C++_Template_Library">C++ Template 
+Library</A></SPAN></DIV></DIV><!-- end content -->
+<DIV class=visualClear></DIV></DIV></DIV></DIV>
+<DIV id=column-one>
+<DIV class=portlet id=p-cactions>
+<H5>查看</H5>
+<DIV class=pBody>
+<UL lang=zh-cn xml:lang="zh-cn">
+  <LI class=selected id=ca-nstab-main><A title="查看页面内容 [c]" accessKey=c 
+  href="http://zh.wikipedia.org/zh-cn/æ&nbsp;åæ¨¡æ¿åº">条目</A> 
+  <LI class=new id=ca-talk><A title="关于条目正文的讨论 [t]" accessKey=t 
+  href="http://zh.wikipedia.org/w/index.php?title=Talk:%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit&amp;redlink=1">讨论</A> 
+
+  <LI id=ca-edit><A title="你可编辑此页，请在保存前先预览一下。 [e]" accessKey=e 
+  href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=edit">编辑本页</A> 
+
+  <LI id=ca-history><A title="本页面的早前版本。 [h]" accessKey=h 
+  href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;action=history">历史</A> 
+
+  <LI id=ca-varlang-0><A 
+  href="http://zh.wikipedia.org/zh/æ&nbsp;åæ¨¡æ¿åº">不转换</A> 
+  <LI id=ca-varlang-1><A 
+  href="http://zh.wikipedia.org/zh-hans/æ&nbsp;åæ¨¡æ¿åº">简体</A> 
+  <LI id=ca-varlang-2><A 
+  href="http://zh.wikipedia.org/zh-hant/æ&nbsp;åæ¨¡æ¿åº">繁體</A> 
+  <LI class=selected id=ca-varlang-3><A 
+  href="http://zh.wikipedia.org/zh-cn/æ&nbsp;åæ¨¡æ¿åº">大陆简体</A> 
+  <LI id=ca-varlang-4><A 
+  href="http://zh.wikipedia.org/zh-hk/æ&nbsp;åæ¨¡æ¿åº">港澳繁體</A> 
+  <LI id=ca-varlang-5><A 
+  href="http://zh.wikipedia.org/zh-sg/æ&nbsp;åæ¨¡æ¿åº">马新简体</A> 
+  <LI id=ca-varlang-6><A 
+  href="http://zh.wikipedia.org/zh-tw/æ&nbsp;åæ¨¡æ¿åº">台灣正體</A> 
+</LI></UL></DIV></DIV>
+<DIV class=portlet id=p-personal>
+<H5>个人工具</H5>
+<DIV class=pBody>
+<UL lang=zh-cn xml:lang="zh-cn">
+  <LI id=pt-optin-try><A class=no-text-transform title="Try out new features" 
+  href="http://zh.wikipedia.org/w/index.php?title=Special:UsabilityInitiativeOptIn&amp;from=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;fromquery=variant%3Dzh-cn">试用测试版</A> 
+
+  <LI id=pt-login><A title="建议你登录，尽管并非必须。 [o]" accessKey=o 
+  href="http://zh.wikipedia.org/w/index.php?title=Special:%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95&amp;returnto=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;returntoquery=variant%3Dzh-cn">登录／创建账户</A> 
+  </LI></UL></DIV></DIV>
+<DIV class=portlet id=p-logo><A title=首页 
+style="BACKGROUND-IMAGE: url(http://upload.wikimedia.org/wikipedia/zh/b/bc/Wiki.png)" 
+href="http://zh.wikipedia.org/zh-cn/Wikipedia:é¦é¡µ"></A></DIV>
+<SCRIPT type=text/javascript> if (window.isMSIE55) fixalpha(); </SCRIPT>
+
+<DIV class=portlet id=p-search>
+<H5 lang=zh-cn xml:lang="zh-cn"><LABEL for=searchInput>搜索</LABEL></H5>
+<DIV class=pBody id=searchBody>
+<FORM id=searchform action=/w/index.php><INPUT type=hidden value=Special:搜索 
+name=title> <INPUT id=searchInput title=搜索维基百科 accessKey=f name=search> <INPUT class=searchButton id=searchGoButton title=如果相同的标题存在的话便直接前往该页面 type=submit value=进入 name=go>&nbsp; 
+<INPUT class=searchButton id=mw-searchButton title=搜索该文字的页面 type=submit value=搜索 name=fulltext> 
+</FORM></DIV></DIV>
+<DIV class="generated-sidebar portlet" id=p-navigation>
+<H5 lang=zh-cn xml:lang="zh-cn">导航</H5>
+<DIV class=pBody>
+<UL>
+  <LI id=n-mainpage-description><A title="访问首页 [z]" accessKey=z 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:é¦é¡µ">首页</A> 
+  <LI id=n-indexpage><A 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:åé¡ç´¢å¼">分类索引</A> 
+  <LI id=n-Featured_content><A 
+  href="http://zh.wikipedia.org/zh-cn/Portal:ç¹è²å§å®¹">特色内容</A> 
+  <LI id=n-currentevents><A title=提供当前新闻事件的背景资料 
+  href="http://zh.wikipedia.org/zh-cn/Portal:æ°èåæ">新闻动态</A> 
+  <LI id=n-recentchanges><A title="列出维基百科中的最近修改 [r]" accessKey=r 
+  href="http://zh.wikipedia.org/zh-cn/Special:æè¿æ´æ¹">最近更改</A> 
+  <LI id=n-randompage><A title="随机载入一个页面 [x]" accessKey=x 
+  href="http://zh.wikipedia.org/zh-cn/Special:éæºé¡µé¢">随机页面</A> 
+</LI></UL></DIV></DIV>
+<DIV class="generated-sidebar portlet" id=p-help>
+<H5 lang=zh-cn xml:lang="zh-cn">帮助</H5>
+<DIV class=pBody>
+<UL>
+  <LI id=n-help><A title=寻求帮助 
+  href="http://zh.wikipedia.org/zh-cn/Help:ç®å½">帮助</A> 
+  <LI id=n-portal><A title=关于本计划、你可以做什么、应该如何做 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:ç¤¾åºä¸»é¡µ">社区</A> 
+  <LI id=n-policy><A 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:æ¹éèæå¼">方针与指引</A> 
+  <LI id=n-villagepump><A 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:äºå©å®¢æ&nbsp;">互助客栈</A> 
+  <LI id=n-Information_desk><A 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:è©¢åè">询问处</A> 
+  <LI id=n-conversion><A 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:å&shy;è¯è½¬æ¢è¯·æ±æåé">字词转换</A> 
+
+  <LI id=n-contact><A 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:èç³»æä»¬">联系我们</A> 
+  <LI id=n-about><A 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:å³äº">关于维基百科</A> 
+  <LI id=n-sitesupport><A title=如果您在维基百科受益良多，您可以考虑资助我们 
+  href="http://wikimediafoundation.org/wiki/èµå©">资助维基百科</A> 
+</LI></UL></DIV></DIV>
+<DIV class=portlet id=p-tb>
+<H5 lang=zh-cn xml:lang="zh-cn">工具箱</H5>
+<DIV class=pBody>
+<UL>
+  <LI id=t-whatlinkshere><A title="列出所有与本页相链的页面 [j]" accessKey=j 
+  href="http://zh.wikipedia.org/zh-cn/Special:é¾å¥é¡µé¢/æ&nbsp;åæ¨¡æ¿åº">链入页面</A> 
+
+  <LI id=t-recentchangeslinked><A title="页面链出所有页面的更改 [k]" accessKey=k 
+  href="http://zh.wikipedia.org/zh-cn/Special:é¾åºæ´æ¹/æ&nbsp;åæ¨¡æ¿åº">链出更改</A> 
+
+  <LI id=t-upload><A title="上传图像或多媒体文件 [u]" accessKey=u 
+  href="http://zh.wikipedia.org/wiki/Project:ä¸ä¼&nbsp;">上传文件</A> 
+  <LI id=t-specialpages><A title="全部特殊页面的列表 [q]" accessKey=q 
+  href="http://zh.wikipedia.org/zh-cn/Special:ç¹æ®é¡µé¢">所有特殊页面</A> 
+  <LI id=t-print><A title="这个页面的可打印版本 [p]" accessKey=p 
+  href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;variant=zh-cn&amp;printable=yes" 
+  rel=alternate>可打印版</A> 
+  <LI id=t-permalink><A title=这个页面修订版本的永久链接 
+  href="http://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;oldid=11102035">永久链接</A>
+  <LI id=t-cite><A title="Information on how to cite this page" 
+  href="http://zh.wikipedia.org/w/index.php?title=Special:%E5%BC%95%E7%94%A8&amp;page=%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93&amp;id=11102035">引用此文</A> 
+  </LI></UL></DIV></DIV>
+<DIV class=portlet id=p-lang>
+<H5 lang=zh-cn xml:lang="zh-cn">其他语言</H5>
+<DIV class=pBody>
+<UL>
+  <LI class=interwiki-bg><A 
+  href="http://bg.wikipedia.org/wiki/STL">Български</A> 
+  <LI class=interwiki-de><A 
+  href="http://de.wikipedia.org/wiki/Standard_Template_Library">Deutsch</A> 
+  <LI class=interwiki-en><A 
+  href="http://en.wikipedia.org/wiki/Standard_Template_Library">English</A> 
+  <LI class=interwiki-et><A 
+  href="http://et.wikipedia.org/wiki/CPP-STL">Eesti</A> 
+  <LI class=interwiki-fr><A 
+  href="http://fr.wikipedia.org/wiki/Standard_Template_Library">Français</A> 
+  <LI class=interwiki-he><A 
+  href="http://he.wikipedia.org/wiki/×¡×¤×¨×××ª_××ª××&nbsp;×××ª_××ª×§×&nbsp;××ª">עברית</A> 
+
+  <LI class=interwiki-hu><A 
+  href="http://hu.wikipedia.org/wiki/TÃ¡rolÃ³k_(STL)">Magyar</A> 
+  <LI class=interwiki-it><A 
+  href="http://it.wikipedia.org/wiki/Standard_Template_Library">Italiano</A> 
+  <LI class=interwiki-ja><A 
+  href="http://ja.wikipedia.org/wiki/Standard_Template_Library">日本語</A> 
+  <LI class=interwiki-ko><A 
+  href="http://ko.wikipedia.org/wiki/íì¤_ííë¦¿_ë¼ì´ë¸ë¬ë¦¬">한국어</A> 
+  <LI class=interwiki-nl><A 
+  href="http://nl.wikipedia.org/wiki/Standard_Template_Library">Nederlands</A> 
+  <LI class=interwiki-pl><A 
+  href="http://pl.wikipedia.org/wiki/Standard_Template_Library">Polski</A> 
+  <LI class=interwiki-pt><A 
+  href="http://pt.wikipedia.org/wiki/Standard_Template_Library">Português</A> 
+  <LI class=interwiki-ru><A 
+  href="http://ru.wikipedia.org/wiki/Ð¡ÑÐ°Ð½Ð´Ð°ÑÑÐ½Ð°Ñ_Ð±Ð¸Ð±Ð»Ð¸Ð¾ÑÐµÐºÐ°_ÑÐ°Ð±Ð»Ð¾Ð½Ð¾Ð²">Русский</A> 
+
+  <LI class=interwiki-tr><A 
+  href="http://tr.wikipedia.org/wiki/Standart_Åablon_KÃ¼tÃ¼phanesi">Türkçe</A> 
+  <LI class=interwiki-uk><A 
+  href="http://uk.wikipedia.org/wiki/Ð¡ÑÐ°Ð½Ð´Ð°ÑÑÐ½Ð°_Ð±ÑÐ±Ð»ÑÐ¾ÑÐµÐºÐ°_ÑÐ°Ð±Ð»Ð¾Ð½ÑÐ²">Українська</A> 
+  </LI></UL></DIV></DIV></DIV><!-- end of the left (by default at least) column -->
+<DIV class=visualClear></DIV>
+<DIV id=footer>
+<DIV id=f-poweredbyico><A href="http://www.mediawiki.org/"><IMG height=31 
+alt="Powered by MediaWiki" 
+src="标准模板库 - 维基百科，自由的百科全书.files/poweredby_mediawiki_88x31.png" 
+width=88></A></DIV>
+<DIV id=f-copyrightico><A href="http://wikimediafoundation.org/"><IMG height=31 
+alt="Wikimedia Foundation" src="标准模板库 - 维基百科，自由的百科全书.files/wikimedia-button.png" 
+width=88></A></DIV>
+<UL id=f-list>
+  <LI id=lastmod>本页面最后修订于2009年9月8日 (星期二) 15:19。 
+  <LI id=copyright>本站的全部文字在<A class=internal title=Wikipedia:CC-by-sa-3.0协议文本 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:CC-by-sa-3.0åè®®ææ¬">知识共享 
+  署名-相同方式共享 3.0协议</A>之条款下提供，附加条款亦可能应用。（请参阅<A 
+  href="http://wikimediafoundation.org/wiki/Terms_of_Use">使用条款</A>）<BR>Wikipedia®和维基百科标志是<A 
+  href="http://wikimediafoundation.org/">维基媒体基金会</A>的注册商标；维基™是维基媒体基金会的商标。<BR>维基媒体基金会是在美国佛罗里达州登记的501(c)(3)<A 
+  href="http://wikimediafoundation.org/wiki/èµå©çåç¨æ¿ç&shy;">免税</A>、非营利、慈善机构。<BR>
+  <LI id=privacy><A title=wikimedia:隐私政策 
+  href="http://wikimediafoundation.org/wiki/éç§æ¿ç&shy;">隐私政策</A> 
+  <LI id=about><A title=Wikipedia:关于 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:å³äº">关于维基百科</A> 
+  <LI id=disclaimer><A title=Wikipedia:免责声明 
+  href="http://zh.wikipedia.org/zh-cn/Wikipedia:åè´£å£°æ">免责声明</A> 
+</LI></UL></DIV></DIV>
+<SCRIPT type=text/javascript>if (window.runOnloadHook) runOnloadHook();</SCRIPT>
+<!-- Served by srv233 in 0.330 secs. --></BODY></HTML>

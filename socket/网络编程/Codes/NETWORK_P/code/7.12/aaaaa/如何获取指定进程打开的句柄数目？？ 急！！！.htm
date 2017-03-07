@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0077)http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71200.html -->
+<HTML><HEAD><TITLE>如何获取指定进程打开的句柄数目？？ 急！！！</TITLE>
+<META content="" name=description>
+<META content="" name=keywords>
+<META http-equiv=content-type content=text/html;charset=gb2312>
+<SCRIPT language=javascript src="如何获取指定进程打开的句柄数目？？ 急！！！.files/default.js" 
+type=text/javascript></SCRIPT>
+<LINK href="如何获取指定进程打开的句柄数目？？ 急！！！.files/default.css" type=text/css 
+rel=stylesheet>
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR></HEAD>
+<BODY>
+<DIV class=DivTop><FONT color=#ffffff><A href="http://www.xliao.com/">首页</A> 
+&gt; <A href="http://www.xliao.com/html/kaifayuyan/list_1.html">开发语言</A> &gt; <A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/list_1.html">VC/MFC</A> &gt; 
+<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/list_1.html">进程/线程/DLL</A> 
+&gt; &gt;如何获取指定进程打开的句柄数目？？ 急！！！</FONT></DIV>
+<DIV class=DivBody>
+<DIV class=DivRight>
+<DIV class=DivRightTitle>如何获取指定进程打开的句柄数目？？ 急！！！</DIV>
+<DIV>
+<SCRIPT type=text/javascript><!--
+google_ad_client = "pub-3131431304510117";
+google_ad_width = 336;
+google_ad_height = 280;
+google_ad_format = "336x280_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_url = "0000FF";
+google_color_text = "0000FF";
+//--></SCRIPT>
+
+<SCRIPT src="如何获取指定进程打开的句柄数目？？ 急！！！.files/show_ads.js" type=text/javascript>
+</SCRIPT>
+</DIV>
+<DIV>
+<TABLE cellSpacing=0 cellPadding=0 width=600 border=0>
+  <TBODY>
+  <TR>
+    <TD width=600>
+      <TABLE cellSpacing=0 cellPadding=0 width=600 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=right width=80>主　　题：</TD>
+          <TD align=right width=5></TD>
+          <TD>如何获取指定进程打开的句柄数目？？ 急！！！</TD></TR>
+        <TR>
+        <TR>
+          <TD align=right>信 誉 值：</TD>
+          <TD align=right></TD>
+          <TD>100</TD></TR>
+        <TR>
+          <TD align=right>所属论坛：</TD>
+          <TD align=right></TD>
+          <TD>VC/MFC 进程/线程/DLL</TD></TR>
+        <TR>
+          <TD align=right>问题点数：</TD>
+          <TD align=right></TD>
+          <TD>100</TD></TR>
+        <TR>
+          <TD align=right>回复次数：</TD>
+          <TD align=right></TD>
+          <TD>4</TD></TR>
+        <TR>
+          <TD align=right>发表时间：</TD>
+          <TD align=right></TD>
+          <TD>2006-3-26 12:16:06</TD></TR>
+        <TR height=10>
+          <TD align=right></TD>
+          <TD align=right></TD>
+          <TD></TD></TR>
+        <TR bgColor=#666666>
+          <TD colSpan=3 height=1></TD></TR>
+        <TR height=10>
+          <TD align=right></TD>
+          <TD align=right></TD>
+          <TD></TD></TR></TBODY></TABLE>
+      <TABLE style="TABLE-LAYOUT: fixed" cellPadding=3 width=580>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV 
+            style="FONT-SIZE: 9pt; FONT-FAMILY: 宋体"><BR>什么函数可以获取指定进程打开的句柄数目<BR></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD width=600 height=10></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=580 border=0>
+  <TBODY>
+  <TR class=color1 height=25>
+    <TD width=20></TD>
+    <TD width=120><FONT color=#000000>2006-3-26 13:16:33</FONT></TD>
+    <TD width=80><FONT color=#000000>得分:</FONT><FONT 
+  color=#000000>0</FONT></TD></TR>
+  <TR>
+    <TD bgColor=#0066cc colSpan=4 height=1></TD></TR>
+  <TR>
+    <TD colSpan=4 height=5></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>?</FONT></TD>
+    <TD colSpan=3>
+      <TABLE style="TABLE-LAYOUT: fixed" cellPadding=3 width=580>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV style="FONT-SIZE: 9pt; FONT-FAMILY: 宋体"><BR>DWORD 
+            aProcesses[1024], cbNeeded, cProcesses;<BR>if ( !EnumProcesses( 
+            aProcesses, sizeof(aProcesses), &amp;cbNeeded ) 
+            )<BR>return;<BR><BR>// Calculate how many process identifiers were 
+            returned.<BR><BR>cProcesses = cbNeeded / 
+            sizeof(DWORD);<BR><BR><BR></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD align=right colSpan=4 height=10><FONT color=#ff6633><B><A 
+      href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71200.html#top"><FONT 
+      color=#3366cc>Top</FONT></A></B></FONT></TD></TR>
+  <TR>
+    <TD colSpan=4 height=5></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=580 border=0>
+  <TBODY>
+  <TR class=color1 height=25>
+    <TD width=20></TD>
+    <TD width=120><FONT color=#000000>2006-3-27 9:42:02</FONT></TD>
+    <TD width=80><FONT color=#000000>得分:</FONT><FONT 
+  color=#000000>0</FONT></TD></TR>
+  <TR>
+    <TD bgColor=#0066cc colSpan=4 height=1></TD></TR>
+  <TR>
+    <TD colSpan=4 height=5></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>?</FONT></TD>
+    <TD colSpan=3>
+      <TABLE style="TABLE-LAYOUT: fixed" cellPadding=3 width=580>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV 
+            style="FONT-SIZE: 9pt; FONT-FAMILY: 宋体"><BR>《Windows图形编程中》有这个例子<BR></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD align=right colSpan=4 height=10><FONT color=#ff6633><B><A 
+      href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71200.html#top"><FONT 
+      color=#3366cc>Top</FONT></A></B></FONT></TD></TR>
+  <TR>
+    <TD colSpan=4 height=5></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=580 border=0>
+  <TBODY>
+  <TR class=color1 height=25>
+    <TD width=20></TD>
+    <TD width=120><FONT color=#000000>2006-3-27 11:13:38</FONT></TD>
+    <TD width=80><FONT color=#000000>得分:</FONT><FONT 
+  color=#000000>0</FONT></TD></TR>
+  <TR>
+    <TD bgColor=#0066cc colSpan=4 height=1></TD></TR>
+  <TR>
+    <TD colSpan=4 height=5></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>?</FONT></TD>
+    <TD colSpan=3>
+      <TABLE style="TABLE-LAYOUT: fixed" cellPadding=3 width=580>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV 
+            style="FONT-SIZE: 9pt; FONT-FAMILY: 宋体"><BR>使用nataveAPI<BR>ULONG 
+            CProcessInfoManager::GetProcessInfo()<BR>{<BR>NTSTATUS 
+            nsRet;<BR>PSYSTEM_PROCESSES pBuf = NULL;<BR>ULONG ulSize=4096, 
+            ulRetSize;<BR>PLIterator 
+            it;<BR><BR>do<BR>{<BR>LocalFree(pBuf);<BR>pBuf = 
+            (PSYSTEM_PROCESSES)LocalAlloc(LPTR, ulSize);<BR>if(pBuf == 
+            NULL)<BR>{<BR>BbsLog.LogMessage("localalloc failed");<BR>}<BR>nsRet 
+            = m_pfNtQuerySystemInformation(SystemProcessesAndThreadsInformation, 
+            (LPVOID)pBuf, ulSize, &amp;ulRetSize);<BR>ulSize &lt;&lt;= 1;<BR>} 
+            while (nsRet == STATUS_INFO_LENGTH_MISMATCH);<BR><BR><BR>if 
+            (STATUS_SUCCESS == nsRet)<BR>{<BR>PSYSTEM_PROCESSES pInfo = pBuf, 
+            pPre = pInfo;<BR>do<BR>{<BR>it = 
+            FindProcess(pInfo-&gt;ProcessName.Buffer);<BR>if(it != 
+            m_ProcessList.end())<BR>{<BR>it-&gt;ulPid = 
+            pInfo-&gt;ProcessId;<BR>it-&gt;ulCpuTime = 
+            (pInfo-&gt;KernelTime.QuadPart + pInfo-&gt;UserTime.QuadPart) / 
+            10000000;<BR>it-&gt;ulPagefileUsage = 
+            pInfo-&gt;VmCounters.PagefileUsage;<BR>it-&gt;ulMaxWorkset = 
+            pInfo-&gt;VmCounters.PeakWorkingSetSize;<BR>it-&gt;ulWorksetInc = 
+            pInfo-&gt;VmCounters.WorkingSetSize - 
+            it-&gt;ulWorkset;<BR>it-&gt;ulWorkset = 
+            pInfo-&gt;VmCounters.WorkingSetSize;// set working 
+            set<BR>it-&gt;ulThreadCount = pInfo-&gt;ThreadCount;// set thread 
+            count<BR>it-&gt;ulHandleCount = pInfo-&gt;HandleCount;// set handle 
+            count<BR>it-&gt;szTime = GetTime();<BR>}<BR>pPre = pInfo;<BR>pInfo = 
+            (PSYSTEM_PROCESSES)((char *)pInfo + pInfo-&gt;NextEntryDelta);<BR>} 
+            while (pInfo != pPre);<BR>}<BR><BR>LocalFree(pBuf);<BR>return 
+            nsRet;<BR>}<BR><BR></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD align=right colSpan=4 height=10><FONT color=#ff6633><B><A 
+      href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71200.html#top"><FONT 
+      color=#3366cc>Top</FONT></A></B></FONT></TD></TR>
+  <TR>
+    <TD colSpan=4 height=5></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=580 border=0>
+  <TBODY>
+  <TR class=color1 height=25>
+    <TD width=20></TD>
+    <TD width=120><FONT color=#000000>2006-3-29 14:05:47</FONT></TD>
+    <TD width=80><FONT color=#000000>得分:</FONT><FONT 
+  color=#000000>0</FONT></TD></TR>
+  <TR>
+    <TD bgColor=#0066cc colSpan=4 height=1></TD></TR>
+  <TR>
+    <TD colSpan=4 height=5></TD></TR>
+  <TR>
+    <TD><FONT color=#ffffff>?</FONT></TD>
+    <TD colSpan=3>
+      <TABLE style="TABLE-LAYOUT: fixed" cellPadding=3 width=580>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV style="FONT-SIZE: 9pt; FONT-FAMILY: 宋体"><BR>BOOL 
+            CProcessInfoCollector::LoadFunction()<BR>{<BR>m_hDLL = 
+            LoadLibrary("ntdll.dll");<BR>if (NULL == 
+            m_hDLL)<BR>{<BR>BbsLog.LogMessage("[信息]加载ntdll.dll失败\n[错误代码]=%u", 
+            GetLastError());<BR>return 
+            FALSE;<BR>}<BR><BR>m_pfNtQuerySystemInformation = 
+            (pfNtQuerySystemInformation)GetProcAddress(m_hDLL, 
+            "NtQuerySystemInformation");<BR>if (NULL == 
+            m_pfNtQuerySystemInformation)<BR>{<BR>BbsLog.LogMessage("[信息]载入NtQuerySystemInformation失败\n[代码]=%u", 
+            GetLastError());<BR>return 
+            FALSE;<BR>}<BR><BR>m_pfNtQueryInformationProcess = 
+            (pfNtQueryInformationProcess)GetProcAddress(m_hDLL, 
+            "NtQueryInformationProcess");<BR>if (NULL == 
+            m_pfNtQueryInformationProcess)<BR>{<BR>BbsLog.LogMessage("[信息]载入NtQueryInformationProcess失败\n[代码]=%u", 
+            GetLastError());<BR>return FALSE;<BR>}<BR><BR>return 
+            TRUE;<BR>}<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>ULONG 
+            CProcessInfoCollector::GetProcessInfo()<BR>{<BR>NTSTATUS 
+            nsRet;<BR>PSYSTEM_PROCESSES pBuf = NULL;<BR>ULONG ulSize = 
+            4096;<BR>ULONG ulRetSize;<BR>PLIterator 
+            it;<BR><BR>do<BR>{<BR>LocalFree(pBuf);<BR>pBuf = 
+            (PSYSTEM_PROCESSES)LocalAlloc(LPTR, ulSize);<BR>if(pBuf == 
+            NULL)<BR>{<BR>BbsLog.LogMessage("localalloc failed");<BR>}<BR>nsRet 
+            = m_pfNtQuerySystemInformation(SystemProcessesAndThreadsInformation, 
+            (LPVOID)pBuf, ulSize, &amp;ulRetSize);<BR>ulSize &lt;&lt;= 1;<BR>} 
+            while (nsRet == STATUS_INFO_LENGTH_MISMATCH);<BR><BR><BR>if 
+            (STATUS_SUCCESS == nsRet)<BR>{<BR>PSYSTEM_PROCESSES pInfo = pBuf, 
+            pPre = pInfo;<BR>do<BR>{<BR>it = 
+            FindProcess(pInfo-&gt;ProcessName.Buffer);<BR>if(it != 
+            m_ProcessList.end())<BR>{<BR>ULONG ulLastCpuTime = 
+            it-&gt;ulCpuTime;<BR>ULONG ulLastSysTime = it-&gt;lTime; <BR>ULONG 
+            ulLastWorkset = it-&gt;ulWorkset;<BR>ULONG ulTempCpuTime = 
+            0;<BR>it-&gt;ulPid = pInfo-&gt;ProcessId;<BR>it-&gt;ulCpuTime = 
+            (pInfo-&gt;KernelTime.QuadPart + pInfo-&gt;UserTime.QuadPart) / 
+            10000;<BR>it-&gt;ulPagefileUsage = 
+            pInfo-&gt;VmCounters.PagefileUsage / 1024;<BR>it-&gt;ulMaxWorkset = 
+            pInfo-&gt;VmCounters.PeakWorkingSetSize / 1024;<BR>if(ulLastWorkset 
+            == 0)<BR>{ //第一次采样时<BR>it-&gt;ulWorksetInc = 
+            0;<BR>}<BR>else<BR>{<BR>it-&gt;ulWorksetInc = 
+            pInfo-&gt;VmCounters.WorkingSetSize / 1024 - 
+            ulLastWorkset;<BR>}<BR>it-&gt;ulWorkset = 
+            pInfo-&gt;VmCounters.WorkingSetSize / 1024;// set working 
+            set<BR>it-&gt;ulThreadCount = pInfo-&gt;ThreadCount;// set thread 
+            count<BR>it-&gt;ulHandleCount = pInfo-&gt;HandleCount;// set handle 
+            count<BR>it-&gt;lTime = GetSystemTime();<BR>if(ulLastCpuTime == 
+            0)<BR>{<BR>//一般只有第一次采样信息时,之前的cpu使用时间为零<BR>//此时cpu利用率默认为零<BR>it-&gt;ulCpu 
+            = 
+            0;<BR>}<BR>else<BR>{<BR>//因为系统时间单位是秒,cpu时间单位是毫秒,如果两次<BR>//采集时间间隔太短,计算cpu利用率会产生较大误差,此处<BR>//当cpu利用率超过100时,默认为100<BR>ulTempCpuTime 
+            = (it-&gt;ulCpuTime - ulLastCpuTime) * 100 / ((it-&gt;lTime - 
+            ulLastSysTime) * 1000) ;<BR>if(ulTempCpuTime &gt; 
+            100)<BR>{<BR>ulTempCpuTime = 100;<BR>}<BR>it-&gt;ulCpu = 
+            ulTempCpuTime;<BR>}<BR>it-&gt;bGotInfo = true;<BR>}<BR>pPre = 
+            pInfo;<BR>pInfo = (PSYSTEM_PROCESSES)((char *)pInfo + 
+            pInfo-&gt;NextEntryDelta);<BR>} while (pInfo != 
+            pPre);<BR>}<BR><BR>LocalFree(pBuf);<BR>return 
+            nsRet;<BR>}<BR><BR><BR><BR><BR></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD align=right colSpan=4 height=10><FONT color=#ff6633><B><A 
+      href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71200.html#top"><FONT 
+      color=#3366cc>Top</FONT></A></B></FONT></TD></TR>
+  <TR>
+    <TD colSpan=4 height=5></TD></TR></TBODY></TABLE><BR>
+<CENTER></CENTER></DIV>
+<DIV>
+<SCRIPT language=javascript src="如何获取指定进程打开的句柄数目？？ 急！！！.files/down.js"></SCRIPT>
+</DIV></DIV>
+<DIV class=DivLeft>
+<DIV></DIV>
+<DIV class=DivTitle>相关内容 </DIV>
+<DIV class=DivContent>
+<SCRIPT language=javascript src=""></SCRIPT>
+</DIV></DIV>
+<DIV class=DivTitle>相关讨论 </DIV>
+<DIV class=DivContent>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71199.html">哪个系统API可以获取指定进程使用的虚拟内</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71202.html">取得进程信息后，发现所有进程的th32Module</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71193.html">DLL怎么向主进程postmessage键盘的一个按键</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71185.html">关于XP下DLL注入进程问题</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71179.html">百分求助关于XP下DLL注入进程问题</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71178.html">很有难度的问题: 
+如何判断某些可执行程序的</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71174.html">怎样在WIN2000和XP下隐藏应用程序的进程</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71171.html">知道一个进程的HANDLE 
+和ID ,如何杀死这个</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71229.html">知道一个线和程的ID,能不能得到其相应的句</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71170.html">如何判断一个线程 
+在哪个模块(MODUL)中?</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71166.html">急!!如何得到另一个进程中的一个线程的入口</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71149.html">怎么知道当前的某个 
+dll 被那些进程在使用</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71256.html">急,用CreateProcess打开一个指定的网页,同</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71259.html">关于线程关闭的问题</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71267.html">如何获取WINDOWS下CPU负载情况</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71270.html">SetWindowsHookEx 
+安装线程钩子问题！！</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71122.html">如何用API编程实现对进程的控制</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71281.html">一个关于进程挂钩问题</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71119.html">如何获取DOS应用程序的键盘输入？</A><BR>·<A 
+href="http://www.xliao.com/html/kaifayuyan/VC_MFC/jincheng_xiancheng_DLL/71282.html">SetWindowsHookEx钩不到其他进程的东东(急)</A><BR></DIV></DIV>
+<DIV></DIV>
+<DIV class=DivFoot>@2005-2006 www.xliao.com 原作者享有所有版权</DIV></BODY></HTML>

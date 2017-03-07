@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: WebDraw - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5C.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /D "_WIN32_DCOM" /FR"Debug/" /Fp"Debug/WebDraw.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\VC高级网络编程\例程\WebDraw\ConnectDlg.cpp"
+]
+Creating command line "cl.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5C.tmp" 
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5D.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/WebDraw.pdb" /debug /machine:I386 /out:"Debug/WebDraw.exe" /pdbtype:sept 
+".\Debug\CntrItem.obj"
+".\Debug\IpFrame.obj"
+".\Debug\MainFrm.obj"
+".\Debug\SrvrItem.obj"
+".\Debug\StdAfx.obj"
+".\Debug\WebDraw.obj"
+".\Debug\WebDrawDoc.obj"
+".\Debug\WebDrawView.obj"
+".\Debug\WebDraw.res"
+".\Debug\ConnectDlg.obj"
+]
+Creating command line "link.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP5D.tmp"
+<h3>Output Window</h3>
+Compiling...
+ConnectDlg.cpp
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/WebDraw.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\CntrItem.sbr" ".\Debug\IpFrame.sbr" ".\Debug\MainFrm.sbr" ".\Debug\SrvrItem.sbr" ".\Debug\WebDraw.sbr" ".\Debug\WebDrawDoc.sbr" ".\Debug\WebDrawView.sbr" ".\Debug\ConnectDlg.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+WebDraw.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

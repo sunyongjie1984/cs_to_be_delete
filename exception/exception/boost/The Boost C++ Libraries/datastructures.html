@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highscore - The Boost C++ Libraries - Data Structures</title>
+<link rel="stylesheet" href="css/highscore.css" type="text/css">
+<link rev="made" href="mailto:boris@highscore.de">
+<link rel="home" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="up" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="prev" href="containers.html" title="Chapter 13: Containers">
+<link rel="next" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="chapter" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="chapter" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="chapter" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="chapter" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="chapter" href="serialization.html" title="Chapter 11: Serialization">
+<link rel="chapter" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="containers.html" title="Chapter 13: Containers">
+<link rel="chapter" href="datastructures.html" title="Chapter 14: Data Structures">
+<link rel="chapter" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="castoperators.html" title="Chapter 16: Cast Operators">
+<link rel="section" href="datastructures.html#datastructures_general" title="14.1 General">
+<link rel="section" href="datastructures.html#datastructures_tuple" title="14.2 Boost.Tuple">
+<link rel="section" href="datastructures.html#datastructures_any" title="14.3 Boost.Any">
+<link rel="section" href="datastructures.html#datastructures_variant" title="14.4 Boost.Variant">
+<link rel="section" href="datastructures.html#datastructures_exercises" title="14.5 Exercises">
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1) gen true for "http://highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1))'>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link href="http://www.highscore.de/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script><script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script><script type="text/javascript" src="js/highscore.js"></script>
+</head>
+<body>
+<div lang="en" class="docbook chapter" title="Chapter 14: Data Structures">
+<p class="title">The Boost C++ Libraries</p>
+<script type="text/javascript">
+          var titlepage = "Front page";
+        
+      var titles = new Array(titlepage,
+      
+        "Chapter 1: Introduction",
+      
+        "Chapter 2: Smart Pointers",
+      
+        "Chapter 3: Function Objects",
+      
+        "Chapter 4: Event Handling",
+      
+        "Chapter 5: String Handling",
+      
+        "Chapter 6: Multithreading",
+      
+        "Chapter 7: Asynchronous Input and Output",
+      
+        "Chapter 8: Interprocess Communication",
+      
+        "Chapter 9: Filesystem",
+      
+        "Chapter 10: Date and Time",
+      
+        "Chapter 11: Serialization",
+      
+        "Chapter 12: Parser",
+      
+        "Chapter 13: Containers",
+      
+        "Chapter 14: Data Structures",
+      
+        "Chapter 15: Error Handling",
+      
+        "Chapter 16: Cast Operators",
+      
+      "");
+
+      
+          var titlehtml = "frontpage.html";
+        
+      var filenames = new Array(titlehtml,
+      
+        "introduction.html",
+      
+        "smartpointers.html",
+      
+        "functionobjects.html",
+      
+        "eventhandling.html",
+      
+        "stringhandling.html",
+      
+        "multithreading.html",
+      
+        "asio.html",
+      
+        "interprocesscommunication.html",
+      
+        "filesystem.html",
+      
+        "datetime.html",
+      
+        "serialization.html",
+      
+        "parser.html",
+      
+        "containers.html",
+      
+        "datastructures.html",
+      
+        "errorhandling.html",
+      
+        "castoperators.html",
+      
+      "");
+
+      
+      document.open();
+      document.write('<form action="" class="toc">');
+      document.write('<select size="1" onchange="location.href=options[selectedIndex].value">');
+      for (var i = 0; i < titles.length && i < filenames.length; ++i) {
+        if (titles[i] != "" && filenames[i] != "") {
+          document.write('<option');
+          document.write(' value="' + filenames[i] + '"');
+          var expr = new RegExp('[/\]' + filenames[i] + '$');
+          if (expr.test(location.href)) {
+            document.write(' selected="selected"');
+          }
+          document.write('>' + titles[i] + '<\/option>');
+        }
+      }
+      document.write('<\/select>');
+      document.write('<\/form>');
+      document.close();
+      
+    </script><noscript><p class="toc"><a href="toc.html">Table of Contents</a></p></noscript>
+<hr class="hrhead">
+<h1 class="title">
+<a name="datastructures"></a><small>Chapter 14:</small> Data Structures</h1>
+<hr>
+<div class="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><span class="sect1"><a href="datastructures.html#datastructures_general">14.1 General</a></span></li>
+<li><span class="sect1"><a href="datastructures.html#datastructures_tuple">14.2 Boost.Tuple</a></span></li>
+<li><span class="sect1"><a href="datastructures.html#datastructures_any">14.3 Boost.Any</a></span></li>
+<li><span class="sect1"><a href="datastructures.html#datastructures_variant">14.4 Boost.Variant</a></span></li>
+<li><span class="sect1"><a href="datastructures.html#datastructures_exercises">14.5 Exercises</a></span></li>
+</ul>
+</div>
+<p class="license"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top"><img src="img/88x31_cc_logo.gif" alt="" width="88" height="31"></a> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top">Creative Commons License</a>.</p>
+<hr>
+<h2 class="title">
+<a name="datastructures_general"></a>14.1 General</h2>
+<div class="sect1">
+<p>For many Boost C++ Libraries, the definition of a container does not apply and thus have not been presented in <a class="xref" href="containers.html" title="Chapter 13: Containers">Chapter 13, <i>Containers</i></a>. They rather define other data structures introduced in this chapter. For example, <code class="classname">boost::tuple</code> extends the C++ data type <code class="classname">std::pair</code> to allow storing not only two but rather an arbitrary number of values.</p>
+<p>Besides <code class="classname">boost::tuple</code>, this chapter covers the classes <code class="classname">boost::any</code> and <code class="classname">boost::variant</code> allowing to store values of different data types. Variables of type <code class="classname">boost::any</code> behave just like variables of typeless programming languages which can store any information. Variables of type <code class="classname">boost::variant</code> on the other hand store information of predetermined data types and thus are similar to a <code class="code">union</code>.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="datastructures_tuple"></a>14.2 Boost.Tuple</h2>
+<div class="sect1">
+<p>The <a class="link" href="http://www.boost.org/libs/tuple/">Boost.Tuple</a> library provides a class named <code class="classname">boost::tuple</code> which can be seen as a generalized version of <code class="classname">std::pair</code>. While <code class="classname">std::pair</code> can store exactly two values, <code class="classname">boost::tuple</code> gives the user free choice.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;boost/tuple/tuple_io.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  typedef boost::tuple&lt;std::string, std::string&gt; person; 
+  person p("Boris", "Schaeling"); 
+  std::cout &lt;&lt; p &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.1/main.cpp">Download source code</a></li></ul>
+<p>To use <code class="classname">boost::tuple</code>, the header file <code class="filename">boost/tuple/tuple.hpp</code> must be included. In order to use tuples with streams, the header file  <code class="filename">boost/tuple/tuple_io.hpp</code> is required as well since dependent header files are not automatically included.</p>
+<p><code class="classname">boost::tuple</code> is basically used the same way <code class="classname">std::pair</code> is. As seen in the above example, two values of type <code class="classname">std::string</code> are stored by specifying two template arguments accordingly.</p>
+<p>While the definition of type <code class="code">person</code> could have used <code class="classname">std::pair</code> as well, objects of type <code class="classname">boost::tuple</code> can be written to a stream. Again, this requires to include the header file <code class="filename">boost/tuple/tuple_io.hpp</code> which provides all the required operators. The example displays <code class="computeroutput">(Boris Schaeling)</code> accordingly.</p>
+<p>The important difference between <code class="classname">boost::tuple</code> and <code class="classname">std::pair</code> is the ability of tuples to store a virtually unlimited number of values.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;boost/tuple/tuple_io.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  typedef boost::tuple&lt;std::string, std::string, int&gt; person; 
+  person p("Boris", "Schaeling", 43); 
+  std::cout &lt;&lt; p &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.2/main.cpp">Download source code</a></li></ul>
+<p>The example now stores the shoe size of people in addition to their first and last name. All three values are placed in a tuple. When executing the application, it will display <code class="computeroutput">(Boris Schaeling 43)</code>.</p>
+<p>Just like there exists a helper function <code class="function">std::make_pair()</code> for <code class="classname">std::pair</code>, a tuple can be created with the help of the <code class="function">boost::make_tuple()</code> function.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;boost/tuple/tuple_io.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  std::cout &lt;&lt; boost::make_tuple("Boris", "Schaeling", 43) &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.3/main.cpp">Download source code</a></li></ul>
+<p>A tuple can also contain references as shown in the following example.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;boost/tuple/tuple_io.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  std::string s = "Boris"; 
+  std::cout &lt;&lt; boost::make_tuple(boost::ref(s), "Schaeling", 43) &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.4/main.cpp">Download source code</a></li></ul>
+<p>While "Schaeling" and 43 are passed by value and thus stored inside the tuple directly, the first element is a reference to the string <var>s</var>. <code class="function">boost::ref()</code> from Boost.Ref is used to create such a reference. To create a constant reference, <code class="function">boost::cref()</code> is used, respectively.</p>
+<p>After learning how to create tuples, element access is outlined below. <code class="classname">std::pair</code> use the properties <var>first</var> and <var>second</var> to allow access. Since a tuple does not have a fixed number of elements, access is handled in a different way.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  typedef boost::tuple&lt;std::string, std::string, int&gt; person; 
+  person p = boost::make_tuple("Boris", "Schaeling", 43); 
+  std::cout &lt;&lt; p.get&lt;0&gt;() &lt;&lt; std::endl; 
+  std::cout &lt;&lt; boost::get&lt;0&gt;(p) &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.5/main.cpp">Download source code</a></li></ul>
+<p>There exists two ways of accessing values in a tuple: Either by calling the <code class="methodname">get()</code> member method, or by passing the tuple to the free-standing <code class="function">boost::get()</code> function. In both cases, the index of the corresponding element in the tuple must be provided as the template argument. The example accesses the first element of the tuple <var>p</var> in both cases and thus displays <code class="computeroutput">Boris</code> twice.</p>
+<p>Specifying an invalid index will result in a compiler error since validity of indexes is checked at compile time to avoid run-time errors.</p>
+<p>To modify a value inside a tuple, either the  <code class="methodname">get()</code> method or the free-standing <code class="function">boost::get()</code> function must be used.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;boost/tuple/tuple_io.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  typedef boost::tuple&lt;std::string, std::string, int&gt; person; 
+  person p = boost::make_tuple("Boris", "Schaeling", 43); 
+  p.get&lt;1&gt;() = "Becker"; 
+  std::cout &lt;&lt; p &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.6/main.cpp">Download source code</a></li></ul>
+<p>Both <code class="methodname">get()</code> and <code class="function">boost::get()</code> return a reference. The example modifies the last name and hence displays <code class="computeroutput">(Boris Becker 43)</code>.</p>
+<p>Boost.Tuple not only offers overloaded operators to use tuples with streams but also defines comparison operators. In order to compare tuples, the <code class="filename">boost/tuple/tuple_comparison.hpp</code> header file must be included accordingly.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;boost/tuple/tuple_comparison.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  typedef boost::tuple&lt;std::string, std::string, int&gt; person; 
+  person p1 = boost::make_tuple("Boris", "Schaeling", 43); 
+  person p2 = boost::make_tuple("Boris", "Becker", 43); 
+  std::cout &lt;&lt; (p1 != p2) &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.7/main.cpp">Download source code</a></li></ul>
+<p>The example displays <code class="computeroutput">1</code> since the tuples <var>p1</var> and <var>p2</var> are different.</p>
+<p>The header file <code class="filename">boost/tuple/tuple_comparison.hpp</code> also contains definitions for other comparison operators such as greater-than which performs a lexicographical comparison.</p>
+<p>Boost.Tuple supports a specific form of tuples named tier. Tiers are tuples, where all elements are of reference types. They can be constructed with the <code class="function">boost::tie()</code> function.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;boost/tuple/tuple_io.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  typedef boost::tuple&lt;std::string&amp;, std::string&amp;, int&amp;&gt; person; 
+
+  std::string firstname = "Boris"; 
+  std::string surname = "Schaeling"; 
+  int shoesize = 43; 
+  person p = boost::tie(firstname, surname, shoesize); 
+  surname = "Becker"; 
+  std::cout &lt;&lt; p &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.8/main.cpp">Download source code</a></li></ul>
+<p>The example creates a tier  <var>p</var> which consists of references to the <var>firstname</var>, <var>surname</var> and <var>shoesize</var> variables. By modifying the variable <var>surname</var>, the tier is modified concurrently.</p>
+<p>The above example could have been written using <code class="function">boost::make_tuple()</code> and <code class="function">boost::ref()</code> instead of <code class="function">boost::tie()</code> as well.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;boost/tuple/tuple_io.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  typedef boost::tuple&lt;std::string&amp;, std::string&amp;, int&amp;&gt; person; 
+
+  std::string firstname = "Boris"; 
+  std::string surname = "Schaeling"; 
+  int shoesize = 43; 
+  person p = boost::make_tuple(boost::ref(firstname), boost::ref(surname), boost::ref(shoesize)); 
+  surname = "Becker"; 
+  std::cout &lt;&lt; p &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.9/main.cpp">Download source code</a></li></ul>
+<p><code class="function">boost::tie()</code> simply shortens the syntax. This function also lends itself to unpacking tuples. In the following example, the individual values of the tuple, returned by a function, are instantly stored in variables.</p>
+<pre class="programlisting">#include &lt;boost/tuple/tuple.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+boost::tuple&lt;std::string, int&gt; func() 
+{ 
+  return boost::make_tuple("Error message", 2009); 
+}
+
+int main() 
+{ 
+  std::string errmsg; 
+  int errcode; 
+
+  boost::tie(errmsg, errcode) = func(); 
+  std::cout &lt;&lt; errmsg &lt;&lt; ": " &lt;&lt; errcode &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.2.10/main.cpp">Download source code</a></li></ul>
+<p>Using <code class="function">boost::tie()</code>, the string "Error message" as well as the error code 2009, both returned as a tuple from <code class="function">func()</code>, are instantly stored in the variables <var>errmsg</var> and <var>errcode</var>.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="datastructures_any"></a>14.3 Boost.Any</h2>
+<div class="sect1">
+<p>Strongly typed languages such as C++ require that each variable has a specific data type determining the nature of information it can store. To store arbitrary information in a variable, a language such as JavaScript can be used which allows storing a character string, a number and a boolean value using the same variable. Variables in JavaScript allow storing any kind of information.</p>
+<p>The library <a class="link" href="http://www.boost.org/libs/any/">Boost.Any</a> offers the <code class="classname">boost::any</code> class which, similar to JavaScript, offers the ability to store arbitrary information in C++.</p>
+<pre class="programlisting">#include &lt;boost/any.hpp&gt; 
+
+int main() 
+{ 
+  boost::any a = 1; 
+  a = 3.14; 
+  a = true; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.3.1/main.cpp">Download source code</a></li></ul>
+<p>In order to use <code class="classname">boost::any</code>, the header file <code class="filename">boost/any.hpp</code> must be included. Objects of type <code class="classname">boost::any</code> can then be created to store arbitrary information.</p>
+<p>Please note that variables of type <code class="classname">boost::any</code> cannot really store any kind of information; Boost.Any requires certain preconditions, albeit minimal ones. Any information, stored in a variable of type <code class="classname">boost::any</code>, must be copy constructible. Hence, to store a character string in a variable of type <code class="classname">boost::any</code>, <code class="classname">std::string</code> needs to be explicitly accessed as shown in the following example.</p>
+<pre class="programlisting">#include &lt;boost/any.hpp&gt; 
+#include &lt;string&gt; 
+
+int main() 
+{ 
+  boost::any a = 1; 
+  a = 3.14; 
+  a = true; 
+  a = std::string("Hello, world!"); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.3.2/main.cpp">Download source code</a></li></ul>
+<p>If the application would try to assign "Hello, world!" to <var>a</var> directly, the compiler would abort with an error since character strings are arrays comprised of elements of type <code class="type">char</code> which are not copy constructible in C++.</p>
+<p>To access the content of variables of type <code class="classname">boost::any</code>, the cast operator  <code class="code">boost::any_cast</code> must be used.</p>
+<pre class="programlisting">#include &lt;boost/any.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::any a = 1; 
+  std::cout &lt;&lt; boost::any_cast&lt;int&gt;(a) &lt;&lt; std::endl; 
+  a = 3.14; 
+  std::cout &lt;&lt; boost::any_cast&lt;double&gt;(a) &lt;&lt; std::endl; 
+  a = true; 
+  std::cout &lt;&lt; boost::any_cast&lt;bool&gt;(a) &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.3.3/main.cpp">Download source code</a></li></ul>
+<p>By passing the corresponding data type as the template argument to <code class="code">boost::any_cast</code>, the content of the variable is converted accordingly. In case an invalid data type is specified, an exception of type <code class="exceptionname">boost::bad_any_cast</code> is thrown.</p>
+<pre class="programlisting">#include &lt;boost/any.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    boost::any a = 1; 
+    std::cout &lt;&lt; boost::any_cast&lt;float&gt;(a) &lt;&lt; std::endl; 
+  } 
+  catch (boost::bad_any_cast &amp;e) 
+  { 
+    std::cerr &lt;&lt; e.what() &lt;&lt; std::endl; 
+  } 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.3.4/main.cpp">Download source code</a></li></ul>
+<p>The above example throws an exception since the template argument of type <code class="type">float</code> does not match the type <code class="type">int</code> stored in  <var>a</var>. It is important to always specify the same data type as used for the variable of type <code class="classname">boost::any</code>. The application would also throw an exception if either <code class="type">short</code> or <code class="type">long</code> would be specified as the template argument.</p>
+<p>Since <code class="exceptionname">boost::bad_any_cast</code> is derived from <code class="exceptionname">std::bad_cast</code>, <code class="code">catch</code> handlers can catch exceptions of this type accordingly.</p>
+<p>To check whether or not a variable of type <code class="classname">boost::any</code> contains information, the <code class="methodname">empty()</code> method is used. To check the data type of the stored information instead, <code class="methodname">type()</code> can be used.</p>
+<pre class="programlisting">#include &lt;boost/any.hpp&gt; 
+#include &lt;typeinfo&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::any a = 1; 
+  if (!a.empty()) 
+  { 
+    const std::type_info &amp;ti = a.type(); 
+    std::cout &lt;&lt; ti.name() &lt;&lt; std::endl; 
+  } 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.3.5/main.cpp">Download source code</a></li></ul>
+<p>The example uses both <code class="methodname">empty()</code> and <code class="methodname">type()</code>. While <code class="methodname">empty()</code> returns a boolean value, the return value of <code class="methodname">type()</code> is of type <code class="classname">std::type_info</code> which is defined in <code class="filename">typeinfo</code>.</p>
+<p>To conclude this section, the final example shows how to obtain a pointer to the value stored in a variable of type <code class="classname">boost::any</code> using <code class="code">boost::any_cast</code>.</p>
+<pre class="programlisting">#include &lt;boost/any.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::any a = 1; 
+  int *i = boost::any_cast&lt;int&gt;(&amp;a); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.3.6/main.cpp">Download source code</a></li></ul>
+<p>All it takes is passing a pointer to the variable of type <code class="code">boost::any</code> as the argument to <code class="code">boost::any_cast</code>; the template arguments remain unchanged.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="datastructures_variant"></a>14.4 Boost.Variant</h2>
+<div class="sect1">
+<p>The difference between <a class="link" href="http://www.boost.org/libs/variant/">Boost.Variant</a> and Boost.Any is the ability of Boost.Variant to store a fixed number of types while Boost.Any allows to store one value of any type. Consider the following example.</p>
+<pre class="programlisting">#include &lt;boost/variant.hpp&gt; 
+
+int main() 
+{ 
+  boost::variant&lt;double, char&gt; v; 
+  v = 3.14; 
+  v = 'A'; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.4.1/main.cpp">Download source code</a></li></ul>
+<p>Boost.Variant provides a class named <code class="classname">boost::variant</code> which is defined in <code class="filename">boost/variant.hpp</code>. Since <code class="classname">boost::variant</code> is a template, at least one argument must be specified. The one or multiple template arguments specify the supported data types. The example application can store values of both type <code class="type">double</code> and <code class="type">char</code> in <var>v</var>. In case a value of type <code class="type">int</code> would be assigned to <var>v</var>, the resulting code would not compile.</p>
+<p>While the above example could have used a <code class="code">union</code> as well, <code class="classname">boost::variant</code> allows to store data types such as <code class="classname">std::string</code> which is not possible with unions since they cannot contain any class member.</p>
+<pre class="programlisting">#include &lt;boost/variant.hpp&gt; 
+#include &lt;string&gt; 
+
+int main() 
+{ 
+  boost::variant&lt;double, char, std::string&gt; v; 
+  v = 3.14; 
+  v = 'A'; 
+  v = "Hello, world!"; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.4.2/main.cpp">Download source code</a></li></ul>
+<p>To display the stored values of <var>v</var>, the free-standing <code class="function">boost::get()</code> function is used.</p>
+<pre class="programlisting">#include &lt;boost/variant.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::variant&lt;double, char, std::string&gt; v; 
+  v = 3.14; 
+  std::cout &lt;&lt; boost::get&lt;double&gt;(v) &lt;&lt; std::endl; 
+  v = 'A'; 
+  std::cout &lt;&lt; boost::get&lt;char&gt;(v) &lt;&lt; std::endl; 
+  v = "Hello, world!"; 
+  std::cout &lt;&lt; boost::get&lt;std::string&gt;(v) &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.4.3/main.cpp">Download source code</a></li></ul>
+<p><code class="function">boost::get()</code> expects one of the valid data types for the corresponding variable as its template argument. Specifying an invalid type results in a run-time error since validation of data types does not take place during compilation.</p>
+<p>Variables of type <code class="classname">boost::variant</code> can be written to streams such as the standard output stream directly, bypassing the hazard of run-time errors.</p>
+<pre class="programlisting">#include &lt;boost/variant.hpp&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::variant&lt;double, char, std::string&gt; v; 
+  v = 3.14; 
+  std::cout &lt;&lt; v &lt;&lt; std::endl; 
+  v = 'A'; 
+  std::cout &lt;&lt; v &lt;&lt; std::endl; 
+  v = "Hello, world!"; 
+  std::cout &lt;&lt; v &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.4.4/main.cpp">Download source code</a></li></ul>
+<p>To process values differently, Boost.Variant provides a function named <code class="function">boost::apply_visitor()</code>.</p>
+<pre class="programlisting">#include &lt;boost/variant.hpp&gt; 
+#include &lt;boost/any.hpp&gt; 
+#include &lt;vector&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+std::vector&lt;boost::any&gt; vector; 
+
+struct output : 
+  public boost::static_visitor&lt;&gt; 
+{ 
+  void operator()(double &amp;d) const 
+  { 
+    vector.push_back(d); 
+  } 
+
+  void operator()(char &amp;c) const 
+  { 
+    vector.push_back(c); 
+  } 
+
+  void operator()(std::string &amp;s) const 
+  { 
+    vector.push_back(s); 
+  } 
+}; 
+
+int main() 
+{ 
+  boost::variant&lt;double, char, std::string&gt; v; 
+  v = 3.14; 
+  boost::apply_visitor(output(), v); 
+  v = 'A'; 
+  boost::apply_visitor(output(), v); 
+  v = "Hello, world!"; 
+  boost::apply_visitor(output(), v); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.4.5/main.cpp">Download source code</a></li></ul>
+<p>As its first argument, <code class="function">boost::apply_visitor()</code> expects an object of a class type derived from <code class="classname">boost::static_visitor</code>. This class must overload the <code class="methodname">operator()()</code> operator for every data type used in the variable of type <code class="classname">boost::variant</code> it acts on. Consequently, the operator is overloaded three times in the example since  <var>v</var> supports the data types <code class="type">double</code>, <code class="type">char</code> and <code class="classname">std::string</code>.</p>
+<p>Looking closely at the code, it can be noticed that <code class="classname">boost::static_visitor</code> is a template. The type of the return value for the overloaded <code class="methodname">operator()()</code> operator must therefore be specified as a template argument. If the operators do not have a return value, a template argument is not required as seen in the example.</p>
+<p>The second argument passed to <code class="function">boost::apply_visitor()</code> is a variable of type <code class="classname">boost::variant</code>.</p>
+<p>When used, <code class="function">boost::apply_visitor()</code> automatically calls the overloaded <code class="methodname">operator()()</code> operator of the first argument that matches the data type passed in the second argument. The example application uses a different overloaded operator every time <code class="function">boost::apply_visitor()</code> is invoked - first the one for <code class="type">double</code>, followed by the one for  <code class="type">char</code> and finally the one for <code class="classname">std::string</code>.</p>
+<p>The advantage of <code class="function">boost::apply_visitor()</code> is not only calling the correct operator automatically. In addition, <code class="function">boost::apply_visitor()</code> ensures that overloaded operators have been provided for every data type supported in variables of type <code class="classname">boost::variant</code>. If the example would have forgotten one of the three methods, the code would have not been compiled.</p>
+<p>If overloaded operators are equal in functionality, the code can be simplified by using templates.</p>
+<pre class="programlisting">#include &lt;boost/variant.hpp&gt; 
+#include &lt;boost/any.hpp&gt; 
+#include &lt;vector&gt; 
+#include &lt;string&gt; 
+#include &lt;iostream&gt; 
+
+std::vector&lt;boost::any&gt; vector; 
+
+struct output : 
+  public boost::static_visitor&lt;&gt; 
+{ 
+  template &lt;typename T&gt; 
+  void operator()(T &amp;t) const 
+  { 
+    vector.push_back(t); 
+  } 
+}; 
+
+int main() 
+{ 
+  boost::variant&lt;double, char, std::string&gt; v; 
+  v = 3.14; 
+  boost::apply_visitor(output(), v); 
+  v = 'A'; 
+  boost::apply_visitor(output(), v); 
+  v = "Hello, world!"; 
+  boost::apply_visitor(output(), v); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/14.4.6/main.cpp">Download source code</a></li></ul>
+<p>Since <code class="function">boost::apply_visitor()</code> ensures code correctness at compile time, it should be preferred to <code class="function">boost::get()</code>.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="datastructures_exercises"></a>14.5 Exercises</h2>
+<div class="sect1">
+<p class="solution">
+              You can buy 
+              <a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-solution">solutions to all exercises</a>
+              in this book as a ZIP file. 
+            </p>
+<ol>
+<li class="listitem"><p>Define a data type <code class="classname">configuration</code> that can store name-value pairs. Names are of type <code class="classname">std::string</code> while values are of type <code class="classname">std::string</code>, <code class="type">int</code> or <code class="type">float</code>. Inside <code class="function">main()</code>, store the following name-value pairs in an object of type <code class="classname">configuration</code>: path=C:\Windows, version=3 and pi=3.1415. Verify the application by writing the name-value pairs to the standard output stream.</p></li>
+<li class="listitem"><p>Extend the application by modifying the value of path to C:\Windows\System after displaying it. Verify the application by writing the name-value pairs to the standard output stream again.</p></li>
+</ol>
+</div>
+</div>
+<hr class="hrfoot">
+<p class="copyright">Copyright © 2008-2010 
+        <a class="link" href="mailto:boris@highscore.de">Boris Schäling</a>
+      </p>
+</body>
+</html>

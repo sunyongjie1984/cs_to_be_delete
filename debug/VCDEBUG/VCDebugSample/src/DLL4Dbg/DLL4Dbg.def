@@ -1,0 +1,7 @@
+; DLL4Dbg.def : Declares the module parameters for the DLL.
+
+LIBRARY      "DLL4Dbg"
+DESCRIPTION  'DLL4Dbg Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here

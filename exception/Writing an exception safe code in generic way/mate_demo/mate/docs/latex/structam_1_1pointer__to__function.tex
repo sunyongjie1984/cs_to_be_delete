@@ -1,0 +1,55 @@
+\section{am::pointer\_\-to\_\-function$<$ Fn $>$ Struct Template Reference}
+\label{structam_1_1pointer__to__function}\index{am::pointer_to_function@{am::pointer\_\-to\_\-function}}
+Function pointer to an unary function or a binary function.  
+
+
+{\tt \#include $<$mate.hpp$>$}
+
+Collaboration diagram for am::pointer\_\-to\_\-function$<$ Fn $>$:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=97pt]{structam_1_1pointer__to__function__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+typedef void \textbf{result\_\-type}\label{structam_1_1pointer__to__function_818851d1f56e4c2442dd06fe8e2d3e7d}
+
+\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\textbf{pointer\_\-to\_\-function} (Fn const fn)\label{structam_1_1pointer__to__function_8ab9fefd6c4889000e9d19639c9cc523}
+
+\item 
+template$<$typename P1$>$ void \textbf{operator()} (P1 p1) const \label{structam_1_1pointer__to__function_9cc0e0580a8bdc665fce79a4512c72e4}
+
+\item 
+template$<$typename P1, typename P2$>$ void \textbf{operator()} (P1 p1, P2 p2) const\label{structam_1_1pointer__to__function_94ee89fd2eece28225290212b5feadf1}
+
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+Fn const \textbf{fn\_\-}\label{structam_1_1pointer__to__function_1445b4cac44889d1cdbab008dc773c6d}
+
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Fn$>$ struct am::pointer\_\-to\_\-function$<$ Fn $>$}
+
+Function pointer to an unary function or a binary function. 
+
+It is not a std::unary\_\-function nor a std::binary\_\-function, but works for any calling convention.
+
+\begin{Desc}
+\item[See also:]\doxyref{ptr\_\-fun()}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829} \end{Desc}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf mate.hpp}\end{CompactItemize}

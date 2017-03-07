@@ -1,0 +1,30 @@
+.hl-title {
+	BORDER-RIGHT: #c3ced9 1px solid; PADDING-RIGHT: 24px; BORDER-TOP: #c3ced9 1px solid; PADDING-LEFT: 24px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 6px; MARGIN: 0px; OVERFLOW: auto; BORDER-LEFT: #c3ced9 1px solid; WIDTH: auto; LINE-HEIGHT: 180%; PADDING-TOP: 6px; BORDER-BOTTOM: #c3ced9 0px solid; BACKGROUND-COLOR: #f9fbfc; TEXT-ALIGN: left
+}
+.hl-surround {
+	BORDER-RIGHT: #c3ced9 1px solid; BORDER-TOP: #c3ced9 1px solid; MARGIN: 0px 0px 5px; OVERFLOW: auto; BORDER-LEFT: #c3ced9 1px solid; WIDTH: auto; BORDER-BOTTOM: #c3ced9 1px solid; FONT-FAMILY: Fixedsys, "BitStream Vera Sans Mono", "Courier New", Courier, monospace; HEIGHT: auto; BACKGROUND-COLOR: #f9fbfc; TEXT-ALIGN: left
+}
+OL.hl-main {
+	PADDING-RIGHT: 12px; BACKGROUND-POSITION: 5px 5px; PADDING-LEFT: 56px; BACKGROUND-IMAGE: url(images/hide.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: transparent
+}
+DIV.hl-main {
+	PADDING-RIGHT: 24px; PADDING-LEFT: 24px; PADDING-BOTTOM: 6px; MARGIN: 0px; LINE-HEIGHT: 180%; PADDING-TOP: 6px; BACKGROUND-COLOR: transparent
+}
+.ln-show {
+	PADDING-LEFT: 56px! important; LIST-STYLE-POSITION: outside! important; BACKGROUND-IMAGE: url(images/hide.gif)! important; LIST-STYLE-TYPE: decimal! important
+}
+.ln-show LI {
+	LIST-STYLE-POSITION: outside! important; LIST-STYLE-TYPE: decimal! important
+}
+.ln-hide {
+	PADDING-LEFT: 24px! important; BACKGROUND-IMAGE: url(images/show.gif)! important; LIST-STYLE-TYPE: none! important
+}
+.ln-hide LI {
+	LIST-STYLE-TYPE: none! important
+}
+OL.hl-main LI {
+	PADDING-RIGHT: 0px! important; BORDER-TOP: #e3eef9 1px solid; DISPLAY: list-item! important; PADDING-LEFT: 12px! important; FONT-SIZE: 12px! important; PADDING-BOTTOM: 0px! important; MARGIN: 0px; BORDER-LEFT: #c3ced9 1px solid; LINE-HEIGHT: 20px! important; PADDING-TOP: 0px! important; BACKGROUND-COLOR: #f9fbfc! important
+}
+LI.hl-firstline {
+	BORDER-TOP-WIDTH: 0px! important
+}

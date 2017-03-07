@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "c++_primer_4_chapter_7", "c++_primer_4_chapter_7\c++_primer_4_chapter_7.vcxproj", "{17A81C48-3D5D-4CE9-B680-4D4D2580DC2E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "函数指针", "函数指针\函数指针.vcxproj", "{CBE20B59-3436-474F-A4E2-F3DAE7E07093}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17A81C48-3D5D-4CE9-B680-4D4D2580DC2E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{17A81C48-3D5D-4CE9-B680-4D4D2580DC2E}.Debug|Win32.Build.0 = Debug|Win32
+		{17A81C48-3D5D-4CE9-B680-4D4D2580DC2E}.Release|Win32.ActiveCfg = Release|Win32
+		{17A81C48-3D5D-4CE9-B680-4D4D2580DC2E}.Release|Win32.Build.0 = Release|Win32
+		{CBE20B59-3436-474F-A4E2-F3DAE7E07093}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CBE20B59-3436-474F-A4E2-F3DAE7E07093}.Debug|Win32.Build.0 = Debug|Win32
+		{CBE20B59-3436-474F-A4E2-F3DAE7E07093}.Release|Win32.ActiveCfg = Release|Win32
+		{CBE20B59-3436-474F-A4E2-F3DAE7E07093}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

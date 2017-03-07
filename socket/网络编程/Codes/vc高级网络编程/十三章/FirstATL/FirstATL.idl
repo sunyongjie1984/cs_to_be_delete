@@ -1,0 +1,40 @@
+// FirstATL.idl : IDL source for FirstATL.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FirstATL.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(71FCBFF2-B140-42BB-8F32-27DCF40D6FF4),
+		dual,
+		helpstring("IMyclass Interface"),
+		pointer_default(unique)
+	]
+	interface IMyclass : IDispatch
+	{
+		[id(1), helpstring("method SayHello")] HRESULT SayHello();
+		[id(2), helpstring("method SayGoodbye")] HRESULT SayGoodbye();
+	};
+
+[
+	uuid(00169723-36BD-4972-AB4D-DE7FB616B4C7),
+	version(1.0),
+	helpstring("FirstATL 1.0 Type Library")
+]
+library FIRSTATLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(DFB658CE-CDEE-4ED7-BBBA-9F262E6B6F0F),
+		helpstring("Myclass Class")
+	]
+	coclass Myclass
+	{
+		[default] interface IMyclass;
+	};
+};

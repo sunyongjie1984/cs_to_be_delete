@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 多维数组初始化 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP42D2.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/多维数组初始化.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP42D2.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP42D3.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/多维数组初始化.pdb" /debug /machine:I386 /out:"Debug/多维数组初始化.exe" /pdbtype:sept 
+".\Debug\多维数组初始化.obj"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP42D3.TMP"
+<h3>Output Window</h3>
+Compiling...
+多维数组初始化.cpp
+C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(6) : error C2143: syntax error : missing ';' before '}'
+C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(7) : error C2143: syntax error : missing ';' before 'string'
+C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(7) : error C2296: '<<' : illegal, left operand has type 'char [2]'
+C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(13) : error C2248: 'x' : cannot access private member declared in class 'Point'
+        C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(4) : see declaration of 'x'
+C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(13) : error C2248: 'x' : cannot access private member declared in class 'Point'
+        C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(4) : see declaration of 'x'
+C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(13) : error C2248: 'y' : cannot access private member declared in class 'Point'
+        C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(4) : see declaration of 'y'
+C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(13) : error C2248: 'y' : cannot access private member declared in class 'Point'
+        C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(4) : see declaration of 'y'
+C:\Windows\Desktop\天行健君子自强不息\专业学习\C++ Primer\4\多维数组初始化\多维数组初始化.cpp(29) : warning C4508: 'main' : function should return a value; 'void' return type assumed
+执行 cl.exe 时出错.
+
+
+
+<h3>Results</h3>
+多维数组初始化.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

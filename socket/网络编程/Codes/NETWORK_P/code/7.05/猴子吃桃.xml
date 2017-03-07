@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="GB2312"?>
+<?xml-stylesheet type='text/xsl' href='/expert/Xsl/2.xsl'?>
+<Topic>
+	<Issue>
+		<PostUserNickName>逗你玩</PostUserNickName>
+		<rank>二级(初级)</rank>
+		<ranknum>user2</ranknum>
+		<credit>100</credit>
+		<TopicId>4857015</TopicId>
+		<TopicName>猴子吃桃问题</TopicName>
+		<PostUserId>1168659</PostUserId>
+		<PostUserName>wi1son</PostUserName>
+		<RoomName>C/C++  C语言</RoomName>
+		<ReplyNum>41</ReplyNum>
+		<PostDateTime>2006-7-3 14:21:58</PostDateTime>
+		<Point>100</Point>
+		<ReadNum>426</ReadNum>
+		<RoomId>5601</RoomId>
+		<EndState>0</EndState>
+		<Content>
+			<![CDATA[
+
+ 
+    今天考C语言，遇到这个编程题，这题18分的，我当时记得这条题是从书本上拿出来的，但我用了一个小时居然做不出来，这18分这样就没了，令我信心大降，这个对我的打击太大了，使得我都没什么心情复习下一科了。
+    考试前一天晚上，有一个同学跟我说过这个猴子吃桃问题，当时我说应该不会考这么难的，就没有理会，现在才自知吃亏了。
+    唉！真不该不理会！现在实在是太后悔了！郁闷啊！极度痛苦！同时也后悔平时遇到难一点的问题就不做，只做容易的，使得考试时做不出来。
+    如果上天再给我一次机会的话，我一定会好好的看那条题。
+    如果上天再给我一次机会的话，我一定会好好的研究难题。
+    原本以为C语言可以考95分的，但是现在没希望了。彻底的、完全的绝望了。
+    或许是我平时太勤奋学习C语言，所以老师就挑一条难的题给我吧，而其他同学的题相对来说容易一点。
+ 
+ 
+ 
+猴子吃桃问题。猴子第一天摘下若干个桃子，当即吃了一半，还不过瘾，又多吃了一个。第二天早上又将剩下的桃子吃掉一半，又多吃一个。以后每天早上都吃了前一天剩下的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘多少桃子。
+  
+  
+#include <stdio.h>
+void main()  
+{
+int i=1,sum=0;  
+for(;i<=10;sum=2*sum+1,i++);  
+printf("sum=%d\n",sum);  
+}
+ 
+  
+    考完试之后才知道答案是如此的简短！
+    但是我不明白其中的思路，特别是  sum=2*sum+1   这里。
+    请各位帮帮我解释一下这个程序的思路！
+    还有，我觉得这条题应该可以用递归的方法做，但是我想不出来，麻烦各位在帮帮我！谢谢！
+    如果分值不够的话，可以再加分！
+ 
+ 
+ 
+ 
+
+]]>
+		</Content>
+	</Issue>
+	<Replys>
+		<Reply>
+			<PostUserNickName>键键</PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35421597</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1188193</PostUserId>
+			<PostUserName>lj860603</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+思路是采用从后面推算到前面的，sum = sum * 2 = 1正是如此。
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 14:29:12</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>键键</PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35421613</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1188193</PostUserId>
+			<PostUserName>lj860603</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+递归也可以，不过效率低了很多。
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 14:30:11</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>瞌睡虫：选择了远方，只顾风雨兼程！</PostUserNickName>
+			<rank>两星(中级)</rank>
+			<ranknum>star2</ranknum>
+			<credit>102</credit>
+			<ReplyID>35421806</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1008599</PostUserId>
+			<PostUserName>jixingzhong</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+题目：猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个
+　　　第二天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下
+　　　的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
+1.程序分析：采取逆向思维的方法，从后往前推断。
+2.程序源代码：
+#include "stdio.h"
+#include "conio.h"
+main()
+{
+  int day,x1,x2;
+  day=9;
+  x2=1;
+  while(day>0)
+  {
+    x1=(x2+1)*2;/*第一天的桃子数是第2天桃子数加1后的2倍*/
+    x2=x1;
+    day--;
+  }
+  printf("the total is %d\n",x1);
+  getch();
+}
+
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 14:39:23</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>瞌睡虫：选择了远方，只顾风雨兼程！</PostUserNickName>
+			<rank>两星(中级)</rank>
+			<ranknum>star2</ranknum>
+			<credit>102</credit>
+			<ReplyID>35421872</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1008599</PostUserId>
+			<PostUserName>jixingzhong</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+但是我不明白其中的思路，特别是  sum=2*sum+1   这里。
+==================================================
+1 楼主要明白 for 的执行顺序
+2 题目中， 每次吃一半后还多一个， 那么就是  *2 后再+1
+（楼主可以从最后的结果反推上去）
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 14:42:08</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35422287</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1231614</PostUserId>
+			<PostUserName>falcon23</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+sum=2*sum+1就是从最后一天开始  用数学公式先加1再乘2  然后再用for语句循环...
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 14:59:00</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35422329</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1203469</PostUserId>
+			<PostUserName>littlefish1981</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+递推公式已经知道了：sum=2*sum+1
+
+void my_function(int day, int sum)
+{
+if (1 == day)
+{
+printf("sum: %d\n",sum);
+return;
+}
+
+my_function(day-1,2*sum+1);
+}
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 15:00:53</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>尾巴</PostUserNickName>
+			<rank>三级(初级)</rank>
+			<ranknum>user3</ranknum>
+			<credit>100</credit>
+			<ReplyID>35423256</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>479766</PostUserId>
+			<PostUserName>tailzhou</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+以上全错了：
+注意是先吃一半再吃一个；不是先吃一个再吃一半;
+
+#include <stdio.h>
+
+void main()  
+{
+int i=1,sum=1;  
+for(;i<=10;sum=2*(sum+1),i++);  
+printf("sum=%d\n",sum);  
+
+for (i=1;i<=10; i++ )
+{
+sum=sum/2-1;
+  printf("第%d天剩下%d个桃子\n",i,sum);
+}
+
+}
+输出：
+sum=3070
+第1天剩下1534个桃子
+第2天剩下766个桃子
+第3天剩下382个桃子
+第4天剩下190个桃子
+第5天剩下94个桃子
+第6天剩下46个桃子
+第7天剩下22个桃子
+第8天剩下10个桃子
+第9天剩下4个桃子
+第10天剩下1个桃子
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 15:44:02</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>尾巴</PostUserNickName>
+			<rank>三级(初级)</rank>
+			<ranknum>user3</ranknum>
+			<credit>100</credit>
+			<ReplyID>35423456</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>479766</PostUserId>
+			<PostUserName>tailzhou</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+不好意思，以上程序多算了一天(i<=10应该是i<=9)。再注释下与作者不一致的地方
+
+#include <stdio.h>
+
+void main()  
+{
+int i=1,sum=1;     //sum=0 ==> sum=1
+for(;i<=9;sum=2*(sum+1),i++); //i<=9 sum=2*sum+1==》sum=2*(sum+1)
+printf("sum=%d\n",sum);  
+
+for (i=1;i<=10; i++ )
+{
+sum=sum/2-1;
+  printf("第%d天剩下%d个桃子\n",i,sum);
+}
+
+}
+输出：
+sum=1534
+第1天剩下766个桃子
+第2天剩下382个桃子
+第3天剩下190个桃子
+第4天剩下94个桃子
+第5天剩下46个桃子
+第6天剩下22个桃子
+第7天剩下10个桃子
+第8天剩下4个桃子
+第9天剩下1个桃子
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 15:50:15</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>aobing</PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35424634</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>518853</PostUserId>
+			<PostUserName>leafsax</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+难道不是sum = (sum + 1) * 2 么？怎么成了sum = 2 * sum + 1?
+
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 16:34:53</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>尾巴</PostUserNickName>
+			<rank>三级(初级)</rank>
+			<ranknum>user3</ranknum>
+			<credit>100</credit>
+			<ReplyID>35424836</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>479766</PostUserId>
+			<PostUserName>tailzhou</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+才发觉jixingzhong(瞌睡虫：情浓 云淡 风轻 宜私奔！！) 的程序
+早已经改成 x1=(x2+1)*2了。
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 16:41:00</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>月满Ｃ楼</PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35425098</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1085705</PostUserId>
+			<PostUserName>cuibo1123</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+sum = (sum + 1) * 2
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 16:48:49</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35425187</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>997034</PostUserId>
+			<PostUserName>sny8054</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+写了个 递归函数 ，望给予批评指正。
+#include <stdio.h>
+
+int main()
+{
+   int i;
+   int monkeyeatpeach(int day);
+   for(i=1;i<=10;i++)
+   {
+      printf("the %d day left peaches :%d\n",i,monkeyeatpeach(i));
+   }
+}
+
+  int monkeyeatpeach(int day)
+{
+    if(day==10)
+      return 1;
+    else
+      {
+        day++;
+return 2*(monkeyeatpeach(day)+1);
+      }
+}
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 16:51:40</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35425219</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>997034</PostUserId>
+			<PostUserName>sny8054</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+写了个 递归函数 ，望给予批评指正。
+#include <stdio.h>
+
+int main()
+{
+   int i;
+   int monkeyeatpeach(int day);
+   for(i=1;i<=10;i++)
+   {
+      printf("the %d day left peaches :%d\n",i,monkeyeatpeach(i));
+   }
+}
+
+  int monkeyeatpeach(int day)
+{
+    if(day==10)
+      return 1;
+    else
+      {
+        day++;
+return 2*(monkeyeatpeach(day)+1);
+      }
+}
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 16:52:34</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35428509</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1192002</PostUserId>
+			<PostUserName>bbflyerwww</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+题目也不难啦，关键是对实际情况建模后用程序表示出来
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 20:46:49</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>少爷</PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35428674</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>848160</PostUserId>
+			<PostUserName>winks</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+可能由于太紧张了，分析得不够。
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 21:02:06</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>一只叫苏格拉底的猪</PostUserNickName>
+			<rank>五级(中级)</rank>
+			<ranknum>user5</ranknum>
+			<credit>100</credit>
+			<ReplyID>35429306</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1082262</PostUserId>
+			<PostUserName>happytang</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+逆向递推
+这个也是经典的c程序里面的阿
+还有什么小牛，小兔子的
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 22:19:12</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>哈密瓜</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35429361</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1175060</PostUserId>
+			<PostUserName>avril1986swj</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+倒推递归,纯数学...
+学习,UP!~~~~
+]]>
+			</Content>
+			<PostDateTime>2006-7-3 22:25:09</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>陰風</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35430032</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1148735</PostUserId>
+			<PostUserName>tianxing009</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+不是吧，这种题考试都给１８分？？？！！！
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 0:33:06</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35430353</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1225289</PostUserId>
+			<PostUserName>MudHoney7</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+#include<stdio.h>//猴子摘桃
+void main()
+{
+intday,t = 1;
+for( day = 1; day <= 9; day++ )
+{
+t = (t+1)*2;
+}
+printf( "猴子摘了%d个桃子\n" , t );
+}
+
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 7:19:06</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>骑车去火星</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35432165</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1109848</PostUserId>
+			<PostUserName>wu_java</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+public class peach{
+public static void main(String s[]){
+int sum=1;
+for(int i=1;i<10;i++){
+sum=(sum+1)*2;
+}
+System.out.println(sum);
+}
+}
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 9:33:19</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>高楼目尽欲黄昏/梧桐叶上萧萧雨</PostUserNickName>
+			<rank>两星(中级)</rank>
+			<ranknum>star2</ranknum>
+			<credit>97</credit>
+			<ReplyID>35432560</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1059123</PostUserId>
+			<PostUserName>xiaocai0001</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+>> 或许是我平时太勤奋学习C语言，所以老师就挑一条难的题给我吧，而其他同学的题相对来说容易一点。
+
+自己肯定自己就行...
+
+等毕业回首时, 学校考试成绩, 80+跟90+没什么区别的. 自己学到东西了才是最实在的.
+
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 9:44:28</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>近我者赤</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35432647</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>948363</PostUserId>
+			<PostUserName>do_the_best</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+小学应该就有这种题目了。
+不过不是用程序做，完全笔算而已。
+也没有10天那么多，小学生嘛，也就算个5、6天的桃子。
+我印象中大概是三、四年级时候的竞赛题型。
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 9:48:07</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>侯佩|hopy</PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35432847</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>242128</PostUserId>
+			<PostUserName>mydo</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+.386
+.model flat,stdcall
+option casemap:none
+
+includec:\masm32\include\windows.inc
+includec:\masm32\include\user32.inc
+includelibc:\masm32\lib\user32.lib
+includec:\masm32\include\kernel32.inc
+includelibc:\masm32\lib\kernel32.lib
+
+.code
+start:
+movedx,1
+movecx,10
+.whileecx>1
+incedx
+imuleax,edx,2
+movedx,eax
+dececx
+.endw
+invokeExitProcess,NULL
+endstart
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 9:55:42</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>▄︻┻┳═一</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35434727</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>698897</PostUserId>
+			<PostUserName>Heister</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+设第x天开始吃以前有a个,x+1天开始吃以前有b个,则 a-a/2-1=b  即a/2-1=b 所以a=2(b+1),推出这个就很简单了
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 11:03:13</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>小钢哥</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35434961</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1153013</PostUserId>
+			<PostUserName>calfenyin</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+楼主还是好好学学数学吧,学语言没什么用,计算机归根结底还是数学啊
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 11:09:40</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>烟圈</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35435272</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>506826</PostUserId>
+			<PostUserName>ring821</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+#include <iostream>
+using namespace std;
+
+
+void MonkeyEat(int day,int &num)
+{
+if(day == 1)
+return;
+num=(num+1)*2;
+MonkeyEat(--day, num);
+}
+void main()
+{
+int sum = 1;
+MonkeyEat(10, sum);
+cout<<sum<<endl;
+}
+
+
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 11:19:41</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35439466</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1231496</PostUserId>
+			<PostUserName>xin52011</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+顶，楼主以后认真点就行了。
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 14:22:04</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>逗你玩</PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35439762</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1168659</PostUserId>
+			<PostUserName>wi1son</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+jixingzhong(瞌睡虫：情浓 云淡 风轻 宜私奔！！) ( ) 信誉：102  2006-7-3 14:39:23  得分: 0  
+ 
+   
+题目：猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个
+　　　第二天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下
+　　　的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
+1.程序分析：采取逆向思维的方法，从后往前推断。
+2.程序源代码：
+#include "stdio.h"
+#include "conio.h"
+main()
+{
+  int day,x1,x2;
+  day=9;
+  x2=1;
+  while(day>0)
+  {
+    x1=(x2+1)*2;/*第一天的桃子数是第2天桃子数加1后的2倍*/
+    x2=x1;
+    day--;
+  }
+  printf("the total is %d\n",x1);
+  getch();
+}
+ 
+====================================================================================
+ 
+循环体里的
+x1=(x2+1)*2;
+x2=x1;
+是不是相当于累加？
+ 
+对于  x2=1  和  x1=(x2+1)*2  这两条公式，
+我当时想出了两条公式：
+f(10)=1  和    f(n)=2*f(n+1)+2
+但是当时由于紧张了一点和压力大了一点，因觉得用循环来做，循环次数多了就搞不清循环体里面的赋值，就执着地想用递归，却又不知怎样做递归
+ 
+同时，我也想到
+  
+f(1)=n/2+1
+f(2)=( n-f(1) )/2+1
+f(3)=( n-f(1)-f(2) )/2+1
+    ……
+f(9)=( n-f(1)-f(2)- … -f(7)-f(8) )/2+1
+f(10)=1
+ 
+n=f(1)+f(2)+f(3)+ … +f(9)+f(10)
+每一条公式都有一个 n （ n 是桃子的总数），然后就不知道下一步怎样计算桃子总数 n 
+ 
+ 
+
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 14:33:16</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>在混工作经验，不知道何时能养家！</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35440114</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1183988</PostUserId>
+			<PostUserName>wwx840723</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+肯定用递归最简单撒！
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 14:47:41</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35441366</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1209440</PostUserId>
+			<PostUserName>if_then_else_liao</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+X10=1;
+Xn=(Xn-1) - ((Xn-1/2) + 1),即Xn=(Xn-1)/2-1;
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 15:30:16</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>躯壳</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35442700</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>793907</PostUserId>
+			<PostUserName>debehe</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+哈哈，楼主学习C语言用的什么书？？
+如果真如你所说平时你都在学C，那么肯定是你用的快不好！哈哈，换本吧，C很重要！！算法也很重要。
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 16:14:45</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35444304</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1230379</PostUserId>
+			<PostUserName>stecdeng</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+以上全错了：
+注意是先吃一半再吃一个；不是先吃一个再吃一半;
+
+
+
+#include "stdio.h"
+#include "conio.h"
+main()
+{
+  int day,x1,x2;
+  day=9;
+  x2=1;
+  while(day>0)
+  {
+    x1=(x2+1)*2;/*第一天的桃子数是第2天桃子数加1后的2倍*/
+    x2=x1;
+    day--;
+  }
+  printf("the total is %d\n",x1);
+  getch();
+}
+
+
+
+结果1534
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 17:08:16</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName></PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35446870</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1204652</PostUserId>
+			<PostUserName>yys213</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+这实际上就是数学上的逆推思维呀！！用递归容易想，程序比较容易理解！！
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 19:46:55</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>vvoody</PostUserNickName>
+			<rank>一级(初级)</rank>
+			<ranknum>user1</ranknum>
+			<credit>100</credit>
+			<ReplyID>35447139</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>1132737</PostUserId>
+			<PostUserName>vvoody</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+现算出一两天的数量，然后找规律
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 20:14:59</PostDateTime>
+		</Reply>
+		<Reply>
+			<PostUserNickName>快乐编程</PostUserNickName>
+			<rank>二级(初级)</rank>
+			<ranknum>user2</ranknum>
+			<credit>100</credit>
+			<ReplyID>35447178</ReplyID>
+			<TopicID>4857015</TopicID>
+			<PostUserId>912298</PostUserId>
+			<PostUserName>ll_dzl</PostUserName>
+			<Point>0</Point>
+			<Content>
+				<![CDATA[
+int sum(int n)
+{
+if(n==1) return (1);
+return (sum(n-1)*2+1);
+}
+
+
+1023
+]]>
+			</Content>
+			<PostDateTime>2006-7-4 20:19:47</PostDateTime>
+		</Reply>
+		<Reply><PostUserNickName>桃子</PostUserNickName><rank>一级(初级)</rank><ranknum>user1</ranknum><credit>100</credit><ReplyID>35448163</ReplyID><TopicID>4857015</TopicID><PostUserId>998927</PostUserId><PostUserName>taozi1064</PostUserName><Point>0</Point><Content>从最后一天倒推，第一次循环相当于sum = 1，每天吃二倍加一，就是sum = sum*2 + 1</Content><PostDateTime>2006-07-04 22:21:00</PostDateTime></Reply><Reply><PostUserNickName>Cipher</PostUserNickName><rank>一级(初级)</rank><ranknum>user1</ranknum><credit>100</credit><ReplyID>35448493</ReplyID><TopicID>4857015</TopicID><PostUserId>1230536</PostUserId><PostUserName>pshpan</PostUserName><Point>0</Point><Content>但是我不明白其中的思路，特别是  sum=2*sum+1   这里。
+==================================================
+循环体里的
+x1=(x2+1)*2;
+x2=x1;
+是不是相当于累加？
+=================================================
+感觉lz的基础不够扎实啊
+如果真是认真学了，要么数学不行，要么就是光看书没怎么动手练，跟我们班女生一样就会捧着一本书……
+编程还得靠练，不是背英语单词认得if else就可以</Content><PostDateTime>2006-07-04 23:00:00</PostDateTime></Reply><Reply><PostUserNickName>ldm</PostUserNickName><rank>一级(初级)</rank><ranknum>user1</ranknum><credit>100</credit><ReplyID>35448688</ReplyID><TopicID>4857015</TopicID><PostUserId>1109552</PostUserId><PostUserName>skyldm</PostUserName><Point>0</Point><Content>题目一点也不难。。只是你少练习了。。。</Content><PostDateTime>2006-07-04 23:28:00</PostDateTime></Reply><Reply><PostUserNickName></PostUserNickName><rank>一级(初级)</rank><ranknum>user1</ranknum><credit>100</credit><ReplyID>35448891</ReplyID><TopicID>4857015</TopicID><PostUserId>397092</PostUserId><PostUserName>Ivony</PostUserName><Point>0</Point><Content>我只想说，
+这是小学奥赛的题目……</Content><PostDateTime>2006-07-04 23:56:00</PostDateTime></Reply><Reply><PostUserNickName></PostUserNickName><rank>二级(初级)</rank><ranknum>user2</ranknum><credit>100</credit><ReplyID>35448943</ReplyID><TopicID>4857015</TopicID><PostUserId>592678</PostUserId><PostUserName>xxxl</PostUserName><Point>0</Point><Content>哈哈</Content><PostDateTime>2006-07-05 00:06:00</PostDateTime></Reply><Reply><PostUserNickName></PostUserNickName><rank>一级(初级)</rank><ranknum>user1</ranknum><credit>100</credit><ReplyID>35450856</ReplyID><TopicID>4857015</TopicID><PostUserId>1230379</PostUserId><PostUserName>stecdeng</PostUserName><Point>0</Point><Content>同时也后悔平时遇到难一点的问题就不做，只做容易的，使得考试时做不出来。
+或许是我平时太勤奋学习C语言
+有点矛盾哦
+题目不难
+编程那东西死看书没用
+</Content><PostDateTime>2006-07-05 09:10:00</PostDateTime></Reply></Replys>
+</Topic>

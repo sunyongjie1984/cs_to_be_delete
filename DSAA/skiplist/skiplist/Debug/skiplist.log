@@ -1,0 +1,16 @@
+﻿生成启动时间为 2014/12/30 13:58:17。
+     1>项目“E:\CS\trunk\code\DSAA\skiplist\skiplist\skiplist.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt skiplist.cpp Source.cpp
+         Source.cpp
+         skiplist.cpp
+         正在生成代码...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\CS\trunk\code\DSAA\skiplist\Debug\skiplist.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\CS\trunk\code\DSAA\skiplist\Debug\skiplist.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\CS\trunk\code\DSAA\skiplist\Debug\skiplist.lib" /MACHINE:X86 Debug\skiplist.obj
+         Debug\Source.obj
+         skiplist.vcxproj -> E:\CS\trunk\code\DSAA\skiplist\Debug\skiplist.exe
+     1>已完成生成项目“E:\CS\trunk\code\DSAA\skiplist\skiplist\skiplist.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.45

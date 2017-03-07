@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+Screen	Screen.h	/^Screen::Screen(index hght, index wdth, const string &cntnts = ""):$/;"	f	class:Screen
+Screen	Screen.h	/^class Screen {$/;"	c
+contents	Screen.h	/^    string contents;$/;"	m	class:Screen
+cursor	Screen.h	/^    index cursor;$/;"	m	class:Screen
+display	Screen.h	/^Screen& Screen::display(ostream &os)$/;"	f	class:Screen
+display	Screen.h	/^const Screen& Screen::display(ostream &os) const$/;"	f	class:Screen
+do_display	Screen.h	/^    void do_display(ostream &os) const { \/\/ 把两个display函数简化为了一个，好处多多啊$/;"	f	class:Screen
+get	Screen.h	/^    char get() const { return contents[cursor]; } \/\/ default inline$/;"	f	class:Screen
+get	Screen.h	/^char Screen::get(index r, index c) const$/;"	f	class:Screen
+get_cursor	Screen.h	/^inline Screen::index Screen::get_cursor() const$/;"	f	class:Screen
+height	Screen.h	/^    index height, width;$/;"	m	class:Screen
+index	Screen.h	/^    typedef string::size_type index;$/;"	t	class:Screen
+main	1.cpp	/^int main()$/;"	f
+move	Screen.h	/^Screen& Screen::move(index r, index c)$/;"	f	class:Screen
+set	Screen.h	/^Screen& Screen::set(char c)$/;"	f	class:Screen
+width	Screen.h	/^    index height, width;$/;"	m	class:Screen

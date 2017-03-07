@@ -1,0 +1,25 @@
+<!--
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//
+// Copyright (c) Microsoft Corporation. All rights reserved
+-->
+
+<Application xmlns="http://schemas.microsoft.com/windows/2009/Scenic/Intent">
+
+  <Application.Commands>
+    <Command Name="TabHome" Symbol="cmdTabHome" Id="30000" />
+  </Application.Commands>
+
+  <Application.Views>
+    <Ribbon>
+      <Ribbon.Tabs>
+        <Tab CommandName="TabHome">
+        </Tab>
+      </Ribbon.Tabs>
+    </Ribbon>
+  </Application.Views>
+
+</Application>

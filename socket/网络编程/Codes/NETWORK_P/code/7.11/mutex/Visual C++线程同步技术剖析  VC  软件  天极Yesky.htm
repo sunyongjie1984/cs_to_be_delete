@@ -1,0 +1,1071 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0075)http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_4.shtml -->
+<HTML xmlns="http://www.w3.org/TR/xhtml1/strict"><HEAD><TITLE>Visual C++线程同步技术剖析 | VC | 软件 | 天极Yesky</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=GB2312">
+<STYLE type=text/css>A {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"
+}
+LI {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"
+}
+SELECT {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"
+}
+INPUT {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"
+}
+.f14 {
+	FONT-SIZE: 14px
+}
+.f21 {
+	FONT-SIZE: 13px; COLOR: #0e3e92
+}
+.f22 {
+	FONT-SIZE: 22px; COLOR: #212121
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.t12:link {
+	FONT-SIZE: 12px; COLOR: #4c408c; TEXT-DECORATION: underline
+}
+A.t12:visited {
+	FONT-SIZE: 12px; COLOR: #4c408c; TEXT-DECORATION: underline
+}
+A.t12:visited {
+	FONT-SIZE: 12px; COLOR: #4c408c; TEXT-DECORATION: underline
+}
+A.t12:active {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.t12:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.b9:link {
+	FONT-SIZE: 12px; COLOR: #4c408c; LETTER-SPACING: -1px; TEXT-DECORATION: underline
+}
+A.b9:visited {
+	FONT-SIZE: 12px; COLOR: #4c408c; LETTER-SPACING: -1px; TEXT-DECORATION: underline
+}
+A.b9:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.a001:link {
+	FONT-SIZE: 12px; COLOR: #0000cc; TEXT-DECORATION: underline
+}
+A.a001:visited {
+	FONT-SIZE: 12px; COLOR: #0000cc; TEXT-DECORATION: underline
+}
+A.a001:active {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.a001:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.bz:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.bz:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.bz:active {
+	FONT-SIZE: 12px; COLOR: #e7e1fe; TEXT-DECORATION: none
+}
+A.bz:hover {
+	FONT-SIZE: 12px; COLOR: #e7e1fe; TEXT-DECORATION: none
+}
+.shadow {
+	FONT-SIZE: 12px; FILTER: DropShadow(Color=#385370, OffX=1, OffY=1, Positive=1); COLOR: #ffffff; TEXT-DECORATION: none
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR></META>
+<META 
+content=国内最大的软件资讯、教程基地。下设工具与应用、系统与安全、设计、开发四大版块，全面系统地介绍各类软件用法、技巧以及应用解决方案，为读者提供最新最全的软件资讯与学习教程。VC 
+name=description></META>
+<META 
+content=软件小技巧,媒体播放,即时通讯,QQ皮肤,QQ下载,Office技巧,行业软件,软件教程,操作系统,网络安全,杀毒软件,黑客,木马,平面设计,网页制作,PhotoShop,Flash作品,三维,矢量,设计作品欣赏,软件开发,Java,开发工具,数据库,软件工程,服务器软件,VC 
+name=keywords></META>
+<SCRIPT language=JavaScript>function sendemail(){ 
+OpenWindow = window.open('http://other.chinabyte.com/chinabyte/qin/sendemail.shtm?url=/SoftChannel/72342371928702976/20040222/1770443.shtml&title=Visual C++线程同步技术剖析&channel=5','emailwin','toolbar=no,location=no,scrollbars=no,menubar=no,width=462,height=450')
+}</SCRIPT>
+
+<SCRIPT language=Javascript>document.write("<img src='http://counter.yesky.com/counter.shtml?CID=72342371928702976&AID=1770443&refer="+escape(document.referrer)+"&cur="+escape(document.URL)+"' border='0' alt='' width='0' height='0'>");</SCRIPT>
+</HEAD>
+<BODY bgColor=#f0f0f0 leftMargin=0 topMargin=3 marginheight="0" marginwidth="0">
+<SCRIPT language=JavaScript type=text/JavaScript>
+    var forumid = "363";
+    var type = '4'; 
+    var channel = '72342371928702976'; 
+    var articleid = '1770443'; 
+    var title ='Visual C++线程同步技术剖析'; 
+    var commentpower=true;
+	 </SCRIPT>
+
+<DIV align=center>
+<SCRIPT src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/y_head0603.js"></SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=0 width=776 border=0>
+  <TBODY>
+  <TR>
+    <TD width=1 bgColor=#b9bebe></TD>
+    <TD vAlign=top align=middle width=516 bgColor=#eff8ff>
+      <TABLE height=5 cellSpacing=0 cellPadding=0 width=500 border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE>
+      <SCRIPT language=JavaScript 
+      src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/yesky-software-content-column-s.js"></SCRIPT>
+    </TD>
+    <TD align=middle width=267 bgColor=#eff8ff>
+      <SCRIPT language=JavaScript>
+<!--
+var ad_id=1001
+//-->
+</SCRIPT>
+
+      <SCRIPT language=JavaScript 
+      src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/10.js"></SCRIPT>
+
+      <TABLE height=1 cellSpacing=0 cellPadding=0 width=260 bgColor=#cccccc 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=2 width=260 border=0>
+        <TBODY>
+        <TR></TR>
+        <TR>
+          <TD vAlign=top width=130>
+            <SCRIPT 
+            src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/yesky-home-new-button-1.js"></SCRIPT>
+          </TD>
+          <TD vAlign=top width=130>
+            <SCRIPT language=JavaScript>
+<!--
+var ad_id=1002
+//-->
+</SCRIPT>
+
+            <SCRIPT language=JavaScript 
+            src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/10.js"></SCRIPT>
+          </TD></TR></TBODY></TABLE></TD>
+    <TD width=1 bgColor=#b9bebe></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=227><IMG height=44 alt=,VC 
+      src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/software04-120111.jpg" 
+      width=227></IMG></TD>
+    <TD width=533 
+    background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/software04-120113.jpg">&nbsp;&nbsp;&nbsp;<A 
+      class=f26 title=,VC 
+      href="http://soft.yesky.com/SoftChannel/72347865107660800/index.shtml" 
+      target=_blank>工具软件</A>&nbsp;&nbsp;&nbsp;<A class=f26 title=,VC 
+      href="http://soft.yesky.com/SoftChannel/72357760712310784/index.shtml" 
+      target=_blank>办公软件</A>&nbsp;&nbsp;&nbsp;<A class=f26 title=,VC 
+      href="http://soft.yesky.com/SoftChannel/72350064130916352/index.shtml" 
+      target=_blank>操作系统</A>&nbsp;&nbsp;&nbsp;<A class=f26 title=,VC 
+      href="http://soft.yesky.com/SoftChannel/72356661200683008/index.shtml" 
+      target=_blank>网络安全</A>&nbsp;&nbsp;&nbsp;<A class=f26 title=,VC 
+      href="http://soft.yesky.com/SoftChannel/72351163642544128/index.shtml" 
+      target=_blank>设计在线</A>&nbsp;&nbsp;&nbsp;<A class=f26 title=,VC 
+      href="http://soft.yesky.com/SoftChannel/72342367549521920/index.shtml" 
+      target=_blank>程序开发</A>&nbsp;&nbsp;&nbsp;<A class=f26 title=,VC 
+      href="http://soft.yesky.com/SoftChannel/72348964619288576/index.shtml" 
+      target=_blank>教程宝典</A>&nbsp;&nbsp;&nbsp;<A class=f26 title=,VC 
+      href="http://www.mydown.com/soft/softdown.html" 
+      target=_blank>软件下载</A>&nbsp;&nbsp;&nbsp;<A class=f26 title=,VC 
+      href="http://137.club.yesky.com/" target=_blank>软件论坛</A></TD>
+    <TD vAlign=top align=right width=16><IMG height=44 alt=,VC 
+      src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/software04-120112.jpg" 
+      width=16></IMG></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=776 border=0>
+  <TBODY>
+  <TR>
+    <TD bgColor=#b9bebe height=1></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=776 border=0>
+  <TBODY>
+  <TR>
+    <TD width=1 bgColor=#b9bebe rowSpan=13></TD>
+    <TD vAlign=top width=603 bgColor=#f0f2fb>
+      <TABLE cellSpacing=0 cellPadding=0 width=603 border=0>
+        <TBODY>
+        <TR>
+          <TD width=10></TD>
+          <TD width=55>您的位置:</TD>
+          <TD width=538><A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72339069014638592/index.shtml">软件</A> 
+            &gt; <A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342367549521920/index.shtml">开发者网络</A> 
+            &gt; <A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342371844489216/index.shtml">开发工具</A> 
+            &gt; <A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342371928375296/index.shtml">开发专栏</A> 
+            &gt; <A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/index.shtml">VC</A> 
+            &gt; 正文</TD></TR>
+        <TR></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=603 border=0>
+        <TBODY>
+        <TR>
+          <TD bgColor=#dee2f5 height=40>
+            <TABLE height=40 cellSpacing=0 cellPadding=0 width=590 align=center 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD align=middle><FONT class=f22><B>Visual 
+                  C++线程同步技术剖析</B></FONT></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD 
+          background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/newhard-040906_c_1.gif" 
+          height=1></TD></TR>
+        <TR>
+          <TD vAlign=top height=5></TD></TR>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width=603 border=0>
+              <TBODY>
+              <TR>
+                <TD vAlign=top align=middle width=373 rowSpan=9>
+                  <TABLE cellSpacing=0 cellPadding=0 width=373 align=center 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD align=middle><SPAN id=pip></SPAN></TD></TR>
+                    <TR>
+                      <TD align=middle><IFRAME 
+                        src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/dell-notebook-scolumn.htm" 
+                        frameBorder=0 width=360 scrolling=no 
+                      height=50></IFRAME></TD></TR></TBODY></TABLE></TD>
+                <TD width=5></TD>
+                <TD vAlign=top width=220>
+                  <TABLE cellSpacing=0 cellPadding=0 width=220 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD colSpan=2><FONT class=f21><B>[文章信息]</B></FONT></TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=10></TD></TR>
+                    <TR>
+                      <TD vAlign=top width=62>作者:</TD>
+                      <TD vAlign=top width=158><FONT color=#0e3e92>中国电波传播研究所 
+                        郎锐</FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top>时间:</TD>
+                      <TD vAlign=top><FONT 
+                    color=#0e3e92>2004-02-24</FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top>出处:</TD>
+                      <TD vAlign=top><FONT color=#0e3e92>yesky</FONT></TD></TR>
+                    <TR>
+                      <TD vAlign=top>责任编辑:</TD>
+                      <TD vAlign=top><FONT color=#0e3e92>方舟</FONT></TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=10></TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width=220 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD colSpan=2><FONT class=f21><B>[文章导读]</B></FONT></TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=10></TD></TR>
+                    <TR>
+                      <TD vAlign=top colSpan=2><SPAN 
+                        class=f14>本文重点对多线程的各种同步技术进行介绍</SPAN></TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=10></TD></TR></TBODY></TABLE>
+                  <SCRIPT 
+                  language=JavaScript>
+<!--
+var ad_id=1003
+//-->
+</SCRIPT>
+
+                  <SCRIPT language=JavaScript 
+                  src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/10.js"></SCRIPT>
+                </TD>
+                <TD width=5></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD width=1 bgColor=#b9bebe rowSpan=13></TD>
+    <TD vAlign=top align=middle width=170 bgColor=#ffffff rowSpan=13>
+      <TABLE cellSpacing=5 cellPadding=0 width=165 border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle>
+            <SCRIPT language=JavaScript>
+<!--
+var ad_id=0403
+//-->
+</SCRIPT>
+
+            <SCRIPT language=JavaScript 
+            src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/04.js"></SCRIPT>
+          </TD></TR></TBODY></TABLE>
+      <TABLE height=28 cellSpacing=0 cellPadding=0 width=160 
+      background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/2004-30.gif" 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle><B>advertisement</B></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+        <TBODY>
+        <TR>
+          <TD width=1 bgColor=#adadad></TD>
+          <TD align=middle bgColor=#ffffff><SPAN id=sv></SPAN></TD>
+          <TD width=1 bgColor=#adadad></TD></TR></TBODY></TABLE>
+      <TABLE height=1 cellSpacing=0 cellPadding=0 width=160 bgColor=#adadad 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE>
+      <TABLE height=10 cellSpacing=0 cellPadding=0 width=160 border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE>
+      <TABLE height=28 cellSpacing=0 cellPadding=0 width=160 
+      background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/2004-30.gif" 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle><B>热点推荐</B></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+        <TBODY>
+        <TR>
+          <TD width=1 bgColor=#adadad></TD>
+          <TD align=middle bgColor=#ffffff>
+            <TABLE cellSpacing=0 cellPadding=2 width=150 border=0>
+              <TBODY>
+              <TR>
+                <TD width=7>· </TD>
+                <TD width=143><A title=,VC 
+                  href="http://www.yesky.com/head/75998243711877120/20010626/187048.shtml" 
+                  target=_blank>深入探讨SQL Server 2000对XML的支持</A></TD></TR>
+              <TR>
+                <TD width=7>· </TD>
+                <TD width=143><A title=,VC 
+                  href="http://www.yesky.com/SoftChannel/72348977504190464/20040529/1802636.shtml" 
+                  target=_blank>Swing(空)</A></TD></TR>
+              <TR>
+                <TD width=7>· </TD>
+                <TD width=143><A title=,VC 
+                  href="http://www.yesky.com/SoftChannel/72351189429125120/20010725/190235.shtml" 
+                  target=_blank>3DS Stodio Max 宝典</A></TD></TR>
+              <TR>
+                <TD width=7>· </TD>
+                <TD width=143><A title=,VC 
+                  href="http://www.yesky.com/SoftChannel/72341319577501696/20010529/181974.shtml" 
+                  target=_blank>中小企业服务器配置方案--前 言</A></TD></TR>
+              <TR>
+                <TD width=7>· </TD>
+                <TD width=143><A title=,VC 
+                  href="http://www.yesky.com/SoftChannel/72341341085892608/20010529/181934.shtml" 
+                  target=_blank>中小企业服务器配置方案--代理接入服务器(3)</A></TD></TR></TBODY></TABLE></TD>
+          <TD width=1 bgColor=#adadad></TD></TR></TBODY></TABLE>
+      <TABLE height=1 cellSpacing=0 cellPadding=0 width=160 bgColor=#adadad 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD>
+    <TD width=1 bgColor=#b9bebe rowSpan=13></TD></TR>
+  <TR>
+    <TD vAlign=top bgColor=#f0f2fb height=5></TD></TR>
+  <TR>
+    <TD vAlign=top 
+    background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/newhard-040906_c_1.gif" 
+    bgColor=#f0f2fb height=1></TD></TR>
+  <TR>
+    <TD vAlign=top bgColor=#dee2f5>
+      <TABLE height=25 cellSpacing=0 cellPadding=0 width=590 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=40><FONT class=f21><B>[正文]</B></FONT></TD>
+          <TD width=280><SPAN id=wz></SPAN></TD>
+          <TD align=right width=250>
+            <P align=right><FONT color=red><A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_3.shtml">上一页</A>&nbsp;&nbsp;<A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443.shtml">1</A> 
+            <A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_1.shtml">2</A> 
+            <A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_2.shtml">3</A> 
+            <A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_3.shtml">4</A> 
+            5 &nbsp;</FONT></P></TD>
+          <TD align=middle width=20></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top 
+    background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/newhard-040906_c_1.gif" 
+    bgColor=#f0f2fb height=1></TD></TR>
+  <TR>
+    <TD vAlign=top bgColor=#f0f2fb height=10></TD></TR>
+  <TR>
+    <TD vAlign=top bgColor=#f0f2fb>
+      <TABLE cellSpacing=0 cellPadding=0 width=590 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD><SPAN 
+            class=f14>　　<B>互斥内核对象</B><BR><BR>　　互斥（Mutex）是一种用途非常广泛的内核对象。能够保证多个线程对同一共享资源的互斥访问。同临界区有些类似，只有拥有互斥对象的线程才具有访问资源的权限，由于互斥对象只有一个，因此就决定了任何情况下此共享资源都不会同时被多个线程所访问。当前占据资源的线程在任务处理完后应将拥有的互斥对象交出，以便其他线程在获得后得以访问资源。与其他几种内核对象不同，互斥对象在操作系统中拥有特殊代码，并由操作系统来管理，操作系统甚至还允许其进行一些其他内核对象所不能进行的非常规操作。为便于理解，可参照图6给出的互斥内核对象的工作模型：<BR><BR><IMG 
+            onerror="this.src='http://www.yesky.com/image20010518/110098.jpg';" 
+            hspace=3 src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/110098.jpg" 
+            align=center vspace=1 border=1><BR>图6 
+            使用互斥内核对象对共享资源的保护<BR><BR>　　图（a）中的箭头为要访问资源（矩形框）的线程，但只有第二个线程拥有互斥对象（黑点）并得以进入到共享资源，而其他线程则会被排斥在外（如图（b）所示）。当此线程处理完共享资源并准备离开此区域时将把其所拥有的互斥对象交出（如图（c）所示），其他任何一个试图访问此资源的线程都有机会得到此互斥对象。<BR><BR>　　以互斥内核对象来保持线程同步可能用到的函数主要有CreateMutex（）、OpenMutex（）、ReleaseMutex（）、WaitForSingleObject（）和WaitForMultipleObjects（）等。在使用互斥对象前，首先要通过CreateMutex（）或OpenMutex（）创建或打开一个互斥对象。CreateMutex（）函数原型为：<BR><BR>
+            <TABLE width="100%" bgColor=#ffffff>
+              <TBODY>
+              <TR>
+                <TD>HANDLE CreateMutex(<BR>　LPSECURITY_ATTRIBUTES 
+                  lpMutexAttributes, // 安全属性指针<BR>　BOOL bInitialOwner, // 
+                  初始拥有者<BR>　LPCTSTR lpName // 
+            互斥对象名<BR>);</TD></TR></TBODY></TABLE><BR>　　参数bInitialOwner主要用来控制互斥对象的初始状态。一般多将其设置为FALSE，以表明互斥对象在创建时并没有为任何线程所占有。如果在创建互斥对象时指定了对象名，那么可以在本进程其他地方或是在其他进程通过OpenMutex（）函数得到此互斥对象的句柄。OpenMutex（）函数原型为：<BR><BR>
+            <TABLE width="100%" bgColor=#ffffff>
+              <TBODY>
+              <TR>
+                <TD>HANDLE OpenMutex(<BR>　DWORD dwDesiredAccess, // 
+                  访问标志<BR>　BOOL bInheritHandle, // 继承标志<BR>　LPCTSTR lpName // 
+                  互斥对象名<BR>); 
+            </TD></TR></TBODY></TABLE><BR>　　当目前对资源具有访问权的线程不再需要访问此资源而要离开时，必须通过ReleaseMutex（）函数来释放其拥有的互斥对象，其函数原型为：<BR><BR>
+            <TABLE width="100%" bgColor=#ffffff>
+              <TBODY>
+              <TR>
+                <TD>BOOL ReleaseMutex(HANDLE 
+            hMutex);</TD></TR></TBODY></TABLE><BR>　　其唯一的参数hMutex为待释放的互斥对象句柄。至于WaitForSingleObject（）和WaitForMultipleObjects（）等待函数在互斥对象保持线程同步中所起的作用与在其他内核对象中的作用是基本一致的，也是等待互斥内核对象的通知。但是这里需要特别指出的是：在互斥对象通知引起调用等待函数返回时，等待函数的返回值不再是通常的WAIT_OBJECT_0（对于WaitForSingleObject（）函数）或是在WAIT_OBJECT_0到WAIT_OBJECT_0+nCount-1之间的一个值（对于WaitForMultipleObjects（）函数），而是将返回一个WAIT_ABANDONED_0（对于WaitForSingleObject（）函数）或是在WAIT_ABANDONED_0到WAIT_ABANDONED_0+nCount-1之间的一个值（对于WaitForMultipleObjects（）函数）。以此来表明线程正在等待的互斥对象由另外一个线程所拥有，而此线程却在使用完共享资源前就已经终止。除此之外，使用互斥对象的方法在等待线程的可调度性上同使用其他几种内核对象的方法也有所不同，其他内核对象在没有得到通知时，受调用等待函数的作用，线程将会挂起，同时失去可调度性，而使用互斥的方法却可以在等待的同时仍具有可调度性，这也正是互斥对象所能完成的非常规操作之一。<BR><BR>　　在编写程序时，互斥对象多用在对那些为多个线程所访问的内存块的保护上，可以确保任何线程在处理此内存块时都对其拥有可靠的独占访问权。下面给出的示例代码即通过互斥内核对象hMutex对共享内存快g_cArray[]进行线程的独占访问保护。下面给出实现代码清单：<BR><BR>
+            <TABLE width="100%" bgColor=#ffffff>
+              <TBODY>
+              <TR>
+                <TD>// 互斥对象<BR>HANDLE hMutex = NULL;<BR>char 
+                  g_cArray[10];<BR>UINT ThreadProc18(LPVOID pParam)<BR>{<BR>　// 
+                  等待互斥对象通知<BR>　WaitForSingleObject(hMutex, INFINITE);<BR>　// 
+                  对共享资源进行写入操作<BR>　for (int i = 0; i &lt; 10; 
+                  i++)<BR>　{<BR>　　g_cArray[i] = 'a';<BR>　　Sleep(1);<BR>　}<BR>　// 
+                  释放互斥对象<BR>　ReleaseMutex(hMutex);<BR>　return 0;<BR>}<BR>UINT 
+                  ThreadProc19(LPVOID pParam)<BR>{<BR>　// 
+                  等待互斥对象通知<BR>　WaitForSingleObject(hMutex, INFINITE);<BR>　// 
+                  对共享资源进行写入操作<BR>　for (int i = 0; i &lt; 10; 
+                  i++)<BR>　{<BR>　　g_cArray[10 - i - 1] = 
+                  'b';<BR>　　Sleep(1);<BR>　}<BR>　// 
+                  释放互斥对象<BR>　ReleaseMutex(hMutex);<BR>　return 
+                  0;<BR>}<BR>……<BR>void CSample08View::OnMutex() <BR>{<BR>　// 
+                  创建互斥对象<BR>　hMutex = CreateMutex(NULL, FALSE, NULL);<BR>　// 
+                  启动线程<BR>　AfxBeginThread(ThreadProc18, 
+                  NULL);<BR>　AfxBeginThread(ThreadProc19, NULL);<BR>　// 
+                  等待计算完毕<BR>　Sleep(300);<BR>　// 报告计算结果<BR>　CString sResult = 
+                  CString(g_cArray);<BR>　AfxMessageBox(sResult);<BR>} 
+              </TD></TR></TBODY></TABLE><BR>　　互斥对象在MFC中通过CMutex类进行表述。使用CMutex类的方法非常简单，在构造CMutex类对象的同时可以指明待查询的互斥对象的名字，在构造函数返回后即可访问此互斥变量。CMutex类也是只含有构造函数这唯一的成员函数，当完成对互斥对象保护资源的访问后，可通过调用从父类CSyncObject继承的UnLock（）函数完成对互斥对象的释放。CMutex类构造函数原型为：<BR><BR>
+            <TABLE width="100%" bgColor=#ffffff>
+              <TBODY>
+              <TR>
+                <TD>CMutex( BOOL bInitiallyOwn = FALSE, LPCTSTR lpszName = 
+                  NULL, LPSECURITY_ATTRIBUTES lpsaAttribute = NULL 
+              );</TD></TR></TBODY></TABLE><BR>　　该类的适用范围和实现原理与API方式创建的互斥内核对象是完全类似的，但要简洁的多，下面给出就是对前面的示例代码经CMutex类改写后的程序实现清单：<BR><BR>
+            <TABLE width="100%" bgColor=#ffffff>
+              <TBODY>
+              <TR>
+                <TD>// MFC互斥类对象<BR>CMutex g_clsMutex(FALSE, NULL);<BR>UINT 
+                  ThreadProc27(LPVOID pParam)<BR>{<BR>　// 
+                  等待互斥对象通知<BR>　g_clsMutex.Lock();<BR>　// 对共享资源进行写入操作<BR>　for 
+                  (int i = 0; i &lt; 10; i++)<BR>　{<BR>　　g_cArray[i] = 
+                  'a';<BR>　　Sleep(1);<BR>　}<BR>　// 
+                  释放互斥对象<BR>　g_clsMutex.Unlock();<BR>　return 0;<BR>}<BR>UINT 
+                  ThreadProc28(LPVOID pParam)<BR>{<BR>　// 
+                  等待互斥对象通知<BR>　g_clsMutex.Lock();<BR>　// 对共享资源进行写入操作<BR>　for 
+                  (int i = 0; i &lt; 10; i++)<BR>　{<BR>　　g_cArray[10 - i - 1] = 
+                  'b';<BR>　　Sleep(1);<BR>　}<BR>　// 
+                  释放互斥对象<BR>　g_clsMutex.Unlock();<BR>　return 
+                  0;<BR>}<BR>……<BR>void CSample08View::OnMutexMfc() <BR>{<BR>　// 
+                  启动线程<BR>　AfxBeginThread(ThreadProc27, 
+                  NULL);<BR>　AfxBeginThread(ThreadProc28, NULL);<BR>　// 
+                  等待计算完毕<BR>　Sleep(300);<BR>　// 报告计算结果<BR>　CString sResult = 
+                  CString(g_cArray);<BR>　AfxMessageBox(sResult);<BR>}</TD></TR></TBODY></TABLE><BR>　　<B>小结</B><BR><BR>　　线程的使用使程序处理更够更加灵活，而这种灵活同样也会带来各种不确定性的可能。尤其是在多个线程对同一公共变量进行访问时。虽然未使用线程同步的程序代码在逻辑上或许没有什么问题，但为了确保程序的正确、可靠运行，必须在适当的场合采取线程同步措施。<BR></SPAN><BR></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top bgColor=#f0f2fb height=10></TD></TR>
+  <TR>
+    <TD vAlign=top 
+    background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/newhard-040906_c_1.gif" 
+    bgColor=#f0f2fb height=1></TD></TR>
+  <TR>
+    <TD vAlign=top bgColor=#dee2f5>
+      <TABLE height=25 cellSpacing=0 cellPadding=0 width=590 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=90></TD>
+          <TD align=right width=480>
+            <P align=right><FONT color=red><A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_3.shtml">上一页</A>&nbsp;&nbsp;<A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443.shtml">1</A> 
+            <A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_1.shtml">2</A> 
+            <A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_2.shtml">3</A> 
+            <A 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_3.shtml">4</A> 
+            5 &nbsp;</FONT></P></TD>
+          <TD align=middle width=20></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top 
+    background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/newhard-040906_c_1.gif" 
+    bgColor=#f0f2fb height=1></TD></TR>
+  <TR>
+    <TD vAlign=top width=603 bgColor=#f0f2fb><SPAN id=ad_1></SPAN>
+      <TABLE cellSpacing=0 cellPadding=0 width=590 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle width=100>
+            <SCRIPT language=JavaScript>function bbs(){ 
+OpenWindow = window.open('http://bbs.yesky.com/yeskybbs.asp?body=Visual C++线程同步技术剖析&bbsid=94&url=/SoftChannel/72342371928702976/20040222/1770443.shtml&aid=1770443','bbs','')
+}</SCRIPT>
+            <A title=,VC href="http://club.yesky.com/"><FONT 
+            color=#ff5d00>发表评论</FONT></A></TD>
+          <TD align=middle width=100><A title=,VC 
+            href="javascript:recommend()"><FONT 
+color=#8c8a8a>推荐给朋友</FONT></A></TD>
+          <TD align=middle width=130><A title=,VC 
+            href="http://training.yesky.com/"><FONT 
+            color=#8c8a8a>我想参加相关培训</FONT></A></TD>
+          <TD align=middle width=60><A title=,VC 
+            href="javascript:self.print()"><FONT color=#8c8a8a>打印</FONT></A></TD>
+          <TD align=middle width=100><A title=,VC 
+            href="javascript:sendemail()"><FONT 
+          color=#8c8a8a>我对此感兴趣</FONT></A></TD>
+          <TD align=middle width=100><A title=,VC 
+            href="http://www.yesky.com/maillist/index.html"><FONT 
+            color=#8c8a8a>订阅电子杂志</FONT></A></TD></TR>
+        <TR>
+          <TD height=20></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top bgColor=#f0f2fb></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=776 border=0>
+  <TBODY>
+  <TR>
+    <TD width=1 bgColor=#b9bebe></TD>
+    <TD vAlign=top align=middle width=603 bgColor=#f0f2fb>
+      <SCRIPT language=JavaScript 
+      src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/channel.js"></SCRIPT>
+
+      <SCRIPT language=JavaScript>
+<!--
+var path = location.pathname;
+
+var aid = 0;
+var cid = 0;
+var channelid = 0;
+reg = /\/(\w+)\/(\d+)\/(\d+)\/(\d+)/;
+if(reg.test(path)) {
+    reg.exec(path);
+    aid = RegExp.$4;
+    cid = RegExp.$2;
+    var ename = RegExp.$1;
+    channelid = getChannelID(ename);
+}
+
+//-->
+</SCRIPT>
+      <SPAN id=commentsSpanText></SPAN>
+      <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=3 width="100%" 
+      align=center bgColor=#eef8fd borderColorLight=#666666 border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD vAlign=bottom align=middle><A href="http://my.yesky.com/" 
+            target=_blank>天极社区</A>邀请您：<A href="http://blog.yesky.com/" 
+            target=_blank><FONT color=#ff8000>写博客日记</FONT></A>&nbsp;&nbsp;<A 
+            href="http://photo.yesky.com/" target=_blank><FONT 
+            color=#ff8000>上传相片</FONT></A>&nbsp;&nbsp;&nbsp;<A 
+            href="http://bbs.yesky.com/" target=_blank><FONT 
+            color=#ff8000>论坛聊天</FONT></A>&nbsp;&nbsp;<A 
+            href="http://bbs.yesky.com/" target=_blank><FONT 
+            color=#ff8000>订阅电子杂志</FONT></A>&nbsp;&nbsp;<A 
+            href="http://hot.yesky.com/"><FONT 
+            color=#ff0000>推荐网摘</FONT></A>&nbsp;&nbsp;<A 
+            title="推荐到天极网摘 http://hot.yesky.com [鼠标划选本文摘要，然后点击本图片]" 
+            href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(yesky=window.open('http://hot.yesky.com/dp.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t)+'&amp;st=2','yesky','scrollbars=no,width=400,height=480,left=75,top=20,status=no,resizable=yes'));yesky.focus();"><IMG 
+            src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/souchang1.gif" 
+            border=0></A> <FONT color=#ff0000><A 
+            href="http://www.yeecai.com/mobileant/tjadd/tjload.html" 
+            target=_blank>免费图铃工具</A></FONT></TD></TR></TBODY></TABLE>
+      <SCRIPT language=JavaScript>
+function showCommentsSpan() {
+	if(typeof(latest_comments_poster) == "object" && latest_comments_poster.length && latest_comments_poster.length > 0) {
+		var str = "<table width=\"96%\" border=\"0\" align=\"center\" cellpadding=\"2\" cellspacing=\"1\" bgcolor=\"#CCCCCC\">";
+		str += "<tr bgcolor=\"#FFFFFF\"><td colspan=\"3\">本文最新评论 共(<font color=\"#FF0000\">"+ latest_comments_num +"</font>)条";
+		str += " <a href=" + latest_comments_url + " target=\"_blank\"><font color=\"#FF0000\">查看所有评论</font></a>";
+		str += " <a href=\"JavaScript:window.location.reload();\">查看最新评论</a></td></tr>";
+		str += "<tr bgcolor=\"#FFFFFF\"><td width=\"15%\">";
+		str += "评论人";
+		str += "</td><td width=\"70%\">";
+		str += "评论内容";
+		str += "</td><td width=\"15%\">";
+		str += "时间";
+		str += "</td></tr>";
+		for (i = 0; i < latest_comments_poster.length; i++) {
+			str += "<tr bgcolor=\"#FFFFFF\"><td><font color=\"#669900\">";
+			str += latest_comments_poster[i];
+			str += "</font>";
+			str += "</td><td>";
+			str += latest_comments_contents[i];
+			str += "</td><td>";
+			str += latest_comments_postdate[i];
+			str += "</td></tr>";
+		}
+		str += "</td></tr></table>";
+		commentsSpanText.innerHTML = str;
+	} else {
+		var str = "<table width=\"96%\" border=\"0\" align=\"center\" cellpadding=\"2\" cellspacing=\"1\" bgcolor=\"#CCCCCC\">";
+		str += "<tr bgcolor=\"#FFFFFF\"><td>目前本文还没有相关评论。立即评论，马上成为本文的第一个评论者！";
+		str += "</td></tr></table>";
+		commentsSpanText.innerHTML = str;
+
+	}
+}
+
+</SCRIPT>
+<!--此处旧的代码:document.write("<script language=\"JavaScript\" charset=\"gb2312\" defer src=\"http://comments.yesky.com/review.latest.do?rfid="+aid+"&type=1&num=5\"><\/script>");-->
+      <SCRIPT language=JavaScript>
+<!--
+document.write("<script language=\"JavaScript\" charset=\"gb2312\" defer src=\"http://comments.yesky.com/articlereview/6/"+(aid%5000)+"/"+aid+".js\"><\/script>");
+//-->
+</SCRIPT>
+
+      <TABLE width="100%" border=0>
+        <FORM name=frmReviewPost action=http://comments.yesky.com/review.post.do 
+        method=post target=_blank><INPUT type=hidden name=rfid> <INPUT 
+        type=hidden value=6 name=type> 
+        <TBODY>
+        <TR>
+          <TD align=right width="10%">笔名： </TD>
+          <TD width="50%"><INPUT name=userName> </TD>
+          <TD vAlign=top 
+            rowSpan=3>　　请您注意：<BR><BR>　遵守国家有关法律、法规，尊重网上道德，承担一切因您的行为而直接或间接引起的法律责任。<BR><BR>　天极网拥有管理笔名和留言的一切权利。 
+          </TD></TR>
+        <TR>
+          <TD vAlign=top align=right width="10%">评论： </TD>
+          <TD width="50%"><TEXTAREA name=contents rows=6 cols=40></TEXTAREA> 
+          </TD></TR>
+        <TR>
+          <TD align=middle width="10%">&nbsp; </TD>
+          <TD width="50%"><INPUT onclick=JavaScript:submitReviewForm(this.form) type=button value=发表评论 name=but> 
+          </TD></TR></FORM></TBODY></TABLE>
+      <SCRIPT language=JavaScript>
+<!--
+
+with(document.frmReviewPost) {
+    if(typeof(comments_nickname) == "string" && comments_nickname.length > 0) {
+        userName.value = comments_nickname;
+    } else {
+       // userName.value = "天极网友";
+    }
+    rfid.value = aid;
+
+}
+
+function submitReviewForm(f) {
+    with(f) {
+        if(rfid.value.length > 0) {
+			if(userName.value.length ==  0) {
+				alert("请输入您的笔名！");
+				userName.focus();
+				return;
+			}
+			if(userName.value.length > 20) {
+				alert("笔名太长，字数不成超过20！");
+				userName.focus();
+				return;
+			}
+
+			if(contents.value.length ==  0) {
+				alert("请输入评论内容");
+				contents.focus();
+				return;
+			}
+			if(contents.value.length > 2000) {
+				alert("内容太长，字数不成超过2000");
+				contents.focus();
+				return;
+			}
+            submit();
+			contents.value = "";
+        }
+    }
+}
+//-->
+</SCRIPT>
+      <SPAN id=commentsHotestSpanText></SPAN>
+      <SCRIPT language=JavaScript>
+  function showCommentsHotestSpan() {
+ if(typeof(hot_comments_rfid) == "object" && hot_comments_rfid.length > 0) {
+	var hot_max_length = 17;
+    var str = "<table width=\"98%\" border=\"0\" align=\"center\" cellpadding=\"2\" >";
+	str += "<tr><td colspan=\"2\">　　本月最热评论</td></tr>";
+
+    for (i = 0; i < hot_comments_rfid.length; i+=2) {
+        str += "<tr>";
+		
+		for (j = 0; j < 2; j++) {
+    		str += "<td width=\"50%\">";
+			if(i + j <  hot_comments_rfid.length) {
+				var host_comment_title = hot_comments_title[i + j];
+				if(host_comment_title.length > hot_max_length) {
+					host_comment_title = host_comment_title.substring(0, hot_max_length);
+				}
+				str += "<li>";
+				str += "<a href=\"" + hot_comments_url[i + j] + "\" title=\""+hot_comments_title[i + j]+"\">"+ host_comment_title +"</a> ";
+				str += " ("+hot_comments_num[i + j]+")";
+				str += "</li>";
+			} else {
+				str += "&nbsp;";
+			}
+
+			str += "</td>";
+
+		}
+        str += "</tr>";
+		
+    }
+    str += "</table>";
+    commentsHotestSpanText.innerHTML = str;
+ }
+}
+//-->
+</SCRIPT>
+<!--document.write("<script language=\"JavaScript\" charset=\"gb2312\" defer src=\"http://comments.yesky.com/review.hotest.do?type=6&cid="+channelid+"&num=10\"><\/script>");-->
+      <SCRIPT language=JavaScript>
+ //document.write("<script language=\"JavaScript\" charset=\"gb2312\" defer //src=\"http://comments.yesky.com/channlereview/6/"+(channelid%5000)+"/"+channelid+".js\"><\/script>");
+</SCRIPT>
+    </TD>
+    <TD width=1 bgColor=#b9bebe></TD>
+    <TD vAlign=top align=middle width=170 bgColor=#ffffff></TD>
+    <TD width=1 bgColor=#b9bebe></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=776 border=0>
+  <TBODY>
+  <TR>
+    <TD width=1 bgColor=#b9bebe></TD>
+    <TD vAlign=top width=603 bgColor=#f0f2fb>
+      <TABLE cellSpacing=0 cellPadding=0 width=603 
+      background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/04-43.gif" 
+        border=0><TBODY>
+        <TR>
+          <TD align=middle width=40><IMG alt=,VC 
+            src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/04-44.gif"></IMG></TD>
+          <TD width=261><FONT color=#ffffff>相关内容</FONT></TD>
+          <TD align=middle width=40><IMG alt=,VC 
+            src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/04-44.gif"></IMG></TD>
+          <TD width=262><FONT color=#ffffff>焦点新闻</FONT></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=4 width=603 bgColor=#f8f3ff border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width=261>
+            <LI><A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040219/1769612.shtml" 
+            target=_blank>用VC编制DLL程序的方法小结</A>
+            <LI><A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040212/1767693.shtml" 
+            target=_blank>DirectShow应用——音频捕捉</A>
+            <LI><A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040211/1767263.shtml" 
+            target=_blank>细谈VC程序调试的若干方法</A>
+            <LI><A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040207/1766201.shtml" 
+            target=_blank>Winsock技术在远程监控中的应用</A>
+            <LI><A title=,VC 
+            href="http://www.yesky.com/SoftChannel/72342371928702976/20040206/1766032.shtml" 
+            target=_blank>DirectShow应用——支持数码摄像机</A></LI></TD>
+          <TD vAlign=top width=340>
+            <LI><A title=,VC 
+            href="http://www.chinabyte.com/homepage/219001838416953344/20050401/1929815.shtml" 
+            target=_blank>FVD刺激高清碟机加速商业化 抢占商机最重要</A>
+            <LI><A title=,VC 
+            href="http://www.chinabyte.com/homepage/219001885661593600/20050311/1920824.shtml" 
+            target=_blank>3家搜索引擎集体诉讼8848 吕春维未敢出席</A>
+            <LI><A title=,VC 
+            href="http://www.chinabyte.com/homepage/219001898546495488/20050311/1920811.shtml" 
+            target=_blank>杨元庆：没有准备不会获批的备用方案</A>
+            <LI><A title=,VC 
+            href="http://www.chinabyte.com/Enterprise/218709381208866816/20050311/1920636.shtml" 
+            target=_blank>军队信息化诞生新领域 电子军务呼之欲出</A>
+            <LI><A title=,VC 
+            href="http://www.chinabyte.com/Enterprise/218709381208866816/20050311/1920629.shtml" 
+            target=_blank>世界经济论坛公布信息化程度全球最新排名</A>
+            <LI><A title=,VC 
+            href="http://www.chinabyte.com/Enterprise/218709406978670592/20050311/1920622.shtml" 
+            target=_blank>2004政务绩效评估：政府门户尚处于发展阶段</A>
+            <LI><A title=,VC 
+            href="http://www.chinabyte.com/busnews/216483961084313600/20050311/1920613.shtml" 
+            target=_blank>甲骨文出资5.15亿美元 意图收购RetekInc</A>
+            <LI><A title=,VC 
+            href="http://www.chinabyte.com/Enterprise/218709368323964928/20050311/1920611.shtml" 
+            target=_blank>技术并购：帮你突破传统增长的“天花板”</A></LI></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=603 
+      background="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/04-43.gif" 
+        border=0><TBODY>
+        <TR>
+          <TD align=middle width=40><IMG alt=,VC 
+            src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/04-44.gif"></IMG></TD>
+          <TD width=563><FONT 
+      color=#ffffff>Advertisement</FONT></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=603 bgColor=#f8f3ff border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle><IFRAME 
+            src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/;pl=pl-15-software-all;tp=if;sk=0;ck=0;.htm" 
+            frameBorder=0 width=550 scrolling=no 
+        height=160></IFRAME></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width=570 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=middle width=570></TD></TR></TBODY></TABLE></TD>
+    <TD width=1 bgColor=#b9bebe></TD>
+    <TD vAlign=top align=middle width=170 bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD>
+    <TD width=1 bgColor=#b9bebe></TD></TR></TBODY></TABLE>
+<STYLE type=text/css>BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; BACKGROUND: #fff; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #000000; LINE-HEIGHT: 150%; PADDING-TOP: 0px; TEXT-ALIGN: center
+}
+.box0 {
+	FONT-SIZE: 12px; WIDTH: 776px; TEXT-ALIGN: center
+}
+.box1zz {
+	FONT-SIZE: 12px; BACKGROUND: #f7f7f7; WIDTH: 776px; PADDING-TOP: 4px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 20px; TEXT-ALIGN: left
+}
+.box2 {
+	FONT-SIZE: 12px; BACKGROUND: #f7f7f7; WIDTH: 776px; PADDING-TOP: 4px; HEIGHT: 20px; TEXT-ALIGN: left
+}
+.box3zz {
+	FONT-SIZE: 12px; BACKGROUND: #ff6600; WIDTH: 776px; PADDING-TOP: 3px; HEIGHT: 20px; TEXT-ALIGN: center
+}
+DIV {
+	MARGIN: 0px auto
+}
+A.black-s:link {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-DECORATION: none
+}
+A.black-s:visited {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-DECORATION: none
+}
+A.black-s:active {
+	FONT-SIZE: 12px; COLOR: #ff0000; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-DECORATION: underline
+}
+A.black-s:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-DECORATION: underline
+}
+A.white-s:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-DECORATION: none
+}
+A.white-s:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-DECORATION: none
+}
+A.white-s:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-DECORATION: underline
+}
+A.white-s:hover {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-DECORATION: underline
+}
+.line-red {
+	BACKGROUND: #ff6600; WIDTH: 776px; HEIGHT: 3px
+}
+.line-green {
+	BACKGROUND: #83d360; FLOAT: left; WIDTH: 953px; HEIGHT: 3px
+}
+.floorbox-01 {
+	WIDTH: 953px; PADDING-TOP: 6px; HEIGHT: 28px; TEXT-ALIGN: center
+}
+.floorbox-02 {
+	WIDTH: 520px; HEIGHT: 35px; TEXT-ALIGN: center
+}
+.floorbox-02-right {
+	FONT-SIZE: 12px; FLOAT: right; WIDTH: 480px; COLOR: #314150; PADDING-TOP: 6px; FONT-FAMILY: "Arial", "Helvetica", "sans-serif"; TEXT-ALIGN: center
+}
+.floorbox-02-left {
+	FLOAT: left; WIDTH: 40px; TEXT-ALIGN: left
+}
+</STYLE>
+
+<DIV class=line-red><IMG height=2 alt=pic 
+src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/kong.gif" width=1></DIV>
+<DIV class=boxmain>
+<DIV class=box1zz><STRONG><A class=black-s href="http://www.chinabyte.com/" 
+target=_blank>天极Chinabyte</A>:</STRONG> <A class=black-s 
+href="http://news.chinabyte.com/" target=_blank>新闻</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://column.chinabyte.com/" 
+target=_blank>评论</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://telecom.chinabyte.com/" target=_blank>通信</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://net.chinabyte.com/" 
+target=_blank>互联网</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://discovery.chinabyte.com/" target=_blank>科学</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://e.chinabyte.com/" 
+target=_blank>E企业</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://solution.chinabyte.com/" target=_blank>解决方案</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://biz.chinabyte.com/" 
+target=_blank>商用系统</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://biz.chinabyte.com/cbfwq" target=_blank>服务器</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://biz.chinabyte.com/cbcc/" 
+target=_blank>存储</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://news.chinabyte.com/cndj/" target=_blank>原创</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://column.chinabyte.com/ccts" 
+target=_blank>他说</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://e.chinabyte.com/ceerp/" target=_blank>ERP</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://e.chinabyte.com/cecrmbd/" 
+target=_blank>CRM</A></DIV>
+<DIV class=box1zz><STRONG><A class=black-s href="http://www.yesky.com/" 
+target=_blank>天极Yesky</A>: <A class=black-s href="http://cseek.yesky.com/" 
+target=_blank>消费导购</A></STRONG> <A class=black-s href="http://cseek.yesky.com/" 
+target=_blank>商情</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://mobile.yesky.com/" target=_blank>手机</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://digital.yesky.com/" 
+target=_blank>数码</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://mp3.yesky.com/" target=_blank>MP3</A><FONT color=#999999> | 
+</FONT><A class=black-s href="http://dc.yesky.com/" target=_blank>数码相机</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://notebook.yesky.com/" 
+target=_blank>笔记本</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://myhard.yesky.com/" target=_blank>硬件</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://myhard.yesky.com/pc/" 
+target=_blank>品牌机</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://myhard.yesky.com/net/" target=_blank>网络</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://myhard.yesky.com/projector/" target=_blank>投影机</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://myhard.yesky.com/scanner/" 
+target=_blank>扫描仪</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://dh.yesky.com/" target=_blank>数字家庭</A> <FONT color=#999999>|</FONT> 
+<A class=black-s href="http://www.yesky.com/pingce/76842668642009088/" 
+target=_blank>评测</A></DIV>
+<DIV class=box1zz><STRONG><A class=black-s href="http://www.yesky.com/" 
+target=_blank>天极Yesky</A>: <A class=black-s href="http://t.yesky.com/" 
+target=_blank>IT技术</A></STRONG> <A class=black-s href="http://soft.yesky.com/" 
+target=_blank>软件</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://soft.yesky.com/os/win/" target=_blank>Windows</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://myhard.yesky.com/diy" 
+target=_blank>DIY</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://myhard.yesky.com/net" target=_blank>网管</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://soft.yesky.com/os/lin/" 
+target=_blank>Linux</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://design.yesky.com/" target=_blank>设计</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://design.yesky.com/photoshop/" target=_blank>Photoshop</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://telecom.chinabyte.com/NetCom/218449874989875200/index.shtml" 
+target=_blank>交换技术</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://dev.yesky.com/" target=_blank>开发</A> <FONT color=#999999>|</FONT> 
+<A class=black-s href="http://dev.yesky.com/msdn/" target=_blank>MSDN</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://soft.yesky.com/security/" 
+target=_blank>安全</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://edu.yesky.com/" target=_blank>教育</A> <FONT color=#999999>|</FONT> 
+<A class=black-s href="http://bbs.yesky.com/" target=_blank>论坛</A></DIV>
+<DIV class=box1zz><STRONG><A class=black-s href="http://www.yesky.com/" 
+target=_blank>天极Yesky</A>: <A class=black-s href="http://i.yesky.com/" 
+target=_blank>数字生活</A></STRONG> <A class=black-s href="http://e.yesky.com/" 
+target=_blank>e时代</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://game.yesky.com/" target=_blank>游戏</A> <FONT color=#999999>|</FONT> 
+<A class=black-s href="http://gameonline.yesky.com/" target=_blank>网游</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://wcg.yesky.com/" 
+target=_blank>竞技</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://pcgame.yesky.com/" target=_blank>电脑</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://tvgame.yesky.com/" 
+target=_blank>电视</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://pcgame.yesky.com/gy/" target=_blank>攻略</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://comic.yesky.com/" 
+target=_blank>动漫</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://gamepic.yesky.com/pic/31/3167_focus.shtml" 
+target=_blank>COSPLAY</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://pic.yesky.com/" target=_blank>图片</A> <FONT color=#999999>|</FONT> 
+<A class=black-s href="http://hot.yesky.com/" target=_blank>网摘</A> <FONT 
+color=#999999>|</FONT> <A class=black-s href="http://blog.yesky.com/" 
+target=_blank>博客</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://www.mydown.com/" target=_blank>下载</A> <FONT color=#999999>|</FONT> 
+<A class=black-s href="http://bar.yesky.com/" target=_blank>贴吧</A> </DIV>
+<DIV class=box2><STRONG><A class=black-s href="http://www.techtarget.com.cn/" 
+target=_blank>IT专家网</A>:</STRONG> <A class=black-s 
+href="http://searchdatabase.techtarget.com.cn/" target=_blank>数据库</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchmobilecomputing.techtarget.com.cn/" target=_blank>移动计算</A> 
+<FONT color=#999999>|</FONT> <A class=black-s 
+href="http://searchnetworking.techtarget.com.cn/" target=_blank>网络</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchsecurity.techtarget.com.cn/" target=_blank>安全</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchstorage.techtarget.com.cn/" target=_blank>存储</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchwindowssecurity.techtarget.com.cn/" 
+target=_blank>Windows安全</A> <FONT color=#999999>|</FONT> <A class=black-s 
+href="http://searchsmallbizit.techtarget.com.cn/" target=_blank>中小企业IT</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchexchange.techtarget.com.cn/" target=_blank>Exchange</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchwebservices.techtarget.com.cn/" target=_blank>Web服务</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchcio.techtarget.com.cn/" target=_blank>CIO</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchwin2000.techtarget.com.cn/" target=_blank>WinSystem</A> <FONT 
+color=#999999>|</FONT> <A class=black-s 
+href="http://searchwhatis.techtarget.com.cn/" target=_blank>Whatis</A></DIV>
+<DIV class=box3zz><A class=white-s href="http://www.yesky.com/web/tougao.htm" 
+target=_blank>欢迎投稿</A> <FONT color=#ffffff>|</FONT> <A class=white-s 
+href="http://www.chinabyte.com/service/index.shtm" target=_blank>天极服务</A> <FONT 
+color=#ffffff>|</FONT> <A class=white-s 
+href="http://www.yesky.com/web/about.htm" target=_blank>关于我们</A> <FONT 
+color=#ffffff>|</FONT> <A class=white-s href="http://maillist.yesky.com/" 
+target=_blank>电子杂志</A> <FONT color=#ffffff>|</FONT> <A class=white-s 
+href="http://rss.yesky.com/" target=_blank>RSS订阅</A> <FONT 
+color=#ffffff>|</FONT> <A class=white-s onclick="RealAddPortal('22773','2.1')" 
+href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_4.shtml#" 
+target=_blank>在QQ上看天极</A> <FONT color=#ffffff>|</FONT> <A class=white-s 
+href="http://www.yesky.com/web/zhaoping.htm" target=_blank>加入我们</A> <FONT 
+color=#ffffff>|</FONT> <A class=white-s 
+href="http://www.yesky.com/web/website.htm" target=_blank>网站地图</A> <FONT 
+color=#ffffff>|</FONT> <A class=white-s 
+onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.yesky.com/');" 
+href="http://www.yesky.com/SoftChannel/72342371928702976/20040222/1770443_4.shtml#">设定天极为首页</A></DIV></DIV>
+<DIV class=floorbox-02>
+<DIV class=floorbox-02-right>Copyright (C) 2005 Chinabyte.com, All Rights 
+Reserved 版权所有 天极网络<BR><A class=black-s 
+href="http://www.yesky.com/cpcwd/74590868828323840/20030805/1719074.shtml">渝ICP证B2-20030003号</A> 
+<A class=black-s href="mailto:chief-editor@chinabyte.com">如有意见请与我们联系</A> <A 
+class=black-s href="http://www.chinabyte.net/">Powered by 天极内容管理平台CMS4i 
+</A></DIV>
+<DIV class=floorbox-02-left><A 
+href="http://www.hd315.gov.cn/beian/view.asp?bianhao=0402000103000001"><IMG 
+src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/biaoshi.gif" 
+border=0></A></DIV></DIV></DIV><SPAN id=span_ad_1>
+<SCRIPT src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/bellow-soft.js"></SCRIPT>
+</SPAN>
+<SCRIPT>
+ad_1.innerHTML=span_ad_1.innerHTML;span_ad_1.innerHTML="";
+</SCRIPT>
+<SPAN id=span_sv>
+<SCRIPT 
+src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/y-software-svbutton-1.js"></SCRIPT>
+</SPAN>
+<SCRIPT>
+sv.innerHTML=span_sv.innerHTML;span_sv.innerHTML="";
+</SCRIPT>
+<SPAN id=span_pip>
+<SCRIPT 
+src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/y-software-develop-pip.js"></SCRIPT>
+</SPAN>
+<SCRIPT>
+pip.innerHTML=span_pip.innerHTML;span_pip.innerHTML="";
+</SCRIPT>
+<SPAN id=span_wz>
+<SCRIPT 
+src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/y-content-text-1.js"></SCRIPT>
+</SPAN>
+<SCRIPT>
+wz.innerHTML=span_wz.innerHTML;span_wz.innerHTML="";
+</SCRIPT>
+<NOSCRIPT><IMG height=0 
+src="Visual C++线程同步技术剖析  VC  软件  天极Yesky.files/counter.shtml" width=0 border=0> 
+</NOSCRIPT></BODY></HTML>

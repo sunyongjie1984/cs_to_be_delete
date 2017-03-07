@@ -1,0 +1,334 @@
+From: <¨®¨¦ Microsoft Internet Explorer 5 ¡À¡ê¡ä?>
+Subject: Using Lua with C++: A short tutorial
+Date: Tue, 4 Jul 2006 16:11:12 +0800
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://csl.sublevel3.org/lua/
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2869
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE>Using Lua with C++: A short tutorial</TITLE>
+<META http-equiv=3Dcontent-type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META http-equiv=3Dexpires content=3D-1>
+<META http-equiv=3Dpragma content=3Dno-cache>
+<META content=3D"Tutorial on creating Lua host-programs in C++" =
+name=3Ddescription>
+<META content=3D"Lua, C++, Tutorial, script, programming, language" =
+name=3Dkeywords>
+<STYLE type=3Dtext/css>BODY {
+	MARGIN: 30px; WIDTH: 600px
+}
+P {
+	TEXT-ALIGN: justify
+}
+PRE {
+	BORDER-RIGHT: black 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: black =
+1px solid; PADDING-LEFT: 10px; FONT-SIZE: 10pt; PADDING-BOTTOM: 10px; =
+BORDER-LEFT: black 1px solid; WIDTH: 580px; PADDING-TOP: 10px; =
+BORDER-BOTTOM: black 1px solid; FONT-FAMILY: Courier New, Courier, =
+fixed, sans-serif; BACKGROUND-COLOR: #f8fbff
+}
+</STYLE>
+
+<META content=3D"MSHTML 6.00.2900.2912" name=3DGENERATOR></HEAD>
+<BODY>
+<CENTER>
+<H1>Using Lua with C++: A short tutorial</H1></CENTER>
+<P>
+<CENTER>Written by <A href=3D"http://csl.sublevel3.org/">Christian =
+Stigen Larsen=20
+</A>&lt;<A href=3D"mailto:csl@sublevel3.org">csl@sublevel3.org</A>&gt; =
+</CENTER>
+<P></P>
+<P>Using Lua is easy! In this short tutorial we'll show how to write a =
+fully=20
+working host-program in C++ with Lua callbacks. </P>
+<P>Since the static Lua libraries are written in C, you must import them =
+as=20
+such: </P><PRE>extern "C" {
+#include "lua.h"
+}
+
+int main() {
+  lua_State *L =3D lua_open();
+  lua_close(L);
+  return 0;
+}
+</PRE>
+<P></P>
+<P>Compiling and linking with GNU g++: </P><PRE>g++ host.cpp -o host =
+-Ilua-5.0.2/include/ -Llua-5.0.2/lib/ -llua
+</PRE>
+<P></P>
+<P>Including lualib.h and lauxlib.h makes it easy to write a fully =
+working host:=20
+</P><PRE>#include &lt;iostream&gt;
+
+extern "C" {
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+}
+
+void report_errors(lua_State *L, int status) {
+  if ( status!=3D0 ) {
+    std::cerr &lt;&lt; "-- " &lt;&lt; lua_tostring(L, -1) &lt;&lt; =
+std::endl;
+    lua_pop(L, 1); // remove error message
+  }
+}
+
+int main(int argc, char** argv) {
+  for ( int n=3D1; n&lt;argc; ++n ) {
+    const char* file =3D argv[n];
+
+    lua_State *L =3D lua_open();
+
+    luaopen_io(L); // provides io.*
+    luaopen_base(L);
+    luaopen_table(L);
+    luaopen_string(L);
+    luaopen_math(L);
+    luaopen_loadlib(L);
+
+    std::cerr &lt;&lt; "-- Loading file: " &lt;&lt; file &lt;&lt; =
+std::endl;
+
+    int s =3D luaL_loadfile(L, file);
+
+    if ( s=3D=3D0 ) {
+      // execute Lua program
+      s =3D lua_pcall(L, 0, LUA_MULTRET, 0);
+    }
+
+    report_errors(L, s);
+    lua_close(L);
+    std::cerr &lt;&lt; std::endl;
+  }
+
+  return 0;
+}
+</PRE>
+<P></P>
+<P>Compilation and linking: </P><PRE>g++ host.cpp -o host =
+-Ilua-5.0.2/include/ -Llua-5.0.2/lib/ -llua -llualib
+</PRE>
+<P></P>
+<P>Let's test this with some Lua programs. The files here are from the=20
+distribution, hello.lua is simply: </P><PRE>-- the first program in =
+every language
+io.write("Hello world, from ",_VERSION,"!\n")
+</PRE>
+<P></P>
+<P>Executing a couple of Lua programs with our host program produces: =
+</P><PRE>[csl@eris:~/dev/lua/lua-5.0.2]$ ./host test/hello.lua =
+test/printf.lua
+-- Loading file: test/hello.lua
+Hello world, from Lua 5.0.2!
+
+-- Loading file: test/printf.lua
+Hello csl from Lua 5.0.2 on Wed Mar  2 13:13:05 2005
+</PRE>
+<P></P>
+<P>It gets very interesting when Lua programs call your own functions. =
+In the=20
+following program, we define a function my_function() and register it =
+with the=20
+Lua environment using lua_register(). Our function prints its arguments =
+as=20
+strings and returns the integer value of 123. </P><PRE>#include =
+&lt;iostream&gt;
+
+extern "C" {
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+}
+
+int my_function(lua_State *L) {
+  int argc =3D lua_gettop(L);
+
+  std::cerr &lt;&lt; "-- my_function() called with " &lt;&lt; argc
+    &lt;&lt; " arguments:" &lt;&lt; std::endl;
+
+  for ( int n=3D1; n&lt;=3Dargc; ++n ) {
+    std::cerr &lt;&lt; "-- argument " &lt;&lt; n &lt;&lt; ": "
+      &lt;&lt; lua_tostring(L, n) &lt;&lt; std::endl;
+  }
+
+  lua_pushnumber(L, 123); // return value
+  return 1; // number of return values
+}
+
+void report_errors(lua_State *L, int status) {
+  if ( status!=3D0 ) {
+    std::cerr &lt;&lt; "-- " &lt;&lt; lua_tostring(L, -1) &lt;&lt; =
+std::endl;
+    lua_pop(L, 1); // remove error message
+  }
+}
+
+int main(int argc, char** argv) {
+  for ( int n=3D1; n&lt;argc; ++n ) {
+    const char* file =3D argv[n];
+
+    lua_State *L =3D lua_open();
+
+    luaopen_io(L); // provides io.*
+    luaopen_base(L);
+    luaopen_table(L);
+    luaopen_string(L);
+    luaopen_math(L);
+    luaopen_loadlib(L);
+
+    // make my_function() available to Lua programs
+    lua_register(L, "my_function", my_function);
+
+    std::cerr &lt;&lt; "-- Loading file: " &lt;&lt; file &lt;&lt; =
+std::endl;
+
+    int s =3D luaL_loadfile(L, file);
+
+    if ( s=3D=3D0 ) {
+      // execute Lua program
+      s =3D lua_pcall(L, 0, LUA_MULTRET, 0);
+    }
+
+    report_errors(L, s);
+    lua_close(L);
+    std::cerr &lt;&lt; std::endl;
+  }
+
+  return 0;
+}
+</PRE>
+<P></P>
+<P>Let's write a small Lua program test.lua to call my_function(): =
+</P><PRE>io.write("Running ", _VERSION, "\n")
+a =3D my_function(1, 2, 3, "abc", "def")
+io.write("my_function() returned ", a, "\n")
+</PRE>
+<P></P>
+<P>With the new host program above, running test.lua produces: =
+</P><PRE>[csl@eris:~/dev/lua/lua-5.0.2]$ ./host test.lua
+-- Loading file: test.lua
+Running Lua 5.0.2
+-- my_function() called with 5 arguments:
+-- argument 1: 1
+-- argument 2: 2
+-- argument 3: 3
+-- argument 4: abc
+-- argument 5: def
+my_function() returned 123
+</PRE>
+<P></P>
+<P>The luaL_loadfile() function loads both source programs as well as =
+compiled=20
+bytecode, so the following works as a charm: =
+</P><PRE>[csl@eris:~/dev/lua/lua-5.0.2]$ ./bin/luac -s -o test.bytecode =
+test.lua
+[csl@eris:~/dev/lua/lua-5.0.2]$ ls -lka test.bytecode
+-rw-r--r--    1 csl      csl           307 mar  2 13:46 test.bytecode
+[csl@eris:~/dev/lua/lua-5.0.2]$ ./host test.bytecode
+-- Loading file: test.bytecode
+Running Lua 5.0.2
+-- my_function() called with 5 arguments:
+-- argument 1: 1
+-- argument 2: 2
+-- argument 3: 3
+-- argument 4: abc
+-- argument 5: def
+my_function() returned 123
+</PRE>
+<P></P>
+<P>Omitting our host program's log-messages produces clean output: =
+</P><PRE>[csl@eris:~/dev/lua/lua-5.0.2]$ ./main test.bytecode =
+2&gt;/dev/null
+Running Lua 5.0.2
+my_function() returned 123
+</PRE>
+<P></P>
+<P>Suggestions for next steps would be to investigate how to have Lua's =
+closures=20
+integrate neatly with your host program. </P>
+<P>If you're writing programs without consoles, then you'd probably want =
+to trap=20
+io.write(). I did that by copying the code from lualib.c and changing =
+io_write=20
+to point to my own function. This can be useful for game programming or =
+plain=20
+X/Windows applications where you want to catch output. </P>
+<P>Also I'd recommend using the resource-acquisition-is-initialization =
+technique=20
+in which resources are allocated in a constructor and freed in the =
+destructor.=20
+Using operator overloading, we can elegantly hide the details: =
+</P><PRE>#include &lt;iostream&gt;
+
+extern "C" {
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+}
+
+class Lua_State {
+  lua_State *L;
+public:
+  Lua_State() : L(lua_open()) { }
+
+  ~Lua_State() {
+    lua_close(L);
+  }
+
+  // implicitly act as a lua_State pointer
+  inline operator lua_State*() {
+    return L;
+  }
+};
+
+void open_libs(lua_State *L) {
+  luaopen_io(L);
+  luaopen_base(L);
+  luaopen_table(L);
+  luaopen_string(L);
+  luaopen_math(L);
+  luaopen_loadlib(L);
+}
+
+inline int execute_program(lua_State *L) {
+  // this function makes the code self-documenting
+  return lua_pcall(L, 0, LUA_MULTRET, 0);
+}
+
+void report_errors(lua_State *L, const int status) {
+  if ( status!=3D0 ) {
+    std::cerr &lt;&lt; "-- " &lt;&lt; lua_tostring(L, -1) &lt;&lt; =
+std::endl;
+    lua_pop(L, 1); // remove error message
+  }
+}
+
+int main(int argc, char** argv) {
+  for ( int n=3D1; n&lt;argc; ++n ) {
+
+    Lua_State L;
+    open_libs(L);
+
+    int s =3D luaL_loadfile(L, argv[n]);
+
+    if ( s=3D=3D0 )
+      s =3D execute_program(L);
+
+    report_errors(L, s);
+
+    // lua_close(L) automatically called here
+  }
+
+  return 0;
+}
+</PRE>
+<P></P></BODY></HTML>

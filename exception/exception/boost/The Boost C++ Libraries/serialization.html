@@ -1,0 +1,1089 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highscore - The Boost C++ Libraries - Serialization</title>
+<link rel="stylesheet" href="css/highscore.css" type="text/css">
+<link rev="made" href="mailto:boris@highscore.de">
+<link rel="home" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="up" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="prev" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="next" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="chapter" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="chapter" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="chapter" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="chapter" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="chapter" href="serialization.html" title="Chapter 11: Serialization">
+<link rel="chapter" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="containers.html" title="Chapter 13: Containers">
+<link rel="chapter" href="datastructures.html" title="Chapter 14: Data Structures">
+<link rel="chapter" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="castoperators.html" title="Chapter 16: Cast Operators">
+<link rel="section" href="serialization.html#serialization_general" title="11.1 General">
+<link rel="section" href="serialization.html#serialization_archive" title="11.2 Archive">
+<link rel="section" href="serialization.html#serialization_pointers_and_references" title="11.3 Pointers and references">
+<link rel="section" href="serialization.html#serialization_class_hierarchies" title="11.4 Serialization of class hierarchy objects">
+<link rel="section" href="serialization.html#serialization_wrappers" title="11.5 Wrapper functions for optimization">
+<link rel="section" href="serialization.html#serialization_exercises" title="11.6 Exercises">
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1) gen true for "http://highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1))'>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link href="http://www.highscore.de/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script><script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script><script type="text/javascript" src="js/highscore.js"></script>
+</head>
+<body>
+<div lang="en" class="docbook chapter" title="Chapter 11: Serialization">
+<p class="title">The Boost C++ Libraries</p>
+<script type="text/javascript">
+          var titlepage = "Front page";
+        
+      var titles = new Array(titlepage,
+      
+        "Chapter 1: Introduction",
+      
+        "Chapter 2: Smart Pointers",
+      
+        "Chapter 3: Function Objects",
+      
+        "Chapter 4: Event Handling",
+      
+        "Chapter 5: String Handling",
+      
+        "Chapter 6: Multithreading",
+      
+        "Chapter 7: Asynchronous Input and Output",
+      
+        "Chapter 8: Interprocess Communication",
+      
+        "Chapter 9: Filesystem",
+      
+        "Chapter 10: Date and Time",
+      
+        "Chapter 11: Serialization",
+      
+        "Chapter 12: Parser",
+      
+        "Chapter 13: Containers",
+      
+        "Chapter 14: Data Structures",
+      
+        "Chapter 15: Error Handling",
+      
+        "Chapter 16: Cast Operators",
+      
+      "");
+
+      
+          var titlehtml = "frontpage.html";
+        
+      var filenames = new Array(titlehtml,
+      
+        "introduction.html",
+      
+        "smartpointers.html",
+      
+        "functionobjects.html",
+      
+        "eventhandling.html",
+      
+        "stringhandling.html",
+      
+        "multithreading.html",
+      
+        "asio.html",
+      
+        "interprocesscommunication.html",
+      
+        "filesystem.html",
+      
+        "datetime.html",
+      
+        "serialization.html",
+      
+        "parser.html",
+      
+        "containers.html",
+      
+        "datastructures.html",
+      
+        "errorhandling.html",
+      
+        "castoperators.html",
+      
+      "");
+
+      
+      document.open();
+      document.write('<form action="" class="toc">');
+      document.write('<select size="1" onchange="location.href=options[selectedIndex].value">');
+      for (var i = 0; i < titles.length && i < filenames.length; ++i) {
+        if (titles[i] != "" && filenames[i] != "") {
+          document.write('<option');
+          document.write(' value="' + filenames[i] + '"');
+          var expr = new RegExp('[/\]' + filenames[i] + '$');
+          if (expr.test(location.href)) {
+            document.write(' selected="selected"');
+          }
+          document.write('>' + titles[i] + '<\/option>');
+        }
+      }
+      document.write('<\/select>');
+      document.write('<\/form>');
+      document.close();
+      
+    </script><noscript><p class="toc"><a href="toc.html">Table of Contents</a></p></noscript>
+<hr class="hrhead">
+<h1 class="title">
+<a name="serialization"></a><small>Chapter 11:</small> Serialization</h1>
+<hr>
+<div class="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><span class="sect1"><a href="serialization.html#serialization_general">11.1 General</a></span></li>
+<li><span class="sect1"><a href="serialization.html#serialization_archive">11.2 Archive</a></span></li>
+<li><span class="sect1"><a href="serialization.html#serialization_pointers_and_references">11.3 Pointers and references</a></span></li>
+<li><span class="sect1"><a href="serialization.html#serialization_class_hierarchies">11.4 Serialization of class hierarchy objects</a></span></li>
+<li><span class="sect1"><a href="serialization.html#serialization_wrappers">11.5 Wrapper functions for optimization</a></span></li>
+<li><span class="sect1"><a href="serialization.html#serialization_exercises">11.6 Exercises</a></span></li>
+</ul>
+</div>
+<p class="license"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top"><img src="img/88x31_cc_logo.gif" alt="" width="88" height="31"></a> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top">Creative Commons License</a>.</p>
+<hr>
+<h2 class="title">
+<a name="serialization_general"></a>11.1 General</h2>
+<div class="sect1"><p>The Boost C++ Library <a class="link" href="http://www.boost.org/libs/serialization/">Serialization</a> allows to convert objects in a C++ application into a sequence of bytes that can be saved and loaded again at a later time to restore the objects. Different data formats, including XML, are available that specify the rules after which the sequence of bytes is generated. All of the formats supported by Boost.Serialization are proprietary in some respect. For example, the XML format cannot be used to exchange data with other applications that were not developed in C++ using Boost.Serialization. All data stored in the XML format is geared towards restoring the same C++ objects previously saved. The solely advantage of the XML format is the better understanding of serialized C++ objects which is helpful during e.g. debugging.</p></div>
+<hr>
+<h2 class="title">
+<a name="serialization_archive"></a>11.2 Archive</h2>
+<div class="sect1">
+<p>The main concept of Boost.Serialization is the archive. An archive is a sequence of bytes representing serialized C++ objects. Objects can be added to an archive to serialize them or be loaded from one, respectively. In order to restore the same C++ objects previously saved, the same data types are presumed.</p>
+<p>The following is a simple example.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::archive::text_oarchive oa(std::cout); 
+  int i = 1; 
+  oa &lt;&lt; i; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.2.1/main.cpp">Download source code</a></li></ul>
+<p>Boost.Serialization provides multiple archive classes such as <code class="classname">boost::archive::text_oarchive</code> defined in <code class="filename">boost/archive/text_oarchive.hpp</code>. <code class="classname">boost::archive::text_oarchive</code> allows the serialization of objects as a text stream. The above application writes <code class="computeroutput">22 serialization::archive 5 1</code> to the standard output stream.</p>
+<p>As can be seen, the object <var>oa</var> of type <code class="classname">boost::archive::text_oarchive</code> can be used just like a stream to serialize a variable via <code class="code">&lt;&lt;</code>. Nonetheless, archives should not be considered as regular streams storing arbitrary data. In order to restore the data at a later point, it is necessary to use the same data types in the same order they were previously saved. The following example serializes and restores the variable of type <code class="type">int</code>.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;fstream&gt; 
+
+void save() 
+{ 
+  std::ofstream file("archiv.txt"); 
+  boost::archive::text_oarchive oa(file); 
+  int i = 1; 
+  oa &lt;&lt; i; 
+} 
+
+void load() 
+{ 
+  std::ifstream file("archiv.txt"); 
+  boost::archive::text_iarchive ia(file); 
+  int i = 0; 
+  ia &gt;&gt; i; 
+  std::cout &lt;&lt; i &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.2.2/main.cpp">Download source code</a></li></ul>
+<p>While <code class="classname">boost::archive::text_oarchive</code> is used to serialize data as a text stream, <code class="classname">boost::archive::text_iarchive</code> is used to restore data from such a text stream. In order to use the class, the header file <code class="filename">boost/archive/text_iarchive.hpp</code> must be included.</p>
+<p>Constructors of archives expect an input or output stream as the argument. The stream is used to serialize or to restore data, respectively. While above application accesses a file, other streams such as a stringstream could be used alternatively.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+
+std::stringstream ss; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  int i = 1; 
+  oa &lt;&lt; i; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  int i = 0; 
+  ia &gt;&gt; i; 
+  std::cout &lt;&lt; i &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.2.3/main.cpp">Download source code</a></li></ul>
+<p>The application also writes <code class="computeroutput">1</code> to the standard output stream. However, opposed to the previous one, data is serialized using a stringstream instead.</p>
+<p>So far, primitive data types have been serialized. The following example shows how to serialize objects of user defined data types.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age) 
+    : age_(age) 
+  { 
+  } 
+
+  int age() const 
+  { 
+    return age_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; age_; 
+  } 
+
+  int age_; 
+}; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  person p(31); 
+  oa &lt;&lt; p; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  person p; 
+  ia &gt;&gt; p; 
+  std::cout &lt;&lt; p.age() &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.2.4/main.cpp">Download source code</a></li></ul>
+<p>In order to serialize objects of user defined data types, a method named <code class="methodname">serialize()</code> must be defined which is called if the object is serialized to or restored from a byte stream. Since <code class="methodname">serialize()</code> is used for both serializing and restoring, Boost.Serialization offers the operator <code class="code">&amp;</code> in addition to the <code class="code">&lt;&lt;</code> and <code class="code">&gt;&gt;</code> ones.  If used, there is no longer the need to distinguish between serializing and restoring within the <code class="methodname">serialize()</code> method.</p>
+<p><code class="methodname">serialize()</code> is automatically called any time an object is serialized or restored. It should never be called explicitly and thus should be declared as private. In this case, the class <code class="classname">boost::serialization::access</code> must be declared as friend which allows Boost.Serialization to access the method.</p>
+<p>There may be situations that do not allow to modify an existing class in order to add the <code class="methodname">serialize()</code> method. This is for example true for classes from the C++ standard or any other library.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age) 
+    : age_(age) 
+  { 
+  } 
+
+  int age() const 
+  { 
+    return age_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  friend void serialize(Archive &amp;ar, person &amp;p, const unsigned int version); 
+
+  int age_; 
+}; 
+
+template &lt;typename Archive&gt; 
+void serialize(Archive &amp;ar, person &amp;p, const unsigned int version) 
+{ 
+  ar &amp; p.age_; 
+} 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  person p(31); 
+  oa &lt;&lt; p; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  person p; 
+  ia &gt;&gt; p; 
+  std::cout &lt;&lt; p.age() &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.2.5/main.cpp">Download source code</a></li></ul>
+<p>In order to serialize data types that cannot be modified, the free-standing function <code class="function">serialize()</code> can be defined as shown in the above example. The function expects a reference to an object of the corresponding data type as its second argument.</p>
+<p>If the data type to be serialized contains private properties which cannot be accessed via public methods, things get more complicated. In this case, the data type may need to be modified. The <code class="function">serialize()</code> function in the above application would not be able to access the <var>age_</var> property without the <code class="code">friend</code> declaration.</p>
+<p>Fortunately, Boost.Serialization provides corresponding <code class="function">serialize()</code> functions for many classes of the C++ standard. To serialize objects based on C++ standard classes, additional header files need to be included.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;boost/serialization/string.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+#include &lt;string&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age, const std::string &amp;name) 
+    : age_(age), name_(name) 
+  { 
+  } 
+
+  int age() const 
+  { 
+    return age_; 
+  } 
+
+  std::string name() const 
+  { 
+    return name_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  friend void serialize(Archive &amp;ar, person &amp;p, const unsigned int version); 
+
+  int age_; 
+  std::string name_; 
+}; 
+
+template &lt;typename Archive&gt; 
+void serialize(Archive &amp;ar, person &amp;p, const unsigned int version) 
+{ 
+  ar &amp; p.age_; 
+  ar &amp; p.name_; 
+} 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  person p(31, "Boris"); 
+  oa &lt;&lt; p; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  person p; 
+  ia &gt;&gt; p; 
+  std::cout &lt;&lt; p.age() &lt;&lt; std::endl; 
+  std::cout &lt;&lt; p.name() &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.2.6/main.cpp">Download source code</a></li></ul>
+<p>The example extends the <code class="classname">person</code> class by a name of type <code class="classname">std::string</code>. In order to serialize this property, the header file <code class="filename">boost/serialization/string.hpp</code> must be included which offers the appropriate free-standing <code class="function">serialize()</code> function.</p>
+<p>As mentioned before, Boost.Serialization defines <code class="function">serialize()</code> functions for many classes of the C++ standard. These are defined in header files that carry the same name as the corresponding header files from the C++ standard. In order to serialize objects of type <code class="classname">std::string</code>, the header file <code class="filename">boost/serialization/string.hpp</code> must be included. For serializing an object of type <code class="classname">std::vector</code>, the header file <code class="filename">boost/serialization/vector.hpp</code> must be used instead. It is therefore fairly obvious which header file must be included in any given scenario.</p>
+<p>One argument of  <code class="function">serialize()</code>, which has been ignored so far, is <var>version</var>. This argument is relevant if archives should be forward compatible to support future versions of the given application. The next example considers archives of the <code class="classname">person</code> class as being forward compatible. Since the original version of <code class="classname">person</code> did not contain any name, the new version of <code class="classname">person</code> still should be able to manage old archives created without the name.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;boost/serialization/string.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+#include &lt;string&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age, const std::string &amp;name) 
+    : age_(age), name_(name) 
+  { 
+  } 
+
+  int age() const 
+  { 
+    return age_; 
+  } 
+
+  std::string name() const 
+  { 
+    return name_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  friend void serialize(Archive &amp;ar, person &amp;p, const unsigned int version); 
+
+  int age_; 
+  std::string name_; 
+}; 
+
+template &lt;typename Archive&gt; 
+void serialize(Archive &amp;ar, person &amp;p, const unsigned int version) 
+{ 
+  ar &amp; p.age_; 
+  if (version &gt; 0) 
+    ar &amp; p.name_; 
+} 
+
+BOOST_CLASS_VERSION(person, 1) 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  person p(31, "Boris"); 
+  oa &lt;&lt; p; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  person p; 
+  ia &gt;&gt; p; 
+  std::cout &lt;&lt; p.age() &lt;&lt; std::endl; 
+  std::cout &lt;&lt; p.name() &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.2.7/main.cpp">Download source code</a></li></ul>
+<p>The macro <code class="code">BOOST_CLASS_VERSION</code> is used to specify a version number to a class. The version number for the <code class="classname">person</code> class in the above application is set to 1. If <code class="code">BOOST_CLASS_VERSION</code> is not used, the version number is 0 by default.</p>
+<p>The version number is stored within the archive and thus is part of it. While the version number specified for a particular class via the <code class="code">BOOST_CLASS_VERSION</code> macro is used during serialization, the <var>version</var> argument of <code class="function">serialize()</code> is set to the value stored in the archive when the object is restored. If the new version of <code class="classname">person</code> accesses an archive containing an object serialized with the old version, the <var>name_</var> property would not be restored since the old version did not contain such a property. Forward compatible archives are therefore supported by Boost.Serialization via this mechanism.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="serialization_pointers_and_references"></a>11.3 Pointers and references</h2>
+<div class="sect1">
+<p>Boost.Serialization can also serialize pointers and references. Since a pointer stores the address of an object, serializing the address certainly does not make much sense. While serializing pointers and references, the object referenced is automatically serialized instead.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age) 
+    : age_(age) 
+  { 
+  } 
+
+  int age() const 
+  { 
+    return age_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; age_; 
+  } 
+
+  int age_; 
+}; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  person *p = new person(31); 
+  oa &lt;&lt; p; 
+  std::cout &lt;&lt; std::hex &lt;&lt; p &lt;&lt; std::endl; 
+  delete p; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  person *p; 
+  ia &gt;&gt; p; 
+  std::cout &lt;&lt; std::hex &lt;&lt; p &lt;&lt; std::endl; 
+  std::cout &lt;&lt; p-&gt;age() &lt;&lt; std::endl; 
+  delete p; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.3.1/main.cpp">Download source code</a></li></ul>
+<p>The above application creates a new object of type <code class="classname">person</code> using <code class="code">new</code> and assigns it to the pointer <var>p</var>. The pointer - not <code class="code">*p</code> - is then serialized. Boost.Serialization automatically serializes the object itself as referenced by <var>p</var> and not the address of the object.</p>
+<p>If the archive is restored, <var>p</var> does not necessarily refer to the same address. A new object is created and its address is assigned to <var>p</var> instead. Boost.Serialization only guarantees that the object is identical to the one serialized, not that its address is the same.</p>
+<p>Since modern C++ uses smart pointers in connection with dynamically allocated memory, Boost.Serialization provides support accordingly.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;boost/serialization/scoped_ptr.hpp&gt; 
+#include &lt;boost/scoped_ptr.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age) 
+    : age_(age) 
+  { 
+  } 
+
+  int age() const 
+  { 
+    return age_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; age_; 
+  } 
+
+  int age_; 
+}; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  boost::scoped_ptr&lt;person&gt; p(new person(31)); 
+  oa &lt;&lt; p; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  boost::scoped_ptr&lt;person&gt; p; 
+  ia &gt;&gt; p; 
+  std::cout &lt;&lt; p-&gt;age() &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.3.2/main.cpp">Download source code</a></li></ul>
+<p>The example uses the smart pointer <code class="classname">boost::scoped_ptr</code> to manage a dynamically allocated object of type <code class="classname">person</code>. In order to serialize such a pointer, the header file <code class="filename">boost/serialization/scoped_ptr.hpp</code> must be included.</p>
+<p>In case a smart pointer of type <code class="classname">boost::shared_ptr</code> should be serialized, the header file <code class="filename">boost/serialization/shared_ptr.hpp</code> must be used instead.</p>
+<p>The following application now uses a reference in place of a pointer.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age) 
+    : age_(age) 
+  { 
+  } 
+
+  int age() const 
+  { 
+    return age_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; age_; 
+  } 
+
+  int age_; 
+}; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  person p(31); 
+  person &amp;pp = p; 
+  oa &lt;&lt; pp; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  person p; 
+  person &amp;pp = p; 
+  ia &gt;&gt; pp; 
+  std::cout &lt;&lt; pp.age() &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.3.3/main.cpp">Download source code</a></li></ul>
+<p>As shown, Boost.Serialization can also serialize references without any issue. Just like with pointers, the referenced object is serialized automatically.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="serialization_class_hierarchies"></a>11.4 Serialization of class hierarchy objects</h2>
+<div class="sect1">
+<p>In order to serialize objects based on class hierarchies, the child classes must access the <code class="function">boost::serialization::base_object()</code> function inside the <code class="methodname">serialize()</code> method. This function guarantees that inherited properties of base classes are correctly serialized as well. The following example shows a class named <code class="classname">developer</code> which is derived from <code class="classname">person</code>.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;boost/serialization/string.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+#include &lt;string&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age) 
+    : age_(age) 
+  { 
+  } 
+
+  int age() const 
+  { 
+    return age_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; age_; 
+  } 
+
+  int age_; 
+}; 
+
+class developer 
+  : public person 
+{ 
+public: 
+  developer() 
+  { 
+  } 
+
+  developer(int age, const std::string &amp;language) 
+    : person(age), language_(language) 
+  { 
+  } 
+
+  std::string language() const 
+  { 
+    return language_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; boost::serialization::base_object&lt;person&gt;(*this); 
+    ar &amp; language_; 
+  } 
+
+  std::string language_; 
+}; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  developer d(31, "C++"); 
+  oa &lt;&lt; d; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  developer d; 
+  ia &gt;&gt; d; 
+  std::cout &lt;&lt; d.age() &lt;&lt; std::endl; 
+  std::cout &lt;&lt; d.language() &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.4.1/main.cpp">Download source code</a></li></ul>
+<p>Both <code class="classname">person</code> and <code class="classname">developer</code> contain a private <code class="methodname">serialize()</code> method allowing objects based on either class to be serialized. Since <code class="classname">developer</code> is derived from <code class="classname">person</code>, the <code class="methodname">serialize()</code> method must ensure that properties inherited from <code class="classname">person</code> are also serialized.</p>
+<p>Inherited properties are serialized by accessing the base class inside the <code class="methodname">serialize()</code> method of the child class using <code class="function">boost::serialization::base_object()</code>. It is mandatory to use this function over e.g. <code class="code">static_cast</code> since only <code class="function">boost::serialization::base_object()</code> ensures correct serialization.</p>
+<p>Addresses of objects dynamically created can be assigned to pointers of the corresponding base class type. The following example shows that Boost.Serialization still serializes them correctly.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;boost/serialization/string.hpp&gt; 
+#include &lt;boost/serialization/export.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+#include &lt;string&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age) 
+    : age_(age) 
+  { 
+  } 
+
+  virtual int age() const 
+  { 
+    return age_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; age_; 
+  } 
+
+  int age_; 
+}; 
+
+class developer 
+  : public person 
+{ 
+public: 
+  developer() 
+  { 
+  } 
+
+  developer(int age, const std::string &amp;language) 
+    : person(age), language_(language) 
+  { 
+  } 
+
+  std::string language() const 
+  { 
+    return language_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; boost::serialization::base_object&lt;person&gt;(*this); 
+    ar &amp; language_; 
+  } 
+
+  std::string language_; 
+}; 
+
+BOOST_CLASS_EXPORT(developer) 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  person *p = new developer(31, "C++"); 
+  oa &lt;&lt; p; 
+  delete p; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  person *p; 
+  ia &gt;&gt; p; 
+  std::cout &lt;&lt; p-&gt;age() &lt;&lt; std::endl; 
+  delete p; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.4.2/main.cpp">Download source code</a></li></ul>
+<p>The application creates an object of type <code class="classname">developer</code> inside the <code class="function">save()</code> function and assigns it to a pointer of type <code class="type">person*</code> which in turn is serialized via <code class="code">&lt;&lt;</code> accordingly.</p>
+<p>As mentioned in the previous section, the referenced object is automatically serialized. In order to have Boost.Serialization recognize that an object of type <code class="classname">developer</code> must be serialized even though the pointer is of type <code class="type">person*</code>, the class <code class="classname">developer</code> needs to be declared accordingly. This is done via the <code class="code">BOOST_CLASS_EXPORT</code> macro defined in <code class="filename">boost/serialization/export.hpp</code>. Since the type <code class="classname">developer</code> does not appear in the pointer definition, Boost.Serialization would not be able to serialize an object of type <code class="classname">developer</code> correctly without the macro.</p>
+<p>The macro <code class="code">BOOST_CLASS_EXPORT</code> must be used if objects of child classes should be serialized via a pointer to their corresponding base class.</p>
+<p>Because of the static registration, one disadvantage of <code class="code">BOOST_CLASS_EXPORT</code> is the registration of classes that may not be serialized at all. Boost.Serialization offers a solution for exactly this scenario though.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;boost/serialization/string.hpp&gt; 
+#include &lt;boost/serialization/export.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+#include &lt;string&gt; 
+
+std::stringstream ss; 
+
+class person 
+{ 
+public: 
+  person() 
+  { 
+  } 
+
+  person(int age) 
+    : age_(age) 
+  { 
+  } 
+
+  virtual int age() const 
+  { 
+    return age_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; age_; 
+  } 
+
+  int age_; 
+}; 
+
+class developer 
+  : public person 
+{ 
+public: 
+  developer() 
+  { 
+  } 
+
+  developer(int age, const std::string &amp;language) 
+    : person(age), language_(language) 
+  { 
+  } 
+
+  std::string language() const 
+  { 
+    return language_; 
+  } 
+
+private: 
+  friend class boost::serialization::access; 
+
+  template &lt;typename Archive&gt; 
+  void serialize(Archive &amp;ar, const unsigned int version) 
+  { 
+    ar &amp; boost::serialization::base_object&lt;person&gt;(*this); 
+    ar &amp; language_; 
+  } 
+
+  std::string language_; 
+}; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  oa.register_type&lt;developer&gt;(); 
+  person *p = new developer(31, "C++"); 
+  oa &lt;&lt; p; 
+  delete p; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  ia.register_type&lt;developer&gt;(); 
+  person *p; 
+  ia &gt;&gt; p; 
+  std::cout &lt;&lt; p-&gt;age() &lt;&lt; std::endl; 
+  delete p; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.4.3/main.cpp">Download source code</a></li></ul>
+<p>Instead of using the <code class="code">BOOST_CLASS_EXPORT</code> macro, the above application calls the template method <code class="methodname">register_type()</code> instead. The type to be registered is passed as the template argument accordingly.</p>
+<p>Please note that <code class="methodname">register_type()</code> must be called both in <code class="function">save()</code> and <code class="function">load()</code>.</p>
+<p>The advantage of <code class="methodname">register_type()</code> is that only classes used for serialization must be registered. While developing e.g. a library, one does not know which classes a developer may use for serialization later on. While the macro <code class="code">BOOST_CLASS_EXPORT</code> certainly makes it easy, it may register types that are not going to be serialized.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="serialization_wrappers"></a>11.5 Wrapper functions for optimization</h2>
+<div class="sect1">
+<p>After understanding how to serialize objects, this section introduces wrapper functions to optimize the serialization process. By using these functions, objects are kind of marked to allow Boost.Serialization to apply certain optimization techniques.</p>
+<p>The following example uses Boost.Serialization without any wrapper function.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;boost/array.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+
+std::stringstream ss; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  boost::array&lt;int, 3&gt; a = { 0, 1, 2 }; 
+  oa &lt;&lt; a; 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  boost::array&lt;int, 3&gt; a; 
+  ia &gt;&gt; a; 
+  std::cout &lt;&lt; a[0] &lt;&lt; ", " &lt;&lt; a[1] &lt;&lt; ", " &lt;&lt; a[2] &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.5.1/main.cpp">Download source code</a></li></ul>
+<p>The above application creates and writes the text stream <code class="computeroutput">22 serialization::archive 5 0 0 3 0 1 2</code> to the standard output stream. Using the wrapper function  <code class="function">boost::serialization::make_array()</code>, the output can be shortened to <code class="computeroutput">22 serialization::archive 5 0 1 2</code>.</p>
+<pre class="programlisting">#include &lt;boost/archive/text_oarchive.hpp&gt; 
+#include &lt;boost/archive/text_iarchive.hpp&gt; 
+#include &lt;boost/serialization/array.hpp&gt; 
+#include &lt;boost/array.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;sstream&gt; 
+
+std::stringstream ss; 
+
+void save() 
+{ 
+  boost::archive::text_oarchive oa(ss); 
+  boost::array&lt;int, 3&gt; a = { 0, 1, 2 }; 
+  oa &lt;&lt; boost::serialization::make_array(a.data(), a.size()); 
+} 
+
+void load() 
+{ 
+  boost::archive::text_iarchive ia(ss); 
+  boost::array&lt;int, 3&gt; a; 
+  ia &gt;&gt; boost::serialization::make_array(a.data(), a.size()); 
+  std::cout &lt;&lt; a[0] &lt;&lt; ", " &lt;&lt; a[1] &lt;&lt; ", " &lt;&lt; a[2] &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  save(); 
+  load(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/11.5.2/main.cpp">Download source code</a></li></ul>
+<p><code class="function">boost::serialization::make_array()</code> expects the address and the length of an array. Since the length is hard-coded, it does not need to be serialized as part of the object of type <code class="classname">boost::array</code>. The function can be used whenever classes such as <code class="classname">boost::array</code> or <code class="classname">std::vector</code> contain an array that can be directly serialized. Additional properties that normally would be serialized are not serialized.</p>
+<p>Another wrapper function provided by Boost.Serialization is <code class="function">boost::serialization::make_binary_object()</code>. Similar to <code class="function">boost::serialization::make_array()</code>, it expects an address and a length. <code class="function">boost::serialization::make_binary_object()</code> is used solely for binary data  without any underlying structure while <code class="function">boost::serialization::make_array()</code> is used for arrays.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="serialization_exercises"></a>11.6 Exercises</h2>
+<div class="sect1">
+<p class="solution">
+              You can buy 
+              <a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-solution">solutions to all exercises</a>
+              in this book as a ZIP file. 
+            </p>
+<ol>
+<li class="listitem"><p>Develop an application able to serialize and restore arbitrary number of records consisting of the name, the department and a unique identification number of employees in a file. Records should be displayed on the screen after restoring them. Use sample records to test the application.</p></li>
+<li class="listitem"><p>Extend the application by storing the birth date for each employee. The application should still be able to restore records serialized with the older version created in the previous exercise.</p></li>
+</ol>
+</div>
+</div>
+<hr class="hrfoot">
+<p class="copyright">Copyright © 2008-2010 
+        <a class="link" href="mailto:boris@highscore.de">Boris Schäling</a>
+      </p>
+</body>
+</html>

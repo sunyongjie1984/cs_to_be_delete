@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highscore - The Boost C++ Libraries - Function Objects</title>
+<link rel="stylesheet" href="css/highscore.css" type="text/css">
+<link rev="made" href="mailto:boris@highscore.de">
+<link rel="home" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="up" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="prev" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="next" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="chapter" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="chapter" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="chapter" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="chapter" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="chapter" href="serialization.html" title="Chapter 11: Serialization">
+<link rel="chapter" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="containers.html" title="Chapter 13: Containers">
+<link rel="chapter" href="datastructures.html" title="Chapter 14: Data Structures">
+<link rel="chapter" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="castoperators.html" title="Chapter 16: Cast Operators">
+<link rel="section" href="functionobjects.html#functionobjects_general" title="3.1 General">
+<link rel="section" href="functionobjects.html#functionobjects_bind" title="3.2 Boost.Bind">
+<link rel="section" href="functionobjects.html#functionobjects_ref" title="3.3 Boost.Ref">
+<link rel="section" href="functionobjects.html#functionobjects_function" title="3.4 Boost.Function">
+<link rel="section" href="functionobjects.html#functionobjects_lambda" title="3.5 Boost.Lambda">
+<link rel="section" href="functionobjects.html#functionobjects_exercises" title="3.6 Exercises">
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1) gen true for "http://highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1))'>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link href="http://www.highscore.de/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script><script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script><script type="text/javascript" src="js/highscore.js"></script>
+</head>
+<body>
+<div lang="en" class="docbook chapter" title="Chapter 3: Function Objects">
+<p class="title">The Boost C++ Libraries</p>
+<script type="text/javascript">
+          var titlepage = "Front page";
+        
+      var titles = new Array(titlepage,
+      
+        "Chapter 1: Introduction",
+      
+        "Chapter 2: Smart Pointers",
+      
+        "Chapter 3: Function Objects",
+      
+        "Chapter 4: Event Handling",
+      
+        "Chapter 5: String Handling",
+      
+        "Chapter 6: Multithreading",
+      
+        "Chapter 7: Asynchronous Input and Output",
+      
+        "Chapter 8: Interprocess Communication",
+      
+        "Chapter 9: Filesystem",
+      
+        "Chapter 10: Date and Time",
+      
+        "Chapter 11: Serialization",
+      
+        "Chapter 12: Parser",
+      
+        "Chapter 13: Containers",
+      
+        "Chapter 14: Data Structures",
+      
+        "Chapter 15: Error Handling",
+      
+        "Chapter 16: Cast Operators",
+      
+      "");
+
+      
+          var titlehtml = "frontpage.html";
+        
+      var filenames = new Array(titlehtml,
+      
+        "introduction.html",
+      
+        "smartpointers.html",
+      
+        "functionobjects.html",
+      
+        "eventhandling.html",
+      
+        "stringhandling.html",
+      
+        "multithreading.html",
+      
+        "asio.html",
+      
+        "interprocesscommunication.html",
+      
+        "filesystem.html",
+      
+        "datetime.html",
+      
+        "serialization.html",
+      
+        "parser.html",
+      
+        "containers.html",
+      
+        "datastructures.html",
+      
+        "errorhandling.html",
+      
+        "castoperators.html",
+      
+      "");
+
+      
+      document.open();
+      document.write('<form action="" class="toc">');
+      document.write('<select size="1" onchange="location.href=options[selectedIndex].value">');
+      for (var i = 0; i < titles.length && i < filenames.length; ++i) {
+        if (titles[i] != "" && filenames[i] != "") {
+          document.write('<option');
+          document.write(' value="' + filenames[i] + '"');
+          var expr = new RegExp('[/\]' + filenames[i] + '$');
+          if (expr.test(location.href)) {
+            document.write(' selected="selected"');
+          }
+          document.write('>' + titles[i] + '<\/option>');
+        }
+      }
+      document.write('<\/select>');
+      document.write('<\/form>');
+      document.close();
+      
+    </script><noscript><p class="toc"><a href="toc.html">Table of Contents</a></p></noscript>
+<hr class="hrhead">
+<h1 class="title">
+<a name="functionobjects"></a><small>Chapter 3:</small> Function Objects</h1>
+<hr>
+<div class="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><span class="sect1"><a href="functionobjects.html#functionobjects_general">3.1 General</a></span></li>
+<li><span class="sect1"><a href="functionobjects.html#functionobjects_bind">3.2 Boost.Bind</a></span></li>
+<li><span class="sect1"><a href="functionobjects.html#functionobjects_ref">3.3 Boost.Ref</a></span></li>
+<li><span class="sect1"><a href="functionobjects.html#functionobjects_function">3.4 Boost.Function</a></span></li>
+<li><span class="sect1"><a href="functionobjects.html#functionobjects_lambda">3.5 Boost.Lambda</a></span></li>
+<li><span class="sect1"><a href="functionobjects.html#functionobjects_exercises">3.6 Exercises</a></span></li>
+</ul>
+</div>
+<p class="license"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top"><img src="img/88x31_cc_logo.gif" alt="" width="88" height="31"></a> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top">Creative Commons License</a>.</p>
+<hr>
+<h2 class="title">
+<a name="functionobjects_general"></a>3.1 General</h2>
+<div class="sect1">
+<p>This chapter, which deals with function objects, could have easily been named 'Functions of higher order' as well. This actually refers to functions that can be passed to or returned from other functions. Functions of higher order are implemented as function objects in C++ thus, the original title still makes sense.</p>
+<p>Throughout this chapter, several Boost C++ Libraries dealing with function objects are presented. While <a class="link" href="http://www.boost.org/libs/bind/">Boost.Bind</a> replaces the well-known <code class="function">std::bind1st()</code> and <code class="function">std::bind2nd()</code> functions from the C++ standard, <a class="link" href="http://www.boost.org/libs/function/">Boost.Function</a> provides a class to encapsulate function pointers. Finally, <a class="link" href="http://www.boost.org/libs/lambda/">Boost.Lambda</a> introduces a way of creating anonymous functions.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="functionobjects_bind"></a>3.2 Boost.Bind</h2>
+<div class="sect1">
+<p>Boost.Bind is a library simplifying a mechanism already provided by the C++ standard using the <code class="function">std::bind1st()</code> and <code class="function">std::bind2nd()</code> template functions: The usage of functions with a virtually unlimited number of parameters in scenarios expecting functions with a specific signature. One of the best examples for such a scenario is the many different algorithms defined by the C++ standard.</p>
+<pre class="programlisting">#include &lt;iostream&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+void print(int i) 
+{ 
+  std::cout &lt;&lt; i &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::for_each(v.begin(), v.end(), print); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.2.1/main.cpp">Download source code</a></li></ul>
+<p>For its third parameter, the algorithm <code class="function">std::for_each()</code> expects a function or function object taking exactly one parameter. If <code class="function">std::for_each()</code> is executed, all elements of the particular container - in the above example of type <code class="type">int</code> - are sequentially passed to the <code class="function">print()</code> function. However, if a function with a different signature should be used, things are getting complicated. For example, imagine if the following function <code class="function">add()</code>, adding up a constant value to each element of the container and displaying the result, should be passed instead.</p>
+<pre class="programlisting">void add(int i, int j) 
+{ 
+  std::cout &lt;&lt; i + j &lt;&lt; std::endl; 
+} </pre>
+<p>Since <code class="function">std::for_each()</code> expects a function taking one parameter only, the <code class="function">add()</code> function cannot be passed directly. Instead, the source code needs to be modified.</p>
+<pre class="programlisting">#include &lt;iostream&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+#include &lt;functional&gt; 
+
+class add 
+  : public std::binary_function&lt;int, int, void&gt; 
+{ 
+public: 
+  void operator()(int i, int j) const 
+  { 
+    std::cout &lt;&lt; i + j &lt;&lt; std::endl; 
+  } 
+}; 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::for_each(v.begin(), v.end(), std::bind1st(add(), 10)); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.2.2/main.cpp">Download source code</a></li></ul>
+<p>The above application adds up the value 10 to every element of the container <var>v</var> and displays the result using the standard output stream. The source code had to be substantially modified in order to allow for this though: The <code class="function">add()</code> function has been converted to a function object derived from <code class="classname">std::binary_function</code>.</p>
+<p> Boost.Bind simplifies the binding between different functions. It consists of the <code class="function">boost::bind()</code> template function only and is defined in <code class="filename">boost/bind.hpp</code>. This function allows to implement the above example as follows:</p>
+<pre class="programlisting">#include &lt;boost/bind.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+void add(int i, int j) 
+{ 
+  std::cout &lt;&lt; i + j &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::for_each(v.begin(), v.end(), boost::bind(add, 10, _1)); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.2.3/main.cpp">Download source code</a></li></ul>
+<p>Functions like <code class="function">add()</code> do not need to be converted to a function object any longer in order to be used with <code class="function">std::for_each()</code>. Using <code class="function">boost::bind()</code>, the function can be used as is by passing it as the first parameter.</p>
+<p>Since the <code class="function">add()</code> function expects two parameters, they  need to be passed to <code class="function">boost::bind()</code> as well. The first one is the constant value 10, the second one is a weird looking <var>_1</var>.</p>
+<p><var>_1</var> is called a placeholder and is defined in Boost.Bind. Besides <var>_1</var>, Boost.Bind also defines <var>_2</var> and <var>_3</var>. Using these placeholders, <code class="function">boost::bind()</code> can be transformed into an unary, binary or tertiary function. In the case of <var>_1</var>, <code class="function">boost::bind()</code> is transformed into an unary function - a function expecting a single parameter. This is necessary since <code class="function">std::for_each()</code> expects such an unary function as its third parameter.</p>
+<p>Once the application is executed, <code class="function">std::for_each()</code> calls the unary function for each element of the container <var>v</var>. The element value is passed to the unary function using the placeholder <var>_1</var>. The placeholder as well as the constant value are being further passed to the <code class="function">add()</code> function. Using this mechanism, <code class="function">std::for_each()</code> only sees the unary function defined by <code class="function">boost::bind()</code>. <code class="function">boost::bind()</code> itself simply calls a different function and passes items such as a constant value or placeholders as parameters.</p>
+<p>The following example defines a binary function by means of <code class="function">boost::bind()</code> which is utilized with the <code class="function">std::sort()</code> algorithm which expects a binary function as its third parameter.</p>
+<pre class="programlisting">#include &lt;boost/bind.hpp&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+bool compare(int i, int j) 
+{ 
+  return i &gt; j; 
+} 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::sort(v.begin(), v.end(), boost::bind(compare, _1, _2)); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.2.4/main.cpp">Download source code</a></li></ul>
+<p>Due to the usage of the two placeholders <var>_1</var> and <var>_2</var>, <code class="function">boost::bind()</code> defines a binary function. The <code class="function">std::sort()</code> algorithm calls this function with two elements from the container <var>v</var> and uses the return value to sort the container accordingly. Based on the definition of the <code class="function">compare()</code> function, the container is sorted in descending order.</p>
+<p>However, since <code class="function">compare()</code> already is a binary function, the usage of <code class="function">boost::bind()</code> is actually superfluous.</p>
+<pre class="programlisting">#include &lt;boost/bind.hpp&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+bool compare(int i, int j) 
+{ 
+  return i &gt; j; 
+} 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::sort(v.begin(), v.end(), compare); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.2.5/main.cpp">Download source code</a></li></ul>
+<p>The usage of <code class="function">boost::bind()</code> can still make sense though. For example, in case the container should be sorted in ascending order without changing the definition of the <code class="function">compare()</code> function.</p>
+<pre class="programlisting">#include &lt;boost/bind.hpp&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+bool compare(int i, int j) 
+{ 
+  return i &gt; j; 
+} 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::sort(v.begin(), v.end(), boost::bind(compare, _2, _1)); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.2.6/main.cpp">Download source code</a></li></ul>
+<p>This example only changed the order of the placeholders: <var>_2</var> is passed as the first parameter while <var>_1</var> is passed as the second parameter to <code class="function">compare()</code> which effectively changes the sorting order.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="functionobjects_ref"></a>3.3 Boost.Ref</h2>
+<div class="sect1">
+<p>The library <a class="link" href="http://www.boost.org/doc/html/ref.html">Boost.Ref</a> is typically used in conjunction with Boost.Bind and thus is presented next. It provides two functions - <code class="function">boost::ref()</code> and <code class="function">boost::cref()</code> - defined in <code class="filename">boost/ref.hpp</code>.</p>
+<p>Boost.Ref is of importance whenever functions containing at least one reference parameter should be used with <code class="function">boost::bind()</code>. Since <code class="function">boost::bind()</code> copies its parameters, references need to be handled separately.</p>
+<pre class="programlisting">#include &lt;boost/bind.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+void add(int i, int j, std::ostream &amp;os) 
+{ 
+  os &lt;&lt; i + j &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::for_each(v.begin(), v.end(), boost::bind(add, 10, _1, boost::ref(std::cout))); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.3.1/main.cpp">Download source code</a></li></ul>
+<p>The above example uses the known <code class="function">add()</code> function from the previous paragraph. This time however, the function expects a reference to a stream object in order to print the information. Since parameters to <code class="function">boost::bind()</code> are passed by value, <var>std::cout</var> cannot be used directly since otherwise the function would attempt to create a copy of it.</p>
+<p>Using the template function <code class="function">boost::ref()</code>, streams such as <var>std::cout</var> can be passed by reference which allows to compile the example successfully.</p>
+<p>In order to pass constant objects by reference, the template function <code class="function">boost::cref()</code> can be used instead.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="functionobjects_function"></a>3.4 Boost.Function</h2>
+<div class="sect1">
+<p>For encapsulating function pointers, <a class="link" href="http://www.boost.org/libs/function/">Boost.Function</a> provides a class named <code class="classname">boost::function</code>. It is defined in <code class="filename">boost/function.hpp</code> and is used as follows:</p>
+<pre class="programlisting">#include &lt;boost/function.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;cstdlib&gt; 
+#include &lt;cstring&gt; 
+
+int main() 
+{ 
+  boost::function&lt;int (const char*)&gt; f = std::atoi; 
+  std::cout &lt;&lt; f("1609") &lt;&lt; std::endl; 
+  f = std::strlen; 
+  std::cout &lt;&lt; f("1609") &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.4.1/main.cpp">Download source code</a></li></ul>
+<p><code class="classname">boost::function</code> allows to define a pointer to a function with a specific signature. The above example defines a pointer <var>f</var> that can point to functions expecting a parameter of type <code class="type">const char*</code> and returning a value of type <code class="type">int</code>. Once defined, functions with matching signatures can then be assigned to the pointer accordingly. The example program first assigns the <code class="function">std::atoi()</code> function to <var>f</var> before it is reassigned to <code class="function">std::strlen()</code>.</p>
+<p>Note though that the given data types do not necessarily need to match exactly: Even though <code class="function">std::strlen()</code> uses <code class="type">std::size_t</code> as its return type, it still can be assigned to <var>f</var>.</p>
+<p>Since <var>f</var> is a function pointer, the assigned function can be called using the overloaded <code class="methodname">operator()()</code> operator. Depending on what function is currently assigned, either <code class="function">std::atoi()</code> or <code class="function">std::strlen()</code> is called in the given example.</p>
+<p>If <var>f</var> is called without having a function assigned, a <code class="exceptionname">boost::bad_function_call</code> exception is thrown.</p>
+<pre class="programlisting">#include &lt;boost/function.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    boost::function&lt;int (const char*)&gt; f; 
+    f(""); 
+  } 
+  catch (boost::bad_function_call &amp;ex) 
+  { 
+    std::cout &lt;&lt; ex.what() &lt;&lt; std::endl; 
+  } 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.4.2/main.cpp">Download source code</a></li></ul>
+<p>Note that assigning the value 0 to a function pointer of type <code class="classname">boost::function</code> will release any currently assigned function. Calling it after releasing will also result in a <code class="exceptionname">boost::bad_function_call</code> exception being thrown. In order to check whether or not a function pointer currently is assigned to a function, the <code class="methodname">empty()</code> function or the <code class="methodname">operator bool()</code> operator can be used.</p>
+<p>Using Boost.Function, class member functions can also be assigned to objects of type <code class="classname">boost::function</code>.</p>
+<pre class="programlisting">#include &lt;boost/function.hpp&gt; 
+#include &lt;iostream&gt; 
+
+struct world 
+{ 
+  void hello(std::ostream &amp;os) 
+  { 
+    os &lt;&lt; "Hello, world!" &lt;&lt; std::endl; 
+  } 
+}; 
+
+int main() 
+{ 
+  boost::function&lt;void (world*, std::ostream&amp;)&gt; f = &amp;world::hello; 
+  world w; 
+  f(&amp;w, boost::ref(std::cout)); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.4.3/main.cpp">Download source code</a></li></ul>
+<p>When calling such a function, the first parameter passed indicates the particular object for which the function is called. Therefore, the first parameter after the open parenthesis inside the template definition must be a pointer to that particular class. The following parameters then denote the signature of the corresponding member function.</p>
+<p>The application also utilizes <code class="function">boost::ref()</code> from the Boost.Ref library which provides an easy mechanism of passing references to Boost.Function.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="functionobjects_lambda"></a>3.5 Boost.Lambda</h2>
+<div class="sect1">
+<p>Unnamed functions - called lambda functions - currently do exist in various programming languages but C++. With the help of the <a class="link" href="http://www.boost.org/libs/lambda/">Boost.Lambda</a> library however, they can now be used in C++ applications as well.</p>
+<p>The general goal of lambda functions is to make the source code more compact and thus more comprehensible. Take the code sample from the first paragraph of this chapter for example.</p>
+<pre class="programlisting">#include &lt;iostream&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+void print(int i) 
+{ 
+  std::cout &lt;&lt; i &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::for_each(v.begin(), v.end(), print); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.2.1/main.cpp">Download source code</a></li></ul>
+<p>This program takes the elements of the container <var>v</var> and writes them to the standard output stream using the <code class="function">print()</code> function. Since <code class="function">print()</code> only writes a simple <code class="type">int</code>, the implementation of the function is fairly simple. Strictly speaking, it is so simple that it would be convenient if one could simply define it within the <code class="function">std::for_each()</code> algorithm directly; thus saving the need for an additional function. The additional benefit is a more compact code since the algorithm and the function for the data output are not locally separated. Boost.Lambda actually makes this a reality.</p>
+<pre class="programlisting">#include &lt;boost/lambda/lambda.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::for_each(v.begin(), v.end(), std::cout &lt;&lt; boost::lambda::_1 &lt;&lt; "\n"); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.5.1/main.cpp">Download source code</a></li></ul>
+<p>Boost.Lambda provides several constructs to define unnamed functions. Code is placed where executed thus skipping the overhead of enclosing it in a function and the corresponding function call. As with the original example, the program writes all elements of the container <var>v</var> to the standard output stream.</p>
+<p>Similar to Boost.Bind, Boost.Lambda also defines three placeholders named <var>_1</var>, <var>_2</var> and <var>_3</var>. Unlike Boost.Bind, these placeholders are defined in a separate namespace though. Hence, the first placeholder in the example is referenced via <var>boost::lambda::_1</var>. In order to satisfy the compiler, the corresponding header file <code class="filename">boost/lambda/lambda.hpp</code> needs to be included.</p>
+<p>Even though the position of the code being the third parameter to <code class="function">std::for_each()</code> seems odd, Boost.Lambda allows for writing regular C++ code. Using the placeholder, the elements of the container <var>f</var> can be passed to <var>std::cout</var> via <code class="code">&lt;&lt;</code> in order to write them to the standard output stream.</p>
+<p>While Boost.Lambda is quite powerful, there are some drawbacks. To insert a line break into the output of the above example, "\n" must be used instead of <code class="code">std::endl</code> in order to successfully compile. Since the type expected by the unary <code class="code">std::endl</code> template function is different from the one of the lambda function <code class="code">std::cout &lt;&lt; boost::lambda::_1</code>, it cannot be used in this case.</p>
+<p>The next revision of the C++ standard will likely add lambda functions as an integral part to the C++ language itself thus eliminating the need for a separate library. It may still take years though before the next revision is published and widely adopted by the different compiler manufacturers. Until then, Boost.Lambda proves to be a perfect replacement as can be seen in the following example which only writes elements greater than 1 to the standard output stream.</p>
+<pre class="programlisting">#include &lt;boost/lambda/lambda.hpp&gt; 
+#include &lt;boost/lambda/if.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; v; 
+  v.push_back(1); 
+  v.push_back(3); 
+  v.push_back(2); 
+
+  std::for_each(v.begin(), v.end(), 
+    boost::lambda::if_then(boost::lambda::_1 &gt; 1, 
+    std::cout &lt;&lt; boost::lambda::_1 &lt;&lt; "\n")); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.5.2/main.cpp">Download source code</a></li></ul>
+<p>The header file <code class="filename">boost/lambda/if.hpp</code> defines several constructs to allow <code class="code">if</code> statements within lambda functions. The most basic construct is the <code class="function">boost::lambda::if_then()</code> template function that expects two parameters: The first parameter evaluates a condition - if true, the second parameter is executed. Each parameter can be a lambda function itself as shown in the example.</p>
+<p>Besides <code class="function">boost::lambda::if_then()</code>, Boost.Lambda provides the <code class="function">boost::lambda::if_then_else()</code> and <code class="function">boost::lambda::if_then_else_return()</code> template functions - each expecting three parameters. Additional template functions for loops, cast operators and even for <code class="code">throw</code> - allowing lambda functions to throw exceptions - are provided as well.</p>
+<p>Even though complex lambda functions in C++ can be built utilizing these template functions, one has to consider aspects such as readability as well as maintainability. Since one needs to learn and understand additional functions like <code class="function">boost::lambda::if_then()</code> instead of using the known C++ keywords <code class="code">if</code> and <code class="code">else</code>, the benefit of lambda functions usually decreases with their complexity. Most of the time, it is more reasonable to define a discrete function using the familiar C++ constructs instead.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="functionobjects_exercises"></a>3.6 Exercises</h2>
+<div class="sect1">
+<p class="solution">
+              You can buy 
+              <a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-solution">solutions to all exercises</a>
+              in this book as a ZIP file. 
+            </p>
+<ol>
+<li class="listitem">
+<p>Simplify the following application by converting the function object <code class="classname">divide_by</code> to a function and by replacing the <code class="code">for</code> loop used to output the data with a standard C++ algorithm:</p>
+<pre class="programlisting">#include &lt;algorithm&gt; 
+#include &lt;functional&gt; 
+#include &lt;vector&gt; 
+#include &lt;iostream&gt; 
+
+class divide_by 
+  : public std::binary_function&lt;int, int, int&gt; 
+{ 
+public: 
+  int operator()(int n, int div) const 
+  { 
+    return n / div; 
+  } 
+}; 
+
+int main() 
+{ 
+  std::vector&lt;int&gt; numbers; 
+  numbers.push_back(10); 
+  numbers.push_back(20); 
+  numbers.push_back(30); 
+
+  std::transform(numbers.begin(), numbers.end(), numbers.begin(), std::bind2nd(divide_by(), 2)); 
+
+  for (std::vector&lt;int&gt;::iterator it = numbers.begin(); it != numbers.end(); ++it) 
+    std::cout &lt;&lt; *it &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.6.1/main.cpp">Download source code</a></li></ul>
+</li>
+<li class="listitem">
+<p>Simplify the following application by replacing both <code class="code">for</code> loops with standard C++ algorithms:</p>
+<pre class="programlisting">#include &lt;string&gt; 
+#include &lt;vector&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  std::vector&lt;std::string&gt; strings; 
+  strings.push_back("Boost"); 
+  strings.push_back("C++"); 
+  strings.push_back("Libraries"); 
+
+  std::vector&lt;int&gt; sizes; 
+
+  for (std::vector&lt;std::string&gt;::iterator it = strings.begin(); it != strings.end(); ++it) 
+    sizes.push_back(it-&gt;size()); 
+
+  for (std::vector&lt;int&gt;::iterator it = sizes.begin(); it != sizes.end(); ++it) 
+    std::cout &lt;&lt; *it &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.6.2/main.cpp">Download source code</a></li></ul>
+</li>
+<li class="listitem">
+<p>Simplify the following application by modifying the type of the variable <var>processors</var> and replacing the <code class="code">for</code> loop with a standard C++ algorithm:</p>
+<pre class="programlisting">#include &lt;vector&gt; 
+#include &lt;iostream&gt; 
+#include &lt;cstdlib&gt; 
+#include &lt;cstring&gt; 
+
+int main() 
+{ 
+  std::vector&lt;int(*)(const char*)&gt; processors; 
+  processors.push_back(std::atoi); 
+  processors.push_back(reinterpret_cast&lt;int(*)(const char*)&gt;(std::strlen)); 
+
+  const char data[] = "1.23"; 
+
+  for (std::vector&lt;int(*)(const char*)&gt;::iterator it = processors.begin(); it != processors.end(); ++it) 
+    std::cout &lt;&lt; (*it)(data) &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/3.6.3/main.cpp">Download source code</a></li></ul>
+</li>
+</ol>
+</div>
+</div>
+<hr class="hrfoot">
+<p class="copyright">Copyright © 2008-2010 
+        <a class="link" href="mailto:boris@highscore.de">Boris Schäling</a>
+      </p>
+</body>
+</html>

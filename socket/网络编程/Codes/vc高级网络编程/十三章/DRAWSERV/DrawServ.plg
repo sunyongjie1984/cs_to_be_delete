@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DrawServ - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo".\Debug/DrawServ.res" /d "_DEBUG" "D:\VC高级网络编程\例程\DRAWSERV\DrawServ.rc"" 
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP50.tmp" with contents
+[
+/nologo /MTd /W4 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_WIN32_DCOM" /FR".\Debug/" /Fp".\Debug\predraw.pch" /YX"predraw.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\VC高级网络编程\例程\DRAWSERV\DrawObj.cpp"
+"D:\VC高级网络编程\例程\DRAWSERV\DrawServ.cpp"
+]
+Creating command line "cl.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP50.tmp" 
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP51.tmp" with contents
+[
+/nologo /MTd /W4 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_WIN32_DCOM" /FR".\Debug/" /Fp".\Debug\predraw.pch" /Yc /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\VC高级网络编程\例程\DRAWSERV\predraw.cpp"
+]
+Creating command line "cl.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP51.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:".\Debug/DrawServ.pdb" /debug /machine:I386 /out:".\Debug/DrawServ.exe"  ".\Debug\DrawObj.obj" ".\Debug\DrawServ.obj" ".\Debug\predraw.obj" ".\Debug\DrawServ.res" "
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP52.bat" with contents
+[
+@echo off
+.\Debug\DrawServ.exe /RegServer
+echo reg_exe exec. time > ".\Debug\reg_exe.trg"
+echo Server registration done!
+]
+Creating command line "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP52.bat"
+Compiling resources...
+Compiling...
+predraw.cpp
+Compiling...
+DrawObj.cpp
+DrawServ.cpp
+Linking...
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Debug\DrawServ.exe
+Server registration done!
+
+
+
+<h3>Results</h3>
+DrawServ.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

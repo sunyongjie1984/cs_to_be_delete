@@ -1,0 +1,94 @@
+BODY, TABLE, INPUT, SELECT, TEXTAREA {font-family:verdana,arial,helvetica,sans-serif; font-size:12px; color:black}
+BODY, FORM, PRE, DIV {margin:0px; padding:0px}
+BODY {background:#D7D7D7;}
+H1 {font-size:24px} H2 {font-size:21px} H3 {font-size:18px} H4 {font-size:15px} H5 {font-size:12px} H6 {font-size:10px}
+IMG {border:none}
+A:link, A:visited, A:active {text-decoration: none; color:#000070} A:hover {text-decoration: underline; color:#0000A0}
+
+/* GENERAL PURPOSE CLASSES: (in: #container #content #main)*/
+/* These are available to use in content by any user: */
+/* (Please notice that these classes -as they are undocumented features- may not be supported in the future) */
+.center, .centertext {text-align:center}
+.u {text-decoration: underline}
+.centerblock {margin-left:auto; margin-right:auto;}
+.wideblock {width:728px;}
+/* default class for TABLE elements ("boxed"): */
+TABLE.boxed {border-collapse: collapse;} TABLE.boxed TH {background:#E0E0E0; border:1px solid black;} TABLE.boxed TD {border:1px solid black}
+
+/* RESERVED IDs AND CLASSES (they cannot be used in content): */
+#header {height:75px; line-height:20px; color:#FFFFFF; background:#FFFFFF url("cpp-headerbg.png"/*tpa=http://www.cplusplus.com/img/cpp-headerbg.png*/) repeat-x;}
+#header IMG {vertical-align:bottom}	/* IE fix */
+#header A:link, #header A:visited, #header A:active {text-decoration:none; color:#FFFFFF} #header A:hover {text-decoration:none; color:yellow}
+#header .txt {height:18px; background-color:#C0C0FF; border: 1px inset}
+#header .btn {height:18px; background-color:#C0C0FF; font-size:9px; border:1px outset}
+#header .chk {vertical-align:middle}
+#header #bar {position:absolute; left:210px; top:18px;}
+#header #searchbox {position:absolute; left:210px; top:38px;}
+#header #loginbox {position:absolute; right:10px; top:19px;}
+#header #loginbox TABLE {border-collapse:collapse; color:#FFFFFF;font-size:9px; line-height:16px;}
+#header #loginbox .right {text-align:right}
+#container {background:#FFFFFF url("cpp-contbg.png"/*tpa=http://www.cplusplus.com/img/cpp-contbg.png*/) repeat-y}
+ #nav {float:left; width:165px;text-align:center; padding-bottom:5px;}
+ #nav .box {border:#00007F 1px solid; margin-left:2px; margin-top:5px; width:160px; background:white; border-collapse:collapse; font-size:10px;}
+ #nav .box TD {color:#000070; text-align:left; }
+ #nav .box TH {height:14px; color:#FFFFFF; background:blue url("blue.gif"/*tpa=http://www.cplusplus.com/img/blue.gif*/); }
+ #nav .box TH A:link, #nav .box TH A:visited, #nav .box TH A:active {text-decoration: none;color:#FFFFFF;} #nav .box TH A:hover {text-decoration: none;color:yellow}
+ #nav .selected {background:#E0E0E0;}
+  #main {background-color:#FFFFFF; margin-left:175px; margin-right:5px;}
+   #content {margin-top:10px; margin-bottom:10px}
+   #suopt {height:30px; line-height:25px; vertical-align:middle;}
+   #suopt .bt {background:#FFFFE0; border: 1px solid #E0E0C0; border-bottom:1px solid #E0E0C0;margin-right:5px}
+   #suopt .bt:hover {background:#FFFF70; text-decoration:none}
+ #footer {clear:both;border-top:black 1px solid; padding-bottom:5px; background:#D7D7D7; text-align:center; font-size:10px;}
+
+/* restricted classes (auto and post): under #container #content : */
+.auto .doctop {border-bottom:2px solid #000040} .auto .doctop .right {float:right; margin-top:-30px; text-align:right;} .auto .doctop .date {font-size:10px;}
+.auto .doctop H1 {margin:0px; padding:0px}
+.auto .docsubtop {} .auto .docsubtop .prototype {font-family:courier,monospace; color:#008000} .auto .docsubtop .right {float:right; text-align:right; color:#000080}
+.auto .errors {margin:auto} .auto .errors, .auto .errors TH {border:#7F0000 1px solid;} .auto .errors TH {color:#FFFFFF; background:red; } .auto .errors TD {border:#807070 1px solid; background: #FFE0E0; text-align:left}
+.auto .doclist {width:728px} .auto .doclist TD {position:relative; left:2%; border:silver 1px solid; } .auto .doclist TH {padding-top:5px; text-align:left} .auto .doclist .auth {width:160px} .auto .doclist IMG {float:left}
+.auto .docnext {border-top:2px solid #000040; margin-top:12px} .auto .docnext .prev {width:49%; text-align:right} .auto .docnext .prev IMG {float:right} .auto .docnext .index {text-align:center} .auto .docnext .next {width:49%} .auto .docnext .next IMG {float:left}
+.auto .sch {width:640px; font-family:arial,sans-serif; margin-top:20px} .auto .sch .title {text-decoration: underline; font-size:16px;} .auto .sch .sub {font-size:10px;} .auto .sch .url {color:#007000} .auto .sch .bot {border-top:1px dashed #A0A0A0; background:#FFFFD0; text-align:right}
+.auto .bigletters {text-align:center} .auto .bigletters STRONG {font-size:16px}
+
+.auto .deco {border:#00007F 1px solid; width-min:728px;}
+.auto .deco TH {border:#00007F 1px solid; color:#FFFFFF; background:blue url("blue.gif"/*tpa=http://www.cplusplus.com/img/blue.gif*/);} .auto .deco TH A:link, .auto .deco TH A:visited, .auto .deco TH A:active {color:white} .auto .deco TH A:hover {color:yellow}
+.auto .deco TR TD {border:#707080 1px solid; background:#F0F0FF} .auto .deco TR.odd TD {background:#E0E0FF} .auto .deco TR TD TD {border:0px}
+.auto .deco TR.separator TD {background: white; font-weight:bold }
+.auto .deco .field {text-align:right;font-weight:bold}
+.auto .deco .value, .auto .deco TEXTAREA {font-family:courier,monospace}
+.auto .deco .description {font-size:10px}
+.auto .deco .number {text-align:center}
+.auto .deco .txt, .auto .deco SELECT, .auto .deco TEXTAREA {border:black 1px solid; background-color:#FFFFF0;} .auto .deco .buttons {text-align:center; padding:5px}
+
+.auto .threadlist {width:728px; border:1px solid #808080; margin:2px; border-collapse:collapse; }
+.auto .threadlist .top IMG {vertical-align:middle; padding-left:2px; padding-right:2px}
+.auto .threadlist .thright {float:right;}
+.auto .threadlist .cont {padding-left:5px; font-size:xx-small; }
+.auto .threadlist .bot {color:#707070; background-color:#F7F7FF; padding:0px; font-size:xx-small}
+.auto .threadlist .bot A {color:#707070} .auto .threadlist .bot .auth {color:#000070}
+.auto .threadlist .pages {font-size:10px; }
+.auto .threadlist .status {background-color:#808080;color:white;font-size:9px; line-height:10px;}
+.auto .threadlist .status A:link, .auto .threadlist .status A:visited, .auto .threadlist .status A:active {text-decoration: none; color:white} .auto .threadlist .status A:hover {color:yellow}
+
+.auto .pagesatbottom {width:728px;} .auto .pagesatbottom .pgright {text-align:right}
+
+.post {width:728px; border:1px solid #808080; margin:3px; border-collapse:collapse; background:#FFFFFF;}
+.post .top {background-color:#F0F0FF; padding:0px; font-size:10px; height:20px; border-bottom:1px dashed #C0C0C0;} .post .top IMG {vertical-align:middle;}
+.post .right {text-align:right}
+.post .cont {padding:5px} .post .cont .quote TH.qh {font-size:10px; font-style:italic; font-weight:normal; text-align:left;} .post .cont .quote TD.qd {background:#EFEFEF; border: 1px dotted #C0C0C0}
+.post .bot {font-size:10px}
+
+/* automatically generated by special TAGS: */
+.auto .split {} .auto .split .source, .auto .split .output {width:50%}
+.auto .rownum {color:#A0A0A0; text-align:right; vertical-align:top; min-width:20px;}
+.auto .source {background:#EFEFFF; border: 1px solid #C0C0D0;vertical-align:top}
+.auto .source VAR {font-style:normal; color:#0000B0}	/*keyword (blue)*/
+.auto .source DFN {font-style:normal; color:#500070}	/*preprocessor (purple)*/
+.auto .source CITE {font-style:normal; color:#007000}	/*comments (green)*/
+.auto .source KBD {font-style:normal; color:#600030}	/*strings (red)*/
+.auto .output {background:#E7E7E7; border: 1px solid #C0C0C0;vertical-align:top}
+.auto .keywordlink {width:728px} .auto .keywordlink TD {position:relative; left:2%; border:silver 1px solid; } .auto .keywordlink .tit {width:160px} .auto .keywordlink .typ {font-size:x-small; color:green}
+.auto .keywordlink IMG {float:left}
+
+

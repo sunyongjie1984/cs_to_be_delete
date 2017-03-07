@@ -1,0 +1,1874 @@
+<!--STATUS OK-->
+
+
+<html><head><meta http-equiv=content-type content="text/html; charset=gb2312"><title>python 线程入门_Somnus(鱼)的空间_百度空间      </title>
+
+<style type="text/css">
+
+.error{color:#FF0000;font-size:12px}
+.shareUser,.shareLastEditor{line-height:20px;color:#666666;text-align:left}
+.shareLastEditor{margin:5px 0 8px;}
+
+
+
+
+
+	
+
+
+
+
+
+</style>
+
+<script type="text/javascript" src="/ui/scripts/global.js"></script>
+<script type="text/javascript" src="http://img.baidu.com/js/tangram-1.1.0.js"></script>
+
+
+<script type="text/javascript">
+var Session = {
+    isLogin: ! true,
+    isHost: "",
+    userName: "8781811",   
+    userPortrait:'eae638373831383131bf07',
+    spaceURL: "/8781811",
+    spBasicURL:"8781811",
+    spBasicURLEnc:"8781811",
+    visitorName:    "",
+    visitorPortrait:'00000000',
+    isActive: '',   
+    visitorURL: "/index.html",        // 
+    pageURL: "http://hi.baidu.com/8781811/blog/item/c284de4fdf2c11c3d1c86aa9%2Ehtml",    
+    refer: "http://www.baidu.com/s?bs=python+%CF%DF%B3%CC&f=8&wd=python+%CF%DF%B3%CC+%C8%EB%C3%C5",
+    spToken: 'd531d1a44d1ea77b12b86451c6adfd05', 
+    spFriendDomain: 'http://frd.baidu.com',
+    spSpaceDomain: 'http://hi.baidu.com',
+    spPortraitDomain: '',
+    spSpaceStaticDomain: 'http://hi.baidu.com' 
+
+    ,isDrag:  false  
+    ,isProfile:  false   
+    };
+</script>
+
+<script language="javascript" src="/ui/scripts/dialog.js"></script>
+
+<script type="text/javascript" src="/ui/scripts/CommentEditor/BdEditor-mined.js?v=2.3"></script>
+
+<script type="text/javascript" src="/ui/scripts/spamuser/antiSpam.js"></script>
+
+<script LANGUAGE="JavaScript" src="/js/g_spjs.js"></script>
+
+<script language="javascript">
+
+<!--
+
+
+(function(){var A=109;function C(D){var F="nslog__"+(new Date()).getTime();var E=window[F]=new Image();E.onload=(E.onerror=function(){window[F]=null});E.src="http://nsclick.baidu.com/v.gif?pid="+A+"&url="+encodeURIComponent(D)+"&type=0&_t="+Math.random();E=null}function B(F){F=F||event;var E=F.srcElement||F.target;if(E.nodeType!=1){E=E.parentNode}while(E&&E.tagName&&E.tagName.toUpperCase()!="A"){E=E.parentNode}if(E&&E.tagName&&E.tagName.toUpperCase()=="A"){if(E.protocol.indexOf("http")==0&&!/^([\w-]+\.)*?baidu\.com/i.test(E.host)){var D=E.href;setTimeout(function(){C(D)},1)}}E=null}if(document.attachEvent){document.attachEvent("onmousedown",B);window.attachEvent("onunload",function(){document.detachEvent("onmousedown",B)})}else{document.addEventListener("mousedown",B,false);window.addEventListener("unload",function(){document.removeEventListener("mousedown",B,false)},false)}})();
+
+var allkey="";
+
+var i=0;
+
+var flag=0;
+
+function setpv(allnum)
+
+{
+
+	var num = allnum.split('_');
+
+	document.getElementById("result").innerHTML=num[0];
+
+}
+
+
+
+function checkMail(s)
+
+{
+
+  	var pattern=/\w+@\w+\.[a-z]+/;
+
+  	if(pattern.test(s))
+
+    {
+
+       return true;
+
+    }
+
+  	else
+
+   {
+
+      return false;
+
+   }
+
+}
+
+
+
+
+
+function checkeandu(eanduid)
+
+{
+
+	var eanduvalue=G(eanduid).value;
+
+	var len=bytes(eanduvalue);
+
+	if(len>128)
+
+	{
+
+		showErr(2,"您输入的网址或邮箱太长，请保持在128字节以内。");
+
+		return false;
+
+	}
+
+	else
+
+	{
+
+		 return true;
+
+	}
+
+
+
+}
+
+
+
+function cmtdel(str)
+
+{
+
+	var pop=new Popup({ contentType:3,isReloadOnClose:false,width:340,height:80});
+
+	pop.setContent("title","删除评论");
+
+	pop.setContent("confirmCon","您确定要彻底删除这条评论吗？");
+
+	pop.setContent("callBack",delCallback2);
+
+	pop.setContent("parameter",{fid:str,popup:pop});
+
+	pop.build();
+
+	pop.show();
+
+	return false;
+
+}
+
+function delCallback2(para)
+
+{
+
+	var o_pop=para["popup"];
+
+	o_pop.config.contentType=1;
+
+	o_pop.setContent("contentUrl","");
+
+	o_pop.reBuild();
+
+	G(para["fid"]).target=o_pop.iframeIdName;
+
+	eval("document."+para["fid"]).submit();
+
+}
+
+
+
+String.prototype.byteLength = function() {
+
+    return this.replace(/[^\u0000-\u007f]/g,"\u0061\u0061").length;
+
+}
+
+
+
+function checkname(strid)
+
+{
+
+	var ele=document.getElementById(strid);
+
+	var len=bytes(ele.value);
+
+	if(len>49)
+
+	{
+
+		showErr(1,"您输入的姓名太长，请保持在49字节以内。");
+
+		return false;
+
+	}
+
+	else
+
+	{
+
+		if(len==0)
+
+		{
+
+			document.getElementById(strid).value="匿名网友";
+
+		}
+
+		 return true;
+
+	}
+
+
+
+}
+
+
+
+function checktext(textid)
+
+{
+
+        var tempStr='';
+
+        var isLightFont=false;
+
+		if(editor&&textid=="spBlogCmtText"){
+
+			//document.getElementById("spBlogCmtText").value=editor.getHtml();
+
+			tempStr=editor.getHtml();
+
+			tempStr=tempStr.replace(/<span style="filter:glow\(color=#([0-9a-z]{3,6}),strength=2\);height:0px;color:#([0-9a-z]{3,6})">/ig,'');
+
+			tempStr=tempStr.replace(/<\/span>/ig,'');
+
+			document.getElementById("spBlogCmtText").value=tempStr;
+
+            isLightFont=!(tempStr==editor.getHtml());
+
+        }
+
+		document.getElementById(textid).value=trimlr(textid);
+
+		var str=trimrn(textid);
+
+		len=str.length;
+
+		if(len==0 || ((/^[\s,　]+$/gi).test(str)) )
+
+		{
+
+			showErr(3,"您必须输入评论内容，请检查。");
+
+			return false;
+
+		}
+
+		else
+
+        {
+
+                len=str.byteLength();
+
+                var maxLength=isLightFont?916:1000;
+
+				if(len > maxLength)
+
+				{
+
+					showErr(3,"您输入的评论内容太长，请保持在500字以内。");
+
+					return false;
+
+				}
+
+				if(editor&&textid=="spBlogCmtText"){
+
+					document.getElementById("spBlogCmtText").value=editor.getHtml();
+
+					document.getElementById(textid).value=trimlr(textid);
+
+				}
+
+
+
+			return true;
+
+		}
+
+}
+
+
+
+function showErr(index,str)
+
+{
+
+	G(index+"_err").style.display="";
+
+	G(index+"_err_con").innerHTML=str;
+
+}
+
+function hidErr(index)
+
+{
+
+	G(index+"_err").style.display="none";
+
+	G(index+"_err_con").innerHTML="";
+
+}
+
+
+
+function alertPop(tit,con)
+
+{
+
+	var pop=new Popup({ contentType:4,isReloadOnClose:false,width:340,height:80});
+
+	pop.setContent("title",tit);
+
+	pop.setContent("alertCon",con);
+
+	pop.build();
+
+	pop.show();
+
+}
+
+
+
+function cmtfull()
+
+{
+
+	var cnum=0;
+
+	if(cnum>=50000)
+
+	{
+
+		alertPop("发表评论","单篇日志评论数最多为50000条.");
+
+		return false;
+
+	}
+
+	else
+
+	{
+
+		return true;
+
+	}
+
+}
+
+
+
+function checkcmtform()
+
+{
+
+	if(checkname("spBlogCmtor")&&checkeandu("spBlogCmtURL")&&checktext("spBlogCmtText")&&cmtfull())
+
+	{
+
+		submitForm();
+
+		return true;
+
+	}
+
+	else
+
+	{
+
+		return false;
+
+	}
+
+}
+
+
+
+var g_pop=null;
+
+function submitForm()
+
+{
+
+	g_pop=new Popup({ contentType:1,isReloadOnClose:false,width:340,height:80});
+
+	g_pop.setContent("title","添加评论");
+
+	g_pop.setContent("contentUrl","");
+
+	g_pop.setContent("someDisabledBtn","btn_ok");
+
+	g_pop.build();
+
+	G("popFormSubmit").target=g_pop.iframeIdName;
+
+	g_pop.show();
+
+}
+
+
+
+function g_close_pop()
+
+{
+
+	g_pop.close();
+
+}
+
+
+
+function formatonlinpic()
+
+{
+
+var picobj=document.getElementsByName("onlinepic");
+
+var picnum=picobj.length;
+
+
+
+	for(var i=0;i<picnum;i++)
+
+	{
+
+		if(picobj[i].width>200)
+
+		{
+
+			picobj[i].width=200;
+
+		}
+
+		if(picobj[i].height>200)
+
+		{
+
+			picobj[i].height=200;
+
+		}
+
+	}
+
+    try{document.getElementById("btn_ok").disabled = "";}catch(e){}
+
+}
+
+
+
+function addToFavor(){
+
+var blogTitle='python 线程入门'.replace(/&#39;/g,'\'');
+
+window.open('http://cang.baidu.com/do/add?it='+encodeURIComponent(blogTitle+'_百度空间')+'&iu='+encodeURIComponent(location.href)+'&fr=sp#nw=1','_s','scrollbars=no,width=600,height=450,right=75,top=20,status=no,resizable=yes');
+
+return false;
+
+}
+
+function addToiTieba(){
+    var blogTitle='python 线程入门'.replace(/&#39;/g,'\'');
+    window.open('http://tieba.baidu.com/i/sys/share?link='+encodeURIComponent('http://hi.baidu.com/8781811/blog/item/c284de4fdf2c11c3d1c86aa9.html')+'&type=text&title='+encodeURIComponent(blogTitle)+'&content=');
+}
+
+function addToShare(){
+    window.open('http://apps.hi.baidu.com/share/?url='+encodeURIComponent('http://hi.baidu.com/8781811/blog/item/c284de4fdf2c11c3d1c86aa9.html'));
+}
+
+
+var isIE = /*@cc_on!@*/false;
+
+function tracker(did,a){
+
+	return function(){
+
+		var t=new Date().getTime();
+
+		var href=a.href;
+
+        if(isIE){
+
+            var r = /href\s*=\s*("|')?([^\s]*)\1/gi;
+
+            if(r.test(a.outerHTML))
+
+                href = RegExp.$2;
+
+        }
+
+        new Image().src = "http://hi.baidu.com/sys/statlog/1.gif?m=" + did + "&v=" + encodeURIComponent(href) + "&c=" + encodeURIComponent(location.href) + "&t="+t;
+
+	}
+
+}
+
+
+
+function tracker_init(did){
+
+	var _s=document.getElementById(did);
+
+	var as = _s.getElementsByTagName('A');
+
+	for(var i = 0, j = as.length; i < j; i ++){
+
+		var a = as[i];
+
+		if(isIE){
+
+			a.attachEvent("onclick", tracker(did,a));
+
+		}else{
+
+			a.addEventListener("click", tracker(did,a), false);
+
+		}
+
+	}
+
+}
+
+
+
+
+
+/* some functions for cmt-reply */
+        var g_cmtorInfo = [];
+        function goCmtReply(cmtPorID){
+            cmtreply(g_cmtorInfo[cmtPorID],cmtPorID);
+        }
+		function cmtreply(cmtName,cmtPorID)
+
+		{
+
+			cmtName=cmtName.replace(/<|>/g,"");
+
+			window.location.hash="#send";
+
+			var cmtForm=document.form1;
+
+			cmtForm.cm.value="3";
+
+			if(!cmtForm.spReferTarget)
+
+			{
+
+				var ipt=document.createElement("input");
+
+				ipt.type="hidden";
+
+				ipt.name="spReferTarget";
+
+				ipt.value=cmtPorID;
+
+				cmtForm.appendChild(ipt);
+
+			}else cmtForm.spReferTarget.value=cmtPorID;
+
+
+
+
+
+			 //G("reTitle").innerHTML="回复"+cmtName+"：";
+
+			 G("cancleReLink").style.display="";
+
+			 cmtForm.btn_ok.value="回复评论";
+
+
+
+
+
+			 try{
+
+				editor.window.focus();
+
+                editor.window.document.body.innerHTML="回复"+cmtName+"：";
+
+
+
+                var w = editor.window;
+
+				if(w.getSelection){
+
+					var d = w.document;
+
+					var s = w.getSelection();
+
+					var r = d.createRange();
+
+					r.setStartAfter(d.body.firstChild);
+
+					r.setEndAfter(d.body.lastChild);
+
+					s.removeAllRanges();
+
+					s.addRange(r);
+
+				}
+
+			}catch(e){
+
+			 		try{
+
+				 		cmtForm.getElementsByTagName("textarea")[0].focus();
+
+				 		cmtForm.getElementsByTagName("textarea")[0].value="回复"+cmtName+"：";
+
+				 	}catch(e){}
+
+			}
+
+		}
+
+
+
+		function canclereply()
+
+		{
+
+			var cmtForm=document.form1;
+
+			cmtForm.cm.value="1";
+
+			try{cmtForm.removeChild(cmtForm.spReferTarget);}catch(e){}
+
+			/*
+
+			try{
+
+					var cmt=cmtForm.getElementsByTagName("textarea")[0]
+
+					cmt.value="";
+
+					cmt.focus();
+
+			}catch(e){}
+
+			*/
+
+
+
+			try{
+
+					var ed=editor.window.document.body;
+
+					ed.innerHTML="";
+
+					editor.window.focus();
+
+				}catch(e){
+
+					var cmt=cmtForm.getElementsByTagName("textarea")[0];
+
+					cmt.value="";
+
+					cmt.focus();
+
+			}
+
+
+
+			G("cancleReLink").style.display="none";
+
+			cmtForm.btn_ok.value="发表评论";
+
+		}
+
+
+
+		function gotoreply()
+
+		{//to checking whether reply cmt
+
+			if( window.location.hash.indexOf("&re=1")<0) return;
+
+			var cmtID=window.location.hash.split("&")[0].replace("#","");
+
+			var cmtlinks=document.getElementsByTagName("a");
+
+			for(var i=0,n=cmtlinks.length;i<n;i++)
+
+			{
+
+				if(cmtlinks[i].name==cmtID){ var rename=cmtlinks[i].getAttribute("rename");  repid=cmtlinks[i].getAttribute("repid"); break;}
+
+			}
+
+			if(typeof(rename)!="undefined"){
+
+				cmtreply(rename, repid);
+
+			}
+
+		}
+
+
+
+//-->
+
+</script>
+
+
+<script type="text/javascript">
+
+    /*<![CDATA[*/
+
+
+
+window.onerror=function(){return true;}
+
+
+
+var RelatedDocData = null, GetAndEval = false;
+
+(function(){
+
+	var xhr = BdAjax.getXHR();
+
+	if(xhr == null){
+
+		RelatedDocData = -1;
+
+		return;
+
+	}
+
+
+
+	xhr.open("GET", "/sys/search?type=8&word=python%20%CF%DF%B3%CC%C8%EB%C3%C5&item=c284de4fdf2c11c3d1c86aa9&t=" + new Date().getTime(), true);
+
+	xhr.onreadystatechange = function(){
+
+		if(xhr.readyState == 4){
+
+			if(xhr.status == 0 || xhr.status == 200){
+
+				if(GetAndEval){
+
+					eval(xhr.responseText);
+
+				}else{
+
+					RelatedDocData = xhr.responseText;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	xhr.send(null);
+
+})();
+
+/*]]>*/
+
+</script>
+
+
+
+</head>
+
+<body onLoad="formatonlinpic();">
+
+<center>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+if(top.location != self.location){
+	top.location = self.location;
+}
+var myref = encodeURIComponent("http://hi.baidu.com/8781811/blog/item/c284de4fdf2c11c3d1c86aa9%2Ehtml");
+/*]]>*/
+</script>
+<link rel="stylesheet" type="text/css" href="/ui/css/mods.css" />
+
+<link rel="stylesheet" type="text/css" href="/8781811/css/item/e650728369347bbf6c811999.css" />
+
+<link rel="stylesheet" type="text/css" href="/space.css" />
+<style type="text/css">
+/*<![CDATA[*/
+
+#usrbar{padding:4px 10px 3px 0;font-size:12px;height:19px;line-height:19px;color:#000000;font-family:Arial;text-align:right;background:#ffffff;filter:alpha(opacity=65);-moz-opacity:0.5;width:auto !important;width:100%;letter-spacing:normal}
+#usrbar a,#usrbar a:link,#usrbar a:visited{color:#0000CC;text-decoration:underline}
+#ft{clear:both;height:20px;line-height:20px;color:#666666;font-size:12px;font-family:Arial;text-align:center}
+#ft a,#ft a:link,#ft a:visited{color:#7777CC;text-decoration:underline}
+#usrbar,#usrbar a,#usrbar a:link,#usrbar a:visited,#ft,#ft a,#ft a:link,#ft a:visited{letter-spacing:normal}
+/*]]>*/
+</style>
+
+
+
+<div id="usrbar"><nobr>
+
+			<a id="hi_index" href="http://hi.baidu.com" target="_blank">百度空间</a>&nbsp;|&nbsp;<a href="http://www.baidu.com/" target="_blank">百度首页</a>&nbsp;<script type="text/javascript">
+		document.write('| <a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u=http://hi.baidu.com' + encodeURIComponent('/8781811/blog/item/c284de4fdf2c11c3d1c86aa9%2Ehtml') + '"  onclick="BdUtil.relogin(); return false;">登录</a>');
+		</script>
+		
+</nobr></div>
+
+
+    
+    <script type="text/javascript">
+            BdUtil.ns_tracker("usrbar","nm_20091208_topNavClick");
+    </script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+function set_cookie_4_bdtip(index/* start from one */, value){
+	var bdtip = document.cookie.match(/(^| )BDTIP=([^;]*)(;|$)/);
+	if(!bdtip){
+		bdtip=new Array(index);
+		for(var i=0,n=bdtip.length;i<n;i++)
+		{
+			if(bdtip[i]=="" || bdtip[i]==null)  bdtip[i]=0;
+			if(i == index - 1){
+				bdtip[i] = value;
+			}
+		}
+	}else{
+	bdtip = bdtip[2].split('-');
+	if(index > bdtip.length)  bdtip.length= index;
+	for(var i = 0, j = bdtip.length; i < j; i ++){
+		if(bdtip[i]=="" || bdtip[i]==null) bdtip[i]=0;
+		if(i == index - 1){
+			bdtip[i] = value;
+		}
+	}
+	}
+	bdtip = bdtip.join('-');
+	document.cookie = "BDTIP=" + bdtip+ ";expires=Wed, 28-Nov-37 01:45:46 GMT;path=/;";
+}
+</script>
+
+<div id="main" align="left">
+
+<!--[if IE]>
+<script>
+var objmain = document.getElementById("main");
+function updatesize(){ var bodyw = window.document.body.offsetWidth; if(bodyw <= 790) objmain.style.width="772px"; else if(bodyw >= 1016) objmain.style.width="996px"; else objmain.style.width="100%"; }
+updatesize(); window.onresize = updatesize;
+</script>
+<![endif]-->
+
+	<div id="header">
+
+	<div class="lc"><div class="rc"></div></div>
+<div class="tit"><a href="/8781811" class="titlink" title="8781811的空间 http://hi.baidu.com/8781811">Somnus(鱼)的空间</a></div>
+<div class="desc"></div>
+<div id="tabline">&nbsp;</div>
+
+	<div id="tab"><a href="/8781811">主页</a><a href="/8781811/blog" class="on">博客</a><a href="/8781811/album">相册</a><span>|</span><a href="/8781811/profile">个人档案</a>
+
+	<span>|</span><a href="/8781811/friends">好友</a>
+
+
+
+
+
+
+
+	</div>
+
+</div>
+
+
+
+<div class="stage">
+
+<div class="stagepad">
+
+<div style="width:100%">
+
+
+
+
+
+	
+
+
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="modth">
+
+	<tr><td class="modtl" width="7">&nbsp;</td>
+
+	<td class="modtc" nowrap><div class="modhead"><span class="modtit">查看文章</span></div></td>
+
+	<td class="modtc" nowrap align="right"></td>
+
+	<td class="modtr" width="7">&nbsp;</td>
+
+	</tr></table>
+
+
+
+<div id="m_blog" class="modbox" style="overflow-x:hidden;">
+
+<div class="tit">
+
+python 线程入门</div>
+
+<div class="date">2009-07-29  23:30</div>
+
+
+
+
+<table style="table-layout:fixed;width:100%"><tr><td><div id="blog_text" class="cnt"  ><div class="cnt" >
+<p>看到一篇好文章，赶紧转载，以备以后要用。</p>
+<p> </p>
+<p>我们在做软件开发的时候很多要用到多线程技术。例如如果做一个下载软件象flashget就要用到、象在线视频工具realplayer也要用到因为要同时下载media stream还要播放。其实例子是很多的。</p>
+<p>线程相对进程来说是&ldquo;轻量级&rdquo;的，操作系统用较少的资源创建和管理线程。程序中的线程在相同的内存空间中执行，并共享许多相同的资源。</p>
+<p>在<font color="#99cc00">python</font>中如何创建一个线程对象</p>
+<p>如果你要创建一个线程对象，很简单，只要你的类继承<font color="#99cc00">threading.Thread</font>，然后在<font color="#99cc00">__init__</font>里首先调用<font color="#99cc00">threading.Thread</font>的<font color="#99cc00">__init__</font>方法即可</p>
+<p><font color="#99cc00">import threading<br>
+class mythread(threading.Thread):<br>
+def __init__(self, threadname):<br>
+threading.Thread.__init__(self, name = threadname)<br>
+....</font></p>
+<p>这才仅仅是个空线程，我可不是要他拉空车的，他可得给我干点实在活。很简单，重写类的<font color="#99cc00">run()</font>方法即可，把你要在线程执行时做的事情都放到里面</p>
+<p><font color="#99cc00">import threading<br>
+import time<br>
+class mythread(threading.Thread):<br>
+def __init__(...):<br>
+....<br>
+def run(self):<br>
+for i in range(10):<br>
+print self.getName, i<br>
+time.sleep(1)</font></p>
+<p>以上代码我们让这个线程在执行之后每隔1秒输出一次信息到屏幕，10次后结束</p>
+<p><font color="#99cc00">getName()</font>是<font color="#99cc00">threading.Thread</font>类的一个方法，用来获得这个线程对象的<font color="#99cc00">name</font>。还有一个方法<font color="#99cc00">setName()</font>当然就是来设置这个线程对象的<font color="#99cc00">name</font>的了。</p>
+<p>如果要创建一个线程，首先就要先创建一个线程对象</p>
+<p><font color="#99cc00">mythread1 = mythread('mythread 1')</font></p>
+<p>一个线程对象被创建后，他就处于&ldquo;<font color="#99cc00">born</font>&rdquo;（诞生状态）</p>
+<p>如何让这个线程对象开始运行呢?只要调用线程对象的<font color="#99cc00">start()</font>方法即可</p>
+<p><font color="#99cc00">mythread1.start()</font></p>
+<p>现在线程就处于&ldquo;<font color="#99cc00">ready</font>&rdquo;状态或者也称为&ldquo;<font color="#99cc00">runnable</font>&rdquo;状态。</p>
+<p>奇怪吗？不是已经<font color="#99cc00">start</font>了吗？为什么不称为&ldquo;<font color="#99cc00">running</font>&rdquo;状态呢？其实是有原因的。因为我们的计算机一般是不具有真正并行处理能力的。我们所谓的多线程只是把时间分成片段，然后隔一个时间段就让一个线程执行一下，然后进入&ldquo;<font color="#99cc00">sleeping</font> &rdquo;状态，然后唤醒另一个在&ldquo;<font color="#99cc00">sleeping</font>&rdquo;的线程，如此循环<font color="#99cc00">runnable-&gt;sleeping-&gt;runnable...</font> ，只是因为计算机执行速度很快，而时间片段间隔很小，我们感受不到，以为是同时进行的。所以说一个线程在<font color="#99cc00">start</font>了之后只是处在了可以运行的状态，他什么时候运行还是由系统来进行调度的。</p>
+<p>那一个线程什么时候会&ldquo;<font color="#99cc00">dead</font>&rdquo;呢？一般来说当线程对象的<font color="#99cc00">run</font>方法执行结束或者在执行中抛出异常的话，那么这个线程就会结束了。系统会自动对&ldquo;<font color="#99cc00">dead</font>&rdquo;状态线程进行清理。</p>
+<p>如果一个线程<font color="#99cc00">t1</font>在执行的过程中需要等待另一个线程<font color="#99cc00">t2</font>执行结束后才能运行的话那就可以在<font color="#99cc00">t1</font>在调用<font color="#99cc00">t2</font>的<font color="#99cc00">join()</font>方法</p>
+<p><font color="#99cc00">....<br>
+def t1(...):<br>
+...<br>
+t2.join()<br>
+...</font></p>
+<p>这样<font color="#99cc00">t1</font>在执行到<font color="#99cc00">t2.join()</font>语句后就会等待<font color="#99cc00">t2</font>结束后才会继续运行。</p>
+<p>但是假如<font color="#99cc00">t1</font>是个死循环的话那么等待就没有意义了，那怎么办呢？可以在调用<font color="#99cc00">t2</font>的<font color="#99cc00">join()</font>方法的时候给一个浮点数做超时参数，这样这个线程就不会等到花儿也谢了了。我等你10s，你不回来我还不允许我改嫁啊？<font color="#ff0000">:)</font></p>
+<p><font color="#99cc00">def t1(...):<br>
+...<br>
+t2.join(10)<br>
+...</font></p>
+<p>如果一个进程的主线程运行完毕而子线程还在执行的话，那么进程就不会退出，直到所有子线程结束为止，如何让主线程结束的时候其他子线程也乖乖的跟老大撤退呢？那就要把那些不听话的人设置为听话的小弟，使用线程对象的<font color="#99cc00">setDaemon()</font>方法，参数为<font color="#99cc00">bool</font>型。<font color="#99cc00">True</font>的话就代表你要听话，我老大（主线程）扯呼，你也要跟着撤，不能拖后腿。如果是<font color="#99cc00">False</font>的话就不用那么听话了，老大允许你们将在外军命有所不受的。需要注意的是<font color="#99cc00">setDaemon()</font>方法必须在线程对象没有调用<font color="#99cc00">start()</font>方法之前调用，否则没效果。</p>
+<p><font color="#99cc00">t1 = mythread('t1')<br>
+print t1.getName(),t1.isDaemon()<br>
+t1.setDaemon(True)<br>
+print t1.getName(),t1.isDaemon()<br>
+t1.start()<br>
+print 'main thread exit'</font></p>
+<p>当执行到 <font color="#99cc00">print 'main thread exit' </font>后，主线程就退出了，当然<font color="#99cc00">t1</font>这个线程也跟着结束了。但是如果不使用<font color="#99cc00">t1</font>线程对象的<font color="#99cc00">setDaemon()</font>方法的话，即便主线程结束了，还要等待t1线程自己结束才能退出进程。<font color="#99cc00">isDaemon()</font>是用来获得一个线程对象的<font color="#99cc00">Daemonflag</font>状态的。</p>
+<p>如何来获得与线程有关的信息呢？</p>
+<p>获得当前正在运行的线程的引用</p>
+<p><font color="#99cc00">running = threading.currentThread()</font></p>
+<p>获得当前所有活动对象（即<font color="#99cc00">run</font>方法开始但是未终止的任何线程）的一个列表</p>
+<p><font color="#99cc00">threadlist = threading.enumerate()</font></p>
+<p>获得这个列表的长度</p>
+<p><font color="#99cc00">threadcount = threading.activeCount()</font></p>
+<p>查看一个线程对象的状态调用这个线程对象的<font color="#99cc00">isAlive()</font>方法，返回1代表处于&ldquo;<font color="#99cc00">runnable</font>&rdquo;状态且没有&ldquo;<font color="#99cc00">dead</font>&rdquo;</p>
+<p><font color="#99cc00">threadflag = threading.isAlive()</font></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<div><br>
+<h5><strong>Python线程编程（二）简单的线程同步</strong></h5>
+<br>
+<br>
+<p><br>
+&nbsp;&nbsp;&nbsp;   多个执行线程经常要共享数据，如果仅仅读取共享数据还好，但是如果多个线程要修改共享数据的话就可能出现无法预料的结果。</p>
+<p>&nbsp;&nbsp;&nbsp;   假如两个线程对象<font color="#ff6600">t1</font>和<font color="#ff6600">t2</font>都要对数值<font color="#ff6600">num=0</font>进行增1运算，那么<font color="#ff6600">t1</font>和<font color="#ff6600">t2</font>都各对<font color="#ff6600">num</font>修改<font color="#ff6600">10</font>次的话，那么<font color="#ff6600">num</font>最终的结果应该为<font color="#ff6600">20</font>。但是如果当<font color="#ff6600">t1</font>取得<font color="#ff6600">num</font>的值时（假如此时<font color="#ff6600">num</font>为<font color="#ff6600">0</font>），系统把<font color="#ff6600">t1</font>调度为&ldquo;<font color="#ff6600">sleeping</font>&rdquo;状态，而此时<font color="#ff6600">t2</font>转换为&ldquo;<font color="#ff6600">running</font>&rdquo;状态，此时<font color="#ff6600">t2</font>获得的<font color="#ff6600">num</font>的值也为<font color="#ff6600">0</font>，然后他把<font color="#ff6600">num+1</font>的值<font color="#ff6600">1</font>赋给<font color="#ff6600">num</font>。系统又把<font color="#ff6600">t2</font>转化为&ldquo;<font color="#ff6600">sleeping</font>&rdquo;状态，<font color="#ff6600">t1</font>为&ldquo;<font color="#ff6600">running</font>&rdquo;状态，由于<font color="#ff6600">t1</font>已经得到<font color="#ff6600">num</font>值为<font color="#ff6600">0</font>，所以他也把<font color="#ff6600">num+1</font>的值赋给了<font color="#ff6600">num</font>为<font color="#ff6600">1</font>。本来是<font color="#ff6600">2</font>次增<font color="#ff6600">1</font>运行，结果却是<font color="#ff6600">num</font>只增了<font color="#ff6600">1</font>次。类似这样的情况在多线程同时执行的时候是有可能发生的。所以为了防止这类情况的出现就要使用线程同步机制。</p>
+<p>&nbsp;&nbsp;&nbsp;   最简单的同步机制就是&ldquo;锁&rdquo;</p>
+<p>&nbsp;&nbsp;&nbsp;   锁对象用<font color="#ff6600">threading.RLock</font>类创建</p>
+<p>&nbsp;&nbsp;&nbsp;   <font color="#ff6600">mylock = threading.RLock()</font></p>
+<p>&nbsp;&nbsp;&nbsp;   如何使用锁来同步线程呢？线程可以使用锁的<font color="#ff6600">acquire()</font> （获得）方法，这样锁就进入&ldquo;<font color="#ff6600">locked</font>&rdquo;状态。每次只有一个线程可以获得锁。如果当另一个线程试图获得这个锁的时候，就会被系统变为&ldquo;<font color="#ff6600">blocked</font>&rdquo;状态，直到那个拥有锁的线程调用锁的<font color="#ff6600">release()</font> （释放）方法，这样锁就会进入&ldquo;<font color="#ff6600">unlocked</font>&rdquo;状态。&ldquo;<font color="#ff6600">blocked</font>&rdquo;状态的线程就会收到一个通知，并有权利获得锁。如果多个线程处于&ldquo;<font color="#ff6600">blocked</font>&rdquo;状态，所有线程都会先解除&ldquo;<font color="#ff6600">blocked</font>&rdquo;状态，然后系统选择一个线程来获得锁，其他的线程继续沉默（&ldquo;<font color="#ff6600">blocked</font>&rdquo;）。</p>
+<p><font color="#ff6600">import threading<br>
+mylock = threading.RLock()<br>
+class mythread(threading.Thread)<br>
+&nbsp;&nbsp;&nbsp;   ...<br>
+&nbsp;&nbsp;&nbsp;   def run(self ...):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   ...&nbsp;&nbsp;&nbsp;&nbsp;   <font color="#3366ff">#此处 <font color="#ff00ff">不可以 </font>放置修改共享数据的代码<br>
+</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   mylock.acquire()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   ...&nbsp;&nbsp;&nbsp;&nbsp;   <font color="#3366ff">#此处 <font color="#ff00ff">可以 </font>放置修改共享数据的代码<br>
+</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   mylock.release()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   ...&nbsp;&nbsp;&nbsp;&nbsp;   </font><font color="#3366ff">#此处 <font color="#ff00ff">不可以 </font>放置修改共享数据的代码</font></p>
+<p>&nbsp;&nbsp;&nbsp;   我们把修改共享数据的代码称为&ldquo;临界区&rdquo;，必须将所有&ldquo;临界区&rdquo;都封闭在同一锁对象的<font color="#ff6600">acquire()</font>和<font color="#ff6600">release()</font>方法调用之间。</p>
+<p>&nbsp;&nbsp;&nbsp;   锁只能提供最基本的同步级别。有时需要更复杂的线程同步，例如只在发生某些事件时才访问一个临界区（例如当某个数值改变时）。这就要使用&ldquo;条件变量&rdquo;。</p>
+<p>&nbsp;&nbsp;&nbsp;   条件变量用<font color="#ff6600">threading.Condition</font>类创建</p>
+<p>&nbsp;&nbsp;&nbsp;   <font color="#ff6600">mycondition = threading.Condition()</font></p>
+<p>&nbsp;&nbsp;&nbsp;   条件变量是如何工作的呢？首先一个线程成功获得一个条件变量后，调用此条件变量的<font color="#ff6600">wait()</font>方法会导致这个线程释放这个锁，并进入&ldquo;<font color="#ff6600">blocked</font>&rdquo;状态，直到另一个线程调用同一个条件变量的<font color="#ff6600">notify()</font>方法来唤醒那个进入&ldquo;<font color="#ff6600">blocked</font>&rdquo;状态的线程。如果调用这个条件变量的<font color="#ff6600">notifyAll()</font>方法的话就会唤醒所有的在等待的线程。</p>
+<p>&nbsp;&nbsp;&nbsp;   如果程序或者线程永远处于&ldquo;<font color="#ff6600">blocked</font>&rdquo;状态的话，就会发生死锁。所以如果使用了锁、条件变量等同步机制的话，一定要注意仔细检查，防止死锁情况的发生。对于可能产生异常的临界区要使用异常处理机制中的<font color="#ff6600">finally</font>子句来保证释放锁。等待一个条件变量的线程必须用<font color="#ff6600">notify()</font>方法显式的唤醒，否则就永远沉默。保证每一个<font color="#ff6600">wait()</font>方法调用都有一个相对应的<font color="#ff6600">notify()</font>调用，当然也可以调用<font color="#ff6600">notifyAll()</font>方法以防万一。</p>
+</div>
+<p> </p>
+<p> </p>
+<p> </p>
+<div><br>
+<h5><strong>Python线程编程（三）同步队列</strong></h5>
+<br>
+<br>
+<p><br>
+我 们经常会采用生产者/消费者关系的两个线程来处理一个共享缓冲区的数据。例如一个生产者线程接受用户数据放入一个共享缓冲区里，等待一个消费者线程对数据 取出处理。但是如果缓冲区的太小而生产者和消费者两个异步线程的速度不同时，容易出现一个线程等待另一个情况。为了尽可能的缩短共享资源并以相同速度工作 的各线程的等待时间，我们可以使用一个&ldquo;队列&rdquo;来提供额外的缓冲区。<br>
+<br>
+创建一个&ldquo;队列&rdquo;对象<br>
+<br>
+<font color="#ff9900">import Queue<br>
+myqueue = Queue.Queue(maxsize = 10)<br>
+<br>
+</font><font color="#ff9900">Queue.Queue</font>类即是一个队列的同步实现。队列长度可为无限或者有限。可通过<font color="#ff9900">Queue</font>的构造函数的可选参数<font color="#ff9900">maxsize</font>来设定队列长度。如果<font color="#ff9900">maxsize</font>小于<font color="#ff9900">1</font>就表示队列长度无限。<br>
+<br>
+将一个值放入队列中<br>
+<br>
+<font color="#ff9900">myqueue.put(10)<br>
+</font><br>
+调用队列对象的<font color="#ff9900">put()</font>方法在队尾插入一个项目。<font color="#ff9900">put()</font>有两个参数，第一个<font color="#ff9900">item</font>为必需的，为插入项目的值；第二个<font color="#ff9900">block</font>为可选参数，默认为<font color="#ff9900">1</font>。如果队列当前为空且<font color="#ff9900">block</font>为<font color="#ff9900">1</font>，<font color="#ff9900">put()</font>方法就使调用线程暂停,直到空出一个数据单元。如果<font color="#ff9900">block</font>为<font color="#ff9900">0</font>，<font color="#ff9900">put</font>方法将引发<font color="#ff9900">Full</font>异常。<br>
+<br>
+将一个值从队列中取出<br>
+<br>
+<font color="#ff9900">myqueue.get()<br>
+</font><br>
+调用队列对象的<font color="#ff9900">get()</font>方法从队头删除并返回一个项目。可选参数为<font color="#ff9900">block</font>，默认为<font color="#ff9900">1</font>。如果队列为空且<font color="#ff9900">block</font>为<font color="#ff9900">1</font>，<font color="#ff9900">get()</font>就使调用线程暂停，直至有项目可用。如果<font color="#ff9900">block</font>为0，队列将引发<font color="#ff9900">Empty</font>异常。<br>
+<br>
+我们用一个例子来展示如何使用<font color="#ff9900">Queue<br>
+<br>
+</font><font color="#ff9900"># queue_example.py<br>
+from Queue import Queue<br>
+import threading<br>
+import random<br>
+import time</font></p>
+<p><font color="#ff9900"># Producer thread<br>
+class Producer(threading.Thread):<br>
+def __init__(self, threadname, queue):<br>
+threading.Thread.__init__(self, name = threadname)<br>
+self.sharedata = queue<br>
+def run(self):<br>
+for i in range(20):<br>
+print self.getName(),'adding',i,'to queue'<br>
+self.sharedata.put(i)<br>
+time.sleep(random.randrange(10)/10.0)<br>
+print self.getName(),'Finished'</font></p>
+<p><font color="#ff9900"># Consumer thread<br>
+class Consumer(threading.Thread):<br>
+def __init__(self, threadname, queue):<br>
+threading.Thread.__init__(self, name = threadname)<br>
+self.sharedata = queue<br>
+def run(self):<br>
+for i in range(20):<br>
+print self.getName(),'got a value:',self.sharedata.get()<br>
+time.sleep(random.randrange(10)/10.0)<br>
+print self.getName(),'Finished'</font></p>
+<p><font color="#ff9900"># Main thread<br>
+def main():<br>
+queue = Queue()<br>
+producer = Producer('Producer', queue)<br>
+consumer = Consumer('Consumer', queue)</font></p>
+<p><font color="#ff9900">print 'Starting threads ...'<br>
+producer.start()<br>
+consumer.start()</font></p>
+<p><font color="#ff9900">producer.join()<br>
+consumer.join()</font></p>
+<p><font color="#ff9900">print 'All threads have terminated.'</font></p>
+<p><font color="#ff9900">if __name__ == '__main__':<br>
+main()</font></p>
+<p>示例代码中实现了两个类：生产者类<font color="#ff9900">Producer</font>和消费者类<font color="#ff9900">Consumer</font>。前者在一个随机的时间内放入一个值到队列<font color="#ff9900">queue</font>中然后显示出来，后者在一定随机的时间内从队列<font color="#ff9900">queue</font>中取出一个值并显示出来。</p>
+</div>
+</div></div></td></tr></table>
+
+<br>
+
+<div class="opt">
+
+<a href="/8781811/blog/category/Python" title="查看该分类中所有文章">类别：Python</a>
+
+| <a  href="#" onclick="addToShare(); return false;" target="_blank"><img src="http://img.baidu.com/hi/img/share.gif" border="0" align="absbottom"  /></a>
+
+
+
+
+	
+
+	| <a title="将此文章添加到百度搜藏" href="http://cang.baidu.com/do/add" onClick="return addToFavor();" target="_blank">添加到搜藏</a>
+
+	
+    | <a title="将此文章分享到i贴吧" href="#" onclick="addToiTieba(); return false;"  target="_blank">分享到i贴吧</a>
+
+
+    | 浏览(<span id="result"></span>)
+
+	| <a href="#send">评论</a>&nbsp;(0)
+
+
+
+<script language="javascript">
+
+/*<![CDATA[*/
+
+var pre = [true,'模拟用户登陆 python （转）', '模拟用户登陆 python （转）','/8781811/blog/item/ed1747002d29ea0f1d9583df.html'];
+
+var post = [true,'python抓取页面之网易','python抓取页面之网易', '/8781811/blog/item/cedea1c31c5b013ce5dd3bb7.html'];
+
+if(pre[0] || post[0]){
+
+	document.write('<div style="height:5px;line-height:5px;">&nbsp;</div><div id="in_nav">');
+
+	if(pre[0]){
+
+		document.write('上一篇：<a href="' + pre[3] + '" title="' + pre[1] + '">' +  pre[2] + '</a>&nbsp;&nbsp;&nbsp;&nbsp;');
+
+	}
+
+	if(post[0]){
+
+		document.write('下一篇：<a href="' + post[3] + '" title="' + post[1] + '">' +  post[2] + '</a>');
+
+	}
+
+	document.write('</div>');
+
+}
+
+/*]]>*/
+
+</script>
+
+
+
+</div>
+
+
+
+<div class="line">&nbsp;</div>
+
+
+
+
+
+
+
+    
+<style type="text/css">
+
+/*<![CDATA[*/
+
+#in_related_doc a { text-decoration:none; }
+
+/*]]>*/
+
+</style>
+
+<div id="in_related_tmp"></div>
+
+<script language="javascript" type="text/javascript">
+
+/*<![CDATA[*/
+
+function HI_MOD_IN_RELATED_DOC_CALLBACK(arg){
+
+    if(arg.length <= 1) return false;
+
+    var hasMore = arg[0];
+
+    var D=function(A,B){A[A.length]=B;}
+
+    if(arg.length % 2 == 0) D(arg, ["","","",""]);
+
+
+
+    var html = ['<div id="in_related_doc"><div class="tit">相关文章：</div>'];
+
+    D(html, '<table cellpadding="0" cellspacing="3" border="0">');
+
+    for(var i = 1, j = arg.length; i < j; i += 2){
+
+        D(html, '<tr>');
+
+        D(html, '<td width="15px"><a style="font-size:25px" >&#8226;</a></td><td><a href="http://hi.baidu.com/' + arg[i][3] + '/blog/item/' + arg[i][2] + '.html" target="_blank" title="' + arg[i][0] + '">' + arg[i][1] + '</a>');
+
+        D(html, new Array(10).join('\u3000'));
+
+        D(html, '</td>');
+
+        if(arg[i + 1][0] != "")
+
+            D(html, '<td width="15px"><a style="font-size:25px" >&#8226;</a></td><td><a href="http://hi.baidu.com/' + arg[i + 1][3] + '/blog/item/' + arg[i + 1][2] + '.html" target="_blank" title="' + arg[i + 1][0] + '">' + arg[i + 1][1] + '</a></td>');
+
+        else
+
+            D(html, '<td>&nbsp;</td><td>&nbsp;</td>');
+
+        D(html, '</tr>');
+
+    }
+
+    if(hasMore) D(html, '<tr><td colspan="4"><a target="_blank" href="/sys/search?pageno=1&type=7&sort=1&word=python%20%CF%DF%B3%CC%C8%EB%C3%C5&item=c284de4fdf2c11c3d1c86aa9">更多&gt;&gt;</a></td></tr>');
+
+    D(html, '</table></div><div class="line">&nbsp;</div>');
+
+
+
+    var div = document.getElementById('in_related_tmp');
+
+    if(div){
+
+        div.innerHTML = html.join('');
+
+        while(div.firstChild){
+
+            div.parentNode.insertBefore(div.firstChild, div);
+
+        }
+
+        div.parentNode.removeChild(div);
+
+    }
+
+	window.setTimeout("tracker_init('in_related_doc')",100);
+
+}
+
+
+
+if(RelatedDocData == -1){	// not supported xhr
+
+    var script = document.createElement('script');
+
+    script.type = 'text/javascript';
+
+    script.src = '/sys/search?type=8&word=python%20%CF%DF%B3%CC%C8%EB%C3%C5&item=c284de4fdf2c11c3d1c86aa9&t=' + new Date().getTime();
+
+    document.getElementsByTagName('HEAD')[0].appendChild(script);
+
+}else if(RelatedDocData == null){
+
+	GetAndEval = true;
+
+}else{
+
+	eval(RelatedDocData);
+
+}
+
+
+
+/*]]>*/
+
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="in_reader">
+
+<div class="tit">最近读者：</div>
+
+
+
+<script>
+
+
+
+	var g_spAnnony=true;
+
+
+
+
+
+var g_read=[
+
+
+
+["beatsthehell","bc2d626561747374686568656c6c590a","beatsthehell"],
+
+
+
+["imdong","a1fb736172696365735a01","sarices"],
+
+
+
+{}
+
+];
+
+g_read.length=g_read.length-1;
+
+
+
+var _rh1="";
+
+var _rh2="";
+
+
+
+function wrreader(){
+
+	_rh1 += '<table width="100%" ><tr>';
+
+	_rh2+='<tr>';
+
+	if(g_spAnnony){
+
+		_rh1+='<td align="center" width="10%" ><img border="0" width="55" height="55" src="http://img.baidu.com/hi/img/portraitn.jpg"></td>';
+
+		_rh2+='<td>&nbsp;</td>';
+
+		if(g_read.length>0){
+
+			_rh1+='<td align="left" width="12%">';
+
+		}else{
+
+			_rh1+='<td align="left" width="100%">';
+
+		}
+
+		_rh1+='<a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u='+myref+'" target="_self" onclick="BdUtil.relogin(); return false;">登录</a>后，您就出现在这里。</td>';
+
+		_rh2+='<td>&nbsp;</td>'
+
+	}
+
+	if(g_read.length==0){
+
+		if(!g_spAnnony){
+
+			_rh1+='<td align=left width="100%">最近还没有登录用户看过这篇文章……</td>';
+
+			_rh2+='<td>&nbsp;</td>';
+
+		}
+
+	}else{
+
+		for(i=0,len=g_read.length;i<len;i++){
+
+			_rh1+='<td align="center" valign="bottom" width="10%" class="user"><a href="/'+g_read[i][0]+'" target="_blank" class="ucard" pid='+g_read[i][1]+'><img border="0" src="http://himg.baidu.com/sys/portraitn/item/'+g_read[i][1]+'.jpg"></a></td>';
+
+			_rh2+='<td align="center" valign="top" class="user"><a href="/'+g_read[i][0]+'" target="_blank" class="ucard" pid="'+g_read[i][1]+'">'+g_read[i][2]+'</a></td>';
+
+		}
+
+	}
+
+	_rh1+='<td width="100%"></td></tr>';
+
+	_rh2+='<td></td></tr></table>';
+
+	document.write(_rh1+_rh2);
+
+}
+
+
+
+wrreader();
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+
+<div class="line">&nbsp;</div>
+
+
+
+
+
+
+
+<script language="JavaScript">
+
+allkey=allkey+"d89eefe86c8fcf3eb90e2d44_c284de4fdf2c11c3d1c86aa9_";
+
+</script>
+
+
+
+<div id="in_comment">
+
+<a name="comment"></a>
+
+<div class="tit">网友评论：</div>
+
+<script>
+
+function writecmt(type,id,cmtname,cmturl,portraitId){
+
+	var html1="";
+
+	cmturl=cmturl.replace("https://","http://");
+
+	if(type==1){
+
+			html1="<a href='"+cmturl+"' target='_blank' class='ucard' pid="+portraitId+"><img  border='0' src='http://himg.baidu.com/sys/portraitn/item/"+portraitId+".jpg'><br>"+cmtname+"</a>";
+
+	}else{
+
+		if(cmtname=="" || cmtname=="匿名网友"){
+
+			if(cmturl==""){
+
+				html1="<a>匿名网友</a>";
+
+			}else{
+
+				html1="<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'>"+cmtname+"</a>";
+
+			}
+
+		}else{
+
+			if(cmturl==""){
+
+				html1="<div class='f14' style='display:inline'>网友:<a>"+cmtname+"</a></div>";
+
+			}else{
+
+				html1="<div class='f14' style='display:inline'>网友:<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'>"+cmtname+"</a></div>";
+
+			}
+
+		}
+
+	}
+
+	document.write(html1);
+
+}
+
+function filterCmtContent(n){
+
+	if(!BdBrowser.isIE){
+
+		var defaultfilter1='<span style="filter:glow(color=#000000,strength=2);height:0px;color:#000000">';
+
+		var defaultfilter2='<span style="height: 0px; color: rgb(0, 0, 0);">';
+
+		var commentDiv=document.getElementById(n);
+
+		var divs=commentDiv.getElementsByTagName('div');
+
+		var d,tmp;
+
+		for( var i=0,len=divs.length;i<len;i++){
+
+			d=divs[i];
+
+			if(d.getAttribute('name')=='cmtcontent'){
+
+				tmp=d.innerHTML;
+
+				tmp=tmp.replace(/<span style="filter:glow\(color=#([0-9a-z]{3,6}),strength=2\);height:0px;color:#([0-9a-z]{3,6})">/ig,defaultfilter1);
+
+				tmp=tmp.replace('<span style="height: 0px; color: rgb(255, 255, 255);">',defaultfilter2);
+
+				d.innerHTML=tmp;
+
+			}
+
+		}
+
+	}
+
+}
+
+
+
+</script>
+
+
+
+
+<div id="page"></div>
+
+
+
+</div>
+
+<script>filterCmtContent('in_comment');</script>
+
+
+
+
+
+
+<div id="in_send">
+
+<a name="send"></a>
+
+<form name="form1" id="popFormSubmit" action="/8781811/commit" method="post" onSubmit="return checkcmtform()">
+
+<input type="hidden" name="bdstoken" value="d531d1a44d1ea77b12b86451c6adfd05">
+
+<input type="hidden" name="ct" value="8">
+
+<input type="hidden" name="cm" value="1">
+
+<input type="hidden" name="spBlogID" value="c284de4fdf2c11c3d1c86aa9">
+
+<input type="hidden" name="spRefURL" id="spRefURL" />
+
+<script>
+
+    document.getElementById("spRefURL").value = window.location.href;
+
+</script>
+
+<div class="tit">发表评论：</div>
+
+<table width="620" border="0" cellspacing="5" cellpadding="0">
+
+
+
+
+<tr id="2_err" style="display:none">
+
+<td>&nbsp;</td>
+
+<td><div class="error" id="2_err_con"></div></td>
+
+</tr>
+
+
+
+<tr>
+
+<td valign="top" class="f14" id="reTitle">内　容：</td>
+
+<td>
+	<textarea name="spBlogCmtText" id="spBlogCmtText" style="width:520px;height:155px"  tabindex="3" onFocus="hidErr(3);" onclick="BdUtil.relogin(); return false;" ></textarea>
+</td>
+
+</tr>
+
+<tr id="3_err" style="display:none">
+
+<td>&nbsp;</td>
+
+<td><div class="error" id="3_err_con"></div></td>
+
+</tr>
+ 
+
+
+
+<tr>
+
+<td valign="top"class="f14">&nbsp;</td>
+
+<td valign="top" class="f14"><input id="btn_ok" name="btn_ok" type="submit" onclick="BdUtil.relogin(); return false;" value="发表评论" tabindex=5>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="cancleReLink" onClick="canclereply(); return false;" style="display:none; font-size:12px;color:#666;">取消回复</a></td>
+
+</tr>
+
+</table>
+
+</form>
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+
+</div>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="8">
+
+<tr><td class="modbl" width="7">&nbsp;</td>
+
+<td class="modbc">&nbsp;</td>
+
+<td class="modbr" width="7">&nbsp;</td>
+
+</tr></table>
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+<script src="/fc/editor/dialog/fck_music/swf.js?v=1.0.js"></script>
+<script src="/fc/editor/dialog/fck_music/fck_music_auto.js?v=1.0.js"></script>
+
+<script src="/js/bgmusic.js?v=1.0.js" language="javascript"></script>
+<script language="javascript">
+function initBlogTextForFCK(){
+	//fck init music
+	if(window.Node){Node.prototype.replaceNode=function(Node){this.parentNode.replaceChild(Node,this);}}
+	var imgBox=document.getElementsByName('musicName');
+	var isAutoPlay=true;
+	for(var i=0,n=imgBox.length;i<n;i++){
+		var img=imgBox[i];
+		if(img.getAttribute('rel')){
+			var musicSrc=img.getAttribute('rel');
+			var musicDiv = document.createElement("SPAN");
+			var tmp=musicSrc.substr (musicSrc.indexOf('#')+1, 1);
+			var tmpAutoPlay=(tmp=='1');
+			if(isAutoPlay&&tmpAutoPlay){
+				isAutoPlay=false;
+				tmpAutoPlay=true;
+			}else{
+				tmpAutoPlay=false;
+			}
+			var shtml=creatbgmusic(musicSrc.substr(0,musicSrc.indexOf('#')).replace(/[\s><()'"]+/g,''),1,true,false,tmpAutoPlay,tmpAutoPlay,'FckMusicHelper');
+			shtml=shtml.replace('width=100%','width=200').replace('width="100%"','width=200 height=45');			img.replaceNode(musicDiv);
+			musicDiv.innerHTML=shtml;
+			i--;n--;
+		}
+	}
+		//fck init vote
+	!function(){
+		var vote = document.getElementsByName('FCK_VOTE');
+		for(var i=0,len=vote.length,item,rel=0,cdiv;i<len;i++){
+			item = vote[0];
+			rel = item.getAttribute('rel')|0;
+			if(rel){
+				cdiv = document.createElement('span');
+				item.parentNode.replaceChild(cdiv,item);
+				baidu.swf.create({
+					"id": "VOTE_FLASH_"+i,
+					"width" : "585",
+					"height": "100",
+					"ver"   : "9.0.0",
+					"wmode" : document.all ? "opaque" : "window",
+					"allowscriptaccess" : "always",
+					"url"   : "http://static.hi.baidu.com/apps/appvote/spaceVote.swf?vote_id="+rel
+				},cdiv)
+
+			}
+		}
+	}()
+	//document.getElementById('blog_text').style.display='';
+}
+
+</script>
+
+<script language="javascript">
+
+<!--
+
+var hstr="/8781811/brwstat?key1=1";
+
+document.write("<script src='"+hstr+"&key2="+allkey+"'><\/script>");
+
+//-->
+
+</script>
+
+<br><center><div id="ft">&copy;2010 Baidu</div></center>
+
+
+
+<script>
+
+if(document.getElementById("m_blog"))
+
+{
+
+	var imgarray = document.getElementById("m_blog").getElementsByTagName('img');
+
+	var imgw = document.getElementById("m_blog").offsetWidth;
+
+	imgw =imgw-40;
+
+    for(var i=0; i<imgarray.length; i++){
+    	if(imgarray[i].className=="blogimg" && imgarray[i].width>=imgw) {
+	    	imgarray[i].width=imgw;
+        }
+    }
+}
+
+
+
+// Fix ff bugs
+
+var blog_text = document.getElementById('blog_text');
+
+blog_text.innerHTML = blog_text.innerHTML.replace(/href\s*=\s*("|')?(\.\.\/\.\.\/)/gi,"href=$1../$2");
+
+
+initBlogTextForFCK();
+gotoreply();
+
+</script>
+
+</center>
+
+
+
+
+
+<img src="http://c.baidu.com/c.gif?t=6&p=3" style="display:none;"/>
+<iframe id="submitiframe" name="submitiframe" src="/st/blank.html" style="display:none;"></iframe>
+
+			
+
+
+<script type="text/javascript">
+/*<![CDATA[*/
+
+var SP = SP || {};
+if(!SP.mycard){
+    SP.mycard = new (function(){
+        var me = this;
+        var _cancleAction = Session.isDrag;  
+        var _list = [];
+        var _sourceLoaded = false;    
+        me.bind = function (_id){
+            if(_cancleAction){  //abort
+                return;
+            }
+            if(!_sourceLoaded){
+                _list.push(_id);
+            } else {
+                baidu.space.mycard.bind(_id);
+            }
+        }
+        me.init = function (_config){
+            _cancleAction = !!_config.cancle;
+        }
+        me.onSourceLoaded = function (){
+            _sourceLoaded = true;
+            baidu.space.mycard.init({portrait: Session.visitorPortrait});
+            for(var i=0,len=_list.length; i<len; i++){
+                baidu.space.mycard.bind(_list[i]);
+            }
+        }
+    })();
+    baidu.dom.ready(function(){
+        BdAjax.loadCSS('/ui/css/ucard/ucard.css?v=020507100.css');
+        BdAjax.loadJS('/ui/scripts/ucard/ucard.js?v=020507100.js');
+    });
+}
+SP.mycard.bind('m_blog');  
+/*]]>*/
+</script>
+
+
+	<script type="text/javascript" src="/ui/scripts/refer/refer.js"></script>
+	
+<link rel="stylesheet" type="text/css" href="/ui/css/userset.css" />
+<link rel="stylesheet" type="text/css" href="/ui/css/beautify/widget.css" />
+
+<script type="text/javascript" src="http://hi.baidu.com/hi/cms/article/beautifyconfig/default_user_suit.js"></script>
+
+<script type="text/javascript">
+//页面状态变量
+var Session = Session || {
+    spaceURL: "/8781811",
+    pageURL: "http://hi.baidu.com/8781811/blog/item/c284de4fdf2c11c3d1c86aa9%2Ehtml",    //当前访问的url
+    isHost: "",         // 是否是空间主人
+    userName: "8781811",   // 空间主人用户名
+    userNameEnc:    "8781811", 
+    visitorName:    "",
+    visitorURL: "/index.html",        // 
+    refer: "http://www.baidu.com/s?bs=python+%CF%DF%B3%CC&f=8&wd=python+%CF%DF%B3%CC+%C8%EB%C3%C5",
+    spBasicURL:"8781811",
+    spBasicURLEnc:"8781811"
+};
+</script>
+<script src="http://img.baidu.com/js/tangram-1.1.0.js" type="text/javascript"></script>
+<script src="/ui/scripts/beautify/render.js" type="text/javascript"></script>
+<script type="text/javascript">
+baidu.dom.ready(function(){
+    if(typeof spBeautifyConfigData != 'undefined'){
+        var _installList = spBeautifyConfigData.list;
+    } else {
+        spBeautifyConfigData = {};
+        _installList = [];
+    }
+    spBeautifyConfigData.currentDate  = Math.round((new Date('2010/06/02')).getTime() / 1000);    
+    BeautifyWidget.init({timeStamp: spBeautifyConfigData.currentDate, env: 'sys'});
+    BeautifyWidget.render(_installList);
+});
+</script>
+
+
+
+<script type="text/javascript" src="http://hi.baidu.com/hi/cms/article/quickjs/auto.js"></script>
+<script>try{SCD.init("http://www.baidu.com/s?bs=python+%CF%DF%B3%CC&f=8&wd=python+%CF%DF%B3%CC+%C8%EB%C3%C5")}catch(e){}</script>
+
+
+
+
+</body></html>

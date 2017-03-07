@@ -1,0 +1,87 @@
+\section{Introduction.}\label{mate_introduction}
+Here is an example of a traditional scenario in our daily programming as shown below. We are prone to forget to call some clean up codes when the function has multiple return paths or an exception is thrown in the middle of very complicated constructs.
+
+
+
+\begin{Code}\begin{verbatim} void test01()
+ {
+  char const * lpszFilePath = "c:\\test.dat";
+
+  HANDLE hFile( ::CreateFile( lpszFilePath, GENERIC_WRITE, 0, NULL, OPEN_ALWAYS, 0, NULL ) );
+
+  if( INVALID_HANDLE_VALUE != hFile )
+  {
+
+    if( 100 > ::GetFileSize( hFile, NULL ) )
+      throw "File size too small!";
+
+    ::CloseHandle( hFile );
+  }
+
+  ::DeleteFile( lpszFilePath );
+ }
+\end{verbatim}\end{Code}
+
+
+
+{\tt boost::shared\_\-ptr} can be used to transform the code snippet above in exception safe way. It purely depends on the ability of the {\tt boost::shared\_\-ptr} that it allows for user to provide a custom deleter function object. See more details from {\tt here}.
+
+
+
+\begin{Code}\begin{verbatim} #define BOOST_BIND_ENABLE_STDCALL
+ #include <boost/bind.hpp>
+ #include <boost/shared_ptr.hpp>
+
+ void test02()
+ {
+   boost::shared_ptr<char const> spFilePath( "c:\\test.dat", &::DeleteFile );
+
+   boost::shared_ptr<void> spFile(
+    ::CreateFile( spFilePath.get(), GENERIC_WRITE, 0, NULL, OPEN_ALWAYS, 0, NULL ),
+    &::CloseHandle ); // Custom deleter.
+
+   if( INVALID_HANDLE_VALUE != spFile.get() )
+   {
+
+     if( 100 > ::GetFileSize( spFile.get(), NULL ) )
+       throw "File size too small!";
+   }
+ }
+\end{verbatim}\end{Code}
+
+
+
+Writing a code in the exception safe way at object level doesn't require the fancy reference counting feature of {\tt boost::shared\_\-ptr}, but only requires that of the custom deleter function object. Speaking accurately, what we need is an ability to call an arbitrary custom function object in the destructor of our class variable when it goes out of scope. By extracting and combining merits of the existing implementations such as {\tt boost::shared\_\-ptr}, {\tt Scope\-Guard} and etc., here I will like to introduce a small \doxyref{am::mate}{p.}{classam_1_1mate} utility class.
+
+
+
+\begin{Code}\begin{verbatim} #include "mate.h"
+
+ void test03()
+ {
+   am::mate<char const *> lpszFilePath( "c:\\test.dat", &::DeleteFile );
+
+   am::mate<HANDLE> hFile(
+    ::CreateFile( lpszFilePath, GENERIC_WRITE, 0, NULL, OPEN_ALWAYS, 0, NULL ), // Host function.
+    &::CloseHandle,                                                             // Mate function.
+    (HANDLE)INVALID_HANDLE_VALUE != am::lambda::_1 ); // Mates the function only if the condition asserts true.
+
+   // Treats am::mate<HANDLE> as if it is a HANDLE.
+   if( INVALID_HANDLE_VALUE != hFile )
+   {
+
+     if( 100 > ::GetFileSize( hFile, NULL ) )
+       throw "File size too small";
+   }
+ }
+\end{verbatim}\end{Code}
+
+
+
+There are several benefits of using \doxyref{am::mate}{p.}{classam_1_1mate} over the existing implementations.
+
+\begin{enumerate}
+\item More intuitive and well defined interfaces.\item Accepts any unary custom mate function object which takes the return of the host function as its argument.\item Not like {\tt boost::shared\_\-ptr} is limited only for the pointer type, \doxyref{am::mate}{p.}{classam_1_1mate} works with any data type. i.e. intergral type, floating point type, pointer type and even reference type.\item Implicit conversion to the return type of the host function which cast an illusion that makes an \doxyref{am::mate}{p.}{classam_1_1mate} instance as if it is a stored variable of the return type of the host function.\item Easy, convenient and compiler-warning-free \doxyref{MATE()}{p.}{mate_8hpp_01562e931d80813b43fcddc1a13799fe} macro definitions to create an anonymous \doxyref{am::mate}{p.}{classam_1_1mate} variable.\item Mates functions with a condition.\item Provides a simple set of boolean lambda operations to support composing an anonymous function object for the condition.\item \doxyref{am::mate$<$void$>$}{p.}{classam_1_1mate_3_01void_01_4} specialization when mating a mate function object without any host function call.\item Well standard compliant and portable. Tested on VC6, VC71, VC80, gcc3.4.2.\item No dependency on boost library but works nicely with it.\item Provide \doxyref{am::ptr\_\-fun}{p.}{namespaceam_075d855cc1ab6d87a818e72ed34bc829}, \doxyref{am::bind1st}{p.}{namespaceam_5d35d0139360afc672d2cf1ff279fd83} and \doxyref{am::bind2nd}{p.}{namespaceam_7416ae43749c6a8c08f3a1f8760ae24f} helper template functions that work well for any calling convention (including {\tt \_\-\_\-stdcall}).\item \doxyref{am::lambda::bind}{p.}{namespaceam_1_1lambda_794d3c4a2b7231c36cfc0684fea9bf5e} up to 3 arguments for both free function and member function are provided.\end{enumerate}
+
+
+\doxyref{[Contents]}{p.}{index_mate_contents} 

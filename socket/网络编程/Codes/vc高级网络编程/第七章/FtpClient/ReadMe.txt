@@ -1,0 +1,2 @@
+该实例通过WinInet编程接口实现了完整的FTP客户程序，其界面类似于CuteFTP
+和LeapFTP

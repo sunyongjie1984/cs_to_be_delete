@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_exception", "boost_exception\boost_exception.vcproj", "{C0B377DF-897B-4553-A7C6-EF1C0DD60062}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fread", "fread\fread.vcproj", "{4C718E5D-1008-4981-9CA4-70D8709B24C8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "struct", "struct\struct.vcproj", "{14F2335B-5456-407B-BF9A-3E37C341C495}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "the_boost_c++_libraries", "the_boost_c++_libraries\the_boost_c++_libraries.vcproj", "{6619A7F6-29D8-4379-A356-7255687DACC8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_c++_librariyes_2", "boost_c++_librariyes_2\boost_c++_librariyes_2.vcproj", "{77457EA7-4F29-4EBD-80A7-B61C35A604FB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pongba", "pongba\pongba.vcproj", "{0C99943C-30AA-41E3-9B30-500219381835}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0B377DF-897B-4553-A7C6-EF1C0DD60062}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C0B377DF-897B-4553-A7C6-EF1C0DD60062}.Debug|Win32.Build.0 = Debug|Win32
+		{C0B377DF-897B-4553-A7C6-EF1C0DD60062}.Release|Win32.ActiveCfg = Release|Win32
+		{C0B377DF-897B-4553-A7C6-EF1C0DD60062}.Release|Win32.Build.0 = Release|Win32
+		{4C718E5D-1008-4981-9CA4-70D8709B24C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C718E5D-1008-4981-9CA4-70D8709B24C8}.Debug|Win32.Build.0 = Debug|Win32
+		{4C718E5D-1008-4981-9CA4-70D8709B24C8}.Release|Win32.ActiveCfg = Release|Win32
+		{4C718E5D-1008-4981-9CA4-70D8709B24C8}.Release|Win32.Build.0 = Release|Win32
+		{14F2335B-5456-407B-BF9A-3E37C341C495}.Debug|Win32.ActiveCfg = Debug|Win32
+		{14F2335B-5456-407B-BF9A-3E37C341C495}.Debug|Win32.Build.0 = Debug|Win32
+		{14F2335B-5456-407B-BF9A-3E37C341C495}.Release|Win32.ActiveCfg = Release|Win32
+		{14F2335B-5456-407B-BF9A-3E37C341C495}.Release|Win32.Build.0 = Release|Win32
+		{6619A7F6-29D8-4379-A356-7255687DACC8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6619A7F6-29D8-4379-A356-7255687DACC8}.Debug|Win32.Build.0 = Debug|Win32
+		{6619A7F6-29D8-4379-A356-7255687DACC8}.Release|Win32.ActiveCfg = Release|Win32
+		{6619A7F6-29D8-4379-A356-7255687DACC8}.Release|Win32.Build.0 = Release|Win32
+		{77457EA7-4F29-4EBD-80A7-B61C35A604FB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{77457EA7-4F29-4EBD-80A7-B61C35A604FB}.Debug|Win32.Build.0 = Debug|Win32
+		{77457EA7-4F29-4EBD-80A7-B61C35A604FB}.Release|Win32.ActiveCfg = Release|Win32
+		{77457EA7-4F29-4EBD-80A7-B61C35A604FB}.Release|Win32.Build.0 = Release|Win32
+		{0C99943C-30AA-41E3-9B30-500219381835}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0C99943C-30AA-41E3-9B30-500219381835}.Debug|Win32.Build.0 = Debug|Win32
+		{0C99943C-30AA-41E3-9B30-500219381835}.Release|Win32.ActiveCfg = Release|Win32
+		{0C99943C-30AA-41E3-9B30-500219381835}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

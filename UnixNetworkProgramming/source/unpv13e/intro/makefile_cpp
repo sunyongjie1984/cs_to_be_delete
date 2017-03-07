@@ -1,0 +1,32 @@
+ALL = daytimetcpcli daytimetcpsrv client server byteorder
+CFLAGS = -Wall -g
+
+all: ${ALL}
+
+daytimetcpcli.o: daytimetcpcli.cpp
+	g++ ${CFLAGS} -c daytimetcpcli.cpp -I ../lib -o daytimetcpcli.o
+daytimetcpcli: daytimetcpcli.o
+	g++ ${CFLAGS} daytimetcpcli.o ../libunp.a -I ../lib -o daytimetcpcli
+
+daytimetcpsrv.o: daytimetcpsrv.cpp
+	g++ ${CFLAGS} -c daytimetcpsrv.cpp -I ../lib -o daytimetcpsrv.o
+daytimetcpsrv: daytimetcpsrv.o
+	g++ ${CFLAGS} daytimetcpsrv.o ../libunp.a -I ../lib -o daytimetcpsrv
+
+client.o: client.cpp
+	g++ ${CFLAGS} -c client.cpp -o client.o 
+client: client.o
+	g++ ${CFLAGS} client.o -o client
+
+server.o: server.cpp
+	g++ ${CFLAGS} -c server.cpp -o server.o
+server: server.o
+	g++ ${CFLAGS} server.o -o server
+
+byteorder.o: byteorder.cpp
+	g++ ${CFLAGS} -c byteorder.cpp -I ../lib -o byteorder.o
+byteorder: byteorder.o
+	g++ ${CFLAGS} byteorder.o -I ../lib -o byteorder
+
+clean:
+	rm *.o ${ALL}

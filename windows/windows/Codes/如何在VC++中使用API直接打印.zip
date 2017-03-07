@@ -1,0 +1,204 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb_2312-80">
+<meta name="GENERATOR" content="闻怡洋 wyy_cq@cmmail.com">
+<title>Visual C++/MFC开发指南</title>
+<SCRIPT LANGUAGE='JavaScript' SRC='../../submit_navigate_bar.js'></SCRIPT>
+<link REL="stylesheet" HREF="../../main.css">
+
+
+</head>
+<SCRIPT LANGUAGE='JavaScript'>write_body();</SCRIPT>
+<SCRIPT LANGUAGE='JavaScript'>write_bar();</SCRIPT>
+
+
+<table width=98% cellspacing="0" cellpadding="0" align=center><!--整体框架-->
+<tr><td>
+
+<table border=0 width="100%" cellspacing="0" cellpadding="2"><!--标记放置区域-->
+<tr>
+	<td width="30%" align="center" bgcolor="#8E8E8E" valign=middle><img src=../../img/brand_200_60.gif width=200 height=60 alt="LOGO1"></td>
+	<td width="70%" align="center" bgcolor="#8E8E8E" valign=middle><img src=../../img/logo_400_60.gif width=400 height=60 alt="LOGO2"></td>
+</tr>
+<tr>
+	<td colspan="2" bgcolor="#939393" align=center><a href=../../index.htm><font color=white>首页</font></a> <a href=../index.htm><font color=white>代码下载</font></a> <a href=../source_prn.htm><font color=white>打印/打印预览输出</font></a> <font color=white>如何在<font class=eng>VC++</font>中使用<font class=eng>API</font>直接打印</font><SCRIPT LANGUAGE='JavaScript'>write_command();</SCRIPT></td>
+</tr>
+</table><!--标记放置区域 END-->
+
+<table border=0 width=100% cellspacing="0" cellpadding="0">
+<tr>
+<td><!--begin-->
+
+<br>
+	<br>
+	<table border=0 width="100%" cellspacing="0" cellpadding="2" align=center>
+	<tr bgcolor="#939393">
+		<td width=100% align=center><font color=white>如何在<font class=eng>VC++</font>中使用<font class=eng>API</font>直接打印</font></td>
+	</tr>
+	<tr bgcolor="#E6E6E6">
+		<td align=center><a href=mailto:sh@sunwayworld.com>宋宏</a> 2000-04-26</td>
+	</tr>
+	<tr bgcolor="#F4F4F4">
+		<td >
+		<!--article begin-->
+<p>
+/*<br><br>
+(介绍:)<br>
+这一段代码，用以演示《如何在VC++中使用API直接打印》。并且该段代码可以直接嵌入各种工程中，有实际使用的价值。
+<p>(用途:)<br>
+
+在Visual C++中，应用程序通常是使用CView中提供的打印功能，在OnPrint()或OnDraw()中向打印机输出。但是对于对话框中的数据，或基于对话框的程序，打印成了一件繁琐的工作。
+<br>该段代码向用户提供了PrintListCtrl()函数，用于打印用户在对话框或FormView中的CListCtrl（控件必须是Report View 形式的）控件中的内容。在打印过程中，根据控件中每列标题的宽度计算打印输出时各列的宽度，并根据数据的行数自动分页。在本代码的基础上稍作修改，就可以适应各种数据的输出。
+<p>
+(用法:)<br>
+该段代码使用Visual C++ 6.0, 使用Windows API来完成所需功能，使用时将本文本作为头文件使用。打印时直接调用PrintListCtrl(),函数的参数为所要打印的ListCtrl。
+<p>
+作者：宋 宏<br>
+联系方法：<a href=mailto:sh@sunwayworld.com>sh@sunwayworld.com</a>
+<br><br>*/
+</p>
+<pre>
+//该结构用于存储各列的信息
+typedef struct tagColAtt
+{
+	int nColIndex;
+	CString strColText;
+	int nPrintX;
+	int nSubItemIndex;
+}COLATT;
+
+BOOL PrintListCtrl(CListCtrl &list)
+{
+
+	PRINTDLG pd;
+	pd.lStructSize = sizeof(PRINTDLG);
+	pd.Flags = PD_RETURNDC;
+	pd.hDC = NULL;
+	pd.hwndOwner = NULL;
+	pd.hInstance = NULL;
+	pd.nMaxPage = 1;
+	pd.nMinPage = 1;
+	pd.nFromPage = 1;
+	pd.nToPage  = 1;
+	pd.nCopies = 1;
+	pd.hDevMode = NULL;
+	pd.hDevNames = NULL;
+
+	//显示打印对话框，由用户来设定纸张大小等。
+	if(!PrintDlg(&pd)) return FALSE; 
+	ASSERT(pd.hDC!=NULL);
+
+	int nHorRes = GetDeviceCaps(pd.hDC, HORZRES);	
+	int nVerRes = GetDeviceCaps(pd.hDC, VERTRES);
+	int nXMargin = 2;
+	int nYMargin = 2;
+	TEXTMETRIC tm;
+	GetTextMetrics(pd.hDC, &tm);
+	int nCharHeight = tm.tmHeight;
+	int nCharWidth = tm.tmAveCharWidth;
+	
+
+	CHeaderCtrl* pHeader = list.GetHeaderCtrl();
+	//获得行，列的个数
+	int nColCount = pHeader-&gtGetItemCount();
+	int nLineCount = list.GetItemCount();
+	
+	int ColOrderArray[100];
+	COLATT ca[100];
+	list.GetColumnOrderArray(ColOrderArray, nColCount);
+	int nColX =nXMargin*nCharWidth;
+
+	//检索各列的信息，确定列标题的内容长度。
+	for(int i =0 ; i&lt nColCount; i++)
+	{
+		ca[i].nColIndex = ColOrderArray[i];
+		LVCOLUMN lvc;
+		char text[100];
+		lvc.mask = LVCF_TEXT|LVCF_SUBITEM;
+		lvc.pszText = text;
+		lvc.cchTextMax = 100;
+		list.GetColumn(ca[i].nColIndex, &lvc);
+		ca[i].strColText = lvc.pszText;
+		ca[i].nSubItemIndex = lvc.iSubItem;
+		ca[i].nPrintX = nColX;
+		nColX += nCharWidth * strlen(ca[i].strColText);
+
+		if(nColX &gt nHorRes) 
+		{
+			DeleteDC(pd.hDC);
+			AfxMessageBox("字段太多，无法在一行内打印，请试用较大的纸，或横向打印。");
+			return FALSE;
+		}
+
+  
+	}
+
+	DOCINFO di;
+	di.cbSize = sizeof(DOCINFO);
+	di.lpszDocName = "ListCtrl Data Printing"; 
+	di.lpszOutput = (LPTSTR) NULL; 
+	di.lpszDatatype = (LPTSTR) NULL; 
+	di.fwType = 0; 
+	StartDoc(pd.hDC, &di);
+	StartPage(pd.hDC);
+
+	//调整各列的宽度，以使各列在后面的打印输出时更均匀的打印在纸上。
+	int space = (nHorRes-nXMargin*nCharWidth-nColX) / (nColCount -1);
+	for(i =1; i&ltnColCount; i++)
+	{
+		ca[i].nPrintX += i*space;
+	}
+	
+	//输出列标题
+	for(i =0; i&ltnColCount; i++)
+		TextOut(pd.hDC, ca[i].nPrintX, nYMargin, 
+			ca[i].strColText, strlen(ca[i].strColText));
+	
+	int nMaxLinePerPage = nVerRes/nCharHeight -3;
+	int nCurPage =1;
+	//输出各列的数据
+	for(i =0; i&ltnLineCount; i++)
+	{
+		for(int j =0; j&ltnColCount; j++)
+		{
+			if(i+1-(nCurPage-1)*nMaxLinePerPage &gt nMaxLinePerPage)
+			{
+				//新的一页
+				EndPage(pd.hDC);
+				StartPage(pd.hDC);
+				nCurPage ++;
+			}
+			CString subitem = list.GetItemText(i, ca[j].nSubItemIndex);
+			TextOut(pd.hDC, ca[j].nPrintX, 
+					nYMargin+(i+1-(nCurPage-1)*nMaxLinePerPage)*nCharHeight, 
+					subitem, strlen(subitem));
+		}
+	}
+	
+	EndPage(pd.hDC);
+	EndDoc(pd.hDC);
+//打印结束
+	DeleteDC(pd.hDC);
+	return TRUE;
+}
+
+</pre>
+		<!--article end-->
+		</td>
+	</tr>
+	</table>
+
+
+
+
+</td><!--end-->
+</tr>
+</table>
+
+</td></tr></table><!--整体框架 END-->
+
+
+
+<SCRIPT LANGUAGE='JavaScript'>write_tail();</SCRIPT>
+</body></html>

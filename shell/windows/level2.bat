@@ -1,0 +1,1 @@
+f:\MyAboss\axsvr.exe -I f:\MyAboss\FUTrade_MySQL_59.Xml -al > f:\ASAMAN_WORK_LIFE\now\work\log\level_2_server_log 2&1

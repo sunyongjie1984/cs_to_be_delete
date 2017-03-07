@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "find_first_of", "STL\STL.vcproj", "{3DC52CF2-AD2C-425C-8AC8-C681CC660AD1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liu_wei_peng", "liu_wei_peng\liu_wei_peng.vcproj", "{8684BD7D-DB4C-4AE9-9EED-9DADB05E4891}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liu_wei_peng_2", "liu_wei_peng_2\liu_wei_peng_2.vcproj", "{DAD69FB5-4FCF-4541-8F96-D2051052AF11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DC52CF2-AD2C-425C-8AC8-C681CC660AD1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3DC52CF2-AD2C-425C-8AC8-C681CC660AD1}.Debug|Win32.Build.0 = Debug|Win32
+		{3DC52CF2-AD2C-425C-8AC8-C681CC660AD1}.Release|Win32.ActiveCfg = Release|Win32
+		{3DC52CF2-AD2C-425C-8AC8-C681CC660AD1}.Release|Win32.Build.0 = Release|Win32
+		{8684BD7D-DB4C-4AE9-9EED-9DADB05E4891}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8684BD7D-DB4C-4AE9-9EED-9DADB05E4891}.Debug|Win32.Build.0 = Debug|Win32
+		{8684BD7D-DB4C-4AE9-9EED-9DADB05E4891}.Release|Win32.ActiveCfg = Release|Win32
+		{8684BD7D-DB4C-4AE9-9EED-9DADB05E4891}.Release|Win32.Build.0 = Release|Win32
+		{DAD69FB5-4FCF-4541-8F96-D2051052AF11}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DAD69FB5-4FCF-4541-8F96-D2051052AF11}.Debug|Win32.Build.0 = Debug|Win32
+		{DAD69FB5-4FCF-4541-8F96-D2051052AF11}.Release|Win32.ActiveCfg = Release|Win32
+		{DAD69FB5-4FCF-4541-8F96-D2051052AF11}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

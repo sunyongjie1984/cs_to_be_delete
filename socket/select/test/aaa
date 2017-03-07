@@ -1,0 +1,4 @@
+127.0.0.1 4242
+1
+======recv data:/n17 char recieved data : Child 2883 echo> ./n======recv data:/n13 char recieved data : abc.org/r/n/r./n======recv data:/nReturn value : 0/nreturn from recv function
+Child 2883 echo> abc.org/r/n/r0

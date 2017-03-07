@@ -1,0 +1,43 @@
+# $Id: backdoor-lib,v 1.3 2000/11/18 08:25:04 roesch Exp $ 
+# backdoors (Back Orifice, etc) go here 
+
+# port 1524 (ingreslock) is pretty popular for setting up backdoor rootshells
+alert tcp $EXTERNAL_NET any -> $HOME_NET 1524 (msg: "default Backdoor access!"; flags: S;)
+
+
+# submitted by Nick Rogness and Jim Forster
+# Backdoor Default Ports (not useful on networks with outgoing traffic)
+alert tcp $HOME_NET 555 -> any any (msg:"Phase Zero Server Active on Network"; content: "phAse"; flags: PA;)
+alert udp any any -> $HOME_NET 10067 (msg:"Portal Of Doom"; content: "pod";)
+alert tcp any any -> $HOME_NET 12345 (msg:"Netbus/GabanBus"; flags: S;)
+alert tcp any any -> $HOME_NET 12346 (msg:"Netbus/GabanBus"; flags: S;)
+alert tcp any any -> $HOME_NET 12361 (msg:"Whack-a-mole"; flags: S;)
+alert tcp any any -> $HOME_NET 12362 (msg:"Whack-a-mole"; flags: S;)
+alert udp any any -> $HOME_NET 31337 (msg:"Back Orifice";)
+alert udp any any -> $HOME_NET 31338 (msg:"Deep Back Orifice";)
+alert tcp any any -> $HOME_NET 31337 (msg:"BIND Shell"; flags: S;)
+alert udp any any -> $HOME_NET 5632 (msg:"PCAnywhere"; content:"ST";)
+alert udp any any -> $HOME_NET 22 (msg:"PCAnywhere"; content:"ST";)
+alert udp any any -> $HOME_NET 22 (msg:"PCAnywhere"; content:"NQ";)
+
+# New backdoors from Martin Markgraf with some updates from Jim Forster
+
+alert udp $HOME_NET 2140 -> any any (content:"hhh My Mouth Is Open"; msg:"Deep Throat access";)
+alert udp any any -> $HOME_NET 10067 (msg:"Possible Portal of Doom access"; content: "pod";)
+alert udp any any -> $HOME_NET 10167 (msg:"Possible Portal of Doom access"; content: "pod";)
+alert udp $HOME_NET 10067 -> any any (content:"KeepAliveee"; msg:"Portal of Doom access";)
+alert udp $HOME_NET 10167 -> any any (content:"KeepAliveee"; msg:"Portal of Doom access";)
+alert udp any any -> $HOME_NET 31789 (msg:"Possible Hack a Tack access"; content: "yourdomain.com";)
+alert udp any any -> $HOME_NET 31791 (msg:"Possible Hack a Tack access"; content: "yourdomain.com";)
+alert tcp any any -> $HOME_NET 31785 (msg:"Possible Hack a Tack access"; content: "yourdomain.com"; flags: PA;)
+alert tcp any any -> $HOME_NET 30100 (msg:"Possible NetSphere access"; flags: S;)
+alert tcp $HOME_NET 30100 -> any any (content:"<NetSphere"; msg:"NetSphere access"; flags: PA;)
+alert tcp any any -> $HOME_NET 30102 (msg:"Possible NetSphere FTP acces"; flags: S;)
+alert tcp $HOME_NET 30102 -> any any (content:"NetSphere Capture FTP"; msg:"NetSphere FTP acces"; flags: PA;)
+alert tcp $HOME_NET 6969 -> any any (content:"GateCrasher"; msg:"GateCrasher access"; flags: PA;)
+alert tcp any any -> $HOME_NET 21554 (msg:"Possible GirlFriend access"; flags: S;)
+alert tcp $HOME_NET 21554 -> any any (content:"Girl"; msg:"GirlFriend access"; flags: PA;)
+alert tcp any any -> $HOME_NET 23456 (msg:"Possible EvilFTP access"; flags: S;)
+alert tcp $HOME_NET 23456 -> any any (content:"EvilFTP"; msg:"EvilFTP access"; flags: PA;)
+alert tcp any any -> $HOME_NET 1243 (msg:"Possible SubSeven access"; flags: S;)
+alert tcp any any -> $HOME_NET 6776 (msg:"Possible SubSeven access"; flags: S;)

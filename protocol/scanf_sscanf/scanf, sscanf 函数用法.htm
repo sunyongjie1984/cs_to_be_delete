@@ -1,0 +1,706 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>scanf, sscanf 函数用法</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content=360doc name=classification>
+<META content=sscanf name=keywords>
+<META content="scanf, sscanf 函数用法" name=description>
+<META content=www.360doc.com name=author>
+<STYLE>.txtbox1 {
+	FONT-SIZE: 14px; MARGIN-LEFT: 0px; WIDTH: 100%; HEIGHT: 150px
+}
+.Title01 {
+	FONT-SIZE: 12px; COLOR: #004499; LINE-HEIGHT: 20px; FONT-FAMILY: arial, helvetica
+}
+.Title01 A {
+	COLOR: #0077cc; TEXT-DECORATION: none
+}
+.Title01 A:hover {
+	COLOR: #997722; TEXT-DECORATION: none
+}
+.Title01 A:visited {
+	TEXT-DECORATION: none
+}
+.TitleDate {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #999999; FONT-FAMILY: arial, helvetica
+}
+.TitleContent {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 20px; FONT-FAMILY: arial, helvetica
+}
+.TitleContent A {
+	COLOR: #0077cc; TEXT-DECORATION: none
+}
+.TitleContent A:hover {
+	COLOR: #997722; TEXT-DECORATION: none
+}
+.TitleContent A:visited {
+	TEXT-DECORATION: none
+}
+.p2 {
+	FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; LINE-HEIGHT: 24px
+}
+.p2 A:visited {
+	COLOR: #261cdc
+}
+.p3 {
+	FONT-FAMILY: arial
+}
+.p3 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 18px
+}
+.p4 {
+	FONT-SIZE: 13px; LINE-HEIGHT: 24px
+}
+H1 {
+	FONT: bold 20px Arial, Helvetica, sans-serif
+}
+A IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+BODY {
+	FONT: 14px/130% Arial, Helvetica, sans-serif
+}
+TD {
+	FONT: 14px/130% Arial, Helvetica, sans-serif; OVERFLOW: auto; WORD-BREAK: break-all
+}
+TH {
+	FONT: 14px/130% Arial, Helvetica, sans-serif
+}
+TABLE {
+	BORDER-RIGHT: medium none; PADDING-RIGHT: 0px; BORDER-TOP: medium none; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-TOP: 0px; BORDER-BOTTOM: medium none
+}
+FONT {
+	LINE-HEIGHT: 120%
+}
+SPAN {
+	LINE-HEIGHT: 120%
+}
+</STYLE>
+
+<SCRIPT language=javascript>
+	
+		</SCRIPT>
+
+<META content="MSHTML 6.00.2900.5659" name=GENERATOR></HEAD>
+<BODY text=#000000 bottomMargin=0 vLink=#261cdc link=#261cdc bgColor=#ffffff 
+topMargin=1>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD><A href="http://www.360doc.com/index.aspx" target=_blank><IMG src="" 
+      border=0></A></TD>
+    <TD align=middle><A href="http://www.360doc.com/service/About.aspx" 
+      target=_blank><IMG src="" border=0></A></TD></TR>
+  <TR>
+    <TD align=middle height=3></TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE height=22 cellSpacing=0 cellPadding=0 width="100%" border=0 
+      valign="top">
+        <TBODY>
+        <TR bgColor=#fffcf4 height=22>
+          <TD class=p2>scanf, sscanf 函数用法（原创）&nbsp;<FONT color=#6f6f6f 
+            size=1>07.02.13 </FONT>&nbsp;<FONT color=#6f6f6f>from </FONT><A 
+            href="http://www.360doc.com/UserHome/17255.aspx">~perddy~</A>　<NOBR><A 
+            href="http://www.360doc.com/showRelevantArt.aspx?ArticleID=365683&amp;ArticleNum=9">相关文章(9)</A>　<A 
+            id=HyperLink3 
+            href="http://www.google.cn/search?hl=zh-CN&amp;q=sscanf%2bbuf%2b%e5%ad%97%e7%ac%a6%e4%b8%b2&amp;lr=lang_zh-CN" 
+            target=_blank>以文找文</A><IMG src=""></NOBR></TD>
+          <TD class=p2 align=right width=120><A 
+            href="http://www.360doc.com/showWeb/0/24/399862.aspx">上一篇</A>&nbsp;&nbsp;&nbsp;&nbsp;下一篇&nbsp;&nbsp;</TD></TR></TBODY></TABLE>
+      <TABLE height=22 cellSpacing=0 cellPadding=0 width="100%" border=0 
+      valign="top">
+        <TBODY>
+        <TR bgColor=#fdf9e7 height=22>
+          <TD class=p2>Tag:<NOBR><A 
+            href="http://www.360doc.com/showTag.aspx?Tag=sscanf">sscanf</A></NOBR>&nbsp;&nbsp; 
+          </TD>
+          <TD class=p2 align=right><FONT face=楷体_GB2312>这篇文章不错，<A 
+            href="http://www.360doc.com/ReSaveMenu.aspx?ArticleID=365683">我也要收藏</A>，快看看收藏了该文章的<A 
+            href="http://www.360doc.com/showSaver.aspx?ArticleID=365683&amp;SaverNum=2">所有2人</A>&nbsp;&nbsp;&nbsp;&nbsp;</FONT> 
+          </TD></TR></TBODY></TABLE></TD></TR>
+  <TR></TR></TBODY></TABLE>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" 
+align=center><STRONG><SPAN style="FONT-SIZE: 15pt; FONT-FAMILY: 宋体"><SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><STRONG><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><STRONG><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">名称<SPAN 
+lang=EN-US>:<O:P></O:P></SPAN></SPAN></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">sscanf() - 
+</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">从一个字符串中读进与指定格式相符的数据<SPAN 
+lang=EN-US>.<O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><STRONG><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">函数原型</SPAN></STRONG><STRONG><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">:<O:P></O:P></SPAN></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">Int 
+<SPAN>&nbsp;</SPAN>sscanf( string str, string fmt, mixed var1, mixed var2 ... 
+);<O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">int<SPAN>&nbsp; 
+</SPAN>scanf( const char *format [,argument]... );<O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><STRONG><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">说明：<SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">sscanf</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">与<SPAN 
+lang=EN-US>scanf</SPAN>类似，都是用于输入的，只是后者以屏幕<SPAN 
+lang=EN-US>(stdin)</SPAN>为输入源，前者以固定字符串为输入源。<SPAN lang=EN-US><BR></SPAN>其中的<SPAN 
+lang=EN-US>format</SPAN>可以是一个或多个 <SPAN lang=EN-US>{%[*] [width] [{h | l | I64 | 
+L}]type | ' ' | '\t' | '\n' | </SPAN>非<SPAN lang=EN-US>%</SPAN>符号<SPAN 
+lang=EN-US>}<O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><STRONG><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">注：<SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">1</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">、 <SPAN 
+lang=EN-US>* </SPAN>亦可用于格式中<SPAN lang=EN-US>, (</SPAN>即<SPAN lang=EN-US> %*d 
+</SPAN>和<SPAN lang=EN-US> %*s) </SPAN>加了星号<SPAN lang=EN-US> (*) 
+</SPAN>表示跳过此数据不读入<SPAN lang=EN-US>. (</SPAN>也就是不把此数据读入参数中<SPAN 
+lang=EN-US>)<O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">2</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">、<SPAN 
+lang=EN-US>{a|b|c}</SPAN>表示<SPAN lang=EN-US>a,b,c</SPAN>中选一，<SPAN 
+lang=EN-US>[d],</SPAN>表示可以有<SPAN lang=EN-US>d</SPAN>也可以没有<SPAN 
+lang=EN-US>d</SPAN>。<SPAN lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">3</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">、<SPAN 
+lang=EN-US>width</SPAN>表示读取宽度。<SPAN lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">4</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">、<SPAN 
+lang=EN-US>{h | l | I64 | L}:</SPAN>参数的<SPAN lang=EN-US>size,</SPAN>通常<SPAN 
+lang=EN-US>h</SPAN>表示单字节<SPAN lang=EN-US>size</SPAN>，<SPAN 
+lang=EN-US>I</SPAN>表示<SPAN lang=EN-US>2</SPAN>字节<SPAN lang=EN-US> 
+size,L</SPAN>表示<SPAN lang=EN-US>4</SPAN>字节<SPAN 
+lang=EN-US>size(double</SPAN>例外<SPAN lang=EN-US>),l64</SPAN>表示<SPAN 
+lang=EN-US>8</SPAN>字节<SPAN lang=EN-US>size</SPAN>。<SPAN 
+lang=EN-US><BR><BR>5</SPAN>、<SPAN lang=EN-US>type :</SPAN>这就很多了，就是<SPAN 
+lang=EN-US>%s,%d</SPAN>之类。<SPAN lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">6</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">、特别的：<SPAN 
+lang=EN-US>%*[width] [{h | l | I64 | L}]type 
+</SPAN>表示满足该条件的被过滤掉，不会向目标参数中写入值</SPAN><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<DIV class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P>&nbsp;</O:P> 
+
+<DIV>&nbsp;</DIV></SPAN></DIV>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">支持集合操作：<SPAN 
+lang=EN-US><BR><BR><O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>%[a-z] </SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">表示匹配<SPAN 
+lang=EN-US>a</SPAN>到<SPAN lang=EN-US>z</SPAN>中任意字符，贪婪性<SPAN 
+lang=EN-US>(</SPAN>尽可能多的匹配<SPAN lang=EN-US>)<O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>%[aB'] </SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">匹配<SPAN 
+lang=EN-US>a</SPAN>、<SPAN lang=EN-US>B</SPAN>、<SPAN 
+lang=EN-US>'</SPAN>中一员，贪婪性<SPAN lang=EN-US><BR><BR><O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>%[^a] </SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">匹配非<SPAN 
+lang=EN-US>a</SPAN>的任意字符，贪婪性<SPAN 
+lang=EN-US><BR><BR><O:P></O:P></SPAN></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><STRONG><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">例子：<SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">1. </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">常见用法。<SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<TABLE class=MsoNormalTable 
+style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: rgb(204,204,204) 0% 50%; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; BACKGROUND: 0% 50%; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 426.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+    vAlign=top width=568>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: blue; FONT-FAMILY: 宋体">&nbsp;&nbsp;&nbsp; 
+      char</SPAN><SPAN lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"> 
+      <SPAN style="COLOR: gray">buf</SPAN>[512] = {0};<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp; 
+      </SPAN><SPAN style="COLOR: rgb(136,0,0)">sscanf</SPAN>(<SPAN 
+      style="COLOR: rgb(0,0,119)">"123456 "</SPAN>, <SPAN 
+      style="COLOR: rgb(0,0,119)">"%s"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(136,0,0); FONT-FAMILY: 宋体">printf</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">(<SPAN 
+      style="COLOR: rgb(0,0,119)">"%s\n"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">结果为：<SPAN 
+      lang=EN-US>123456<O:P></O:P></SPAN></SPAN></P></TD></TR></TBODY></TABLE>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">2. </SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">取指定长度的字符串。如在下例中，取最大长度为<SPAN 
+lang=EN-US>4</SPAN>字节的字符串。<SPAN lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<TABLE class=MsoNormalTable 
+style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: rgb(204,204,204) 0% 50%; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; BACKGROUND: 0% 50%; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 426.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+    vAlign=top width=568>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp; 
+      </SPAN><SPAN style="COLOR: rgb(136,0,0)">sscanf</SPAN>(<SPAN 
+      style="COLOR: rgb(0,0,119)">"123456 "</SPAN>, <SPAN 
+      style="COLOR: rgb(0,0,119)">"%4s"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(136,0,0); FONT-FAMILY: 宋体">printf</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">(<SPAN 
+      style="COLOR: rgb(0,0,119)">"%s\n"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">结果为：<SPAN 
+      lang=EN-US>1234<O:P></O:P></SPAN></SPAN></P></TD></TR></TBODY></TABLE>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">3.&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">取到指定字符为止的字符串。如在下例中，取遇到空格为止字符串。<SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<TABLE class=MsoNormalTable 
+style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: rgb(204,204,204) 0% 50%; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; BACKGROUND: 0% 50%; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 426.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+    vAlign=top width=568>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp; 
+      </SPAN><SPAN style="COLOR: rgb(136,0,0)">sscanf</SPAN>(<SPAN 
+      style="COLOR: rgb(0,0,119)">"123456 abcdedf"</SPAN>, <SPAN 
+      style="COLOR: rgb(0,0,119)">"%[^ ]"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(136,0,0); FONT-FAMILY: 宋体">printf</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">(<SPAN 
+      style="COLOR: rgb(0,0,119)">"%s\n"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">结果为：<SPAN 
+      lang=EN-US>123456<O:P></O:P></SPAN></SPAN></P></TD></TR></TBODY></TABLE>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">4.&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">取仅包含指定字符集的字符串。如在下例中，取仅包含<SPAN 
+lang=EN-US>1</SPAN>到<SPAN lang=EN-US>9</SPAN>和小写字母的字符串。<SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<TABLE class=MsoNormalTable 
+style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: rgb(204,204,204) 0% 50%; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; BACKGROUND: 0% 50%; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 426.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+    vAlign=top width=568>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp; 
+      </SPAN><SPAN style="COLOR: rgb(136,0,0)">sscanf</SPAN>(<SPAN 
+      style="COLOR: rgb(0,0,119)">"123456abcdedfBCDEF"</SPAN>, <SPAN 
+      style="COLOR: rgb(0,0,119)">"%[1<ST1:CHMETCNV unitname="a" sourcevalue="9" 
+      hasspace="False" negative="True" numbertype="1" tcsc="0" 
+      w:st="on">-9a</ST1:CHMETCNV>-z]"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(136,0,0); FONT-FAMILY: 宋体">printf</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">(<SPAN 
+      style="COLOR: rgb(0,0,119)">"%s\n"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">结果为：<SPAN 
+      lang=EN-US>123456abcdedf<O:P></O:P></SPAN></SPAN></P></TD></TR></TBODY></TABLE>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">5.&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">取到指定字符集为止的字符串。如在下例中，取遇到大写字母为止的字符串。<SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<TABLE class=MsoNormalTable 
+style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: rgb(204,204,204) 0% 50%; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; BACKGROUND: 0% 50%; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 426.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+    vAlign=top width=568>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><SPAN>&nbsp;&nbsp;&nbsp; 
+      </SPAN><SPAN style="COLOR: rgb(136,0,0)">sscanf</SPAN>(<SPAN 
+      style="COLOR: rgb(0,0,119)">"123456abcdedfBCDEF"</SPAN>, <SPAN 
+      style="COLOR: rgb(0,0,119)">"%[^A-Z]"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(136,0,0); FONT-FAMILY: 宋体">printf</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">(<SPAN 
+      style="COLOR: rgb(0,0,119)">"%s\n"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">结果为：<SPAN 
+      lang=EN-US>123456abcdedf<O:P></O:P></SPAN></SPAN></P></TD></TR></TBODY></TABLE>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P>&nbsp;</O:P></SPAN><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P>&nbsp;</O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">6</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">、给定一个字符串</SPAN><SPAN 
+lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+face="Times New Roman">iios/12DDWDFF@122</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">，</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">获取</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT face="Times New Roman"> 
+<SPAN lang=EN-US>/ </SPAN></FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">和</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT face="Times New Roman"> 
+<SPAN lang=EN-US>@ </SPAN></FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">之间的字符串，先将</SPAN><SPAN 
+lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+face="Times New Roman"> "iios/"</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">过滤掉，再将非</SPAN><SPAN 
+lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+face="Times New Roman">'@'</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">的一串内容送到</SPAN><SPAN 
+lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+face="Times New Roman">buf</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">中</SPAN><SPAN 
+lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><O:P></O:P></SPAN></P>
+<TABLE class=MsoNormalTable 
+style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: rgb(204,204,204) 0% 50%; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; BACKGROUND: 0% 50%; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 426.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+    vAlign=top width=568>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(136,0,0); FONT-FAMILY: 宋体">sscanf</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">(<SPAN 
+      style="COLOR: rgb(0,0,119)">"</SPAN></SPAN><SPAN lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+      face="Times New Roman">iios/12DDWDFF@122</FONT></SPAN><SPAN lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(0,0,119); FONT-FAMILY: 宋体">"</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">, <SPAN 
+      style="COLOR: rgb(0,0,119)">"%*[^/]/%[^@]"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(136,0,0); FONT-FAMILY: 宋体">printf</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">(<SPAN 
+      style="COLOR: rgb(0,0,119)">"%s\n"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><O:P><FONT 
+      face="Times New Roman"></FONT></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">结果为：</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+      face="Times New Roman">12DDWDFF<O:P></O:P></FONT></SPAN></P></TD></TR></TBODY></TABLE>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">7</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">、给定一个字符串“</SPAN><SPAN 
+lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+face="Times New Roman">“hello, world</FONT></SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">”，仅保留<SPAN 
+lang=EN-US>world</SPAN>。（注意：“，”之后有一空格）<SPAN 
+lang=EN-US><O:P></O:P></SPAN></SPAN></P>
+<TABLE class=MsoNormalTable 
+style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: rgb(204,204,204) 0% 50%; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; BACKGROUND: 0% 50%; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 426.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; moz-background-clip: -moz-initial; moz-background-origin: -moz-initial; moz-background-inline-policy: -moz-initial" 
+    vAlign=top width=568>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 30pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+      face="Times New Roman">sscanf(“hello, world”, <SPAN>&nbsp;</SPAN>"%*s%s", 
+      <SPAN>&nbsp;</SPAN>buf);<SPAN>&nbsp;&nbsp; 
+      </SPAN><O:P></O:P></FONT></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 30pt"><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(136,0,0); FONT-FAMILY: 宋体">printf</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体">(<SPAN 
+      style="COLOR: rgb(0,0,119)">"%s\n"</SPAN>, <SPAN 
+      style="COLOR: gray">buf</SPAN>);<O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><O:P><FONT 
+      face="Times New Roman"></FONT></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">结果为：</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+      face="Times New Roman">world<O:P></O:P></FONT></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><O:P><FONT 
+      face="Times New Roman"></FONT></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+      face="Times New Roman">%*s</FONT></SPAN><SPAN 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">表示第一个匹配到的</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+      face="Times New Roman">%s</FONT></SPAN><SPAN 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">被过滤掉，即</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+      face="Times New Roman">hello</FONT></SPAN><SPAN 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">被过滤了</SPAN><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><O:P></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><O:P><FONT 
+      face="Times New Roman"></FONT></O:P></SPAN></P>
+      <P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 24pt"><SPAN 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">如果没有空格则结果为</SPAN><SPAN 
+      lang=EN-US style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><FONT 
+      face="Times New Roman">NULL</FONT></SPAN><SPAN 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">。</SPAN><SPAN 
+      lang=EN-US 
+      style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51)"><O:P></O:P></SPAN></P></TD></TR></TBODY></TABLE>
+<DIV><BR><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P><BR></O:P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">sscanf</SPAN><SPAN 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体">的功能很类似于正则表达式<SPAN 
+lang=EN-US>, </SPAN>但却没有正则表达式强大<SPAN lang=EN-US>,</SPAN>所以如果对于比较复杂的字符串处理<SPAN 
+lang=EN-US>,</SPAN>建议使用正则表达式<SPAN 
+lang=EN-US>.<O:P></O:P></SPAN></SPAN></P></SPAN></DIV>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-SIZE: 12pt; COLOR: rgb(51,51,51); FONT-FAMILY: 宋体"><O:P></O:P></SPAN></P>
+<DIV></DIV>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD></TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript><!--
+		google_ad_client = "pub-6625678643128649";
+		google_alternate_color = "FFFFFF";
+		google_ad_width = 728;
+		google_ad_height = 90;
+		google_ad_format = "728x90_as";
+		google_ad_type = "text_image";
+		google_ad_channel ="";
+		//--></SCRIPT>
+
+<SCRIPT style="DISPLAY: none" src="" type=text/javascript>
+		</SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=p2 align=right bgColor=#fdf9e7 height=22><A 
+      href="http://www.360doc.com/showWeb/0/24/399862.aspx">上一篇</A>&nbsp;&nbsp;&nbsp;&nbsp;下一篇&nbsp;&nbsp;&nbsp;&nbsp;（<A 
+      href="http://www.360doc.com/UserHome/17255.aspx">~perddy~</A>的分类目录[<A 
+      href="http://www.360doc.com/UserArt.aspx?UserID=17255&amp;CategoryID=24&amp;GroupID=-1">编程相关</A>]中共5篇）&nbsp;&nbsp; 
+    </TD></TR></TBODY></TABLE>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=p4 height=20><A id=HyperLink2 
+      href="http://www.google.cn/search?hl=zh-CN&amp;q=sscanf%2bbuf%2b%e5%ad%97%e7%ac%a6%e4%b8%b2&amp;lr=lang_zh-CN" 
+      target=_blank>以文找文</A><IMG 
+      src="scanf, sscanf 函数用法.files/new.gif">：搜索互联网上的相关文章</TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=p2 bgColor=#fffcf4>相关文章</TD></TR>
+  <TR>
+    <TD align=middle height=2></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=1 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=p3 vAlign=top>
+      <TABLE id=DataList1 cellSpacing=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV class=p2>• <A id=DataList1__ctl0_HyperLink1 
+            title='要匹配的字符串。简单地说，为了匹配一个反斜杠，不得不在 RE 字符串中写 ‘\\\\‘，因为正则表达式中必须是 "\\"，而每个反斜杠按 Python 字符串字母表示的常规必须表示成 "\\"。记住 Python 字符串也是用反斜杠加数据来允许字符串中包含任意字符的，所以当在 RE 中使用逆向引用时确保使用 raw 字符串。在 RE 中保持更多的左，虽然 >不能匹配在字符串结尾，因此正则表达式必须一个字符一个字符地回溯，直到它找到 >的匹配。' 
+            href="http://www.360doc.com/showWeb/0/0/604321.aspx" 
+            target=_blank>Python正则表达式操作指南 - Ubuntu中文</A> <NOBR><FONT 
+            color=#6f6f6f size=1>&nbsp;&nbsp;07.07.10 </FONT>&nbsp;<FONT 
+            color=#008000 size=1>from <A class=p5 id=DataList1__ctl0_Hyperlink4 
+            href="http://www.360doc.com/UserHome/4910.aspx" 
+            target=_blank>weicat</A></FONT></NOBR> </DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV class=p2>• <A id=DataList1__ctl1_HyperLink1 
+            title=第一个(\W+)是代表找寻数个字母,并将的找到的字符串指派给$1这个变量,而\s+代表找寻多个空白的字符串,最后(\d+)代表找寻个数值,并将所找到的字符串指派给$2这个变量。(/w+)代表找寻符合一个或是多个英文字符或是数值的字符串,之后再将找到的字符串设成$1。在传送CGI数据的时候会把数据编码,其中会将特殊字符或是中文字符编码以%开头的连续的两个十六进制数的字符串,所以要用s这个函数来找寻这个以%开头的字符串。 
+            href="http://www.360doc.com/showWeb/0/0/487992.aspx" 
+            target=_blank>Perl语言的精华--模式匹配</A> <NOBR><FONT color=#6f6f6f 
+            size=1>&nbsp;&nbsp;07.05.08 </FONT>&nbsp;<FONT color=#008000 
+            size=1>from <A class=p5 id=DataList1__ctl1_Hyperlink4 
+            href="http://www.360doc.com/UserHome/13049.aspx" 
+            target=_blank>fq954</A></FONT></NOBR> </DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV class=p2>• <A id=DataList1__ctl2_HyperLink1 
+            title="匹配 1 次或多次 x 字符串，但匹配可能的最少次数。匹配符合a字符 或是b字符 或是c字符 的字符串。第一个 () 内所找到的字符串变成 $1 这个变量或是 \1 变量，第二个 () 内所找到的字符串变成 $2 这个变量或是 \2 变量，以此类推下去。找寻符合 abc 的字符串而且不考虑这些字符串的大小写  3 正则表达式的八大原则。. 原则4：正则表达式能够处理双引号所能处理的任意和全部字符( $a =~ m/$varb/ 在匹配前把varb扩展为变量；" 
+            href="http://www.360doc.com/showWeb/0/0/487991.aspx" 
+            target=_blank>Perl 中的正则表达式2</A> <NOBR><FONT color=#6f6f6f 
+            size=1>&nbsp;&nbsp;07.05.08 </FONT>&nbsp;<FONT color=#008000 
+            size=1>from <A class=p5 id=DataList1__ctl2_Hyperlink4 
+            href="http://www.360doc.com/UserHome/13049.aspx" 
+            target=_blank>fq954</A></FONT></NOBR> </DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV class=p2>• <A id=DataList1__ctl3_HyperLink1 
+            title='首先，让我们看看两个特别的字符：’^’ 和 ’$’ 他们是分别用来匹配字符串的开始和结束，一下分别举例说明： 　　"^The": 匹配以 "The"开头的字符串; 　　"of despair$": 匹配以 "of despair" 结尾的字符串; 　　"^abc$": 匹配以abc开头和以abc结尾的字符串，实际上是只有abc与之匹配；' 
+            href="http://www.360doc.com/showWeb/0/0/345682.aspx" 
+            target=_blank>PHP编程技巧：看实例学正则表达式</A> <NOBR><FONT color=#6f6f6f 
+            size=1>&nbsp;&nbsp;07.01.26 </FONT>&nbsp;<FONT color=#008000 
+            size=1>from <A class=p5 id=DataList1__ctl3_Hyperlink4 
+            href="http://www.360doc.com/UserHome/12406.aspx" 
+            target=_blank>大梦平生</A></FONT></NOBR> </DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV class=p2>• <A id=DataList1__ctl4_HyperLink1 
+            title="函数调用strcat(strcpy(strl，str2) ，str3) 是先执行strcpy(strl，str2)，然后再执行strcat(strl,str3)，所以其功能是将字符串str2复制到字符串strl中，然后再将字符串str3复制连接到字符串strl之后。①数组x和数组y等价②数组x和数组y长度相同      ③数组X的长度大于数组y的长度④数组X的长度小于数组y的长度     【解】不指定数组长度的字符数组定义，其所需要的字节数可由初始化中给出的值的个数确定。" 
+            href="http://www.360doc.com/showWeb/0/0/325803.aspx" 
+            target=_blank>4.1 单项选择题</A> <NOBR><FONT color=#6f6f6f 
+            size=1>&nbsp;&nbsp;07.01.10 </FONT>&nbsp;<FONT color=#008000 
+            size=1>from <A class=p5 id=DataList1__ctl4_Hyperlink4 
+            href="http://www.360doc.com/UserHome/2296.aspx" 
+            target=_blank>┣█一生有你</A></FONT></NOBR> </DIV></TD></TR></TBODY></TABLE>
+      <DIV class=p2 align=center><A 
+      href="http://www.360doc.com/showRelevantArt.aspx?ArticleID=365683&amp;ArticleNum=9"><B><FONT 
+      color=#261cdc>&gt;&gt;更多相关文章</FONT></B></A> </DIV></TD></TR></TBODY></TABLE>
+<FORM id=showWeb name=showWeb 
+action=365683.aspx?Cream=0&amp;CategoryID=0&amp;ArticleID=365683 
+method=post><INPUT type=hidden name=__EVENTTARGET> <INPUT type=hidden 
+name=__EVENTARGUMENT> <INPUT type=hidden 
+value=dDwtMTQyMDEyNTUyNzs7PsRy7JVpCs1d2R1apFqV4P6BK0oN name=__VIEWSTATE>
+<SCRIPT language=javascript type=text/javascript>
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform;
+		if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) {
+			theform = document.showWeb;
+		}
+		else {
+			theform = document.forms["showWeb"];
+		}
+		theform.__EVENTTARGET.value = eventTarget.split("$").join(":");
+		theform.__EVENTARGUMENT.value = eventArgument;
+		theform.submit();
+	}
+// -->
+</SCRIPT>
+ 
+<TABLE id=Reflection cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=p2 bgColor=#fffcf4><SPAN id=Label1></SPAN></TD></TR>
+  <TR>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=p2 bgColor=#fffcf4>发表评论</TD></TR>
+  <TR>
+    <TD align=middle height=2></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=1 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=30></TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0 width="80%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=p2 align=middle colSpan=2>昵称：vavava</TD></TR>
+        <TR>
+          <TD vAlign=top align=left colSpan=2><TEXTAREA class=txtbox1 id=TextBox1 name=TextBox1></TEXTAREA> 
+          </TD></TR>
+        <TR>
+          <TD height=5></TD></TR>
+        <TR>
+          <TD class=p2 align=left><SPAN id=commit><INPUT id=Button1 onclick="if (document.getElementById(&quot;TextBox1&quot;).value.length == 0) {alert(&quot;请填写评论后再发表！&quot;);return false;} if (document.getElementById(&quot;autoCopy&quot;).checked) {clipboardData.setData(&quot;Text&quot;,document.getElementById(&quot;TextBox1&quot;).value);}__doPostBack('Button1','');this.disabled=true;" type=submit value="  发  送  " name=Button1></SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT onclick="document.getElementById('TextBox1').value=''" type=button value="  清  除  ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT 
+            id=autoCopy type=checkbox CHECKED value=1 
+            name=autoCopy>发送评论时内容自动复制到剪贴板</TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD height=15></TD></TR></TBODY></TABLE></FORM></BODY></HTML>

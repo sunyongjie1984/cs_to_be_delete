@@ -1,0 +1,387 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\chat.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "新建(&N)\tCtrl+N",            ID_FILE_NEW
+        MENUITEM "保存(&S)\tCtrl+S",            ID_FILE_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "编辑(&E)"
+    BEGIN
+        MENUITEM "撤消(&U)\tCtrl+Z",            ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "剪切(&T)\tCtrl+X",            ID_EDIT_CUT
+        MENUITEM "复制(&C)\tCtrl+C",            ID_EDIT_COPY
+        MENUITEM "粘贴(&P)\tCtrl+V",            ID_EDIT_PASTE
+    END
+    POPUP "查看(&V)"
+    BEGIN
+        MENUITEM "工具栏(&T)",                  ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(&S)",                  ID_VIEW_STATUS_BAR
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于chatsrvr...",             ID_APP_ABOUT
+    END
+    MENUITEM "清理门户(&C)",                ID_CLEAN
+END
+
+IDM_CONTEXTMAIN MENU DISCARDABLE 
+BEGIN
+    POPUP "_Tray_"
+    BEGIN
+        MENUITEM "恢复视窗(&R)",                ID_RESTORE
+        MENUITEM "清理门户(&C)",                ID_KICKOUT
+        MENUITEM SEPARATOR
+        MENUITEM "关于chatsrvr...",             ID_APP_ABOUT
+        MENUITEM "退出(&Exit)",                 ID_APP_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  34, 22, 217, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About chatsrvr"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "chatsrvr Version 1.0",IDC_STATIC,40,10,119,8
+    LTEXT           "Copyright ?2000",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,176,6,32,14,WS_GROUP
+END
+
+IDD_CLEANSB DIALOG DISCARDABLE  0, 0, 172, 104
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "请选择要踢出聊天室的人名"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,116,35,42,14
+    PUSHBUTTON      "取消",IDCANCEL,116,52,42,14
+    LISTBOX         IDC_CLEANLIST,13,7,89,90,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "CHATSRVR MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "CHATSRVR\0"
+            VALUE "LegalCopyright", "Copyright ? 1994-1997\0"
+            VALUE "OriginalFilename", "CHATSRVR.EXE\0"
+            VALUE "ProductName", "CHATSRVR Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_CLEANSB, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 97
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "网上聊天(服务器版)\n\nChatsr\nText Files (*.txt)\n.txt\nChatsrvr.Document\nChatsr Document"
+    ID_MESSAGES             "交流信息: 00000"
+    ID_CONNECTIONS          " 在线人数 : 00"
+    IDS_MESSAGESFMT         " 交流信息: %d"
+    IDS_CONNECTIONSFMT      " 在线人数: %d"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "chatsrvr"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "把窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务表"
+    IDS_SERVERSHUTDOWN      "聊天服务器已关掉！"
+    IDS_READERROR           "socket读取错误"
+    IDS_SENDERROR           "socket 发送错误"
+    IDS_TALK0               "与,说"
+    IDS_TALK1               "冲,叫"
+    IDS_TALK2               "亲了亲 , 的脸颊"
+    IDS_TALK3               "轻轻地拥抱着,"
+    IDS_TALK4               "朝,横眉竖目道"
+    IDS_TALK5               "与,眨巴了两下眼睛"
+    IDS_TALK6               "轻轻地推了推,的胳膊"
+    IDS_TALK7               "对,点了点头"
+    IDS_TALK8               "问,道"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows sockets 初始化失败！"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "打开该文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "建立新文档\n新建"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_COPY            "复制被选对象并将其置于剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切被选对象并将其置于剪贴板上\n剪切"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_UNDO            "撤消最后一步操作\n撤消"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "显示程序信息，版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n显隐工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n显隐状态栏"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "改变窗口大小"
+    AFX_IDS_SCMOVE          "改变窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小成图标"
+    AFX_IDS_SCMAXIMIZE      "把窗口放大到最大尺寸"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到先前的文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动的窗口并提示保存所有文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TALK9               "傻兮兮的朝,笑笑"
+    IDS_TALK10              "对准,就是一拳"
+    IDS_TALK11              "凌空一腿踢在,脑袋上"
+    IDS_TALK12              "拉着,的手语气心长地说"
+    IDS_TALK13              "狠狠地掴了,几个耳光"
+    IDS_TALK14              "毕恭毕敬地向,弯腰鞠躬"
+    IDS_TALK15              "感到十二分的歉意，低声对,说"
+    IDS_TALK16              "很赞同,"
+    IDS_TALK17              "惊讶的对,吐了吐舌头"
+    IDS_TALK18              "对,摇了摇头"
+    IDS_TALK19              "张大嘴巴，打了个哈欠"
+    IDS_TALK20              "对,微微一笑"
+    IDS_TALK21              "紧紧的握住,的手"
+    IDS_TALK22              "向,挥手"
+    IDS_TALK23              "耸耸双肩"
+    IDS_TALK24              "忍不住放声大哭"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TALK25              "双手捂着脸，呜呜咽咽的"
+    IDS_TALK26              "拍拍,的肩膀，双眼关切的说"
+    IDS_TALK27              "气鼓鼓的嘟嘴道"
+    IDS_TALK28              "把胸脯拍得噼啪响"
+    IDS_TALK29              "依依不舍地拉着,的衣角"
+    IDS_TALK30              "用深情的眼神，痴痴地看着"
+    IDS_TALK31              "抓抓头皮露出迷惑的神情"
+    IDS_TALK32              "悄悄地对,耳语"
+    ID_SYSTRAY              "聊天服务程序\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ABOUT                "关于聊天服务程序\n关于聊天服务程序\n"
+    ID_KICKOUT              "踢出在线用户\n踢出在线用户\n"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""res\\chatsrvr.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "\r\n"
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "#include ""afxres.rc""  \t// Standard components\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "res\chatsrvr.rc2"  // non-Microsoft Visual C++ edited resources
+
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+#include "afxres.rc"  	// Standard components
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

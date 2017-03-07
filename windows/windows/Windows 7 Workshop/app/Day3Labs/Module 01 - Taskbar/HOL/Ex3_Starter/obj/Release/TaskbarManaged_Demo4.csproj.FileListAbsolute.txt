@@ -1,0 +1,17 @@
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\Available.ico
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\Away.ico
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\IMClient.ico
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\Offline.ico
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\TaskbarManaged_Demo4.exe
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\TaskbarManaged_Demo4.pdb
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\TaskbarManaged.dll
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\VistaBridgeLibrary.dll
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\TaskbarManaged.pdb
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\TaskbarManaged.xml
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\bin\Release\VistaBridgeLibrary.pdb
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\obj\Release\ResolveAssemblyReference.cache
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\obj\Release\TaskbarManaged_Demo4.IMClient.resources
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\obj\Release\TaskbarManaged_Demo4.Properties.Resources.resources
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\obj\Release\TaskbarManaged_Demo4.csproj.GenerateResource.Cache
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\obj\Release\TaskbarManaged_Demo4.exe
+D:\Users\Sasha\Documents\Courses\Windows 7\Code\TaskbarManaged\TaskbarManaged_Demo4\obj\Release\TaskbarManaged_Demo4.pdb

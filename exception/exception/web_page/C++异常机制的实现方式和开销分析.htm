@@ -1,0 +1,278 @@
+
+<!-- saved from url=(0043)http://baiy.cn/doc/cpp/inside_exception.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+	<script src="./C++异常机制的实现方式和开销分析_files/saved_resource"></script><script type="text/javascript" async="" src="./C++异常机制的实现方式和开销分析_files/plusone.js"></script><script type="text/javascript" async="" src="./C++异常机制的实现方式和开销分析_files/ga.js"></script><script type="text/javascript" src="./C++异常机制的实现方式和开销分析_files/content_replace.js"></script>
+	<meta http-equiv="Content-Language" content="zh-cn">
+	
+	<title>C++异常机制的实现方式和开销分析</title>
+<script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>
+<body style="line-height: 150%" link="#0000FF" vlink="#0000FF"><h1 align="center">
+C++异常机制的实现方式和开销分析</h1>
+<p align="center"><b>白杨</b></p>
+<p align="center"><b><a href="http://baiy.cn/">http://baiy.cn</a></b></p>
+<p align="right"><div id="___plusone_0" style="height: 24px; width: 450px; display: inline-block; text-indent: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; background-position: initial initial; background-repeat: initial initial; "><iframe allowtransparency="true" frameborder="0" hspace="0" id="I1_1321965283704" marginheight="0" marginwidth="0" name="I1_1321965283704" scrolling="no" src="./C++异常机制的实现方式和开销分析_files/saved_resource.htm" style="position:absolute;left:-10000px;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="-1" vspace="0" width="100%" title="+1"></iframe></div></p>
+<p>　</p>
+<p>在我几年前开始写《C++编码规范与指导》一文时，就已经规划着要加入这样一篇讨论 C++ 异常机制的文章了。没想到时隔几年以后才有机会把这个尾巴补完 :-)。</p>
+<p>还是那句开场白：“在恰当的场合使用恰当的特性” 对每个称职的 C++ 
+程序员来说都是一个基本标准。想要做到这点，就必须要了解语言中每个特性的实现方式及其时空开销。异常处理由于涉及大量底层内容，向来是 C++ 
+各种高级机制中较难理解和透彻掌握的部分。本文将在尽量少引入底层细节的前提下，讨论 C++ 中这一崭新特性，并分析其实现开销：</p>
+<ul>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#关于线程">关于线程</a></li>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#函数的调用和返回">函数的调用和返回</a></li>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#C++_函数的调用和返回">C++ 函数的调用和返回</a></li>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#栈回退（Stack_Unwind）机制">栈回退（Stack Unwind）机制</a></li>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#异常捕获机制">异常捕获机制</a></li>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#异常的抛出">异常的抛出</a></li>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#Windows_中的结构化异常处理">Windows 中的结构化异常处理</a></li>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#异常处理机制的开销分析">异常处理机制的开销分析</a></li>
+	<li><a href="http://baiy.cn/doc/cpp/inside_exception.htm#小节">小节</a></li>
+	<li>相关文档：<ul>
+		<li><a href="http://baiy.cn/doc/cpp/index.htm">C++编码规范与指导</a></li>
+		<li><a href="http://baiy.cn/doc/cpp/inside_rtti.htm">RTTI、虚函数和虚基类的实现方式、开销分析和使用指导</a></li>
+		<li><a href="http://baiy.cn/doc/cpp/advanced_topic_about_multicore_and_threading.htm">
+		多处理器环境和线程同步的高级话题</a></li>
+		<li><a href="http://baiy.cn/doc/cpp/comments_of_cxx0x.htm">C++0x（C++11）新特性点评</a></li>
+	</ul>
+	</li>
+</ul>
+<p>　</p><h3><a name="关于线程">关于线程</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center"><table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table3"><tbody><tr><td>
+	进程和线程的概念相信各位看官早已耳熟能详。在这里，我只想带大家回忆几点重要概念：<ol>
+		<li>一个进程中可以同时包含多个线程。<br>
+　</li>
+		<li>我们通常认为线程是操作系统可识别的最小并发执行和调度单位（不要跟俺说还有 Green Thread 或者 Fiber，OS Kernel 
+		不认识也<span by_replace_to="bcy">不参与</span>这些物件的调度）。<br>
+　</li>
+		<li>同一进程中的多个线程共享代码段（代码和常量）、数据段（静态和全局变量）和扩展段（堆存储），但是<b>每个线程有自己的栈段</b>。栈段又叫运行时栈，用来存放所有局部变量和临时变量（参数、返回值、临时构造的变量等）。这一条对下文中的某些概念来说是非常重要的
+		。但是请注意，这里提到的各个“段”都是逻辑上的说法，在物理上某些硬件架构或者操作系统可能不使用段式存储。不过没关系，编译器会保证这些逻辑概念和假设的前提条件对每个 
+		C/C++ 程序员来说始终是成立的。<br>
+　</li>
+		<li>由于共享了除栈以外的所有内存地址段，线程不可以有自己的“静态”或“全局”变量，为了弥补这一缺憾，操作系统通常会提供一种称为 <b>TLS</b>（Thread 
+		Local Storage，即：“线程本地存储”）的机制。通过该机制可以实现类似的功能。TLS 
+		通常是线程控制块（TCB）中的某个指针所指向的一个指针数组，数组中的每个元素称为一个槽（Slot），每个槽中的指针由使用者定义，可以指向任意位置（但通常是指向堆存储中的某个偏移）。</li>
+	</ol>
+	</td></tr></tbody></table><p>　</p></div><h3><a name="函数的调用和返回">函数的调用和返回</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center"><table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table4"><tbody><tr><td>
+	接着我们来回顾下一个预备知识：编译器如何实现函数的调用和返回。一般来说，编译器会为当前调用栈里的每个函数建立一个栈框架（Stack 
+	Frame）。“栈框架”担负着以下重要任务：<ol>
+		<li>传递参数：通常，函数的调用参数总是在这个函数栈框架的最顶端。</li>
+		<li>传递返回地址：告诉被调用者的 return 语句应该 return 到哪里去，通常指向该函数调用的下一条语句（代码段中的偏移）。</li>
+		<li>存放调用者的当前栈指针：便于清理被调用者的所有局部变量、并恢复调用者的现场。</li>
+		<li>存放当前函数内的所有局部变量：记得吗？刚才说过所有局部和临时变量都是存储在栈上的。</li>
+	</ol>
+	<p>最后再复习一点：栈是一种“后进先出”（LIFO）的数据结构，不过实际上大部分栈的实现都支持随机访问。</p>
+	<p>下面我们来看个具体例子：</p>
+	<p>假设有 FuncA、FuncB 和 FuncC 三个函数，每个函数均接收两个整形值作为其参数。在某线程上的某一时间段内，FuncA 调用了 
+	FuncB，而 FuncB 又调用了 FuncC。则，它们的栈框架看起来应该像这样：</p>
+	<p align="center">
+	<img border="0" src="./C++异常机制的实现方式和开销分析_files/函数栈框架.png" width="800" height="687"><br>
+	图1 函数调用栈框架示例</p>
+	<p align="left">
+	正如上图所示的那样，随着函数被逐级调用，编译器会为每一个函数建立自己的栈框架，栈空间逐渐消耗。随着函数的逐级返回，该函数的栈框架也将被逐级销毁，栈空间得以逐步释放。顺便说一句，递归函数的嵌套调用深度通常也是取决于运行时栈空间的剩余尺寸。</p>
+	<p align="left">这里顺便解释另一个术语：调用约定（calling convention）。<b>调用约定</b>通常指：调用者将参数压入栈中（或放入寄存器中）的顺序，以及返回时由谁（调用者还是被调用者）来清理这些参数等细节规程方面的约定。</p>
+	<p align="left">
+	最后再说一句，这里所展示的函数调用乃是最“经典”的方式。实际情况是：在开启了优化选项后，编译器可能不会为一个内联甚至非内联的函数生成栈框架，编译器可能使用很多优化技术消除这个构造。不过对于一个 
+	C/C++ 程序员来说，达到这样的理解程度通常就足够了。</p></td></tr></tbody></table></div><p align="left"><br>　</p><h3>
+<a name="C++_函数的调用和返回">C++ 函数的调用和返回</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center">
+	<table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table5"><tbody><tr><td>
+		首先澄清一点，这里说的 “C++ 函数”是指：<ol>
+			<li>该函数可能会直接或间接地抛出一个异常：即该函数的定义存放在一个 C++ 编译（而不是传统 
+			C）单元内，并且该函数没有使用“throw()”异常过滤器。</li>
+			<li>或者该函数的定义内使用了 try 块。</li>
+		</ol>
+		<p>以上两者满足其一即可。为了能够成功地捕获异常和正确地完成栈回退（stack 
+		unwind），编译器必须要引入一些额外的数据结构和相应的处理机制。我们首先来看看引入了异常处理机制的栈框架大概是什么样子：</p>
+		<p align="center">
+		<img border="0" src="./C++异常机制的实现方式和开销分析_files/C++函数调用栈.png" width="800" height="972"><br>
+		图2 C++函数调用栈框架示例</p>
+		<p align="left">由图2可见，在每个 C++ 函数的栈框架中都多了一些东西。仔细观察的话，你会发现，多出来的东西正好是一个 
+		EXP 类型的结构体。进一步分析就会发现，这是一个典型的单向链表式结构：</p><ul>
+			<li>
+			<p align="left">piPrev 成员指向链表的上一个节点，它主要用于在函数调用栈中逐级向上寻找匹配的 catch 
+			块，并完成栈回退工作。</p></li>
+			<li>
+			<p align="left">piHandler 
+			成员指向完成异常捕获和栈回退所必须的数据结构（主要是两张记载着关键数据的表：“try”块表：<font color="#0000FF">tblTryBlocks</font> 
+			及“栈回退表”：<font color="#0000FF">tblUnwind</font>）。</p></li>
+			<li>
+			<p align="left">nStep 成员用来定位 try 块，以及在栈回退表中寻找正确的入口。</p></li>
+		</ul>
+		<p align="left">需要说明的是：<b>编译器会为每一个“C++ 函数”定义一个 <font color="#0000FF">
+		EHDL</font> 结构，不过只会为包含了“try”块的函数定义 <font color="#0000FF">tblTryBlocks</font> 
+		成员</b>。此外，异常处理器还会为每个线程维护一个指向当前异常处理框架的指针。该指针指向异常处理器链表的链尾，通常存放在某个 TLS 
+		槽或能起到类似作用的地方。</p>
+		<p align="left">最后，请再看一遍图2，并至少对其中的数据结构留下一个大体印象。我们会在后面多个小节中详细讨论它们。</p>
+		<p align="left"><b>注意</b>：为了简化起见，本文中描述的数据结构内，大多省略了一些与话题无关的成员。</p></td></tr></tbody></table>
+	<p>　</p></div><h3><a name="栈回退（Stack_Unwind）机制">栈回退（Stack Unwind）机制</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center">
+	<table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table6"><tbody><tr><td>
+		“栈回退”是伴随异常处理机制引入 C++ 
+		中的一个新概念，主要用来确保在异常被抛出、捕获并处理后，所有生命期已结束的对象都会被正确地析构，它们所占用的空间会被正确地回收。<p>
+		受益于栈回退机制的引入，以及 C++ 类所支持的“资源申请即初始化”语意，使得我们终于能够彻底告别既不优雅也不安全的 
+		setjmp/longjmp 调用，简便又安全地实现远程跳转了。我想这也是 C++ 异常处理机制在错误处理以外唯一一种合理的应用方式了。</p>
+		<p>下面我们就来具体看看编译器是如何实现栈回退机制的：</p>
+		<p align="center">
+		<img border="0" src="./C++异常机制的实现方式和开销分析_files/栈回退.png" width="800" height="905"><br>
+		图3 C++ 栈回退机制</p>
+		<p align="left">
+		图3中的“FuncUnWind”函数内，所有真实代码均以黑色和蓝色字体标示，编译器生成的代码则由灰色和橙色字体标明。此时，在图2里给出的 
+		nStep 变量和 tblUnwind 成员作用就十分明显了。</p>
+		<p align="left">nStep 变量用于跟踪函数内局部对象的构造、析构阶段。再配合编译器为每个函数生成的 tblUnwind 
+		表，就可以完成退栈机制。表中的 <font color="#0000FF">pfnDestroyer</font> 
+		字段记录了对应阶段应当执行的析构操作（析构函数指针）；<font color="#0000FF">pObj</font> 
+		字段则记录了与之相对应的对象 this 指针偏移。将 pObj 所指的偏移值加上当前栈框架基址（EBP），就是要代入 pfnDestroyer 所指析构函数的 this 指针，这样即可完成对该对象的析构工作。而 
+		<font color="#0000FF">nNextIdx</font> 字段则指向下一个需要析构对象所在的行（下标）。</p>
+		<p align="left">在发生异常时，异常处理器首先检查当前函数栈框架内的 <font color="#0000FF">nStep</font> 
+		值，并通过 <font color="#0000FF">piHandler</font> 取得 <font color="#0000FF">
+		tblUnwind[]</font> 表。然后将 nStep 作为下标带入表中，执行该行定义的析构操作，然后转向由 nNextIdx 
+		指向的下一行，直到 nNextIdx 为 -1 为止。在当前函数的栈回退工作结束后，异常处理器可沿当前函数栈框架内 
+		<font color="#0000FF">piPrev</font> 的值回溯到异常处理链中的上一节点重复上述操作，直到所有回退工作完成为止。</p>
+		<p align="left">值得一提的是，nStep 
+		的值完全在编译时决定，运行时仅需执行若干次简单的整形立即数赋值（通常是直接赋值给CPU里的某个寄存器）。此外，对于所有内部类型以及使用了默认构造、析构方法（并且它的所有成员和基类也使用了默认方法）的类型，其创建和销毁均不影响 nStep 的值。</p>
+		<p align="left"><b>注意</b>：如果在栈回退的过程中，由于析构函数的调用而再次引发了异常（异常中的异常），则被认为是一次异常处理机制的严重失败。此时进程将被强行禁止。为防止出现这种情况，应在所有可能抛出异常的析构函数中使用“std::uncaught_exception()”方法判断当前是否正在进行栈回退（即：存在一个未捕获或未完全处理完毕的异常）。如是，则应抑制异常的再次抛出。</p></td></tr></tbody></table>
+	<p>　</p></div><h3><a name="异常捕获机制">异常捕获机制</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center">
+	<table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table7"><tbody><tr><td>
+		一个异常被抛出时，就会立即引发 C++ 的异常捕获机制：<p align="center">
+		<img border="0" src="./C++异常机制的实现方式和开销分析_files/异常捕获机制.png" width="800" height="905"><br>
+		图4 C++ 异常捕获机制</p>
+		<p align="left">在上一小节中，我们已经看到了 <font color="#0000FF">nStep</font> 
+		变量在跟踪对象构造、析构方面的作用。实际上 nStep 除了能够跟踪对象创建、销毁阶段以外，还能够标识当前执行点是否在 try 
+		块中，以及（如果当前函数有多个 try 块的话）究竟在哪个 try 块中。这是通过在每一个 try 块的入口和出口各为 nStep 赋予一个唯一 
+		ID 值，并确保 nStep 在对应 try 块内的变化恰在此范围之内来实现的。</p>
+		<p align="left">在具体实现异常捕获时，首先，C++ 异常处理器检查发生异常的位置是否在当前函数的某个 try 
+		块之内。这项工作可以通过将当前函数的 nStep 值依次在 <font color="#0000FF">piHandler</font> 指向 
+		<font color="#0000FF">tblTryBlocks[]</font> 表的条目中进行范围为 [nBeginStep, 
+		nEndStep) 的比对来完成。</p>
+		<p align="left">例如：若图4 中的 FuncB 在 nStep == 2 时发生了异常，则通过比对 FuncB 的 
+		tblTryBlocks[] 表发现 2∈[1, 3)，故该异常发生在 FuncB 内的第一个 try 块中。</p>
+		<p align="left">其次，如果异常发生的位置在当前函数中的某个 try 块内，则尝试匹配该 
+		<font color="#0000FF">tblTryBlocks[]</font> 相应条目中的 <font color="#0000FF">
+		tblCatchBlocks[]</font> 表。<font color="#0000FF">tblCatchBlocks[]</font> 
+		表中记录了与指定 try 块配套出现的所有 catch 块相关信息，包括这个 catch 块所能捕获的异常类型及其起始地址等信息。</p>
+		<p align="left">若找到了一个匹配的 catch 块，则复制当前异常对象到此 catch 块，然后跳转到其入口地址执行块内代码。</p>
+		<p align="left">否则，则说明异常发生位置不在当前函数的 try 块内，或者这个 try 块中没有与当前异常相匹配的 catch 块，此时则沿着函数栈框架中 
+		<font color="#0000FF">piPrev</font> 
+		所指地址（即：异常处理链中的上一个节点）逐级重复以上过程，直至找到一个匹配的 catch 
+		块或到达异常处理链的首节点。对于后者，我们称为发生了未捕获的异常，对于 C++ 异常处理器而言，未捕获的异常是一个严重错误，将导致当前进程被强制结束。</p>
+		<p align="left"><b>注意</b>：虽然在图4示例中的 tblTryBlocks[] 只有一个条目，这个条目中的 
+		tblCatchBlocks[] 也只有一行。但是在实际情况中，这两个表中都允许有多条记录。意即：一个函数中可以有多个 try 块，每个 try 
+		块后均可跟随多个与之配套的 catch 块。</p>
+		<p align="left"><b>注意</b>：按照标准意义上的理解，异常时的栈回退是伴随着异常捕获过程沿着异常处理链逐层向上进行的。但是有些编译器是在先完成异常捕获后再一次性进行栈回退的。无论具体实现使用了哪种方式，除非正在开发一个内存严格受限的嵌入式应用，通常我们按照标准语意来理解都不会产生什么问题。</p>
+		<p align="left"><b>备注</b>：实际上 tblCatchBlocks 中还有一些较为关键但被故意省略的字段。比如指明该 
+		catch 块异常对象复制方式（传值（拷贝构造）或传址（引用或指针））的字段，以及在何处存放被复制的异常对象（相对于入口地址的偏移位置）等信息。</p></td></tr></tbody></table>
+	<div align="center">
+	　</div></div><div align="center">
+	　</div><h3><a name="异常的抛出">异常的抛出</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center">
+	<table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table9"><tbody><tr><td>
+		接下来讨论整个 C++ 异常处理机制中的最后一个环节，异常的抛出：<p align="center">
+		<img border="0" src="./C++异常机制的实现方式和开销分析_files/异常抛出.png" width="800" height="905"><br>
+		图5 C++ 异常抛出</p>
+		<p align="left">在编译一段 C++ 代码时，编译器会将所有 throw 语句替换为其 C++ 
+		运行时库中的某一指定函数，这里我们叫它 <font color="#0000FF">__CxxRTThrowExp</font>（与本文提到的所有其它数据结构和属性名一样，在实际应用中它可以是任意名称）。该函数接收一个编译器认可的内部结构（我们叫它 
+		<font color="#0000FF">EXCEPTION</font> 
+		结构）。这个结构中包含了待抛出异常对象的起始地址、用于销毁它的析构函数，以及它的 type_info 信息。对于没有启用 RTTI 
+		机制（编译器禁用了 RTTI 机制或没有在类层次结构中使用虚表）的异常类层次结构，可能还要包含其所有基类的 type_info 
+		信息，以便与相应的 catch 块进行匹配。</p>
+		<p align="left">在图5中的深灰色框图内，我们使用 C++ 伪代码展示了函数 FuncA 中的 “throw myExp(1);” 
+		语句将被编译器最终翻译成的样子。实际上在多数情况下，<font color="#0000FF">__CxxRTThrowExp</font> 
+		函数即我们前面曾多次提到的“异常处理器”，异常捕获和栈回退等各项重要工作都由它来完成。</p>
+		<p align="left"><font color="#0000FF">__CxxRTThrowExp </font>首先接收（并保存）<font color="#0000FF">EXCEPTION</font> 
+		对象；然后从 <font color="#0000FF">TLS：Current ExpHdl</font> 处找到与当前函数对应的 
+		piHandler、nStep 
+		等异常处理相关数据；并按照前文所述的机制完成异常捕获和栈回退。由此完成了包括“抛出”-&gt;“捕获”-&gt;“回退”等步骤的整套异常处理机制。</p></td></tr></tbody></table>
+	<p>　</p></div><h3><a name="Windows_中的结构化异常处理">Windows 中的结构化异常处理</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center">
+	<table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table10"><tbody><tr><td>
+		Microsoft Windows 带有一种名为“结构化异常处理”的机制，非常著名的“内存访问违例”出错对话框就是该机制的一种体现。Windows 
+		结构化异常处理与前文讨论的 C++ 异常处理机制有惊人的相似之处，同样使用类似的链式结构实现。对于 Windows 下的应用程序，只需使用 SetUnhandledExceptionFilter API 注册异常处理器；用 FS:[0] 替代前文所述的 TLS: Current 
+		ExpHdl 等很少的改动，即可将此两种错误处理机制合而为一。这样做的优势十分明显：<ul>
+			<li>由于可直接借助操作系统提供的机制，所以简化了 C++ 异常处理器的实现。</li>
+			<li>使“catch (...)” 块得以捕获操作系统产生的异常（如：“内存访问违例”等等）。</li>
+			<li>使操作系统的异常处理机制能够捕获所有 C++ 异常。</li>
+		</ul>
+		<p>实际上，大多数 Windows 下的 C++ 编译器的异常机制均使用这种方式实现。</p></td></tr></tbody></table></div><div align="center">
+	　</div>
+	<div align="center">
+	　</div><h3><a name="异常处理机制的开销分析">异常处理机制的开销分析</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center">
+	<table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table11"><tbody><tr><td>
+		至此，我们已完整地阐述了整套 C++ 异常处理机制的实现原理。我在本文的开头曾提到，作为一名 C++ 
+		程序员，了解其某一特性的实现原理主要是为了避免错误地使用该特性。要达到这个目的，还要在了解实现原理的基础上进行一些额外的开销分析工作：<div align="center">
+　<table border="1" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table14"><tbody><tr><td bgcolor="#C0C0C0" width="143" align="left" valign="top"><b>特性</b></td><td bgcolor="#C0C0C0" width="332" align="left" valign="top"><b>时间开销</b></td><td bgcolor="#C0C0C0" align="left" valign="top"><b>空间开销</b></td></tr><tr><td width="143" align="left" valign="top">
+				EHDL</td><td width="332" align="left" valign="top">无运行时开销</td><td align="left" valign="top"><u>每“C++函数”</u>一个 
+				EHDL 对象，其中的 tblTryBlocks[] 成员仅在函数中包含至少一个 try 块时使用。典型情况下小于 64 字节。<p>　</p></td></tr>
+				<tr>
+					<td width="143" align="left" valign="top">C++栈框架</td><td width="332" align="left" valign="top">
+					极高的 O(1) 效率，每次调用时进行3次额外的整形赋值和一次 TLS 访问。</td><td align="left" valign="top"><u>每
+					调用</u>两个指针和一个整形开销。典型情况下小于 16 字节。<p>　</p></td>
+				</tr>
+				<tr><td width="143" align="left" valign="top" height="76">step 
+					跟踪</td>
+					<td width="332" align="left" valign="top" height="76">极高的 
+					O(1) 效率每次进出 try 块或对象构造/析构一次整形立即数赋值。</td>
+					<td align="left" valign="top" height="76">无（已记入 C++ 
+					栈框架中的相应项目）。<p>　</p></td></tr><tr><td width="143" align="left" valign="top">
+					异常的抛出、捕获和栈回退</td><td width="332" align="left" valign="top">
+异常的抛出是一次 O(1) 级操作。在单个函数中进行捕获和栈回退也均为 O(1) 操作。<p>但异常捕获的总体成本为 O(m)，其中 m 
+等于当前函数调用栈中，从抛出异常的位置到达匹配 catch 块之间所经过的函数调用中，包含 try 块（即：定义了有效 
+tblTryBlocks[]）的函数个数。</p>
+<p>栈回退的总成本为 O(n)，其中 n 等于当前函数调用栈中，从抛出异常的位置到达匹配 catch 块之间所经过的函数调用数。</p></td><td align="left" valign="top">
+					在异常处理结束前，需保存异常对象及其析构函数指针和相应的 type_info 信息。<p>
+					具体根据对象尺寸、编译器选项（是否开启 
+					RTTI）及异常捕获器的参数传递方式（传值或传址）等因素有较大变化。典型情况下小于 256 字节。</p><p>　</p></td></tr></tbody></table>
+				<p align="left">可以看出，在没有抛出异常时，C++ 
+				的异常处理机制是十分有效的。在有异常被抛出后，可能会依当前函数调用栈的情形进行若干次整形比较（try块表匹配）操作，但这通常不会超过几十次。对于大多数 
+				15 年前的 CPU 来说，整形比较也只需 1 时钟周期，所以异常捕获的效率还是很高的。栈回退的效率则与 return 
+				语句基本相当。</p>
+				<p align="left">
+				考虑到即使是传统的函数调用、错误处理和逐级返回机制也不是没有代价的。这些开销在绝大多数情形下仍可以接受。空间开销方面，每“C++ 
+				函数”一个 EHDL 
+				结构体的引入在某些极端情形下会明显增加目标文件尺寸和内存开销。但是典型情况下，它们的影响并不大，但也没有小到可以完全忽略的程度。如果正在为一个资源严格受限的环境开发应用程序，你可能需要考虑关闭异常处理和 RTTI 机制以节约存储空间。</p><p align="left">
+				以上讨论的是一种典型的异常机制的实现方式，各具体编译器厂商可能有自己的优化和改进方案，但总体的出入不会很大。</p></div>
+		</td></tr></tbody></table></div><div align="center">
+	　</div><h3><a name="小节">小节</a><br>
+<img border="0" src="./C++异常机制的实现方式和开销分析_files/分割线01.png" width="733" height="8"></h3><div align="center">
+	<table border="0" cellpadding="4" style="border-collapse: collapse" width="95%" bordercolorlight="#808080" bordercolordark="#808080" id="table12"><tbody><tr><td>
+		异常处理是 C++ 
+		中十分有用的崭新特性之一。在绝大多数情况下，它们都有着优异的表现和令人满意的时空效率。异常处理本质上是另一种返回机制。但无论从软件工程、模块设计、编码习惯还是时空效率等角度来说，除了在有充分文档说明的前提下，偶尔可用来替代替代传统的 setjmp/longjmp 功能外，应保证只将其用于程序的错误处理机制中。<p>
+		此外，由于长跳转的使用既易于出错，又难于理解和维护。在编码过程中也应当尽量避免使用。关于异常的一般性使用说明，请参考：<a href="http://baiy.cn/doc/cpp/index.htm#代码风格与版式_异常">代码风格与版式：异常</a>。</p></td></tr></tbody></table></div><p>　</p>
+
+<script type="text/javascript">
+
+  (function() {
+    var velSpans = document.getElementsByTagName('span');
+    for (var i=0; i< velSpans.length; ++i) {
+		ReplaceContent(velSpans[i]);
+    }
+  })();
+  
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15891290-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/javascript">
+  window.___gcfg = {lang: 'zh-CN'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+</body></html>

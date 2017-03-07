@@ -1,0 +1,496 @@
+============================================================================================================
+			WDM驱动程序入门
+
+驱动程序一运行就是工作在系统的底层RING 0处，提供各种接口给应用程序调用。
+
+	注意 ：要非常地熟悉系统底层的工作原理，否则一个不小心，就“蓝屏”
+
+一个简单的完整的WDM框架 ：
+
+1.要求 : 已安装DDK 2000
+
+搭建工作环境 ：
+
+DDK分为98 DDK和2000 DDK两种
+
+·准备工作
+1、确定你已经安装了Visual C++
+2、安装2000 DDK
+3、安装2000 DDK成功后，在“开始”->“程序”里应该有“Development Kits”->“Windows 2000 DDK”的项目。
+  （注意一定要先安装好VC，然后才安装DDK，这个顺序决不能颠倒！！）
+4、保证DDKROOT环境变量设置为Windows 2000 DDK的基目录，
+   如果不是的话，请在控制面板“系统”属性的“高级”标签环境变量编辑器中设置好这个环境变量。
+
+
+2.代码示例 ：
+
+头文件
+
+/***************************************************************
+程序名称：Hello World for WDM
+文件名称：HelloWDM.h
+作者：罗聪
+日期：2002-8-16
+***************************************************************/
+
+//头文件，只是声明一些函数和变量，比较简单就不多说了，请读者自行研究：
+
+#ifdef __cplusplus
+
+extern "C"
+{
+#endif
+
+#include "ntddk.h"
+
+#ifdef __cplusplus
+}
+#endif
+
+typedef struct _DEVICE_EXTENSION
+{
+    PDEVICE_OBJECT    fdo;
+    PDEVICE_OBJECT    NextStackDevice;
+    UNICODE_STRING    ifSymLinkName;
+
+} DEVICE_EXTENSION, *PDEVICE_EXTENSION;
+
+NTSTATUS HelloWDMAddDevice(IN PDRIVER_OBJECT DriverObject,
+                           IN PDEVICE_OBJECT PhysicalDeviceObject);
+
+NTSTATUS HelloWDMPnp(IN PDEVICE_OBJECT fdo,
+                        IN PIRP Irp);
+
+
+执行文件
+
+
+/***************************************************************
+程序名称：Hello World for WDM
+文件名称：HelloWDM.cpp
+作者：罗聪
+日期：2002-8-16
+***************************************************************/
+
+//一定要的头文件，声明了函数模块和变量：
+#include "HelloWDM.h"
+
+/***************************************************************
+函数名称：DriverEntry()
+功能描述：WDM程序入口
+***************************************************************/
+//extern "C"是必须的，表示“用C链接”。如果你的文件名是HelloWDM.c的话，这句可以省略。
+extern "C"
+NTSTATUS DriverEntry(    IN PDRIVER_OBJECT DriverObject,
+                        IN PUNICODE_STRING RegistryPath)
+{
+    //指定“添加设备”消息由函数“HelloWDMAddDevice()”来处理：
+    DriverObject->DriverExtension->AddDevice = HelloWDMAddDevice;
+    //指定“即插即用”消息由函数“HelloWDMPnp()”来处理：
+    DriverObject->MajorFunction[IRP_MJ_PNP] = HelloWDMPnp;
+
+    //返回一个NTSTATUS值STATUS_SUCCESS。几乎所有的驱动程序例程都必须返回一个NTSTATUS值，这些值在NTSTATUS.H DDK头文件中有详细的定义。
+    return STATUS_SUCCESS;
+}
+
+
+/***************************************************************
+函数名称：HelloWDMAddDevice()
+功能描述：处理“添加设备”消息
+***************************************************************/
+NTSTATUS HelloWDMAddDevice(IN PDRIVER_OBJECT DriverObject,
+                           IN PDEVICE_OBJECT PhysicalDeviceObject)
+{
+    //定义一个NTSTATUS类型的返回值：
+    NTSTATUS status;
+    //定义一个功能设备对象（Functional Device Object）：
+    PDEVICE_OBJECT fdo;
+
+    //创建我们的功能设备对象，并储存到fdo中：
+    status = IoCreateDevice(
+        DriverObject,                //驱动程序对象
+        sizeof(DEVICE_EXTENSION),    //要求的设备扩展的大小
+        NULL,                        //设备名称，这里为NULL
+        FILE_DEVICE_UNKNOWN,        //设备的类型，在标准头文件WDM.H或NTDDK.H中列出的FILE_DEVICE_xxx值之一
+        0,                            //各种常量用OR组合在一起，指示可删除介质、只读等。
+        FALSE,                        //如果一次只有一个线程可以访问该设备，为TRUE，否则为FALSE
+        &fdo);                        //返回的设备对象
+
+    //NT_SUCCESS宏用于测试IoCreateDevice内核是否成功完成。不要忘记检查对内核的所有调用是否成功。NT_ERROR宏不等同于!NT_SUCCESS，最好使用!NT_SUCCESS，因为除了错误外，它还截获警告信息。
+    if( !NT_SUCCESS(status))
+        return status;
+
+    //创建一个设备扩展对象dx，用于存储指向fdo的指针：
+    PDEVICE_EXTENSION dx = (PDEVICE_EXTENSION)fdo->DeviceExtension;
+    dx->fdo = fdo;
+
+    //用IoAttachDeviceToDeviceStack函数把HelloWDM设备挂接到设备栈：
+    dx->NextStackDevice = IoAttachDeviceToDeviceStack(fdo, PhysicalDeviceObject);
+
+    //设置fdo的flags。有两个“位”是必须改变的，一个是必须清除DO_DEVICE_INITIALIZING标志，如果在DriverEntry例程中调用IoCreateDevice()，就不需要清除这个标志位。还有一个是必须设置DO_BUFFER_IO标志位：
+    fdo->Flags |= DO_BUFFERED_IO | DO_POWER_PAGABLE;
+    fdo->Flags &= ~DO_DEVICE_INITIALIZING;
+
+    //返回值：
+    return STATUS_SUCCESS;
+}
+
+
+/***************************************************************
+函数名称：HelloWDMPnp()
+功能描述：处理“即插即用”消息
+***************************************************************/
+NTSTATUS HelloWDMPnp(IN PDEVICE_OBJECT fdo,
+                        IN PIRP Irp)
+{
+    //创建一个设备扩展对象dx，用于存储指向fdo的指针：
+    PDEVICE_EXTENSION dx=(PDEVICE_EXTENSION)fdo->DeviceExtension;
+
+    //首先要通过函数IoGetCurrentIrpStackLocation()得到当前的IRP，并由此得到Minor Function：
+    PIO_STACK_LOCATION IrpStack = IoGetCurrentIrpStackLocation(Irp);
+    ULONG MinorFunction = IrpStack->MinorFunction;
+
+    //然后把这个Minor Function传递给下一个设备栈：
+    IoSkipCurrentIrpStackLocation(Irp);
+    NTSTATUS status = IoCallDriver( dx->NextStackDevice, Irp);
+
+    //处理“即插即用”次功能代码：
+    //当Minor Function等于IRP_MN_REMOVE_DEVICE时，说明有设备被拔出或卸下，这时要取消资源分配并删除设备：
+    if( MinorFunction==IRP_MN_REMOVE_DEVICE)
+    {
+        //取消设备接口：
+        IoSetDeviceInterfaceState(&dx->ifSymLinkName, FALSE);
+        RtlFreeUnicodeString(&dx->ifSymLinkName);
+        
+        //调用IoDetachDevice()把fdo从设备栈中脱开：
+        if (dx->NextStackDevice)
+            IoDetachDevice(dx->NextStackDevice);
+        //删除fdo：
+        IoDeleteDevice(fdo);
+    }
+
+    //返回值：
+    return status;
+}
+
+
+WDM程序编译出来的并不是.exe，而是.sys文件，在未经设置编译环境之前，是不能直接用VC来编译的
+
+
+驱动程序也是一种PE文件，它同样由DOS MZ header开头，也有完整的DOS stub和PE header，
+同样拥有Import table和Export table
+
+·编写必需的文件（makefile和Sources）
+1、makefile（使用makefile来确定项目中哪些文件需要重新编译）
+
+要做的工作就是提供这样一个文件，它的内容是：
+
+#
+# DO NOT EDIT THIS FILE!!!  Edit .\sources. If you want to add a new source
+# file to this component.  This file merely indirects to the real make file
+# that is shared by all the driver components of the Windows NT DDK
+#
+
+!INCLUDE $(NTMAKEENV)\makefile.def
+ 
+事实上每个WDM程序所需要的makefile的内容都是一样的
+
+
+2、Sources
+
+TARGETNAME=HelloWDM
+TARGETTYPE=DRIVER
+DRIVERTYPE=WDM
+TARGETPATH=OBJ
+
+INCLUDES=$(BASEDIR)\inc;\
+         $(BASEDIR)\inc\ddk;\
+
+TARGETNAME=HelloWDM
+TARGETTYPE=DRIVER
+DRIVERTYPE=WDM
+TARGETPATH=OBJ
+
+INCLUDES=$(BASEDIR)\inc;\
+         $(BASEDIR)\inc\ddk;\
+
+TARGETLIBS=$(BASEDIR)\lib\*\free\usbd.lib\
+
+SOURCES=HelloWDM.cpp\
+ 
+
+
+这个文件指定了驱动程序目标名是HelloWDM.sys，是一个WDM驱动程序，生成的文件存放在OBJ目录中。
+值得注意的是，“=”前后不能有空格，否则编译的时候会出错。
+
+
+·开始编译
+通过一个DDK实用工具build来完成。具体步骤：
+
+“开始”->“程序”->“Development Kits”->“Windows 2000 DDK”->“Checked Build Environment”
+
+屏幕将显示：（有“回车”的那行是需要你亲自打进去的）
+
+New or updated MSVC detected.  Updating DDK environment….
+
+Setting environment for using Microsoft Visual C++ tools.
+Starting dirs creation…Completed.
+
+D:\NTDDK>cd\HelloWDM    （回车）
+
+D:\HelloWDM>build    （回车）
+ 
+
+
+如果源代码没有错误的话，生成的HelloWDM.sys将存放在objchk\i386目录中
+
+TARGETLIBS=$(BASEDIR)\lib\*\free\usbd.lib\
+
+SOURCES=HelloWDM.cpp\
+ 
+2、“Release”版的生成
+请跟着以下步骤：
+
+“开始”->“程序”->“Development Kits”->“Windows 2000 DDK”->“Free Build Environment”
+
+随后的步骤跟“Debug”版相同，不同的是生成的HelloWDM.sys将存放在objfre\i386目录中。
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+没看
+先来做个小剖析，加深对.sys文件的认识吧！（如果你对.sys的内部细节没有兴趣的话，可以略过不看。^_^）
+
+首先祭出Delphi里附带的tdump.exe程序（别问我为什么用这个，这只是纯粹的习惯问题）。让我们键入：
+C:\WINNT\System32\Drivers>tdump ccport.sys -em -ee
+参数-em是列出Import table，-ee是列出Export table。回车之后，屏幕列出一大堆东西：
+
+
+C:\WINNT\SYSTEM32\DRIVERS>tdump ccport.sys -em -ee
+Turbo Dump  Version 5.0.16.12 Copyright ? 1988, 2000 Inprise Corporation
+                    Display of File CCPORT.SYS
+
+IMPORT:     NTOSKRNL.EXE={hint:011Fh}.’memcpy’
+IMPORT:     NTOSKRNL.EXE={hint:003Dh}.’IoDeleteDevice’
+IMPORT:     NTOSKRNL.EXE={hint:0030h}.’IoAttachDeviceToDeviceStack’
+IMPORT:     NTOSKRNL.EXE={hint:008Eh}.’KeSetEvent’
+IMPORT:     NTOSKRNL.EXE={hint:0068h}.’IofCallDriver’
+IMPORT:     NTOSKRNL.EXE={hint:0095h}.’KeWaitForSingleObject’
+IMPORT:     NTOSKRNL.EXE={hint:0074h}.’KeInitializeEvent’
+IMPORT:     NTOSKRNL.EXE={hint:003Fh}.’IoDetachDevice’
+IMPORT:     NTOSKRNL.EXE={hint:00D3h}.’RtlFreeUnicodeString’
+IMPORT:     NTOSKRNL.EXE={hint:0077h}.’KeInitializeSpinLock’
+IMPORT:     NTOSKRNL.EXE={hint:0129h}.’strcpy’
+IMPORT:     NTOSKRNL.EXE={hint:0121h}.’memset’
+IMPORT:     NTOSKRNL.EXE={hint:003Ch}.’IoCreateUnprotectedSymbolicLink’
+IMPORT:     NTOSKRNL.EXE={hint:0038h}.’IoCreateDevice’
+IMPORT:     NTOSKRNL.EXE={hint:00C2h}.’RtlAnsiStringToUnicodeString’
+IMPORT:     NTOSKRNL.EXE={hint:0069h}.’IofCompleteRequest’
+IMPORT:     NTOSKRNL.EXE={hint:0124h}.’sprintf’
+IMPORT:     NTOSKRNL.EXE={hint:003Eh}.’IoDeleteSymbolicLink’
+IMPORT:     NTOSKRNL.EXE={hint:0042h}.’IoFreeIrp’
+IMPORT:     NTOSKRNL.EXE={hint:004Dh}.’IoInitializeIrp’
+IMPORT:     NTOSKRNL.EXE={hint:002Dh}.’IoAllocateIrp’
+IMPORT:     NTOSKRNL.EXE={hint:0027h}.’InterlockedExchange’
+IMPORT:     NTOSKRNL.EXE={hint:0025h}.’InterlockedCompareExchange’
+IMPORT:     NTOSKRNL.EXE={hint:0035h}.’IoCancelIrp’
+IMPORT:     NTOSKRNL.EXE={hint:012Ah}.’strlen’
+IMPORT:     NTOSKRNL.EXE={hint:0126h}.’strcat’
+IMPORT:     NTOSKRNL.EXE={hint:0114h}.’atoi’
+IMPORT:     NTOSKRNL.EXE={hint:0128h}.’strcmp’
+IMPORT:     NTOSKRNL.EXE={hint:0034h}.’IoBuildSynchronousFsdRequest’
+IMPORT:     NTOSKRNL.EXE={hint:00D5h}.’RtlInitAnsiString’
+IMPORT:          HAL.DLL={hint:0006h}.’KfAcquireSpinLock’
+IMPORT:          HAL.DLL={hint:0009h}.’KfReleaseSpinLock’
+
+EXPORT ord:0001=’Vcomm_DriverControl’
+ 
+
+
+我们可以很清楚地看到，它主要调用了NTOSKRNL.EXE和HAL.DLL文件（实际上你会发现，几乎所有的WDM驱动程序都会调用NTOSKRNL.EXE文件，从它的名字你可以看出为什么了吧？），并且输出了一个函数“Vcomm_DriverControl”。这表明，其实.sys跟.exe文件一样，都是一种PE文件来的。不同的是，.sys文件Import的通常是NTOSKRNL.EXE，而.exe文件Import的通常是KERNEL32.DLL和USER32.DLL。
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+没看
+
+·安装
+如果前面的编译过程没有错误的话，现在我们应该已经得到了一个HelloWDM.sys文件，假设它是放在D:\HelloWDM\objfre\i386中。
+
+我们还要干什么呢？…………对啦，就是安装它！不然辛辛苦苦编译出来有什么用？
+
+安装WDM驱动程序可以用两种方法，一种是利用注册表，还有一种是利用INF文件。我们一般是采用INF文件（这是微软推荐的）。INF文件可以在 WINNT\INF 目录中找到很多。为了顺利安装，我在这里先给出 HelloWDM 所需要的 HelloWDM.INF 文件：
+
+;; The Win2K DDK documentation contains an excellent INF reference.
+
+;--------- Version Section ---------------------------------------------------
+
+[Version]
+Signature="$CHICAGO$"
+Provider=LC_Device
+DriverVer=8/21/2002,3.0.0.3
+
+; If device fits one of the standard classes, use the name and GUID here,
+; otherwise create your own device class and GUID as this example shows.
+
+Class=Unknown
+ClassGUID={ff646f80-8def-11d2-9449-00105a075f6b}
+
+;--------- SourceDiskNames and SourceDiskFiles Section -----------------------
+
+; These sections identify source disks and files for installation. They are
+; shown here as an example, but commented out.
+
+[SourceDisksNames]
+1 = "HelloWDM",Disk1,,
+
+[SourceDisksFiles]
+HelloWDM.sys = 1,objfre\i386,
+
+;--------- ClassInstall/ClassInstall32 Section -------------------------------
+
+; Not necessary if using a standard class
+
+; 9X Style
+[ClassInstall]
+Addreg=Class_AddReg
+
+; NT Style
+[ClassInstall32]
+Addreg=Class_AddReg
+
+[Class_AddReg]
+HKR,,,,%DeviceClassName%
+HKR,,Icon,,"-5"
+
+;--------- DestinationDirs Section -------------------------------------------
+
+[DestinationDirs]
+YouMark_Files_Driver = 10,System32\Drivers
+
+;--------- Manufacturer and Models Sections ----------------------------------
+
+[Manufacturer]
+%MfgName%=Mfg0
+
+[Mfg0]
+
+; PCI hardware Ids use the form
+; PCI\VEN_aaaa&DEV_bbbb&SUBSYS_cccccccc&REV_dd
+;改成你自己的ID
+%DeviceDesc%=YouMark_DDI, PCI\VEN_9999&DEV_9999
+
+;---------- DDInstall Sections -----------------------------------------------
+; --------- Windows 9X -----------------
+
+; Experimentation has shown that DDInstall root names greater than 19 characters
+; cause problems in Windows 98
+
+[YouMark_DDI]
+CopyFiles=YouMark_Files_Driver
+AddReg=YouMark_9X_AddReg
+
+[YouMark_9X_AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,HelloWDM.sys
+HKR, "Parameters", "BreakOnEntry", 0x00010001, 0
+
+; --------- Windows NT -----------------
+
+[YouMark_DDI.NT]
+CopyFiles=YouMark_Files_Driver
+AddReg=YouMark_NT_AddReg
+
+[YouMark_DDI.NT.Services]
+Addservice = HelloWDM, 0x00000002, YouMark_AddService
+
+[YouMark_AddService]
+DisplayName = %SvcDesc%
+ServiceType = 1 ; SERVICE_KERNEL_DRIVER
+StartType = 3 ; SERVICE_DEMAND_START
+ErrorControl = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %10%\System32\Drivers\HelloWDM.sys
+
+[YouMark_NT_AddReg]
+HKLM, "System\CurrentControlSet\Services\HelloWDM\Parameters",\
+"BreakOnEntry", 0x00010001, 0
+
+
+; --------- Files (common) -------------
+
+[YouMark_Files_Driver]
+HelloWDM.sys
+
+;--------- Strings Section ---------------------------------------------------
+
+[Strings]
+ProviderName="Flying L Co.,Ltd."
+MfgName="LC Soft"
+DeviceDesc="Hello World WDM!"
+DeviceClassName="LC_Device"
+SvcDesc="???"
+ 
+
+
+注意它可以同时在Win98或者Win2000中使用（系统会通过这个INF文件里面的字段名称，自动选择适合当前系统的安装方法的）。由于INF文件的各个字段含义比较复杂，限于篇幅，我在这里就不详细讲解了，请读者自行参阅有关的文章或者书籍。
+
+准备好这个 HelloWDM.INF 文件后，让我们打开控制面板，双击“添加/删除硬件”，选择“添加/排除设备故障”->“添加新设备”->“否，我想从列表选择硬件”->“其它设备”->“从磁盘安装”，选择 HelloWDM.INF 所在的路径，然后安装。
+
+当安装完成后，系统就会添加上你写好的驱动程序了。（可以在“设备管理器”中查看到）。然后重启电脑，这个驱动程序就投入使用啦。
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+实际上，由于.sys通常不调用KERNEL32.DLL和USER32.DLL，所以你是不能在设备驱动程序里面调用任何C、C++和
+Win32函数的，而且也不能用C++关键字new和delete等（可以用malloc和free来代替），而必须使用大量的内核函数。
+
+常见的驱动程序可用的内核函数：
+
+Ex…        执行支持
+Hal…        硬件抽象层（仅NT/Windows 2000）
+Io…        I/O管理器（包括即插即用函数）
+Ke…        内核
+Ks…        内核流IRP管理函数
+Mm…        内存管理器
+Ob…        对象管理器
+Po…        电源管理
+Ps…        进程结构
+Rtl…        运行时库
+Se…        安全引用监视
+Zw…        其他函数
+ 
+
+写设备驱动程序时必须注意的一些问题 ：
+
+1、内核宏
+如果查看DDK头文件，会发现有几个内核函数是以宏的方式实现的。这种宏中有几个宏的定义是相当糟糕的。
+例如，RemoveHeadList的定义如下：
+#define RemoveHeadList(ListHead)
+        (ListHead)->Flink;
+        {RemoveEntryList((ListHead)->Flink)}
+ 
+
+如果以以下方式调用RemoveHeadList，则将编译错误的代码：
+if(SomethingInList)
+        Entry = RemoveHeadList(list);
+ 
+
+使这个调用安全的唯一方法是使用花括号：
+if(SomethingInList)
+{
+      Entry = RemoveHeadList(list);
+}
+ 
+
+最好是在所有的if、for和while等语句中使用花括号。
+
+
+2、驱动程序函数名称
+
+设备驱动程序有一个必须存在，而且只能以DriverEntry()为名称的入口函数。
+可以使用任何名字来给其他函数命名，最好符合某些特定的规范，例如匈牙利命名法……
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+没懂 ：
+3、安装时的问题
+·在Windows98中驱动程序可执行文件必须是8.3文件名。（别问我为什么，我也不知道，我只能建议你去问比尔该死）
+·如果INF文件中含有非法节的详细资料，Windows将不使用这个INF文件。
+////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,60 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Phone - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Phone.res" /d "_DEBUG" /d "_AFXDLL" "E:\My Program Collect\Phone\Phone.rc"" 
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP61.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Phone.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\My Program Collect\Phone\Compression.cpp"
+"E:\My Program Collect\Phone\IPAddress.cpp"
+"E:\My Program Collect\Phone\Phone.cpp"
+"E:\My Program Collect\Phone\PhoneDlg.cpp"
+"E:\My Program Collect\Phone\SoundIn.cpp"
+"E:\My Program Collect\Phone\SoundOut.cpp"
+]
+Creating command line "cl.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP61.tmp" 
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP62.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Phone.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\My Program Collect\Phone\StdAfx.cpp"
+]
+Creating command line "cl.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP62.tmp" 
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP63.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Phone.pdb" /debug /machine:I386 /out:"Debug/Phone.exe" /pdbtype:sept 
+".\Debug\Compression.obj"
+".\Debug\IPAddress.obj"
+".\Debug\Phone.obj"
+".\Debug\PhoneDlg.obj"
+".\Debug\SoundIn.obj"
+".\Debug\SoundOut.obj"
+".\Debug\StdAfx.obj"
+".\Debug\Phone.res"
+]
+Creating command line "link.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP63.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Compression.cpp
+IPAddress.cpp
+Phone.cpp
+PhoneDlg.cpp
+SoundIn.cpp
+SoundOut.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Phone.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

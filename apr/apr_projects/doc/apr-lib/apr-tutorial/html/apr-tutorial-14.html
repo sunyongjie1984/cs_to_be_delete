@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: Process handling</TITLE>
+ <LINK HREF="apr-tutorial-15.html" REL=next>
+ <LINK HREF="apr-tutorial-13.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc14" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-15.html">Next</A>
+<A HREF="apr-tutorial-13.html">Previous</A>
+<A HREF="apr-tutorial.html#toc14">Contents</A>
+<HR>
+<H2><A NAME="s14">14.</A> <A HREF="apr-tutorial.html#toc14">Process handling</A></H2>
+
+<P>Process is a running instance of a program. Generating child processes means that we execute the other programs from the current process. It is known as 'fork and exec' on traditional Unix. It is a very powerful scheme on Unix, but it has some drawbacks. First, it is not so portable when we think about OS other than Unix. Second, the code wouldn't become straightforward. libapr wraps it and hides portability issues.</P>
+<P>Generating child proccess is useful when we need outputs from other programs. Or, we can easily write an application launcher program. Let's take a look at 
+<A HREF="../sample/proc-sample.c">proc-sample.c</A>.</P>
+<P>At first, we create a process attribute object by apr_procattr_create():</P>
+<P>/* excerpted from apr_thread_proc.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_status_t) apr_procattr_create(apr_procattr_t **new_attr, apr_pool_t *cont);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The first argument is result argument and the second argument is memory pool to use.</P>
+<P>apr_procattr_t is opaque structure, and it has some setter APIs, which are declared in apr_thread_proc.h. The simplest API is apr_procattr_dir_set(). By which, we can set the current directory of the child process.</P>
+<P>Some setter APIs are related to file descriptors. I will describe them in the next 'pipe' section. Here, I focus on the following two APIs:</P>
+<P>/* excerpted from apr_thread_proc.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_status_t) apr_threadattr_detach_set(apr_threadattr_t *attr, apr_int32_t on);
+
+typedef enum {
+    APR_SHELLCMD,           /**&lt; use the shell to invoke the program */
+    APR_PROGRAM,            /**&lt; invoke the program directly, no copied env */
+    APR_PROGRAM_ENV,        /**&lt; invoke the program, replicating our environment */
+    APR_PROGRAM_PATH,       /**&lt; find program on PATH, use our environment */
+    APR_SHELLCMD_ENV        /**&lt; use the shell to invoke the program,
+                             *   replicating our environment
+                             */
+} apr_cmdtype_e;
+APR_DECLARE(apr_status_t) apr_procattr_cmdtype_set(apr_procattr_t *attr, apr_cmdtype_e cmd);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>By apr_threadattr_detach_set(), we can make child process detached. What is detached process? Unfortunately, the meaning is different on platform(OS). On Unix, detached process implies daemon process. It means process is detached from the control terminal(a.k.a. tty). On the other hand, on MS-Windows, detached process implies process without the console window.</P>
+<P>The default status is non-detachable. When do we need detached process? Unfortunately, the code should depends on OS. On MS-Windows, decision is easy. We set detached flag, only if the child process is a command line application and we don't want to see the console window. On Unix, decision is not so easy. In a nutshell, I recommend you to set detached flag, if child process is a server process.</P>
+<P>apr_cmdtype_e is a little bit hard to understand. I'll describe their differences. One difference is whether using shell or not. APR_SHELLCMD and APR_SHELLCMD_ENV are using shell. They internally execute a shell process and make the shell launch a new process. If you are familiar with Unix API, you can imagine system(3) library routine. system(3) is sometimes mentioned as an easier alternative of 'fork and exec'. As stated above 'fork and exec' scheme is not easy, so that system(3) is sometimes useful for rapid programmings. In libapr scheme, do we need a shell to execute child processes? My opinion is No. Using shell seems to have a clear advantage, shell expansion. We can run command such as 'find &nbsp;/ -print' or 'ls *.txt'. It is useful in very limited cases. However, as you can easily imagine, the power causes security holes. My suggestion is that only if you know what you're doing, you can use APR_SHELLCMD or APR_SHELLCMD_ENV. Otherwise, don't use them.</P>
+<P>The next difference is related to environment variables. APR_PROGRAM_ENV and APR_SHELLCMD_ENV are different from others. There are two ways to pass environment variables to child process. One is using APR_PROGRAM_ENV or APR_SHELLCMD_ENV. The other is specifying the argument of apr_proc_create(), which I'll describe later. The former indicates inheritance from the parent process. By APR_PROGRAM_ENV or APR_SHELLCMD_ENV, child process receives the copy of environment variables from the parent process. It is a copy, not a share. Thus, if the child process overrides any of values, it doesn't make any effects on the parent process.</P>
+<P>The final difference is related to PATH environment variable. APR_PROGRAM_PATH is unique at this point. Only with APR_PROGRAM_PATH, we can use a program name instead of a program path. For example, we can launch child process by 'ls' or 'emacs'. Internally, libapr searches the exact path of the program in PATH environment variable's value. Otherwise, we have to specify the exact pathes, such as '/bin/ls' or '/usr/bin/emacs'. You think it's useful? Sometimes, yes, but my opinion is that we shouldn't rely on it, because it causes security risks and unexpected results. Please use any detection tools, such as autoconf, or let end-users input exact pathes of commands to run.</P>
+<P>To launch a child process, we call apr_proc_create(). The following declaration is excerpted from apr_thread_proc.h:</P>
+<P>/* excerpted from apr_thread_proc.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_status_t) apr_proc_create(apr_proc_t *new_proc,
+                                          const char *progname,
+                                          const char * const *args,
+                                          const char * const *env, 
+                                          apr_procattr_t *attr, 
+                                          apr_pool_t *pool);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The first argument is result argument. It is a little bit different from the other APIs. apr_proc_t is complete type. It is our responsibility to allocate apr_proc_t object memory. The second argument is a program name to run. As stated above, it should be an absolute path of the command. The third argument is argument list passed to the child process. Note that the first element of the array is the program path, and the final element is NULL(sentinel). The typical code becomes as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* pseudo code of args to apr_proc_create() */
+int argc = 0;
+const char* argv[32];   /* 32 is a magic number. enough size for the number of arguments list */
+argv[argc++] = progname; /* program path of the command to run */
+argv[argc++] = "-i";
+argv[argc++] = "foo";
+argv[argc++] = "--longopt";
+argv[argc++] = "bar";
+argv[argc++] = NULL;    /* The final element should be NULL as sentinel */
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The fourth argument is environment variable value list passed to child process. Again, note that the final element of the array should be NULL. The fifth argument is apr_procattr_t, which we have already created by apr_procattr_create(). The last argument is memory pool to use. </P>
+<P>Parent process should take care of the child process's termination. It is known as wait(2) system call in traditional Unix scheme. If parent process ignore the termination of a child process, the child becomes zombie. Although zombie doesn't eat human brains, it consumes OS resources, e.g. system memory. To take care of zombie, we have to call apr_proc_wait(). The prototype declaration is as follows:</P>
+<P>/* excerpted from apr_thread_proc.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_status_t) apr_proc_wait(apr_proc_t *proc,
+                                        int *exitcode, apr_exit_why_e *exitwhy,
+                                        apr_wait_how_e waithow);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The first argument is apr_proc_t object that we have had by apr_proc_create(). The second and third arguments are result arguments. The fourth argument is a parameter to indicate how to wait. The value is one of APR_WAIT or APR_NOWAIT. By specifying APR_WAIT, apr_proc_wait() blocks until the child process terminates. APR_NOWAIT indicates non-blocking. Please take a look at 
+<A HREF="../sample/proc-sample.c">proc-sample.c</A> about the usage.</P>
+<P><EM>REMARK</EM>: If the parent process dies without taking care of zombies, zombies disappear. The ancestor process takes care of zombies.</P>
+
+
+<HR>
+<A HREF="apr-tutorial-15.html">Next</A>
+<A HREF="apr-tutorial-13.html">Previous</A>
+<A HREF="apr-tutorial.html#toc14">Contents</A>
+</BODY>
+</HTML>

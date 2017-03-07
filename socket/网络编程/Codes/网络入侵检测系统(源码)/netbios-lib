@@ -1,0 +1,12 @@
+# $Id: netbios-lib,v 1.2 2000/11/18 08:25:04 roesch Exp $
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"Possible RFParalyze Attempt"; flags:PA; content:"BEAVIS"; content:"yep yep";) 
+alert udp $EXTERNAL_NET any -> $HOME_NET 161 (msg:"NETBIOS-SNMP-NT-UserList"; content:"|2b 06 10 40 14 d1 02 19|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"NETBIOS-SMB-IPC$access";flags:PA; content:"|5c00|I|00|P|00|C|00|$|000000|IPC|00|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"NETBIOS-SMB-IPC$access";flags:PA; content:"\IPC$|00 41 3a 00|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"NETBIOS-SMB-D$access";flags:PA; content:"\D$|00 41 3a 00|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"NETBIOS-SMB-CD...";flags:PA; content:"\...|00 00 00|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"NETBIOS-SMB-CD..";flags:PA; content:"\..|2f 00 00 00|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"NETBIOS-SMB-C$access";flags:PA; content:"\C$|00 41 3a 00|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"NETBIOS-SMB-ADMIN$access";flags:PA; content:"\ADMIN$|00 41 3a 00|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 139 (msg:"NETBIOS-Samba-clientaccess";flags:PA; content:"|00|Unix|00|Samba";) 
+

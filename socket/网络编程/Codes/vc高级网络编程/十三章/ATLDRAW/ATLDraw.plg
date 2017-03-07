@@ -1,0 +1,41 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ATLDraw - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP293.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /D "_WIN32_DCOM" /FR".\Debug/" /Fp".\Debug/ATLDraw.pch" /YX"preatldr.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\VC高级网络编程\例程\ATLDRAW\ATLDView.cpp"
+]
+Creating command line "cl.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP293.tmp" 
+Creating temporary file "F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP294.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:".\Debug/ATLDraw.pdb" /debug /machine:I386 /out:".\Debug/ATLDraw.exe" 
+".\Debug\ATLDDoc.obj"
+".\Debug\ATLDraw.obj"
+".\Debug\ATLDView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\preatldr.obj"
+".\Debug\ATLDraw.res"
+".\Debug\ConnectDlg.obj"
+]
+Creating command line "link.exe @F:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP294.tmp"
+<h3>Output Window</h3>
+Compiling...
+ATLDView.cpp
+Linking...
+Creating command line "bscmake.exe /nologo /o".\Debug/ATLDraw.bsc"  ".\Debug\ATLDDoc.sbr" ".\Debug\ATLDraw.sbr" ".\Debug\ATLDView.sbr" ".\Debug\MainFrm.sbr" ".\Debug\preatldr.sbr" ".\Debug\ConnectDlg.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+ATLDraw.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,379 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0048)http://topic.csdn.net/t/20030608/22/1891930.html -->
+<HTML lang=zh-CN xml:lang="zh-CN" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>如何区分系统进程和用户进程（100分） VC/MFC / 进程/线程/DLL - CSDN社区 community.csdn.net</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv=Content-Language content=zh-CN>
+<META content=all name=robots>
+<META 
+content="进程 pe32 hsnap include isok int oss pid 0x400 argv VC/MFC 进程/线程/DLL" 
+name=Keywords><LINK 
+href="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/top.css" 
+type=text/css rel=stylesheet><LINK 
+href="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/bottom.css" 
+type=text/css rel=stylesheet><LINK 
+href="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/topic.css" 
+type=text/css rel=stylesheet>
+<SCRIPT 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/External.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR></HEAD>
+<BODY>
+<DIV id=OutBox><!--Top Begin-->
+<DIV id=CHBig1>
+<DIV id=CHBigNavBar>
+<UL>
+  <LI><A href="http://www.csdn.net/" rel=external>CSDN首页</A>
+  <LI><A href="http://news.csdn.net/" rel=external>新 闻</A>
+  <LI><A href="http://community.csdn.net/" rel=external>社 区</A>
+  <LI><A href="http://dev.csdn.net/" rel=external>文 档</A>
+  <LI><A href="http://blog.csdn.net/" rel=external><STRONG>Blog</STRONG></A>
+  <LI><A href="http://mag.csdn.net/" rel=external>杂 志</A>
+  <LI><A href="http://dotnet.csdn.net/" rel=external><STRONG>.NET</STRONG></A>
+  <LI><A href="http://java.csdn.net/" rel=external><B>Java</B></A>
+  <LI><A href="http://mobile.csdn.net/" rel=external>移动</A>
+  <LI><A href="http://gamedev.csdn.net/" rel=external>游戏</A>
+  <LI><A href="http://manager.csdn.net/" rel=external>管理</A>
+  <LI><A href="http://job.csdn.net/" rel=external>招聘</A>
+  <LI><A href="http://training.csdn.net/" rel=external>培训</A>
+  <LI><A href="http://search.csdn.net/" rel=external>搜 索</A>
+  <LI><A href="http://www.codechina.net/" rel=external>代码</A>
+  <LI><A href="http://www.dearbook.com.cn/" rel=external>第二书店</A>
+  <LI><A href="http://www.broadview.com.cn/" rel=external>博文视点</A> 
+</LI></UL></DIV>
+<DIV class=z></DIV></DIV>
+<DIV id=CHBig2>
+<DIV id=Logo><A href="http://community.csdn.net/" rel=external><IMG alt=CSDN社区 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/CSDN_logo.gif"></A>
+<SCRIPT>document.write("<img src=http://counter.csdn.net/pv.aspx?id=94 border=0 width=0 height=0>");</SCRIPT>
+ </DIV>
+<DIV id=TopAds><A 
+href="http://www.dearbook.com.cn/subject/yudingagain/index.htm" 
+rel=external><IMG 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/heding.jpg"></A> 
+<A 
+href="http://z.csdn.net/adclick.php?bannerid=66&amp;zoneid=27&amp;source=&amp;dest=http%3A%2F%2Fwww.dearbook.com.cn%2Fsubject%2F2005pingxuan%2Fresshow.htm" 
+rel=external><IMG 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/20060110_120x60.jpg"></A> 
+</DIV>
+<DIV class=z></DIV></DIV><!--Top End-->
+<DIV class=z></DIV>
+<DIV id=MainNavigation>
+<DIV id=MainNavigationRoom><A href="http://community.csdn.net/" 
+rel=external><SPAN class=CSDNRoom>CSDN社区</SPAN></A> &nbsp;－&nbsp; <A 
+href="http://community.csdn.net/Expert/ForumsList.asp?typenum=1&amp;roomid=50" 
+rel=external><STRONG>VC/MFC</STRONG></A>&nbsp;/&nbsp;<A 
+href="http://community.csdn.net/Expert/ForumList.asp?typenum=1&amp;roomid=5005" 
+rel=external><STRONG>进程/线程/DLL</STRONG></A> </DIV>
+<DIV id=MainNavigationFunction><A title=功能强大的网络收藏夹，一秒钟操作就可以轻松实现保存带来的价值、分享带来的快乐 
+href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(keyit=window.open('http://www.365key.com/storeit.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t),'keyit','scrollbars=no,width=475,height=575,left=75,top=20,status=no,resizable=yes'));keyit.focus();"><SPAN 
+class=FavoriteSpan>收藏此页</SPAN></A>&nbsp;|&nbsp; <A 
+href="javascript:window.print();"><SPAN 
+class=PrintSpan>打印</SPAN></A>&nbsp;|&nbsp; <A 
+href="javascript:window.close();"><SPAN class=CloseSpan>关闭窗口</SPAN></A> 
+</DIV></DIV>
+<DIV class=z></DIV>
+<DIV id=ContextBox>
+<DIV id=NavigationBox>
+<DIV class=Navigation>
+<H3>主题关键词</H3>
+<DIV class=tag>
+<DIV id=LeftTag>
+<UL>
+  <LI>进程
+  <LI>pe32
+  <LI>hsnap
+  <LI>include
+  <LI>isok</LI></UL></DIV>
+<DIV id=RightTag>
+<UL>
+  <LI>int
+  <LI>oss
+  <LI>pid
+  <LI>0x400
+  <LI>argv</LI></UL></DIV></DIV></DIV>
+<DIV class=Navigation>
+<H3>得分解答快速导航</H3>
+<DIV class=NavigationBox>
+<UL>
+  <LI>帖主：<A href="http://topic.csdn.net/t/20030608/22/1891930.html#Top">nf3</A> 
+  <LI><A 
+  href="http://topic.csdn.net/t/20030608/22/1891930.html#Reply_12667348">masterz</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030608/22/1891930.html#Reply_12721092">NowCan</A> 
+  </LI></UL></DIV></DIV>
+<DIV class=Navigation>
+<H3>相关连接</H3>
+<DIV class=NavigationBox>
+<UL>
+  <LI><A 
+  href="http://community.csdn.net/Expert/FAQ/List_Room_FAQ_Index.asp?bigclassid=50" 
+  rel=external>Visual C++/MFC FAQ</A> 
+  <LI><A href="http://blog.csdn.net/AggView/35/" rel=external>C/C++ Blog</A> 
+  <LI><A 
+  href="http://www.dearbook.com.cn/Book/SearchBook.aspx?sortid=12&amp;sorttype=smallsort" 
+  rel=external>Visual C++类图书</A> 
+  <LI><A href="http://www.codechina.net/resource/sort.php/20" 
+  rel=external>Visual C++类源码下载</A> </LI></UL></DIV></DIV>
+<DIV class=Navigation>
+<H3>广告也精彩</H3>
+<DIV class="SkyscraperAD center">
+<SCRIPT type=text/javascript><!--
+google_ad_client = "pub-5088988998974111";
+google_alternate_ad_url = "http://topic.csdn.net/include/google_default_160_600.htm";
+google_ad_width = 160;
+google_ad_height = 600;
+google_ad_format = "160x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "0000CC";
+google_color_url = "008000";
+google_color_text = "6F6F6F";
+//--></SCRIPT>
+
+<SCRIPT 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/show_ads.js" 
+type=text/javascript>
+</SCRIPT>
+</DIV></DIV>
+<DIV class=Navigation>
+<H3>反馈</H3>
+<P>请通过下述方式给我们反馈.</P><IMG alt=反馈 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/feedback.gif"> 
+</DIV>
+<DIV class=Navigation>
+<P><A 
+href="http://validator.w3.org/check?uri=http://topic.csdn.net/t/20030608/22/1891930.html" 
+rel=external><IMG 
+style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 88px; HEIGHT: 31px; BORDER-RIGHT-WIDTH: 0px" 
+alt="Valid XHTML 1.0 Strict" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/valid-xhtml10"></A> 
+<A 
+href="http://jigsaw.w3.org/css-validator/validator?uri=http://topic.csdn.net/t/20030608/22/1891930.html" 
+rel=external><IMG 
+style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 88px; HEIGHT: 31px; BORDER-RIGHT-WIDTH: 0px" 
+alt="Valid CSS!" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/vcss.gif"></A> 
+</P></DIV></DIV>
+<DIV id=TopicRegion>
+<DIV class=rightbgtop></DIV>
+<DIV class=rightbgmid><A name=Top>
+<DIV id=TopicTopRegion>
+<H1>如何区分系统进程和用户进程（100分）</H1>
+<DIV class=forumperson><SPAN id=TopicAuthorUserName>nf3</SPAN> (<SPAN 
+id=TopicAuthorUserNickName></SPAN>)&nbsp; <IMG alt="一级用户 该版得分小于等于100分" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/user1.gif">&nbsp; 
+&nbsp;<SPAN id=TopicPostDateTime>2003-06-08 22:33:46</SPAN> 在&nbsp;<A 
+href="http://community.csdn.net/Expert/ForumsList.asp?typenum=1&amp;roomid=50" 
+rel=external><STRONG>VC/MFC</STRONG></A>&nbsp;/&nbsp;<A 
+href="http://community.csdn.net/Expert/ForumList.asp?typenum=1&amp;roomid=5005" 
+rel=external><STRONG>进程/线程/DLL</STRONG></A>&nbsp;提问</DIV></DIV>
+<DIV id=TopicContextRegion><BR>XP的进程管理程序中可以区分系统进程和用户进程，如何实现？ <BR></DIV>
+<DIV id=TopicButtomInfoRegion>问题点数：<SPAN id=TopicPoint>100</SPAN>、回复次数：<SPAN 
+id=TopicReplyNum>7</SPAN> </DIV></DIV>
+<DIV class=z></DIV>
+<DIV class=rightbgbottom></DIV>
+<DIV id=ReplysRegion>
+<DIV class=ReplysRegion id=ReplysRegion_12667348><A name=Reply_12667348>
+<DIV class=ReplyLine><SPAN class=ReplyFloor>1楼</SPAN>&nbsp; <SPAN 
+class=ReplyUserName>masterz</SPAN> &nbsp; (<SPAN 
+class=ReplyUserNickName>www.fruitfruit.com</SPAN>) <IMG 
+alt="五星用户 该版得分小于等于200000分，大于100000分" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/star5.gif"> 
+&nbsp;回复于&nbsp;<SPAN class=ReplyTime>2003-06-09 01:24:21</SPAN> 
+&nbsp;得分&nbsp;<SPAN class=ReplyPoint>40</SPAN> </DIV>
+<DIV class=ReplyContext><BR>#include &nbsp; "stdafx.h" &nbsp; <BR>&nbsp; 
+#include &nbsp; &lt;sstream&gt; &nbsp; <BR>&nbsp; #include &nbsp; 
+&lt;atlsecurity.h&gt; &nbsp; <BR>&nbsp; #include &nbsp; &lt;Tlhelp32.h&gt; 
+&nbsp; <BR>&nbsp; #pragma &nbsp; comment(lib, &nbsp; "Kernel32.lib") &nbsp; 
+<BR>&nbsp; &nbsp; <BR>&nbsp; int &nbsp; _tmain(int &nbsp; argc, &nbsp; _TCHAR* 
+&nbsp; argv[]) &nbsp; <BR>&nbsp; { &nbsp; <BR>&nbsp; &nbsp; <BR>&nbsp; HANDLE 
+hSnap &nbsp; = &nbsp; NULL; &nbsp; &nbsp; <BR>&nbsp; hSnap &nbsp; = &nbsp; 
+CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, &nbsp; 0); &nbsp; &nbsp; <BR>&nbsp; 
+if &nbsp; (hSnap &nbsp; == &nbsp; INVALID_HANDLE_VALUE) &nbsp; &nbsp; <BR>&nbsp; 
+return &nbsp; FALSE; &nbsp; &nbsp; <BR>&nbsp; PROCESSENTRY32 &nbsp; pe32; &nbsp; 
+<BR>&nbsp; ZeroMemory(&amp;pe32,sizeof(pe32)); &nbsp; <BR>&nbsp; pe32.dwSize 
+&nbsp; = &nbsp; sizeof(pe32); &nbsp; <BR>&nbsp; std::ostringstream &nbsp; oss; 
+&nbsp; <BR>&nbsp; if &nbsp; (Process32First(hSnap, &nbsp; &amp;pe32)) &nbsp; 
+&nbsp; <BR>&nbsp; { &nbsp; &nbsp; <BR>&nbsp; do &nbsp; &nbsp; <BR>&nbsp; { 
+&nbsp; &nbsp; <BR>&nbsp; HANDLE &nbsp; hProcess &nbsp; 
+=OpenProcess(PROCESS_QUERY_INFORMATION|PROCESS_VM_READ,false,pe32.th32ProcessID); 
+&nbsp; <BR>&nbsp; if(hProcess &nbsp; ==NULL) &nbsp; <BR>&nbsp; { &nbsp; 
+<BR>&nbsp; oss&lt;&lt;"OpenProcess &nbsp; "&lt;&lt;pe32.th32ProcessID&lt;&lt;" 
+&nbsp; error"&lt;&lt;std::endl; &nbsp; <BR>&nbsp; } &nbsp; <BR>&nbsp; else 
+&nbsp; <BR>&nbsp; { &nbsp; <BR>&nbsp; CAccessToken &nbsp; token; &nbsp; 
+<BR>&nbsp; token.GetProcessToken(TOKEN_QUERY,hProcess); &nbsp; <BR>&nbsp; CSid 
+&nbsp; sid; &nbsp; <BR>&nbsp; token.GetUser(&amp;sid); &nbsp; <BR>&nbsp; 
+oss&lt;&lt;"process &nbsp; "&lt;&lt;pe32.th32ProcessID&lt;&lt;" &nbsp; user 
+&nbsp; account &nbsp; "; &nbsp; <BR>&nbsp; if(sid.IsValid()) &nbsp; <BR>&nbsp; 
+oss&lt;&lt;sid.AccountName(); &nbsp; <BR>&nbsp; oss&lt;&lt;std::endl; &nbsp; 
+<BR>&nbsp; CloseHandle(hProcess); &nbsp; <BR>&nbsp; } &nbsp; <BR>&nbsp; 
+ZeroMemory(&amp;pe32,sizeof(pe32)); &nbsp; <BR>&nbsp; pe32.dwSize &nbsp; = 
+&nbsp; sizeof(pe32); &nbsp; <BR>&nbsp; } &nbsp; &nbsp; <BR>&nbsp; while &nbsp; ( 
+&nbsp; Process32Next &nbsp; (hSnap, &nbsp; &amp;pe32)); &nbsp; &nbsp; <BR>&nbsp; 
+} &nbsp; &nbsp; <BR>&nbsp; CloseHandle &nbsp; (hSnap); &nbsp; &nbsp; <BR>&nbsp; 
+printf(oss.str().c_str()); &nbsp; <BR>&nbsp; return &nbsp; 0; &nbsp; <BR>&nbsp; 
+} &nbsp; <BR>&nbsp; //build &nbsp; environment: &nbsp; VC.NET &nbsp; 2003, 
+&nbsp; Windows &nbsp; XP &nbsp; SP1 &nbsp; <BR>&nbsp; <BR></DIV>
+<DIV class=GoTop><A title=回到主题 
+href="http://topic.csdn.net/t/20030608/22/1891930.html#Top">Top</A></DIV></DIV>
+<DIV class=ReplysRegion id=ReplysRegion_12685553><A name=Reply_12685553>
+<DIV class=ReplyLine><SPAN class=ReplyFloor>2楼</SPAN>&nbsp; <SPAN 
+class=ReplyUserName>NowCan</SPAN> &nbsp; (<SPAN 
+class=ReplyUserNickName>城市浪人</SPAN>) <IMG alt="三星用户 该版得分小于等于50000分，大于30000分" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/star3.gif"> 
+&nbsp;回复于&nbsp;<SPAN class=ReplyTime>2003-06-09 17:20:02</SPAN> &nbsp;得分 
+<SPAN>0</SPAN> </DIV>
+<DIV class=ReplyContext><BR>是.NET的，VC6里可以自己写代码获取用户名。 &nbsp; <BR>&nbsp; 
+http://vip.6to23.com/NowCan1/tech/cb_ps_user.htm &nbsp; <BR>&nbsp; 
+但是有bug，部分进程的用户名出不来。 <BR></DIV>
+<DIV class=GoTop><A title=回到主题 
+href="http://topic.csdn.net/t/20030608/22/1891930.html#Top">Top</A></DIV></DIV>
+<DIV class=ReplysRegion id=ReplysRegion_12688641><A name=Reply_12688641>
+<DIV class=ReplyLine><SPAN class=ReplyFloor>3楼</SPAN>&nbsp; <SPAN 
+class=ReplyUserName>awnucel</SPAN> &nbsp; (<SPAN 
+class=ReplyUserNickName>西大耻犹未雪,南京恨何时灭&amp;抵制日货</SPAN>) <IMG 
+alt="二星用户 该版得分小于等于30000分，大于10000分" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/star2.gif"> 
+&nbsp;回复于&nbsp;<SPAN class=ReplyTime>2003-06-09 18:49:43</SPAN> &nbsp;得分 
+<SPAN>0</SPAN> </DIV>
+<DIV class=ReplyContext><BR>都是老大，我up <BR></DIV>
+<DIV class=GoTop><A title=回到主题 
+href="http://topic.csdn.net/t/20030608/22/1891930.html#Top">Top</A></DIV></DIV>
+<DIV class=ReplysRegion id=ReplysRegion_12689728><A name=Reply_12689728>
+<DIV class=ReplyLine><SPAN class=ReplyFloor>4楼</SPAN>&nbsp; <SPAN 
+class=ReplyUserName>commandos</SPAN> &nbsp; (<SPAN 
+class=ReplyUserNickName>孤独求胜</SPAN>) <IMG alt="四级用户 该版得分小于等于2000分，大于1000分" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/user4.gif"> 
+&nbsp;回复于&nbsp;<SPAN class=ReplyTime>2003-06-09 19:27:50</SPAN> &nbsp;得分 
+<SPAN>0</SPAN> </DIV>
+<DIV class=ReplyContext><BR>up <BR></DIV>
+<DIV class=GoTop><A title=回到主题 
+href="http://topic.csdn.net/t/20030608/22/1891930.html#Top">Top</A></DIV></DIV>
+<DIV class=ReplysRegion id=ReplysRegion_12706488><A name=Reply_12706488>
+<DIV class=ReplyLine><SPAN class=ReplyFloor>5楼</SPAN>&nbsp; <SPAN 
+class=ReplyUserName>Gladstone</SPAN> &nbsp; (<SPAN 
+class=ReplyUserNickName>大士</SPAN>) <IMG alt="五级用户 该版得分小于等于5000分，大于2000分" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/user5.gif"> 
+&nbsp;回复于&nbsp;<SPAN class=ReplyTime>2003-06-10 11:29:02</SPAN> &nbsp;得分 
+<SPAN>0</SPAN> </DIV>
+<DIV class=ReplyContext><BR>gz <BR></DIV>
+<DIV class=GoTop><A title=回到主题 
+href="http://topic.csdn.net/t/20030608/22/1891930.html#Top">Top</A></DIV></DIV>
+<DIV class=ReplysRegion id=ReplysRegion_12712284><A name=Reply_12712284>
+<DIV class=ReplyLine><SPAN class=ReplyFloor>6楼</SPAN>&nbsp; <SPAN 
+class=ReplyUserName>nf3</SPAN> &nbsp; (<SPAN class=ReplyUserNickName></SPAN>) 
+<IMG alt="一级用户 该版得分小于等于100分" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/user1.gif"> 
+&nbsp;回复于&nbsp;<SPAN class=ReplyTime>2003-06-10 13:55:51</SPAN> &nbsp;得分 
+<SPAN>0</SPAN> </DIV>
+<DIV class=ReplyContext><BR>顶楼的老大，我看不懂，我用VC6，nowcan的地址有误。 &nbsp; <BR>&nbsp; 
+<BR></DIV>
+<DIV class=GoTop><A title=回到主题 
+href="http://topic.csdn.net/t/20030608/22/1891930.html#Top">Top</A></DIV></DIV>
+<DIV class=ReplysRegion id=ReplysRegion_12721092><A name=Reply_12721092>
+<DIV class=ReplyLine><SPAN class=ReplyFloor>7楼</SPAN>&nbsp; <SPAN 
+class=ReplyUserName>NowCan</SPAN> &nbsp; (<SPAN 
+class=ReplyUserNickName>城市浪人</SPAN>) <IMG alt="三星用户 该版得分小于等于50000分，大于30000分" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/star3.gif"> 
+&nbsp;回复于&nbsp;<SPAN class=ReplyTime>2003-06-10 17:56:30</SPAN> 
+&nbsp;得分&nbsp;<SPAN class=ReplyPoint>60</SPAN> </DIV>
+<DIV class=ReplyContext><BR>http://nowcan.yeah.net &nbsp; <BR>&nbsp; 
+http://nowcan.chinabcb.com &nbsp; &nbsp; <BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+这是靠查询进程令牌信息得到的。程序如下。 &nbsp; <BR>&nbsp; &nbsp; <BR>&nbsp; #include &nbsp; 
+&lt;windows.h&gt; &nbsp; <BR>&nbsp; #include &nbsp; &lt;stdio.h&gt; &nbsp; 
+<BR>&nbsp; &nbsp; <BR>&nbsp; /* &nbsp; */ &nbsp; <BR>&nbsp; void &nbsp; 
+GetProcessAuth(long &nbsp; pid) &nbsp; <BR>&nbsp; { &nbsp; <BR>&nbsp; 
+//获得运行进程的用户身份，此处对于8以上的进程没问题，对于8，0进程无法列出(8是Win2000下的，WinXP下为4) &nbsp; <BR>&nbsp; 
+SID_NAME_USE &nbsp; peUse; &nbsp; <BR>&nbsp; HANDLE &nbsp; hp; &nbsp; <BR>&nbsp; 
+HANDLE &nbsp; hToken; &nbsp; <BR>&nbsp; int &nbsp; isok; &nbsp; <BR>&nbsp; char 
+&nbsp; buf[0x400]; &nbsp; <BR>&nbsp; char &nbsp; buf1[100]; &nbsp; <BR>&nbsp; 
+char &nbsp; buf2[100]; &nbsp; <BR>&nbsp; DWORD &nbsp; dwNumBytesRet; &nbsp; 
+<BR>&nbsp; DWORD &nbsp; dwNumBytesRet1; &nbsp; <BR>&nbsp; &nbsp; <BR>&nbsp; 
+hp=OpenProcess(0x400, &nbsp; 0, &nbsp; pid);//0x400 &nbsp; is &nbsp; 
+PROCESS_QUERY_INFORMATION &nbsp; <BR>&nbsp; isok=OpenProcessToken(hp, &nbsp; 
+0x20008, &nbsp; &amp;hToken);//这个0x20008不知道什么，TOKEN_QUERY？ &nbsp; <BR>&nbsp; 
+if(isok) &nbsp; <BR>&nbsp; { &nbsp; <BR>&nbsp; isok=GetTokenInformation(hToken, 
+&nbsp; TokenUser, &nbsp; &amp;buf, &nbsp; 0x400, &nbsp; &amp;dwNumBytesRet); 
+&nbsp; <BR>&nbsp; if(isok) &nbsp; <BR>&nbsp; { &nbsp; <BR>&nbsp; 
+dwNumBytesRet=100; &nbsp; <BR>&nbsp; dwNumBytesRet1=100; &nbsp; <BR>&nbsp; 
+isok=LookupAccountSid(NULL, &nbsp; (DWORD &nbsp; *) &nbsp; (*(DWORD &nbsp; 
+*)buf), &nbsp; buf1, &nbsp; &amp;dwNumBytesRet, &nbsp; buf2, &nbsp; 
+&amp;dwNumBytesRet1, &nbsp; &amp;peUse); &nbsp; <BR>&nbsp; if(isok) &nbsp; 
+<BR>&nbsp; { &nbsp; <BR>&nbsp; printf("Run &nbsp; Auth:%s\\%s &nbsp; \n", &nbsp; 
+buf2, &nbsp; buf1); &nbsp; <BR>&nbsp; } &nbsp; <BR>&nbsp; &nbsp; <BR>&nbsp; 
+CloseHandle(hToken); &nbsp; <BR>&nbsp; } &nbsp; <BR>&nbsp; } &nbsp; <BR>&nbsp; 
+&nbsp; <BR>&nbsp; CloseHandle(hp); &nbsp; <BR>&nbsp; } &nbsp; <BR>&nbsp; &nbsp; 
+<BR>&nbsp; /* &nbsp; */ &nbsp; <BR>&nbsp; int &nbsp; main(int &nbsp; argc, 
+&nbsp; char &nbsp; **argv) &nbsp; <BR>&nbsp; { &nbsp; <BR>&nbsp; long &nbsp; 
+pid; &nbsp; <BR>&nbsp; if(argc &nbsp; != &nbsp; 2) &nbsp; <BR>&nbsp; { &nbsp; 
+<BR>&nbsp; printf(" &nbsp; - &nbsp; %s &nbsp; ProcessId\n", &nbsp; argv[0]); 
+&nbsp; <BR>&nbsp; return &nbsp; 0; &nbsp; <BR>&nbsp; } &nbsp; <BR>&nbsp; &nbsp; 
+<BR>&nbsp; pid=strtol(argv[1], &nbsp; 0, &nbsp; 0); &nbsp; <BR>&nbsp; 
+GetProcessAuth(pid); &nbsp; <BR>&nbsp; return &nbsp; 0; &nbsp; <BR>&nbsp; } 
+&nbsp; <BR>&nbsp; &nbsp; <BR>&nbsp; <BR></DIV>
+<DIV class=GoTop><A title=回到主题 
+href="http://topic.csdn.net/t/20030608/22/1891930.html#Top">Top</A></DIV></DIV></DIV>
+<DIV id=CorrelatedTopicsRegion>
+<DIV id=CorrelatedTopicsRegionInfo>相关问题</DIV>
+<UL>
+  <LI><A 
+  href="http://topic.csdn.net/t/20030608/22/1891930.html">如何区分系统进程和用户进程（100分）</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030626/08/1958386.html">请问如何区分SQLServer中系统原有的和用户建立的存储过程和视图？</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030630/13/1973258.html">如何才能让程序自动区分繁体系统与简体系统？</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030627/22/1966651.html">如何快速的获得系统进程列表中的进程数目</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030613/10/1910682.html">如何通过进程号获得进程的一些信息，例如：进程运行的目录</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030407/19/1630454.html">请问高手，进程ID和进程句柄间如何进行转换？</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030417/17/1674443.html">如何关联进程和用户呢~~~~？？？？</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030512/09/1770481.html">如何创建win2000系统用户，或验证此用户，在线等</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030419/11/1681574.html">请问如何使用perl程序在linux系统中增加一个系统用户？？？</A> 
+
+  <LI><A 
+  href="http://topic.csdn.net/t/20030516/15/1793488.html">请问如何查出和删除win2000系统中隐藏用户？</A> 
+  </LI></UL></DIV></DIV></DIV><!--Bottom Begin-->
+<DIV id=CFBig align=center>
+<HR align=center>
+
+<DIV id=CFContent>
+<DIV id=CFBiaoShi><A 
+href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010"><IMG 
+height=48 alt="" 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/BiaoShi.gif" 
+width=40 border=0></A></DIV>
+<P><A href="http://www.csdn.net/intro/intro.asp?id=2">网站简介</A>－<A 
+href="http://www.csdn.net/intro/intro.asp?id=5">广告服务</A>－<A 
+href="http://www.csdn.net/map/map.shtm">网站地图</A>－<A 
+href="http://www.csdn.net/help/help.asp">帮助信息</A>－<A 
+href="http://www.csdn.net/intro/intro.asp?id=9">联系方式</A>－<A 
+href="http://www.csdn.net/english/">English</A>－<A 
+href="mailto:webmaster@csdn.net">问题报告</A></P>
+<P><A href="http://community.csdn.net/tree/treenodeData/sitemap.htm"><FONT 
+color=#f4f3ee>CSDN</FONT></A>北京百联美达美数码科技有限公司&nbsp;&nbsp;版权所有&nbsp;&nbsp;京 ICP 证 
+020026 号 <A href="http://community.csdn.net/tree/treenodeData/sitemap.htm"><FONT 
+color=#f4f3ee>CSDN</FONT></A></P>
+<P>© 2000-04, CSDN.NET, All Rights Reserved</P></DIV>
+<HR align=center>
+</DIV>
+<SCRIPT 
+src="如何区分系统进程和用户进程（100分） VC-MFC - 进程-线程-DLL - CSDN社区 community_csdn_net.files/counter.js"></SCRIPT>
+<!--Bottom End--></DIV></BODY></HTML>

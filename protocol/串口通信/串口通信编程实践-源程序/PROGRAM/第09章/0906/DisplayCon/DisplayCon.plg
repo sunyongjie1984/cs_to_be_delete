@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DisplayCon - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/DisplayCon.res" /d "NDEBUG" /d "_AFXDLL" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\DisplayCon\DisplayCon.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8C.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/DisplayCon.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\DisplayCon\DisplayCon.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\DisplayCon\DisplayConDlg.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\DisplayCon\EDITEX.CXX"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\DisplayCon\mscomm.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8C.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8D.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/DisplayCon.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0906\DisplayCon\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8D.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8E.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/DisplayCon.pdb" /machine:I386 /out:"Release/DisplayCon.exe" 
+".\Release\DisplayCon.obj"
+".\Release\DisplayConDlg.obj"
+".\Release\EDITEX.OBJ"
+".\Release\mscomm.obj"
+".\Release\StdAfx.obj"
+".\Release\DisplayCon.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8E.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DisplayCon.cpp
+DisplayConDlg.cpp
+EDITEX.CXX
+mscomm.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+DisplayCon.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

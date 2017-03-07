@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CommSocket - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/CommSocket.res" /d "_DEBUG" /d "_AFXDLL" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0905\CommSocket\CommSocket.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9A.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/CommSocket.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0905\CommSocket\CommSocket.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0905\CommSocket\CommSocketDlg.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0905\CommSocket\WSocket.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9A.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9B.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/CommSocket.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第09章\0905\CommSocket\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9B.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9C.tmp" with contents
+[
+ws2_32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/CommSocket.pdb" /debug /machine:I386 /out:"Debug/CommSocket.exe" /pdbtype:sept 
+".\Debug\CommSocket.obj"
+".\Debug\CommSocketDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\WSocket.obj"
+".\Debug\CommSocket.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9C.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+CommSocket.cpp
+CommSocketDlg.cpp
+WSocket.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+CommSocket.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,94 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+AFX_STDAFX_H__F2FFA4F0_0E36_4B95_9D43_8C24AD56F304__INCLUDED_	.\StdAfx.h	7;"	d
+AFX_TESTMATE_H__1A63622C_0F4F_4928_BF8A_55A2D6B8E0E3__INCLUDED_	.\testMate.h	3;"	d
+AM_BIND_ENABLE_STDCALL	.\testMate.cpp	14;"	d	file:
+AcquireResource	.\testMate.cpp	/^int AcquireResource(HANDLE hres) { return RESOURCE_ACQUSITION_SUCCESS; }$/;"	f
+AcquireResourceEx	.\testMate.cpp	/^void AcquireResourceEx(HANDLE hres) { }$/;"	f
+AddVertex	.\testMate.cpp	/^std::pair<bool, unsigned> AddVertex(Graph & g)$/;"	f
+BOOST_BIND_ENABLE_STDCALL	.\testMate.cpp	23;"	d	file:
+Cleanup	.\testMate.cpp	/^void Cleanup() { }$/;"	f
+DO_NOT_TEST_BOOST	.\testMate.cpp	17;"	d	file:
+Decrease	.\testMate.cpp	/^void Decrease(int & x) { --x; }$/;"	f
+EventCreated	.\testMate.cpp	/^struct EventCreated$/;"	s	file:
+Graph	.\testMate.cpp	/^class Graph { };$/;"	c	file:
+IDS_HELLO	.\Resource.h	5;"	d
+IgnoreReturnAndReleaseResource	.\testMate.cpp	/^  IgnoreReturnAndReleaseResource(HANDLE hres) : hres_( hres ) { }$/;"	f	struct:IgnoreReturnAndReleaseResource
+IgnoreReturnAndReleaseResource	.\testMate.cpp	/^struct IgnoreReturnAndReleaseResource$/;"	s	file:
+Increase	.\testMate.cpp	/^int & Increase(int & x) { return ++x; }$/;"	f
+MAP_VALUE	.\testMate.cpp	/^typedef RECT_MAP::value_type MAP_VALUE;$/;"	t	file:
+ModifyRectangle	.\testMate.cpp	/^MAP_VALUE ModifyRectangle(MAP_VALUE map_value) { return map_value; }$/;"	f
+MyReleaseDC	.\testMate.cpp	/^  MyReleaseDC(HWND hwnd) : hwnd_( hwnd ) { }$/;"	f	struct:MyReleaseDC
+MyReleaseDC	.\testMate.cpp	/^struct MyReleaseDC$/;"	s	file:
+MySelectObject	.\testMate.cpp	/^  MySelectObject(HDC hdc) : hdc_( hdc ) { }$/;"	f	struct:MySelectObject
+MySelectObject	.\testMate.cpp	/^struct MySelectObject$/;"	s	file:
+MyThreadFunc	.\testMate.cpp	/^void MyThreadFunc(LPVOID lpvParam)$/;"	f
+RECT_MAP	.\testMate.cpp	/^typedef std::map<int, RECT> RECT_MAP; \/\/ Rect id -> Rectangle$/;"	t	file:
+RESOURCE_ACQUSITION_FAIL	.\testMate.cpp	271;"	d	file:
+RESOURCE_ACQUSITION_SUCCESS	.\testMate.cpp	270;"	d	file:
+ReleaseResource	.\testMate.cpp	/^void ReleaseResource(HANDLE hres) { }$/;"	f
+ReleaseResourceEx	.\testMate.cpp	/^void ReleaseResourceEx(HANDLE hres) { }$/;"	f
+RemoveVertex	.\testMate.cpp	/^void RemoveVertex(unsigned vertex_descriptor, Graph & g)$/;"	f
+THIS_FILE	.\testMate.cpp	/^static char THIS_FILE[] = __FILE__;$/;"	v	file:
+THIS_FILE	.\testMate.cpp	47;"	d	file:
+UndoRectangle	.\testMate.cpp	/^void UndoRectangle(int rect_id) { }$/;"	f
+VC_EXTRALEAN	.\StdAfx.h	13;"	d
+_APS_NEXT_COMMAND_VALUE	.\Resource.h	12;"	d
+_APS_NEXT_CONTROL_VALUE	.\Resource.h	13;"	d
+_APS_NEXT_RESOURCE_VALUE	.\Resource.h	11;"	d
+_APS_NEXT_SYMED_VALUE	.\Resource.h	14;"	d
+bar	.\testMate.cpp	/^void __stdcall bar(char const *) { }$/;"	f
+bar2	.\testMate.cpp	/^int __stdcall bar2(char const *, int) { return 0; }  \/\/ __stdcall calling convention.$/;"	f
+decrease	.\testMate.cpp	/^void decrease(int & nRef)$/;"	f
+foo	.\testMate.cpp	/^void __stdcall foo(char const *) { }$/;"	f
+foo	.\testMate.cpp	/^void foo(char const *, int) { }$/;"	f
+foo	.\testMate.cpp	/^void foo(int) { }$/;"	f
+foo2	.\testMate.cpp	/^int foo2(char const *, int) { return 0; }$/;"	f
+hdc_	.\testMate.cpp	/^  HDC hdc_;$/;"	m	struct:MySelectObject	file:
+hres_	.\testMate.cpp	/^  HANDLE hres_;$/;"	m	struct:IgnoreReturnAndReleaseResource	file:
+hwnd_	.\testMate.cpp	/^  HWND hwnd_;$/;"	m	struct:MyReleaseDC	file:
+main	.\testMate.cpp	/^int main(int \/*argc*\/, char* \/*argv*\/[])$/;"	f
+new	.\testMate.cpp	46;"	d	file:
+operator ()	.\testMate.cpp	/^  HGDIOBJ operator ()(HGDIOBJ hgdiobj) const { return ::SelectObject( hdc_, hgdiobj ); }$/;"	f	struct:MySelectObject
+operator ()	.\testMate.cpp	/^  bool operator ()(HANDLE hevent) const { return NULL != hevent; }$/;"	f	struct:EventCreated
+operator ()	.\testMate.cpp	/^  int operator ()(HDC hdc) const { return ::ReleaseDC( hwnd_, hdc ); }$/;"	f	struct:MyReleaseDC
+operator ()	.\testMate.cpp	/^  void operator ()(int) const { ReleaseResource( hres_ ); }$/;"	f	struct:IgnoreReturnAndReleaseResource
+prefix	.\testMate.cpp	/^int prefix(int n) { return n + 100; }$/;"	f
+suffix	.\testMate.cpp	/^void suffix(int n) { n -= 100; }$/;"	f
+test01	.\testMate.cpp	/^void test01()$/;"	f
+test02	.\testMate.cpp	/^void test02() { }$/;"	f
+test02	.\testMate.cpp	/^void test02()$/;"	f
+test02_1	.\testMate.cpp	/^void test02_1()$/;"	f
+test03	.\testMate.cpp	/^void test03()$/;"	f
+test03_01	.\testMate.cpp	/^void test03_01()$/;"	f
+test04	.\testMate.cpp	/^void test04()$/;"	f
+test05	.\testMate.cpp	/^void test05(HWND hwnd)$/;"	f
+test06	.\testMate.cpp	/^void test06(HWND hwnd)$/;"	f
+test06	.\testMate.cpp	/^void test06(HWND) { }$/;"	f
+test07	.\testMate.cpp	/^void test07(HWND hwnd)$/;"	f
+test08	.\testMate.cpp	/^void test08(HWND hwnd)$/;"	f
+test09	.\testMate.cpp	/^void test09()$/;"	f
+test10	.\testMate.cpp	/^void test10()$/;"	f
+test11	.\testMate.cpp	/^void test11()$/;"	f
+test12	.\testMate.cpp	/^void test12(HANDLE hres)$/;"	f
+test13	.\testMate.cpp	/^void test13(HANDLE hres)$/;"	f
+test14	.\testMate.cpp	/^void test14(HANDLE hres, int option)$/;"	f
+test15	.\testMate.cpp	/^void test15(int & refCount)$/;"	f
+test16	.\testMate.cpp	/^void test16(int & refCount)$/;"	f
+test17	.\testMate.cpp	/^void test17()$/;"	f
+test18	.\testMate.cpp	/^void test18()$/;"	f
+test19	.\testMate.cpp	/^void test19(bool cond)$/;"	f
+test20	.\testMate.cpp	/^void test20(Graph & g)$/;"	f
+test21	.\testMate.cpp	/^void test21(RECT_MAP const & rect_map, POINT pt)$/;"	f
+test22	.\testMate.cpp	/^DWORD test22()$/;"	f
+test23	.\testMate.cpp	/^void test23()$/;"	f
+test24	.\testMate.cpp	/^void test24()$/;"	f
+test25	.\testMate.cpp	/^void test25()$/;"	f
+test26	.\testMate.cpp	/^void test26()$/;"	f
+test_syj_1	.\testMate.cpp	/^void test_syj_1(char const * p)$/;"	f
+test_syj_2	.\testMate.cpp	/^void test_syj_2(HANDLE h)$/;"	f
+theApp	.\testMate.cpp	/^CWinApp theApp;$/;"	v

@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Term - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Term.res" /d "_DEBUG" /d "_AFXDLL" "C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第04章\0406\Term\Term.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3A.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Term.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第04章\0406\Term\MainFrm.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第04章\0406\Term\SetupDlg.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第04章\0406\Term\Term.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第04章\0406\Term\TermDoc.cpp"
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第04章\0406\Term\TermView.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3A.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3B.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Term.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\BOOK20070612\PROGRAM\第04章\0406\Term\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3B.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3C.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Term.pdb" /debug /machine:I386 /out:"Debug/Term.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\SetupDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\Term.obj"
+".\Debug\TermDoc.obj"
+".\Debug\TermView.obj"
+".\Debug\Term.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3C.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+SetupDlg.cpp
+Term.cpp
+TermDoc.cpp
+TermView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Term.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

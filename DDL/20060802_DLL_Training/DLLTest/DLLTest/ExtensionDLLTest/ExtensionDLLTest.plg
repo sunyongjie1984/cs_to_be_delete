@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ExtensionDLLTest - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/ExtensionDLLTest.res" /d "_DEBUG" /d "_AFXDLL" "G:\Project\DLLTest\ExtensionDLLTest\ExtensionDLLTest.rc"" 
+Creating temporary file "C:\TEMP\RSP32.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "../Include/ExtensionDLLTest" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/ExtensionDLLTest.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\Project\DLLTest\ExtensionDLLTest\ExportDialog.cpp"
+"G:\Project\DLLTest\ExtensionDLLTest\ExtensionDLLTest.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP32.tmp" 
+Creating temporary file "C:\TEMP\RSP33.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "../Include/ExtensionDLLTest" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/ExtensionDLLTest.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\Project\DLLTest\ExtensionDLLTest\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP33.tmp" 
+Creating temporary file "C:\TEMP\RSP34.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ExtensionDLLTestd.pdb" /debug /machine:I386 /def:".\ExtensionDLLTest.def" /out:"../Bin/ExtensionDLLTestd.dll" /implib:"../Lib/ExtensionDLLTestd.lib" /pdbtype:sept 
+.\Debug\ExportDialog.obj
+.\Debug\ExtensionDLLTest.obj
+.\Debug\StdAfx.obj
+.\Debug\ExtensionDLLTest.res
+]
+Creating command line "link.exe @C:\TEMP\RSP34.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ExportDialog.cpp
+ExtensionDLLTest.cpp
+Generating Code...
+Linking...
+   Creating library ../Lib/ExtensionDLLTestd.lib and object ../Lib/ExtensionDLLTestd.exp
+
+
+
+<h3>Results</h3>
+ExtensionDLLTestd.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

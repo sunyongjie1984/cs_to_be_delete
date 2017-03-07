@@ -1,0 +1,15 @@
+﻿Build started 2013/8/10 19:31:12.
+     1>Project "E:\CS\CPPP\4th\good\C++_primer_12\const_overloaded\const_overloaded.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>e:\cs\cppp\4th\good\c++_primer_12\const_overloaded\main.cpp(100): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\CS\CPPP\4th\good\C++_primer_12\Debug\const_overloaded.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\CS\CPPP\4th\good\C++_primer_12\Debug\const_overloaded.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\CS\CPPP\4th\good\C++_primer_12\Debug\const_overloaded.lib" /MACHINE:X86 /SAFESEH Debug\main.obj
+     1>main.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+         const_overloaded.vcxproj -> E:\CS\CPPP\4th\good\C++_primer_12\Debug\const_overloaded.exe
+     1>Done Building Project "E:\CS\CPPP\4th\good\C++_primer_12\const_overloaded\const_overloaded.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.09

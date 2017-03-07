@@ -1,0 +1,537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highscore - The Boost C++ Libraries - Event Handling</title>
+<link rel="stylesheet" href="css/highscore.css" type="text/css">
+<link rev="made" href="mailto:boris@highscore.de">
+<link rel="home" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="up" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="prev" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="next" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="chapter" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="chapter" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="chapter" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="chapter" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="chapter" href="serialization.html" title="Chapter 11: Serialization">
+<link rel="chapter" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="containers.html" title="Chapter 13: Containers">
+<link rel="chapter" href="datastructures.html" title="Chapter 14: Data Structures">
+<link rel="chapter" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="castoperators.html" title="Chapter 16: Cast Operators">
+<link rel="section" href="eventhandling.html#eventhandling_general" title="4.1 General">
+<link rel="section" href="eventhandling.html#eventhandling_signals" title="4.2 Signals">
+<link rel="section" href="eventhandling.html#eventhandling_connections" title="4.3 Connections">
+<link rel="section" href="eventhandling.html#eventhandling_exercises" title="4.4 Exercises">
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1) gen true for "http://highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1))'>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link href="http://www.highscore.de/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script><script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script><script type="text/javascript" src="js/highscore.js"></script>
+</head>
+<body>
+<div lang="en" class="docbook chapter" title="Chapter 4: Event Handling">
+<p class="title">The Boost C++ Libraries</p>
+<script type="text/javascript">
+          var titlepage = "Front page";
+        
+      var titles = new Array(titlepage,
+      
+        "Chapter 1: Introduction",
+      
+        "Chapter 2: Smart Pointers",
+      
+        "Chapter 3: Function Objects",
+      
+        "Chapter 4: Event Handling",
+      
+        "Chapter 5: String Handling",
+      
+        "Chapter 6: Multithreading",
+      
+        "Chapter 7: Asynchronous Input and Output",
+      
+        "Chapter 8: Interprocess Communication",
+      
+        "Chapter 9: Filesystem",
+      
+        "Chapter 10: Date and Time",
+      
+        "Chapter 11: Serialization",
+      
+        "Chapter 12: Parser",
+      
+        "Chapter 13: Containers",
+      
+        "Chapter 14: Data Structures",
+      
+        "Chapter 15: Error Handling",
+      
+        "Chapter 16: Cast Operators",
+      
+      "");
+
+      
+          var titlehtml = "frontpage.html";
+        
+      var filenames = new Array(titlehtml,
+      
+        "introduction.html",
+      
+        "smartpointers.html",
+      
+        "functionobjects.html",
+      
+        "eventhandling.html",
+      
+        "stringhandling.html",
+      
+        "multithreading.html",
+      
+        "asio.html",
+      
+        "interprocesscommunication.html",
+      
+        "filesystem.html",
+      
+        "datetime.html",
+      
+        "serialization.html",
+      
+        "parser.html",
+      
+        "containers.html",
+      
+        "datastructures.html",
+      
+        "errorhandling.html",
+      
+        "castoperators.html",
+      
+      "");
+
+      
+      document.open();
+      document.write('<form action="" class="toc">');
+      document.write('<select size="1" onchange="location.href=options[selectedIndex].value">');
+      for (var i = 0; i < titles.length && i < filenames.length; ++i) {
+        if (titles[i] != "" && filenames[i] != "") {
+          document.write('<option');
+          document.write(' value="' + filenames[i] + '"');
+          var expr = new RegExp('[/\]' + filenames[i] + '$');
+          if (expr.test(location.href)) {
+            document.write(' selected="selected"');
+          }
+          document.write('>' + titles[i] + '<\/option>');
+        }
+      }
+      document.write('<\/select>');
+      document.write('<\/form>');
+      document.close();
+      
+    </script><noscript><p class="toc"><a href="toc.html">Table of Contents</a></p></noscript>
+<hr class="hrhead">
+<h1 class="title">
+<a name="eventhandling"></a><small>Chapter 4:</small> Event Handling</h1>
+<hr>
+<div class="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><span class="sect1"><a href="eventhandling.html#eventhandling_general">4.1 General</a></span></li>
+<li><span class="sect1"><a href="eventhandling.html#eventhandling_signals">4.2 Signals</a></span></li>
+<li><span class="sect1"><a href="eventhandling.html#eventhandling_connections">4.3 Connections</a></span></li>
+<li><span class="sect1"><a href="eventhandling.html#eventhandling_exercises">4.4 Exercises</a></span></li>
+</ul>
+</div>
+<p class="license"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top"><img src="img/88x31_cc_logo.gif" alt="" width="88" height="31"></a> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top">Creative Commons License</a>.</p>
+<hr>
+<h2 class="title">
+<a name="eventhandling_general"></a>4.1 General</h2>
+<div class="sect1">
+<p>Many developers think about graphical user interfaces when hearing the term 'event handling': At the click of a button, the associated function is executed. The click itself is the event while the function is the corresponding event handler.</p>
+<p>The usage of this pattern is certainly not limited to graphical user interfaces though. In general, arbitrary objects can call dedicated functions based on specific events. The <a class="link" href="http://www.boost.org/libs/signals">Boost.Signals</a> library introduced in this chapter provides an easy way to apply this pattern in C++.</p>
+<p>Strictly speaking, the Boost.Function library could also be used for event handling. One crucial difference between Boost.Function and Boost.Signals, however, is the ability of Boost.Signals to associate more than one event handler with a single event. Therefore, Boost.Signals supports event-driven development much better and should be the first choice whenever events must be handled.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="eventhandling_signals"></a>4.2 Signals</h2>
+<div class="sect1">
+<p>While the name of the library seems to be a bit misleading at first, it actually is not. Boost.Signals implements a pattern named signal to slot which is based on the concept that associated slots are executed once the corresponding signal is issued. In principle, one can substitute the words 'signal' and 'slot' with 'event' and 'event handler', respectively. However, since signals can be issued at any given time, the concept renounces events.</p>
+<p>Consequently, Boost.Signals does not offer classes that resemble events. Instead, it provides a class named <code class="classname">boost::signal</code> defined in <code class="filename">boost/signal.hpp</code>. This header file is actually the only one required knowing since it will include dependent header files automatically.</p>
+<p>Boost.Signals defines additional classes residing in the <span class="package">boost::signals</span> namespace. Since <code class="classname">boost::signal</code> is the most commonly used class, it actually resides in the namespace <span class="package">boost</span> instead.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func() 
+{ 
+  std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  s.connect(func); 
+  s(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.1/main.cpp">Download source code</a></li></ul>
+<p><code class="classname">boost::signal</code> is actually implemented as a template function expecting the signature of a function, used as the event handler, as its template parameter. In the example, only functions with a signature of <code class="code">void ()</code> can be associated with the signal <var>s</var> successfully.</p>
+<p>The function <code class="function">func()</code> is associated with the signal <var>s</var> using the <code class="methodname">connect()</code> method. Since <code class="function">func()</code> conforms to the required <code class="code">void ()</code> signature, the association is successfully established. <code class="function">func()</code> is therefore called whenever the signal <var>s</var> is triggered.</p>
+<p>The signal is triggered by calling <var>s</var> just like a regular function. The signature of this function corresponds to the one passed as the template parameter: The brackets are empty since <code class="code">void ()</code> does not expect any parameters.</p>
+<p>Calling <var>s</var> results in a trigger which in turn executes the <code class="function">func()</code> function - previously associated using <code class="methodname">connect()</code> - accordingly.</p>
+<p>The same example can also be realized using Boost.Function instead.</p>
+<pre class="programlisting">#include &lt;boost/function.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func() 
+{ 
+  std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::function&lt;void ()&gt; f; 
+  f = func; 
+  f(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.2/main.cpp">Download source code</a></li></ul>
+<p>Similar to the previous example, <code class="function">func()</code> is associated with <var>f</var>. Once called, <code class="function">func()</code> is executed accordingly. While Boost.Function is limited to these scenarios, Boost.Signals offers far more variety such as associating multiple functions with a particular signal as shown in the following example.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func1() 
+{ 
+  std::cout &lt;&lt; "Hello" &lt;&lt; std::flush; 
+} 
+
+void func2() 
+{ 
+  std::cout &lt;&lt; ", world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  s.connect(func1); 
+  s.connect(func2); 
+  s(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.3/main.cpp">Download source code</a></li></ul>
+<p><code class="classname">boost::signal</code> allows assigning multiple functions to a particular signal by calling the <code class="methodname">connect()</code> method repeatedly. Whenever the signal is triggered, the functions are executed in the order they have been previously associated using <code class="methodname">connect()</code>.</p>
+<p>Alternatively, the order can be explicitly specified using an overloaded version of the <code class="methodname">connect()</code> method that expects a value of type <code class="type">int</code> as an additional parameter.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func1() 
+{ 
+  std::cout &lt;&lt; "Hello" &lt;&lt; std::flush; 
+} 
+
+void func2() 
+{ 
+  std::cout &lt;&lt; ", world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  s.connect(1, func2); 
+  s.connect(0, func1); 
+  s(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.4/main.cpp">Download source code</a></li></ul>
+<p>As with the previous example, <code class="function">func1()</code> is executed before <code class="function">func2()</code>.</p>
+<p>To release an associated function with a given signal, the <code class="methodname">disconnect()</code> method is used.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func1() 
+{ 
+  std::cout &lt;&lt; "Hello" &lt;&lt; std::endl; 
+} 
+
+void func2() 
+{ 
+  std::cout &lt;&lt; ", world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  s.connect(func1); 
+  s.connect(func2); 
+  s.disconnect(func2); 
+  s(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.5/main.cpp">Download source code</a></li></ul>
+<p>This example only prints <code class="computeroutput">Hello</code> since the association with <code class="function">func2()</code> has been released prior to triggering the signal.</p>
+<p>Besides <code class="methodname">connect()</code> and <code class="methodname">disconnect()</code>, <code class="classname">boost::signal</code> offers only a few additional methods.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func1() 
+{ 
+  std::cout &lt;&lt; "Hello" &lt;&lt; std::flush; 
+} 
+
+void func2() 
+{ 
+  std::cout &lt;&lt; ", world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  s.connect(func1); 
+  s.connect(func2); 
+  std::cout &lt;&lt; s.num_slots() &lt;&lt; std::endl; 
+  if (!s.empty()) 
+    s(); 
+  s.disconnect_all_slots(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.6/main.cpp">Download source code</a></li></ul>
+<p><code class="methodname">num_slots()</code> returns the number of associated functions. If no function is associated, <code class="methodname">num_slots()</code> returns 0 accordingly. In this particular case, the <code class="methodname">empty()</code> method can be used instead. The <code class="methodname">disconnect_all_slots()</code> method actually does exactly what its name expresses: It releases all existing associations.</p>
+<p>After seeing how functions are associated with signals as well as understanding what happens once a signal is triggered, one question actually remains: What happens to the return values of these functions? The following example answers this question.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int func1() 
+{ 
+  return 1; 
+} 
+
+int func2() 
+{ 
+  return 2; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;int ()&gt; s; 
+  s.connect(func1); 
+  s.connect(func2); 
+  std::cout &lt;&lt; s() &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.7/main.cpp">Download source code</a></li></ul>
+<p>Both <code class="function">func1()</code> and <code class="function">func2()</code> now have a return value of type <code class="type">int</code>. <var>s</var> processes both return values and writes them to the standard output stream somehow. However, what happens exactly?</p>
+<p> The above example will actually write <code class="computeroutput">2</code> to the standard output stream. Both return values were correctly accepted by <var>s</var> but were ignored except for the last one. By default, only the last return value of all associated functions is actually returned.</p>
+<p>It is possible to customize a signal so that the individual return values are processed accordingly. For that purpose, a so-called combiner must be passed to <code class="classname">boost::signal</code> as the second parameter.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;algorithm&gt; 
+
+int func1() 
+{ 
+  return 1; 
+} 
+
+int func2() 
+{ 
+  return 2; 
+} 
+
+template &lt;typename T&gt; 
+struct min_element 
+{ 
+  typedef T result_type; 
+
+  template &lt;typename InputIterator&gt; 
+  T operator()(InputIterator first, InputIterator last) const 
+  { 
+    return *std::min_element(first, last); 
+  } 
+}; 
+
+int main() 
+{ 
+  boost::signal&lt;int (), min_element&lt;int&gt; &gt; s; 
+  s.connect(func1); 
+  s.connect(func2); 
+  std::cout &lt;&lt; s() &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.8/main.cpp">Download source code</a></li></ul>
+<p>A combiner is a class overloading the <code class="methodname">operator()()</code> operator. This operator is automatically called with two iterators pointing to all return values for a particular signal. The example uses the standard C++ algorithm <code class="function">std::min_element()</code> to determine and return the smallest value.</p>
+<p>Unfortunately, it is not possible to pass an algorithm such as <code class="function">std::min_element()</code> directly to <code class="classname">boost::signal</code> as a template parameter. <code class="classname">boost::signal</code> expects that the combiner defines a type called <code class="type">result_type</code> that denotes the type of the value returned by the <code class="methodname">operator()()</code> operator. Since this type is omitted by the standard C++ algorithms, an error is issued during compilation accordingly.</p>
+<p>Instead analyzing return values, a combiner can also save them.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;vector&gt; 
+#include &lt;algorithm&gt; 
+
+int func1() 
+{ 
+  return 1; 
+} 
+
+int func2() 
+{ 
+  return 2; 
+} 
+
+template &lt;typename T&gt; 
+struct min_element 
+{ 
+  typedef T result_type; 
+
+  template &lt;typename InputIterator&gt; 
+  T operator()(InputIterator first, InputIterator last) const 
+  { 
+    return T(first, last); 
+  } 
+}; 
+
+int main() 
+{ 
+  boost::signal&lt;int (), min_element&lt;std::vector&lt;int&gt; &gt; &gt; s; 
+  s.connect(func1); 
+  s.connect(func2); 
+  std::vector&lt;int&gt; v = s(); 
+  std::cout &lt;&lt; *std::min_element(v.begin(), v.end()) &lt;&lt; std::endl; 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.2.9/main.cpp">Download source code</a></li></ul>
+<p>The example saves all the return values in a vector which in turn is returned by <code class="code">s()</code>.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="eventhandling_connections"></a>4.3 Connections</h2>
+<div class="sect1">
+<p>Functions can be managed with the aid of the <code class="methodname">connect()</code> and <code class="methodname">disconnect()</code> methods provided by <code class="classname">boost::signal</code>. Due to <code class="methodname">connect()</code> returning a value of type <code class="classname">boost::signals::connection</code>, they can be managed differently as well.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func() 
+{ 
+  std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  boost::signals::connection c = s.connect(func); 
+  s(); 
+  c.disconnect(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.3.1/main.cpp">Download source code</a></li></ul>
+<p>The <code class="methodname">disconnect()</code> method of <code class="classname">boost::signal</code> requires a function pointer being passed which can be avoided by calling the <code class="methodname">disconnect()</code> method on the <code class="classname">boost::signals::connection</code> object directly.</p>
+<p>In addition to the <code class="methodname">disconnect()</code> method, <code class="classname">boost::signals::connection</code> also provides methods such as <code class="methodname">block()</code> and <code class="methodname">unblock()</code>.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func() 
+{ 
+  std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  boost::signals::connection c = s.connect(func); 
+  c.block(); 
+  s(); 
+  c.unblock(); 
+  s(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.3.2/main.cpp">Download source code</a></li></ul>
+<p>The above program executes <code class="function">func()</code> exactly once. Even though the signal <var>s</var> is triggered twice, <code class="function">func()</code> is not called for the first trigger since the connection <var>c</var> has actually been blocked by a call to <code class="methodname">block()</code>. Since <code class="methodname">unblock()</code> is called before the second trigger, <code class="function">func()</code> is now executed correctly.</p>
+<p>Besides <code class="classname">boost::signals::connection</code>, a class named <code class="classname">boost::signals::scoped_connection</code> is offered that releases the connection during destruction automatically.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void func() 
+{ 
+  std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  { 
+    boost::signals::scoped_connection c = s.connect(func); 
+  } 
+  s(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.3.3/main.cpp">Download source code</a></li></ul>
+<p>Since the connection object <var>c</var> is destroyed before the signal is triggered, <code class="function">func()</code> is not being called.</p>
+<p><code class="classname">boost::signals::scoped_connection</code> is actually derived from <code class="classname">boost::signals::connection</code> and thus offers the same methods. The only difference is the automatic release of the connection during destruction of <code class="classname">boost::signals::scoped_connection</code>.</p>
+<p>While <code class="classname">boost::signals::scoped_connection</code> certainly makes it easier to automatically release connections, objects of this type still need to be managed. It would be nice if connections could be automatically released in other cases as well without having the need to actually manage these objects.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;boost/bind.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;memory&gt; 
+
+class world 
+{ 
+  public: 
+    void hello() const 
+    { 
+      std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl; 
+    } 
+}; 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  { 
+    std::auto_ptr&lt;world&gt; w(new world()); 
+    s.connect(boost::bind(&amp;world::hello, w.get())); 
+  } 
+  std::cout &lt;&lt; s.num_slots() &lt;&lt; std::endl; 
+  s(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.3.4/main.cpp">Download source code</a></li></ul>
+<p>The above program associates the method of an object with a signal by using Boost.Bind. The object is destroyed before the signal is triggered which creates an issue. Opposed to passing the actual object <var>w</var>, only a pointer has been passed to <code class="function">boost::bind()</code> instead. By the time <code class="code">s()</code> is actually called, the object referenced by the pointer does no longer exist.</p>
+<p>It is possible to modify the program so that the connection is automatically released once the object <var>w</var> is destroyed.</p>
+<pre class="programlisting">#include &lt;boost/signal.hpp&gt; 
+#include &lt;boost/bind.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;memory&gt; 
+
+class world : 
+  public boost::signals::trackable 
+{ 
+  public: 
+    void hello() const 
+    { 
+      std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl; 
+    } 
+}; 
+
+int main() 
+{ 
+  boost::signal&lt;void ()&gt; s; 
+  { 
+    std::auto_ptr&lt;world&gt; w(new world()); 
+    s.connect(boost::bind(&amp;world::hello, w.get())); 
+  } 
+  std::cout &lt;&lt; s.num_slots() &lt;&lt; std::endl; 
+  s(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/4.3.5/main.cpp">Download source code</a></li></ul>
+<p>If executed now, <code class="methodname">num_slots()</code> actually returns <code class="computeroutput">0</code> to make sure that no method is tried to be called on an already destroyed object. The only change necessary was to derive the <code class="classname">world</code> class from <code class="classname">boost::signals::trackable</code>. Whenever pointers to objects instead of object copies are used to associate functions with signals, <code class="classname">boost::signals::trackable</code> can simplify the management of the connections considerably.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="eventhandling_exercises"></a>4.4 Exercises</h2>
+<div class="sect1">
+<p class="solution">
+              You can buy 
+              <a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-solution">solutions to all exercises</a>
+              in this book as a ZIP file. 
+            </p>
+<ol><li class="listitem">
+<p>Create a program by defining a class named <code class="classname">button</code> which represents a clickable button within a graphical user interface. Add two methods <code class="function">add_handler()</code> and <code class="function">remove_handler()</code>, both expecting a function name as a parameter, to the class. If a <code class="methodname">click()</code> method is called, the registered functions should be executed sequentially.</p>
+<p>Test your code by creating an instance of the <code class="classname">button</code> class and writing a message to the standard output stream from within the event handler. Call the <code class="function">click()</code> function to simulate a mouse click on the button.</p>
+</li></ol>
+</div>
+</div>
+<hr class="hrfoot">
+<p class="copyright">Copyright © 2008-2010 
+        <a class="link" href="mailto:boris@highscore.de">Boris Schäling</a>
+      </p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: WhoSLocking - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP4F.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/WhoSLocking.pch" /YX"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\D\My Document\代码示例\网络编程\new\program1\文件\获取当前谁在使用该文件\WhoSLockingDlg.cpp"
+"C:\D\My Document\代码示例\网络编程\new\program1\文件\获取当前谁在使用该文件\WindowsRegistry.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP4F.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP50.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/WhoSLocking.pdb" /debug /machine:I386 /out:"Debug/WhoSLocking.exe" /pdbtype:sept 
+".\Debug\CListCtrlEx.obj"
+".\Debug\GetServiceName.obj"
+".\Debug\SimpleProcessAPI.obj"
+".\Debug\StdAfx.obj"
+".\Debug\WhoSLocking.obj"
+".\Debug\WhoSLockingCommandLineInfo.obj"
+".\Debug\WhoSLockingDlg.obj"
+".\Debug\WindowsRegistry.obj"
+".\Debug\WhoSLocking.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP50.tmp"
+<h3>Output Window</h3>
+Compiling...
+WhoSLockingDlg.cpp
+WindowsRegistry.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+WhoSLocking.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

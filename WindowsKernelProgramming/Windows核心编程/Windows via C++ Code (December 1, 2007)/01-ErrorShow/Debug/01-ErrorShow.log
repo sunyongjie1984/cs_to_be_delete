@@ -1,0 +1,17 @@
+﻿生成启动时间为 2013/2/28 16:07:51。
+     1>项目“E:\CS\Windows_kernel_programming\Windows核心编程\Windows via C++ Code (December 1, 2007)\01-ErrorShow\01-ErrorShow.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ErrorShow.cpp
+         ErrorShow.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\ErrorShow.res" ErrorShow.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\CS\Windows_kernel_programming\Windows核心编程\Windows via C++ Code (December 1, 2007)\Debug\01-ErrorShow.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\CS\Windows_kernel_programming\Windows核心编程\Windows via C++ Code (December 1, 2007)\Debug\01-ErrorShow.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"E:\CS\Windows_kernel_programming\Windows核心编程\Windows via C++ Code (December 1, 2007)\Debug\01-ErrorShow.lib" /MACHINE:X86 /SAFESEH Debug\ErrorShow.res
+         Debug\ErrorShow.obj
+     1>ErrorShow.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+         01-ErrorShow.vcxproj -> E:\CS\Windows_kernel_programming\Windows核心编程\Windows via C++ Code (December 1, 2007)\Debug\01-ErrorShow.exe
+     1>已完成生成项目“E:\CS\Windows_kernel_programming\Windows核心编程\Windows via C++ Code (December 1, 2007)\01-ErrorShow\01-ErrorShow.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:19.26

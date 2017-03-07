@@ -1,0 +1,96 @@
+I. Summary
+
+The TCP Stream Reassembly plugin allows one to reconstruct the tcp
+streams between two hosts based on the observed packets going between
+them.  This is necessary as it is quite easy to ellude snort's current
+incarnation by writing a program to send attack code 1 byte at a time.
+The victim's tcp stack will correctly reassemble this data and pass it
+on to the process listening at the designated port.  Snort which only
+does content matching from packets will never see a thing. The author
+has demonstrated this quite satisfactorily to himself and will not be
+distributing the (trivial) code to do so. :-)
+
+
+II. TCP Streams
+
+A little on the design philosophy here (yes there is a philosophy of
+sorts).  TCP is designed to insure correct and sequential delivery of
+data betwen two hosts even over noisy links.  To achieve this, each
+host (A and B) pick a (in theory) random number representing the first
+byte of data being sent by that host (this is the initial sequence
+number).  Each chunk of data in the stream is sent with a sequence
+number which indicates where in the stream this particular bit of data
+starts at.  The use of SEQ numbers allows TCP to meet the ordered
+requirement placed on it.  A receiving host can take an individual
+packet of data and determine where within the stream the data belongs.
+
+To acheive correct delivery of data, when a packet is being sent from
+A to B, A computes a checksum and places it in the TCP packet.  Upon
+receiving the packet, B computes the checksum and if they match it, it
+is correct.  The next time B sends data to A, it acknowledges that it
+has received correct data up to and including a given sequence number.
+This is the purpose of the ACK field.  It allows host B to tell host A
+that all of A's data represented by sequence numbers up to ACK are
+okay.
+
+Each host has a window size indicating the amount of unacknowledged it
+will buffer.  When host A has sent host B's maximum amount of data, it
+_must_ wait until some of that data has been acknowledged before
+sending any new data.  It may however resend data that has not yet
+been acknowledged.  In fact this is the mechanism by which TCP decides
+to retransmit.  If you haven't seen ACKs of any new data for a set
+amount of time, you should probably resend.
+
+
+III. tcp_stream preprocessor
+
+So, there are two ways we could handle data buffering on the plugin.
+We could either make the data available as soon as we see it, although
+this does not insure that the data was correctly received by the
+destination.  Or, we could buffer all data we see but only make it
+available to users when we see an ACK of that data.  I chose the later
+course, which _should_ mean that the only data that can get out of my
+buffers is that which is seen by the destination host.  So, new data
+from A -> B is only made available by an ACK packet from B -> A.  This
+can cause a few headaches as will be explained later.
+
+Now that we are getting ordered data into our buffers, the plugin will
+read data out of the buffer and generate a new _correct_ packet based
+on one of two conditions:
+
+   a) The last data ACKed contains a return character (0x0d or 0x0a). 
+      Since the plugin searches from the end to the begining of the 
+      queue, the first return character seen (the last ACKed) will 
+      generate a packet of all the data in the buffer up to that point.
+
+   b) The plugin has 'maxbytes' ACKed in its buffer.  In this case, the
+      packet will contain the first maxbytes of data in the buffer.
+
+IV. Usage
+   
+preprocessor stream: <arg set 1>, <arg set 2>, ...
+
+Arguments:  one or more of the following separated by commas
+
+timeout <timeout value>
+
+ports <port 1> ... <port N>
+
+maxbytes <maxbytes>
+
+<timeout>  - the max time in seconds for which a stream will be 
+             kept alive if we haven't seen a packet for it
+<port x>   - a server port to monitor.  we don't want to monitor 
+             all tcp streams (do we?)
+<maxbytes> - maximum bytes in our reconstructed packets
+
+example: 
+  preprocessor stream: timeout 5, ports 21 23 80 8080, maxbytes 16384
+
+
+V. Author info, etc.
+
+The tcp_stream preprocessor was written by Christopher E. Cramer
+<cec@ee.duke.edu>.  Please direct any comments, suggestions, bug
+reports or fixes to him.  I would like to thank Marty, and everyone
+else who has been working on Snort for producing such a fine program.

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "derive_class_constructor", "derive_class_constructor\derive_class_constructor.vcproj", "{B3A7A2B5-FF3C-45CC-8BB4-233ED08E9A12}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "no_default_constructor", "no_default_constructor\no_default_constructor.vcproj", "{F179685F-2821-4338-B32F-3903A66B6396}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3A7A2B5-FF3C-45CC-8BB4-233ED08E9A12}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B3A7A2B5-FF3C-45CC-8BB4-233ED08E9A12}.Debug|Win32.Build.0 = Debug|Win32
+		{B3A7A2B5-FF3C-45CC-8BB4-233ED08E9A12}.Release|Win32.ActiveCfg = Release|Win32
+		{B3A7A2B5-FF3C-45CC-8BB4-233ED08E9A12}.Release|Win32.Build.0 = Release|Win32
+		{F179685F-2821-4338-B32F-3903A66B6396}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F179685F-2821-4338-B32F-3903A66B6396}.Debug|Win32.Build.0 = Debug|Win32
+		{F179685F-2821-4338-B32F-3903A66B6396}.Release|Win32.ActiveCfg = Release|Win32
+		{F179685F-2821-4338-B32F-3903A66B6396}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

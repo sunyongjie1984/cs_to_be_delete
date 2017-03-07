@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DS_qinghua_chapter2", "DS_qinghua_chapter2\DS_qinghua_chapter2.vcxproj", "{99E0400E-CBBE-4AE9-82EC-73C659DB2523}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinkList", "LinkList\LinkList.vcxproj", "{1E128E39-16F8-4D64-BD7B-E2D9BF17C4AE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "polynomial", "polynomial\polynomial.vcxproj", "{0ECAC63B-3513-4F33-A347-71F9BF7878E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99E0400E-CBBE-4AE9-82EC-73C659DB2523}.Debug|Win32.ActiveCfg = Debug|Win32
+		{99E0400E-CBBE-4AE9-82EC-73C659DB2523}.Debug|Win32.Build.0 = Debug|Win32
+		{99E0400E-CBBE-4AE9-82EC-73C659DB2523}.Release|Win32.ActiveCfg = Release|Win32
+		{99E0400E-CBBE-4AE9-82EC-73C659DB2523}.Release|Win32.Build.0 = Release|Win32
+		{1E128E39-16F8-4D64-BD7B-E2D9BF17C4AE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1E128E39-16F8-4D64-BD7B-E2D9BF17C4AE}.Debug|Win32.Build.0 = Debug|Win32
+		{1E128E39-16F8-4D64-BD7B-E2D9BF17C4AE}.Release|Win32.ActiveCfg = Release|Win32
+		{1E128E39-16F8-4D64-BD7B-E2D9BF17C4AE}.Release|Win32.Build.0 = Release|Win32
+		{0ECAC63B-3513-4F33-A347-71F9BF7878E2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0ECAC63B-3513-4F33-A347-71F9BF7878E2}.Debug|Win32.Build.0 = Debug|Win32
+		{0ECAC63B-3513-4F33-A347-71F9BF7878E2}.Release|Win32.ActiveCfg = Release|Win32
+		{0ECAC63B-3513-4F33-A347-71F9BF7878E2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

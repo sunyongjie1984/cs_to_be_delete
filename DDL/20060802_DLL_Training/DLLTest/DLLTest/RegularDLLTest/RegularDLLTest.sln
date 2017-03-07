@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RegularDLLTest", "RegularDLLTest.vcproj", "{464E4C8B-AB6E-4A2B-9BCD-CDA752878F58}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RegularDLLTestExe", "..\RegularDLLTestExe\RegularDLLTestExe.vcproj", "{0758EDBD-312F-4487-85BD-49EA8E0EB83A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{464E4C8B-AB6E-4A2B-9BCD-CDA752878F58} = {464E4C8B-AB6E-4A2B-9BCD-CDA752878F58}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{464E4C8B-AB6E-4A2B-9BCD-CDA752878F58}.Debug|Win32.ActiveCfg = Debug|Win32
+		{464E4C8B-AB6E-4A2B-9BCD-CDA752878F58}.Debug|Win32.Build.0 = Debug|Win32
+		{464E4C8B-AB6E-4A2B-9BCD-CDA752878F58}.Release|Win32.ActiveCfg = Release|Win32
+		{464E4C8B-AB6E-4A2B-9BCD-CDA752878F58}.Release|Win32.Build.0 = Release|Win32
+		{0758EDBD-312F-4487-85BD-49EA8E0EB83A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0758EDBD-312F-4487-85BD-49EA8E0EB83A}.Debug|Win32.Build.0 = Debug|Win32
+		{0758EDBD-312F-4487-85BD-49EA8E0EB83A}.Release|Win32.ActiveCfg = Release|Win32
+		{0758EDBD-312F-4487-85BD-49EA8E0EB83A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

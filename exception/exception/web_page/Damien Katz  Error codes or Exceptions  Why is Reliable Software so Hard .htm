@@ -1,0 +1,922 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0050)http://damienkatz.net/2006/04/error_code_vs_e.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="http://www.movabletype.org/">
+
+<title>Damien Katz: Error codes or Exceptions? Why is Reliable Software so Hard?</title>
+
+<link rel="stylesheet" href="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/style.css" type="text/css">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="http://damienkatz.net/atom.xml">
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'damienkatz.net';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + (expires ? "; expires=" + expires : "") + (path ? "; path=" + path : "") + (domain ? "; domain=" + domain : "") + (secure ? "secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    now = now.toGMTString();
+    if (f.author != undefined)
+       setCookie('mtcmtauth', f.author.value, now, '/', '', '');
+    if (f.email != undefined)
+       setCookie('mtcmtmail', f.email.value, now, '/', '', '');
+    if (f.url != undefined)
+       setCookie('mtcmthome', f.url.value, now, '/', '', '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '/', '');
+    deleteCookie('mtcmthome', '/', '');
+    deleteCookie('mtcmtauth', '/', '');
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+<script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>
+
+<body>
+
+<div id="container">
+
+<div id="banner">
+<h1><a href="http://damienkatz.net/" accesskey="1">Damien Katz</a></h1>
+<h2>Everybody keeps on talking about it<br>
+Nobody's getting it done</h2>
+</div>
+
+<div id="center">
+<div class="content">
+
+<h3>Error codes or Exceptions? Why is Reliable Software so Hard?</h3>
+
+<p>Error codes or exceptions? Like static vs. dynamic programming languages or how great David Hasselhoff is (most people say great, I say super-great), it tends to turn into a pointless argument ("Hasselhoff is super-great ASSHOLE!").</p>
+
+<p>Very little software really gets error handling right. Even many critical, backend server systems tend to break under heavy loads. And the vast majority of end-user applications handle errors gracefully only for the most well understood, commonly encountered conditions (e.g. HTTP timeout), but very poorly for most other conditions (failed allocations, bad data, I/O errors, missing files, etc). </p>
+
+<p>When these sorts of errors occur, bad things happen. Bad bad things. Like when my web browser crashes, taking one half-composed email and 8 open web pages with it. Why did a single flaw cause so much damage? I use Firefox and it's pretty reliable compared to most applications. It's engineered impressively, with logical program layers well separated and a great deal of the application logic is written in JavaScript, a high-level "safe" programming language. But occasionally it still just crashes or locks up.</p>
+
+<p><img alt="crash_1a.gif" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/crash_1a.gif" width="226" height="173"></p>
+
+<p>Why is this? Because it's using error codes when it should be using exceptions, and exceptions when it should be using error codes? And why should a single flaw in the software cause the world to explode? Is the only way we can have reliable software is by having perfect software?<br>
+ <br>
+I argue that it's not the "handling" part that's hard, few errors are things we can even respond to. How do we "handle" the inability to allocate memory? We can't fix those errors, we just hope they don't make us crash or lock up. And yet so often it does, a single error causes us to lose everything.</p>
+
+<p>The problem is deeper than how we communicate errors in our languages, it's really everything we've done leading up to the error that's the problem.</p>
+
+<p>I'll describe the three styles of error handling, and why one of those styles is usually wrong and the problem is more fundamental than error handling.</p>
+
+<p><strong>"Get the Hell Out of Dodge" Error Handling</strong></p>
+
+<p><img alt="gunsmoke.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/gunsmoke.jpg" width="193" height="268"></p>
+
+<p>This is the most simple case of error handling: When a step in some action fails, all the subsequent steps in that action are simply NOT executed. This is where exceptions shine because the application code need not worry about checking for errors after each step; once the exception is thrown (either directly or by a called routine), the routine exits automatically. And its caller will have a chance to catch it or do nothing and let the exception bubble up to its caller, etc on up the call stack.</p>
+
+<pre>void DoIt() {
+	// An exception in Foo means
+	// Bar doesn't get called
+	Thing thing = Foo();
+	Bar(thing);
+}
+ 
+Thing Foo() {
+	if (JupiterInLineWithPluto) {
+		throw new PlanetAlignmentException();
+	}
+	return new Thing();
+}
+</pre>
+
+<p>A second, slightly more advanced case of this error handling is when, like in the first error case you want to halt execution of the current code, but before you do you need to free any resources previously allocated. This is different than the "just stop executing the action" case, because we actually need to do some additional work in the presence of the error.</p>
+
+<p>In C, this most often this means freeing up allocated memory. In garbage collected languages like Java, this it's more typically closing opened files or sockets (although they will eventually get closed by the garbage collector regardless). In this style of error handling, you are simply returning resources you've acquired, be it memory, file handles, locks, etc . Most programming languages offer simple ways to deal with this: Java has "finally" blocks, C# has "using" blocks , C++ has stack based variables and the RAII idiom.</p>
+
+<p>Here's an example of a "finally" block in Java:</p>
+
+<pre>void DoIt() {
+	Thing thing = Foo();
+	thing.CreateTempFiles();
+	try {
+		Bar(thing);  
+		Baz(thing);
+	} finally {
+		// This gets called regardless
+		// of exceptions in Bar and Baz.
+		thing.DeleteTempFiles(); 
+	}
+}
+</pre>
+
+<p>To generalize the description of this type of error handling, you are returning the software back to the default state. Whatever intermediate state your code was in is now lost forever. Stack frames are popped, memory freed, resources recovered, etc. And that's okay because you want those things to go away and start fresh.</p>
+
+<p>This is easy and simple error handling, as easy as turning around and leaving town. And you'll leave town if you know what's good for you. Got that partner?</p>
+
+<p><strong>"Plan B" Error Handling</strong></p>
+
+<p>This type of error handling is for error conditions that are known and understood and there is an action the code should take in the situation. This differs from other error handling as these errors aren't "exceptional", they are expected and we have alternate paths to take, we don't just go home and pretend like it never happened.</p>
+
+<p><img alt="planb-Larson.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/planb-Larson.jpg" width="357" height="472"></p>
+
+<p>One example might be attempting to deliver a SMTP mail message and the connection times out. The error handling in that case may be to look in the MX record for a backup host, or put aside the mail message for later delivery. (I'm sure it's way more complicated than that, humor me)</p>
+
+<p>With this type of error handling, status codes are easier to deal with syntactically and logically: "if" and "switch" statements are more compact and natural than "try/catch" for most logic flow.</p>
+
+<p>Error codes:</p>
+
+<pre>if (DeliverMessage(msg, primaryHost) == FAILED) {
+	if (DeliverMessage(msg, secondaryHost) == FAILED) {
+		PutInFailedDeliveryQueue(msg);
+	}
+}
+</pre>
+
+<p>Exceptions:</p>
+
+<pre>try {
+	DeliverMessage(msg, primaryHost);
+} catch (FailedDeliveryException e) {
+	try {
+		DeliverMessage(msg, secondaryHost);
+	} catch (FailedDeliveryException e2) {
+		PutInFailedDeliveryQueue(msg);
+	}
+}
+</pre>
+
+<p><br>
+But regardless if you use error codes or exceptions, Plan B error handling isn't particularly difficult. The error conditions and scenarios are understood and your code has actions to deal with those scenarios. If you use status codes here, this type of error handling is as natural as regular application code. And that's the way it should be, it should be just like adding any other branching logic. Exceptions aren't as useful here, because in this case they aren't "exceptional" and the code to handle common conditions becomes much more convoluted.</p>
+
+<p><strong>"Reverse the Flow of Time" Error Handling</strong></p>
+
+<p>The third, and truly nastiest case of error handling, is when you must "undo" any state changes your program has made leading up to the error condition. This is where things can get real complicated real quick, you aren't just freeing resources like before, you are backing up in time to a previous program state.</p>
+
+<p><img alt="doc.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/doc.jpg" width="400" height="287"></p>
+
+<p>The analogy of putting the toothpaste back in the tube seems appropriate, but that's a piece of cake comparatively. In this case you're actually trying to un-brush the crud back onto your teeth, and each piece of crud should go right back where it was originally.</p>
+
+<p>And how do you do that? How do you put back state you've changed? Do keep a copy of every variable and property change so you can put it back? Where do you keep it? What if the change is down in some deeply nested composite object? What if another thread or some other code already sees the state change and acted on it? What happens if another error happens while putting stuff back?</p>
+
+<p>This is the hard stuff. This is the stuff where the error handling easily becomes as complex as the application logic, and sometimes to do it right it has to be even more complex. So what can we do? What techniques or secrets can we use to make this error handling easier? If only we had something that reversed the actual flow of time, that could do the trick.</p>
+
+<p>Or maybe we shouldn't be trying to figure out an easier way to do this type of error handling, but rather <em>avoiding the need for it altogether</em>.</p>
+
+<p>Why is this style of error handling necessary? Is it our actions leading up to the error? And what could we have done differently?  To understand a little better what's going on here, I'll use the analogy of building a deck.</p>
+
+<p><strong>Building a Deck</strong></p>
+
+<p>Let's say you want to build a deck onto your house. You foresee a grand deck on a beautiful summer day, you're sipping lemonade and eating pie and playing Battleship! with friends.</p>
+
+<p><img alt="deckparty.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/deckparty.jpg" width="295" height="277"></p>
+
+<p>So you get the permits, you buy the materials, you dig, you saw, you hammer, you drill. (Anyone tell you how much you look like Bob Vila?)</p>
+
+<p>Then a few days into it a building inspector shows up and asks to see your permits. You dutifully retrieve them and give them to the inspector. Uh-oh, there's a problem, you didn't apply for a <em>county</em> building permit, you only got the permits from the city.</p>
+
+<p>That's too bad, the inspector says, because then you might have known the placement of the deck is out of line with Jupiter on the autumn sky, it's clearly in a violation of the county building code regulation number 109.8723.b17 section 4 paragraph 2. So sorry, you can not continue building this deck.<br>
+ <br>
+How could you've have known? You thought you planned for everything you could think of, but here, halfway into building your deck, there is a problem you didn't foresee. You can't believe how bad it's going to suck to not have that deck, you're devastated, you already bought Electronic Battleship! Deluxe and everything. But that's not the half of your problems. Not even close.</p>
+
+<p>The worst part by far is that your home is in a completely wrecked state, you've dug up the yard, tore off a bunch of siding and trim and there's a big door-shaped hole in the side of your house into your living room. Putting all these things back the way they were is going to be just as hard, if not harder, than pushing forward.</p>
+
+<p>In short, you're fucked.</p>
+
+<p><img alt="shambles.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/shambles.jpg" width="266" height="200"></p>
+
+<p>So you patch up the door-shaped hole, you nail back up the siding and you pick up your tools and building materials. Later you start out digging up the concrete posts, and it's hard heavy work. After while you stop trying so hard; other matters are more pressing. And who cares if the new wall is unpainted or all the posts aren't dug up right away? Most of the building materials you bought are salvageable, and Home Depot is forgiving with their return policy, so you figure no big deal, you have plenty of resources to go around, you'll recover those later.</p>
+
+<p>But you forgot to nail back up a board near the sill, and now a family of chipmunks has taken residence in your walls. You hear the scurrying noises sometimes, but you're never quite sure what it is or how it got there, but clearly something is, uh, squirrelly. </p>
+
+<p>This is the real world, where things get screwed up in a big way because of the unexpected, the unknown, and going back is just as hard as going forward. We can't escape this in the real world, building a deck always has the possibility of being a huge disaster.</p>
+
+<p>But what if the real world worked differently? What if it could all be completely undone when things go wrong?</p>
+
+<p><strong>The Miracle Deck</strong></p>
+
+<p>What if Home Depot sold a do-it-yourself deck kit that had an installation "undo" feature? At any point during the decks installation, if something went wrong during installation, the whole thing could be undone and it's like no one ever touched your house.</p>
+
+<p>You'd just press a button, and the whole deck and everything zips itself up and drives back to the store and your charge card is refunded, all automatically. Even if it's at the very end of the installation, if you didn't like the way it looked ("it makes my house look fat"), just press the button and back to the store it goes. And the cool thing is, even if you hit a power line while digging the footers, you could just press a button and all damage is undone. </p>
+
+<p>This product, once installed, is no better than conventional decks. The wood, nails and screws are the same color and quality, the foundation is dug just as deep and cement just as strong. The only difference is during installation, the miracle deck can be undone at any time.</p>
+
+<p>If such a deck product really existed, there could be no serious problems when trying to install a deck, because if anything goes wrong the house is kept in the exact condition as if nothing ever happened. This product might not actually install any more successfully than the old product, but when things go wrong you won't end up with chipmunks in your wall and a garage filled with unreturned Home Depot supplies.</p>
+
+<p><img alt="satisfaction_burst.gif" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/satisfaction_burst.gif" width="100" height="100"></p>
+
+<p>The real world can't work that way, but the programming world can.</p>
+
+<p><strong>Object Oriented Programming: Works Just Like the Real World. <em>Dammit!</em></strong></p>
+
+<p>One of the great things about Object Oriented Programming is it is a very natural, intuitive way to model software. Things in the real world behave in many ways like the objects we use in programming. The objects in the real world contain other objects, they have interchangeable interfaces, they hide their internal workings, they change over time and take on new state.</p>
+
+<p>Of course, there are many ways the world isn't like OO programming too, but I won't go into that here.</p>
+
+<p>So here we have programming constructs that act and work much like things in the real world act and work. Great, OO makes it easier to write programs that work like the real world, but does OO make it easier to write programs that are useful and reliable?</p>
+
+<p>I remember a crummy movie with Michael Douglas and Demi Moore where Demi was the bad guy. I don't remember much about it except that for some reason the movie -- with no relevance to the plot other than they worked in a tech company -- included a virtual reality sequence that was suppose to showcase a brilliant advance in data retrieval UI. </p>
+
+<p>The system worked by immersing you into a virtual reality representation of a library. Then, you could walk around the library to find the information you need. You'd navigate by following categorized signs, and then further narrowed categories until you found the virtual bookshelf with the virtual book of information you're looking for. That's supposed to be a huge advance in data retrieval, it made finding information as simple as going to the library.</p>
+
+<p>Here's the problem: What's the very first thing you do when you want to find a book in a real library? You walk over to a computer and use the digital card catalog system. </p>
+
+<p><img alt="carnegiedrawer.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/carnegiedrawer.jpg" width="200" height="223"></p>
+
+<p>Sometimes you don't want things that work like the real world, sometimes you want things that work like computers.</p>
+
+<p>Similarly, our object oriented languages are modeling reality too closely. I'm sure it's a slam dunk when actually modeling real world objects, but just how often are we as programmers doing that? OOP's strength also ties us to many of the inherent problems we have with real objects. Why are we limiting ourselves this way?</p>
+
+<p><strong>OO is the problem?</strong></p>
+
+<p>No, OO is NOT the problem, not at its core. It's just that all popular OO languages have the same problem. The problem is more fundamental than what OO brings to the party, it's a problem that exists in nearly every popular programming language, OO or not.</p>
+
+<p>The problem is variable mutation, the problem of complex state change and how to manage what happens when we can no longer go forward. It's the same problem of building a deck.</p>
+
+<p>Another term for variable mutation is "destructive update", because when you change the state of a variable, you are destroying the previous state. In every popular language, the updating of a variable means the previous state of that variable is destroyed, vanished, gone and you can't get it back. And that's kind of a problem, your code is doing the equivalent of tearing your house apart in order to achieve an action, but if it fails it won't have achieved its objective and your house is in ruins. Ouch Ouch Ouch.<br>
+ <br>
+What we need in languages and tools is the ability to easily isolate our changes for when the shit hits the fan, so that incomplete changes aren't seen (all or nothing). And we cannot be in denial that the shit can hit the fan at any time. We need to make it easy to detect when things do wrong, and make it simple to do the right thing once that happens.</p>
+
+<p><strong>PHP to the Rescue! PHP?</strong></p>
+
+<p><img alt="hero.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/hero.jpg" width="217" height="320"><br>
+<em>Expecting someone else?</em></p>
+
+<p>Believe it or not we already have it, in rudimentary form, in PHP. Yup, good old, stupid-simple PHP. On a webserver, PHP scripts have no shared state, so each instance of a PHP script runs in its own logical memory space. The scripts maintain no persisted state, so each script start off fresh as a daisy, blissfully unaware of what happened the previous times it was executed.</p>
+
+<p>The only shared state in PHP exists at the database level (or file level, but don't go there), and if you commit all changes in a single transaction, you've basically solved the deck building problem. Your code might not be better about successfully completing its update, but failure is isolated, all the actions leading up to a failure are forgotten about and it can't cause further problems or inconsistencies in the application.</p>
+
+<p>But PHP as a language has nothing special about it that gives it these properties, rather its how it's being used. Any language, Java/C++/VB/Ruby/Python, coupled with a transactional database also has the same ability if it's used in a manner like PHP is used: each invocation is started from scratch with no shared state and no memory of previous invocations.</p>
+
+<p>However, all these languages begin to have issues once they start modifying persisted, in-memory program state. Once again, it's the deck building problem. As some multi-step action is getting carried out, if one step fails, then any modifications in the previous steps must be undone, or like your deck project, the program may be left in a shambles. Databases have transaction support, but our languages do not.</p>
+
+<p>Pretty much any application that keeps state in memory has to worry about this: everything from highly concurrent application servers down to single user GUI applications.</p>
+
+<p>So, how can we solve this problem more generally?</p>
+
+<p><strong>Don't Undo Your Actions, Just Forget Them</strong></p>
+
+<p>There are strategies to avoid the intermediate destructive updates that cause problems, but unfortunately none of the popular languages provide direct support, so it feels hacky. And it is. But just say they're design patterns and you won't feel so bad about it.</p>
+
+<p>The key to these strategies is to minimize destructive updates, so that any actions we take need not be undone, but simply forgotten. By doing this, we turn the super difficult "Reverse the Flow of Time" error handling into the super easy "Get the Hell out of Dodge" error handling.</p>
+
+<p><strong><em>Make a Copy of Everything Up Front</em></strong><br>
+The first technique is low-tech and easy to understand, but expensive computationally and resource-wise.</p>
+
+<p><img alt="seinfeldmannequin.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/seinfeldmannequin.jpg" width="337" height="233"></p>
+
+<p>Before the code does anything, make a deep copy all the objects you might modify, then have the action modify the copies. Once all those modifications are completed, swap out the old objects with the new at the very end.</p>
+
+<p>If an error happens during the action, the copied objects are simply forgotten about and garbaged collected later. And you need not change the way the object methods work, the bulk of the application code remains unchanged. Easy as pie... a very expensive, memory intensive pie. But simple and easy nonetheless.</p>
+
+<p><strong><em>Immutable Objects</em></strong><br>
+The second way to avoid destructive updates is to make your objects immutable. An immutable object is one that, once created, cannot be changed. Lord knows, it can't change.</p>
+
+<p><img alt="Free_Bird.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/Free_Bird.jpg" width="145" height="145"></p>
+
+<p>Java strings work this way. No methods of the String class ever modifies an existing string object, they instead create a brand new string object that's the result of the operation, and the caller will at that point have two distinct strings, a pre-action string and a post-action string. In practice this works very well and easily for strings object. But strings are simple datatypes, they aren't composite like most of our application objects (they only contain a char array).</p>
+
+<p>Unfortunately, most popular languages don't directly support this style of development. C++ has the "const" modifier, which enables static enforcement of immutable objects, but that only tells us when we are doing it wrong (attempting to modify const objects), it doesn't make it any easier to actually achieve this style of programming, which is difficult when working with deeply composite objects. None of the popular languages offer much support this style of programming, there is no syntactic sugar or other features to make it less awkward.</p>
+
+<p>Consider this example of object composition. We have a house. That house contains a bathroom, that bathroom contains a toilet, and so on. When we want to clean the house, we call down through objects, cleaning each sub object. First take a look at a classic, mutable-object implementation:</p>
+
+<pre>void DoIt(House house) {
+	...
+	house.Clean();
+	...
+}
+ 
+class House {
+	Bathroom bathroom;
+	Bathroom bedroom;
+	...
+	void Clean() {
+		bathroom.Clean();
+		bedroom.Clean();
+		...
+	}
+}
+ 
+class Bathroom {
+	Toilet toilet;
+	Mirror mirror;
+	...
+	void Clean() {
+		toilet.Flush();
+		mirror.Clean();
+		...
+	}
+}
+ 
+class Toilet {
+	int poops;
+	...
+	void Flush() {
+		poops = 0;
+	}
+}
+</pre>
+
+<p>Here is an "immutable" version of the above code:</p>
+
+<pre>void DoIt(House house) {
+	...
+	house = house.Clean();
+	...
+}
+ 
+class House {
+	Bathroom bathroom;
+	Bedroom bedroom;
+	...
+	House Clean() {
+		// make a new copy of the house
+		// with the cleaned contents
+		house = new House ;
+		house.bathroom = bathroom.Clean();
+		house.bedroom = bedroom.Clean();
+		...
+		return house;
+	}
+}
+ 
+class Bathroom {
+	Toilet toilet;
+	Mirror mirror;
+	..
+	Bathroom Clean() { 
+		// make a new copy of the bathroom
+		// with the cleaned contents
+		bathroom = new Bathroom;
+		bathroom.toilet = toilet.Flush();
+		bathroom.mirror = mirror.Clean();
+		...
+		return bathroom;
+	}
+}
+ 
+class Toilet {
+	int poops;
+ 
+	Toilet Flush() {
+		// make a new copy of the toilet
+		// with no poop
+		Toilet toilet = new Toilet;
+		toilet.poops = 0;
+		return toilet;
+	}
+}
+</pre>
+
+<p>Clearly the immutable version is longer and more complex, and it only gets worse if you also want to have a second return value. However, the immutable version is a more robust version: if any cleaning operation fails then the house won't wind up in a half-cleaned state.</p>
+
+<p>Being in a half-cleaned state might seem harmless enough, but it can cause surprisingly serious problems. If, for example, part of cleaning the house meant moving all the furniture into the lawn so the floors could be polished, you would have big problems if the cleaners suddenly left. And they're calling for rain. And migrating seagulls.</p>
+
+<p><strong><em>Keep Object Mutation to a Single Operation</em></strong><br>
+Another strategy that is helpful in certain circumstances is to keep existing object mutation down to one operation. This strategy is to do as much work in isolation as possible, then apply those changes in a single operation.</p>
+
+<p>This is also known as an atomic update. Not atomic like an atomic bomb, but atomic like a tiny atom, as in can't get any smaller.</p>
+
+<p><img alt="atom.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/atom.jpg" width="309" height="330"><br>
+(photo of actual atom)</p>
+
+<p>An example might be if you have GUI application, and your code wants to add a dockable tool bar to the UI window.</p>
+
+<p>One approach is to add an empty tool bar to the UI, then add each individual button to the bar. This is bad because now you are mutating the UI program state for each button added, and if one tool bar button fails to be added, then the user gets a wacked-out, partially constructed bar. You could put out an eye like that. Not to mention each time you add a button, you may be kicking off all sorts of ripple mutations as layout managers do work, increasing the chances of something going haywire.</p>
+
+<p>Instead, the better strategy is to build the tool bar in isolation. Once the bar is completely constructed with all buttons, then add it to the UI in a single operation. This way you minimize the mutation to the existing objects (the top level window), instead we are only mutating our new object during its multi-step construction. If we fail to construct it fully, we can just forget about it and let the garbage collection get it.</p>
+
+<p>So you fully construct the bar and then add it to the window in one operation. Unfortunately, adding the toolbar bar to the window may not truly be an atomic operation down deep, but from your perspective it is, since you can't make the mutation operation any smaller. You may not have completely eliminated the chance of things going into a bad state, but you've minimized it as far as you can. </p>
+
+<p>Plus people will be totally impressed you're using atomic powered code.</p>
+
+<p><strong><em>Use a Functional Language</em></strong><br>
+Functional languages get immutability and state change right (they'd better, it's a key attribute of functional programming). Unfortunately, I don't know of any functional language I'd call popular. I think it's because they all have dumb names like LISP and Haskell.</p>
+
+<p><img alt="eddiewallyr.jpg" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/eddiewallyr.jpg" width="319" height="180"><br>
+<i>Why pthat's a lovely monad you're wearing, Mrsh. Cleather.</i></p>
+
+<p>Erlang, which started me thinking about these issues, is a functional programming language that gets reliability right in a simple and elegant way that I think is fairly easy for an experienced OO programmer to pick up. You don't even have to learn about monads, but you damn sure need to understand recursion. Erlang is dynamic and somewhat "scripty", making the development process more incremental and approachable. It also has a hideous syntax.</p>
+
+<p>But Erlang is marvelously beautiful in the way it meshes the concepts of immutability, messaging, pattern matching, processes and process hierarchy to create a language and runtime where extreme concurrency and reliability means adhering to a few simple design principles.</p>
+
+<p><strong>The point</strong></p>
+
+<p>No, this article wasn't really about error codes vs. exceptions. Sorry but the truth is, there is no one best way to communicate error conditions. "It depends" is the only honest answer. Unfortunately the designers of APIs have to decide ahead of time how the callers will be signaled of errors, while the caller -- who knows best how the errors should be communicated  and managed-- isn't given a choice.</p>
+
+<p>The <i>much bigger problem in software reliability</i> is not how we communicate errors, it's the state we are in when the error happens. So often the errors are things we can't really do anything about, we can't force the network connection to work, or somehow create more disk space or memory if we run out. But we can see to it that we don't do the programmatic equivalent of half-destroying our house in the process of building a deck. Attempts to "Reverse the Flow of Time" in code are bad. Avoid mutations (destructive updates) and use "Get the Hell out of Dodge" error handling whenever possible.</p>
+
+<div id="a000267more"><div id="more">
+
+</div></div>
+
+<p class="posted">Posted April 27, 2006  2:20 PM</p>
+
+
+
+<div id="commentssection">
+<h2 id="comments">Comments</h2>
+
+
+<div id="c1251">
+<p>..and he's got some serious monads.</p>
+</div>
+<p class="posted"><span class="commentauthor">Dan Sickles</span>, April 27, 2006  9:52 PM</p>
+
+<div id="c1252">
+<p>Are you German?  The reason I ask is Germans seem to think David Hasselhoff is great while Americans don't.  I remember Saturday Night Live used to do a sketch based on that 'fact'.</p>
+</div>
+<p class="posted"><span class="commentauthor">Doug</span>, April 28, 2006 12:42 AM</p>
+
+<div id="c1253">
+<p>(Disclaimer:  I work for Opera.)<br>
+<br><br>
+(Dis-disclaimer:  I was an Opera fan before then.)<br>
+<br><br><br>
+A couple of quick points:<br>
+<br><br><br>
+1.  When Opera crashes, it will save your open windows.<br>
+<br><br><br>
+2.  Because Opera runs on all sorts of limited memory devices, we can and do handle out-of-memory exceptions.  In fact, OOM-handling is pretty much everywhere, pervasive and very carefully thought-out.  (It does take a *lot* of work, though.  I haven't been here that long, and I am still quite impressed by the whole system.)</p>
+</div>
+<p class="posted"><span class="commentauthor">Chris Pine</span>, April 28, 2006  4:39 AM</p>
+
+<div id="c1254">
+<p>(Note:  your "preview" system does *not* show the same thing as what is actually posted.)</p>
+</div>
+<p class="posted"><span class="commentauthor">Chris Pine</span>, April 28, 2006  4:41 AM</p>
+
+<div id="c1255">
+<p>There is a way to let the caller make the decision of code vs. exception.  I wrote a class that can be returned just like an error code, but it automatically throws an exception if its status isn't checked.  It allowed us to convert an entire library written with an error code paradigm, to optionally use exceptions instead.</p>
+
+<p>I'm tempted to write it up, but have never found the time.</p>
+</div>
+<p class="posted"><span class="commentauthor">Mark Ransom</span>, April 28, 2006 10:29 AM</p>
+
+<div id="c1256">
+<p>I'd like to see that Mark.</p>
+
+<p>Sorry about the preview thing Chris. I'm not sure why it does that.</p>
+
+<p>I have definitely been impressed with Opera's reliabilty. I switched to it because Firefox had gotten so crashy on me. Eventually I went back to Firefox because of some extensions I *must* have. Plus Firefox has gotten better lately, but I definitely found the whole Opera experience to far more solid.</p>
+
+<p>Doug, I got some German in me, but that in no way influences my admiration of David Hasselhoff. (Actually the Hasselhoff thing is just a gag)</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://damienkatz.net" href="http://damienkatz.net/">Damien</a></span>, April 28, 2006  3:04 PM</p>
+
+<div id="c1257">
+<p>Hi!  My name is Chris and I work at Help.com.  After reading your website I thought you might be able to help a site user who submitted this questions to me: </p>
+
+<p>"How do I fix runtime errors? I get so many at graphic rich sites.  When I use IE-6.0 (win-2000) to visit cnn.com or usatoday.com and other sites with a lot of graphics. I get so many messages saying "A runtime error has occurred. Do you wish to debug" then I get a line number ie: 44 and the error is typically "object expected" or "object doesn't support this property or method" and several more. I have to hit yes or no so many times, I just do not use these sites anymore, it takes to long to load a page." </p>
+
+<p>If you could recommend anything, I would appreciate it greatly. Thanks!</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://mrollins.blogs.help.com/post/3/how-do-i-fix-runtime-errors-i-get-so-many-at-graphic-rich-sites" href="http://mrollins.blogs.help.com/post/3/how-do-i-fix-runtime-errors-i-get-so-many-at-graphic-rich-sites">Chris</a></span>, April 28, 2006  3:38 PM</p>
+
+<div id="c1258">
+<p>I love it:  "Un-brush the crud."  Great line.</p>
+
+<p>Very good article Damien.  I enjoyed reading it.</p>
+</div>
+<p class="posted"><span class="commentauthor">Ken</span>, April 28, 2006  3:43 PM</p>
+
+<div id="c1259">
+<p>Two quick points based on an equally quick reading.</p>
+<ul>
+<li>How is the exception cleanup mentioned in your first section really all that different than the "turn back the clock" in your third?  The distinction between releasing resources and undoing actions could stand some clarification/justification.</li>
+<li>I arrived at a very similar point from a quite different angle when I wrote about <a href="http://pl.atyp.us/wordpress/?p=882">language support for high availability</a> a while ago.  Transactionality is a good thing that probably deserves a more central place in programmers' thinking even when a database (as we know them) isn't involved.</li>
+</ul>
+<p>Also, to Mark: add me to the list of those interested in hearing more.  That sounds like a brilliant idea.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://pl.atyp.us/" href="http://pl.atyp.us/">Platypus</a></span>, April 28, 2006  8:38 PM</p>
+
+<div id="c1260">
+<p>Platy, the difference is with "Reverse the flow of time" is that we are returning some portion of a program to a previous point in time, because we've destroyed some state while performing an action.</p>
+
+<p>"Get the hell out of dodge" error handling, we haven't destroyed any existing state, so when an errors occur all we need to do is forget everything we've done up to that point. Garbage collection takes care of most that for use. In C++ stack based objects are released automatically. The point of this type of error handling is we aren't "restoring" any previous state, we are only releasing resources we may have aquired.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://damienkatz.net" href="http://damienkatz.net/">Damien</a></span>, April 28, 2006  9:02 PM</p>
+
+<div id="c1261">
+<p>Good article.  Although the title is misleading.  The answer to "error codes" or "exceptions" is (correctly) "depends on the situation" ... but discussion on this is only a fraction of the article.</p>
+
+<p>I think the sections "Make a Copy of Everything Up-front", "Immutable Objects", and "Use a Functional Language" is essentially saying the same thing in three different ways.  If you have an immutable object, the only way to change it is to make a copy and then swap the copy with the old object -- in essence, you're making a copy up front.  And this really the only way you can do destructive updates in single-assignment languages like Erlang.</p>
+
+<p>Total recovery from any error is a really really really hard problem.  To some extent you can write your own journaling/undo mechanisms, protective copies, and reserve/commit logic -- but to be totally bombproof, you should probably use something like an ACID database which abstracts all of this into a transaction model.</p>
+</div>
+<p class="posted"><span class="commentauthor">Alyosha`</span>, April 29, 2006  1:33 AM</p>
+
+<div id="c1262">
+<p>Alyosha, immutable objects are different from making a copy up front, since you can optimize it to return the same object if nothing actually changed -- for example if the toilet object was already empty when we flushed it, just return the same toilet object.</p>
+
+<p>In functional languages, every data structure can be considered a tree. When updating some nested portion of the tree structure, we need not make copies of all the nodes in old tree in the new tree. Instead, only we create new parent nodes, up through to the root, and all other nodes in the tree that didn't change are pointed to by the new inner nodes, we don't duplicate those unchanged nodes.</p>
+
+<p>Erlang makes it easy to this, there is syntatic sugar to make it concise. Essentially it is the same as using immutable objects, but automatically optimized for ease of use and efficiency.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://damienkatz.net" href="http://damienkatz.net/">Damien</a></span>, April 29, 2006  3:23 AM</p>
+
+<div id="c1263">
+<p>Really interesting. And I'm eagerly looking forward to learning about Erlang's philosophy.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://www.cse.iitb.ac.in/~kart" href="http://www.cse.iitb.ac.in/~kart">Kartik Vaddadi</a></span>, April 29, 2006  3:37 AM</p>
+
+<div id="c1264">
+<p>Common Lisp has another way of dealing with errors -- you can make a restart, which essentially allows you to jump from the high-level error catching code back down to where the error was thrown, but do something different when you get there.  This chapter from "Practical Common Lisp" does a better job explaining it than I ever will:</p>
+
+<p><a href="http://www.gigamonkeys.com/book/beyond-exception-handling-conditions-and-restarts.html"><br>
+Beyond Exception Handling: Conditions and Restarts</a></p>
+</div>
+<p class="posted"><span class="commentauthor">Aaron</span>, April 29, 2006  3:57 AM</p>
+
+<div id="c1265">
+<p>Being sued or asking the copyright holder: Why is the use of infringing pictures on the own website so easy?</p>
+</div>
+<p class="posted"><span class="commentauthor">Havih Dasseldoff</span>, April 29, 2006  5:26 AM</p>
+
+<div id="c1266">
+<p>I sometimes have Firefox crashes but I've found that SessionSaver ( <a href="https://addons.mozilla.org/extensions/moreinfo.php?id=436"></a><a href="https://addons.mozilla.org/extensions/moreinfo.php?id=436">https://addons.mozilla.org/extensions/moreinfo.php?id=436</a> ) works extremely well, restoring all windows and tabs that were open pre-crash (and apparently any text you may have entered, though I have yet to test this).</p>
+</div>
+<p class="posted"><span class="commentauthor">Regan</span>, April 29, 2006  5:50 AM</p>
+
+<div id="c1267">
+<p>Continuations?</p>
+</div>
+<p class="posted"><span class="commentauthor">Mike</span>, April 29, 2006 10:46 AM</p>
+
+<div id="c1268">
+<p>Time machines are called continuations. You don't have to copy all variables manually, but you save a continuation and call it if anyting goes wrong.</p>
+</div>
+<p class="posted"><span class="commentauthor">Jules</span>, April 29, 2006 11:20 AM</p>
+
+<div id="c1269">
+<p>If Opera crashes, it restores all tabs/windows upon restart.. and it's done this for a long time.  Plus it's generally faster.</p>
+
+<p>Give it a try.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://swaits.com/" href="http://swaits.com/">Stephen Waits</a></span>, April 29, 2006 11:41 AM</p>
+
+<div id="c1270">
+<p>Yeah, but -- how do I make a stateless ATM -- or do I simply undipsense the money?</p>
+
+<p>How does the program unprint an airplane ticket when it discovers the commit of the credit card transaction fails?</p>
+
+<p>Lots of computers touch real-world things; undoing the mashed page, or the sent packet, isn't an option. Not every programmer lives in the bubble of web pages and UIs.</p>
+</div>
+<p class="posted"><span class="commentauthor">Bill Trost</span>, April 29, 2006 12:55 PM</p>
+
+<div id="c1271">
+<p>"Erlang is different in that it's far more dynamic and "scripty" than other functional languages (it even has an interactive command line mode)"</p>
+
+<p>Most distros of Common Lisp, Scheme, Haskell, OCaml all have interactive command lines.</p>
+</div>
+<p class="posted"><span class="commentauthor">Anonymous</span>, April 29, 2006  1:15 PM</p>
+
+<div id="c1272">
+<p>That's exactly why functional languages have problems with IO, and where side effects are unaviodable. Monads or not, you can't revert it.</p>
+
+<p>So prevent these errors with exceptions or error codes ;-).</p>
+</div>
+<p class="posted"><span class="commentauthor">Jules</span>, April 29, 2006  1:21 PM</p>
+
+<div id="c1273">
+<p>I read half of the article and concluded you do not understand much of anything.</p>
+</div>
+<p class="posted"><span class="commentauthor">Ridiculous</span>, April 29, 2006  1:40 PM</p>
+
+<div id="c1274">
+<p>Bill, you're right, real applications have to interact with the real world, and that means sometimes having to undo state. However, we can change our own applications and use techniques and languages that make this unnecessary internally and reduce the need for it overall.</p>
+
+<p>"Most distros of Common Lisp, Scheme, Haskell, OCaml all have interactive command lines." I knew Lisp has many, but wasn't sure about the others.</p>
+
+<p>Jules, functional languages do not have problems with IO, not inherently, its only a problem when lazy evaluation is introduced. Erlang uses eager evaluation, like imperative languages, and it does IO better than any language I've ever seen. Pure Haskell requires monads because of its lazy evaluation nature, monads ensure proper ordering. I've not tried IO in haskell, you may be right about it being problematic.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://damienkatz.net" href="http://damienkatz.net/">Damien</a></span>, April 29, 2006  1:52 PM</p>
+
+<div id="c1275">
+<p>In C++ an error can be caught only if it throws an error.  Usually you catch an error in order to avoid a situation where some code might crash.  For example,<br>
+</p><pre><br>
+try<br>
+{<br>
+  Obj myObj = new Obj();<br>
+  myObj.init(); <i>// Throws an exception if it doesn't work</i><br>
+  low_level_function(myObj.some_func()); <i>// Crashes if myObj.init() wasn't successful</i><br>
+}catch(Exception* e)<br>
+{<br>
+  <i>// do nothing</i><br>
+}<br>
+</pre><p></p>
+
+<p>I think that the main reason for crashes are situations where an error either isn't trapped or can't be trapped (because the code has no knowledge that an error actually occurred and proceeds to its doom).</p>
+</div>
+<p class="posted"><span class="commentauthor">Michael</span>, April 29, 2006  4:58 PM</p>
+
+<div id="c1276">
+<p>Why are expections anything more then error codes that programmers are forced to deal with?  Good programmers will pay attention and take action for error codes that matter and ignore the ones that don't.  This all smacks of using a langauge to make/force bad programmers into good ones.  Programming requirments and consturcts do not make good programmers, education does.</p>
+</div>
+<p class="posted"><span class="commentauthor">all you need is C</span>, April 29, 2006 10:22 PM</p>
+
+<div id="c1277">
+<p>Bill, ATMs and airline web sites both check to make sure payment is approved before giving you what you wanted. The irreversible part is the part that goes last in the big transaction, so you can roll back up until that point and after that point there's no need to, because it has definitely succeeded. If the ATM jams and the money isn't dispensed, that means that the final and irreversible part failed, so the transaction is rolled back. Simple. (Unless you're the poor sap who has to unjam the ATM's money dispenser at 2pm the next day.)</p><p></p>
+
+<p>I don't think exceptions vs. error messages is a worthwhile argument as far as quality is concerned. Exceptions are a developer efficiency improvement, not a direct quality enabler. You can as easily do "try { foo() } catch (Bar b) {}" as you can ignore an integer return code.</p><p></p>
+
+<p>The real issue is how paranoid developers are about error handling at every level. Many if not most errors need some kind of human-readable feedback; otherwise it's not so much an error as a conditional input. Silently failing is the cardinal sin; gobbledygook error messages are mortal sins. Whether the low level implementation used an int or an object to record the error inside the software is irrelevant, really.<br>
+</p><p></p><p></p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://www.white-mountain.org/jamie/" href="http://www.white-mountain.org/jamie/">Jamie Flournoy</a></span>, April 30, 2006 12:07 AM</p>
+
+<div id="c1278">
+<p><br>
+Command Pattern?  I think that will fix a lot of "get it back to where it was".</p>
+</div>
+<p class="posted"><span class="commentauthor">Marty</span>, April 30, 2006  1:13 AM</p>
+
+<div id="c1279">
+<p>@Marty</p>
+
+<p>Memento pattern not Command pattern.</p>
+</div>
+<p class="posted"><span class="commentauthor">Anand Iyer</span>, April 30, 2006  3:19 AM</p>
+
+<div id="c1280">
+<p>Joel Spolsky had an interesting take on return-codes vs. exceptions and I agree with him: <a href="http://directorblue.blogspot.com/2004/06/return-codes-vs_108757899333825996.html">Return-codes vs Exceptions</a>, <a href="http://directorblue.blogspot.com/2004/06/exceptions-tunable-logging-and.html">part 2</a>, <a href="http://directorblue.blogspot.com/2004/06/return-codes-vs.html">part 3</a>, and <a href="http://directorblue.blogspot.com/2004/05/return-codes-vs.html">part 4</a>.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://directorblue.blogspot.com" href="http://directorblue.blogspot.com/">directorblue</a></span>, April 30, 2006 10:24 AM</p>
+
+<div id="c1281">
+<p>Thanks for writing this great essay.  I am currently working on a 2,000 line perl script that employs all three methods.</p>
+
+<p>I found your writing humorous and informative and will check back often.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://spacerodent.org/" href="http://spacerodent.org/">Dennis Roberts</a></span>, April 30, 2006  3:04 PM</p>
+
+<div id="c1282">
+<p>Great article!  I'm looking forward to hearing about why Erlang is so cool.  I humbly admit I'm ignorant about Erlang.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://www.bhrpconsulting.com/bruceperry/thejagular.nsf" href="http://www.bhrpconsulting.com/bruceperry/thejagular.nsf">Bruce Perry</a></span>, April 30, 2006  6:18 PM</p>
+
+<div id="c1283">
+<p>"Jules, functional languages do not have problems with IO, not inherently, its only a problem when lazy evaluation is introduced. Erlang uses eager evaluation, like imperative languages, and it does IO better than any language I've ever seen. Pure Haskell requires monads because of its lazy evaluation nature, monads ensure proper ordering. I've not tried IO in haskell, you may be right about it being problematic."</p>
+
+<p>Doesn't every pure functional language have problems with IO?</p>
+
+<p>if you have this code:</p>
+
+<p>(write (read) (read))</p>
+
+<p>The read function reads input (from the keyboard), the write function writes it to the screen. How can you tell which read function is executed first? The read function is obviously not referentially transparent, what to do in a pure language, where all functions should be referentially transparent?</p>
+</div>
+<p class="posted"><span class="commentauthor">Jules</span>, April 30, 2006 11:07 PM</p>
+
+<div id="c1284">
+<p>"Doesn't every pure functional language have problems with IO?"</p>
+
+<p>Referential transparency is only necessary for lazy evaluation. Whether lazy evaluation is also necessary to be considered a pure functional languages is an arguable matter. Erlang isn't lazily evaluated.</p>
+
+<p>If a language is eagerly evaluated, (each line evaluated in order), then ordering has already been specified by the order of the statements. This is how most languages work.</p>
+
+<p>Haskell is lazy evaluated, to make sure IO happens in the proper sequence, monads are necessary to maintain ordering. Erlang is eagerly evaluated, the ordering is already explict by the statements in the program, like regular languages, no lazy evaluation is attempted.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://damienkatz.net" href="http://damienkatz.net/">Damien</a></span>, April 30, 2006 11:18 PM</p>
+
+<div id="c1285">
+<p>@Jules: Your example is one that applies to C just as much as it might to a functional language, whether they have eager or lazy evaluation. Take this snippet:</p>
+
+<pre>int i = 0;
+printf("%n %n %n %n", i++, i++, i++);
+</pre>
+
+<p>There's no guarantee that you'll get:</p>
+
+<pre>0 1 2
+</pre>
+
+<p>And you might just end up with</p>
+
+<pre>2 1 0
+</pre>
+
+<p>Because, like many things, the order of argument evaluation is something that's left up to the compiler as an optimization.</p>
+
+<p>@Anand Iyer: Actually, both the Command and Memento patterns would be used in concert for this kind of thing, the Command wrapping the Memento.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://talideon.com/" href="http://talideon.com/">Keith Gaughan</a></span>, May  1, 2006  2:18 AM</p>
+
+<div id="c1286">
+<p>Nice article, though it seems to me, you left out an options. </p>
+
+<p>Never use absolute setter-methods as these will destroy your old value, use relative differences, just as CVS. For someone who likes trees I think you forgot about it ;) It'll actually make it possible to undo your doings if - and only if - it's atomic and you keep a stack of reversible alterations, which implies that every action must have an opposite reaction - or reversible action.</p>
+
+<p>E.g. instead of setting a value to say 42 - you need to alter it by its relative value. Assume its old value was 7, then modify by +35 - push "variablename, -35" (the reverse action of adding 35 to it) onto a stack, that way you can pop your stack back to status quo. </p>
+
+<p>Even though it could sound like a plan, it may be very difficult to adhere to the need of a reversible action.</p>
+</div>
+<p class="posted"><span class="commentauthor">serverdude</span>, May  1, 2006  9:42 AM</p>
+
+<div id="c1287">
+<p><a href="http://research.microsoft.com/Users/simonpj/papers/stm/stm.pdf">This paper</a> on <a href="http://en.wikipedia.org/wiki/Composable_Memory_Transactions">Composable Memory Transactions</a> in Haskell is very cool.<br>
+</p><p><br>
+</p><p></p>
+</div>
+<p class="posted"><span class="commentauthor">Ken Hirsch</span>, May  2, 2006  8:13 AM</p>
+
+<div id="c1288">
+<p>I always hear that OO is like modeling the real world, but as your example clearly shows that isn't true at all. (Unless you have a self-cleaning house, in which case where I can get one? :)</p>
+
+<p>The real world is more service-oriented:<br>
+MaidService.Clean(myHouse);</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://www.marcstober.com" href="http://www.marcstober.com/">Marc</a></span>, May  3, 2006  2:12 PM</p>
+
+<div id="c1289">
+<p>Actually the bigger problem I have run into with the  immutability algorithms has to do with it breaking references. For example, I pass in an object to a service that updates a property of that object. But now the calling code needs to deal with the fact that it got back a copy of that object, and any previously existing references to the object or it's children are now broken. This just seems to shift the error-prone code up stack. Sorry about two comments at once.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://www.marcstober.com" href="http://www.marcstober.com/">Marc</a></span>, May  3, 2006  2:29 PM</p>
+
+<div id="c1290">
+<p>This is an awesome post Damien.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://www.webdescript.com/blog/intersection/" href="http://www.webdescript.com/blog/intersection/">Nick Mudge</a></span>, May  8, 2006  2:15 AM</p>
+
+<div id="c82322">
+<p>amazing post, got me thinking; really funny too</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="https://launchpad.net/whyteboard" href="https://launchpad.net/whyteboard">Steven Sproat</a></span>, July  3, 2009  5:50 AM</p>
+
+<div id="c87236">
+<p>LOL favorite class ever</p>
+
+<p>class Toilet {<br>
+	int poops;<br>
+	...<br>
+	void Flush() {<br>
+		poops = 0;<br>
+	}<br>
+}<br>
+</p>
+</div>
+<p class="posted"><span class="commentauthor">Josh</span>, August  7, 2009  3:17 AM</p>
+
+<div id="c122069">
+<p>Honda meant us the male result with the efficient languages on it, morgan autos usa. Comparatively the negligible varndean school cast was the varndean girls school and the new varndean college race was varndean boys practice. The evaluation of an part will detect as the temperature straightens faster, because the thing of family levels per casing process parts. The double witness of the small identities was yesterday replenished in these blacks; each one was a high supporting place. From the effort i began your evidence via google to the liberty i had design including in my detonation: eight increases. I threaten this slight countercurrent period accounting informed could translate you.  Because days get differential companies team uptime in requests of toys, and justify shot of whose team is being provided, they are single for cities where communities use to growers believe despite small race.<br>
+ http:/rtyjmisvenhjk.com</p>
+</div>
+<p class="posted"><span class="commentauthor">darnell</span>, March 17, 2010 10:54 PM</p>
+
+<div id="c153902">
+<p>"I think it's because they all have dumb names like LISP and Haskell."</p>
+
+<p>To be fair, I have yet to see *any* programming language that doesn't have a dumb name.  :-)</p>
+
+<p>"Java"?  "See plus plus"?  "Eff sharp"?  "Visual basic"?  "Perl"?  Gag, all.</p>
+</div>
+<p class="posted"><span class="commentauthor">Ken</span>, August 29, 2010  2:35 AM</p>
+
+<div id="c358770">
+<p>Great insight considering what has been goin on lately.</p>
+</div>
+<p class="posted"><span class="commentauthor"><a title="http://www.communitywalk.com/user/view/532230" href="http://www.communitywalk.com/user/view/532230">Steph Wright</a></span>, October 11, 2011 12:43 AM</p>
+
+
+
+
+
+
+<h2>Post a comment</h2>
+
+ 
+
+
+
+<form method="post" action="http://damienkatz.net/cgi-sys/cgiwrap/dkatz/managed-mt/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1">
+<input type="hidden" name="entry_id" value="267">
+
+<div id="name_email">
+<p><label for="author">Name:</label><br>
+<input tabindex="1" id="author" name="author"></p>
+
+<p><label for="email">Email Address: (not displayed)</label><br>
+<input tabindex="2" id="email" name="email"></p>
+</div>
+
+
+
+<p><label for="url">URL:</label><br>
+<input tabindex="3" type="text" name="url" id="url">
+Remember Me?
+<input type="radio" id="remember" onclick="rememberMe(this.form)" name="bakecookie"><label for="remember">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;"><label for="forget">No</label><br style="clear: both;">
+</p>
+
+<p><label for="text">Comments:</label> 
+(you may use HTML tags for style)<br>
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea></p>
+
+<div align="center">
+<input type="submit" name="preview" tabindex="5" value=" Preview ">
+<input style="font-weight: bold;" type="submit" name="post" tabindex="6" value=" Post ">
+</div>
+</form>
+
+
+
+
+<script type="text/javascript" language="javascript">
+<!--
+if (document.comments_form.email != undefined)
+    document.comments_form.email.value = getCookie("mtcmtmail");
+if (document.comments_form.author != undefined)
+    document.comments_form.author.value = getCookie("mtcmtauth");
+if (document.comments_form.url != undefined)
+    document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth") || getCookie("mtcmthome")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+
+</div>
+
+
+</div>
+</div>
+
+<div id="right">
+<div class="sidebar">
+
+<ul id="mainnav">
+<li><a href="http://damienkatz.net/">Home</a></li>
+<li><a href="http://damienkatz.net/2009/12/about_me.html">About Me</a></li>
+<li><a href="http://damienkatz.net/2005/04/downloads.html">Downloads</a></li>
+<li><a href="http://damienkatz.net/rss.php">Feed <img alt="rss-feed-small.png" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/rss-feed-small.png" width="14" height="14"></a></li>
+</ul>
+<h2>Contact</h2>
+<ul>
+<li><a href="mailto:damien_katz@yahoo.com">damien_katz@yahoo.com</a></li>
+</ul>
+
+<h2>Obsession</h2>
+<ul>
+<li><a href="http://couchbase.com/">Couchbase</a></li>
+<li><a href="http://couchdb.apache.org/">Apache CouchDB</a></li>
+<li><a href="http://wiki.apache.org/couchdb/">Documentation</a></li>
+<li><a href="http://incubator.apache.org/couchdb/community/lists.html">Discuss</a></li>
+</ul>
+<a href="http://www.couchbase.com/couchconf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/support_banner_blue.png" alt="CouchConf"></a>
+
+<h2>Search This Site</h2>
+<form method="GET" action="http://www.google.com/search">
+<input type="hidden" name="ie" value="UTF-8">
+<input type="hidden" name="oe" value="UTF-8">
+
+<input type="text" name="q" size="20" maxlength="255" value="">
+<input type="submit" name="btnG" value="Google Search">
+<input type="hidden" name="domains" value="damienkatz.net">
+<input type="hidden" name="sitesearch" value="damienkatz.net">
+</form><br><br>
+<h2>Twitter</h2>
+<script src="./Damien Katz  Error codes or Exceptions  Why is Reliable Software so Hard _files/widget.js"></script></div></div></div></body><embed type="application/x-cooliris-page" hidden="true" id="coolirisBridge"></html>

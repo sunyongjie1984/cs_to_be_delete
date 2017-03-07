@@ -1,0 +1,1223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://www.sqlite.com.cn/MySqlite/11/532.Html -->
+<HTML><HEAD><TITLE>threading 多线程控制和处理 --SQLite 中文社区-- http://www.sqlite.com.cn/</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content=all name=robots>
+<META content="www.sqlite.com.cn | 林轩" name=author>
+<META 
+content="sqlite,SQLite 中文,SQLite 中文社区,SQLite 中文论坛,SQLite 编程,Berkeley DB,Berkeley DB 使用,berkeley db,BerkeleyDB,openssl,ssl,openssl 介绍,XML,xml 开发,正则库,正则表达式,SQLite 语法,SQLite 开发" 
+name=description>
+<META 
+content="sqlite,sqlite3,SQLite,SQLite database,SQLite 开发,SQLite 数据库,SQLite 数据库引擎,SQLite 中文,SQLite 中文社区,SQLite 中文论坛,SQLite 编程,SQLite 语法,SQLite 下载,SQLite 资料,SQLite 嵌入式数据,林轩,数据库,嵌入式" 
+name=keywords><LINK 
+href="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/POPstyle.css" 
+type=text/css rel=stylesheet>
+<SCRIPT language=javascript 
+src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/POPtitle.js"></SCRIPT>
+
+<META content="MSHTML 6.00.3790.4504" name=GENERATOR></HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center bgColor=#ffffff 
+border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 2px; PADDING-TOP: 4px">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD width=180 height=60><IMG height=60 
+            src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/POPlogo.gif" 
+            width=180></TD>
+          <TD bgColor=#63a2bc><IMG height=60 alt="POP Article V2.0" 
+            src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/banner.gif" 
+            width=468></TD>
+          <TD class=popt_1 align=middle width=100 bgColor=#63a2bc><IMG 
+            height=16 
+            src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/POPhome.gif" 
+            width=16><A class=popt_1 
+            onclick='this.style.behavior="url(#default#homepage)";this.setHomePage("http://www.sqlite.com.cn/")' 
+            href="http://www.sqlite.com.cn/MySqlite/11/532.Html#">设为主页</A><BR><IMG 
+            height=16 
+            src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/POPfavor.gif" 
+            width=16><A class=popt_1 
+            href="javascript:window.external.AddFavorite('http://www.sqlite.com.cn/','SQLite%20中文社区')">收藏本站</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center bgColor=#ffffff 
+border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px">
+      <TABLE class=popt_2 cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=popt_1 align=middle height=30>
+            <SCRIPT 
+            src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/POPmenu.js"></SCRIPT>
+            <A class=popt_1 title=首页 href="http://www.sqlite.com.cn/">首 页</A>
+            <SCRIPT 
+            src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/POPnav.js"></SCRIPT>
+             ┊ <A class=popt_1 title=交流论坛 
+            href="http://www.sqlite.com.cn/bbs/index.asp" target=_blank>交流论坛</A> 
+            ┊ <A class=popt_1 title="留 言" 
+            href="http://www.sqlite.com.cn/POPbook.asp">留 言</A> 
+            <DIV class=menuskin id=popmenu 
+            onmouseover="clearhidemenu();highlightmenu(event,'on')" 
+            style="Z-INDEX: 100" 
+            onmouseout="highlightmenu(event,'off');dynamichide(event)"></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center bgColor=#ffffff 
+border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px" 
+    vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=middle width="75%" height=30>
+            <TABLE cellSpacing=0 cellPadding=0 width="99%" align=left 
+              border=0><TBODY>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                  bgColor=#92b4c2 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD align=middle width="5%" height=30><IMG height=13 
+                        src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/icon_0.gif" 
+                        width=13></TD>
+                      <TD class=popt_0 width="95%">您现在的位置：<A class=popt_0 
+                        title="首 页" href="http://www.sqlite.com.cn/">首 页</A> 
+                        &gt;&gt; <A class=popt_0 title="Python 与 XML" 
+                        href="http://www.sqlite.com.cn/POPclass.asp?bigclassid=9">Python 
+                        与 XML</A> &gt;&gt; <A class=popt_0 title=Python开发 
+                        href="http://www.sqlite.com.cn/POPlist.asp?classid=11">Python开发</A> 
+                        &gt;&gt; 查看文章 </TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD height=4></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" align=center 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD height=5></TD></TR>
+                    <TR>
+                      <TD vAlign=top>
+                        <TABLE cellSpacing=1 cellPadding=0 width="100%" 
+                        align=center border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=middle></TD></TR>
+                          <TR>
+                            <TD class=popt_7 align=middle height=40>threading 
+                              多线程控制和处理</TD></TR>
+                          <TR>
+                            <TD align=middle bgColor=#d1d1d1></TD></TR>
+                          <TR>
+                            <TD class=popt_8 align=middle 
+                              bgColor=#eaf0f4>作者：JGood的专栏&nbsp; 
+                              来源：http://blog.csdn.net/JGood/&nbsp; 
+                              时间：2009-7-6&nbsp; 【 字体：<A 
+                              href="javascript:ContentSize(16)">大</A> <A 
+                              href="javascript:ContentSize(14)">中</A> <A 
+                              href="javascript:ContentSize(12)">小</A> 
+                              】&nbsp;<FONT color=#ff0000>〖 双击滚屏 〗</FONT> </TD></TR>
+                          <TR>
+                            <TD align=middle bgColor=#d1d1d1></TD></TR>
+                          <TR>
+                            <TD>
+                              <SCRIPT type=text/JavaScript>
+				var yahoo_pid="un_52773_769_19";
+				var yahoo_bordercolor="FFFFFF";
+				var yahoo_titlecolor="0080c0";
+				var yahoo_descolor="000000";
+				var yahoo_linkcolor="006600";
+				var yahoo_titlebgcolor="FFFFFF";
+				var yahoo_desbgcolor="FFFFFF";
+				var yahoo_width=550;
+				var yahoo_height=80;
+				var yahoo_isbanner=1;
+				var yahoo_displink=1;
+				var yahoo_adsnum=3;
+				var yahoo_simple=0;
+				var yahoo_iniframe=1;
+				</SCRIPT>
+
+                              <SCRIPT src="" type=text/javascript></SCRIPT>
+                            </TD></TR>
+                          <TR>
+                            <TD height=4></TD></TR>
+                          <TR>
+                            <TD vAlign=top>
+                              <TABLE 
+                              style="TABLE-LAYOUT: fixed; BORDER-COLLAPSE: collapse" 
+                              cellSpacing=0 cellPadding=0 width="100%" 
+                                border=0><TBODY>
+                                <TR>
+                                <TD><SPAN id=ContentBody 
+                                style="PADDING-RIGHT: 10px; DISPLAY: block; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px">
+                                <P>介绍了thread模块，今天来学习Python中另一个操作线程的模块：threading。threading通过对thread模块进行二次封装，提供了更方便的API来操作线程。今天内容比较多，闲话少说，现在就开始切入正题！</P>
+                                <H2>threading.Thread</H2>
+                                <P>　　Thread 
+                                是threading模块中最重要的类之一，可以使用它来创建线程。有两种方式来创建线程：一种是通过继承Thread类，重写它的run方法；另一种是创建一个threading.Thread对象，在它的初始化函数（__init__）中将可调用对象作为参数传入。下面分别举例说明。先来看看通过继承 
+                                threading.Thread类来创建线程的例子：</P>
+                                <P>
+                                <DIV class="dp-highlighter nogutter">
+                                <DIV class=bar></DIV>
+                                <OL class=dp-py>
+                                <LI class=alt><SPAN><SPAN 
+                                class=comment>#coding=gbk</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>import</SPAN><SPAN>&nbsp;threading,&nbsp;time,&nbsp;random&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=alt><SPAN>count&nbsp;=&nbsp;<SPAN 
+                                class=number>0</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>class</SPAN><SPAN>&nbsp;Counter(threading.Thread):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;__init__(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>,&nbsp;lock,&nbsp;threadName):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=string>''</SPAN><SPAN 
+                                class=comment>'''@summary:&nbsp;初始化对象。</SPAN>&nbsp;</SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN>&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;lock:&nbsp;琐对象。</SPAN>&nbsp;</SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@param&nbsp;threadName:&nbsp;线程名称。</SPAN>&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'''</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(Counter,&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>).__init__(name&nbsp;=&nbsp;threadName)&nbsp;&nbsp;</SPAN><SPAN 
+                                class=comment>#注意：一定要显式的调用父类的初始</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN>化函数。&nbsp;&nbsp;</SPAN> 
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.lock&nbsp;=&nbsp;lock&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;run(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=string>''</SPAN><SPAN 
+                                class=comment>'''@summary:&nbsp;重写父类run方法，在线程启动后执行该方法内的代码。</SPAN>&nbsp;</SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=comment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'''</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>global</SPAN><SPAN>&nbsp;count&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.lock.acquire()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>for</SPAN><SPAN>&nbsp;i&nbsp;</SPAN><SPAN 
+                                class=keyword>in</SPAN><SPAN>&nbsp;xrange(</SPAN><SPAN 
+                                class=number>10000</SPAN><SPAN>):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;=&nbsp;count&nbsp;+&nbsp;<SPAN 
+                                class=number>1</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.lock.release()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>lock&nbsp;=&nbsp;threading.Lock()&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>for</SPAN><SPAN>&nbsp;i&nbsp;</SPAN><SPAN 
+                                class=keyword>in</SPAN><SPAN>&nbsp;range(</SPAN><SPAN 
+                                class=number>5</SPAN><SPAN>):&nbsp;&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;Counter(lock,&nbsp;<SPAN 
+                                class=string>"thread-"</SPAN><SPAN>&nbsp;+&nbsp;str(i)).start()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN>time.sleep(<SPAN 
+                                class=number>2</SPAN><SPAN>)&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+                                class=comment>#确保线程都执行完毕</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;count&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><TEXTAREA class=python:nogutter:nocontrols style="DISPLAY: none" name=code rows=27 cols=79>#coding=gbk
+import threading, time, random
+count = 0
+class Counter(threading.Thread):
+    def __init__(self, lock, threadName):
+        '''@summary: 初始化对象。
+        
+        @param lock: 琐对象。
+        @param threadName: 线程名称。
+        '''
+        super(Counter, self).__init__(name = threadName)  #注意：一定要显式的调用父类的初始
+化函数。
+        self.lock = lock
+    
+    def run(self):
+        '''@summary: 重写父类run方法，在线程启动后执行该方法内的代码。
+        '''
+        global count
+        self.lock.acquire()
+        for i in xrange(10000):
+            count = count + 1
+        self.lock.release()
+lock = threading.Lock()
+for i in range(5): 
+    Counter(lock, "thread-" + str(i)).start()
+time.sleep(2)	#确保线程都执行完毕
+print count</TEXTAREA> 
+                                <P></P>
+                                <P>　　在代码中，我们创建了一个Counter类，它继承了threading.Thread。初始化函数接收两个参数，一个是琐对象，另一个是线程的名称。在Counter中，重写了从父类继承的run方法，run方法将一个全局变量逐一的增加10000。在接下来的代码中，创建了五个 
+                                Counter对象，分别调用其start方法。最后打印结果。这里要说明一下<STRONG>run方法</STRONG> 
+                                和<STRONG>start方法: 
+                                </STRONG>它们都是从Thread继承而来的，run()方法将在线程开启后执行，可以把相关的逻辑写到run方法中（通常把run方法称为活动[Activity]。）；start()方法用于启动线程。</P>
+                                <P>　　再看看另外一种创建线程的方法：</P>
+                                <P>
+                                <DIV class="dp-highlighter nogutter">
+                                <DIV class=bar></DIV>
+                                <OL class=dp-py>
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>import</SPAN><SPAN>&nbsp;threading,&nbsp;time,&nbsp;random&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN>count&nbsp;=&nbsp;<SPAN 
+                                class=number>0</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>lock&nbsp;=&nbsp;threading.Lock()&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;doAdd():&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=string>''</SPAN><SPAN 
+                                class=comment>'''@summary:&nbsp;将全局变量count&nbsp;逐一的增加10000。</SPAN>&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=comment>&nbsp;&nbsp;&nbsp;&nbsp;'''</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>global</SPAN><SPAN>&nbsp;count,&nbsp;lock&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;lock.acquire()&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>for</SPAN><SPAN>&nbsp;i&nbsp;</SPAN><SPAN 
+                                class=keyword>in</SPAN><SPAN>&nbsp;xrange(</SPAN><SPAN 
+                                class=number>10000</SPAN><SPAN>):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;=&nbsp;count&nbsp;+&nbsp;<SPAN 
+                                class=number>1</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;lock.release()&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>for</SPAN><SPAN>&nbsp;i&nbsp;</SPAN><SPAN 
+                                class=keyword>in</SPAN><SPAN>&nbsp;range(</SPAN><SPAN 
+                                class=number>5</SPAN><SPAN>):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;threading.Thread(target&nbsp;=&nbsp;doAdd,&nbsp;args&nbsp;=&nbsp;(),&nbsp;name&nbsp;=&nbsp;<SPAN 
+                                class=string>'thread-'</SPAN><SPAN>&nbsp;+&nbsp;str(i)).start()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN>time.sleep(<SPAN 
+                                class=number>2</SPAN><SPAN>)&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+                                class=comment>#确保线程都执行完毕</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;count&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><TEXTAREA class=python:nogutter:nocontrols style="DISPLAY: none" name=code rows=19 cols=50>import threading, time, random
+count = 0
+lock = threading.Lock()
+def doAdd():
+    '''@summary: 将全局变量count 逐一的增加10000。
+    '''
+    global count, lock
+    lock.acquire()
+    for i in xrange(10000):
+        count = count + 1
+    lock.release()
+for i in range(5):
+    threading.Thread(target = doAdd, args = (), name = 'thread-' + str(i)).start()
+time.sleep(2)	#确保线程都执行完毕
+print count</TEXTAREA> 
+                                <P></P>
+                                <P>　　在这段代码中，我们定义了方法doAdd，它将全局变量count 
+                                逐一的增加10000。然后创建了5个Thread对象，把函数对象doAdd 
+                                作为参数传给它的初始化函数，再调用Thread对象的start方法，线程启动后将执行doAdd函数。这里有必要介绍一下 
+                                threading.Thread类的初始化函数原型：<BR>def __init__(self, 
+                                group=None, target=None, name=None, args=(), 
+                                kwargs={})<BR>　　参数group是预留的，用于将来扩展；<BR>　　参数target是一个可调用对象（也称为活动[activity]），在线程启动后执行；<BR>　　参数name是线程的名字。默认值为“Thread-N“，N是一个数字。<BR>　　参数args和kwargs分别表示调用target时的参数列表和关键字参数。</P>
+                                <P>Thread类还定义了以下常用方法与属性：</P>
+                                <H3>Thread.getName() 
+                                <BR>Thread.setName()<BR>Thread.name</H3>
+                                <P>　　用于获取和设置线程的名称。 </P>
+                                <H3>Thread.ident</H3>
+                                <P>　　获取线程的标识符。线程标识符是一个非零整数，只有在调用了start()方法之后该属性才有效，否则它只返回None。</P>
+                                <H3>Thread.is_alive() <BR>Thread.isAlive() </H3>
+                                <P>　　判断线程是否是激活的（alive）。从调用start()方法启动线程，到run()方法执行完毕或遇到未处理异常而中断 
+                                这段时间内，线程是激活的。</P>
+                                <H3>Thread.join([timeout])</H3>
+                                <P>　　调用Thread.join将会使主调线程堵塞，直到被调用线程运行结束或超时。参数timeout是一个数值类型，表示超时时间，如果未提供该参数，那么主调线程将一直堵塞到被调线程结束。下面举个例子说明join()的使用：</P>
+                                <P>
+                                <DIV class="dp-highlighter nogutter">
+                                <DIV class=bar></DIV>
+                                <OL class=dp-py>
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>import</SPAN><SPAN>&nbsp;threading,&nbsp;time&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;doWaiting():&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=string>'start&nbsp;waiting:'</SPAN><SPAN>,&nbsp;time.strftime(</SPAN><SPAN 
+                                class=string>'%H:%M:%S'</SPAN><SPAN>)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(<SPAN 
+                                class=number>3</SPAN><SPAN>)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=string>'stop&nbsp;waiting'</SPAN><SPAN>,&nbsp;time.strftime(</SPAN><SPAN 
+                                class=string>'%H:%M:%S'</SPAN><SPAN>)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>thread1&nbsp;=&nbsp;threading.Thread(target&nbsp;=&nbsp;doWaiting)&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>thread1.start()&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN>time.sleep(<SPAN 
+                                class=number>1</SPAN><SPAN>)&nbsp;&nbsp;</SPAN><SPAN 
+                                class=comment>#确保线程thread1已经启动</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=string>'start&nbsp;join'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>thread1.join()&nbsp;&nbsp;<SPAN 
+                                class=comment>#将一直堵塞，直到thread1运行结束。</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=string>'end&nbsp;join'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><TEXTAREA class=python:nogutter:nocontrols style="DISPLAY: none" name=code rows=13 cols=50>import threading, time
+def doWaiting():
+    print 'start waiting:', time.strftime('%H:%M:%S')
+    time.sleep(3)
+    print 'stop waiting', time.strftime('%H:%M:%S')
+thread1 = threading.Thread(target = doWaiting)
+thread1.start()
+time.sleep(1)  #确保线程thread1已经启动
+print 'start join'
+thread1.join()	#将一直堵塞，直到thread1运行结束。
+print 'end join'</TEXTAREA> 
+                                <P></P>
+                                <H2>threading.RLock和threading.Lock</H2>
+                                <P>　　在threading模块中，定义两种类型的琐：threading.Lock和threading.RLock。它们之间有一点细微的区别，通过比较下面两段代码来说明：</P>
+                                <P>
+                                <DIV class="dp-highlighter nogutter">
+                                <DIV class=bar></DIV>
+                                <OL class=dp-py>
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>import</SPAN><SPAN>&nbsp;threading&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>lock&nbsp;=&nbsp;threading.Lock()&nbsp;<SPAN 
+                                class=comment>#Lock对象</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>lock.acquire()&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>lock.acquire()&nbsp;&nbsp;<SPAN 
+                                class=comment>#产生了死琐。</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>lock.release()&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>lock.release()&nbsp;&nbsp;</SPAN></LI></OL></DIV><TEXTAREA class=python:nogutter:nocontrols style="DISPLAY: none" name=code rows=7 cols=50>import threading
+lock = threading.Lock()	#Lock对象
+lock.acquire()
+lock.acquire()  #产生了死琐。
+lock.release()
+lock.release()</TEXTAREA> 
+                                <P></P>
+                                <P>
+                                <DIV class="dp-highlighter nogutter">
+                                <DIV class=bar></DIV>
+                                <OL class=dp-py>
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>import</SPAN><SPAN>&nbsp;threading&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>rLock&nbsp;=&nbsp;threading.RLock()&nbsp;&nbsp;<SPAN 
+                                class=comment>#RLock对象</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>rLock.acquire()&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN>rLock.acquire()&nbsp;<SPAN 
+                                class=comment>#在同一线程内，程序不会堵塞。</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>rLock.release()&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>rLock.release()&nbsp;&nbsp;</SPAN></LI></OL></DIV><TEXTAREA class=python:nogutter:nocontrols style="DISPLAY: none" name=code rows=7 cols=50>import threading
+rLock = threading.RLock()  #RLock对象
+rLock.acquire()
+rLock.acquire()	#在同一线程内，程序不会堵塞。
+rLock.release()
+rLock.release()</TEXTAREA> 
+                                <BR>　　这两种琐的主要区别是：RLock允许在同一线程中被多次acquire。而Lock却不允许这种情况。注意：如果使用RLock，那么acquire和release必须成对出现，即调用了n次acquire，必须调用n次的release才能真正释放所占用的琐。 
+
+                                <P></P>
+                                <H2>threading.Condition</H2>
+                                <P>　　可以把Condiftion理解为一把高级的琐，它提供了比Lock, 
+                                RLock更高级的功能，允许我们能够控制复杂的线程同步问题。threadiong.Condition在内部维护一个琐对象（默认是RLock），可以在创建Condigtion对象的时候把琐对象作为参数传入。Condition也提供了acquire, 
+                                release方法，其含义与琐的acquire, 
+                                release方法一致，其实它只是简单的调用内部琐对象的对应的方法而已。Condition还提供了如下方法(特别要注意：这些方法只有在占用琐 
+                                (acquire)之后才能调用，否则将会报RuntimeError异常。)：</P>
+                                <H3>Condition.wait([timeout]):&nbsp;&nbsp;</H3>
+                                <P>　　wait方法释放内部所占用的琐，同时线程被挂起，直至接收到通知被唤醒或超时（如果提供了timeout参数的话）。当线程被唤醒并重新占有琐的时候，程序才会继续执行下去。</P>
+                                <H3>Condition.notify(): </H3>
+                                <P>　　唤醒一个挂起的线程（如果存在挂起的线程）。注意：notify()方法不会释放所占用的琐。</P>
+                                <H3>Condition.notify_all() 
+                                <BR>Condition.notifyAll() </H3>
+                                <P>　　唤醒所有挂起的线程（如果存在挂起的线程）。注意：这些方法不会释放所占用的琐。</P>
+                                <P>　　现在写个捉迷藏的游戏来具体介绍threading.Condition的基本使用。假设这个游戏由两个人来玩，一个藏(Hider)，一个找 
+                                (Seeker)。游戏的规则如下：1. 
+                                游戏开始之后，Seeker先把自己眼睛蒙上，蒙上眼睛后，就通知Hider；2. 
+                                Hider接收通知后开始找地方将自己藏起来，藏好之后，再通知Seeker可以找了； 3. 
+                                Seeker接收到通知之后，就开始找Hider。Hider和Seeker都是独立的个体，在程序中用两个独立的线程来表示，在游戏过程中，两者之间的行为有一定的时序关系，我们通过Condition来控制这种时序关系。</P>
+                                <P>
+                                <DIV class="dp-highlighter nogutter">
+                                <DIV class=bar></DIV>
+                                <OL class=dp-py>
+                                <LI class=alt><SPAN><SPAN 
+                                class=comment>#----&nbsp;Condition</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=comment>#----&nbsp;捉迷藏的游戏</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>import</SPAN><SPAN>&nbsp;threading,&nbsp;time&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>class</SPAN><SPAN>&nbsp;Hider(threading.Thread):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;__init__(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>,&nbsp;cond,&nbsp;name):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(Hider,&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>).__init__()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond&nbsp;=&nbsp;cond&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;=&nbsp;name&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;run(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(<SPAN 
+                                class=number>1</SPAN><SPAN>)&nbsp;</SPAN><SPAN 
+                                class=comment>#确保先运行Seeker中的方法&nbsp;&nbsp;&nbsp;</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.acquire()&nbsp;</SPAN><SPAN 
+                                class=comment>#b&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;我已经把眼睛蒙上了'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.notify()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.wait()&nbsp;</SPAN><SPAN 
+                                class=comment>#c&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=comment>#f&nbsp;</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;我找到你了&nbsp;~_~'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.notify()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.release()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=comment>#g</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;我赢了'</SPAN><SPAN>&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+                                class=comment>#h</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>class</SPAN><SPAN>&nbsp;Seeker(threading.Thread):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;__init__(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>,&nbsp;cond,&nbsp;name):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(Seeker,&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>).__init__()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond&nbsp;=&nbsp;cond&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;=&nbsp;name&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;run(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.acquire()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.wait()&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+                                class=comment>#a&nbsp;&nbsp;&nbsp;&nbsp;#释放对琐的占用，同时线程挂起在这里，直到被notify并重新占</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN>有琐。&nbsp;&nbsp;</SPAN> 
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=comment>#d</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;我已经藏好了，你快来找我吧'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.notify()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.wait()&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+                                class=comment>#e</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=comment>#h</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.release()&nbsp;&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;被你找到了，哎~~~'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>cond&nbsp;=&nbsp;threading.Condition()&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>seeker&nbsp;=&nbsp;Seeker(cond,&nbsp;<SPAN 
+                                class=string>'seeker'</SPAN><SPAN>)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>hider&nbsp;=&nbsp;Hider(cond,&nbsp;<SPAN 
+                                class=string>'hider'</SPAN><SPAN>)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>seeker.start()&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>hider.start()&nbsp;&nbsp;</SPAN></LI></OL></DIV><TEXTAREA class=python:nogutter:nocontrols style="DISPLAY: none" name=code rows=15 cols=82>#---- Condition
+#---- 捉迷藏的游戏
+import threading, time
+class Hider(threading.Thread):
+    def __init__(self, cond, name):
+        super(Hider, self).__init__()
+        self.cond = cond
+        self.name = name
+    
+    def run(self):
+        time.sleep(1) #确保先运行Seeker中的方法   
+        
+        self.cond.acquire() #b    
+        print self.name + ': 我已经把眼睛蒙上了'
+        self.cond.notify()
+        self.cond.wait() #c    
+                         #f 
+        print self.name + ': 我找到你了 ~_~'
+        self.cond.notify()
+        self.cond.release()
+                            #g
+        print self.name + ': 我赢了'   #h
+        
+class Seeker(threading.Thread):
+    def __init__(self, cond, name):
+        super(Seeker, self).__init__()
+        self.cond = cond
+        self.name = name
+    def run(self):
+        self.cond.acquire()
+        self.cond.wait()    #a    #释放对琐的占用，同时线程挂起在这里，直到被notify并重新占
+有琐。
+                            #d
+        print self.name + ': 我已经藏好了，你快来找我吧'
+        self.cond.notify()
+        self.cond.wait()    #e
+                            #h
+        self.cond.release() 
+        print self.name + ': 被你找到了，哎~~~'
+        
+cond = threading.Condition()
+seeker = Seeker(cond, 'seeker')
+hider = Hider(cond, 'hider')
+seeker.start()
+hider.start()</TEXTAREA> 
+                                <P></P>
+                                <H2>threading.Event </H2>
+                                <P>　　Event实现与Condition类似的功能，不过比Condition简单一点。它通过维护内部的标识符来实现线程间的同步问题。（threading.Event和.NET中的System.Threading.ManualResetEvent类实现同样的功能。）</P>
+                                <H3>Event.wait([timeout])</H3>
+                                <P>　　堵塞线程，直到Event对象内部标识位被设为True或超时（如果提供了参数timeout）。</P>
+                                <H3>Event.set()</H3>
+                                <P>　　将标识位设为Ture</P>
+                                <H3>Event.clear()</H3>
+                                <P>　　将标识伴设为False。</P>
+                                <H3>Event.isSet()</H3>
+                                <P>　　判断标识位是否为Ture。</P>
+                                <P>下面使用Event来实现捉迷藏的游戏(可能用Event来实现不是很形象)</P>
+                                <P>
+                                <DIV class="dp-highlighter nogutter">
+                                <DIV class=bar></DIV>
+                                <OL class=dp-py>
+                                <LI class=alt><SPAN><SPAN 
+                                class=comment>#----&nbsp;Event</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=comment>#----&nbsp;捉迷藏的游戏</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>import</SPAN><SPAN>&nbsp;threading,&nbsp;time&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>class</SPAN><SPAN>&nbsp;Hider(threading.Thread):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;__init__(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>,&nbsp;cond,&nbsp;name):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(Hider,&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>).__init__()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond&nbsp;=&nbsp;cond&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;=&nbsp;name&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;run(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(<SPAN 
+                                class=number>1</SPAN><SPAN>)&nbsp;</SPAN><SPAN 
+                                class=comment>#确保先运行Seeker中的方法&nbsp;&nbsp;&nbsp;</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;我已经把眼睛蒙上了'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.set()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(<SPAN 
+                                class=number>1</SPAN><SPAN>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.wait()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;我找到你了&nbsp;~_~'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.set()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;我赢了'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI class=""><SPAN><SPAN 
+                                class=keyword>class</SPAN><SPAN>&nbsp;Seeker(threading.Thread):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;__init__(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>,&nbsp;cond,&nbsp;name):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(Seeker,&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>).__init__()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond&nbsp;=&nbsp;cond&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;=&nbsp;name&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;run(</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>):&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.wait()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;我已经藏好了，你快来找我吧'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.set()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(<SPAN 
+                                class=number>1</SPAN><SPAN>)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=special>self</SPAN><SPAN>.cond.wait()&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=special>self</SPAN><SPAN>.name&nbsp;+&nbsp;</SPAN><SPAN 
+                                class=string>':&nbsp;被你找到了，哎~~~'</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>cond&nbsp;=&nbsp;threading.Event()&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>seeker&nbsp;=&nbsp;Seeker(cond,&nbsp;<SPAN 
+                                class=string>'seeker'</SPAN><SPAN>)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=""><SPAN>hider&nbsp;=&nbsp;Hider(cond,&nbsp;<SPAN 
+                                class=string>'hider'</SPAN><SPAN>)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI 
+                                class=alt><SPAN>seeker.start()&nbsp;&nbsp;</SPAN> 
+
+                                <LI 
+                                class=""><SPAN>hider.start()&nbsp;&nbsp;</SPAN></LI></OL></DIV><TEXTAREA class=python:nogutter:nocontrols style="DISPLAY: none" name=code rows=15 cols=50>#---- Event
+#---- 捉迷藏的游戏
+import threading, time
+class Hider(threading.Thread):
+    def __init__(self, cond, name):
+        super(Hider, self).__init__()
+        self.cond = cond
+        self.name = name
+    
+    def run(self):
+        time.sleep(1) #确保先运行Seeker中的方法   
+        
+        print self.name + ': 我已经把眼睛蒙上了'
+        
+        self.cond.set()
+        
+        time.sleep(1)   
+        
+        self.cond.wait()
+        print self.name + ': 我找到你了 ~_~'
+        
+        self.cond.set()
+                            
+        print self.name + ': 我赢了'
+        
+class Seeker(threading.Thread):
+    def __init__(self, cond, name):
+        super(Seeker, self).__init__()
+        self.cond = cond
+        self.name = name
+    def run(self):
+        self.cond.wait()
+                        
+        print self.name + ': 我已经藏好了，你快来找我吧'
+        self.cond.set()
+        
+        time.sleep(1)
+        self.cond.wait()
+                            
+        print self.name + ': 被你找到了，哎~~~'
+        
+cond = threading.Event()
+seeker = Seeker(cond, 'seeker')
+hider = Hider(cond, 'hider')
+seeker.start()
+hider.start()</TEXTAREA> 
+                                <P></P>
+                                <H2>threading.Timer</H2>
+                                <P>　　threading.Timer是threading.Thread的子类，可以在指定时间间隔后执行某个操作。下面是Python手册上提供的一个例子：</P>
+                                <P>
+                                <DIV class="dp-highlighter nogutter">
+                                <DIV class=bar></DIV>
+                                <OL class=dp-py>
+                                <LI class=alt><SPAN><SPAN 
+                                class=keyword>def</SPAN><SPAN>&nbsp;hello():&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+                                class=keyword>print</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+                                class=string>"hello,&nbsp;world"</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=alt><SPAN>t&nbsp;=&nbsp;Timer(<SPAN 
+                                class=number>3</SPAN><SPAN>,&nbsp;hello)&nbsp;&nbsp;</SPAN></SPAN> 
+
+                                <LI class=""><SPAN>t.start()&nbsp;<SPAN 
+                                class=comment>#&nbsp;3秒钟之后执行hello函数。</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><TEXTAREA class=python:nogutter:nocontrols style="DISPLAY: none" name=code rows=4 cols=50>def hello():
+    print "hello, world"
+t = Timer(3, hello)
+t.start() # 3秒钟之后执行hello函数。</TEXTAREA> 
+                                <P></P>
+                                <P>　　threading模块中还有一些常用的方法没有介绍：</P>
+                                <H3>threading.active_count() 
+                                <BR>threading.activeCount() </H3>
+                                <P>　　获取当前活动的(alive)线程的个数。</P>
+                                <H3>threading.current_thread() 
+                                <BR>threading.currentThread() </H3>
+                                <P>&nbsp;　　获取当前的线程对象（Thread object）。</P>
+                                <H3>threading.enumerate()</H3>
+                                <P>&nbsp;　　获取当前所有活动线程的列表。</P>
+                                <H3>threading.settrace(func)</H3>
+                                <P>　　设置一个跟踪函数，用于在run()执行之前被调用。</P>
+                                <H3>threading.setprofile(func)</H3>
+                                <P>　　设置一个跟踪函数，用于在run()执行完毕之后调用。</P></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+                          <TR>
+                            <TD align=middle bgColor=#d1d1d1></TD></TR>
+                          <TR>
+                            <TD align=right height=18>浏览次数：<FONT 
+color=#ff0000>
+                              <SCRIPT 
+                              src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/POPjs.htm"></SCRIPT>
+                              </FONT> &nbsp;&nbsp;【 <A 
+                              href="javascript:window.print()">打 印</A> 】【 <A 
+                              href="javascript:window.close()">关 闭</A> 】</TD></TR>
+                          <TR>
+                            <TD 
+                            style="PADDING-RIGHT: 10px; DISPLAY: block; PADDING-LEFT: 10px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px" 
+                            align=left>上一篇：<A 
+                              title="标题：httplib HTTP协议客户端实现&#13;&#10;录入：JGood的专栏&#13;&#10;来源：http://blog.csdn.net/JGood/" 
+                              href="http://www.sqlite.com.cn/MySqlite/11/531.Html">httplib 
+                              HTTP协议客户端实现</A><BR>下一篇：<A 
+                              title="标题：[转帖]SQLite使用教学&#13;&#10;录入：tamsyn&#13;&#10;来源：www.sqlite.com.cn" 
+                              href="http://www.sqlite.com.cn/MySqlite/4/533.Html">[转帖]SQLite使用教学</A> 
+                            </TD></TR>
+                          <TR>
+                            <TD align=middle bgColor=#d1d1d1></TD></TR>
+                          <TR>
+                            <TD align=middle>
+                              <TABLE 
+                              style="TABLE-LAYOUT: fixed; BORDER-COLLAPSE: collapse" 
+                              cellSpacing=0 cellPadding=0 width="100%" 
+                              align=center border=0>
+                                <TBODY>
+                                <TR>
+                                <TD>
+                                <SCRIPT 
+                                src="E:\Downloads\新建文件夹\threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files\POPjs(1).htm"></SCRIPT>
+                                </TD></TR></TBODY></TABLE></TD></TR>
+                          <TR>
+                            <TD align=middle>
+                              <TABLE 
+                              style="TABLE-LAYOUT: fixed; BORDER-COLLAPSE: collapse" 
+                              cellSpacing=0 cellPadding=0 width="100%" 
+                              align=center border=0>
+                                <TBODY>
+                                <TR>
+                                <TD>
+                                <SCRIPT 
+                                src="E:\Downloads\新建文件夹\threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files\POPjs(2).htm"></SCRIPT>
+                                </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD height=4></TD></TR></TBODY></TABLE></TD>
+          <TD vAlign=top width="25%" bgColor=#f2f3ed>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD class=popt_6 bgColor=#cccc99 height=30>&nbsp;论坛登陆</TD></TR>
+              <FORM action=../../bbs/login.asp?action=login method=post 
+              target=_blank>
+              <TR>
+                <TD 
+                style="PADDING-RIGHT: 2px; PADDING-LEFT: 10px; PADDING-TOP: 5px" 
+                align=left colSpan=2>用户名：<INPUT size=13 
+                  name=username><BR>密&nbsp;&nbsp;码：<INPUT type=password size=13 
+                  name=userpwd><BR>验证码：<INPUT style="TEXT-TRANSFORM: uppercase" 
+                  size=6 name=adminid>&nbsp;<IMG 
+                  src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/code.bmp"><BR>Cookie 
+                  选项：<SELECT style="FONT-SIZE: 9pt; FONT-FAMILY: 宋体 (serif)" 
+                  name=savecook> <OPTION value=0>不保存</OPTION><OPTION value=1 
+                    selected>保存一天</OPTION><OPTION value=30>保存一月</OPTION><OPTION 
+                    value=365>保存一年</OPTION></SELECT> <INPUT type=hidden 
+                  name=comeurl> <BR><INPUT type=radio CHECKED value=1 
+                  name=hermit>正常登陆&nbsp;<INPUT type=radio value=2 
+                  name=hermit>隐身登陆 </TD></TR>
+              <TR>
+                <TD 
+                style="PADDING-RIGHT: 2px; PADDING-LEFT: 10px; PADDING-TOP: 5px" 
+                align=left colSpan=2><INPUT class=submit type=submit value="登 陆" name=B1>&nbsp;&nbsp;&nbsp;<INPUT class=submit type=reset value="重 置" name=B2></TD></TR>
+              <TR>
+                <TD 
+                style="PADDING-RIGHT: 2px; PADDING-LEFT: 10px; PADDING-TOP: 1px" 
+                align=right colSpan=2><A 
+                  href="http://www.sqlite.com.cn/bbs/userjoin.asp" 
+                  target=_blank>没有注册？</A></TD></TR></FORM>
+              <TR>
+                <TD class=popt_6 bgColor=#cccc99 height=30>&nbsp;文章搜索</TD></TR>
+              <TR>
+                <TD align=middle>
+                  <SCRIPT 
+                  src="E:\Downloads\新建文件夹\threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files\POPjs(3).htm"></SCRIPT>
+                </TD></TR>
+              <TR>
+                <TD class=popt_6 bgColor=#cccc99 height=30>&nbsp;推荐文章</TD></TR>
+              <TR>
+                <TD 
+                style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-TOP: 5px">
+                  <SCRIPT 
+                  src="E:\Downloads\新建文件夹\threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files\POPjs(4).htm"></SCRIPT>
+                </TD></TR>
+              <TR>
+                <TD class=popt_6 bgColor=#cccc99 height=30>&nbsp;酷站推荐</TD></TR>
+              <TR>
+                <TD 
+                style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-TOP: 5px">
+                  <SCRIPT type=text/JavaScript>
+				var yahoo_pid="un_52773_769_19";
+				var yahoo_bordercolor="f2f3ed";
+				var yahoo_titlecolor="414b65";
+				var yahoo_descolor="414b65";
+				var yahoo_linkcolor="006600";
+				var yahoo_titlebgcolor="f2f3ed";
+				var yahoo_desbgcolor="f2f3ed";
+				var yahoo_width=170;
+				var yahoo_height=320;
+				var yahoo_isbanner=0;
+				var yahoo_displink=0;
+				var yahoo_adsnum=4;
+				var yahoo_simple=0;
+				var yahoo_iniframe=1;
+				</SCRIPT>
+
+                  <SCRIPT src="" type=text/javascript></SCRIPT>
+                </TD></TR>
+              <TR>
+                <TD class=popt_6 bgColor=#cccc99 height=30>&nbsp;热门文章</TD></TR>
+              <TR>
+                <TD 
+                style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-TOP: 5px">
+                  <SCRIPT 
+                  src="E:\Downloads\新建文件夹\threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files\POPjs(5).htm"></SCRIPT>
+                </TD></TR>
+              <TR>
+                <TD class=popt_6 bgColor=#cccc99 height=30>&nbsp;网站统计</TD></TR>
+              <TR>
+                <TD style="PADDING-LEFT: 10px; PADDING-TOP: 5px">
+                  <SCRIPT 
+                  src="E:\Downloads\新建文件夹\threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files\POPjs(6).htm"></SCRIPT>
+                </TD></TR>
+              <TR>
+                <TD 
+  height=4></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<SCRIPT language=javascript>
+function ContentSize(size)
+{
+	var obj=document.all.ContentBody;
+	obj.style.fontSize=size+"px";
+}
+</SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center bgColor=#ffffff 
+border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle bgColor=#60b8bf 
+  height=10></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center bgColor=#ffffff 
+border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px">
+      <TABLE class=popt_2 cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=popt_1 align=middle height=30>关于我们 | <A class=popt_1 
+            title=网站地图 href="http://www.sqlite.com.cn/mysqlite.html">网站地图</A> | 
+            <A class=popt_1 title=联系我们 href="mailto:lxkxf@126.com">联系我们</A> | 
+            网站历史 | <A class=popt_1 title=友情链接 
+            href="http://www.sqlite.com.cn/POPlink.asp">友情链接</A> | <A 
+            class=popt_1 title=返回顶部 
+            href="http://www.sqlite.com.cn/MySqlite/11/532.Html#"><STRONG>TOP</STRONG></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center bgColor=#ffffff 
+border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 12px; PADDING-TOP: 12px">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <DIV align=center>Copyright&copy; 2006 <A 
+        href="http://www.sqlite.com.cn/"><FONT 
+        color=#ff9900>Sqlite中文社区</FONT></A>&nbsp;&nbsp;程序开发: 
+        mistletoe&nbsp;&nbsp;站长: 林轩 陈文成</DIV>
+        <TBODY></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<DIV style="DISPLAY: none">
+<SCRIPT language=JavaScript 
+src="threading 多线程控制和处理 --SQLite 中文社区-- http--www_sqlite_com_cn-_files/stat.htm" 
+charset=gb2312></SCRIPT>
+</DIV></BODY></HTML>

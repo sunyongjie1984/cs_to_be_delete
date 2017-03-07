@@ -1,0 +1,628 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0050)http://www.boost.org/community/error_handling.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+  <title>Error and Exception Handling</title>
+  
+  <link rel="icon" href="http://www.boost.org/favicon.ico" type="image/ico">
+  <link rel="stylesheet" type="text/css" href="./Error and Exception Handling_files/section-community.css">
+  <!--[if IE 7]> <style type="text/css"> body { behavior: url(/style-v2/csshover3.htc); } </style> <![endif]-->
+<script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script><script type="text/javascript" src="./Error and Exception Handling_files/saved_resource"></script><script type="text/javascript" src="./Error and Exception Handling_files/search.I.js"></script></head><!--
+Note: Editing website content is documented at:
+http://www.boost.org/development/website_updating.html
+-->
+
+<body>
+  <div id="heading">
+    <div class="heading-inner">
+  <div class="heading-placard"></div>
+
+  <h1 class="heading-title">
+  <a href="http://www.boost.org/">
+  <img src="./Error and Exception Handling_files/space.png" alt="Boost C++ Libraries" class="heading-logo">
+  <span class="heading-boost">Boost</span>
+  <span class="heading-cpplibraries">C++ Libraries</span>
+  </a></h1>
+
+  <p class="heading-quote">
+  <q>...one of the most highly
+  regarded and expertly designed C++ library projects in the
+  world.</q> <span class="heading-attribution">— <a href="http://www.gotw.ca/" class="external">Herb Sutter</a> and <a href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu" class="external">Andrei
+  Alexandrescu</a>, <a href="http://safari.awprofessional.com/?XmlId=0321113586" class="external">C++
+  Coding Standards</a></span></p>
+
+  <div class="heading-sections">
+    <ul>
+      <li class="welcome-section-tab"><a href="http://www.boost.org/">Welcome</a></li>
+
+      <li class="boost-section-tab"><a href="http://www.boost.org/users/">Introduction</a></li>
+
+      <li class="community-section-tab"><a href="http://www.boost.org/community/">Community</a></li>
+
+      <li class="development-section-tab"><a href="http://www.boost.org/development/">Development</a></li>
+
+      <li class="support-section-tab"><a href="http://www.boost.org/support/">Support</a></li>
+
+      <li class="doc-section-tab"><a href="http://www.boost.org/doc/">Documentation</a></li>
+
+      <li class="map-section-tab"><a href="http://www.boost.org/map.html">Index</a></li>
+    </ul>
+  </div>
+</div>
+  </div>
+
+  <div id="body">
+    <div id="body-inner">
+      <div id="content">
+        <div class="section" id="intro">
+          <div class="section-0">
+            <div class="section-title">
+              <h1>Error and Exception Handling</h1>
+            </div>
+
+            <div class="section-body">
+              <h2>References</h2>
+
+              <p>The following paper is a good introduction to some of the
+              issues of writing robust generic components:</p>
+
+              <blockquote>
+                <p><a href="http://www.boost.org/community/exception_safety.html">D. Abrahams:
+                ``Exception Safety in Generic Components''</a>, originally
+                published in <a href="http://www.springer.de/cgi-bin/search_book.pl?isbn=3-540-41090-2">
+                M. Jazayeri, R. Loos, D. Musser (eds.): Generic Programming,
+                Proc. of a Dagstuhl Seminar, Lecture Notes on Computer
+                Science. Volume. 1766</a></p>
+              </blockquote>
+
+              <h2>Guidelines</h2>
+
+              <h3>When should I use exceptions?</h3>
+
+              <p>The simple answer is: ``whenever the semantic and
+              performance characteristics of exceptions are
+              appropriate.''</p>
+
+              <p>An oft-cited guideline is to ask yourself the question ``is
+              this an exceptional (or unexpected) situation?'' This guideline
+              has an attractive ring to it, but is usually a mistake. The
+              problem is that one person's ``exceptional'' is another's
+              ``expected'': when you really look at the terms carefully, the
+              distinction evaporates and you're left with no guideline. After
+              all, if you check for an error condition, then in some sense
+              you expect it to happen, or the check is wasted code.</p>
+
+              <p>A more appropriate question to ask is: ``do we want stack
+              unwinding here?'' Because actually handling an exception is
+              likely to be significantly slower than executing mainline code,
+              you should also ask: ``Can I afford stack unwinding here?'' For
+              example, a desktop application performing a long computation
+              might periodically check to see whether the user had pressed a
+              cancel button. Throwing an exception could allow the operation
+              to be cancelled gracefully. On the other hand, it would
+              probably be inappropriate to throw and <i>handle</i> exceptions
+              in the inner loop of this computation because that could have a
+              significant performance impact. The guideline mentioned above
+              has a grain of truth in it: in time critical code, throwing an
+              exception should <em>be</em> the exception, not the rule.</p>
+
+              <h3>How should I design my exception classes?</h3>
+
+              <ol>
+                <li><strong>Derive your exception class from
+                <code>std::exception</code></strong>. Except in *very* rare
+                circumstances where you can't afford the cost of a virtual
+                table, <code>std::exception</code> makes a reasonable
+                exception base class, and when used universally, allows
+                programmers to catch "everything" without resorting to
+                <code>catch(...)</code>. For more about
+                <code>catch(...)</code>, see below.</li>
+
+                <li>
+                  <strong>Use <i>virtual</i> inheritance.</strong> This
+                  insight is due to Andrew Koenig. Using virtual inheritance
+                  from your exception's base class(es) prevents ambiguity
+                  problems at the catch-site in case someone throws an
+                  exception derived from multiple bases which have a base
+                  class in common:
+                  <pre>#include &lt;iostream&gt;
+struct my_exc1 : std::exception { char const* what() const throw(); };
+struct my_exc2 : std::exception { char const* what() const throw(); };
+struct your_exc3 : my_exc1, my_exc2 {};
+
+int main()
+{
+   try { throw your_exc3(); }
+   catch(std::exception const&amp; e) {}
+   catch(...) { std::cout &lt;&lt; "whoops!" &lt;&lt; std::endl; }
+}
+</pre>The program above prints <code>"whoops"</code> because the C++ runtime
+can't resolve which <code>exception</code> instance to match in the first
+catch clause.
+                </li>
+
+                <li>
+                  <strong><i>Don't</i> embed a std::string object</strong> or
+                  any other data member or base class whose copy constructor
+                  could throw an exception. That could lead directly to
+                  std::terminate() at the throw point. Similarly, it's a bad
+                  idea to use a base or member whose ordinary constructor(s)
+                  might throw, because, though not necessarily fatal to your
+                  program, you may report a different exception than intended
+                  from a <i>throw-expression</i> that includes construction
+                  such as:
+                  <pre>throw some_exception();    
+</pre>
+
+                  <p>There are various ways to avoid copying string objects
+                  when exceptions are copied, including embedding a
+                  fixed-length buffer in the exception object, or managing
+                  strings via reference-counting. However, consider the next
+                  point before pursuing either of these approaches.</p>
+                </li>
+
+                <li><strong>Format the <code>what()</code> message on
+                demand</strong>, if you feel you really must format the
+                message. Formatting an exception error message is typically a
+                memory-intensive operation that could potentially throw an
+                exception. This is an operation best delayed until after
+                stack unwinding has occurred, and presumably, released some
+                resources. It's a good idea in this case to protect your
+                <code>what()</code> function with a <code>catch(...)</code>
+                block so that you have a fallback in case the formatting code
+                throws</li>
+
+                <li><strong>Don't worry <i>too</i> much about the
+                <code>what()</code> message</strong>. It's nice to have a
+                message that a programmer stands a chance of figuring out,
+                but you're very unlikely to be able to compose a relevant and
+                <i>user</i>-comprehensible error message at the point an
+                exception is thrown. Certainly, internationalization is
+                beyond the scope of the exception class author. <a href="http://www.boost.org/users/people/peter_dimov.html">Peter Dimov</a> makes an
+                excellent argument that the proper use of a
+                <code>what()</code> string is to serve as a key into a table
+                of error message formatters. Now if only we could get
+                standardized <code>what()</code> strings for exceptions
+                thrown by the standard library...</li>
+
+                <li><strong>Expose relevant information about the cause of
+                the error</strong> in your exception class' public interface.
+                A fixation on the <code>what()</code> message is likely to
+                mean that you neglect to expose information someone might
+                need in order to make a coherent message for users. For
+                example, if your exception reports a numeric range error,
+                it's important to have the actual numbers involved available
+                <i>as numbers</i> in the exception class' public interface
+                where error reporting code can do something intelligent with
+                them. If you only expose a textual representation of those
+                numbers in the <code>what()</code> string, you will make life
+                very difficult for programmers who need to do something more
+                (e.g. subtraction) with them than dumb output.</li>
+
+                <li><strong>Make your exception class immune to
+                double-destruction</strong> if possible. Unfortunately,
+                several popular compilers occasionally cause exception
+                objects to be destroyed twice. If you can arrange for that to
+                be harmless (e.g. by zeroing deleted pointers) your code will
+                be more robust.</li>
+              </ol>
+
+              <h3>What About Programmer Errors?</h3>
+
+              <p>As a developer, if I have violated a precondition of a
+              library I'm using, I don't want stack unwinding. What I want is
+              a core dump or the equivalent - a way to inspect the state of
+              the program at the exact point where the problem was detected.
+              That usually means <code>assert()</code> or something like
+              it.</p>
+
+              <p>Sometimes it is necessary to have resilient APIs which can
+              stand up to nearly any kind of client abuse, but there is
+              usually a significant cost to this approach. For example, it
+              usually requires that each object used by a client be tracked
+              so that it can be checked for validity. If you need that sort
+              of protection, it can usually be provided as a layer on top of
+              a simpler API. Beware half-measures, though. An API which
+              promises resilience against some, but not all abuse is an
+              invitation to disaster. Clients will begin to rely on the
+              protection and their expectations will grow to cover
+              unprotected parts of the interface.</p>
+
+              <p><strong>Note for Windows developers</strong>: unfortunately,
+              the native exception-handling used by most Windows compilers
+              actually throws an exception when you use
+              <code>assert()</code>. Actually, this is true of other
+              programmer errors such as segmentation faults and
+              divide-by-zero errors. One problem with this is that if you use
+              JIT (Just In Time) debugging, there will be collateral
+              exception-unwinding before the debugger comes up because
+              <code>catch(...)</code> will catch these not-really-C++
+              exceptions. Fortunately, there is a simple but little-known
+              workaround, which is to use the following incantation:</p>
+              <pre>extern "C" void straight_to_debugger(unsigned int, EXCEPTION_POINTERS*)
+{
+    throw;
+}
+extern "C" void (*old_translator)(unsigned, EXCEPTION_POINTERS*)
+         = _set_se_translator(straight_to_debugger);
+</pre>
+
+              <p>This technique doesn't work if the SEH is raised from within
+              a catch block (or a function called from within a catch block),
+              but it still eliminates the vast majority of JIT-masking
+              problems.</p>
+
+              <h3>How should I handle exceptions?</h3>
+
+              <p>Often the best way to deal with exceptions is to not handle
+              them at all. If you can let them pass through your code and
+              allow destructors to handle cleanup, your code will be
+              cleaner.</p>
+
+              <h4>Avoid <code>catch(...)</code> when
+              possible</h4>Unfortunately, operating systems other than
+              Windows also wind non-C++ "exceptions" (such as thread
+              cancellation) into the C++ EH machinery, and there is sometimes
+              no workaround corresponding to the
+              <code>_set_se_translator</code> hack described above. The
+              result is that <code>catch(...)</code> can have the effect of
+              making some unexpected system notification at a point where
+              recovery is impossible look just like a C++ exception thrown
+              from a reasonable place, invalidating the usual safe
+              assumptions that destructors and catch blocks have taken valid
+              steps to ensure program invariants during unwinding.
+
+              <p>I reluctantly concede this point to Hillel Y. Sims, after
+              many long debates in the newsgroups: until all OSes are
+              "fixed", if every exception were derived from
+              <code>std::exception</code> and everyone substituted
+              <code>catch(std::exception&amp;)</code> for
+              <code>catch(...)</code>, the world would be a better place.</p>
+
+              <p>Sometimes, <code>catch(...)</code>, is still the most
+              appropriate pattern, in spite of bad interactions with
+              OS/platform design choices. If you have no idea what kind of
+              exception might be thrown and you really <i>must</i> stop
+              unwinding it's probably still your best bet. One obvious place
+              where this occurs is at language boundaries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="sidebar">
+          <div id="get-boost">
+    <h2><a href="http://www.boost.org/users/download/"><img src="./Error and Exception Handling_files/space.png" alt="Get Boost"></a></h2>
+  </div>
+
+  <div id="search">
+<!-- Created at http://www.google.com/cse/ -->
+<div id="cse-search-form" style="width: 100%;"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-en" dir="ltr"><form class="gsc-search-box" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><input autocomplete="off" type="text" size="10" class=" gsc-input" name="search" title="search" style="background-image: url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat; "></td><td class="gsc-search-button"><input type="submit" value="Search" class="gsc-search-button" title="search"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gsc-branding"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img src="./Error and Exception Handling_files/small-logo.png" class="gsc-branding-img"></td></tr></tbody></table></form></div></div>
+<script src="./Error and Exception Handling_files/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('011577717147771266991:jigzgqluebe');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchboxOnly("http://google.com/cse?cx=011577717147771266991:jigzgqluebe");    
+    customSearchControl.draw('cse-search-form', options);
+  }, true);
+</script><script src="./Error and Exception Handling_files/saved_resource(1)" type="text/javascript"></script><link href="./Error and Exception Handling_files/default+en.css" type="text/css" rel="stylesheet"><script src="./Error and Exception Handling_files/default+en.I.js" type="text/javascript"></script>
+<link rel="stylesheet" href="./Error and Exception Handling_files/default.css" type="text/css">
+  </div>
+
+
+          <div id="menu">
+    <ul>
+      <li id="welcome-section-menu">
+        <h4><a href="http://www.boost.org/" class="internal">Welcome <span class="link">&gt;</span></a></h4>
+
+  <ul>
+    <li><a href="http://www.boost.org/doc/libs/release/more/getting_started/index.html" class="internal">Getting Started <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/download/" class="internal">Download <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/doc/libs/">Libraries <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/community/groups.html">Mailing Lists <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/support/bugs.html" class="internal">Reporting Bugs<span class="link">&gt;</span></a></li>
+
+    <li><a href="https://svn.boost.org/trac/boost/" class="external">Wiki<span class="link">&gt;</span></a></li>
+  </ul>
+</li>
+
+      <li id="boost-section-menu">
+        <h4><a href="http://www.boost.org/users/index.html" class="internal">Introduction <span class="link">&gt;</span></a></h4>
+
+  <ul>
+    <li><a href="http://www.boost.org/users/download/" class="internal">Download <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/news/" class="internal">News <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/history/" class="internal">Version History
+    <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/license.html" class="internal">License <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/people.html" class="internal">People <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/bibliography.html" class="internal">Bibliography
+    <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/uses.html" class="internal">Who's Using Boost
+    <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/faq.html" class="internal">FAQ <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/users/proposal.pdf" class="internal">How Boost Started <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/map.html" class="internal">Index <span class="link">&gt;</span></a></li>
+  </ul>
+</li>
+
+      <li id="community-section-menu">
+        <h4><a href="http://www.boost.org/community/index.html">Community <span class="link">&gt;</span></a></h4>
+
+  <ul>
+    <li><a href="http://www.boost.org/community/groups.html">Discussion Groups <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/community/policy.html">Discussion Policy <span class="link">&gt;</span></a></li>
+
+    <li>
+      <a href="http://www.boost.org/community/cpp.html">C++ <span class="link">&gt;</span></a>
+
+      <ul>
+        <li><a href="http://www.boost.org/community/committee.html">Committee Meetings
+        <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/community/generic_programming.html">Generic Progamming
+        Techniques <span class="link">&gt;</span></a></li>
+
+        <li><a href="./Error and Exception Handling_files/Error and Exception Handling.htm">Error and Exception
+        Handling <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/community/exception_safety.html">Exception-Safety in
+        Generic Components <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/community/counted_body.html">Counted Body Techniques
+        <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/community/implementation_variations.html">Implementation Variations
+        <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/community/feature_model_diagrams.html">Feature Model
+        Diagrams <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+
+    <li><a href="http://www.boost.org/community/acknowledgements.html">Acknowledgements <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/community/groups.html">Mailing Lists <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/community/moderators.html">Moderators <span class="link">&gt;</span></a></li>
+
+    <li><a href="http://www.boost.org/community/requests.html">Requesting a New Feature
+    <span class="link">&gt;</span></a></li>
+
+    <li>
+      <a href="http://www.boost.org/community/reviews.html">Reviews <span class="link">&gt;</span></a>
+
+      <ul>
+        <li><a href="http://www.boost.org/community/review_schedule.html">Schedule <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+
+    <li><a href="http://www.boost.org/community/sandbox.html">Sandbox <span class="link">&gt;</span></a></li>
+
+    <li>
+      <a href="http://www.boost.org/community/irc.html">IRC <span class="link">&gt;</span></a>
+
+      <ul>
+        <li><a href="http://www.boost.org/community/irc_stats_ibd.php">IBD Stats <span class="link">&gt;</span></a></li>
+      </ul>
+
+      <ul>
+        <li><a href="http://www.boost.org/community/irc_stats_soc.php">Boost SoC Stats
+        <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="http://www.boost.org/community/gsoc.html">Google Summer of Code <span class="link">&gt;</span></a>
+
+      <ul>
+        <li><a href="http://www.boost.org/community/gsoc_2006_boost_overview.html">2006 Overview
+        <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+
+      <li id="development-section-menu">
+        <h4><a href="http://www.boost.org/development/index.html">Development <span class="link">&gt;</span></a></h4>
+
+  <ul>
+    <li>
+      <a href="http://www.boost.org/development/testing.html">Testing <span class="link">&gt;</span></a>
+
+      <ul>
+        <li><a href="http://www.boost.org/development/tests/release/developer/summary.html">Release Summary
+        <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/tests/release/developer/issues.html">Release Issues
+        <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/tests/trunk/developer/summary.html">Trunk
+        Summary <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/tests/trunk/developer/issues.html">Trunk
+        Issues <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/running_regression_tests.html">Running
+        Regression Tests <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+
+    <li><a href="http://www.boost.org/development/requirements.html">Requirements and Guidelines
+    <span class="link">&gt;</span></a>
+
+      <ul>
+        <li><a href="http://www.boost.org/development/test.html">Test policy <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/header.html">Header policy <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/separate_compilation.html">Separate Source
+        <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/reuse.html">Library Reuse <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/int_const_guidelines.html">Coding
+        Guidelines for Integral Constant Expressions <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="http://www.boost.org/development/submissions.html">Submissions <span class="link">&gt;</span></a>
+    </li>
+
+    <li>
+      <h3 class="heading">Website</h3>
+
+      <ul>
+        <li><a href="http://www.boost.org/development/website_updating.html">Updating
+        <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/exemplar.html">Exemplar <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/design_faq.html">Design FAQ <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/development/webcheck/index.html">Self Check <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+
+      <li id="support-section-menu">
+        <h4><a href="http://www.boost.org/support/index.html" class="internal">Support <span class="link">&gt;</span></a></h4>
+
+  <ul>
+    <li><a href="http://www.boost.org/support/bugs.html" class="internal">Bugs<span class="link">&gt;</span></a></li>
+  </ul>
+</li>
+
+      <li id="documentation-section-menu">
+        <h4><a href="http://www.boost.org/doc/" class="internal">Documentation <span class="link">&gt;</span></a></h4>
+
+  <ul>
+    <li><a href="http://www.boost.org/doc/libs/release/more/getting_started/">Getting Started
+    <span class="link">&gt;</span></a></li>
+
+    <li>
+      <a href="http://www.boost.org/doc/libs">Libraries <span class="link">&gt;</span></a>
+
+      <ul>
+        <li><a href="http://www.boost.org/doc/libs/1_48_0/" rel="nofollow">1.48.0 - Current
+        Release <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_47_0/" rel="nofollow">1.47.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_46_1/" rel="nofollow">1.46.1 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_45_0/" rel="nofollow">1.45.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_44_0/" rel="nofollow">1.44.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_43_0/" rel="nofollow">1.43.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_42_0/" rel="nofollow">1.42.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_41_0/" rel="nofollow">1.41.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_40_0/" rel="nofollow">1.40.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_39_0/" rel="nofollow">1.39.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_38_0/" rel="nofollow">1.38.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_37_0/" rel="nofollow">1.37.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_36_0/" rel="nofollow">1.36.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_35_0/" rel="nofollow">1.35.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_34_1/" rel="nofollow">1.34.1 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_34_0/" rel="nofollow">1.34.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_33_1/" rel="nofollow">1.33.1 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_32_0/" rel="nofollow">1.32.0 <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/libs/1_31_0/" rel="nofollow">1.31.0 <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="http://www.boost.org/doc/tools.html">Tools <span class="link">&gt;</span></a>
+
+      <ul>
+        <li><a href="http://www.boost.org/boost-build2/">Boost Build <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/tools/regression/index.html">Regression <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/tools/inspect/index.html">Inspect <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/doc/html/boostbook.html">BoostBook <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/tools/quickbook/index.html">QuickBook <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/tools/bcp/index.html">bcp <span class="link">&gt;</span></a></li>
+
+        <li><a href="http://www.boost.org/libs/wave/doc/wave_driver.html">Wave <span class="link">&gt;</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+    </ul>
+
+    <div class="box-bottom"></div>
+  </div>
+
+      </div>
+
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="footer-left">
+      <div id="revised">
+        <p>Revised $Date: 2010-05-06 07:05:24 -0400 (Thu, 06 May 2010) $</p>
+      </div>
+
+      <div id="copyright">
+        <p>Copyright David Abrahams 2001-2003.</p>
+      </div>  <div id="license">
+    <p>Distributed under the <a href="http://www.boost.org/LICENSE_1_0.txt" class="internal">Boost Software License, Version 1.0</a>.</p>
+  </div>
+
+    </div>
+
+    <div id="footer-right">
+        <div id="banners">
+    <p id="banner-xhtml"><a href="http://validator.w3.org/check?uri=referer" class="external">XHTML 1.0</a></p>
+
+    <p id="banner-css"><a href="http://jigsaw.w3.org/css-validator/check/referer" class="external">CSS</a></p>
+
+    <p id="banner-osi"><a href="http://www.opensource.org/docs/definition.php" class="external">OSI
+    Certified</a></p>
+  </div>
+
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+
+</body></html>

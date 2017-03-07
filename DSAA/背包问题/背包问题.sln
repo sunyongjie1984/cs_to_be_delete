@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "背包问题", "背包问题\背包问题.vcproj", "{61060BE1-4377-4AC1-9CC5-6E1A5C71E925}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2", "2\2.vcproj", "{49A4824D-7B48-45A9-9E89-2428A70A1565}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61060BE1-4377-4AC1-9CC5-6E1A5C71E925}.Debug|Win32.ActiveCfg = Debug|Win32
+		{61060BE1-4377-4AC1-9CC5-6E1A5C71E925}.Debug|Win32.Build.0 = Debug|Win32
+		{61060BE1-4377-4AC1-9CC5-6E1A5C71E925}.Release|Win32.ActiveCfg = Release|Win32
+		{61060BE1-4377-4AC1-9CC5-6E1A5C71E925}.Release|Win32.Build.0 = Release|Win32
+		{49A4824D-7B48-45A9-9E89-2428A70A1565}.Debug|Win32.ActiveCfg = Debug|Win32
+		{49A4824D-7B48-45A9-9E89-2428A70A1565}.Debug|Win32.Build.0 = Debug|Win32
+		{49A4824D-7B48-45A9-9E89-2428A70A1565}.Release|Win32.ActiveCfg = Release|Win32
+		{49A4824D-7B48-45A9-9E89-2428A70A1565}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

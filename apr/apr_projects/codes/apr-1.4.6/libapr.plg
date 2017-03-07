@@ -1,0 +1,263 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: libapr - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\dlfc\LOCALS~1\Temp\RSP5DB.bat" with contents
+[
+@echo off
+type .\include\apr.hw > .\include\apr.h
+]
+Creating command line "C:\DOCUME~1\dlfc\LOCALS~1\Temp\RSP5DB.bat"
+Creating command line "rc.exe /l 0x409 /fo"Debug/libapr.res" /i "./include" /d "_DEBUG" /d "APR_VERSION_ONLY" "D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\libapr.rc"" 
+Creating apr.h from apr.hw
+Creating temporary file "C:\DOCUME~1\dlfc\LOCALS~1\Temp\RSP5DC.tmp" with contents
+[
+/nologo /MDd /W3 /Zi /Od /I "./include" /I "./include/arch" /I "./include/arch/win32" /I "./include/arch/unix" /D "_DEBUG" /D "APR_DECLARE_EXPORT" /D "WIN32" /D "WINNT" /D "_WINDOWS" /D "APR_DECLARE_STATIC" /Fo".\Debug\\" /Fd".\Debug\libapr_src" /FD /EHsc /c 
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\atomic\win32\apr_atomic.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\dso\win32\dso.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\buffer.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\unix\copy.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\dir.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\unix\fileacc.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\filedup.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\filepath.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\unix\filepath_util.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\filestat.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\filesys.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\flock.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\unix\fullrw.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\unix\mktemp.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\open.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\pipe.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\readwrite.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\win32\seek.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\file_io\unix\tempdir.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\locks\win32\proc_mutex.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\locks\win32\thread_cond.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\locks\win32\thread_mutex.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\locks\win32\thread_rwlock.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\memory\unix\apr_pools.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\win32\charset.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\win32\env.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\unix\errorcodes.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\unix\getopt.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\win32\internal.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\win32\misc.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\unix\otherchild.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\win32\rand.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\win32\start.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\win32\utf8.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\misc\unix\version.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\mmap\unix\common.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\mmap\win32\mmap.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\network_io\unix\inet_ntop.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\network_io\unix\inet_pton.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\network_io\unix\multicast.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\network_io\win32\sendrecv.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\network_io\unix\sockaddr.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\network_io\win32\sockets.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\network_io\unix\socket_util.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\network_io\win32\sockopt.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\passwd\apr_getpass.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\poll\unix\poll.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\poll\unix\pollcb.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\poll\unix\pollset.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\poll\unix\select.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\random\unix\apr_random.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\random\unix\sha2.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\random\unix\sha2_glue.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\shmem\win32\shm.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\strings\apr_cpystrn.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\strings\apr_fnmatch.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\strings\apr_snprintf.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\strings\apr_strings.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\strings\apr_strnatcmp.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\strings\apr_strtok.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\tables\apr_hash.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\tables\apr_tables.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\threadproc\win32\proc.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\threadproc\win32\signals.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\threadproc\win32\thread.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\threadproc\win32\threadpriv.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\time\win32\time.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\time\win32\timestr.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\user\win32\groupinfo.c"
+"D:\works\2012-04-11\codes\apr-lib\apr-1.4.6\user\win32\userinfo.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\dlfc\LOCALS~1\Temp\RSP5DC.tmp" 
+Creating temporary file "C:\DOCUME~1\dlfc\LOCALS~1\Temp\RSP5DD.tmp" with contents
+[
+kernel32.lib advapi32.lib ws2_32.lib mswsock.lib ole32.lib shell32.lib rpcrt4.lib /nologo /base:"0x6EEC0000" /subsystem:windows /dll /incremental:no /pdb:"Debug/libapr-1.pdb" /debug /machine:IX86 /out:"Debug\libapr-1.dll" /implib:"Debug/libapr-1.lib" /MACHINE:X86 
+".\Debug\apr_atomic.obj"
+".\Debug\dso.obj"
+".\Debug\buffer.obj"
+".\Debug\copy.obj"
+".\Debug\dir.obj"
+".\Debug\fileacc.obj"
+".\Debug\filedup.obj"
+".\Debug\filepath.obj"
+".\Debug\filepath_util.obj"
+".\Debug\filestat.obj"
+".\Debug\filesys.obj"
+".\Debug\flock.obj"
+".\Debug\fullrw.obj"
+".\Debug\mktemp.obj"
+".\Debug\open.obj"
+".\Debug\pipe.obj"
+".\Debug\readwrite.obj"
+".\Debug\seek.obj"
+".\Debug\tempdir.obj"
+".\Debug\proc_mutex.obj"
+".\Debug\thread_cond.obj"
+".\Debug\thread_mutex.obj"
+".\Debug\thread_rwlock.obj"
+".\Debug\apr_pools.obj"
+".\Debug\charset.obj"
+".\Debug\env.obj"
+".\Debug\errorcodes.obj"
+".\Debug\getopt.obj"
+".\Debug\internal.obj"
+".\Debug\misc.obj"
+".\Debug\otherchild.obj"
+".\Debug\rand.obj"
+".\Debug\start.obj"
+".\Debug\utf8.obj"
+".\Debug\version.obj"
+".\Debug\common.obj"
+".\Debug\mmap.obj"
+".\Debug\inet_ntop.obj"
+".\Debug\inet_pton.obj"
+".\Debug\multicast.obj"
+".\Debug\sendrecv.obj"
+".\Debug\sockaddr.obj"
+".\Debug\sockets.obj"
+".\Debug\socket_util.obj"
+".\Debug\sockopt.obj"
+".\Debug\apr_getpass.obj"
+".\Debug\poll.obj"
+".\Debug\pollcb.obj"
+".\Debug\pollset.obj"
+".\Debug\select.obj"
+".\Debug\apr_random.obj"
+".\Debug\sha2.obj"
+".\Debug\sha2_glue.obj"
+".\Debug\shm.obj"
+".\Debug\apr_cpystrn.obj"
+".\Debug\apr_fnmatch.obj"
+".\Debug\apr_snprintf.obj"
+".\Debug\apr_strings.obj"
+".\Debug\apr_strnatcmp.obj"
+".\Debug\apr_strtok.obj"
+".\Debug\apr_hash.obj"
+".\Debug\apr_tables.obj"
+".\Debug\proc.obj"
+".\Debug\signals.obj"
+".\Debug\thread.obj"
+".\Debug\threadpriv.obj"
+".\Debug\time.obj"
+".\Debug\timestr.obj"
+".\Debug\groupinfo.obj"
+".\Debug\userinfo.obj"
+".\Debug\libapr.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\dlfc\LOCALS~1\Temp\RSP5DD.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+apr_atomic.c
+dso.c
+buffer.c
+copy.c
+dir.c
+fileacc.c
+filedup.c
+filepath.c
+filepath_util.c
+filestat.c
+filesys.c
+flock.c
+fullrw.c
+mktemp.c
+open.c
+pipe.c
+readwrite.c
+seek.c
+tempdir.c
+proc_mutex.c
+Generating Code...
+Compiling...
+thread_cond.c
+thread_mutex.c
+thread_rwlock.c
+apr_pools.c
+charset.c
+env.c
+errorcodes.c
+getopt.c
+internal.c
+misc.c
+otherchild.c
+rand.c
+start.c
+utf8.c
+version.c
+common.c
+mmap.c
+inet_ntop.c
+inet_pton.c
+multicast.c
+Generating Code...
+Compiling...
+sendrecv.c
+sockaddr.c
+sockets.c
+socket_util.c
+sockopt.c
+apr_getpass.c
+poll.c
+pollcb.c
+pollset.c
+select.c
+apr_random.c
+sha2.c
+sha2_glue.c
+shm.c
+apr_cpystrn.c
+apr_fnmatch.c
+apr_snprintf.c
+apr_strings.c
+apr_strnatcmp.c
+apr_strtok.c
+Generating Code...
+Compiling...
+apr_hash.c
+apr_tables.c
+proc.c
+signals.c
+thread.c
+threadpriv.c
+time.c
+timestr.c
+groupinfo.c
+userinfo.c
+Generating Code...
+Linking...
+Creating temporary file "C:\DOCUME~1\dlfc\LOCALS~1\Temp\RSP5DF.bat" with contents
+[
+@echo off
+if exist .\Debug\libapr-1.dll.manifest mt.exe -manifest .\Debug\libapr-1.dll.manifest -outputresource:.\Debug\libapr-1.dll;2
+]
+Creating command line "C:\DOCUME~1\dlfc\LOCALS~1\Temp\RSP5DF.bat"
+Embed .manifest
+
+
+
+<h3>Results</h3>
+libapr-1.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

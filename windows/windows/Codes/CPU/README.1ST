@@ -1,0 +1,87 @@
+ReadMe.1st------------------------------------------------------
+
+                              CPUINFO
+
+ABSTRACT
+
+ Type "CPUINFO -d" to unzip the compressed package, preserving its
+ directory structure.
+
+ The CPUINFO package includes two DLLs (Dynamic Link Libraries)
+ for Microsoft Windows* Operating Systems (Windows 3.1, Win32s*,
+ Windows for Workgroups*, Windows 95*, and Windows NT*). These
+ DLLs test for the presence of a Genuine Intel processor, the
+ family, model, feature set, and processor clock frequency. Also
+ included is a Windows example program for each of the DLLs to
+ show sample implementation of the DLL calls. Binaries as well 
+ as C and assembly source are provided.
+ 
+ The DLLs are CPUINF16.DLL and CPUINF32.DLL, providing five
+ functions accessible by 16 and 32-bit Windows programs
+ respectively.  These functions are CPU identification, CPU
+ extended identification, CPU clock frequency, CPU features, and
+ the CPU Time Stamp Read.
+
+USAGE
+ The information returned by cpuspeed() can be unreliable under
+ some circumstances. On older systems which do not support the time 
+ stamp register, for example, the speed measurement is simply a 
+ trivial benchmark. Therefore, although cpuspeed() usually 
+ returns accurate data, some processors may return incorrect values.
+ Therefore, it is suggested not to return information about the processor 
+ speed to the user. The suggested use of this program is to set 
+ default values of features (e.g. stereo sound, high 
+ graphic detail, or whatever consumes large amounts 
+ of processor cycles and may need to be disabled on slower 
+ processors) to use upon program initialization.
+
+ While this program works on all current Intel processors,
+ the code is designed to not analyze processor speed if the
+ processor is NOT an Intel processor. 
+
+MORE INFORMATION
+ Refer to included Microsoft Word* 6.0 file "appnote.doc" in
+ the DOCS sub-directory for more information on CPUINFO and
+ a description of the code.
+
+ 16-Bit Version -- for summary information see ReadMe16.txt
+ 32-Bit Version -- for summary information see ReadMe32.txt
+
+
+
+
+    +----------------------------------------------------------+
+    | This program has been developed by Intel Corporation.    |
+    | You have Intel's permission to incorporate this code     |
+    | into your product, royalty free.  Intel has various      |
+    | intellectual property rights which it may assert under   |
+    | certain circumstances, such as if another manufacturer's |
+    | processor mis-identifies itself as being "GenuineIntel"  |
+    | when the CPUID instruction is executed.                  |
+    |                                                          |
+    | Intel specifically disclaims all warranties, express or  |
+    | implied, and all liability, including consequential and  |
+    | other indirect damages, for the use of this code,        |
+    | including liability for infringement of any proprietary  |
+    | rights, and including the warranties of merchantability  |
+    | and fitness for a particular purpose.  Intel does not    |
+    | assume any responsibility for any errors which may       |
+    | appear in this code nor any responsibility to update it. |
+    +----------------------------------------------------------+
+
+  Information in this document is provided in connection with
+  Intel products.  Intel assumes no liability whatsoever, 
+  including infringement of any patent or copyright, for sale 
+  and use of Intel products except as provided in Intel's Terms 
+  and Conditions of Sale for such products.
+     
+  Intel retains the right to make changes to these specifications 
+  at any time, without notice.
+
+
+  * Other brands and names are the property of their respective
+    owners.
+  
+  Copyright (c) 1995, Intel Corporation.  All rights reserved.
+
+------------------------------------------------------ReadMe.1st

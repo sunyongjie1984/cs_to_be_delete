@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<!-- published at 2006-07-23 16:39:54 by CMS_ddvip --> 
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>缓冲区溢出攻防(局部变量) - 豆豆源码网 == 更新最快的程序源码、原代码下载网站</title>
+<link href="/images/code/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="outline">
+<div class="head">
+    <div class="head_top"><a href="/index.html">下载首页</a> | <a href="/map.html">源码分类</a> | <a href="/new.html">最新更新</a> | <a href="/top.html">下载排行</a> | <a href="http://book.ddvip.com" target="_blank">在线小说</a> | <a href="http://down.ddvip.com" target="_blank">软件下载</a> | <a href="http://pcbook.ddvip.com" target="_blank">书籍下载</a> | <a 
+href="http://tech.ddvip.com" target=_blank>电脑教程</a> | <a href="http://bbs.ddvip.com" target=_blank>论坛交流</A> | <a href="http://bbs.ddvip.com/thread.php?fid=15" target="_blank">源码发布</a></div>
+	<div>
+	    <div class="head_left"><a href="/"><img src="/images/logo.gif" border="0" /></a></div>
+		<div class="head_right" id="view_01">&nbsp;</div> 
+	    <div class="clear"></div>
+	</div>
+</div>
+<!-- 头部结束 -->
+
+<!-- 导航开始 -->
+<div class="nav">
+
+<a href="http://code.ddvip.com/list/144.html">ASP源码</a>
+
+<a href="http://code.ddvip.com/list/145.html">PHP源码</a>
+
+<a href="http://code.ddvip.com/list/146.html">CGI源码</a>
+
+<a href="http://code.ddvip.com/list/147.html">JSP源码</a>
+
+<a href="http://code.ddvip.com/list/148.html">Delphi</a>
+
+<a href="http://code.ddvip.com/list/149.html">VB源码</a>
+
+<a href="http://code.ddvip.com/list/150.html">VC源码</a>
+
+<a href="http://code.ddvip.com/list/151.html">PB源码</a>
+
+<a href="http://code.ddvip.com/list/152.html">Java源码</a>
+
+</div>
+<!-- 导航结束 -->
+
+<!-- 搜索开始 -->
+<div class="search">
+     <form name="form1" id="form1" method="post" action="/result.php">
+    <div class="search_left">快速搜索：
+      <input name="name" type="text" id="name" value="请输入源码名称" onfocus="if(this.value=='请输入源码名称') this.value='';" onblur="if(this.value=='') this.value='请输入源码名称';" size="20" maxlength="20" onClick="this.value=''"/>
+	  <input type="submit" name="Submit" value="搜索">
+    </div>
+	</form>
+	<div class="search_right" id="view_02">&nbsp;</div>
+	<div class="clear"></div>
+</div>
+<!-- 搜索结束 -->
+
+<!-- 上部广告开始 -->
+<div class="ad_A" id="view_03">
+</div>
+<!-- 上部广告结束 -->
+</div>
+<div class="outline">
+<!-- 位置开始 -->
+<div class="path">&nbsp; &nbsp; 当前位置：<a href="http://www.ddvip.com" target="_blank">豆豆首页</a>
+
+ > <a href="http://code.ddvip.com/index.html">源码下载</a>
+
+ > <a href="http://code.ddvip.com/list/150.html">VC源码</a>
+
+ > <a href="http://code.ddvip.com/list/266.html">网络通信</a>
+
+</div>
+<!-- 位置结束 -->
+
+<!-- 主体开始 -->
+<div class="main">
+  <!-- 左侧开始 -->
+  <div class="main_left">
+	<div class="main_left_title">本类下载排行TOP10</div>
+	<div class="main_left_list">
+	  <ul>
+	    
+		    <li>·<a href="http://code.ddvip.com/view/11236896002107.html">Gsm手机(短信息,电话簿</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11236896002130.html">即时通讯软件MyICQ的源代</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002220.html">一个局域网聊天程序</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11236896001960.html">如何显示网络服务提供的计</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11236896002189.html">我为聊狂的聊天软件源代码</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002208.html">基于IP/UDP协议的sock编程</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11236896002157.html">一个TCP和UDP聊天、传收</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11236896002024.html">一个完整的FTP程序源代码</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11236896002042.html">聊天程序源代码70</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002307.html">FTP下载的实现(VC版)</a></li>
+		  
+	  </ul>        
+	</div>
+	<div class="main_left_title">本类源码热门推荐10</div>
+	<div class="main_left_list">
+	  <ul>
+	    
+		    <li>·<a href="http://code.ddvip.com/view/11237760002308.html">一个简单的邮件发送程序</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002306.html">自动更新程序及配置服务端</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002307.html">FTP下载的实现(VC版)</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002305.html">介绍两个局域网中传输文件</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002301.html">一个简单的 UDP Server 实</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002302.html">WEB服务器W3Mfc v1.11</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002304.html">用STL写的Web服务器</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002299.html">获取公网IP(张锐)</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002298.html">IP数据包流量监控</a></li>
+		  
+		    <li>·<a href="http://code.ddvip.com/view/11237760002296.html">动态发现某个路由的所有子</a></li>
+		  
+	  </ul>        
+	</div>
+	<div>&nbsp;</div>
+	<div class="clear"></div> 
+  </div>
+  <!-- 左侧结束 -->
+  
+  <!-- 右侧开始 -->
+  <div class="main_right">
+	<!-- 右侧 - 上部开始 -->
+	<div class="main_right_top">
+	  <!-- 右侧 - 上部 - 软件名称 -->
+	  <div class="main_right_top_title"><h1>缓冲区溢出攻防(局部变量)</h1></div>
+	    <!-- 右侧 - 中部 - 开始 -->
+		<div class="main_right_top">
+		  <!--  软件基本资料开始 -->
+			<div class="main_right_top_left">
+              <ul>
+				<li>授权方式：免费源码</li>
+				<li>运行环境：VC</li>
+				<li>源码大小：46 KB</li>
+				
+				<li>整理时间：2006-03-21</li>
+				<li>下载统计：48</li>
+				
+				<li>推荐等级：<img src="/images/3star.gif" /></li>
+				<li>下载帮助：</li>
+			  </ul>
+			</div> 
+		  <!-- 软件基本资料结束 --> 
+				 
+		  <!-- 广告开始 -->
+		  <div class="main_right_top_right" id="view_04"></div>
+		  <!-- 广告结束 -->
+		  <div class="clear"></div>
+		</div>
+		<!-- 右侧 - 中部 - 结束-->
+	  <div id="view_05">&nbsp;</div>
+	  <div class="clear"></div>
+	</div>
+	
+	<!-- 右侧 - 软件说明 - 开始-->
+	<div class="main_right_desc">
+	  <dl>
+		<dt><span class="main_right_desc_u">U</span> 软件简介</dt>
+		<dd>本代码演示了缓冲区溢出的攻击与防范。</dd>
+      </dl>
+	</div>
+	<div class="main_right_desc">
+	  <div class="view_links"><a href="http://down.ddvip.com" target="_blank">下载相关软件</a></div>
+	  <div class="view_links"><a href="http://pcbook.ddvip.com" target="_blank">下载相关书藉</a></div>
+	  <div class="view_links"><a href="http://www.ddvip.com" target="_blank">阅读相关教程</a></div>
+	  <div class="view_links"><a href="http://bbs.ddvip.com" target="_blank">讨论相关话题</a></div>
+	  <div class="view_links"><a href="http://vip.ddvip.com" target="_blank">下载视频教程</a></div>
+	  <div class="clear"></div>
+	</div>
+	<!-- 右侧 - 软件说明 - 结束-->
+	
+	<!-- 右侧 - 软件下载 - 开始-->
+	<div class="main_right_down"><img src="/images/down.gif" /><span>下载地址:</span><hr />
+	  <ul>
+	    
+		<li><a href="/code.php?id=2286&url=http://codedown.ddvip.net/down/ddvip_com_055017d56c7edf.rar">本地下载</a></li>
+		
+	  </ul>
+	</div>
+	<div class="main_right_desc">◇ 为了达到最快的下载速度，推荐使用工具下载本站源码。 <br>
+◇ 如果您发现该源码不能下载，请<a href="http://bbs.ddvip.com/thread.php?fid=13" target="_blank">点击这里</a>进行报告，谢谢！ <br>
+◇ 如果您发现该源码有不良信息，请<a href="http://bbs.ddvip.com/thread.php?fid=13" target="_blank">点击这里</a>进行举报，谢谢支持！ <br>
+◇ 如果您制作了好的源码希望能与大家分享，我们愿意和您一起宣传！投稿请<a href="http://bbs.ddvip.com/thread.php?fid=15" target="_blank">点击这里</a>。 <br>
+◇ 未经本站明确许可，任何网站不得盗链及抄袭本站资源
+	</div>
+	<!-- 右侧 - 软件下载 - 结束-->
+	
+    <div class="clear"></div>
+  </div>
+  <!-- 右侧结束 -->
+  <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<!-- 主体结束 -->
+<div class="foot"><a href="http://bbs.ddvip.com/thread.php?fid=13" target="_blank">错误报告</a> | <a href="http://www.ddvip.com/lawer.htm" target="_blank">网站律师</a> | <a href="http://www.ddvip.com/corp.asp" target="_blank">版权申明</a> | <a href="http://www.ddvip.com/ad.asp" target="_blank">广告服务</a> | <a href="http://www.ddvip.com/link.asp" target="_blank">友情链接</a> | <a href="/map.html" target="_blank">网站地图</a> | &copy;所有版权归豆豆技术 蜀ICP备05002354号 
+</div>
+</div>
+</body>
+</html>
+<script>
+if(self!=top) top.location=self.location;
+</script>
+<script src="/a_d_code/view.js"></script>

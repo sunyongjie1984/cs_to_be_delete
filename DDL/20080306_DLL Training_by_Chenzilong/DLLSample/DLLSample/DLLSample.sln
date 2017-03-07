@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calculator", "Calculator\Calculator.vcproj", "{F35F6E4F-D3B3-4575-9B47-7225E0C198CD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestClientByExplicitLinking", "TestClientByExplicitLinking\TestClientByExplicitLinking.vcproj", "{76AB7721-F741-4943-A5E2-2165BF2498B0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestClientByImplicitLinking", "TestClientByImplicitLinking\TestClientByImplicitLinking.vcproj", "{2791A425-B590-4B26-957F-2884B5DCD773}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F35F6E4F-D3B3-4575-9B47-7225E0C198CD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F35F6E4F-D3B3-4575-9B47-7225E0C198CD}.Debug|Win32.Build.0 = Debug|Win32
+		{F35F6E4F-D3B3-4575-9B47-7225E0C198CD}.Release|Win32.ActiveCfg = Release|Win32
+		{F35F6E4F-D3B3-4575-9B47-7225E0C198CD}.Release|Win32.Build.0 = Release|Win32
+		{76AB7721-F741-4943-A5E2-2165BF2498B0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{76AB7721-F741-4943-A5E2-2165BF2498B0}.Debug|Win32.Build.0 = Debug|Win32
+		{76AB7721-F741-4943-A5E2-2165BF2498B0}.Release|Win32.ActiveCfg = Release|Win32
+		{76AB7721-F741-4943-A5E2-2165BF2498B0}.Release|Win32.Build.0 = Release|Win32
+		{2791A425-B590-4B26-957F-2884B5DCD773}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2791A425-B590-4B26-957F-2884B5DCD773}.Debug|Win32.Build.0 = Debug|Win32
+		{2791A425-B590-4B26-957F-2884B5DCD773}.Release|Win32.ActiveCfg = Release|Win32
+		{2791A425-B590-4B26-957F-2884B5DCD773}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

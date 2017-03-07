@@ -1,0 +1,60 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: PrinterSelect - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x809 /fo"Release/PrinterSelect.res" /d "NDEBUG" /d "_AFXDLL" "h:\My Documents\down_src\printer_Demo_source\Projects\PrinterSelect\PrinterSelect.rc"" 
+Creating temporary file "C:\DOCUME~1\songfei\LOCALS~1\Temp\RSP3E0.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/PrinterSelect.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"h:\My Documents\down_src\printer_Demo_source\Projects\PrinterSelect\ChildFrm.cpp"
+"h:\My Documents\down_src\printer_Demo_source\Projects\PrinterSelect\EnumPrinters.cpp"
+"h:\My Documents\down_src\printer_Demo_source\Projects\PrinterSelect\MainFrm.cpp"
+"h:\My Documents\down_src\printer_Demo_source\Projects\PrinterSelect\PrinterSelect.cpp"
+"h:\My Documents\down_src\printer_Demo_source\Projects\PrinterSelect\PrinterSelectDoc.cpp"
+"h:\My Documents\down_src\printer_Demo_source\Projects\PrinterSelect\PrinterSelectView.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\songfei\LOCALS~1\Temp\RSP3E0.tmp" 
+Creating temporary file "C:\DOCUME~1\songfei\LOCALS~1\Temp\RSP3E1.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/PrinterSelect.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"h:\My Documents\down_src\printer_Demo_source\Projects\PrinterSelect\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\songfei\LOCALS~1\Temp\RSP3E1.tmp" 
+Creating temporary file "C:\DOCUME~1\songfei\LOCALS~1\Temp\RSP3E2.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/PrinterSelect.pdb" /machine:I386 /out:"Release/PrinterSelect.exe" 
+".\Release\ChildFrm.obj"
+".\Release\EnumPrinters.obj"
+".\Release\MainFrm.obj"
+".\Release\PrinterSelect.obj"
+".\Release\PrinterSelectDoc.obj"
+".\Release\PrinterSelectView.obj"
+".\Release\StdAfx.obj"
+".\Release\PrinterSelect.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\songfei\LOCALS~1\Temp\RSP3E2.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ChildFrm.cpp
+EnumPrinters.cpp
+MainFrm.cpp
+PrinterSelect.cpp
+PrinterSelectDoc.cpp
+PrinterSelectView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+PrinterSelect.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,19 @@
+/*! @mainpage Writing an exception safe code in generic way.
+ *
+ *  @anchor mate_contents
+ *
+ *    -# @subpage mate_introduction
+ *    -# @subpage mate_basic_usage
+ *      -# @ref mate_bu_s1
+ *      -# @ref mate_bu_s2
+ *      -# @ref mate_bu_s3
+ *      -# @ref mate_bu_s4
+ *    -# @subpage mate_utility_classes
+ *      -# @ref mate_uc_s1
+ *      -# @ref mate_uc_s2
+ *      -# @ref mate_uc_s3
+ *      -# @ref mate_uc_s4
+ *    -# @subpage mate_use_lambda
+ *    -# @subpage mate_references
+ *
+ */

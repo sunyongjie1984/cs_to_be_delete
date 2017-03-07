@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "字符串与数组", "字符串与数组\字符串与数组.vcproj", "{6631E589-9BED-4A5B-A3A3-A8D4A8167B2B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "security", "security\security.vcproj", "{CD717EC7-95E1-45BC-BFF8-4FAE5B0EEBF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6631E589-9BED-4A5B-A3A3-A8D4A8167B2B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6631E589-9BED-4A5B-A3A3-A8D4A8167B2B}.Debug|Win32.Build.0 = Debug|Win32
+		{6631E589-9BED-4A5B-A3A3-A8D4A8167B2B}.Release|Win32.ActiveCfg = Release|Win32
+		{6631E589-9BED-4A5B-A3A3-A8D4A8167B2B}.Release|Win32.Build.0 = Release|Win32
+		{CD717EC7-95E1-45BC-BFF8-4FAE5B0EEBF7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CD717EC7-95E1-45BC-BFF8-4FAE5B0EEBF7}.Debug|Win32.Build.0 = Debug|Win32
+		{CD717EC7-95E1-45BC-BFF8-4FAE5B0EEBF7}.Release|Win32.ActiveCfg = Release|Win32
+		{CD717EC7-95E1-45BC-BFF8-4FAE5B0EEBF7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

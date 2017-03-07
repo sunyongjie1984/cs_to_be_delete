@@ -1,0 +1,13 @@
+# $Id: finger-lib,v 1.2 2000/11/18 08:25:04 roesch Exp $
+
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"IDS011 - Finger cybercop redirection"; flags:PA; content: "|40 6C 6F 63 61 6C 68 6F 73 74 0A|"; dsize: 11; depth: 11;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"IDS251 - Finger redirection"; content: "@"; flags: AP;) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"FINGER-Search";flags:PA; content:"search";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"FINGER-root";flags:PA; content:"root";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"FINGER-ProbeNull"; flags:PA; content:"|00|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"FINGER-Probe0";flags:PA; content:"0";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"FINGER-PipeW";flags:PA; content:"/W|3b|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"FINGER-Pipe"; flags:PA; content:"|7c|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"FINGER-Bomb";flags:PA; content:"@@";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"IDS131 - CVE-1999-0612 - FINGER-0@host";flags:PA; content:"|300A|";) 
+alert tcp $EXTERNAL_NET any -> $HOME_NET 79 (msg:"IDS130 - CVE-1999-0612 - FINGER-.@host";flags:PA; content:"|2E0A|";) 

@@ -1,0 +1,3 @@
+﻿  main.cpp
+main.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  const_const_expression.vcxproj -> G:\centos\CS\code\const\const\Debug\const_const_expression.exe

@@ -1,0 +1,89 @@
+<html><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<link rel="stylesheet" href="comment_data/index.css">
+<link rel="stylesheet" href="comment_data/base.css">
+
+<title></title>
+
+</head><body leftmargin="0" topmargin="0" style="" align="center" marginheight="0" marginwidth="0">
+<iframe name="iframecomm" src="Python%20%E8%B0%83%E8%AF%95%E5%99%A8%20Pdb_files/comment.htm" style="display: none;" width="0" height="0"></iframe>
+
+
+	<form method="post" id="sortForm" action="?comm=update" target="iframecomm" onsubmit="return check();">
+	<input name="ctype" value="0" type="hidden">
+	<input name="iscomment" id="iscomment" value="0" type="hidden">
+	<input name="artid" value="1817750" type="hidden">
+	<input name="userid" value="63996" type="hidden">
+
+	<table style="border-collapse: collapse;" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+	<tbody><tr><td height="25">
+	<span id="user1">
+	用户名：<input name="username" id="username" size="15" value="" class="input_title3" type="text"> 密码：<input size="15" name="password" id="password" class="input_title3" type="password"> <a href="http://blog.chinaunix.net/register.php" target="_blank">免费注册</a><br>
+	</span>
+	<span id="freeuser" style="display: none;">
+		昵称：<input name="nickname" id="nickname" class="input_title3" value="" type="text"> 
+	</span>
+	
+	
+	验证码：<input name="num" id="num" class="input_title3" style="width: 40px;" value="" type="text">
+	<img src="comment_data/num.png" alt="" border="0" width="40" height="20">
+		　<input onclick="checkfree();" id="noname" type="checkbox"><label for="noname">匿名</label>
+		</td></tr>
+	<tr><td>
+	<textarea name="comment" id="comment" style="border: 1px solid rgb(153, 153, 153); font-size: 12px; font-family: Tahoma,Verdana,宋体,Fixedsys; line-height: 150%; width: 430px; height: 85px;"></textarea></td></tr>
+	<tr><td align="cemter"><input value="提交" class="smb_btn" onmouseover="this.className='smb_btn3'" onmouseout="this.className='smb_btn'" type="submit">
+	</td></tr>
+	</tbody></table>
+	</form>
+
+	<script language="javascript">
+	function $(s){return document.getElementById(s);}
+	function checkfree(){
+		if($("noname").checked){
+			$("user1").style.display="none";
+			$("freeuser").style.display="";
+			$("iscomment").value=1;
+			
+			if($('nickname').value=='')$('nickname').value='本站网友';
+		}else{
+			$("user1").style.display="";
+			$("freeuser").style.display="none";
+			$("iscomment").value=0;
+		}
+		//alert($("noname").checked);
+	}
+	function check(){
+
+		if($("iscomment").value==0){
+			if($("username").value==""){
+				alert('请输入您的用户名！');
+				$("username").select();
+				return false;
+			}
+			if($("password").value==""){
+				alert('请输入您的密码！');
+				$("password").select();
+				return false;
+			}
+		}else{
+			if($("nickname").value==""){
+				alert('请输入您的称呼！');
+
+				$("nickname").select();
+				return false;
+			}
+			$("username").value="";
+			$("password").value="";
+		}
+		if($("comment").value==""){
+			alert('你忘记输入内容了！');
+			$("comment").select();
+			return false;
+		}
+		return true;
+	}
+
+
+	</script></body></html>

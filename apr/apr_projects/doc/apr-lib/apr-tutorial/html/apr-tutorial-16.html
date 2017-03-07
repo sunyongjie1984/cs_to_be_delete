@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: multiple threads</TITLE>
+ <LINK HREF="apr-tutorial-17.html" REL=next>
+ <LINK HREF="apr-tutorial-15.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc16" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-17.html">Next</A>
+<A HREF="apr-tutorial-15.html">Previous</A>
+<A HREF="apr-tutorial.html#toc16">Contents</A>
+<HR>
+<H2><A NAME="s16">16.</A> <A HREF="apr-tutorial.html#toc16">multiple threads</A></H2>
+
+<P>Thread is sometimes called light-weight process. In general, process is a virtualization of CPU and memory. In contrast, thread is a virtualization of only CPU. From a C programmer's eyes, CPU represents both PC(Program Counter) and SP(Stack Pointer). We can think each thread has its own PC and SP. Having independent PC implies that multiple threads run simultaneously. Having independent SP implies that each thread has independent stack memory. Rather than that, each thread doesn't have own memory space(address space) unlike process. All threads in the same process share one memory space. In other words, threads share all objects except ones in stack, a.k.a. local objects.</P>
+<P>To create a new thread, we can create a thread attribute object by apr_threadattr_create() if we need it. We can use NULL instead of creating apr_threadattr_t object. The prototype declaration is as follows:</P>
+<P>/* excerpted from apr_thread_proc.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_status_t) apr_threadattr_create(apr_threadattr_t **new_attr, 
+                                                apr_pool_t *cont);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>apr_threadattr_t is opaque structure. It has some setter APIs. If we need undefault behaviours, we can set thread attributes. Then, we just call apr_thread_create() so that we can create a new thread.</P>
+<P>/* excerpted from apr_thread_proc.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_status_t) apr_thread_create(apr_thread_t **new_thread, 
+                                            apr_threadattr_t *attr, 
+                                            apr_thread_start_t func, 
+                                            void *data, apr_pool_t *cont);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The first argument is result argument, by which we can get apr_thread_t object. The second argument is thread attribute object mentioned above. As stated above, NULL is OK. The third argument is function pointer, from which a new thread starts to run. It's called thread entry point. The fourth argument is arbitrary context object passed to the thread entry point. The last argument is memory pool to use.</P>
+<P>Thread entry point, apr_thread_start_t, looks as follows:</P>
+<P>/* excerpted from 
+<A HREF="../sample/thread-sample.c">thread-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+void* APR_THREAD_FUNC doit(apr_thread_t *thd, void *data);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>For portability, APR_THREAD_FUNC macro is required.</P>
+<P>This is a kind of callback function, which is called by system. Please take a look at 
+<A HREF="../sample/thread-sample.c">thread-sample.c</A> and execute it in order to know how threads work. </P>
+<P>The first argument of thread entry point is thread object. This is one that is returned from apr_thread_create() as its result argument. The second argument of thread entry point is context object that is specified by the fourth argument of apr_thread_create(). Return type is void pointer. In pthread(POSIX thread) scheme, thread entry point function can return its status code as return value. In the current libapr scheme, return value has no meaning. So, it's OK to just return NULL. Instead, we call apr_thread_exit() to return status code.</P>
+<P>Similar to process, thread has an attribute called detachable. If thread is detached, the main thread can't control the sub thread, especially its termination. On the other hand, if thread is not detached, the main thread should take care of its termination. I'll describe it later. The default attribute is detached.</P>
+<P>When thread entry point exits, the thread terminates on Unix. However, it doesn't terminate on Windows. For portability, we have to call apr_thread_exit().</P>
+<P>Main thread should call apr_thread_join() to take care of sub thread's termination. Imagine generating a new thread is similar to splitting a running context(virtualized CPU) and apr_thread_join() makes one running context from the splitted ones. By calling apr_thread_join(), we can get status code from terminated thread, which has called apr_thread_exit().</P>
+<P>Thread and memory pool is difficult to control properly. I call a memory pool 'thread-mp', which is passed to apr_thread_create(). There are some caveats. Most importantly, apr_thread_exit() destroys the child memory pools of 'thread-mp'. It causes a typical bug that we destroy a child memory pool after destroying its parent memory pool. This kind of bug can cause a prcoess crash and it is fairly very hard to find.
+As mentioned earlier, if thread is detached, we don't need to call apr_thread_join() for it. In other words, it means we can't know when sub thread terminates. It also means we can't know when we can destroy 'thread-mp'. My recommendation for workaround is that you should use non-detached thread, and should call apr_thread_join() to know whether you can destory 'thread-mp'.</P>
+<P><EM>REMARK</EM>: Main thread is sometimes called parent thread, but some people don't like such parent/child naming. Because threads don't make parent-child relationship unlike process. Even if it seems that parent thread generates a child thread, they are completely equal, so that we should consider one thread is splitted to two threads. Nevertheless, we often need to destinguish two threads for explanation. Here, I use the terms, main thread and sub thread.</P>
+
+
+<HR>
+<A HREF="apr-tutorial-17.html">Next</A>
+<A HREF="apr-tutorial-15.html">Previous</A>
+<A HREF="apr-tutorial.html#toc16">Contents</A>
+</BODY>
+</HTML>

@@ -1,0 +1,244 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\GMemMngDemo.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GMemMngDemo.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 GMemMngDemo"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
+    LTEXT           "GMemMngDemo，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2009",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_GMEMMNGDEMO_DIALOG DIALOGEX 0, 0, 343, 186
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "GMem内存管理单元测试（AWE——地址窗口化扩展）"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT2,175,81,43,12,ES_AUTOHSCROLL
+    RTEXT           "定时器：",IDC_STATIC,17,145,28,8
+    EDITTEXT        IDC_EDIT3,47,143,37,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "制造碎片",IDC_BUTTON2,249,158,39,14
+    RTEXT           "制造耗时：",IDC_STATIC,11,161,34,8
+    EDITTEXT        IDC_EDIT4,47,159,37,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "物理页大小：",IDC_STATIC,16,67,48,8
+    EDITTEXT        IDC_EDIT6,66,65,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "占物理页：",IDC_STATIC,16,83,48,8
+    EDITTEXT        IDC_EDIT7,66,81,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "占物理内存：",IDC_STATIC,16,98,48,8
+    EDITTEXT        IDC_EDIT8,66,96,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "GMem页大小：",IDC_STATIC,119,52,54,8
+    EDITTEXT        IDC_EDIT9,175,65,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "GMem页数量：",IDC_STATIC,119,67,54,8
+    RTEXT           "GMem内存大小：",IDC_STATIC,119,83,54,8
+    CONTROL         "定时制造",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,250,144,36,10
+    EDITTEXT        IDC_EDIT10,175,96,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "GMem使用量：",IDC_STATIC,119,98,54,8
+    PUSHBUTTON      "全部释放",IDC_BUTTON3,290,158,39,14
+    GROUPBOX        "系统信息",IDC_STATIC,7,39,106,88
+    GROUPBOX        "GMem信息",IDC_STATIC,116,39,105,88
+    RTEXT           "可用物理内存：",IDC_STATIC,17,52,48,8
+    EDITTEXT        IDC_EDIT11,67,50,43,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "GMemMng操作(制造耗时：MS，每次耗时：US)",IDC_STATIC,7,131,329,48
+    CONTROL         "随机分配",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,168,144,36,10
+    CONTROL         "随机释放",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,209,144,36,10
+    EDITTEXT        IDC_EDIT12,175,111,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "物理内存空闲率：",IDC_STATIC,9,112,55,8
+    EDITTEXT        IDC_EDIT13,66,111,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "GMem使用率：",IDC_STATIC,119,112,54,8
+    PUSHBUTTON      "手动分配",IDC_BUTTON4,166,158,39,14
+    PUSHBUTTON      "手动释放",IDC_BUTTON5,208,158,39,14
+    RTEXT           "每次耗时：",IDC_STATIC,89,161,34,8
+    EDITTEXT        IDC_EDIT14,125,159,37,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "操作次数：",IDC_STATIC,89,145,34,8
+    EDITTEXT        IDC_EDIT15,125,143,37,12,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "定时释放",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,292,144,36,10
+    PUSHBUTTON      "创建",IDC_BUTTON1,175,35,43,14
+    GROUPBOX        "线程数：",IDC_STATIC,224,39,112,88
+    EDITTEXT        IDC_EDIT16,257,37,18,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "资源掠夺",IDC_BUTTON6,280,36,43,14
+    EDITTEXT        IDC_EDIT5,175,50,43,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_GLIST2,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,225,51,109,74
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "GMemMngDemo.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "GMemMngDemo.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_GMEMMNGDEMO_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 336
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 179
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 GMemMngDemo(&A)..."
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\GMemMngDemo.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

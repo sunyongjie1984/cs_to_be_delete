@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "add_item", "cppp5_7\cppp5_7.vcxproj", "{BD5C8A55-653D-4986-8762-D10CF2B25E9A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "avarage_price", "avarage_price\avarage_price.vcxproj", "{27D5CEE2-EA1D-41D7-9514-19FF0BC92BD1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "account", "account\account.vcxproj", "{9639D290-DC17-4B80-B525-15AE0DA69AD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD5C8A55-653D-4986-8762-D10CF2B25E9A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BD5C8A55-653D-4986-8762-D10CF2B25E9A}.Debug|Win32.Build.0 = Debug|Win32
+		{BD5C8A55-653D-4986-8762-D10CF2B25E9A}.Release|Win32.ActiveCfg = Release|Win32
+		{BD5C8A55-653D-4986-8762-D10CF2B25E9A}.Release|Win32.Build.0 = Release|Win32
+		{27D5CEE2-EA1D-41D7-9514-19FF0BC92BD1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27D5CEE2-EA1D-41D7-9514-19FF0BC92BD1}.Debug|Win32.Build.0 = Debug|Win32
+		{27D5CEE2-EA1D-41D7-9514-19FF0BC92BD1}.Release|Win32.ActiveCfg = Release|Win32
+		{27D5CEE2-EA1D-41D7-9514-19FF0BC92BD1}.Release|Win32.Build.0 = Release|Win32
+		{9639D290-DC17-4B80-B525-15AE0DA69AD0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9639D290-DC17-4B80-B525-15AE0DA69AD0}.Debug|Win32.Build.0 = Debug|Win32
+		{9639D290-DC17-4B80-B525-15AE0DA69AD0}.Release|Win32.ActiveCfg = Release|Win32
+		{9639D290-DC17-4B80-B525-15AE0DA69AD0}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

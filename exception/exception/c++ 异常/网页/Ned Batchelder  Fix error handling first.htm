@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0047)http://nedbatchelder.com/text/fix-err-hand.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="http://nedbatchelder.com">--><base href="."><title>Ned Batchelder: Fix error handling first</title><link rel="stylesheet" href="./Ned Batchelder  Fix error handling first_files/style.css" type="text/css"><link rel="stylesheet" href="./Ned Batchelder  Fix error handling first_files/printstyle.css" type="text/css" media="print"><script type="text/javascript" src="./Ned Batchelder  Fix error handling first_files/nedbatchelder.js"></script><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head><body><center><table id="logo_banner" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td id="logo" align="center"><a href="http://nedbatchelder.com/"><img src="./Ned Batchelder  Fix error handling first_files/dodeca3_100.gif" width="100" height="120" alt="[*]"></a></td><td id="banner"><span class="path"><a href="http://nedbatchelder.com/">Ned Batchelder</a> : <a href="http://nedbatchelder.com/blog">Blog</a> | <a href="http://nedbatchelder.com/code">Code</a> | <a href="http://nedbatchelder.com/text">Text</a> | <a href="http://nedbatchelder.com/site">Site</a></span><br><span class="headslug">Fix error handling first</span><br><span class="path">
+                    » <a href="http://nedbatchelder.com/">Home</a> : <a href="http://nedbatchelder.com/text">Text</a></span></td></tr></tbody></table><table id="content_menu" cellpadding="0" cellspacing="0"><tbody><tr><td id="content" valign="top"><div class="body"><div id="searchwelcome"></div><p class="dateline">
+                            Created 6 February 2003, last updated 24 January 2007
+                        </p><p class="first">Often when unexpected errors first occur, I've found problems in the way
+the error is handled.  This isn't surprising: error handling code is often
+the least-exercised part of your system, so it's natural that there are bugs
+in it.
+It is important to fix the error handling problems first, then the original
+error.</p><p>Sometimes there is a whole chaing of problems started by the original error condition,
+then compounded as layers of error handling code mis-handle the condition.
+Fix all the problems, backwards.
+</p><h1 id="h_Error_handling_code">Error handling code</h1><p>In any program, there will be code specifically designed to handle unusual
+situations, whether they be errors, exceptions,
+<a href="http://nedbatchelder.com/text/assert.html">failed assertions</a>, edge conditions, odd input,
+whatever.  The important thing about this "anomaly code" is that it is not
+often executed, making it a good hiding place for bugs. Often it can be
+difficult to test: how can you make sure there's a bad block in a disk file
+to test your error handling logic?
+</p><p>Estimates vary about what fraction of a large program is devoted to error
+handling, especially when different error handling techniques (status codes
+vs. exceptions, for instance) are taken into account.  I think five to ten
+percent is a reasonable estimate in a large well-developed application.
+That's a good slice of code that doesn't get regularly tested.
+</p><h1 id="h_Fix_error_handling_first">Fix error handling first</h1><p>When a problem occurs in your application, always check first that the
+error was handled appropriately.  If it wasn't, always fix the handling code
+first.
+</p><blockquote class="box">Always fix error handling before fixing errors.</blockquote><p>This rule is like the airline rule of putting an oxygen mask on yourself
+before putting one on your child. There are a few reasons for insisting on
+this order of work:</p><ol><li>With the original error in place, you have a perfect test case for the bug
+in your error handling code.  Once you fix the original problem, how will you
+test the error handling? Remember, one of the reasons there was a bug there
+in the first place is that it is hard to test it.
+</li><li>Once the original problem is fixed, the urgency for fixing the error
+handling code is gone.  You can say you'll get to it, but what's the rush?
+You'll be like the guy with the leaky roof.  When it's raining, he can't
+fix it because it's raining out, and when it isn't raining, there's
+no leak!</li></ol><h1 id="h_Cascading_errors">Cascading errors</h1><p>In complex systems, we might be talking here about a whole chain of hidden
+bugs, all hidden until one problem triggers them, displaying them to you all
+at once.
+When that happens, analyze the chain, understand what went wrong at each step,
+and then fix the problems backwards.
+</p><blockquote class="box">Fix a chain of bugs backwards, from last observed problem back to the
+	original cause.</blockquote><p>This is the general statement of my original rule.  In each cause-and-effect
+pair, don't fix the cause until the effect is correct.  With a chain, the only
+effect you can fix first is the last one, because every other one is another
+effect's cause.</p><h1 id="h_A_real_example">A real example</h1><p>Here's an actual example that happened just the other day.
+The details have been changed for simplification (and to protect the innocent).
+Here's the log file:</p><blockquote class="code"><tt>1&nbsp;[trace]&nbsp;Getting&nbsp;user&nbsp;id...<br>2&nbsp;[crit!]&nbsp;Assertion&nbsp;failed:&nbsp;strlen(pUser-&gt;GetUserId())&nbsp;&gt;&nbsp;0<br>3&nbsp;[error]&nbsp;No&nbsp;handler&nbsp;for&nbsp;failed&nbsp;assertion<br>4&nbsp;[trace]&nbsp;Prefs&nbsp;lookup:&nbsp;cache&nbsp;for&nbsp;&nbsp;is&nbsp;empty<br>5&nbsp;[trace]&nbsp;Querying&nbsp;full&nbsp;user&nbsp;info...<br>6&nbsp;[trace]&nbsp;User&nbsp;&nbsp;using&nbsp;&nbsp;skin<br></tt></blockquote><p>The first thing wrong here is at line 2, where a critical error occurs:
+a <a href="http://nedbatchelder.com/text/assert.html">failed assertion</a>.  The programmer thought
+it was impossible to have an empty string for a user id.  He was wrong.</p><blockquote class="box">If it happens, it must be possible.</blockquote><p>In the real bug this is based on, the cause was another server that was
+unavailable, but it doesn't matter: clearly somehow the user id was
+an empty string, so an assertion is the wrong way to deal with it. Bug 1.
+</p><p>At line 3, we see that the assertion infrastructure is not properly
+initialized, and there is no handler for failed assertions, so it is ignored.
+Bug 2.
+</p><p>At line 4, the preferences cache is being asked for information about the user,
+using the empty string as an id, and the cache is trying to find the user
+(see the double space in the phrase "cache for&nbsp;&nbsp; is empty"? That's the empty
+user id in that message).
+The cache should know enough not to accept an empty string as a user id.  Bug 3.
+</p><p>At line 5, the user's full information is queried, and at line 6, the results
+of the user query are back, and they aren't good.  Not only has the user
+database gladly accepted an empty string as a user id, but it has returned empty
+strings back as the results.
+The log message here has two cases of double-space, showing the two places where
+empty strings are being used as words.
+Bug 4.
+</p><h1 id="h_The_wrong_way_to_fix_it">The wrong way to fix it</h1><p>In this example, the simple thing to do is to find the server that was down,
+bring it back up and try again.  The server will be available, the user
+id will be properly retrieved, it will find real results in the cache and the
+database, and all will be well. Right?
+</p><p>Wrong. You won't have fixed any bugs — our first bug wasn't that the server was down,
+it was that we mis-handled the server being down.
+The next time the server is unavailable, everything will go wrong again.
+</p><h1 id="h_The_right_way_to_fix_it">The right way to fix it</h1><p>Work backwards, starting with the last problem.  Fix the database so that
+it detects bogus ids, and returns some sort of error.  Run the application again,
+and see that bugs 1 through 3 still happen, but number 4 has been fixed.</p><p>Work on bug 3: fix the cache so that it detects bogus ids, and returns
+some sort of error (perhaps throwing an exception).  Run the app again, and see that
+bugs 1 and 2 still happen, but number 3 has been fixed.  Notice that at this point,
+you can't tell if bug 4 is fixed or not: the bogus user id never gets to the
+database, so it never gets a chance to show that it can detect it.  This is why
+we had to fix (and test!) bug 4 first.  Bug 4 only happens when bugs 1 through 3
+are still in the system.</p><p>Fix bug 2: make sure the assertion handler is properly initialized,
+or make sure that if it is not, something dramatic (like a dialog box or a thrown
+exception) happens.</p><p>Fix bug 1: don't assert that the user id can't be the empty string. Clearly it can.
+Throw an exception instead.</p><p>Now that all four of the bugs are fixed, you can do something about the <em>real</em>
+problem: the application didn't handle an unavailable server well.  There's tons of
+ways to deal with this (retries, fail over, caches, redundant sources), but that's
+off the topic.
+</p><h1 id="h_Putting_it_into_practice">Putting it into practice</h1><p>Working strictly backward like this can be difficult.  For one thing, the four bugs
+could have ended up with different developers, and coordinating their efforts to be sure
+the bugs were fixed (and tested) in reverse order would have been too constraining.
+(In the real bugs my example was based on, the four bugs were handled by three different
+developers).
+</p><p>You may be under time pressure, and don't have the luxury of fixing all four bugs in
+turn.  The boss is screaming for the system to start working again, and won't want to
+hear about some "theoretical" improvement.  As far as he's concerned, everything's broken
+until the system is running again.</p><p>Some people would even argue that fixing all four bugs was unnecessary.
+Consider bug 4.  Once
+the database client is fixed so that it never requests data about the empty user id,
+why does it matter what the database server does with an empty user id?
+So it's not a bug any more, right?</p><p>In the real world,
+there are all sorts of constraints and pressures (time, ownership, expertise, etc)
+that may convince you not to fix bugs.  I understand that — we all have to ship product,
+and we're all only human.  But the fact remains that bug 4 was a real bug. It
+may be latent, it may be hard to fix, it may be expedient not to fix it, but let's not
+kid ourselves: it is a bug.  A bug you can't see is still a bug.
+</p><p>Fixing code is easiest when you can run it, and error handling code is only run when there
+are errors happening for it to handle.  Broken error handling code is just a future mysterious
+accident waiting to happen.  Fix error handling code before fixing errors.
+</p><h1 id="h_See_also">See also</h1><ul><li><a href="http://nedbatchelder.com/text/assert.html">Asserts</a>, about the theory and practice of assertions.</li><li><a href="http://nedbatchelder.com/text/log-style-guide.html">Log message style guide</a>, about good practice in writing log messages.</li><li><a href="http://nedbatchelder.com/blog">My blog</a>, where other similar topics are discussed,
+including <a href="http://nedbatchelder.com/blog/200412/the_pitfalls_of_fixing_error_handling_first.html">the pitfalls of fixing error handling first</a>.</li></ul><div class="googleads"></div><div class="comments" id="comments">
+<h1>Comments</h1>
+
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Fix error handling first_files/b92ced73cf6c82c006b1dbe4f29d7ed4.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Osiris</b></span>
+			<span class="when"><span class="adminlink"></span> 12:18 AM on 27 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Hmmmm...good point.  One of those 'obvious once it has been mentioned' things that are called common sense and yet are so commonly overlooked.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Fix error handling first_files/cf201caa4d38c971da9275931ebc8b44.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>guy-in-corner</b></span>
+			<span class="when"><span class="adminlink"></span> 6:49 AM on 13 Nov 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Minor suggestion: In tracing frameworks, when printing a string, always put quotes around it.
+<br>
+<br>e.g. 6 [trace] User '' using '' skin
+<br>
+<br>This makes it much easier to tell that you've got an empty string, or if you've got leading or trailing spaces.
+<br>
+<br>Maybe this should go in your Log message style guide?
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Fix error handling first_files/6a1808b3927634bbc70574c224f498a3.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>asdfasdf</b></span>
+			<span class="when"><span class="adminlink"></span> 12:49 AM on 12 May 2005</span>
+		</div>
+		
+		<p class="commenttext">
+			Bug number 4 is not necessarily a bug. Depends on the contract of the method. You shouldn't make EVERY method guard against EVERYTHING. Else you have too much redundancy.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Fix error handling first_files/f7e7ee4998d2b852ec3dd1de3f4cc038.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Pete Austin</b></span>
+			<span class="when"><span class="adminlink"></span> 4:28 AM on 23 Sep 2005</span>
+		</div>
+		
+		<p class="commenttext">
+			You missed Bug 5: the system is down. That's the one to fix first.
+<br>
+<br>Later, at a quiet time, if you've really no alternative to doing development on your live system, you can fix Bugs 4 to 1.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Fix error handling first_files/75e9a11371cbe1566607180863efdf4c.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b><a href="http://nedbatchelder.com/" rel="nofollow" target="_blank">Ned Batchelder</a></b></span>
+			<span class="when"><span class="adminlink"></span> 6:49 AM on 23 Sep 2005</span>
+		</div>
+		
+		<p class="commenttext">
+			Pete, you are right, the server being down was the root cause.  In a production environment, you would fix that problem first.
+<br>
+<br>But in a development environment, it's the one to fix last.  You need the server to stay down while you fix all the downstream problems it caused.  That's the only way to know that you'll deal with a down server more gracefully next time.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Fix error handling first_files/01bbb59a1c3ef9960f25a97afe7e920f.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b><a href="http://andrewjgrimm.wordpress.com/" rel="nofollow" target="_blank">Andrew Grimm</a></b></span>
+			<span class="when"><span class="adminlink"></span> 7:45 PM on 19 Apr 2009</span>
+		</div>
+		
+		<p class="commenttext">
+			Rather than merely having a fix for bug 4 that's only testable until bug 3 is fixed (manually running the program), wouldn't it be better to have a test that involves knowingly sending the database a bad id, and testing that it returns an error? That way, you can be confident that any refactoring won't break the error handling.
+		</p>
+	</div>
+
+<div id="commentform">
+<h2>Add a comment:</h2>
+<div>
+	<form method="post" action="http://nedbatchelder.com/text/fix-err-hand.html#commentform" id="commentformform">
+		<table width="100%" border="0" cellspacing="0" cellpadding="2">
+			<tbody><tr>
+				<td width="0%">
+					<div class="label">name</div>
+				</td>
+				<td width="100%">
+					<input class="edit" type="text" name="f271a2b568bfd41b67ea8b89d1f322817" id="f271a2b568bfd41b67ea8b89d1f322817" size="40" value="">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="label">email</div>
+				</td>
+				<td>
+					<div style="display:none">
+					Ignore this:
+					<input class="edit" type="email" name="fdde17a02e44af81c63d5b5d5ed479bed" id="fdde17a02e44af81c63d5b5d5ed479bed" size="40">
+					</div>
+					<input class="edit" type="email" name="f01f1f47905b2ae1934990c2ee43ba0b3" id="f01f1f47905b2ae1934990c2ee43ba0b3" size="40" value="">
+					<span class="notice">not displayed and no spam.</span>
+					<div style="display:none">
+					Leave this empty:
+					<input class="edit" type="email" name="ff308f837036c937ae794d56a10e53b9f" id="ff308f837036c937ae794d56a10e53b9f" size="40">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="label">www</div>
+				</td>
+				<td>
+					<input class="edit" type="url" name="fefa66e8f9d1784c18dd36dd5a90dcb5f" id="fefa66e8f9d1784c18dd36dd5a90dcb5f" size="40" value="">
+					<span class="notice">not searched.</span>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<div class="notice">Name and either email or www are required.</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div align="center" style="display:none">
+						Don't put anything here:
+						<textarea name="fc32031f6a7a7c0485f4ab97903070a45" id="fc32031f6a7a7c0485f4ab97903070a45" rows="7" cols="77" style="width:100%"></textarea>
+					</div>
+					<div align="center">
+						<textarea name="f8451de3e28bfa06dda10ba4261f0b594" id="f8451de3e28bfa06dda10ba4261f0b594" rows="7" cols="77" style="width:100%"></textarea>
+					</div>
+					<div align="center" style="display:none">
+						Leave this empty:
+						<textarea name="fe79c0b25590a52cbf72383cc59802145" id="fe79c0b25590a52cbf72383cc59802145" rows="7" cols="77" style="width:100%"></textarea>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="notice" align="right">
+					URLs auto-link and some tags are allowed: &lt;a&gt;&lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;br&gt;&lt;pre&gt;.
+				</td>
+			</tr>
+			<tr valign="top">
+				<td colspan="2">
+					<div align="right">
+						<label for="cbnotify">
+							<input type="checkbox" name="fe6ebaabe1fbf33b9c14490712405f9bf" id="cbnotify">
+							<span class="label">Email me future comments</span>
+						</label>&nbsp;&nbsp;
+						<input id="previewbtn" type="submit" name="f682e895d5e7bfa2f5f6f4ff9b5f65f46" value="preview &gt;&gt;">
+						<span style="display:none">
+						<input type="submit" name="fc602f1fbe7fb5f724377c0c11aaba0b2" value="I&#39;m a spambot">
+						</span>
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+		<input type="hidden" name="fb36ca5bd59ff7369b7525571d24020a6" value="text/fix-err-hand.html">
+		<input type="hidden" name="spinner" value="81f16338b23d84e789f6e5f9cc87c495">
+		<input type="hidden" name="fef5d9fc28f48a675a72bb9fcb470c2d8" value="1321498621">
+
+
+
+	</form>
+</div>
+</div>
+
+</div>
+</div></td><td id="menu" valign="top"><div class="sidebar">
+
+
+<div class="blogroll"><ul class="first"><li>Search this site:
+            
+<form action="http://www.google.com/cse" id="searchbox_007818501792991951010:s9hiibxg-ty" style="margin-top:6px;"><input type="hidden" name="cx" value="007818501792991951010:s9hiibxg-ty"><table cellpadding="0" cellspacing="0"><tbody><tr><td valign="middle"><input type="text" name="q" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(126, 157, 185); border-right-color: rgb(126, 157, 185); border-bottom-color: rgb(126, 157, 185); border-left-color: rgb(126, 157, 185); padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; width: 144px; height: 16px; background-image: url(http://www.google.com/coop/intl/en/images/google_custom_search_watermark.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat; "></td><td valign="middle"><input id="submit" type="image" title="Search" src="./Ned Batchelder  Fix error handling first_files/search.png"></td></tr></tbody></table></form><script type="text/javascript">
+    (function() {
+        var f = document.getElementById('searchbox_007818501792991951010:s9hiibxg-ty');
+        if (f && f.q) {
+            var q = f.q;
+            var b = function() {
+                if (q.value == '') {
+                    q.style.background = '#fff url(http:\x2F\x2Fwww.google.com\x2Fcoop\x2Fintl\x2Fen\x2Fimages\x2Fgoogle_custom_search_watermark.gif) left no-repeat';
+                }
+            };
+            var f = function() {
+                q.style.background = '#fff';
+            };
+            q.onfocus = f;
+            q.onblur = b;
+            if (!/[&?]q=[^&]/.test(location.search)) {
+                b();
+            }
+        }
+    })();
+</script></li><li class="first"><a href="http://nedbatchelder.com/site/aboutned.html" rel="author">About me</a></li><li><a href="http://flattr.com/thing/343733/Neds-stuff" target="_blank"><img src="./Ned Batchelder  Fix error handling first_files/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" width="93" height="20"></a></li><li>You might like:
+            <ul class="compact"><li>»&nbsp;<a href="http://nedbatchelder.com/blog">My blog</a></li><li>»&nbsp;<a href="http://susansenator.com/makingpeace.html">My wife's books</a><br><a href="http://susansenator.com/makingpeace.html"><img src="./Ned Batchelder  Fix error handling first_files/makingpeacetiny.png" alt="Making Peace With Autism" width="83" height="127" style="margin: 10px 0 0 0"></a> <a href="http://susansenator.com/survivalguide.html"><img src="./Ned Batchelder  Fix error handling first_files/survivalguidetiny.png" alt="Autism Mom&#39;s Survival Guide" width="86" height="121" style="margin: 10px 0 0 10"></a></li></ul></li></ul></div>
+
+</div></td></tr><tr><td id="copyright" colspan="2"><p class="copyright"><a rel="copyright license" href="http://nedbatchelder.com/site/legal.html">
+                            © Copyright
+                            
+                                2003–2007,
+                            
+                            Ned Batchelder
+                        </a></p></td></tr></tbody></table></center><script type="text/javascript" language="javascript">
+var hs_portalid=18610; 
+var hs_salog_version = "2.00";
+var hs_ppa = "nedbatchelder.app101.hubspot.com";
+document.write(unescape("%3Cscript src='" + document.location.protocol + "//" + hs_ppa + "/salog.js.aspx' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./Ned Batchelder  Fix error handling first_files/salog.js.aspx" type="text/javascript"></script><script src="./Ned Batchelder  Fix error handling first_files/salog20.js" type="text/javascript"></script><span id="hsjssp">
+<img src="./Ned Batchelder  Fix error handling first_files/track" border="0" width="0" height="0"></span>
+
+</body></html>

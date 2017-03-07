@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "读入和写出Sales_item对象", "读入和写出Sales_item对象.vcproj", "{BD5B75E9-D91F-4F25-9A7E-2FA9056C3B08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD5B75E9-D91F-4F25-9A7E-2FA9056C3B08}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BD5B75E9-D91F-4F25-9A7E-2FA9056C3B08}.Debug|Win32.Build.0 = Debug|Win32
+		{BD5B75E9-D91F-4F25-9A7E-2FA9056C3B08}.Release|Win32.ActiveCfg = Release|Win32
+		{BD5B75E9-D91F-4F25-9A7E-2FA9056C3B08}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

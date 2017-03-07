@@ -1,0 +1,305 @@
+Usage file for the Spade v092200.1
+----------------------------------
+
+Author: Jim Hoagland (hoagland@SiliconDefense.com)
+
+This file contains information about how to use and configure the Statistical
+Packet Anomaly Detection Engine (Spade), spp_anomsensor.
+
+
+-= The main configuration line =-
+
+To enable spp_anomsensor, you must have a line of this form in your snort
+configuration file:
+
+    preprocessor spade: <anom-report-thresh> <state-file> <log-file> <prob-mode> <checkpoint-freq>
+
+For example:
+
+    preprocessor spade: 10.5 spade.rcv log.txt 3 50000
+
+The following subsections describe what these arguments mean and additional
+available lines in the configuration do.  Note that on this line and all Spade
+configuration lines that if you leave some of the arguments at the end, they
+will assume their default value.
+
+
+-= Threshold =-
+
+<anom-report-thresh> is the (initial) threshold at which packets are reported.
+ If a packet has an anomaly score at least as big as this threshold, it will
+be sent as an alert.  If this is a negative number, Spade will start up with
+an with no reporting.  -1 is the default.
+
+
+-= Log file =-
+
+<log-file> is a the logging file for Spade.  This is regenerated on every
+SIGHUP, SIGQUIT, and SIGUSR1 and on Snort exit.  At a minimum, the number of
+packets accepted by Spade (not counting those that were not TCP SYNs or that
+did not meet the homenet requirements) and the number of alerts sent is
+reported here.  Some optional parts of Spade write to this log file as well.
+
+If this argument is '-', then standard output (stdout) is used.  '-' is the
+default.
+
+
+-= Checkpointing and recovery =-
+
+Since Spade maintains a history-based probability table, it is important to
+have persistent storage for this table, especially since some sites restart
+their snort processes regularly.
+
+Towards this end, Spade has a checkpoint and recovery feature.  (At present,
+this just covers the probability tables.)  The state file is given by the
+<state-file> argument (default "spade.rcv").  If this file is present when
+starting up, the initial state of Spade is taken from this.  (Otherwise it
+starts up with a clean slate.)  Periodically this state file is updated with
+the current state.  This is done with a frequency of every <checkpoint-freq>
+accepted packets (default 50000), on SIGHUP, SIGQUIT, and SIGUSR1, and on
+Snort exit.
+
+To disable checkpointing and recovering (not generally recommended), give "0"
+as the <state-file> argument.
+
+Note that the size of the of file is roughly the size of Spade in memory. 
+Also note that it may take a few seconds to checkpoint during which time snort
+will not otherwise run.
+
+
+-= Probability mode =-
+
+There are four probability modes available in Spade.  These modes configure
+how Spade determines the likelihood of a particular packet.  We do not know
+which is best and it might be different depending on the characteristics of
+your network, so we allow you to decide.  You may just want to leave the
+default unless you wish to play with it.
+
+The probability mode is set by the <prob-mode> argument on the main
+configuration line.  The possible values are:
+
++ 0:  a Bayes network approximation of P(sip,sport,dip,dport)
++ 1:  P(sip,sport,dip,dport)
++ 2:  P(sip,dip,dport)
++ 3:  P(dip,dport)
+
+The default is 3.
+
+Warning:  If you change probability modes, you will need to discard your
+state-file from checkpointing.  The wrong set of information has been
+recorded.  Not doing this will not cause a crash, the probabilities may just
+be off.
+
+
+-= Home networks =-
+
+You can restrict Spade to considering packets destined to particular networks
+or hosts.  That is, packets for addresses outside those networks are ignored
+by Spade.   The default is to consider all packets.  To enable this, add a
+line like this to your snort configuration file:
+
+    preprocessor spade-homenet: <network> <network> ...
+
+where <network> is either CIDR notation for a network (e.g., 123.123.128.0/17)
+or an IP address (e.g. 123.123.123.123).
+
+Note that this home network specification is independent of the -h option of
+snort and the HOMENET variable in the rules file.
+
+
+-= Finding a good threshold =-
+
+There are 4 facilities for helping you find and maintain an appropriate
+reporting threshold, so that you do not get flooded with alerts about normal
+packets by having too low of a threshold and so that you do not miss packets
+of interest by having too high a threshold.  One is threshold learning and the
+other three are different means of automatically adapting the threshold to
+meet observed conditions.
+
+The premise for these is that you want to aim for a certain rate of alerts, a
+rate just high enough to catch interesting events.  Each of these facilities
+observes the network for a certain interval of time, keeping record of the
+anomaly scores for the packets observed.  Based on this, an "ideal" threshold
+can be derived that would have produced exactly the number of alerts wanted. 
+At least, during that time interval.  We have observed that this is a pretty
+noisy process and this will vary from interval to interval.
+
+Note that regardless of the way your threshold is set, your rate of alerts
+will not be steady.  This is since the rate of anomalous events is not steady.
+ For example, if someone runs a noisy Nmap on you, you will get more alerts
+than normal (unless, of course, this is normal).  So, for whatever target rate
+you aim for, consider that to be your target for most of the time intervals.
+
+You can either use one of the 4 facilities described in the next two
+subsections or do it yourself by trying out different threshold values.
+
+
+-= Threshold learning =-
+
+To start up threshold learning mode when Snort starts up, provide a line of
+this form in the Snort configuration file:
+
+	preprocessor spade-threshlearn: <num-scores> <obs-time>
+	
+This mode is enabled for <obs-time> hours (default 24), after which it reports
+on the threshold that would have been needed to produce <num-scores> scores
+(default 200) during that time.  At the end of the time period, a report about
+this is generated to the log file specified on the main sensor configuration
+line.  An intermediate report is produced on every SIGHUP, SIGQUIT, and
+SIGUSR1 and on Snort exit.
+
+
+-= Threshold adapting =-
+
+There are three modes of adapting.  None of these are on by default, but if
+one were, then method #3 would be the default since we think it should work
+the best.  Your network may disagree though :).
+
+Method #1 is the simplest approach.  It periodically takes a weighted average
+of the current threshold and the recently observed ideal.  You activate this
+by adding a line of this form to the Snort configuration file:
+
+    preprocessor spade-adapt: <target-count> <adapt-time> <new-weight> <interval-by-count>
+
+The target packet count is given by the <target-count> argument (default 20).
+The length of time during which that count is aimed for and the refresh rate
+for the threshold is given by <adapt-time> (default 2).  <new-weight> is the
+weight given to the new component of the weighted average (default 0.5). 
+Higher values (up to 1.0) give more weight to recent observations.
+
+An option with method #1 is to measure the adapt period by packet count rather
+than by time.  That is, the adapt time specification is converted into a count
+of packets, based on the current best estimate of a rate of packets.  The
+advantage here is that observed ideal values between periods is more likely to
+be similar since about the same number of packets were considered for each, so
+the transitions will be steadier.  This is on by default.  To disable, set the
+<interval-by-count> argument to 0 (rather than 1).
+
+Method #2 is more involved.  A new threshold is based the average of short,
+medium and long term components.  This is the line to add to the configuration
+file:
+
+    preprocessor spade-adapt2: <target-spec> <obs-time> <NS> <NM> <NL>
+
+<target-spec> is the specification of the number of alerts wanted.  If it is
+>= 1, it is an hourly alert rate.  If it is < 1, then it is a fraction of
+considered packets to report, based on the best estimate of your packet rate. 
+The later form of specification might be preferred if your network might
+experience a shift in packet rates.  The default is 0.01 (1%).
+
+<obs-time> is the number of minutes in an observation window (default 15). 
+The is the frequency with which the reporting threshold is updated and is
+actually converted to a packet count.  <NS> times <obs-time> is how long the
+short term is.  The default for <NS> is 4, so the combined default is 1 hour. 
+<NM> is the number of short term periods in the medium term (default 24) and
+<NL> is the number of medium term periods in the long term (default 7).
+
+For a more complete description of how this mode works, see the comments in
+the source code.
+
+Method #3 is fairly simple.  The reporting threshold is based on an average of
+the ideal threshold values from the last N observation periods.  (If there
+haven't been N observation periods yet, it just takes the average of the ones
+seen so far).  This mode is invoked with a line of the form:
+
+    preprocessor spade-adapt3: <target-spec> <obs-time> <num-obs>
+    
+<target-spec> is the specification of the target alert rate and takes the same
+form as that in method #2 (default 0.01).  <obs-time> is the number of minutes
+in a period of observation (default 60); this is converted to count of
+packets.  <num-obs> is the number of observations to average over (default
+168, which is the number of hours in a week).
+
+
+-= Survey mode =-
+
+Survey mode periodically reports information about the anomaly scores produced
+in the last time interval.  It is activated with the following line:
+
+    preprocessor spade-survey: <survey-file> <observation-period>
+
+where <survey-file> is the file to write the output to (default is standard
+output) and <observation-period> is the frequency of the observation period,
+in minutes (default 60).  This mode is active for as long as Snort is running.
+
+The file produced is in a table form suitable for importing into spreadsheets
+and databases.  A line of column headers is on the first line and the
+following are tab-separated on the following lines:
+
++ interval #
++ number of accepted packets in the interval
++ median (50th percentile) anomaly score in the interval
++ 90th percentile anomaly score
++ 99th percentile anomaly score
+
+Linear interpolation is used for the percentile results if there is no exact
+score in the indicated position.
+
+Note that at present a O(n*n) algorithm is used for storing the anomaly
+scores, so that when number of accepted packets in the interval becomes large,
+this mode runs slowly.  If this mode becomes used seriously, we should use an
+order statistics tree or some other O(n*log(n)) algorithm.
+
+
+-= Statistics mode =-
+
+When the statistics mode is activated certain information about the network
+traffic is reported.  This makes use of the already available probabilities
+from the calculation of the anomaly scores, which will depend on the
+probability mode selected.  It is enabled with the following line in the
+configuration file:
+
+    preprocessor spade-stats: <stat-option> <stat-option> ...
+
+where <stat-option> is one of:
+
++ "entropy" (to display the known entropies and conditional entropies)
++ "uncondprob" (to display the known non-0 simple (joint) probabilities)
++ "condprob" (to display the known non-0 conditional (joint) probabilities)
+
+These are written to the log file on SIGHUP, SIGQUIT, and SIGUSR1 and on Snort
+exit.  Be aware that it might take a while to write the "uncondprob" and
+"condprob" results as there is in general alot of those.
+
+The following results are available from probability mode 3:
+
++ H(dip), H(dport|dip)
++ P(dip=x), P(dip=x,dport=y)
++ P(dport=x|dip=y)
+
+For finer grained control over what statistics are available, you will need to
+modify the source code.  See the "parts" variable.  Warning:  this process is
+a bit ugly.
+
+
+-= Source code parameters =-
+
+There are a few tunable parameters that you will need to change some numbers
+in the source code in order to adjust.  Fortunately most people probably won't
+want to change these anyway.
+
+A set of parameters in anomsensor_plug.h configure how the adjustment of
+probability is done to more strongly reflect recent network characteristics. 
+SCALE_FREQ is the frequency (in seconds) with which this is updated (4 hours
+is the distributed value).  Note that scaling is a fairly intensive operation.
+
+SCALE_FACTOR is the relative weight to give to traffic observed before an
+update as compared to the traffic after (0.96409 is the distributed value).  
+It is reasonable to adjust these without discarding the state file.  So, the
+probabilities you had before the scale is only SCALE_FACTOR as important as
+those in the later period.  4 hours and 0.96409 together imply a half life of
+a little over 3 days.
+
+At some point, the occurrance of something a long time ago (relative to the
+number of times it occurred) makes little difference in the anomaly scores
+produces, so it might as well be discarded to save memory.  MIN_NODE_SIZE is
+the size of an occurrance count at which the record of something has occurred
+is discarded (distributed value is 0.18).  The combination of these parameters
+as distributed means that a one-time occurrence is discarded after a little
+over one week (and a double occurrance after two weeks, etc.).
+
+A different set of parameters are used to control how much memory can be used
+in maintaining the probability state.  A description of exactly what these do
+requires a discussion beyond the scope of this document.  For now, if you get
+a message of the form "exhausted all X blocks of Y <whatever>, try increasing
+the corresponding DEFAULT_MAX_*_SIZE parameter in params.h.

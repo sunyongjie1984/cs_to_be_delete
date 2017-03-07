@@ -1,0 +1,5 @@
+EXPORTS
+	Add=?Add@CCalc@@QAEHHH@Z
+	Sub=?Sub@CCalc@@QAEHHH@Z
+	GetLastUsedFunc=?GetLastUsedFunc@CCalc@@QAEPADXZ
+	CCalc=??0CCalc@@QAE@XZ

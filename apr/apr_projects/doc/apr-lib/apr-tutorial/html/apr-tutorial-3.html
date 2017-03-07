@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: memory pool (apr_pool_t)</TITLE>
+ <LINK HREF="apr-tutorial-4.html" REL=next>
+ <LINK HREF="apr-tutorial-2.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc3" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-4.html">Next</A>
+<A HREF="apr-tutorial-2.html">Previous</A>
+<A HREF="apr-tutorial.html#toc3">Contents</A>
+<HR>
+<H2><A NAME="s3">3.</A> <A HREF="apr-tutorial.html#toc3">memory pool (apr_pool_t)</A></H2>
+
+<P>Most of libapr APIs are dependent on memory pool. By memory pool, you can easily manage a set of memory chunks. Imagine the case without memory pool system, where you allocate several memory chunks. You have to free each of them. If you have ten memory chunks, you have to free ten times, otherwise you would suffer from memory leak bugs.
+Memory pool solves this issue. After you allocate one memory pool, you can allocate multiple memory chunks from the pool. To free them, all you have to do is to destroy the memory pool. By which, you can free all the memory chunks. There are two good points. First, as stated above, it is defensive against memory leak bugs. Second, allocation costs of memory chunks become relatively lower. 
+In a sense, memory pool forces you to obey a session-oriented programming. A memory pool is a kind of a session context, that is, a set of objects that have the same lifetimes. You can control a set of objects within a session context. At the beginning of a session you create a memory pool. Then, you create objects in the memory pool during the session. Note that you don't need to care about their lifetimes. Finally, at the end of the session all you have to do is to destroy the memory pool.</P>
+<P><EM>REMARK</EM>: In general, objects lifetime control is the most difficult part in programming. Thus, there are many other techniques for it, such as smart pointer, GC(garbage collection) and so on. Note that it is a bit hard to use such techniques at the same time. Since memory pool is one of such techniques, you have to be careful about the mixture.</P>
+<P><EM>REMARK</EM>: In the future, memory pool would become less important than now in libapr. 
+Please refer to 
+<A HREF="http://mail-archives.apache.org/mod_mbox/apr-dev/200502.mbox/%3c1f1d9820502241330123f955f@mail.gmail.com%3e">http://mail-archives.apache.org/mod_mbox/apr-dev/200502.mbox/%3c1f1d9820502241330123f955f@mail.gmail.com%3e</A>.</P>
+<P>There are three basic APIs as follows:</P>
+<P>/* excerpted from apr_pools.h */
+<BLOCKQUOTE><CODE>
+<PRE>
+APR_DECLARE(apr_status_t) apr_pool_create(apr_pool_t **newpool,
+                                          apr_pool_t *parent);
+APR_DECLARE(void *) apr_palloc(apr_pool_t *p, apr_size_t size);
+APR_DECLARE(void) apr_pool_destroy(apr_pool_t *p);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>We create a memory pool by apr_pool_create(). The memory pool is alive until you call apr_pool_destroy(). The first argument of apr_pool_create() is a result argument. A newly created memory pool object, apr_pool_t, is returned by this API call. We call apr_palloc() to get a memory chunk by specifing the chunk's size. Please take a look at 
+<A HREF="../sample/mp-sample.c">mp-sample.c</A> to know the usage.</P>
+<P>/* excerpted from 
+<A HREF="../sample/mp-sample.c">mp-sample.c</A> */
+<BLOCKQUOTE><CODE>
+<PRE>
+apr_pool_t *mp;
+/* create a memory pool. */
+apr_pool_create(&amp;mp, NULL);
+
+/* allocate memory chunks from the memory pool */
+char *buf1;
+buf1 = apr_palloc(mp, MEM_ALLOC_SIZE);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>In a nutshell, we can use apr_palloc() like malloc(3). We can also call apr_pcalloc(). As you can guess, apr_pcalloc() is similar to calloc(3). apr_pcalloc() returns a zero-cleard memory chunk. If you use malloc(3)/calloc(3), you need to call free(3) for the allocated memories. In contrast, you don't need to free each memory chunks in memory pool. You just call apr_pool_destroy() for the memory pool and it frees all the memory chunks.</P>
+<P><EM>REMARK</EM>: There is no limitation about memory chunk size that you can allocate by apr_palloc(). Nevertheless, it isn't a good idea to allocate large size memory chunk in memory pool. That is because memory pool is essentially designed for smaller chunks. Actually, the initial size of memory pool is 8 kilo bytes. If you need a large size memory chunk, e.g. over several mega bytes, you shouldn't use memory pool.</P>
+<P><EM>REMARK</EM>: By default, memory pool manager never returns allocated memory back to the system. If a program runs for a long time, it would have problem. I recommend you to specify the upper limit as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* sample code to set the upper limit to make memory pool manager release the memory back to the system */
+#define YOUR_POOL_MAX_FREE_SIZE 32      /* apr_pool max free list size */
+
+apr_pool_t *mp;
+apr_pool_create(&amp;mp, NULL);
+apr_allocator_t* pa = apr_pool_allocator_get(mp);
+if (pa) {
+    apr_allocator_max_free_set(pa, YOUR_POOL_MAX_FREE_SIZE);
+}
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+<P>There are two more APIs you have to know. One is apr_pool_clear(), and the other is apr_pool_cleanup_register(). apr_pool_clear() is similar to apr_pool_destroy(), but the memory pool is still reusable. A typical code is as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* sample code about apr_pool_clear() */
+apr_pool_t *mp;
+apr_pool_create(&amp;mp, NULL);
+for (i = 0; i &lt; n; ++i) {
+    do_operation(..., mp);
+    apr_pool_clear(mp);
+}
+apr_pool_destroy(mp);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The memory pool is used in do_operation(), that is, several memory chunks are allocated. If you don't need the memory chunks out of do_operation(), you can call apr_pool_clear(). You are able to reduce the amount of memory usage. If you are familiar with local stack memory system, you can think of memory pool as local stack memory. Calling apr_palloc() is similar to moving SP(stack pointer), and calling apr_pool_clear() is similar to rewinding SP. Both are very light operations.</P>
+<P>By apr_pool_cleanup_register(), we can have hook functions on memory pool clear/destroy. You have a callback function that is called whenever the memory pool is cleared or destroyed. In the callback functions, you can implement any finalization code depending on the memory pool.</P>
+<P>The last topic about memory pool is sub pool. Each memory pool is able to have a parent memory pool. Accordingly, memory pools construct trees. The second argument of apr_pool_create() is a parent memory pool. When you pass NULL as the parent memory pool, the newly created memory pool becomes a root memory pool. You can create sub memory pools under the root memory pool. Whene you call apr_pool_destroy() for a memory pool in the tree, the child memory pools are also destroyed. When you call apr_pool_clear() for the memory pool, the memory pool is alive but the child memory pools are destroyed. Whenever a child memory pool is destroyed, the cleanup functions for it mentioned above are called.</P>
+
+<P><EM>REMARK</EM>: It is a typical bug that you pass NULL as pool cleanup callback function. Instead, you must pass apr_pool_cleanup_null as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* pseudo code about memory pool typical bug */
+/* apr_pool_cleanup_register(mp, ANY_CONTEXT_OF_YOUR_CODE, ANY_CALLBACK_OF_YOUR_CODE, NULL); THIS IS A BUG */
+/* FIXED */
+apr_pool_cleanup_register(mp, ANY_CONTEXT_OF_YOUR_CODE, ANY_CALLBACK_OF_YOUR_CODE, apr_pool_cleanup_null);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+
+<HR>
+<A HREF="apr-tutorial-4.html">Next</A>
+<A HREF="apr-tutorial-2.html">Previous</A>
+<A HREF="apr-tutorial.html#toc3">Contents</A>
+</BODY>
+</HTML>

@@ -1,0 +1,122 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SCC - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\WANGZH~1\LOCALS~1\Temp\RSP1A.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/SCC.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Downloads\SCC\DlgAutoSave.cpp"
+"D:\Downloads\SCC\DlgFilter.cpp"
+"D:\Downloads\SCC\DlgSend.cpp"
+"D:\Downloads\SCC\MainFrm.cpp"
+"D:\Downloads\SCC\SCC.cpp"
+"D:\Downloads\SCC\Transmit.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\WANGZH~1\LOCALS~1\Temp\RSP1A.tmp" 
+Creating temporary file "C:\DOCUME~1\WANGZH~1\LOCALS~1\Temp\RSP1B.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/SCC.pdb" /machine:I386 /out:"Release/SCC.exe" 
+.\Release\CheckSum.obj
+.\Release\CoolMenu.obj
+.\Release\DirectoryDialog.obj
+.\Release\DlgAutoSave.obj
+.\Release\DlgFilter.obj
+.\Release\DlgSend.obj
+.\Release\Global.obj
+.\Release\GuiButton.obj
+.\Release\GuiButtonTimer.obj
+.\Release\GuiCapOutBar.obj
+.\Release\GuicheckBox.obj
+.\Release\GuiComboBoxExt.obj
+.\Release\GuiComboFont.obj
+.\Release\GuiContainer.obj
+.\Release\GuiControlBar.obj
+.\Release\GuiDocBarExten.obj
+.\Release\GuiDockBar.obj
+.\Release\GuiDockContext.obj
+.\Release\GuiDockToolBar.obj
+.\Release\GuiDocSpecial.obj
+.\Release\GuiDrawLayer.obj
+.\Release\GuiDropDownEdit.obj
+.\Release\GuiEdit.obj
+.\Release\GuiFDir.obj
+.\Release\GuiFile.obj
+.\Release\GuiFolder.obj
+.\Release\GuiFolderFlat.obj
+.\Release\GuiFrameWnd.obj
+.\Release\GuiGroupBox.obj
+.\Release\GuiHeaderCtrl.obj
+.\Release\GuiImageLinkButton.obj
+.\Release\GuiLabelButton.obj
+.\Release\GuiLinkButton.obj
+.\Release\GuiListEdit.obj
+.\Release\GuiMDIFrame.obj
+.\Release\GuiMDITabbed.obj
+.\Release\GuiMiniFrame.obj
+.\Release\GuiMiniFrameWnd.obj
+.\Release\GuiMiniSplitter.obj
+.\Release\GuiMiniTool.obj
+.\Release\GuiNormalButton.obj
+.\Release\GuiOfficeBar.obj
+.\Release\GuiOutLook.obj
+.\Release\GuiOutLookView.obj
+.\Release\GuiPanelAccess.obj
+.\Release\GuiPowerPointView.obj
+.\Release\GuiRadioButton.obj
+.\Release\GuiSliderCtrl.obj
+.\Release\GuiSplitter.obj
+.\Release\GuiSplitterWnd.obj
+.\Release\GuiStaticStandar.obj
+.\Release\GuiStatusBar.obj
+.\Release\GuiSysTray.obj
+.\Release\GuiTabbed.obj
+.\Release\GuiTabPowerPoint.obj
+.\Release\GuiTabWnd.obj
+.\Release\GuiToolBarWnd.obj
+.\Release\GuiToolButton.obj
+.\Release\GuiView.obj
+.\Release\GuiViewWorkTab.obj
+.\Release\GuiVisioFolder.obj
+.\Release\GuiWorkPanel.obj
+.\Release\GuiWorkTab.obj
+.\Release\ListCtrlEx.obj
+.\Release\MainFrm.obj
+.\Release\MenuBar.obj
+.\Release\NewMenu.obj
+.\Release\SCC.obj
+.\Release\SCCSendEdit.obj
+.\Release\SCCView.obj
+.\Release\SendFrameWnd.obj
+.\Release\SerialPort.obj
+.\Release\StatLink.obj
+.\Release\StdAfx.obj
+.\Release\Subclass.obj
+.\Release\Transmit.obj
+.\Release\XRichEditCtrl.obj
+.\Release\XRichEditView.obj
+.\Release\SCC.res
+]
+Creating command line "link.exe @C:\DOCUME~1\WANGZH~1\LOCALS~1\Temp\RSP1B.tmp"
+<h3>Output Window</h3>
+Compiling...
+DlgAutoSave.cpp
+DlgFilter.cpp
+DlgSend.cpp
+MainFrm.cpp
+SCC.cpp
+Transmit.cpp
+Generating Code...
+Linking...
+LINK : warning LNK4089: all references to "SETUPAPI.dll" discarded by /OPT:REF
+
+
+
+<h3>Results</h3>
+SCC.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

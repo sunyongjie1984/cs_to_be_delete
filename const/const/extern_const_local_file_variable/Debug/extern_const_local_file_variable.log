@@ -1,0 +1,5 @@
+﻿  test.cpp
+  main.cpp
+  Generating Code...
+main.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  extern_const_local_file_variable.vcxproj -> G:\centos\CS\code\const\const\Debug\extern_const_local_file_variable.exe

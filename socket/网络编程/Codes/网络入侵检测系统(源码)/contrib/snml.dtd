@@ -1,0 +1,195 @@
+<!-- * snml.dtd
+     * Copyright (C) 2000 Carnegie Mellon University
+     *
+     * This program is free software; you can redistribute it and/or
+     * modify it under the terms of the GNU General Public License as
+     * published by the Free Software Foundation; either version 2 of
+     * the License, or (at your option) any later version.
+     *
+     * This program is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     * GNU General Public License for more details.
+     *
+     * You should have received a copy of the GNU General Public
+     * License along with this program; if not, write to the Free
+     * Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+     * MA 02111-1307, USA.-->
+     
+<!-- This DTD defines a simple XML exchange format for Network
+     Intrusion Detection Systems. 
+
+     The snml can stand for "Snort Markup Language" when used with
+     the snort IDS or as the "Simple Network Markup Language" when
+     used in multi-vendor IDS environments.  
+
+     Comments or questions can be directed to:
+
+                 Jed Pickel <jpickel@cert.org>
+-->
+
+<!ENTITY version "1.0">
+
+<!ELEMENT event (sensor, signature, timestamp, packet)>
+
+<!-- The sensor field contains information that can be used to 
+     uniquely identify the source of where this event was 
+     detected. It always contains a "hostname" and optionally a
+     filter. And you have the option of including a file (the 
+     file being the source of data), or an ip address and
+     network interface. -->
+<!ELEMENT sensor ((file|(ipaddr, interface?)), hostname, filter?)>
+<!ATTLIST sensor 
+          encoding (hex|base64|ascii) #REQUIRED
+          detail   (full|fast) #REQUIRED
+>
+
+<!-- The signature is just free form text. In snort it is the string
+     contained in the "msg" variable -->
+<!ELEMENT signature (#PCDATA)>
+
+<!-- The timestamp must conform to ISO-8601 standard.
+     example
+     ISO-8601: 1999-08-04 00:01:23-05 -->
+<!ELEMENT timestamp (#PCDATA)>
+
+<!-- A packet can be logged without being decoded if you use "raw"
+     mode. The only time you would really want to do this is if you
+     were receiving a packet containing protocols you don't have the
+     ability to decode. This is/was not implemented in the first 
+     version of the xml plugin in snort. -->
+<!ELEMENT packet (raw|iphdr)>
+
+<!-- IP address only. Anything else is rejected. This means no 
+     domain names. The version attribute is the version of IP
+     address (Should be 4 or 6).-->
+<!ELEMENT ipaddr (#PCDATA)>
+<!ATTLIST ipaddr
+          version   CDATA  #REQUIRED
+>
+
+<!-- This field contains an ordinary hostname -->
+<!ELEMENT hostname (#PCDATA)>
+
+<!-- This contains a file name with a full path -->
+<!ELEMENT file (#PCDATA)>
+
+<!-- Contains a string representing a network interface
+     ie. eth0, ppp0, hme0, etc --> 
+<!ELEMENT interface (#PCDATA)>
+
+<!-- A string representing a tcpdump filter that is normally passed
+     in on the command line.
+     ie. "not net 10.1.1.0/24" --> 
+<!ELEMENT filter (#PCDATA)>
+
+<!-- raw contains a base64 representation of a binary packet -->
+<!ELEMENT raw (#PCDATA)>
+
+<!-- IPv4 header
+     saddr   = source IP address      - IP address  IP  (192.168.1.2)
+     daddr   = destination IP address - IP address  IP  (192.168.1.2)
+     ver     = version of ip          - 1 byte INT (0 - 15) 
+     hlen    = header length in 32 bit words
+                                      - 1 byte INT (0 - 15)
+     tos     = type of service        - 1 byte INT (0 - 255)
+     len     = total length of the packet
+                                      - 2 byte INT (0 - 65535)
+     id      = identification         - 2 byte INT (0 - 65535)
+     flags   = fragment flags         - 1 byte INT (0 - 7)
+     off     = fragment offset        - 2 byte INT (0 - 65535)
+     ttl     = time to live           - 1 byte INT (0 - 255) 
+     proto   = protocol               - 1 byte INT (0 - 255)
+     csum    = checksum               - 2 byte INT (0 - 65535)
+     -->
+<!ELEMENT iphdr ((tcphdr|udphdr|icmphdr), option*)>
+<!ATTLIST iphdr 
+          saddr     CDATA  #REQUIRED
+          daddr     CDATA  #REQUIRED
+          ver       CDATA  #REQUIRED
+          hlen      CDATA  #IMPLIED
+          tos       CDATA  #IMPLIED
+          len       CDATA  #IMPLIED
+          id        CDATA  #IMPLIED
+          flags     CDATA  #IMPLIED
+          ttl       CDATA  #IMPLIED
+          off       CDATA  #IMPLIED
+          proto     CDATA  #REQUIRED
+          csum      CDATA  #IMPLIED
+>
+           
+<!-- TCP header information
+     sport   = source port            - 2 byte INT (0 - 65535)  
+     dport   = destination port       - 2 byte INT (0 - 65535)
+     seq     = sequence number        - 4 byte INT (0 - 4294967295) 
+     ack     = acknowledgment number  - 4 byte INT (0 - 4294967295) 
+     off     = data offset            - 1 byte INT (0 - 15)
+     res     = reserved field         - 1 byte INT (0 - 63)
+     flags   = represents TCP flags   - 1 byte INT (0 - 255)
+     win     = window                 - 2 byte INT (0 - 65535)
+     csum    = checksum               - 2 byte INT (0 - 65535)
+     urp     = urgent pointer         - 2 byte INT (0 - 65535)
+     -->
+<!ELEMENT tcphdr (data?, option*)>
+<!ATTLIST tcphdr
+          sport     CDATA  #REQUIRED
+          dport     CDATA  #REQUIRED
+          seq       CDATA  #IMPLIED
+          ack       CDATA  #IMPLIED
+          off       CDATA  #IMPLIED
+          res       CDATA  #IMPLIED
+          flags     CDATA  #REQUIRED
+          win       CDATA  #IMPLIED
+          csum      CDATA  #IMPLIED
+          urp       CDATA  #IMPLIED
+>
+
+<!-- UDP header information
+     sport   = source port            - 2 byte INT (0 - 65535)
+     dport   = destination port       - 2 byte INT (0 - 65535)
+     len     = length field of UDP header 
+                                      - 2 byte INT (0 - 65535)
+     csum    = checksum               - 2 byte INT (0 - 65535) 
+     -->
+<!ELEMENT udphdr (data)>
+<!ATTLIST udphdr
+          sport     CDATA  #REQUIRED
+          dport     CDATA  #REQUIRED
+          len       CDATA  #IMPLIED
+          csum      CDATA  #IMPLIED
+>
+
+<!-- ICMP header
+     type    = icmp type              - 1 byte INT (0 - 255)  
+     code    = icmp code              - 1 byte INT (0 - 255)
+     csum    = checksum               - 2 byte INT (0 - 65535)
+     id      = identifier             - 2 byte INT (0 - 65535)   
+     seq     = sequence number        - 2 byte INT (0 - 65535)
+     -->
+<!ELEMENT icmphdr (data)>
+<!ATTLIST icmphdr
+          type   CDATA #REQUIRED
+          code   CDATA #REQUIRED
+          csum   CDATA #IMPLIED
+          id     CDATA #IMPLIED
+          seq    CDATA #IMPLIED
+>
+
+<!-- Option
+     code    = option code           - 1 bute INT (0 - 255)
+     -->
+<!ELEMENT option (data)>
+<!ATTLIST option
+          code   CDATA #REQUIRED
+>
+
+<!-- This field contains a representation of data. The encoding
+     of this data hex, base64, or ascii is defined as an attribute 
+     to the sensor tag.
+ -->
+<!ELEMENT data (#PCDATA)>
+
+
+
+
+

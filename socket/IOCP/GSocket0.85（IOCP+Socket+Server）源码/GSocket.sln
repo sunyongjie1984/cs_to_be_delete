@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GMemMngDemo", "GMemMngDemo\GMemMngDemo.vcproj", "{CE9DDAB7-5693-4E37-89F5-472B012D2AE4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GSocketDemo", "GSocketDemo\GSocketDemo.vcproj", "{D833E41B-F930-4612-9338-1FD41B36CDD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE9DDAB7-5693-4E37-89F5-472B012D2AE4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE9DDAB7-5693-4E37-89F5-472B012D2AE4}.Debug|Win32.Build.0 = Debug|Win32
+		{CE9DDAB7-5693-4E37-89F5-472B012D2AE4}.Release|Win32.ActiveCfg = Release|Win32
+		{CE9DDAB7-5693-4E37-89F5-472B012D2AE4}.Release|Win32.Build.0 = Release|Win32
+		{D833E41B-F930-4612-9338-1FD41B36CDD5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D833E41B-F930-4612-9338-1FD41B36CDD5}.Debug|Win32.Build.0 = Debug|Win32
+		{D833E41B-F930-4612-9338-1FD41B36CDD5}.Release|Win32.ActiveCfg = Release|Win32
+		{D833E41B-F930-4612-9338-1FD41B36CDD5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

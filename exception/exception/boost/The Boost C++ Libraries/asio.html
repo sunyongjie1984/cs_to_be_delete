@@ -1,0 +1,637 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highscore - The Boost C++ Libraries - Asynchronous Input and Output</title>
+<link rel="stylesheet" href="css/highscore.css" type="text/css">
+<link rev="made" href="mailto:boris@highscore.de">
+<link rel="home" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="up" href="frontpage.html" title="The Boost C++ Libraries">
+<link rel="prev" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="next" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="introduction.html" title="Chapter 1: Introduction">
+<link rel="chapter" href="smartpointers.html" title="Chapter 2: Smart Pointers">
+<link rel="chapter" href="functionobjects.html" title="Chapter 3: Function Objects">
+<link rel="chapter" href="eventhandling.html" title="Chapter 4: Event Handling">
+<link rel="chapter" href="stringhandling.html" title="Chapter 5: String Handling">
+<link rel="chapter" href="multithreading.html" title="Chapter 6: Multithreading">
+<link rel="chapter" href="asio.html" title="Chapter 7: Asynchronous Input and Output">
+<link rel="chapter" href="interprocesscommunication.html" title="Chapter 8: Interprocess Communication">
+<link rel="chapter" href="filesystem.html" title="Chapter 9: Filesystem">
+<link rel="chapter" href="datetime.html" title="Chapter 10: Date and Time">
+<link rel="chapter" href="serialization.html" title="Chapter 11: Serialization">
+<link rel="chapter" href="parser.html" title="Chapter 12: Parser">
+<link rel="chapter" href="containers.html" title="Chapter 13: Containers">
+<link rel="chapter" href="datastructures.html" title="Chapter 14: Data Structures">
+<link rel="chapter" href="errorhandling.html" title="Chapter 15: Error Handling">
+<link rel="chapter" href="castoperators.html" title="Chapter 16: Cast Operators">
+<link rel="section" href="asio.html#asio_general" title="7.1 General">
+<link rel="section" href="asio.html#asio_ioservices_and_objects" title="7.2 I/O Services and I/O Objects">
+<link rel="section" href="asio.html#asio_scalability" title="7.3 Scalability and Multithreading">
+<link rel="section" href="asio.html#asio_networkprogramming" title="7.4 Network Programming">
+<link rel="section" href="asio.html#asio_extensions" title="7.5 Developing Boost.Asio Extensions">
+<link rel="section" href="asio.html#asio_exercises" title="7.6 Exercises">
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1) gen true for "http://highscore.de" r (nz 1 vz 1 lz 1 oz 1 cz 1))'>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link href="http://www.highscore.de/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script><script type="text/javascript" src="js/jquery.event.drag-1.5.min.js"></script><script type="text/javascript" src="js/highscore.js"></script>
+</head>
+<body>
+<div lang="en" class="docbook chapter" title="Chapter 7: Asynchronous Input and Output">
+<p class="title">The Boost C++ Libraries</p>
+<script type="text/javascript">
+          var titlepage = "Front page";
+        
+      var titles = new Array(titlepage,
+      
+        "Chapter 1: Introduction",
+      
+        "Chapter 2: Smart Pointers",
+      
+        "Chapter 3: Function Objects",
+      
+        "Chapter 4: Event Handling",
+      
+        "Chapter 5: String Handling",
+      
+        "Chapter 6: Multithreading",
+      
+        "Chapter 7: Asynchronous Input and Output",
+      
+        "Chapter 8: Interprocess Communication",
+      
+        "Chapter 9: Filesystem",
+      
+        "Chapter 10: Date and Time",
+      
+        "Chapter 11: Serialization",
+      
+        "Chapter 12: Parser",
+      
+        "Chapter 13: Containers",
+      
+        "Chapter 14: Data Structures",
+      
+        "Chapter 15: Error Handling",
+      
+        "Chapter 16: Cast Operators",
+      
+      "");
+
+      
+          var titlehtml = "frontpage.html";
+        
+      var filenames = new Array(titlehtml,
+      
+        "introduction.html",
+      
+        "smartpointers.html",
+      
+        "functionobjects.html",
+      
+        "eventhandling.html",
+      
+        "stringhandling.html",
+      
+        "multithreading.html",
+      
+        "asio.html",
+      
+        "interprocesscommunication.html",
+      
+        "filesystem.html",
+      
+        "datetime.html",
+      
+        "serialization.html",
+      
+        "parser.html",
+      
+        "containers.html",
+      
+        "datastructures.html",
+      
+        "errorhandling.html",
+      
+        "castoperators.html",
+      
+      "");
+
+      
+      document.open();
+      document.write('<form action="" class="toc">');
+      document.write('<select size="1" onchange="location.href=options[selectedIndex].value">');
+      for (var i = 0; i < titles.length && i < filenames.length; ++i) {
+        if (titles[i] != "" && filenames[i] != "") {
+          document.write('<option');
+          document.write(' value="' + filenames[i] + '"');
+          var expr = new RegExp('[/\]' + filenames[i] + '$');
+          if (expr.test(location.href)) {
+            document.write(' selected="selected"');
+          }
+          document.write('>' + titles[i] + '<\/option>');
+        }
+      }
+      document.write('<\/select>');
+      document.write('<\/form>');
+      document.close();
+      
+    </script><noscript><p class="toc"><a href="toc.html">Table of Contents</a></p></noscript>
+<hr class="hrhead">
+<h1 class="title">
+<a name="asio"></a><small>Chapter 7:</small> Asynchronous Input and Output</h1>
+<hr>
+<div class="toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><span class="sect1"><a href="asio.html#asio_general">7.1 General</a></span></li>
+<li><span class="sect1"><a href="asio.html#asio_ioservices_and_objects">7.2 I/O Services and I/O Objects</a></span></li>
+<li><span class="sect1"><a href="asio.html#asio_scalability">7.3 Scalability and Multithreading</a></span></li>
+<li><span class="sect1"><a href="asio.html#asio_networkprogramming">7.4 Network Programming</a></span></li>
+<li><span class="sect1"><a href="asio.html#asio_extensions">7.5 Developing Boost.Asio Extensions</a></span></li>
+<li><span class="sect1"><a href="asio.html#asio_exercises">7.6 Exercises</a></span></li>
+</ul>
+</div>
+<p class="license"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top"><img src="img/88x31_cc_logo.gif" alt="" width="88" height="31"></a> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license" target="_top">Creative Commons License</a>.</p>
+<hr>
+<h2 class="title">
+<a name="asio_general"></a>7.1 General</h2>
+<div class="sect1">
+<p>This chapter introduces the Boost C++ Library <a class="link" href="http://www.boost.org/libs/asio/">Asio</a> which centers on asynchronous input and output. The name says it all: Asio stands for asynchronous input/output. This library allows C++ to process data  asynchronously as well as platform independent. Asynchronous data processing means that tasks are triggered without waiting for their completion. Instead, Boost.Asio triggers an application once a task has completed. The main advantage of asynchronous tasks is the possibility to perform other tasks without blocking the application while waiting for their completion.</p>
+<p>Typical examples for asynchronous tasks are network applications. If data is sent over e.g. the Internet, it is generally important to know whether or not it has been sent successfully. Without a library such as Boost.Asio, the return value of a function would be evaluated. This, however, would require to wait until all data has been sent and either an acknowledge or an error code is available. Using Boost.Asio, the process is split into two individual steps: The first step starts the data transmission as an asynchronous task. Once the transmission has finished either successful or with an error, the application is notified about the result in a second step accordingly. The crucial difference is that the application does not need to block until the transmission has finished but can execute other operations in the meantime.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="asio_ioservices_and_objects"></a>7.2 I/O Services and I/O Objects</h2>
+<div class="sect1">
+<p>Applications utilizing Boost.Asio for asynchronous data processing are based on so-called I/O services and I/O objects. While I/O services abstract operating system interfaces that allow asynchronous data processing in the first place, I/O objects are used to initiate certain operations. Whereas Boost.Asio only provides one class named <code class="classname">boost::asio::io_service</code> for the I/O service, implemented as an optimized class for each operating system supported, it contains several classes for the individual I/O objects. Among these, the class <code class="classname">boost::asio::ip::tcp::socket</code> is used to send and receive data over a network while the class <code class="classname">boost::asio::deadline_timer</code> offers a timer that either elapses at a fixed point in time or after a certain period. The timer is used in the following first example since it does not require any knowledge about network programming compared to many of the remaining I/O objects provided by Asio.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void handler(const boost::system::error_code &amp;ec) 
+{ 
+  std::cout &lt;&lt; "5 s." &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::asio::io_service io_service; 
+  boost::asio::deadline_timer timer(io_service, boost::posix_time::seconds(5)); 
+  timer.async_wait(handler); 
+  io_service.run(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.2.1/main.cpp">Download source code</a></li></ul>
+<p>The function <code class="function">main()</code> first defines an I/O service <var>io_service</var> that is used to initialize the I/O object <var>timer</var>. Just like <code class="classname">boost::asio::deadline_timer</code>, all I/O objects typically expect an I/O service as their first argument to the constructor. Since <var>timer</var> resembles an alarm, the constructor of <code class="classname">boost::asio::deadline_timer</code> can be passed a second argument indicating either a point in time or a period after which the alarm should go off. The above example specifies a period of five seconds for the alarm which starts counting once <var>timer</var> has been defined.</p>
+<p>While it would be possible to call a function that returns after five seconds, an asynchronous operation is started with Asio by calling the method <code class="methodname">async_wait()</code> and passing the name of the <code class="function">handler()</code> function as the single argument. Please note that only the name of the <code class="function">handler()</code> function is passed but the function itself is not called.</p>
+<p>The advantage of <code class="methodname">async_wait()</code> is that the function call returns immediately instead of waiting five seconds. Once the alarm goes off, the function provided as the argument is called accordingly. The application thus can execute other operations after calling <code class="methodname">async_wait()</code> instead of just blocking.</p>
+<p>A method such as <code class="methodname">async_wait()</code> is described as non-blocking. I/O objects typically also provide blocking methods in case the execution flow should be blocked until a certain operation has finished. For example, the blocking <code class="methodname">wait()</code> method could have been called for <code class="classname">boost::asio::deadline_timer</code> instead. Since it is a blocking call, it does not require a function name but rather returns at a specific point in time or after a certain period.</p>
+<p>While looking at the source code of the above example, it can be noticed that after the call to <code class="methodname">async_wait()</code>, a method named <code class="methodname">run()</code> is called on the I/O service. This is mandatory since control needs to be taken over by the operating system in order to call the <code class="function">handler()</code> function after five seconds.</p>
+<p>While <code class="methodname">async_wait()</code> starts an asynchronous operation and returns immediately, <code class="methodname">run()</code> actually blocks. Execution therefore stops at the call of <code class="methodname">run()</code>. Ironically, many operating systems support asynchronous operations via a blocking function only. The following example shows why this limitations is typically not an issue.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void handler1(const boost::system::error_code &amp;ec) 
+{ 
+  std::cout &lt;&lt; "5 s." &lt;&lt; std::endl; 
+} 
+
+void handler2(const boost::system::error_code &amp;ec) 
+{ 
+  std::cout &lt;&lt; "10 s." &lt;&lt; std::endl; 
+} 
+
+int main() 
+{ 
+  boost::asio::io_service io_service; 
+  boost::asio::deadline_timer timer1(io_service, boost::posix_time::seconds(5)); 
+  timer1.async_wait(handler1); 
+  boost::asio::deadline_timer timer2(io_service, boost::posix_time::seconds(10)); 
+  timer2.async_wait(handler2); 
+  io_service.run(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.2.2/main.cpp">Download source code</a></li></ul>
+<p>The above application now utilizes two I/O objects of type <code class="classname">boost::asio::deadline_timer</code>. The first I/O object represents an alarm going off after five seconds while the second one represents an alarm going off after ten seconds. After each period has elapsed, the functions <code class="function">handler1()</code> and <code class="function">handler2()</code> are called accordingly.</p>
+<p>The <code class="methodname">run()</code> method is again called on the sole I/O service at the end of <code class="function">main()</code>. As previously mentioned, this function actually blocks execution passing control to the operating system which takes over the asynchronous processing. With the aid of the operating system, the <code class="function">handler1()</code> function is called after five seconds while the <code class="function">handler2()</code> function is called after 10 seconds, respectively.</p>
+<p>At first sight, it may come as a surprise that asynchronous processing requires calling the blocking <code class="methodname">run()</code> method. However, since the application needs to be prevented from terminating, this does actually not pose any issue. If <code class="methodname">run()</code> would not block, <code class="function">main()</code> would actually finish and thus terminate the application. If execution of the application should not be blocked, <code class="methodname">run()</code> should be called within a new thread since it naturally blocks the current thread only.</p>
+<p>Once all asynchronous operations of the particular I/O service have been completed, controls is returned back to the <code class="methodname">run()</code> method which simply returns. Both example applications terminate once all the alarms have gone off.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="asio_scalability"></a>7.3 Scalability and Multithreading</h2>
+<div class="sect1">
+<p>Developing an application using a library such as Boost.Asio differs from the usual C++ style. Functions that may take longer to return are no longer called in a sequential manner. Instead of calling blocking functions, Boost.Asio starts asynchronous operations instead. Functions that are required to be called once the operation has finished are implemented within the corresponding handler. The drawback of this approach is the physical separation of the sequentially executed functions which certainly makes the corresponding code more difficult to understand.</p>
+<p>A library such as Boost.Asio is typically used to achieve a higher efficiency of the application. Without the need to wait for a particular function to finish, an application can perform other tasks in between, e.g. starting another operation that may take a while to complete.</p>
+<p>Scalability describes the property of an application to effectively benefit from additional resources. Using Boost.Asio is already recommended if long-lasting operations should not block other operations. Since today's PCs are typically equipped with multi-core processors, the usage of threads can increase the scalability of an application based on Boost.Asio even further.</p>
+<p>If the <code class="methodname">run()</code> method is called on an object of type <code class="classname">boost::asio::io_service</code>, the associated handlers are invoked within the same thread. By using multiple threads, an application can call multiple <code class="methodname">run()</code> methods simultaneously. Once an asynchronous operation has finished, the corresponding I/O service will then execute the handler within one of the threads. If a second operation has finished shortly after the first, the I/O service can execute the handler within a different thread without needing to wait for the first handler to terminate.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;boost/thread.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void handler1(const boost::system::error_code &amp;ec) 
+{ 
+  std::cout &lt;&lt; "5 s." &lt;&lt; std::endl; 
+} 
+
+void handler2(const boost::system::error_code &amp;ec) 
+{ 
+  std::cout &lt;&lt; "5 s." &lt;&lt; std::endl; 
+} 
+
+boost::asio::io_service io_service; 
+
+void run() 
+{ 
+  io_service.run(); 
+} 
+
+int main() 
+{ 
+  boost::asio::deadline_timer timer1(io_service, boost::posix_time::seconds(5)); 
+  timer1.async_wait(handler1); 
+  boost::asio::deadline_timer timer2(io_service, boost::posix_time::seconds(5)); 
+  timer2.async_wait(handler2); 
+  boost::thread thread1(run); 
+  boost::thread thread2(run); 
+  thread1.join(); 
+  thread2.join(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.3.1/main.cpp">Download source code</a></li></ul>
+<p>The example from the previous section is now converted to a multithreaded application. Using the <code class="classname">boost::thread</code> class, defined in <code class="filename">boost/thread.hpp</code> and part of the Boost C++ Library Thread, two threads are created within <code class="function">main()</code>. Both threads are calling the <code class="methodname">run()</code> method for the single I/O service. This allows the I/O service to utilize both threads for executing handler functions once individual asynchronous operations have completed.</p>
+<p>Both timers in the example application are set to elapse after five seconds. Since two threads are available, both  <code class="function">handler1()</code> and <code class="function">handler2()</code> can be executed simultaneously. If the second timer elapses while the handler of the first one is still executed, the second handler is executed within the second thread. If the handler of the first timer has already terminated, the I/O service is free to choose either thread.</p>
+<p>Threads can increase the performance of an application. Since threads are executed on processor cores, there is no sense in creating more threads than there are cores. This ensures that each thread is executed on its own core without battling with other threads for the corresponding core.</p>
+<p>Please note that the usage of threads does not always make sense. Running the above example can result in a mixed output of the individual messages on the standard output stream since the two handlers, which may run in parallel, access a single shared resource: The standard output stream <var>std::cout</var>. The access needs to be synchronized in order to guarantee that each message is written completely before a different thread can write another message to the standard output stream. The usage of threads in this scenario does not provide much benefit as long as the individual handlers cannot be independently executed in parallel.</p>
+<p>Calling the <code class="methodname">run()</code> method of a single I/O service multiple times is the recommended way of adding scalability to any application based on Boost.Asio. Alternatively, there is a different method: Instead of binding multiple threads to a single I/O service, multiple I/O services can be created instead. Each of the I/O services then utilizes one thread. If the number of I/O services matches the number of processor cores on the system, asynchronous operations can be executed on their own core.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;boost/thread.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void handler1(const boost::system::error_code &amp;ec) 
+{ 
+  std::cout &lt;&lt; "5 s." &lt;&lt; std::endl; 
+} 
+
+void handler2(const boost::system::error_code &amp;ec) 
+{ 
+  std::cout &lt;&lt; "5 s." &lt;&lt; std::endl; 
+} 
+
+boost::asio::io_service io_service1; 
+boost::asio::io_service io_service2; 
+
+void run1() 
+{ 
+  io_service1.run(); 
+} 
+
+void run2() 
+{ 
+  io_service2.run(); 
+} 
+
+int main() 
+{ 
+  boost::asio::deadline_timer timer1(io_service1, boost::posix_time::seconds(5)); 
+  timer1.async_wait(handler1); 
+  boost::asio::deadline_timer timer2(io_service2, boost::posix_time::seconds(5)); 
+  timer2.async_wait(handler2); 
+  boost::thread thread1(run1); 
+  boost::thread thread2(run2); 
+  thread1.join(); 
+  thread2.join(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.3.2/main.cpp">Download source code</a></li></ul>
+<p>The already known example application using two timers has now been rewritten to utilize two I/O services. The application is still based on two threads; however, each thread is now bound to an individual I/O service. Additionally, the two I/O objects <var>timer1</var> and <var>timer2</var> are now also bound to the different I/O services.</p>
+<p>The functionality of the application is the same as before. It can be beneficial under certain conditions to have multiple I/O services, each with its own thread and ideally running on its own processor core, since asynchronous operations including their handlers then can execute locally. If no distant data or function needs to be accessed, each I/O service acts as a small autonomous application. Local and distant in this case refers to resources such as cache and memory pages. Since specific knowledge about the underlying hardware, operation system, compiler as well as potential bottlenecks is required before optimization strategies can be developed, multiple I/O services should only be used in scenarios that clearly benefit from them.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="asio_networkprogramming"></a>7.4 Network Programming</h2>
+<div class="sect1">
+<p>Even though Boost.Asio is a library that can process any kind of data asynchronously, it is mainly being used for network programming. This is due to the fact that Boost.Asio supported network functions long before additional I/O objects were added over time. Network functions are a perfect example for asynchronous processing since the transmission of data within a network may take longer and thus acknowledges as well as error conditions are not directly available.</p>
+<p>Boost.Asio provides many I/O objects to develop network applications. The following example uses the <code class="classname">boost::asio::ip::tcp::socket</code> class to establish a connection to a different PC and download the 'Highscore' homepage; just like a browser does when pointed to <a class="link" href="http://www.highscore.de/">www.highscore.de</a>.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;boost/array.hpp&gt; 
+#include &lt;iostream&gt; 
+#include &lt;string&gt; 
+
+boost::asio::io_service io_service; 
+boost::asio::ip::tcp::resolver resolver(io_service); 
+boost::asio::ip::tcp::socket sock(io_service); 
+boost::array&lt;char, 4096&gt; buffer; 
+
+void read_handler(const boost::system::error_code &amp;ec, std::size_t bytes_transferred) 
+{ 
+  if (!ec) 
+  { 
+    std::cout &lt;&lt; std::string(buffer.data(), bytes_transferred) &lt;&lt; std::endl; 
+    sock.async_read_some(boost::asio::buffer(buffer), read_handler); 
+  } 
+} 
+
+void connect_handler(const boost::system::error_code &amp;ec) 
+{ 
+  if (!ec) 
+  { 
+    boost::asio::write(sock, boost::asio::buffer("GET / HTTP 1.1\r\nHost: highscore.de\r\n\r\n")); 
+    sock.async_read_some(boost::asio::buffer(buffer), read_handler); 
+  } 
+} 
+
+void resolve_handler(const boost::system::error_code &amp;ec, boost::asio::ip::tcp::resolver::iterator it) 
+{ 
+  if (!ec) 
+  { 
+    sock.async_connect(*it, connect_handler); 
+  } 
+} 
+
+int main() 
+{ 
+  boost::asio::ip::tcp::resolver::query query("www.highscore.de", "80"); 
+  resolver.async_resolve(query, resolve_handler); 
+  io_service.run(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.4.1/main.cpp">Download source code</a></li></ul>
+<p>The most obvious part of the application is the usage of three handlers: The <code class="function">connect_handler()</code> and <code class="function">read_handler()</code> functions are called once the connection has been established and while data are being received, respectively. Why is the <code class="function">resolve_handler()</code> function required though?</p>
+<p>The Internet uses so-called IP addresses to identify individual PCs. IP addresses are essentially just a lengthy number that is hard to remember. It is much easier to remember names such as www.highscore.de instead. In order to use such a name for the Internet, it needs to be translated into the corresponding IP address via a process called name resolution. The process is accomplished by a so-called name resolver which explains the name of the corresponding I/O object: <code class="classname">boost::asio::ip::tcp::resolver</code>.</p>
+<p>Name resolution is a process that requires a connection to the Internet as well. Dedicated PCs, called DNS servers, act just like a phone book and know what IP address is assigned to an individual PC. Since the process itself is transparent, it is only important to understand the concept behind it and why the <code class="classname">boost::asio::ip::tcp::resolver</code> I/O object is therefore required. Since name resolution does not take place locally, it is also implemented as an asynchronous operation. The <code class="function">resolve_handler()</code> function is called once the name resolution has either succeeded or terminated with an error.</p>
+<p>Since receiving data presumes a successful connection which in turn presumes a successful name resolution, different asynchronous operations are started within the individual handlers. <code class="function">resolve_handler()</code> accesses the I/O object  <var>sock</var> to create a connection using the resolved address provided by the iterator <var>it</var>. <var>sock</var> is also being accessed inside of <code class="function">connect_handler()</code> to send the HTTP request and to initiate the data reception. Since all of these operations are asynchronous, the names of the individual handlers are being passed as arguments. Depending on the corresponding handler, additional arguments are required such as the iterator <var>it</var> pointing to the resolved address or the buffer <var>buffer</var> storing the received data.</p>
+<p>Once executed, the application creates an object <var>query</var> of type <code class="classname">boost::asio::ip::tcp::resolver::query</code> that represents a query containing the name www.highscore.de and the, in the Internet commonly used, port 80. This query is passed to the <code class="methodname">async_resolve()</code> method to resolve the name. Finally, <code class="function">main()</code> simply calls the <code class="methodname">run()</code> method of the I/O service to transfer control over the asynchronous operations to the operating system.</p>
+<p>Once the name resolution process has finished, <code class="function">resolve_handler()</code> is called which checks whether or not the name could be resolved. If successfully resolved, the object <var>ec</var>, containing the various error conditions, is set to 0. Only in this case, the socket is accessed to create a connection accordingly. The server address is provided via the second argument of type <code class="classname">boost::asio::ip::tcp::resolver::iterator</code>.</p>
+<p>After calling the <code class="methodname">async_connect()</code> method, <code class="function">connect_handler()</code> is called automatically. Inside the handler, the <var>ec</var> object is evaluated to check whether or not a connection has been established. In case a connection is available, the <code class="methodname">async_read_some()</code> method is called for the corresponding socket which initiates the read operation. To store the received data, a buffer is provided as the first argument. In the given example, it is of type <code class="classname">boost::array</code> which is part of the Boost C++ Library Array and is defined in <code class="filename">boost/array.hpp</code>.</p>
+<p>The <code class="function">read_handler()</code> function is called every time one or more bytes have been received and stored within the buffer. The exact number of bytes received is given via the argument <var>bytes_transferred</var> which is of type <code class="type">std::size_t</code>. As is the rule, the handler should first evaluate the argument <var>ec</var> to check for any reception error. If successfully received, the data is simply written to the standard output stream.</p>
+<p>Please note that <code class="function">read_handler()</code> calls the <code class="methodname">async_read_some()</code> method again once the data has been written via <var>std::cout</var>. This is necessary since there is no guarantee that the whole homepage has been received with just one single asynchronous operation. The alternating calls of <code class="methodname">async_read_some()</code> and <code class="function">read_handler()</code> only stop if the connection has been disrupted, e.g. when the web server has transmitted the complete homepage. In this case, an error is reported inside <code class="function">read_handler()</code> which prevents further data output on the standard output stream as well as further invocations of the <code class="methodname">async_read()</code> method for this particular socket. The example application will actually terminate since no further asynchronous operations are outstanding.</p>
+<p>While the previous example was used to retrieve the homepage of www.highscore.de, the next example actually illustrates a simple web server. The crucial difference is that the application does not connect to other PCs but rather waits for incoming connections.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;string&gt; 
+
+boost::asio::io_service io_service; 
+boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), 80); 
+boost::asio::ip::tcp::acceptor acceptor(io_service, endpoint); 
+boost::asio::ip::tcp::socket sock(io_service); 
+std::string data = "HTTP/1.1 200 OK\r\nContent-Length: 13\r\n\r\nHello, world!"; 
+
+void write_handler(const boost::system::error_code &amp;ec, std::size_t bytes_transferred) 
+{ 
+} 
+
+void accept_handler(const boost::system::error_code &amp;ec) 
+{ 
+  if (!ec) 
+  { 
+    boost::asio::async_write(sock, boost::asio::buffer(data), write_handler); 
+  } 
+} 
+
+int main() 
+{ 
+  acceptor.listen(); 
+  acceptor.async_accept(sock, accept_handler); 
+  io_service.run(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.4.2/main.cpp">Download source code</a></li></ul>
+<p>The I/O object <var>acceptor</var> of type <code class="classname">boost::asio::ip::tcp::acceptor</code> - initialized with the protocol and the port  - is used to wait for incoming connections from other PCs. The initialization happens via the <var>endpoint</var> object which is of type <code class="classname">boost::asio::ip::tcp::endpoint</code> and configures the acceptor in the example to use port 80 to wait for incoming connections of version 4 of the Internet protocol which is typically the port and protocol used for the WWW.</p>
+<p>After initializing the acceptor, <code class="function">main()</code> first calls the <code class="methodname">listen()</code> method to put the acceptor into receive mode before it waits for the initial connection using the <code class="methodname">async_accept()</code> method. The socket used to send and receive data is passed as the first argument.</p>
+<p>Once a PC tries to establish a connection, <code class="function">accept_handler()</code> is called automatically. If the connection request was successful, the free-standing <code class="function">boost::asio::async_write()</code> function is invoked to send the information stored in <var>data</var> via the socket. <code class="classname">boost::asio::ip::tcp::socket</code> also provides a method named <code class="methodname">async_write_some()</code> to send data; however, it will invoke the associated handler whenever at least one byte has been sent. The handler would need to calculate how many bytes are left to send and invoke <code class="methodname">async_write_some()</code> repeatedly until all bytes have been sent. This can be avoided by using <code class="function">boost::asio::async_write()</code> since this asynchronous operation only terminates after all bytes of the buffer have been sent.</p>
+<p>Once all data has been sent, the empty function <code class="function">write_handler()</code> is called in this example. Since all asynchronous operations have finished, the application is terminated. The connection to the other PC is closed accordingly.</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="asio_extensions"></a>7.5 Developing Boost.Asio Extensions</h2>
+<div class="sect1">
+<p>Even though Boost.Asio mainly supports network functions, adding additional I/O objects to perform different asynchronous operations is fairly easy. This section outlines the general layout of a Boost.Asio extension. While it is not mandatory, it provides a viable skeleton as a starting point for other extensions.</p>
+<p>To add new asynchronous operations to Boost.Asio, three classes need to be implemented:</p>
+<div class="itemizedlist"><ul class="itemizedlist">
+<li class="listitem"><p>A class derived from <code class="classname">boost::asio::basic_io_object</code> representing the new I/O object. Developers using the new Boost.Asio extension will exclusively encounter this I/O object.</p></li>
+<li class="listitem"><p>A class derived from <code class="classname">boost::asio::io_service::service</code> representing a service that is registered with the I/O service and can be accessed from the I/O object. The differentiation between the service and the I/O object is important since there is only one instance of the service per I/O service at any given time but a service can be accessed by multiple I/O objects.</p></li>
+<li class="listitem"><p>A class not derived from any other class representing the service implementation. Since there is only one instance of a service per I/O service at any given time, the service creates an instance of its implementation for every I/O object. This instance manages the internal data pertinent to the corresponding I/O object.</p></li>
+</ul></div>
+<p>Instead of just providing the skeleton, the Boost.Asio extension developed in this section is going to resemble the available <code class="classname">boost::asio::deadline_timer</code> object. The difference between the two is that the period for the timer is being passed as an argument to the <code class="methodname">wait()</code> or <code class="methodname">async_wait()</code> method instead of the constructor.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;cstddef&gt; 
+
+template &lt;typename Service&gt; 
+class basic_timer 
+  : public boost::asio::basic_io_object&lt;Service&gt; 
+{ 
+  public: 
+    explicit basic_timer(boost::asio::io_service &amp;io_service) 
+      : boost::asio::basic_io_object&lt;Service&gt;(io_service) 
+    { 
+    } 
+
+    void wait(std::size_t seconds) 
+    { 
+      return this-&gt;service.wait(this-&gt;implementation, seconds); 
+    } 
+
+    template &lt;typename Handler&gt; 
+    void async_wait(std::size_t seconds, Handler handler) 
+    { 
+      this-&gt;service.async_wait(this-&gt;implementation, seconds, handler); 
+    } 
+}; </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.5.1/basic_timer.hpp">Download source code</a></li></ul>
+<p>Every I/O object is usually implemented as a template class that is required to be instantiated with a service - typically with the service specifically developed for this I/O object. Whenever an I/O object is instantiated, the service is automatically registered with the I/O service by the parent class <code class="classname">boost::asio::basic_io_object</code>, unless it was already registered previously. This ensures that services used by any I/O object will only be registered once per I/O service.</p>
+<p>The corresponding service is accessible within the I/O object via the <var>service</var> reference and is typically accessed to forward method calls to the service. Since services need to store data for every I/O object, an instance is automatically created for every I/O object using the service. This again happens with the aid of the parent class <code class="classname">boost::asio::basic_io_object</code>. The actual service implementation is passed as an argument to any method call to allow the service to specifically know which I/O object initiated the call. The service implementation is accessible via the <var>implementation</var> property.</p>
+<p>In general, any I/O object is relatively simple: While the installation of the service as well as the creation of a service implementation is done by the parent class <code class="classname">boost::asio::basic_io_object</code>, method calls are simply forwarded to the corresponding service; passing the actual service implementation of the I/O object as an argument.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;boost/thread.hpp&gt; 
+#include &lt;boost/bind.hpp&gt; 
+#include &lt;boost/scoped_ptr.hpp&gt; 
+#include &lt;boost/shared_ptr.hpp&gt; 
+#include &lt;boost/weak_ptr.hpp&gt; 
+#include &lt;boost/system/error_code.hpp&gt; 
+
+template &lt;typename TimerImplementation = timer_impl&gt; 
+class basic_timer_service 
+  : public boost::asio::io_service::service 
+{ 
+  public: 
+    static boost::asio::io_service::id id; 
+
+    explicit basic_timer_service(boost::asio::io_service &amp;io_service) 
+      : boost::asio::io_service::service(io_service), 
+      async_work_(new boost::asio::io_service::work(async_io_service_)), 
+      async_thread_(boost::bind(&amp;boost::asio::io_service::run, &amp;async_io_service_)) 
+    { 
+    } 
+
+    ~basic_timer_service() 
+    { 
+      async_work_.reset(); 
+      async_io_service_.stop(); 
+      async_thread_.join(); 
+    } 
+
+    typedef boost::shared_ptr&lt;TimerImplementation&gt; implementation_type; 
+
+    void construct(implementation_type &amp;impl) 
+    { 
+      impl.reset(new TimerImplementation()); 
+    } 
+
+    void destroy(implementation_type &amp;impl) 
+    { 
+      impl-&gt;destroy(); 
+      impl.reset(); 
+    } 
+
+    void wait(implementation_type &amp;impl, std::size_t seconds) 
+    { 
+      boost::system::error_code ec; 
+      impl-&gt;wait(seconds, ec); 
+      boost::asio::detail::throw_error(ec); 
+    } 
+
+    template &lt;typename Handler&gt; 
+    class wait_operation 
+    { 
+      public: 
+        wait_operation(implementation_type &amp;impl, boost::asio::io_service &amp;io_service, std::size_t seconds, Handler handler) 
+          : impl_(impl), 
+          io_service_(io_service), 
+          work_(io_service), 
+          seconds_(seconds), 
+          handler_(handler) 
+        { 
+        } 
+
+        void operator()() const 
+        { 
+          implementation_type impl = impl_.lock(); 
+          if (impl) 
+          { 
+              boost::system::error_code ec; 
+              impl-&gt;wait(seconds_, ec); 
+              this-&gt;io_service_.post(boost::asio::detail::bind_handler(handler_, ec)); 
+          } 
+          else 
+          { 
+              this-&gt;io_service_.post(boost::asio::detail::bind_handler(handler_, boost::asio::error::operation_aborted)); 
+          } 
+      } 
+
+      private: 
+        boost::weak_ptr&lt;TimerImplementation&gt; impl_; 
+        boost::asio::io_service &amp;io_service_; 
+        boost::asio::io_service::work work_; 
+        std::size_t seconds_; 
+        Handler handler_; 
+    }; 
+
+    template &lt;typename Handler&gt; 
+    void async_wait(implementation_type &amp;impl, std::size_t seconds, Handler handler) 
+    { 
+      this-&gt;async_io_service_.post(wait_operation&lt;Handler&gt;(impl, this-&gt;get_io_service(), seconds, handler)); 
+    } 
+
+  private: 
+    void shutdown_service() 
+    { 
+    } 
+
+    boost::asio::io_service async_io_service_; 
+    boost::scoped_ptr&lt;boost::asio::io_service::work&gt; async_work_; 
+    boost::thread async_thread_; 
+}; 
+
+template &lt;typename TimerImplementation&gt; 
+boost::asio::io_service::id basic_timer_service&lt;TimerImplementation&gt;::id; </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.5.1/basic_timer_service.hpp">Download source code</a></li></ul>
+<p>In order to be integrated with Boost.Asio, a service must fulfill a couple of requirements:</p>
+<div class="itemizedlist"><ul class="itemizedlist">
+<li class="listitem"><p>It needs to be derived from <code class="classname">boost::asio::io_service::service</code>. The constructor must expect a reference to an I/O service which is passed to the constructor of <code class="classname">boost::asio::io_service::service</code> accordingly.</p></li>
+<li class="listitem"><p>Any service must contain a static public property <var>id</var> of type <code class="classname">boost::asio::io_service::id</code>. Services are identified using this property within the I/O service.</p></li>
+<li class="listitem"><p>Two public methods named <code class="methodname">construct()</code> and <code class="methodname">destruct()</code>, both expecting an argument of type <code class="type">implementation_type</code>, must be defined. <code class="type">implementation_type</code> is typically a type definition for the service implementation. As shown in the above example, a <code class="classname">boost::shared_ptr</code> object can be used to easily instantiate a service implementation in <code class="methodname">construct()</code> and to destruct it in <code class="methodname">destruct()</code> accordingly. Since both methods are automatically being called whenever an I/O object is created or destroyed, a service can create and destroy service implementations for each I/O object using <code class="methodname">construct()</code> and <code class="methodname">destruct()</code>, respectively.</p></li>
+<li class="listitem"><p>A method named <code class="methodname">shutdown_service()</code> must be defined; however, it can be private. For common  Boost.Asio extensions, this is usually an empty method. It is only being used by services that are more tightly integrated with Boost.Asio. Nonetheless, the method must be present in order to compile the extension successfully.</p></li>
+</ul></div>
+<p>In order to forward method calls to the corresponding service, methods for forwarding need to be defined for the I/O object accordingly. These methods are typically named similar to the methods of the I/O object itself, e.g. <code class="methodname">wait()</code> and <code class="methodname">async_wait()</code> in the above example. While synchronous methods such as <code class="methodname">wait()</code> solely access the service implementation to call a blocking method, the trick for asynchronous operations like <code class="methodname">async_wait()</code> is to call the blocking method within a thread.</p>
+<p>Using the asynchronous operations with the help of a thread is usually done by accessing a new I/O service. The above example contains a property named  <var>async_io_service_</var> of type <code class="classname">boost::asio::io_service</code>. The <code class="methodname">run()</code> method of this I/O service is started within its own thread created with <var>async_thread_</var> of type <code class="classname">boost::thread</code> inside the constructor of the service. The third property <var>async_work_</var> of type <code class="classname">boost::scoped_ptr&lt;boost::asio::io_service::work&gt;</code> is required to avoid the <code class="methodname">run()</code> method from returning immediately. This could otherwise happen since there are no outstanding asynchronous operations at creation. Creating an object of type <code class="classname">boost::asio::io_service::work</code> and binding it to the I/O service, which also happens inside the service constructor, prevents the <code class="methodname">run()</code> method from returning immediately.</p>
+<p>A service could also be implemented without accessing its own I/O service - a single thread would be sufficient. The reason for using a new I/O service for any additional thread is quite simple: Threads can communicate fairly easy with each other using the I/O service. In the example, <code class="methodname">async_wait()</code> creates a function object of type <code class="classname">wait_operation</code> and passes it to the internal I/O service via the <code class="methodname">post()</code> method. The overloaded <code class="methodname">operator()()</code> of this function object is then called inside the thread used to execute the <code class="methodname">run()</code> method for the internal I/O service. <code class="methodname">post()</code> offers a simple way of executing a function object within a different thread.</p>
+<p>The overloaded <code class="methodname">operator()()</code> operator of <code class="classname">wait_operation</code> essentially performs the same work as the <code class="methodname">wait()</code> method: Calling the blocking <code class="methodname">wait()</code> method of the service implementation. There is, however, the possibility that the I/O object, including its service implementation, is destroyed while the thread executes the <code class="methodname">operator()()</code> operator. If the service implementation is destroyed in <code class="methodname">destruct()</code>, the <code class="methodname">operator()()</code> operator should no longer access it. This is prevented by using a weak pointer known from the first chapter: The weak pointer <var>impl_</var> returns a shared pointer to the service implementation if it still exists when <code class="methodname">lock()</code> is called, otherwise it will return 0. In that case, <code class="methodname">operator()()</code> does not access the service implementation but rather calls the handler with an error of <code class="code">boost::asio::error::operation_aborted</code>.</p>
+<pre class="programlisting">#include &lt;boost/system/error_code.hpp&gt; 
+#include &lt;cstddef&gt; 
+#include &lt;windows.h&gt; 
+
+class timer_impl 
+{ 
+  public: 
+    timer_impl() 
+      : handle_(CreateEvent(NULL, FALSE, FALSE, NULL)) 
+    { 
+    } 
+
+    ~timer_impl() 
+    { 
+      CloseHandle(handle_); 
+    } 
+
+    void destroy() 
+    { 
+      SetEvent(handle_); 
+    } 
+
+    void wait(std::size_t seconds, boost::system::error_code &amp;ec) 
+    { 
+      DWORD res = WaitForSingleObject(handle_, seconds * 1000); 
+      if (res == WAIT_OBJECT_0) 
+        ec = boost::asio::error::operation_aborted; 
+      else 
+        ec = boost::system::error_code(); 
+    } 
+
+private: 
+    HANDLE handle_; 
+}; </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.5.1/timer_impl.hpp">Download source code</a></li></ul>
+<p>The service implementation <code class="classname">timer_impl</code> uses Windows API functions and can only be compiled and used in Windows. Its purpose is rather to illustrate a potential implementation.</p>
+<p><code class="classname">timer_impl</code> exhibits two essential methods: <code class="methodname">wait()</code> is called to wait for one or more seconds. <code class="methodname">destroy()</code> is used to cancel a wait operation which is mandatory since the <code class="methodname">wait()</code> method is called inside its own thread for asynchronous operations. If the I/O object, including its service implementation, is destroyed, the blocking <code class="methodname">wait()</code> method should be canceled as soon as possible which is done using <code class="methodname">destroy()</code>.</p>
+<p>This Boost.Asio extension can be used as follows.</p>
+<pre class="programlisting">#include &lt;boost/asio.hpp&gt; 
+#include &lt;iostream&gt; 
+#include "basic_timer.hpp" 
+#include "timer_impl.hpp" 
+#include "basic_timer_service.hpp" 
+
+void wait_handler(const boost::system::error_code &amp;ec) 
+{ 
+  std::cout &lt;&lt; "5 s." &lt;&lt; std::endl; 
+} 
+
+typedef basic_timer&lt;basic_timer_service&lt;&gt; &gt; timer; 
+
+int main() 
+{ 
+  boost::asio::io_service io_service; 
+  timer t(io_service); 
+  t.async_wait(5, wait_handler); 
+  io_service.run(); 
+} </pre>
+<ul class="programlisting"><li><a class="programlisting" href="src/7.5.1/main.cpp">Download source code</a></li></ul>
+<p>Compared to the example application in the beginning of this chapter, this Boost.Asio extension is used similarly to <code class="classname">boost::asio::deadline_timer</code>. In practice, <code class="classname">boost::asio::deadline_timer</code> should be preferred since it is already integrated with Boost.Asio. The sole purpose of this extension was to show how Boost.Asio can be extended with new asynchronous operations.</p>
+<p><a class="link" href="http://www.highscore.de/boost/dir_monitor.zip">Directory Monitor</a> is a real-world example of a Boost.Asio extension that provides an I/O object able to monitor directories. If a file inside a monitored directory is created, modified or deleted, a handler is called accordingly. The current version supports both Windows and Linux (Kernel version 2.6.13 or higher).</p>
+</div>
+<hr>
+<h2 class="title">
+<a name="asio_exercises"></a>7.6 Exercises</h2>
+<div class="sect1">
+<p class="solution">
+              You can buy 
+              <a target="_top" href="http://en.highscore.de/shop/index.php?p=boost-solution">solutions to all exercises</a>
+              in this book as a ZIP file. 
+            </p>
+<ol>
+<li class="listitem"><p>Modify the server from <a class="xref" href="asio.html#asio_networkprogramming" title="7.4 Network Programming">Section 7.4, “Network Programming”</a> to prevent it from terminating after a single request but rather processes an arbitrary number.</p></li>
+<li class="listitem"><p>Extend the client from <a class="xref" href="asio.html#asio_networkprogramming" title="7.4 Network Programming">Section 7.4, “Network Programming”</a> to immediately parse the received HTML code for a URL. If found, the corresponding resource should be downloaded as well. For this exercise, the first URL found should be utilized. Ideally, the website as well as the resource should be saved in two files rather than writing both to the standard output stream.</p></li>
+<li class="listitem"><p>Create a client/server application to transmit a file between two PCs. Once the server is started, it should display the IP addresses of all local interfaces and wait for client connections. One of the available server IP addresses as well as the name of a local file should be passed to the client as command-line arguments. The client should transmit the file to the server which in turn saves it accordingly. While transmitting, the client should provide some visual indication of the progress to the user.</p></li>
+</ol>
+</div>
+</div>
+<hr class="hrfoot">
+<p class="copyright">Copyright © 2008-2010 
+        <a class="link" href="mailto:boris@highscore.de">Boris Schäling</a>
+      </p>
+</body>
+</html>

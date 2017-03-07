@@ -1,0 +1,54 @@
+// multilanguage.h : main header file for the MULTILANGUAGE application
+//
+
+#if !defined(AFX_MULTILANGUAGE_H__CFDD4A6B_4753_44C5_9B74_059B09346745__INCLUDED_)
+#define AFX_MULTILANGUAGE_H__CFDD4A6B_4753_44C5_9B74_059B09346745__INCLUDED_
+
+#if _MSC_VER > 1000
+#pragma once
+#endif // _MSC_VER > 1000
+
+#ifndef __AFXWIN_H__
+	#error include 'stdafx.h' before including this file for PCH
+#endif
+
+#include "resource.h"       // main symbols
+
+/////////////////////////////////////////////////////////////////////////////
+// CMultilanguageApp:
+// See multilanguage.cpp for the implementation of this class
+//
+
+class CMultilanguageApp : public CWinApp
+{
+public:
+	CMultilanguageApp();
+
+// Overrides	
+
+	BOOL m_bChinese;
+	HINSTANCE m_hLangDLL;
+	// ClassWizard generated virtual function overrides
+	//{{AFX_VIRTUAL(CMultilanguageApp)
+	public:
+	virtual BOOL InitInstance();
+	virtual int ExitInstance(); 
+
+	//}}AFX_VIRTUAL
+
+// Implementation
+	//{{AFX_MSG(CMultilanguageApp)
+	afx_msg void OnAppAbout();
+		// NOTE - the ClassWizard will add and remove member functions here.
+		//    DO NOT EDIT what you see in these blocks of generated code !
+	//}}AFX_MSG
+	DECLARE_MESSAGE_MAP()
+};
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+//{{AFX_INSERT_LOCATION}}
+// Microsoft Visual C++ will insert additional declarations immediately before the previous line.
+
+#endif // !defined(AFX_MULTILANGUAGE_H__CFDD4A6B_4753_44C5_9B74_059B09346745__INCLUDED_)

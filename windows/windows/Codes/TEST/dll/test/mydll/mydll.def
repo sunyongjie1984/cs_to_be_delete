@@ -1,0 +1,11 @@
+LIBRARY    mydll          ;此处与动态连接库文件同名
+
+DESCRIPTION  'mydll test' ;动态连接库描述
+
+EXETYPE WINDOWS
+
+EXPORTS
+
+	 MyMsgBox
+	 aMsgBoxA
+	 aMsgBoxW

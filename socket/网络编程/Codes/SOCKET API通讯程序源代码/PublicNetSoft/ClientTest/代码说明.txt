@@ -1,0 +1,338 @@
+注：当有多个工作站时，使用下面的方法判断是那一个工作站的消息。
+
+1、怎样判断到了那一个工作站，并且是什么消息。
+
+	if (WSAGETSELECTEVENT(lParam) == FD_ACCEPT)
+	{
+		for(i=0;(i<MAXClient)&&(m_aClientSocket[i]!=INVALID_SOCKET);i++) ;
+		if(i==MAXClient) return 0L;//如果工作站到了还没有连接的，就退出FOR循环
+		
+		m_aClientSocket[i] = accept(m_pDoc->m_hServerSocket, (LPSOCKADDR)&m_sockClientAddr, (LPINT)&nLength);
+		
+		if (m_aClientSocket[i] == INVALID_SOCKET)
+		{
+			return 0L;
+		}
+        }
+
+2、怎样确定是那一个工作站发来的消息
+
+    for(i=0;(i<MAXClient)&&(m_aClientSocket[i]!=wParam);i++)
+    {//接收消息，如果到了指定的工作站，就退出FOR循环。
+    }
+
+3、怎样初始化SOCKET
+
+for(int i=0;(i<MAXClient);i++) 
+    m_aClientSocket[i]=INVALID_SOCKET;
+
+
+
+服务器方：
+
+
+/*
+自定义消息函数：
+
+	LRESULT OnAccept(WPARAM wParam, LPARAM lParam);
+	LRESULT OnReadClose(WPARAM wParam,LPARAM lParam);
+
+typedef struct ZyMsg
+{//用于发送与接收的结构
+	char msg[100];
+	int i;
+}Msg;
+
+public:
+
+	SOCKET Client;        //客户的连接请求
+	SOCKET ServerSocket;                 //SOCKET 
+	SOCKADDR_IN m_sockServerAddr;          //SOCKET 结构
+	BOOL IsTrue;                //服务器初始化与绑定成功
+	Msg msg;                   //发送的数据缓冲区
+
+//消息映射
+	ON_MESSAGE(WM_CLIENT_ACCEPT,OnAccept)
+	ON_MESSAGE(WM_CLIENT_READCLOSE,OnReadClose)
+*/
+
+void CPublicNetSoftDlg::OnOK() 
+{//初始化与绑定服务器
+    WSADATA wsaData;
+    int iErrorCode;
+    if (WSAStartup(MAKEWORD(2,1),&wsaData)) //调用Windows Sockets DLL
+	{ 
+         list.InsertString(0,"Winsock无法初始化!");
+         WSACleanup();
+         return;
+	}
+
+	list.InsertString(0,"服务器开始创建SOCKET。");
+
+	ServerSocket=socket(PF_INET,SOCK_STREAM,0);    //创建服务器端Socket，类型为SOCK_STREAM，面向连接的通信
+
+    if(ServerSocket == INVALID_SOCKET)
+	{
+         list.InsertString(0,"无法创建服务器socket!");
+         return;
+	}
+
+    m_sockServerAddr.sin_family = AF_INET;
+    m_sockServerAddr.sin_addr.s_addr = INADDR_ANY;   //向所有的IP地址发送消息
+    m_sockServerAddr.sin_port = htons(8001);
+
+    if (bind(ServerSocket,(LPSOCKADDR)&m_sockServerAddr,sizeof(m_sockServerAddr)) == SOCKET_ERROR) //与选定的端口绑定
+    {
+	    list.InsertString(0,"无法绑定服务器。");
+        return;
+	}
+
+    list.InsertString(0,"服务器端口:8001.");
+
+    iErrorCode=WSAAsyncSelect(ServerSocket,m_hWnd,WM_CLIENT_ACCEPT,FD_ACCEPT);
+         // 产生相应传递给窗口的消息为WM_SERVER_ACCEPT ，这是自定义消息
+
+    if (iErrorCode == SOCKET_ERROR) 
+	{
+         list.InsertString(0,"WSAAsyncSelect设定失败!——用于连接请求的消息");
+         return;
+	}
+
+    if (listen(ServerSocket,1) == SOCKET_ERROR) //开始监听客户连接请求
+	{
+		list.InsertString(0,"服务器监听失败!");
+        return;
+	}
+
+	IsTrue = TRUE;
+
+ 	list.AddString("服务器绑定监听成功。");
+    return; 
+}
+
+LRESULT CPublicNetSoftDlg::OnAccept(WPARAM wParam,LPARAM lParam)
+{//自定义接收客户机请求的消息   ON_MESSAGE(WM_CLIENT_ACCEPT,OnAccept)
+	if (WSAGETSELECTERROR(lParam))
+	{
+		list.InsertString(0,"Error detected on entry into OnServerAccept.");
+		return 0L;
+	}
+	
+	if(WSAGETSELECTEVENT(lParam) == FD_ACCEPT)//如果
+	{
+	    Client = accept(ServerSocket,(LPSOCKADDR)&m_sockServerAddr,0);
+
+	    if (Client == INVALID_SOCKET)
+		{
+			list.InsertString(0,"Server socket failed to accept connection.");
+			return 0L;
+		}
+		
+		WSAAsyncSelect(Client,m_hWnd,WM_CLIENT_READCLOSE,FD_READ|FD_CLOSE);
+
+		IsTrue = TRUE;
+	}
+	
+	list.InsertString(0,"有工作站连接上了服务器。");
+	
+	return 0L;
+}
+
+
+LRESULT CPublicNetSoftDlg::OnReadClose(WPARAM wParam,LPARAM lParam)
+{//自定义的关闭与缓冲区有消息
+	if(!IsTrue)
+	{
+		list.InsertString(0,"有数据到达，但是没有工作站连接。");
+	}
+
+	CString str;
+	switch (WSAGETSELECTEVENT(lParam))
+	{
+	case FD_READ:
+		if(recv(Client,(char *)&msg,sizeof(msg),0) == SOCKET_ERROR)
+		{
+			list.InsertString(0,"接收数据发生错误。");
+			return 0;
+		}
+		str.Format("%s",msg.msg);
+		list.InsertString(0,str);
+		break;
+	case FD_CLOSE:
+		str = _T("工作站退出。");
+		list.InsertString(0,str);
+		closesocket(Client);
+		break;
+	}
+	return 0L;
+}
+
+
+
+void CPublicNetSoftDlg::OnSend() 
+{//发送数据
+	if(!IsTrue)
+		list.InsertString(0,"还没有工作站连接，或服务器没有初始化成功。");
+	UpdateData();
+	strcpy((char *)msg.msg,(LPCTSTR)str);
+	msg.i = 0;
+	if(send(Client,(char *)&msg,sizeof(msg),0) == SOCKET_ERROR)//	recv(ServerSocket,buf,sizeof(buf),0);
+	{
+		list.InsertString(0,"发送数据错误。");
+		return;
+	}
+	else
+		list.InsertString(0,str);
+	list.InsertString(0,str);
+	str.Empty();
+	UpdateData(FALSE);
+	((CEdit *)GetDlgItem(IDC_EDIT))->SetActiveWindow();
+}
+
+
+BOOL CPublicNetSoftDlg::DestroyWindow() 
+{//当程序退出时，把SOCKET清空
+	if(IsTrue)
+		WSACleanup();
+	
+	return CDialog::DestroyWindow();
+}
+
+
+
+
+
+
+
+工作站方：
+
+/*//自定义消息函数
+	LRESULT OnReadClose(WPARAM wParam,LPARAM lParam);
+
+public:
+	SOCKET ServerSocket;                 //SOCKET 
+	SOCKADDR_IN sockStruct;          //SOCKET 结构
+	BOOL IsTrue;           //是否打开了连接
+	Msg msg;             //发送与接收数据的缓冲区
+
+
+        //消息映射
+    	ON_MESSAGE(WM_CLIENT_READCOLOSE,OnReadClose)
+*/
+
+
+
+void CClientTestDlg::OnOK() 
+{//连接
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2,1),&wsaData)) //调用Windows Sockets DLL
+	{ 
+         list.InsertString(0,"Winsock无法初始化!");
+         WSACleanup();
+         return;
+	}
+
+	list.InsertString(0,"服务器开始创建SOCKET。");
+
+	ServerSocket=socket(PF_INET,SOCK_STREAM,0);    //创建服务器端Socket，类型为SOCK_STREAM，面向连接的通信
+
+    if(ServerSocket == INVALID_SOCKET)
+	{
+         list.InsertString(0,"无法创建服务器socket!");
+         return;
+	}
+
+    list.InsertString(0,"服务器端口:8001.");
+
+	LPCTSTR ip;
+	ip = _T("192.168.0.100");
+	DWORD dwip;
+	if((dwip=inet_addr(ip))==INADDR_NONE)
+	{
+		list.InsertString(0,"IP赋值错误");
+		return;
+	}
+    sockStruct.sin_family=AF_INET; //使用TCP/IP协议
+    sockStruct.sin_port = htons(8001);
+	sockStruct.sin_addr.S_un.S_addr = dwip;
+
+	if(connect(ServerSocket,(LPSOCKADDR)&sockStruct,sizeof(sockStruct)) == SOCKET_ERROR)
+    {
+	    list.InsertString(0,"无法连接服务器。");
+		list.InsertString(0,"");
+        return;
+	}
+	else
+	{
+		char *buf = new char[100];
+		strcpy(buf,"工作站连接成功。——发往服务器的消息。");
+		send(ServerSocket,buf,100,0);
+		delete buf;
+	}
+
+	WSAAsyncSelect(ServerSocket,m_hWnd,WM_CLIENT_READCOLOSE,FD_READ|FD_CLOSE);
+         // 产生相应传递给窗口的消息为WM_SERVER_ACCEPT ，这是自定义消息
+
+ 	list.AddString("连接服务器成功。");
+	IsTrue = TRUE;
+    return;
+}
+
+
+LRESULT CClientTestDlg::OnReadClose(WPARAM wParam,LPARAM lParam)
+{//自定义SOCKET 服务器的读消息与关闭连接消息函数
+	char *buf = new char[100];
+	CString str;
+	switch (WSAGETSELECTEVENT(lParam))
+	{
+	case FD_READ:
+		if(recv(ServerSocket,(char *)&msg,sizeof(msg),0) == SOCKET_ERROR)
+		{
+			list.InsertString(0,"接收数据发生错误。");
+			return 0L;
+		}
+		str.Format("%s",msg.msg);
+		list.InsertString(0,str);
+		break;
+	case FD_CLOSE:
+		closesocket(ServerSocket);
+		list.InsertString(0,"服务器退出。");
+		break;
+	}
+	return 0L;
+}
+
+void CClientTestDlg::OnSend() 
+{//发送按钮，用于发送数据
+	if(!IsTrue)
+	{
+		list.InsertString(0,"服务器还没有连接呢？");
+		return;
+	}
+	UpdateData();
+	if(str.IsEmpty())
+	{
+		list.InsertString(0,"发送的字符串不能为空。");
+		return;
+	}
+	strcpy(msg.msg,(LPCTSTR)str);
+	msg.i = 0;
+	if(send(ServerSocket,(char *)&msg,sizeof(msg),0) == SOCKET_ERROR)//	recv(ServerSocket,buf,sizeof(buf),0);
+	{
+		list.InsertString(0,"发送数据发生错误。");
+	}
+	else
+		list.InsertString(0,str);
+	str.Empty();
+	UpdateData(FALSE);
+	((CEdit *)GetDlgItem(IDC_EDIT_MESSAGE))->SetActiveWindow();
+}
+
+BOOL CClientTestDlg::DestroyWindow() 
+{//退出时清空SOCKET DLL
+	if(IsTrue)
+	    WSACleanup();
+	
+	return CDialog::DestroyWindow();
+}
+

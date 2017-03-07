@@ -1,0 +1,159 @@
+README file for the Spade v092200.1
+-----------------------------------
+
+Greetings,
+
+Welcome to release version 092200.1 of the Spade sensor, spp_anomsensor. 
+Spade stands for Statistical Packet Anomaly Detection Engine and is produced
+by Silicon Defense (http://www.silicondefense.com/).  It is a Snort plugin to
+report unusual, possibly suspicious, packets.
+
+This document gives an overview of Spade.  The "Getting Started" section
+towards the end of the file will help you get going quickly.  See the Usage
+file for information about installing and using Spade.  See the COPYING file
+for the GNU GPL license.
+
+SPICE is the Stealthy Probing and Intrusion Correlation Engine.  It is part of
+Silicon Defense's work an (unclassified) project funded by the US DARPA
+(though they should not be assumed to endorse this particular work).  It will
+eventually consist of two parts, an anomaly sensor (Spade) and a portscan
+correlator.  The basic operation of this will be that Spade will monitor the
+network and report anomalous events to the correlator.  The correlator will
+then group these events together and send out reports of portscans, even those
+that have been crafted to be difficult to detect (e.g., they probe slowly,
+from different sources, or they randomize the scan).  This distribution is the
+sensor component of Spice.  The correlator is under active development.
+
+We release this in the hopes that it will be useful.  We note though that it
+is experimental and that it will be better when the correlator is available. 
+That being said, we have found it useful in identifying events that are part
+of a portscan.  Your mileage may vary.
+
+We would really like your comments on Spade.  One of the reasons we have
+released this is so that we will have different people's feedback so that we
+can improve it.  In particular, we know that your experience with this will
+depend on the characteristics of your network.  E-mail the contact author, Jim
+Hoagland (hoagland@SiliconDefense.com) with any comments or suggestions.
+
+This is released under GNU GPL, which among other things, means that we
+express no warranty for the program.
+
+The web page for Spade and Spice is http://www.silicondefense.com/spice/.  You
+can download the latest releases of it there.
+
+
+-= What does it do? =-
+
+Spade will review the packets received by Snort, find those of interest (TCP
+SYNs into your homenets, if any), and report those packets that it believes
+are anomalous along with an anomaly score.
+
+The anomaly score that is assigned is based on the observed history of the
+network.  The fewer times that a particular kind of packet has occurred in the
+past, the higher its anomaly score will be.  Packets are classified by their
+joint occurrence of packet field values.  For example, packets with
+destination IP of 10.10.10.10 and destination port of 8080 might be one kind
+of packet.
+
+To do this, a probability table is maintained that reflects the occurrences of
+different kinds of packets in history, with higher weight on more recent
+events.  We would know, for example, that P(dip=10.10.10.10,dport=8080) is 10%
+but that P(dip=10.10.10.10,dport=8079) is 0.1%.  The anomaly score is
+calculated directly from the probability.  For a packet X, A(X)= -log2(P(X)). 
+So the anomaly score for a 10.10.10.10, 8080 packet is 3.32 (not very
+anomalous) and the score for a 10.10.10.10, 8079 packet is 9.97 (fairly
+anomalous (?)).
+
+At any given time, a reporting threshold is defined for the sensor.  For each
+event that exceeds this threshold, an alert is sent.  It is sent to the same
+place(s) that a rule-based alert would be sent to (e.g., Snort alert file,
+syslog, etc.).
+
+In addition to reporting anomalous events, Spade can also be configured to
+generate reports about the network on which it is run.  For example, it can
+tell you the amount of entropy in your destination ports and in your source
+ports given your destination ports or produce periodic reports of the number
+of packets seen and order statistics such as median of the anomaly scores
+produced.
+
+
+-= What doesn't it do? =-
+
+Spade cannot tell you if a particular reported packet is bad or hostile.   It
+merely knows that certain packets are relatively unusual and has an idea how
+unusual.  You should expect to see alerts about benign activity.
+
+It also cannot report things like attempts to exploit CGI vulnerabilities on a
+popular web server.  This would depend on looking at the packet contents and
+Spade just looks at certain parts of the header.
+
+Spade will not group related anomalous events together.  That will be the job
+of the correlator when it is complete.  You might consider using SnortSnarf
+(http://www.silicondefense.com/snortsnarf/) to help with this task; version
+090700.1 generates a special section to browse anomaly reports.
+
+
+-= Spade Output =-
+
+Spade produces two types of messages, which are sent to wherever Snort usually
+sends alerts (e.g., alert file, syslog, etc.).
+
+The more common one has the message "spp_anomsensor: Anomaly threshold
+exceeded: A", where A is a number.  This indicates that the packet mentioned
+was assessed as anomalous and the anomaly score was A.
+
+Spade may also periodically produce messages of the form: "spp_anomsensor:
+Threshold adjusted to T after X alerts (of N)".  This indicates that the
+alerting threshold was changed to T.  This happens when you are using one of
+the threshold adapting mechanisms (see the Usage file).  The message also
+gives information about the number of alerts (X) sent since the last time the
+threshold was adjusted and the total number of packets (N) accepted by Spade
+during that time.
+
+
+-= Performance =-
+
+Efficiency will depend on many factors including configuration and will vary
+from network to network.  We were able to go through a file of 1.25 million
+TCP
+SYN packets in about 2 minutes on a modern desktop machine, including
+generating reports and probability maintenance but not with any Snort rules or
+plugins.   That is about 96 microseconds per packet.  Memory usage varied from
+2Mb to 42Mb depending on the probability mode.  If your network sees more
+traffic, especially different kinds of traffic, we would expect that your
+memory usage will increase proportionally and your CPU use to increase a
+little (per packet).
+
+Stability seems good.  We have had it running on an ISP for 5 weeks without
+any problems.  When you are first running it, you might want to run it in a
+separate Snort process though, just in case.
+
+
+-= Getting Started =-
+
+First you will need to install Spade into Snort as described in the
+"Installation" file.
+
+Since Spade is experimental, it is safest to initially run it in its own Snort
+process.  That is, run Snort as you have it now, but also run a second copy
+that just has Spade configured to run.
+
+spade.config is an example configuration file; use it as your Snort config
+file or include it in your current Snort config file.  It is a good starting
+point for most people as distributed.  If you want to get going quickly, you
+might just want to edit the SPADEDIR variable and the spade-homenet list and
+try it out.  Otherwise, you can browse through the Usage file to see what all
+your options are.
+
+
+-= Contributions =-
+
+We welcome your complaints, kudos, and especially improvements and bugfixes.  
+We wish for this to be a useful as possible, so your feedback and assistance
+is important.  You may reach us at hoagland@SiliconDefense.com.
+
+Thank you and happy Spading!
+
+-- Jim Hoagland (hoagland@SiliconDefense.com)
+   Stuart Staniford (stuart@SiliconDefense.com)
+

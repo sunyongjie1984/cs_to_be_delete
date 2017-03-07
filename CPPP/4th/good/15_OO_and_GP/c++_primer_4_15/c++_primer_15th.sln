@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "覆盖虚函数机制", "c++_primer_15th\c++_primer_15th.vcxproj", "{E22D6587-3E59-495B-83EC-605D13434E54}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "基类到派生类的转换", "基类到派生类的转换\基类到派生类的转换.vcxproj", "{C792CB83-3540-41B5-A035-53757FD52473}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E22D6587-3E59-495B-83EC-605D13434E54}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E22D6587-3E59-495B-83EC-605D13434E54}.Debug|Win32.Build.0 = Debug|Win32
+		{E22D6587-3E59-495B-83EC-605D13434E54}.Release|Win32.ActiveCfg = Release|Win32
+		{E22D6587-3E59-495B-83EC-605D13434E54}.Release|Win32.Build.0 = Release|Win32
+		{C792CB83-3540-41B5-A035-53757FD52473}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C792CB83-3540-41B5-A035-53757FD52473}.Debug|Win32.Build.0 = Debug|Win32
+		{C792CB83-3540-41B5-A035-53757FD52473}.Release|Win32.ActiveCfg = Release|Win32
+		{C792CB83-3540-41B5-A035-53757FD52473}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

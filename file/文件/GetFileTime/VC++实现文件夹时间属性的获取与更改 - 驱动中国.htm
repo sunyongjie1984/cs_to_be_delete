@@ -1,0 +1,647 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0069)http://www.qudong.com/soft/program/C/shilijiexi/20080504/10480_2.html -->
+<HTML xml:lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>VC++实现文件夹时间属性的获取与更改 - 驱动中国</TITLE>
+<META content="获取 更改 属性 时间 实现 文件夹 // 文件 函数 进行 " name=keywords>
+<META 
+content="引言： 对于大多数的IT企业和绝大多数的个人用户而言，数据的备份主要是对数据内容的简单备份，而很少涉及对备份数据自身属性如文件属性、所在文件夹的时间属性等内容的备份。而在某些对数据管理有着非常严格要求的特殊行业中，对以上这些相关属性信息的备份也是同等重" 
+name=description>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content=BoTfI4bt1X21Trlkdaa6rBXaGRDwmkII8bIq/eHlCBc= name=verify-v1>
+<META content="index, follow" name=robots><LINK 
+href="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/news_dede.css" type=text/css 
+rel=stylesheet><LINK href="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/news_article.css" 
+type=text/css rel=stylesheet><LINK 
+href="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/news.css" type=text/css 
+rel=stylesheet><LINK href="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/hq.css" 
+type=text/css rel=stylesheet><!-- Digg 参数 -->
+<SCRIPT language=javascript 
+src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/dedeajax2.js"></SCRIPT>
+
+<SCRIPT language=javascript>
+function Digg(divId,aid){
+   var taget_obj = document.getElementById(divId+''+aid);
+   var myajax = new DedeAjax(taget_obj,false,false,"","","");
+   myajax.SendGet2("/digg.php?action=digg&aid="+aid);
+   DedeXHTTP = null;
+}
+</SCRIPT>
+
+<STYLE>.context {
+	CLEAR: both; WIDTH: 638px
+}
+.diggArea {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; BACKGROUND-IMAGE: url(/plus/img/diggbg2.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 57px; LINE-HEIGHT: 23px; PADDING-TOP: 0px; HEIGHT: 50px
+}
+.diggNum {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; MARGIN: 3px 0px 0px; WIDTH: 57px; PADDING-TOP: 0px; HEIGHT: 23px; TEXT-ALIGN: center
+}
+.diggLink {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 55px; PADDING-TOP: 0px; HEIGHT: 23px; TEXT-ALIGN: center
+}
+.diggLink A {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2900.5848" name=GENERATOR></HEAD>
+<BODY><!--头部开始-->
+<DIV id=headers>
+<DIV id=logo><A href="http://www.qudong.com/" target=_blank><IMG height=45 
+alt=驱动中国 src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/0.gif" width=180 
+border=0></A></DIV>
+<DIV id=top><A href="http://www.qudong.com/plus/heightsearch.php">搜索</A>|<A 
+onclick="javascript:window.external.AddFavorite('http://www.qudong.com','驱动中国');" 
+href="http://www.qudong.com/soft/program/C/shilijiexi/20080504/10480_2.html#">收藏</A>|<A 
+href="http://www.qudong.com/plus/sitemap.html">地图</A>|<A 
+href="http://www.qudong.com/plus/rssmap.html">订阅</A>|<A 
+href="http://www.qudong.com/soft/program/C/shilijiexi/news/photo/">图片</A>|<A 
+href="http://bbs.qudong.com/">论坛</A></DIV>
+<DIV id=nav><A class=a01 href="http://www.qudong.com/">首 页</A><SPAN 
+class=span01> <A href="http://www.qudong.com/notebook/">笔记本</A> <A 
+href="http://www.qudong.com/digital/">数码</A> <A 
+href="http://www.qudong.com/hardware/">硬件</A> <A 
+href="http://www.qudong.com/hardware/monitor">显示器</A> <A 
+href="http://www.qudong.com/internet/">互联网</A> <A 
+href="http://www.qudong.com/mobile/">手机</A> <A 
+href="http://www.qudong.com/dc/">数码相机</A> <A 
+href="http://www.qudong.com/dv/">摄像机</A> <A 
+href="http://www.qudong.com/netbook/">上网本</A> <A 
+href="http://drivers.qudong.com/"><FONT color=red>驱动</FONT></A> <A 
+href="http://soft.qudong.com/">软件</A> <A 
+href="http://www.qudong.com/soft/college/">学院</A> <A 
+href="http://youxi.qudong.com/"><FONT color=red>游戏</FONT></A> </SPAN></DIV>
+<DIV class=clear></DIV><!--搜索条-->
+<DIV id=searchbar>
+<DIV class=d_input02>
+<SCRIPT language=javascript 
+src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/mytag_js.htm"></SCRIPT>
+</DIV>
+<DIV class=clear></DIV></DIV></DIV><!--广告-->
+<DIV class=top_ad>
+<SCRIPT src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/news_960-60.js"></SCRIPT>
+
+<DIV class=clear></DIV></DIV><!--广告--><!--banner-->
+<DIV class="topads cbody"><IFRAME align=middle 
+src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/so.htm" frameBorder=0 width=960 
+height=56></IFRAME></DIV>
+<DIV class=floatclear><!--清除浮动--></DIV><!--内容-->
+<DIV class="main cbody margintop"><!--左侧-->
+<DIV class="pleft bottom"><!--位置导航-->
+<DIV class=thisplace>
+<DIV class=placenav><SPAN>&nbsp;&nbsp;当前位置 :</SPAN>| <A 
+href="http://www.qudong.com/">首页</A>&gt;<A 
+href="http://www.qudong.com/soft/">软件</A>&gt;<A 
+href="http://www.qudong.com/soft/program/">编程学院</A>&gt;<A 
+href="http://www.qudong.com/soft/program/C/">C/C++/VC</A>&gt;<A 
+href="http://www.qudong.com/soft/program/C/shilijiexi/">实例解析</A>&gt; 
+</DIV></DIV><!--资讯内容-->
+<DIV class=newsview><!--资讯标题-->
+<DIV class=title>
+<H1>VC++实现文件夹时间属性的获取与更改 </H1></DIV><!--相关信息-->
+<DIV class=info><STRONG>来源：</STRONG>中国电波传播研究所青岛分所 <STRONG>编辑：</STRONG>若水 
+<STRONG>时间：</STRONG>2008-05-04 <FONT color=#f5fafe>
+<SCRIPT language=javascript 
+src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/count.htm"></SCRIPT>
+</FONT></DIV><!--正文上部广告-->
+<DIV class=ads1>
+<SCRIPT src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/news_top.js" 
+type=text/javascript></SCRIPT>
+</DIV>
+<DIV class=ads_gg>
+<SCRIPT src="" type=text/javascript></SCRIPT>
+</DIV>
+<DIV class=shoucang>收藏:
+<SCRIPT language=javascript 
+src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/bookmark.js"></SCRIPT>
+</DIV><!--资讯正文-->
+<DIV class=content><CCID_CODE></CCID_CODE>// 
+获取指定文件夹的时间属性，入口参数DirName指定了待处理的文件夹，stime为一 // 指向SYSTEMTIME结构的指针 BOOL 
+CSetForderTimeDlg::GetDirTime(CString DirName, SYSTEMTIME &amp;stime){ // 打开文件夹 
+HANDLE hDir = CreateFile (DirName, GENERIC_READ, 
+FILE_SHARE_READ|FILE_SHARE_DELETE, NULL, OPEN_EXISTING, 
+FILE_FLAG_BACKUP_SEMANTICS, NULL); FILETIME lpCreationTime; // 文件夹的创建时间 FILETIME 
+lpLastAccessTime; // 对文件夹的最近访问时间 FILETIME lpLastWriteTime; // 文件夹的最近修改时间 // 
+获取文件夹时间属性信息 if (GetFileTime(hDir, &amp;lpCreationTime, &amp;lpLastAccessTime, 
+&amp;lpLastWriteTime)){ FILETIME ftime; 
+FileTimeToLocalFileTime(&amp;lpLastWriteTime, &amp;ftime); // 转换成本地时间 
+FileTimeToSystemTime(&amp;ftime, &amp;stime); // 转换成系统时间格式 } CloseHandle(hDir); 
+// 关闭打开过的文件夹 return retval; } // 设置指定文件夹的时间属性，入口参数DirName指定了待处理的文件夹，new_time // 
+为一指向SYSTEMTIME结构的指针 BOOL CSetForderTimeDlg::SetDirTime(CString DirName, 
+SYSTEMTIME new_stime){ // 打开目录的Win32 API调用 HANDLE hDir = CreateFile(DirName, 
+GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_DELETE, NULL, 
+OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, NULL); FILETIME lpCreationTime; // 
+文件夹的创建时间 FILETIME lpLastAccessTime; // 对文件夹的最近访问时间 FILETIME lpLastWriteTime; // 
+对文件夹的最近修改时间 SystemTimeToFileTime(&amp;new_stime, &amp;lpCreationTime); // 
+转换成文件时间格式 SystemTimeToFileTime(&amp;new_stime, &amp;lpLastAccessTime); 
+SystemTimeToFileTime(&amp;new_stime, &amp;lpLastWriteTime); // 设置文件夹的时间属性 BOOL 
+retval = SetFileTime(hDir, &amp;lpCreationTime, &amp;lpLastAccessTime, 
+&amp;lpLastWriteTime); CloseHandle(hDir); // 关闭文件夹 return retval; }<PRE></PRE></TD></TR></TBODY></TABLE>
+<P></P>
+<P style="TEXT-INDENT: 2em">&nbsp;</P>
+<P 
+style="TEXT-INDENT: 2em">至此，可以很方便的通过调用GetDirTime()和SetDirTime()函数来实现对任意指定文件夹时间属性的获取与设置，具体为： 
+</P>
+<P style="TEXT-INDENT: 2em"><CCID_NOBR></CCID_NOBR>
+<TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=2 width=400 
+align=center borderColorLight=#000000 border=1>
+  <TBODY>
+  <TR>
+    <TD class=code style="FONT-SIZE: 9pt" bgColor=#e6e6e6><PRE><CCID_CODE></CCID_CODE>SYSTEMTIME stime; // 系统时间结构对象
+if (GetDirTime(m_Path, stime)) 
+{
+　// 如果获取文件夹时间属性成功，获取到的时间信息将保存在stime结构对象中
+　……
+　// 如果需要可以对获取到的时间属性进行修改，也可以保留不变
+　……
+　// 将修改后的时间属性回写到文件夹
+　SetDirTime(m_Path, stime);
+}</PRE></TD></TR></TBODY></TABLE></P>
+<P style="TEXT-INDENT: 2em">小结 </P>
+<P 
+style="TEXT-INDENT: 2em">本文通过CreateFile()函数打开文件夹，并在以后的处理中将其以文件来对待，从而可以使用GetFileTime()、SetFileTime()等函数来对其时间属性进行获取与写入处理，可对包括根目录在内的任意文件夹进行时间属性设置。在数据的完整备份与复原等方面中有较好的应用前景。本文所述代码在Windows 
+2000 Professional下，由Microsoft Visual C++ 6.0编译通过。 
+</P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=ads_newspage>
+<SCRIPT src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/news.js" 
+type=text/javascript></SCRIPT>
+</DIV>
+<DIV class=cupage><A 
+href="http://www.qudong.com/soft/program/C/shilijiexi/20080504/10480.html">上一页</A> 
+<A 
+href="http://www.qudong.com/soft/program/C/shilijiexi/20080504/10480.html">1</A> 
+<STRONG>2</STRONG><A 
+href="http://www.qudong.com/soft/program/C/shilijiexi/20080504/10480_2.html#">下一页</A> 
+</DIV>
+<DIV class=newpages_pages1>
+<DIV class=newpages_pages2>
+<DIV class=newpages_pages3>本文导航</DIV>
+<DIV class=newpages_pages4></DIV></DIV></DIV>
+<DIV class=floatclear></DIV><!--操作-->
+<DIV class=actbar><SPAN>[<A href="http://bbs.qudong.com/">进入论坛</A>]</SPAN> 
+<SPAN>[<A href="http://www.qudong.com/plus/stow.php?arcID=10480">收藏</A>]</SPAN> 
+<SPAN>[<A 
+href="http://www.qudong.com/plus/recommend.php?arcID=10480">推荐</A>]</SPAN> 
+<SPAN>[<A 
+href="http://www.qudong.com/plus/feedback.php?arcID=10480">评论</A>]</SPAN> 
+<SPAN>[<A onclick=window.print(); 
+href="http://www.qudong.com/soft/program/C/shilijiexi/20080504/10480_2.html#">打印</A>]</SPAN> 
+<SPAN>[<A onclick=window.close(); 
+href="http://www.qudong.com/soft/program/C/shilijiexi/20080504/10480_2.html#">关闭</A>]</SPAN> 
+</DIV><!--上下文--><!--正文下部广告-->
+<DIV class=ads>
+<SCRIPT src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/news_down.js" 
+type=text/javascript></SCRIPT>
+</DIV><!--图片推荐-->
+<DIV class=tuwen>
+<DL>
+  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+    <TBODY>
+    <TR>
+      <TD width="25%">
+        <DD><A class=pimg 
+        href="http://www.qudong.com/news/photo/renwu/2009/0724/39697.html"><IMG 
+        height=90 alt=十大女星产后素颜照盘点 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/1J33011H36.jpg" width=120 
+        border=0></A> <SPAN><BR><A 
+        href="http://www.qudong.com/news/photo/renwu/2009/0724/39697.html">十大女星产后素颜照</A></SPAN> 
+        </DD></TD>
+      <TD width="25%">
+        <DD><A class=pimg 
+        href="http://www.qudong.com/news/photo/meinv/2009/0724/39691.html"><IMG 
+        height=90 alt="个性比基尼婚纱照 挑战你的眼球" 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/11_1F526210.jpg" width=120 
+        border=0></A> <SPAN><BR><A 
+        href="http://www.qudong.com/news/photo/meinv/2009/0724/39691.html">个性比基尼婚纱照 
+        </A></SPAN></DD></TD>
+      <TD width="25%">
+        <DD><A class=pimg 
+        href="http://www.qudong.com/news/photo/meinv/2009/0724/39689.html"><IMG 
+        height=90 alt=野外沐浴的少女 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/1A60411U52.jpg" width=120 
+        border=0></A> <SPAN><BR><A 
+        href="http://www.qudong.com/news/photo/meinv/2009/0724/39689.html">野外沐浴的少女</A></SPAN> 
+        </DD></TD>
+      <TD width="25%">
+        <DD><A class=pimg 
+        href="http://www.qudong.com/news/photo/meinv/2009/0724/39680.html"><IMG 
+        height=90 alt=美女模特如此挤奶 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/162559114a4.jpg" width=120 
+        border=0></A> <SPAN><BR><A 
+        href="http://www.qudong.com/news/photo/meinv/2009/0724/39680.html">美女模特如此挤奶</A></SPAN> 
+        </DD></TD></TR>
+    <TR>
+      <TD width="25%">
+        <DD><A class=pimg 
+        href="http://www.qudong.com/news/photo/yule/2009/0724/39679.html"><IMG 
+        height=90 alt=漂亮的人体彩绘 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/162146111N9.jpg" width=120 
+        border=0></A> <SPAN><BR><A 
+        href="http://www.qudong.com/news/photo/yule/2009/0724/39679.html">漂亮的人体彩绘</A></SPAN> 
+        </DD></TD>
+      <TD width="25%">
+        <DD><A class=pimg 
+        href="http://www.qudong.com/news/photo/yule/2009/0724/39629.html"><IMG 
+        height=90 alt="最潮麻花辫 评评哪个更漂亮" 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/100055114237.jpg" width=120 
+        border=0></A> <SPAN><BR><A 
+        href="http://www.qudong.com/news/photo/yule/2009/0724/39629.html">最潮麻花辫 
+        评评哪</A></SPAN> </DD></TD>
+      <TD width="25%">
+        <DD><A class=pimg 
+        href="http://www.qudong.com/news/photo/meinv/2009/0723/39605.html"><IMG 
+        height=90 alt=湖边少女诱惑写真 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/1P03111OR.jpg" width=120 
+        border=0></A> <SPAN><BR><A 
+        href="http://www.qudong.com/news/photo/meinv/2009/0723/39605.html">湖边少女诱惑写真</A></SPAN> 
+        </DD></TD>
+      <TD width="25%">
+        <DD><A class=pimg 
+        href="http://www.qudong.com/news/photo/yule/2009/0723/39595.html"><IMG 
+        height=90 alt=《春哥传》之超强漫画版 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/1AI3115149.jpg" width=120 
+        border=0></A> <SPAN><BR><A 
+        href="http://www.qudong.com/news/photo/yule/2009/0723/39595.html">《春哥传》之超强漫</A></SPAN> 
+        </DD></TD></TR></TBODY></TABLE></DL></DIV></DIV>
+<DIV class=floatclear><!--清除浮动--></DIV><!--评论-->
+<DIV class=comment><!--评论:标题-->
+<DIV class=commenttitle>
+<DIV class=title><STRONG>最新评论</STRONG>共有 0 位网友发表了评论 </DIV>
+<DIV class=gotopost><A 
+href="http://www.qudong.com/plus/feedback.php?arcID=10480">查看所有评论</A></DIV></DIV><!--评论内容-->
+<DIV class=commentbox>
+<SCRIPT src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/feedback_js.htm"></SCRIPT>
+</DIV><!--发表评论:标题-->
+<DIV class=posttitle><STRONG>发表评论</STRONG></DIV><!--发表评论-->
+<FORM name=feedback action=/plus/feedback.php?action=send method=post><INPUT 
+type=hidden value=10480 name=arcID> 
+<DIV class=postbox>
+<DIV class=txtbox><STRONG>评论内容：</STRONG>不能超过250字，需审核，请自觉遵守互联网相关政策法规。 <TEXTAREA name=msg rows=6 cols=60></TEXTAREA> </DIV>
+<DIV class=userbox>
+<DL>
+  <DD><STRONG>用户名：</STRONG><INPUT class=username maxLength=20 name=username> 
+  <STRONG>密码：</STRONG><INPUT class=password type=password maxLength=20 name=pwd> 
+  </DD>
+  <DD></DD>
+  <DD class=mtop><INPUT type=checkbox CHECKED value=1 name=notuser> 
+  <STRONG>匿名?</STRONG> </DD>
+  <DD><INPUT class=submit onclick='javascript:if(document.feedback.msg.value!="") document.feedback.submit(); else alert("评论内容不能为空！");' type=button value=发表评论 name=sb> 
+  </DD>
+  <DD class=mtop></DD></DL></DIV></DIV></FORM></DIV></DIV><!--右侧-->
+<DIV class=pright><!--侧边ADS-->
+<DIV class=news_ads_yc>
+<SCRIPT language=javascript 
+src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/ad_js.htm"></SCRIPT>
+</DIV><!--侧边ADS-->
+<DIV class="column02 bottom">
+<UL class=column02_ul>
+  <LI class=column02_li01>笔记本重点推荐资讯 </LI>
+  <LI class=column02_li></LI></UL>
+<DIV class=rbox_new>
+<UL>
+  <LI><A 
+  href="http://www.qudong.com/notebook/shenzhou/news/20090720/39224.html">AMD携惠普、腾讯推定制版游戏本</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/notebook/lenovo/xinwen/20090717/39036.html">奸商开口：不骗你，我怎么活？</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/notebook/lenovo/pingce/20090716/39003.html">CULV究竟能干啥? 
+  联想U350性能详测</A> </LI></UL></DIV>
+<UL class=column02_ul>
+  <LI class=column02_li01>手机重点推荐资讯 </LI>
+  <LI class=column02_li></LI></UL>
+<DIV class=rbox_new>
+<UL>
+  <LI><A 
+  href="http://www.qudong.com/mobile/news/2009/0724/39673.html">最新10大畅销手机排行 
+  苹果iPhone 3GS最火</A></LI>
+  <LI><A href="http://www.qudong.com/mobile/news/2009/0724/39646.html">炎炎夏日送去清凉 
+  五款即将上市新机推荐</A></LI>
+  <LI><A href="http://www.qudong.com/mobile/daogou/2009/0722/39507.html">美丽不高价 
+  十大女性最爱时尚机导购</A> </LI></UL></DIV>
+<UL class=column02_ul>
+  <LI class=column02_li01>数码相机重点推荐资讯 </LI>
+  <LI class=column02_li></LI></UL>
+<DIV class=rbox_new>
+<UL>
+  <LI><A href="http://www.qudong.com/DC/daogou/2009/0724/39676.html">单反相机成主角 
+  十款最值得关注的相机一览</A></LI>
+  <LI><A href="http://www.qudong.com/DC/pingce/2009/0723/39546.html">易用性为先最佳入门机 
+  索尼A330评测</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/DC/daogou/2009/0723/39526.html">2009年主力高端长焦数码相机推荐</A> 
+  </LI></UL></DIV>
+<UL class=column02_ul>
+  <LI class=column02_li01>互联网重点推荐资讯 </LI>
+  <LI class=column02_li></LI></UL>
+<DIV class=rbox_new>
+<UL>
+  <LI><A href="http://www.qudong.com/internet/MSN/20090724/39687.html">Windows 
+  7还没正式发布 Windows 8截图曝光 </A></LI>
+  <LI><A href="http://www.qudong.com/internet/MSN/20090724/39636.html">Windows 7 
+  RTM将至 你需要做以下准备工作</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/news/other/20090724/39613.html">中国山寨竞跑Android 
+  阻击Gphone入华?</A> </LI></UL></DIV>
+<UL class=column02_ul>
+  <LI class=column02_li01>上网本重点推荐资讯 </LI>
+  <LI class=column02_li></LI></UL>
+<DIV class=rbox_new>
+<UL>
+  <LI><A 
+  href="http://www.qudong.com/netbook/xingqing/2009/0722/39500.html">7英寸时尚便携UMPC 
+  三星Q1U促销送U盘</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/netbook/xingqing/2009/0722/39499.html">11英寸绚丽屏 
+  新蓝SALO S11A售2888元</A></LI>
+  <LI><A href="http://www.qudong.com/netbook/xingqing/2009/0722/39496.html">既结实 
+  又轻巧 索尼P27H酷袋电脑6719</A> </LI></UL></DIV>
+<UL class=column02_ul>
+  <LI class=column02_li01><FONT color=#ff0000>论坛热点推荐</FONT> </LI>
+  <LI class=column02_li></LI></UL>
+<DIV class=rbox_bbs>
+<UL>
+  <SCRIPT src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/js.htm" type=text/javascript 
+  charset=utf-8></SCRIPT>
+</UL></DIV>
+<DIV class=clear></DIV></DIV><!--侧边信息列表-->
+<DIV class="column02 bottom">
+<UL class=column02_ul>
+  <LI class=column02_li01>热点关注 </LI>
+  <LI class=column02_li></LI></UL>
+<DIV class=rbox_new>
+<UL>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080327/4605.html">C语言写的俄罗斯方块程序</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080512/11946.html">利用钩子函数来捕捉键盘响应的windows应用程</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080507/11285.html">C语言写的仿WINDOWS 
+  界面计算器源码</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080514/12501.html">VC++设计超强仿QQ自动伸缩窗口</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080327/4558.html">C语言-编程实例-很普通很普通的猜数字游戏</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080328/4689.html">关于标准库函数scanf</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080512/11949.html">哲学家就餐问题 
+  --C原代码</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080407/6003.html">C语言-编程实例-点阵字模工具编程辅助效果示</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080409/6563.html">CRichEditCtrl实现MSN/QQ动画表情</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080318/1650.html">利用VC+OpenGL实现几种特殊图形效果</A> 
+  </LI></UL></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class="column02 bottom">
+<UL class=column02_ul>
+  <LI class=column02_li01>图文推荐 </LI>
+  <LI class=column02_li></LI></UL>
+<UL class=p_tu1>
+  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+    <TBODY>
+    <TR>
+      <TD width="50%">
+        <LI><A 
+        href="http://www.qudong.com/notebook/DELL/daogou/20090724/39678.html"><IMG 
+        height=60 alt="3G运营商超详细对比！比速度拼资费 " 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/12_162942N1.jpg" width=115 
+        border=0></A></A> 
+        <P><A 
+        href="http://www.qudong.com/notebook/DELL/daogou/20090724/39678.html">3G运营商超详细对比！</A></P></LI></TD>
+      <TD width="50%">
+        <LI><A href="http://www.qudong.com/DC/daogou/2009/0724/39672.html"><IMG 
+        height=60 alt="初级用户的选择 2000元以下实用数码相机推荐" 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/11_160026248.jpg" width=115 
+        border=0></A></A> 
+        <P><A 
+        href="http://www.qudong.com/DC/daogou/2009/0724/39672.html">初级用户的选择 
+        2000</A></P></LI></TD></TR>
+    <TR>
+      <TD width="50%">
+        <LI><A href="http://www.qudong.com/DC/daogou/2009/0724/39665.html"><IMG 
+        height=60 alt="从卡片到单反 三英寸屏热销数码相机推荐" 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/11_1442041Q.jpg" width=115 
+        border=0></A></A> 
+        <P><A href="http://www.qudong.com/DC/daogou/2009/0724/39665.html">从卡片到单反 
+        三英寸</A></P></LI></TD>
+      <TD width="50%">
+        <LI><A 
+        href="http://www.qudong.com/hardware/banka/20090724/39664.html"><IMG 
+        height=60 alt=穷爷们也能娶贵妇！平价X58全村大搜刮 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/14233212cS.jpg" width=115 
+        border=0></A></A> 
+        <P><A 
+        href="http://www.qudong.com/hardware/banka/20090724/39664.html">穷爷们也能娶贵妇！平</A></P></LI></TD></TR>
+    <TR>
+      <TD width="50%">
+        <LI><A 
+        href="http://www.qudong.com/hardware/monitor/20090724/39650.html"><IMG 
+        height=60 alt="教你安装高清播放机 看似繁复并不难" 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/1151391233G.jpg" width=115 
+        border=0></A></A> 
+        <P><A 
+        href="http://www.qudong.com/hardware/monitor/20090724/39650.html">教你安装高清播放机 
+        </A></P></LI></TD>
+      <TD width="50%">
+        <LI><A 
+        href="http://www.qudong.com/hardware/storage/20090724/39648.html"><IMG 
+        height=60 alt=希捷无锡硬盘制造厂之行——全球工厂之旅 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/114015124962.jpg" width=115 
+        border=0></A></A> 
+        <P><A 
+        href="http://www.qudong.com/hardware/storage/20090724/39648.html">希捷无锡硬盘制造厂之</A></P></LI></TD></TR>
+    <TR>
+      <TD width="50%">
+        <LI><A 
+        href="http://www.qudong.com/mobile/news/2009/0724/39645.html"><IMG 
+        height=60 alt="广告战烽烟再起 各大品牌主打机型挨个看" 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/11313010B39.jpg" width=115 
+        border=0></A></A> 
+        <P><A 
+        href="http://www.qudong.com/mobile/news/2009/0724/39645.html">广告战烽烟再起 
+        各大</A></P></LI></TD>
+      <TD width="50%">
+        <LI><A 
+        href="http://www.qudong.com/notebook/apple/daogou/20090724/39644.html"><IMG 
+        height=60 alt="Always on line！笔记本玩好假期无线生活" 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/12_1130244b.jpg" width=115 
+        border=0></A></A> 
+        <P><A 
+        href="http://www.qudong.com/notebook/apple/daogou/20090724/39644.html">Always 
+        on line！笔记</A></P></LI></TD></TR>
+    <TR>
+      <TD width="50%">
+        <LI><A 
+        href="http://www.qudong.com/hardware/xianka/2009/0724/39638.html"><IMG 
+        height=60 alt="不买也要来看看！11款专业卡详尽测试 " 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/12_105T1424.jpg" width=115 
+        border=0></A></A> 
+        <P><A 
+        href="http://www.qudong.com/hardware/xianka/2009/0724/39638.html">不买也要来看看！11款</A></P></LI></TD>
+      <TD width="50%">
+        <LI><A href="http://www.qudong.com/DC/daogou/2009/0723/39577.html"><IMG 
+        height=60 alt="降价新潮流 时尚防抖卡片机历史新低" 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/11_15062VN.jpg" width=115 
+        border=0></A></A> 
+        <P><A href="http://www.qudong.com/DC/daogou/2009/0723/39577.html">降价新潮流 
+        时尚防抖</A></P></LI></TD></TR></TBODY></TABLE></UL>
+<DIV class=clear></DIV></DIV>
+<DIV class=news_ads_yc1>
+<SCRIPT language=javascript 
+src="C:\Documents and Settings\Administrator\桌面\10.16\VC++实现文件夹时间属性的获取与更改 - 驱动中国.files\ad_js(1).htm"></SCRIPT>
+</DIV>
+<DIV class=floatclear></DIV><!--侧边信息列表-->
+<DIV class="column02 bottom">
+<UL class=column02_ul>
+  <LI class=column02_li01>相关文章 </LI>
+  <LI class=column02_li></LI></UL>
+<DIV class=rbox_new>
+<UL>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080514/12523.html">数据库在C++程序中使用方法</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080514/12501.html">VC++设计超强仿QQ自动伸缩窗口</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080513/12270.html">用C#屏敝3721网络实名</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080512/11950.html">M个人,1到N报数出列问题</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080512/11949.html">哲学家就餐问题 
+  --C原代码</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080512/11946.html">利用钩子函数来捕捉键盘响应的windows应用程</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080509/11738.html">C++程序设计最佳实践</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080507/11285.html">C语言写的仿WINDOWS 
+  界面计算器源码</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080507/11177.html">用C语言写病毒1</A></LI>
+  <LI><A 
+  href="http://www.qudong.com/soft/program/C/shilijiexi/20080506/10953.html">C#中实现DataGrid双向排序</A> 
+  </LI></UL></DIV>
+<DIV class=clear></DIV></DIV>
+<DIV class=floatclear></DIV>
+<DIV class=news_ads_yc1>
+<SCRIPT language=javascript 
+src="C:\Documents and Settings\Administrator\桌面\10.16\VC++实现文件夹时间属性的获取与更改 - 驱动中国.files\ad_js(2).htm"></SCRIPT>
+</DIV></DIV>
+<DIV class=floatclear></DIV>
+<DIV class="column02 bottom">
+<UL class=column02_ul>
+  <LI class=column02_li01>小游戏推荐 </LI>
+  <LI class=column02_li><A href="http://youxi.qudong.com/"><IMG height=5 alt="" 
+  src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/13.gif" width=34></A> </LI></UL>
+<UL class=p_tu>
+  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+    <TBODY>
+    <TR>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/xiuxian/lianliankan/sjllk_14619-14619.html"><IMG 
+        height=90 alt=《升级连连看》小游戏 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090107013636-165.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/xiuxian/lianliankan/sjllk_14619-14619.html">升级连连看</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/xiuxian/paopaotang/sdpptzsrb_33566-33566.html"><IMG 
+        height=90 alt=《双打泡泡堂之双人版》小游戏 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/1U45223E7.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/xiuxian/paopaotang/sdpptzsrb_33566-33566.html">双打泡泡堂之双人版</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/celue/maoxian/alshjlx_13997-13997.html"><IMG 
+        height=90 alt=《爱丽丝幻境历险》小游戏 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090107045657-321.gif" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/celue/maoxian/alshjlx_13997-13997.html">《爱丽丝幻境历险》</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/celue/jiemi/xyjzyxzx-y-_13621-13621.html"><IMG 
+        height=90 alt=轩辕剑之妖星再现 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090107044800-119.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/celue/jiemi/xyjzyxzx-y-_13621-13621.html">轩辕剑之妖星再现</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/sheji/feixing/jdkzzld_19374-19374.html"><IMG 
+        height=90 alt=经典空战之雷电 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090108111334-6.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/sheji/feixing/jdkzzld_19374-19374.html">经典空战之雷电</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/yizhi/ertong/njzlm-_21819-21819.html"><IMG 
+        height=90 alt=《你记住了吗？》 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090109011707-217.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/yizhi/ertong/njzlm-_21819-21819.html">《你记住了吗？》</A></P></LI></TD></TR>
+    <TR>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/dongzuo/chuangguan/ftrzm_21552-21552.html"><IMG 
+        height=90 alt=《飞天忍者猫》 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090109120405-9.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/dongzuo/chuangguan/ftrzm_21552-21552.html">《飞天忍者猫》</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/donghua/gongfu/bzt-3-zj_33516-33516.html"><IMG 
+        height=90 alt=《豹子头[3]知己》 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/200911522143359778014.gif" 
+        width=120 border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/donghua/gongfu/bzt-3-zj_33516-33516.html">《豹子头[3]知己》</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/tiyu/huaban/lyhb_23084-23084.html"><IMG 
+        height=90 alt=《罗伊滑板》 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090109091224-2.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/tiyu/huaban/lyhb_23084-23084.html">《罗伊滑板》</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/qipai/wuziqi/cswzq_15456-15456.html"><IMG 
+        height=90 alt=《彩色五子棋》 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090107065503-9.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/qipai/wuziqi/cswzq_15456-15456.html">《彩色五子棋》</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/celue/shounao/cjfkrDxs_33564-33564.html"><IMG 
+        height=90 alt=《超级方块人D先生》 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/_12502S24.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/celue/shounao/cjfkrDxs_33564-33564.html">《超级方块人D先生》</A></P></LI></TD>
+      <TD width="17%">
+        <LI><A 
+        href="http://youxi.qudong.com/flash/linglei/chaonan/jxwtdty_21744-21744.html"><IMG 
+        height=90 alt="“极限蛙跳大跳跃 " 
+        src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/20090109010711-20.jpg" width=120 
+        border=0></A></A> 
+        <P><A 
+        href="http://youxi.qudong.com/flash/linglei/chaonan/jxwtdty_21744-21744.html">“极限蛙跳大跳跃 
+        </A></P></LI></TD></TR></TBODY></TABLE></UL>
+<DIV class=clear></DIV></DIV>
+<DIV class=floatclear><!--清除浮动--></DIV>
+<DIV class="footer cbody margintop">
+<DIV class=copyright>Copyright@ 2003-2008 driverchina.com All Rights Reserved
+<SCRIPT language=JavaScript src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/stat.htm" 
+charset=gb2312></SCRIPT>
+ <BR>copyright@ 2005-2008 qudong.com, all rights reserved. 京ICP备05059156号 </DIV>
+<DIV class=slogo><IMG height=32 alt="" 
+src="VC++实现文件夹时间属性的获取与更改 - 驱动中国.files/s_logo.gif" width=63> </DIV>
+<DIV class=floatclear></DIV></DIV></DIV></BODY></HTML>

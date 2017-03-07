@@ -1,0 +1,6 @@
+; TestDll.def : Declares the module parameters for the DLL.
+
+LIBRARY      "TestDll"
+
+EXPORTS
+    ; Explicit exports can go here

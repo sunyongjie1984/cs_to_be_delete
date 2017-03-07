@@ -1,0 +1,104 @@
+body{margin:0;padding:0;}
+.p1 { text-align: left; text-indent: 26; line-height: 150%; margin: 7 10 }
+.p2 { text-align: right; text-indent: 26; line-height: 150%; margin: 7 26 }
+.p3	{ text-align: left; line-height: 150%; margin: 1 10}		
+body {font-size: 10pt;color:#000000; font-family: Verdana, Arial, Helvetica, sans-serif; }
+td, tr, p, form, br{ font-size:10pt;font-family: Verdana, Arial, Helvetica, sans-serif; }
+input, select{font-size:9pt;}
+
+.mytd { font-size:10pt;line-height: 160%;font-family: Verdana, Arial, Helvetica, sans-serif; }
+
+.tableheader{color:#000000;height:24;background-image: url('/images/tablehd.gif');background-repeat: repeat-x; border-color:#80C5E9;border-left-style: solid; border-width: 1; border-right-style: solid;}
+.tableborder{border-collapse: collapse;border: 1px solid #80C5E9;}
+.tablebody {color: #333366; text-decoration: none; background-color: #f0f0f0}
+.tablebody2 {;color: #333366; background-color: #f9f9f9}
+.windows {background-color: #199CE1;border-left-style: solid;border-left-color:#D4ECF9; border-right-style: solid; border-right-color: #00679D; border-top-style: solid ;border-top-color:#D4ECF9; border-bottom-style: solid; border-bottom-color:#00679D;}
+a:link {text-decoration:none;color: #0044B6 }
+a:visited {text-decoration:none;color: #0044B6 }
+a:active {text-decoration:underline;color: #0044B6 }
+a:hover {text-decoration:underline;color: #FF0000 }
+
+.mya:link {text-decoration:underline;color: #0044B6 }
+.mya:visited {text-decoration:underline;color: #0044B6 }
+.mya:active {text-decoration:underline;color: #0044B6 }
+.mya:hover {text-decoration:underline;color: #FF0000 }
+
+:link.list1 { text-decoration:none;color:#000000}
+:visited.list1 {text-decoration:none;color:#000000}
+:active.list1 {  text-decoration:none;color:#ff0000}
+:hover.list1 {  text-decoration:underline;color:#FF0000}
+:link.list2 { text-decoration:none;color:#FFFFFF}
+:visited.list2 {text-decoration:none;color:#FFFFFF}
+:active.list2 {  text-decoration:none;color:#ff0000}
+:hover.list2 {  text-decoration:underline;color:#FF0000}
+:link.list3 { text-decoration:none;color:#15428B}
+:visited.list3 {text-decoration:none;color:#15428B}
+:active.list3 {  text-decoration:none;color:#ff0000}
+:hover.list3 {  text-decoration:none;color:#FF0000}
+
+:link.listtree { text-decoration:none;color:#6895C2}
+:visited.listtree {text-decoration:none;color:#6895C2}
+:active.listtree {  text-decoration:none;color:#6895C2}
+:hover.listtree {  text-decoration:underline;color:#FF0000}
+
+A.title1:link {font-size:17.9px;font-family:arial;font-weight:bold;text-decoration:none;color:#ffffff;}
+A.title1:visited {font-size:17.9px;font-family:arial;font-weight:bold;text-decoration:none;color:#ffffff;}
+A.title1:active {font-size:17.9px;font-family:arial;font-weight:bold;text-decoration:none;color:#ffffff;}
+A.title1:hover {font-size:17.9px;font-family:arial;font-weight:bold;text-decoration:none;color:#ffffff;}
+A.title2:link {text-decoration:none;color:#000000;font-size:12px}
+A.title2:visited {text-decoration:none;color:#000000;font-size:12px}
+A.title2:active {text-decoration:none;color:#ff0000;font-size:12px}
+A.title2:hover {text-decoration:none;color:#ff0000;font-size:12px}
+
+.text1{border: 1px solid #80C5E9; padding: 1}
+.text2{border: 1px solid #666666; padding: 1}
+.button1{color:#0066CC; border: 1px solid #80C5E9; padding: 1; background-color: #C5E8FA;height:18;cursor:hand}
+.button2{color:#0066CC; border: 1px solid #F9A859; padding: 1; background-color: #F8DFB9;height:18;cursor:hand}
+
+.F13 {
+	font-weight: bold;
+	color: #285147;
+	text-indent: 10px;
+	line-height: normal;
+	font-size: 13px;
+}
+.F13 a:link {
+	color: #285147;
+	text-decoration: none;
+}
+.F13 a:visited {
+	color: #285147;
+	text-decoration: none;
+}
+.F13 a:hover {
+	color: #285147;
+	text-decoration: underline;
+}
+.F13 a:active {
+	color: #285147;
+	text-decoration: none;
+}
+
+.Fred {
+	font-size: 14px;
+	font-weight: bold;
+	color: #990000;
+}
+.BLKallgrey {
+	border: 1px solid #CCCCCC;
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 7px;
+}
+
+.gray {
+	height: 72px;
+	width: 83px;
+	border: 1px solid #CCCCCC;
+	padding: 1px;
+}
+.orange {
+	font-weight: bold;
+	color: #FF6600;
+}

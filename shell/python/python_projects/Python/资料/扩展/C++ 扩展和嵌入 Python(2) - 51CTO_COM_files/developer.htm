@@ -1,0 +1,39 @@
+//document.write('<br><br>&nbsp;&nbsp;&nbsp;&nbsp;本站节日期间暂时关闭评论留言功能，我们将于2010年2月22日恢复文章评论，由此带来的不便请您谅解，谢谢您的支持，51CTO.com祝您新年快乐，万事如意 。');
+document.write('<form action="http://www.51cto.com/php/sendfeedback.php" target="_self" method="post" name="feedback" id="feedback" onsubmit="return commentSubmit(this)" style="padding:0px; margin:0px;">');
+document.write('<div class="sp2">');
+document.write('    <input type="hidden" name="artID" value="9822" />');
+document.write('    <input type="hidden" name="quick" value="0" />');
+document.write('    <input type="hidden" name="author2" value="51CTO网友" />');
+document.write('    <textarea name="msg" id="msg" class="new_te3" onfocus="check_clean()">发表评论请注意语言文明</textarea>');
+document.write('</div>');
+document.write('<table width="609" border="0" cellspacing="0" cellpadding="0">');
+document.write('<tr>');
+document.write('<td colspan="7">&nbsp;</td>');
+document.write('</tr>');
+document.write('<tr>');
+document.write('<td>验证码：</td>');
+document.write('<td ><input name="authnum" onclick="displaysecunum()" type="text" class="new_te4" /></td>');
+document.write('<td ><span style="display:inline;" id="clickfont">请点击后输入验证码</span></td>');
+document.write('<td ><img id="secunum" onclick="refimg()" style="display:none" /></td>');
+document.write('<td ><span style="display:none;" id="spanfont">点击图片可刷新验证码</span></td>');
+document.write('<td width="3%"><input name="nouser" type="checkbox" value="1" onClick="if( islogin==1 ){if (this.checked==true) {document.getElementById("author2").value=document.getElementById("username2").value;document.getElementById("username2").value="51CTO网友";}else{ document.getElementById("username2").value=document.getElementById("author2").value}}" /></td>');
+document.write('<td width="8%">匿名发表</td>');
+document.write('<td width="39%"><span class="sp1">');
+document.write('<input type="submit" name="Submit23" value="提交" />');
+document.write('</span></td>');
+document.write('</tr>');
+document.write('<tr>');
+document.write('<td colspan="7">&nbsp;</td>');
+document.write('</tr>');
+document.write('</table>');
+document.write('</form>');
+function displaysecunum(){
+				var displaystr = document.getElementById("secunum").style.display;
+				if(displaystr == 'none')
+				{
+					refimg();
+					document.getElementById("clickfont").style.display = 'none';
+					document.getElementById("secunum").style.display = 'inline';
+					document.getElementById("spanfont").style.display = 'inline';
+				}
+			}

@@ -1,0 +1,6 @@
+2001-02-01  mad <mike@datanerds.net>
+    * Fixed a bug in which you could not specify the full path for a portscan log to be stored. 
+    * Fixed a "Too many open handles to EventLog" problem.
+    * Complete rewrite of the snort port.
+    * -s now sends alerts/logs to a remote syslog server. -E is for EventLog.
+    * 

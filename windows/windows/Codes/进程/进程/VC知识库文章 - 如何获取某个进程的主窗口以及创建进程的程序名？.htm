@@ -1,0 +1,231 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.vckbase.com/document/viewdoc/?id=404 -->
+<HTML><HEAD><TITLE>VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content="process,api,main window,进程,主窗口" name=keywords>
+<META content="process,api,main window,进程,主窗口" name=description><LINK 
+href="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/style.css" rel=stylesheet>
+<META content="MSHTML 5.00.3700.6699" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR bgColor=#a0d39b>
+    <TD height=30>&nbsp;<IMG height=13 
+      src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/vckcom.gif" width=109></TD>
+    <TD align=right height=30 vAlign=bottom><IMG height=27 
+      src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/earch.gif" width=89></TD></TR>
+  <TR bgColor=#eeeeee>
+    <TD width="76%"><FONT class=small color=#333333>::</FONT><A 
+      href="http://www.vckbase.com/"><FONT color=black><SPAN 
+      class=small>首页</SPAN></FONT></A> &gt;&gt; <A 
+      href="http://www.vckbase.com/document"><FONT color=black><SPAN 
+      class=small>文档中心</SPAN></FONT></A> &gt;&gt; <A 
+      href="http://www.vckbase.com/document/journal"><SPAN class=small><FONT 
+      color=black>在线杂志</FONT></SPAN></A> &gt;&gt; <A 
+      href="http://www.vckbase.com/document/listdoc.asp?sclsid=1305"><SPAN 
+      class=small><FONT color=black>多任务(多进程、多线程)</FONT></SPAN></A></TD>
+    <TD align=right class=small width="24%">[ <A 
+      href="http://www.vckbase.com/document/journal/redir.asp?journal=14"><SPAN 
+      class=small><FONT color=black>在线杂志 第14期</FONT></SPAN></A> ] 
+</TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 height=35 width="100%">
+  <FORM action=/SYS/script/find.asp method=post name=form2>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV align=right><INPUT class=rect maxLength=20 name=keyword size=10> 
+      <SELECT class=rect name=gclsid> <OPTION selected value=100>文档</OPTION> 
+        <OPTION value=200>代码</OPTION> <OPTION value=400>工具</OPTION></SELECT> 
+      <INPUT align=absMiddle border=0 height=15 name=imageField 
+      src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/go.gif" type=image width=21> 
+      </DIV></TD></TR></FORM></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD background="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/dotline2.gif" 
+    height=1></TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD height=74 width=40></TD>
+    <TD height=74 vAlign=top width=*><BR>[ <FONT color=#009900>原创文档</FONT> 
+      本文适合中级读者 已阅读11669次 ]<BR><BR><BR>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD>
+            <P align=center><B>如何获取某个进程的主窗口以及创建进程的程序名？</B><BR><BR><BR>编译/<A 
+            href="mailto:northtibet@sohu.com">northtibet</A></P>
+            <P><A 
+            href="http://www.vckbase.com/code/downcode.asp?id=1604">下载源代码</A> 
+            <P>&nbsp;&nbsp;&nbsp; 
+            在编写工具程序以及系统管理程序的时候。常常需要获取某个进程的主窗口以及创建此进程的程序名。获取主窗口的目的是向窗口发送各种消息。获取启动进程的程序名可以控制对进程的操作。但是有些进程往往有多个主窗口。你要的是哪一个主窗口呢？如果你用过Outlook程序，你就会发现它有多个主窗口，一个窗口列出收件箱和其它文件夹。如果你打开e-mail，便会有另外一个窗口显示信息。它们都是没有父窗口（或者说宿主窗口）的主窗口。运行一下Spy程序，你甚至会发现它们的窗口类名都相同：rctrl_renwnd32。资源管理器（Explorer.exe）也有不止一个主窗口。如图一所示，资源管理器有两个主窗口。一般来讲，想要获取主窗口，凭窗口的式样或类名，你没有什么办法知道哪一个窗口是真正意义上的主窗口。<BR>首先我们讨论如何从多个窗口中获取主窗口？其实很容易。利用两个API函数便可以实现。这两个API是 
+            EnumWindows 和 
+            GetWindowThreadProcessId。如果你对这两个函数不熟悉，不要怕，本文提供了一个C++类来对这两个API进行封装。这个类叫 
+            CMainWindowIterator，用它可以枚举某个进程（已知进程ID）的所有主窗口。这正是我们想要的东西。其使用方法如下：</P><PRE>DWORD pid = // 已知某个进程的ID
+CMainWindowIterator itw(pid);
+for (HWND hwnd = itw.First(); hwnd; hwnd=itw.Next()) {
+  // do something
+}    </PRE>&nbsp;&nbsp;&nbsp; 
+            就这么简单，CMainWindowIterator派生于一个更通用的类：CWindowIterator，CWindowIterator负责将::EnumWindows函数打包以隐藏回调细节。它有一个虚拟函数OnWindow，你可以在派生类中重写这个函数，从而可以用任何方式来枚举窗口。CMainWindowIterator就是重写了OnWindow函数，让它只获取属于某个给定进程的主窗口： 
+<PRE>// (在构造函数中设置m_pid)
+BOOL CMainWindowIterator::OnWindow(HWND hwnd)
+{
+  if ((GetWindowLong(hwnd,GWL_STYLE) &amp; WS_VISIBLE)) {
+    DWORD pidwin;
+    GetWindowThreadProcessId(hwnd, &amp;pidwin);
+    if (pidwin==m_pid)
+      return TRUE;
+  }
+  return FALSE;
+}</PRE>这两个类的定义如下：(对应的文件是 EnumProc.h 和 EnumProc.cpp) <PRE>//////////////////////////////////////////////////////
+// 这个类主要是封装::EnumWindows,列举顶层窗口
+//
+class CWindowIterator {
+protected:
+	HWND*	m_hwnds;		// 隶属于某个进程PID窗口句柄数组
+	DWORD m_nAlloc;			// 数组大小
+	DWORD m_count;			// 找到的窗口句柄数
+	DWORD m_current;		// 当前的窗口句柄
+	static BOOL CALLBACK EnumProc(HWND hwnd, LPARAM lp);
+
+	// 虚拟枚举函数
+	virtual BOOL OnEnumProc(HWND hwnd);
+
+	// 在派生中改写此函数来过滤不同种类的窗口
+	virtual BOOL OnWindow(HWND hwnd) {
+		return TRUE;
+	}
+
+public:
+	CWindowIterator(DWORD nAlloc=1024);
+	~CWindowIterator();
+	
+	DWORD GetCount() { return m_count; }
+	HWND First();
+	HWND Next() {
+		return m_hwnds &amp;&amp; m_current &lt;m_count ? m_hwnds[m_current++] : NULL;
+	}
+};
+
+////////////////////////////////////
+// 列举某个进程的顶层窗口
+//
+class CMainWindowIterator : public CWindowIterator  {
+protected:
+	DWORD m_pid;		// 进程ID
+	virtual BOOL OnWindow(HWND hwnd);
+public:
+	CMainWindowIterator(DWORD pid, DWORD nAlloc=1024);
+	~CMainWindowIterator();
+};</PRE>图一是用上述C++类编写的一个控制台程序lp.exe的输出画面。最后两栏分别是对应进程的“窗口句柄”和“类名/窗口标题”。其命令行开关“/ct”表示列出窗口类名（c）和窗口标题（t）。<BR><IMG 
+            border=0 height=386 
+            src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/lp.gif" 
+            width=450><BR>图一<BR><BR>&nbsp;&nbsp;&nbsp; 
+            一般来讲，如果隶属于某个进程的窗口没有可见的父窗口，那么这个窗口就可以认为是此进程的主窗口。对WS_VISIBLE的检查很重要，因为有些应用创建多个不可见的顶层窗口。关于CMainWindowIterator类的使用细节请参见本文的例子源代码。 
+            <BR>接下来我们来讨论如何获取创建进程的程序文件名。有人用各种方法尝试过，比如：GetModuleFileName，GetModuleInstance 
+            和 
+            GetModuleHandle，好像都不行。为什么呢？其实，方法是没错，但调用这些函数得到的只是当前正在运行的这个进程已经加载的模块名（modules），不能用于获取其它进程所加载的模块。因此，必须想别的办法，首先要考虑两种情况，一种是如果你写的程序在Windows 
+            NT，Windows 2000，Windows 
+            XP环境运行，则可以使用PSAPI，这是一个Windows操作系统中比较新的DLL，利用其中输出的API函数可以获取进程和模块的详细信息。另一种是如果你写的程序在Windows 
+            9x或者Windows 
+            Me中运行，则必须借助于ToolHelp，限于本文的篇幅，我在这里不介绍如何使用ToolHelp，如果你感兴趣的话可以参考，MSDN的技术支持文章Q175030，题目为“如何在Win32中枚举应用程序”。<BR>&nbsp;&nbsp;&nbsp; 
+            PSAPI中有一个函数是GetModuleFileNameEx。它通过某个进程和模块句柄作为参数来获得模块名。那么对于某个进程来说，你怎么知道哪个模块是启动进程的执行文件呢呢？PSAPI中的另一个函数EnumProcessModules将某个进程中所有模块的模块句柄填充到一个数组中。这个数组的第一个元素便是主模块的句柄，所以你用下面的代码来得到第一个HMODULE： 
+<PRE>DWORD count;
+HMODULE hm[1];
+EnumProcessModules(hProcess, hm, 1, &amp;count);      </PRE>然后调用GetModuleFileNameEx。<BR>实际上从前面的图一中可以看到，在lp.exe程序中我们已经实现了罗列进程及其对应的模块名。程序的实现细节中还用到了PSAPI输出的API函数EnumProcesses来枚举所有运行进程，为了对具体的细节进行封装，我如法炮制编写了与CWindowIterator 
+            和CMainWindowIterator类似的两个C++类：CProcessIterator 和 
+            CProcessModuleIterator ，它们分别对EnumProcesses 和EnumProcessModules 
+            API函数进行了封装。有了这两个打包类，一切都变得如此简单。 <PRE>CProcessIterator itp;
+for (DWORD pid=itp.First(); pid; pid=itp.Next()) {
+  // 处理每一个进程
+}</PRE>下面是获取创建进程的EXE文件名的方法： <PRE>CProcessModuleIterator itm(pid);
+HMODULE hModule = itm.First(); // .EXE
+TCHAR modname[_MAX_PATH];
+GetModuleBaseName(itm.GetProcessHandle(), hModule, modname, _MAX_PATH);</PRE>&nbsp;&nbsp;&nbsp; 
+            因为lp显示出来的并不是一个含全路径的模块文件名，所以我用另外一个PSAPI函数GetModuleBaseName来代替GetModuleFileNameEx从而获取全路径名。此外，由于CProcessModuleIterator自己会打开进程枚举模块，所以不必调用OpenProcess。用CProcessModuleIterator::GetProcessHandle可以得到已打开进程的句柄。lp程序还用CMainWindowIterator来显示每个特定进程的所有主窗口。下面是CProcessIterator 
+            和 CProcessModuleIterator的定义： <PRE>////////////////////////////////////////////////////////////////////////////////////////
+// 进程列举类 -- 列举出系统中的所有进程,但总是跳过第一个PID=0的进程,即空闲进程(IDLE)
+//
+class CProcessIterator {
+protected:
+	DWORD*	m_pids;			// 包含进程IDs的数祖
+	DWORD		m_count;	// 数组大小
+	DWORD		m_current;	// 当前数组项
+public:
+	CProcessIterator();
+	~CProcessIterator();
+
+	DWORD GetCount() { return m_count; }
+	DWORD First();
+	DWORD Next() {
+		return m_pids &amp;&amp; m_current &lt;m_count ? m_pids[m_current++] : 0;
+	}
+};
+
+/////////////////////////////////////////////////////////////////
+// 列举某个进程的模块，第一个模块就是创建此进程的主exe程序
+//
+class CProcessModuleIterator {
+protected:
+	HANDLE	m_hProcess;			// 进程句柄
+	HMODULE*	m_hModules;		// 模块句柄数组
+	DWORD		m_count;		// 数组大小
+	DWORD		m_current;		// 当前模块的句柄
+public:
+	CProcessModuleIterator(DWORD pid);
+	~CProcessModuleIterator();
+
+	HANDLE GetProcessHandle()	{ return m_hProcess; }
+	DWORD GetCount()				{ return m_count; }
+	HMODULE First();
+	HMODULE Next() {
+		return m_hProcess &amp;&amp; m_current &lt; m_count ? m_hModules[m_current++] : 0;
+	}
+};     
+</PRE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+<DIV align=center><BR><BR>
+<TABLE border=0 cellPadding=0 cellSpacing=0 class=small height=18 width="98%">
+  <TBODY>
+  <TR vAlign=center>
+    <TD bgColor=#a0d39b width="47%"><IMG height=10 
+      src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/toplogo.gif" width=10>最新评论 <A 
+      href="http://www.vckbase.com/SYS/script/viewcomment.asp?gclsid=100&amp;itemid=404" 
+      target=_blank><SPAN class=small>[发表评论]</SPAN></A> <A 
+      href="http://www.vckbase.com/support/contribute.html" target=_blank><SPAN 
+      class=small>[文章投稿]</SPAN></A></TD>
+    <TD align=right bgColor=#a0d39b width="53%"><IMG height=9 src="" width=9> 
+      <A 
+      href="http://www.vckbase.com/SYS/script/viewcomment.asp?gclsid=100&amp;itemid=404" 
+      target=_blank><SPAN class=small>查看所有评论</SPAN></A> <IMG height=9 src="" 
+      width=9> <A 
+      href="http://www.vckbase.com/SYS/script/writemail.asp?gclsid=100&amp;itemid=404&amp;title=%c8%e7%ba%ce%bb%f1%c8%a1%c4%b3%b8%f6%bd%f8%b3%cc%b5%c4%d6%f7%b4%b0%bf%da%d2%d4%bc%b0%b4%b4%bd%a8%bd%f8%b3%cc%b5%c4%b3%cc%d0%f2%c3%fb%a3%bf" 
+      target=_blank><SPAN class=small>推荐给好友</SPAN></A> <IMG height=9 src="" 
+      width=9> <A href="javascript:window.print();"><SPAN 
+      class=small>打印</SPAN></A></TD></TR></TBODY></TABLE>
+<TABLE bgColor=#ffffff border=0 cellPadding=0 cellSpacing=1 class=small 
+width="98%">
+  <TBODY>
+  <TR>
+    <TD bgColor=#ffffff><BR><IMG align=absMiddle height=11 
+      src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/doc2.gif" width=11> 
+      有关线程问题(请教)<BR>新建的是工程是：基于对话框的工程<BR>连接数据库：通过ADO+DNS&nbsp;在（BOOL&nbsp;CNEWADODlg::OnInitDialog()）的代码如下<BR>HRESULT&nbsp;hr;<BR>m_pConnection.CreateInstance(__uuidof(Connection));<BR>hr&nbsp;=&nbsp;m_pConnection-&gt;Open("driver={SQL&nbsp;Server};Server=server;DATABASE=genda_cb;UID=gendacb;PWD=genlm;","","",adModeUnknown);<BR>&nbsp;&nbsp;&nbsp;if(hr==0)<BR>&nbsp;{<BR>　　&nbsp;m_CommandPtr.CreateInstance(__uuidof(Command));<BR>数据库连接、新加、删除记录都很正常!<BR>问题是我在对话框中加一个进度条、一个COmmand按钮<BR>COmmand按钮的代码如下:<BR>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;ii;<BR>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;BB;<BR>&nbsp;&nbsp;&nbsp;&nbsp;BB=m_pRecordset-&gt;RecordCount;<BR>&nbsp;&nbsp;&nbsp;&nbsp;m_ProgressCtrl.SetRange(0,BB);<BR>&nbsp;&nbsp;&nbsp;&nbsp;for(ii=0;ii&lt;=BB;ii++)<BR>&nbsp;{<BR>&nbsp;m_ProgressCtrl.SetPos(ii);<BR>&nbsp;}<BR>这段程序是没问题，如果数据库记录少，进度条很快就可以读出来，如果记录大于一万条主窗口就象死机一样，要很长时间才可以读出来。<BR>&nbsp;现在请你如何运用线程进行编写，COmmand按钮按下之后，进度条显示读数据库的情况，谢谢！！！ 
+      ( hjw21 发表于 2003-11-29 16:16:00)<BR>&nbsp;<BR><IMG align=absMiddle 
+      height=11 src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/doc2.gif" width=11> 
+      进程一定有主窗口吗? ( Paladin_yf 发表于 2003-9-4 16:30:00)<BR>&nbsp;<BR><IMG 
+      align=absMiddle height=11 
+      src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/doc2.gif" width=11> 
+      EnumProcesses函数<BR>&nbsp;&nbsp;Windows&nbsp;95/98/Me:&nbsp;Unsupported!!! 
+      ( 593 发表于 2003-5-7 13:43:00)<BR>&nbsp;<BR><IMG align=absMiddle height=11 
+      src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/doc2.gif" width=11> 
+      有没有简单一点的API？ ( lzn 发表于 2002-8-15 10:56:00)<BR>&nbsp;<BR><IMG 
+      align=absMiddle height=11 
+      src="VC知识库文章 - 如何获取某个进程的主窗口以及创建进程的程序名？.files/doc2.gif" width=11> 
+      不错,讲解很清晰,也易懂 ( 过客 发表于 2002-8-9 
+      9:58:00)<BR>&nbsp;<BR>.......................................................<BR><A 
+      href="http://www.vckbase.com/SYS/script/viewcomment.asp?gclsid=100&amp;itemid=404" 
+      target=_blank><SPAN class=small>More...</SPAN></A> 
+</TD></TR></TBODY></TABLE></DIV><BR>
+<DIV align=right><BR><SPAN class=small>版权所有 &copy; 2004 VC知识库&nbsp; 
+<BR><BR></SPAN></DIV></BODY></HTML>

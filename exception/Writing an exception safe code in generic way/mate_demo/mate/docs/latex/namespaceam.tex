@@ -1,0 +1,133 @@
+\section{am Namespace Reference}
+\label{namespaceam}\index{am@{am}}
+namespace of {\bf a}uto {\bf m}ate.  
+
+
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class {\bf mate}
+\begin{CompactList}\small\item\em Mates a host function with the mate function object. \item\end{CompactList}\item 
+class {\bf mate$<$ void $>$}
+\begin{CompactList}\small\item\em void template specialization for mate. \item\end{CompactList}\item 
+struct {\bf condition}
+\begin{CompactList}\small\item\em Predicate. \item\end{CompactList}\item 
+class {\bf ref\_\-holder}
+\begin{CompactList}\small\item\em Reference holder. \item\end{CompactList}\item 
+struct {\bf pointer\_\-to\_\-function}
+\begin{CompactList}\small\item\em Function pointer to an unary function or a binary function. \item\end{CompactList}\item 
+struct {\bf binder1st}
+\begin{CompactList}\small\item\em Bind the 1st argument of a binary function. \item\end{CompactList}\item 
+struct {\bf binder2nd}
+\begin{CompactList}\small\item\em Bind the 2nd argument of a binary function. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace {\bf lambda}
+\begin{CompactList}\small\item\em namespace of lambda. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+template$<$class R, class T$>$ {\bf mate}$<$ R $>$ {\bf make\_\-mate} (R ret, T mate\_\-functor)
+\item 
+template$<$class R, class T, class C$>$ {\bf mate}$<$ R $>$ {\bf make\_\-mate} (R ret, T mate\_\-functor, C mate\_\-if)
+\item 
+template$<$class T$>$ {\bf ref\_\-holder}$<$ T $>$ {\bf ref} (T \&ref)
+\item 
+template$<$class T$>$ {\bf ref\_\-holder}$<$ T const $>$ {\bf cref} (T const \&ref)
+\item 
+template$<$typename Fn$>$ {\bf pointer\_\-to\_\-function}$<$ Fn $>$ {\bf ptr\_\-fun} (Fn const fn)
+\item 
+template$<$typename Op, typename P1$>$ {\bf binder1st}$<$ Op, P1 $>$ {\bf bind1st} (Op const \&op, P1 p1)
+\item 
+template$<$typename Op, typename P2$>$ {\bf binder2nd}$<$ Op, P2 $>$ {\bf bind2nd} (Op const \&op, P2 p2)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+namespace of {\bf a}uto {\bf m}ate. 
+
+Defines mate class, utility classes and their helper template functions. 
+
+
+
+\subsection{Function Documentation}
+\index{am@{am}!bind1st@{bind1st}}
+\index{bind1st@{bind1st}!am@{am}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Op, typename P1$>$ {\bf binder1st}$<$Op, P1$>$ am::bind1st (Op const \& {\em op}, P1 {\em p1})\hspace{0.3cm}{\tt  [inline]}}\label{namespaceam_5d35d0139360afc672d2cf1ff279fd83}
+
+
+Helper template function for \doxyref{am::binder1st}{p.}{structam_1_1binder1st}.
+
+\begin{Desc}
+\item[See also:]\doxyref{binder1st}{p.}{structam_1_1binder1st} \end{Desc}
+\index{am@{am}!bind2nd@{bind2nd}}
+\index{bind2nd@{bind2nd}!am@{am}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Op, typename P2$>$ {\bf binder2nd}$<$Op, P2$>$ am::bind2nd (Op const \& {\em op}, P2 {\em p2})\hspace{0.3cm}{\tt  [inline]}}\label{namespaceam_7416ae43749c6a8c08f3a1f8760ae24f}
+
+
+Helper template function for \doxyref{am::binder2nd}{p.}{structam_1_1binder2nd}.
+
+\begin{Desc}
+\item[See also:]\doxyref{binder2nd}{p.}{structam_1_1binder2nd} \end{Desc}
+\index{am@{am}!cref@{cref}}
+\index{cref@{cref}!am@{am}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf ref\_\-holder}$<$T const$>$ am::cref (T const \& {\em ref})\hspace{0.3cm}{\tt  [inline]}}\label{namespaceam_10096add639d0ba375c58c53aa8ff4a7}
+
+
+Helper template function for \doxyref{am::ref\_\-holder}{p.}{classam_1_1ref__holder}.
+
+\begin{Desc}
+\item[See also:]\doxyref{ref\_\-holder}{p.}{classam_1_1ref__holder}, \doxyref{ref}{p.}{namespaceam_aeac214784a5e1a16be743677555cb96} \end{Desc}
+\index{am@{am}!make_mate@{make\_\-mate}}
+\index{make_mate@{make\_\-mate}!am@{am}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class R, class T, class C$>$ {\bf mate}$<$R$>$ am::make\_\-mate (R {\em ret}, T {\em mate\_\-functor}, C {\em mate\_\-if})\hspace{0.3cm}{\tt  [inline]}}\label{namespaceam_0f8dd60a87bce90c886e49a64c2fdb1e}
+
+
+Helper template function to derive the template parameter automatically.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em ret}]Specifies the return of the host function. \item[\mbox{$\leftarrow$} {\em mate\_\-functor}]Specifies the mate function object which will be called in the destructor. It should be an unary function object which accept {\em ret\/} as its argument. \item[\mbox{$\leftarrow$} {\em mate\_\-if}]Specifies the predicate which determines whether or not the specified mate function object will be called in the destructor. It should be an unary predicate which accept {\em ret\/} as its argument. If it return false, no heap memory allocation is even occurred to store the mate function object. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Temporary mate$<$$>$ instance. \end{Desc}
+\begin{Desc}
+\item[See also:]\doxyref{MATE\_\-IF()}{p.}{mate_8hpp_9017d939bd69b57ffa03347874ac607b}, \doxyref{MATE\_\-IF\_\-()}{p.}{mate_8hpp_4cca2d4ba772910bd738c660c1a8348e} \end{Desc}
+\index{am@{am}!make_mate@{make\_\-mate}}
+\index{make_mate@{make\_\-mate}!am@{am}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class R, class T$>$ {\bf mate}$<$R$>$ am::make\_\-mate (R {\em ret}, T {\em mate\_\-functor})\hspace{0.3cm}{\tt  [inline]}}\label{namespaceam_5bba945b6b915ffa8ef360461257995c}
+
+
+Helper template function to derive the template parameter automatically.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em ret}]Specifies the return of the host function. \item[\mbox{$\leftarrow$} {\em mate\_\-functor}]Specifies the mate function object which will be called in the destructor. It should be a unary function object which accept {\em ret\/} as its argument. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Temporary mate$<$$>$ instance. \end{Desc}
+\begin{Desc}
+\item[See also:]\doxyref{MATE()}{p.}{mate_8hpp_01562e931d80813b43fcddc1a13799fe}, \doxyref{MATE\_\-()}{p.}{mate_8hpp_19fc8b71e7a27de46d8a4a8c7ef8c3ff} \end{Desc}
+\index{am@{am}!ptr_fun@{ptr\_\-fun}}
+\index{ptr_fun@{ptr\_\-fun}!am@{am}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Fn$>$ {\bf pointer\_\-to\_\-function}$<$Fn$>$ am::ptr\_\-fun (Fn const {\em fn})\hspace{0.3cm}{\tt  [inline]}}\label{namespaceam_075d855cc1ab6d87a818e72ed34bc829}
+
+
+Helper template function for \doxyref{am::pointer\_\-to\_\-function}{p.}{structam_1_1pointer__to__function}.
+
+\begin{Desc}
+\item[See also:]\doxyref{pointer\_\-to\_\-function}{p.}{structam_1_1pointer__to__function} \end{Desc}
+\index{am@{am}!ref@{ref}}
+\index{ref@{ref}!am@{am}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf ref\_\-holder}$<$T$>$ am::ref (T \& {\em ref})\hspace{0.3cm}{\tt  [inline]}}\label{namespaceam_aeac214784a5e1a16be743677555cb96}
+
+
+Helper template function for \doxyref{am::ref\_\-holder}{p.}{classam_1_1ref__holder}.
+
+\begin{Desc}
+\item[See also:]\doxyref{ref\_\-holder}{p.}{classam_1_1ref__holder}, \doxyref{cref}{p.}{namespaceam_10096add639d0ba375c58c53aa8ff4a7} \end{Desc}

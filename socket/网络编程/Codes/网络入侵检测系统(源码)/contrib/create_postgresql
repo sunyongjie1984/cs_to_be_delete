@@ -1,0 +1,127 @@
+-- Copyright (C) 2000 Carnegie Mellon University
+--
+-- Author(s): Jed Pickel <jpickel@cert.org>, <jed@pickel.net>
+--            Todd Schrubb <tls@cert.org>
+--            Roman Danyliw <rdd@cert.org>, <roman@danyliw.com>
+--
+-- This program is free software; you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation; either version 2 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program; if not, write to the Free Software
+-- Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+CREATE TABLE event  ( sid 	  INT4 NOT NULL,
+                      cid 	  INT8 NOT NULL,
+                      signature   TEXT NOT NULL, 
+                      timestamp   DATETIME NOT NULL,
+                      PRIMARY KEY (sid,cid));
+
+-- store info about the sensor supplying data
+CREATE TABLE sensor ( sid	  SERIAL,
+                      hostname    TEXT,
+                      interface   TEXT,
+                      filter	  TEXT,
+                      detail	  INT2,
+                      encoding	  INT2,
+                      PRIMARY KEY (sid));
+
+-- All of the fields of an ip header
+CREATE TABLE iphdr  ( sid 	  INT4 NOT NULL,
+                      cid 	  INT8 NOT NULL,
+                      ip_src      INT8 NOT NULL,
+                      ip_src0  	  INT2,
+                      ip_src1  	  INT2,
+                      ip_src2  	  INT2,
+                      ip_src3  	  INT2,
+                      ip_dst      INT8 NOT NULL,
+                      ip_dst0  	  INT2,
+                      ip_dst1  	  INT2,
+                      ip_dst2  	  INT2,
+                      ip_dst3  	  INT2,
+                      ip_ver      INT2,
+                      ip_hlen     INT2,
+                      ip_tos  	  INT2,
+                      ip_len 	  INT4,
+                      ip_id    	  INT4,
+                      ip_flags    INT2,
+                      ip_off      INT4,
+                      ip_ttl   	  INT2,
+                      ip_proto 	  INT2 NOT NULL,
+                      ip_csum 	  INT4,
+                      PRIMARY KEY (sid,cid));
+
+-- All of the fields of a tcp header
+CREATE TABLE tcphdr(  sid 	  INT4 NOT NULL,
+                      cid 	  INT8 NOT NULL,
+                      tcp_sport   INT4 NOT NULL,
+                      tcp_dport   INT4 NOT NULL,
+                      tcp_seq     INT8,
+                      tcp_ack     INT8,
+                      tcp_off     INT2,
+                      tcp_res     INT2,
+                      tcp_flags   INT2 NOT NULL,
+                      tcp_win     INT4,
+                      tcp_csum    INT4,
+                      tcp_urp     INT4,
+                      PRIMARY KEY (sid,cid));
+
+-- All of the fields of a udp header
+CREATE TABLE udphdr(  sid 	  INT4 NOT NULL,
+                      cid 	  INT8 NOT NULL,
+                      udp_sport   INT4 NOT NULL,
+                      udp_dport   INT4 NOT NULL,
+                      udp_len     INT4,
+                      udp_csum    INT4,
+                      PRIMARY KEY (sid,cid));
+
+-- All of the fields of an icmp header
+CREATE TABLE icmphdr( sid 	  INT4 NOT NULL,
+                      cid 	  INT8 NOT NULL,
+                      icmp_type   INT2 NOT NULL,
+                      icmp_code   INT2 NOT NULL,
+                      icmp_csum   INT4, 
+                      icmp_id     INT4,
+                      icmp_seq    INT4,
+                      PRIMARY KEY (sid,cid));
+
+-- Protocol options
+CREATE TABLE opt    ( sid         INT4 NOT NULL,
+                      cid         INT8 NOT NULL,
+                      optid       INT2 NOT NULL,
+                      opt_proto   INT2 NOT NULL,
+                      opt_code    INT2 NOT NULL,
+                      opt_len     INT4,
+                      opt_data    TEXT,
+                      PRIMARY KEY (sid,cid,optid));
+
+-- Packet payload
+CREATE TABLE data   ( sid          INT4 NOT NULL,
+                      cid          INT8 NOT NULL,
+                      data_payload TEXT,
+                      PRIMARY KEY (sid,cid));
+
+-- encoding is a lookup table for storing encoding types
+CREATE TABLE encoding(encoding_type INT2 NOT NULL,
+                      encoding_text TEXT NOT NULL,
+                      PRIMARY KEY (encoding_type));
+INSERT INTO encoding (encoding_type, encoding_text) VALUES (0, 'hex');
+INSERT INTO encoding (encoding_type, encoding_text) VALUES (1, 'base64');
+INSERT INTO encoding (encoding_type, encoding_text) VALUES (2, 'ascii');
+
+-- detail is a lookup table for storing different detail levels
+CREATE TABLE detail  (detail_type INT2 NOT NULL,
+                      detail_text TEXT NOT NULL,
+                      PRIMARY KEY (detail_type));
+INSERT INTO detail (detail_type, detail_text) VALUES (0, 'fast');
+INSERT INTO detail (detail_type, detail_text) VALUES (1, 'full');
+
+-- be sure to also use the snortdb-extra tables if you want
+-- mappings for tcp flags, protocols, and ports

@@ -1,0 +1,252 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Internet.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Internet.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 Internet"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Internet 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2007",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_INTERNET_DIALOG DIALOGEX 0, 0, 397, 249
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "AP配置管理系统——密码探测"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "默认用户名密码尝试",IDC_BUTTON1,257,33,85,14,BS_FLAT
+    LTEXT           "用户名",IDC_STATIC,39,67,25,8
+    LTEXT           "密码",IDC_STATIC,39,91,17,8
+    EDITTEXT        IDC_EDIT1,102,66,99,12,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_EDIT2,102,88,99,12,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "AP管理地址",IDC_STATIC,39,46,41,8
+    CONTROL         "IPAddress1",IDC_IPADDRESS1,"SysIPAddress32",WS_TABSTOP,
+                    102,44,99,12
+    LTEXT           "AP型号或品牌",IDC_STATIC,39,26,52,8
+    COMBOBOX        IDC_COMBO1,102,22,99,67,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "用户名填充密码尝试",IDC_BUTTON2,257,56,85,14,BS_FLAT
+    PUSHBUTTON      "用户名密码字典尝试",IDC_BUTTON3,257,79,85,14,BS_FLAT
+    GROUPBOX        "用户名及密码字典管理",IDC_STATIC,7,124,175,117
+    LTEXT           "新增用户名",IDC_STATIC,23,157,41,8
+    LTEXT           "新增密码",IDC_STATIC,108,157,33,8
+    EDITTEXT        IDC_EDIT3,23,173,55,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,108,173,55,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "增加用户名",IDC_BUTTON4,23,202,55,14,BS_FLAT
+    GROUPBOX        "AP默认设置管理",IDC_STATIC,196,123,194,118
+    LTEXT           "AP型号或品牌",IDC_STATIC,215,141,69,8
+    LTEXT           "AP默认管理地址",IDC_STATIC,215,160,65,8
+    LTEXT           "默认用户名",IDC_STATIC,215,179,50,8
+    LTEXT           "默认密码",IDC_STATIC,215,198,33,8
+    EDITTEXT        IDC_EDIT5,289,137,76,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,289,175,76,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,289,196,76,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "增加",IDC_BUTTON5,264,220,59,14,BS_FLAT
+    CONTROL         "IPAddress2",IDC_IPADDRESS2,"SysIPAddress32",WS_TABSTOP,
+                    289,158,77,14
+    PUSHBUTTON      "增加密码",IDC_BUTTON6,108,202,55,14,BS_FLAT
+    GROUPBOX        "AP管理密码破解",IDC_STATIC,7,7,382,107
+    GROUPBOX        "用户名字典",IDC_STATIC,14,142,75,86
+    GROUPBOX        "密码字典",IDC_STATIC,98,142,75,86
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "Internet Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "Internet\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2007\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "Internet.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Internet 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_INTERNET_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 390
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 242
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_INTERNET_DIALOG DLGINIT
+BEGIN
+    IDC_COMBO1, 0x403, 1, 0
+"\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 Internet(&A)..."
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\Internet.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

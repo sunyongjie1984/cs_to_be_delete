@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.21">
+ <TITLE>libapr(apache portable runtime) programming tutorial: character string handling</TITLE>
+ <LINK HREF="apr-tutorial-9.html" REL=next>
+ <LINK HREF="apr-tutorial-7.html" REL=previous>
+ <LINK HREF="apr-tutorial.html#toc8" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="apr-tutorial-9.html">Next</A>
+<A HREF="apr-tutorial-7.html">Previous</A>
+<A HREF="apr-tutorial.html#toc8">Contents</A>
+<HR>
+<H2><A NAME="s8">8.</A> <A HREF="apr-tutorial.html#toc8">character string handling</A></H2>
+
+<P>I assume you are familiar with C language's string APIs, such as strlen(3) and strcpy(3).
+libapr provides some string APIs. They are almost same as the common(ANSI C) APIs. Why does libapr provide a yet another string APIs? The benefit of libapr's string APIs is related to memory pool. In a common C string handling, we have to write much memory management code. The following code is an example.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* ANSI C string example (a bit naive code) */
+/* we concatenate three strings, s1, s2, s3 */
+int len1 = strlen(s1);
+int len2 = strlen(s2);
+int len3 = strlen(s3);
+int total_len = len1 + len2 + len3;
+char *cat_str = malloc(total_len + 1);
+strcpy(cat_str, s1);
+strcat(cat_str, s2);
+strcat(cat_str, s3);
+
+/* later, we have to free the allocated memory */
+free(cat_str);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>The same thing is written with libapr as follows:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+/* pseudo code about libapr string APIs */
+apr_pool_t *mp;
+apr_pool_create(&amp;mp, NULL);
+
+/* apr_pstrcat() takes care of both memory allocation and string concatenation.
+ * If the concatenated string is read-only, we should use 'const char*' type. */
+const char *cat_str = apr_pstrcat(mp, s1, s2, s3, NULL);
+
+/* later, all we have to do is to destroy the memory pool to free all the memory */
+apr_pool_destroy(mp);
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>Like apr_pstrcat(), apr_psprintf() allows you to write much simpler code. You can find other string APIs in apr_strings.h.</P>
+
+
+<HR>
+<A HREF="apr-tutorial-9.html">Next</A>
+<A HREF="apr-tutorial-7.html">Previous</A>
+<A HREF="apr-tutorial.html#toc8">Contents</A>
+</BODY>
+</HTML>

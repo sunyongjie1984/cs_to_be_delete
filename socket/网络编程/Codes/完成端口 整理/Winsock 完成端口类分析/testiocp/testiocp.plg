@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: testiocp - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP349.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\downloads\资料\编程\网络编程\整理\Winsock 完成端口类分析\testiocp\NetCompletionPort.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP349.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP34A.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/testiocp.pdb" /debug /machine:I386 /out:"Debug/testiocp.exe" /pdbtype:sept 
+".\Debug\StdAfx.obj"
+".\Debug\testiocp.obj"
+".\Debug\testiocpDlg.obj"
+".\Debug\NetCompletionPort.obj"
+".\Debug\testiocp.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP34A.tmp"
+<h3>Output Window</h3>
+Compiling...
+NetCompletionPort.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+testiocp.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

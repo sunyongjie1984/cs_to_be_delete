@@ -1,0 +1,89 @@
+\section{Use am::lambda to compose a function object.}\label{mate_use_lambda}
+{\tt boost::lambda} library provide a very powerful ability to create an anonymous function object on the spot. Unfortunately it does not support some outdated compilers which are still widely being used. In such environment, you can consider to use \doxyref{am::lambda}{p.}{namespaceam_1_1lambda}.
+
+\doxyref{am::lambda}{p.}{namespaceam_1_1lambda} is a limited subset of {\tt boost::lambda} which only supports the following operators.
+
+\begin{itemize}
+\item Logical NOT : !\item Logical AND : \&\&\item Logical OR : $|$$|$\item Equality operators : ==, !=\item Relational operators : $<$, $>$, $<$=, $>$=\item Address-of operator : \&\item Pointer-to-member operator : -$>$$\ast$ (to access member data pointer, not member function pointer and read-only access)\end{itemize}
+
+
+The above lambda operators seems good enough to collaborate with \doxyref{am::mate}{p.}{classam_1_1mate} and, most of all, it might work for those outdated compiler which {\tt boost::lambda} does not support.
+
+Also \doxyref{am::lambda::bind}{p.}{namespaceam_1_1lambda_794d3c4a2b7231c36cfc0684fea9bf5e} overloaded helper template functions are provided to support arguments binding similar to {\tt boost::lambda::bind}.
+
+
+
+\begin{Code}\begin{verbatim} #include "mate.hpp"
+ #include "lambda.hpp"
+
+ class Graph { };
+
+ std::pair<bool, unsigned> AddVertex(Graph & g)
+ {
+   bool is_success = false;
+   unsigned vertex_descriptor = 0;
+
+   // Add a new vertex.
+
+   // return Pair of boolean success flag and the new vertex descriptor if it
+   // successfully added a new vertex.
+   return std::make_pair( is_success, vertex_descriptor );
+ }
+
+ void RemoveVertex(unsigned vertex_descriptor, Graph & g)
+ {
+   // Remove the vertex of the specified descriptor.
+ }
+
+ void test20(Graph & g)
+ {
+   typedef std::pair<bool, unsigned> result_pair;
+
+   // 1. Calls the host function AddVertex()
+   // 2. Mates RemoveVertex() with the second of the resultant std::pair of the host function
+   //    only if the first of the resultant std::pair of the host functio hold true.
+   MATE_IF( AddVertex( g ),
+     am::lambda::bind( &RemoveVertex, &am::lambda::_1->*&result_pair::second, g ), 
+     &am::lambda::_1->*&result_pair::first );
+  }
+\end{verbatim}\end{Code}
+
+
+
+\doxyref{am::lambda::bind}{p.}{namespaceam_1_1lambda_794d3c4a2b7231c36cfc0684fea9bf5e} can resolve overloaded free functions (non-member functions) with {\tt \_\-\_\-stdcall} calling convention when AM\_\-ENABLE\_\-BIND\_\-STDCALL is defined before including, directly or indirectly, \char`\"{}lambda.hpp\char`\"{}. \doxyref{am::lambda::bind}{p.}{namespaceam_1_1lambda_794d3c4a2b7231c36cfc0684fea9bf5e} supports binding only up to 3 input arguments.
+
+
+
+\begin{Code}\begin{verbatim} #include "mate.hpp"
+
+ #define AM_BIND_ENABLE_STDCALL
+ #include "lambda.hpp"
+
+ typedef std::map<int, RECT> RECT_MAP; // Rect id -> Rectangle
+ typedef RECT_MAP::value_type MAP_VALUE;
+
+ MAP_VALUE ModifyRectangle(MAP_VALUE map_value) { return map_value; }
+ void UndoRectangle(int rect_id) { }
+
+ void test21(RECT_MAP const & rect_map, POINT pt)
+ {
+   RECT_MAP::const_iterator it = rect_map.begin(), it_e = rect_map.end();
+   for( ; it != it_e; ++it )
+   {
+     // 1. Calls the host function ModifyRectangle()
+     // 2. Mates UndoRectangle() with the first of the iterating map value that
+     //    host function returns, only if the rectangle is found to contain the
+     //    specified point and the specified point is not the origin (0, 0).
+     MATE_IF( ModifyRectangle( *it ),
+       am::lambda::bind( &UndoRectangle, &am::lambda::_1->*&MAP_VALUE::first ),
+       am::lambda::bind( &::PtInRect, &( &am::lambda::_1->*&MAP_VALUE::second ), pt ) &&
+       am::lambda::condition( 0 != pt.x && 0 != pt.y ) );
+   }
+ }
+\end{verbatim}\end{Code}
+
+
+
+\doxyref{am::lambda}{p.}{namespaceam_1_1lambda} is completely independent on \doxyref{am::mate}{p.}{classam_1_1mate} and vice-versa, thus both can be used separately.
+
+\doxyref{[Contents]}{p.}{index_mate_contents} 

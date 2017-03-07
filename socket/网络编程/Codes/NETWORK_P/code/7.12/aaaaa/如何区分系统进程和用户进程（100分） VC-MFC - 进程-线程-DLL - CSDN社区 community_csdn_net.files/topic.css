@@ -1,0 +1,150 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #333; PADDING-TOP: 0px; FONT-FAMILY: Tahoma, sans-serif; BACKGROUND-COLOR: #f4f3ee
+}
+A:link {
+	COLOR: black; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #377cbd; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #003366; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #004a9c; TEXT-DECORATION: none
+}
+.z {
+	CLEAR: both
+}
+#OutBox {
+	FONT-WEIGHT: normal; BACKGROUND: #f4f3ee; MARGIN: auto; WIDTH: 770px; TEXT-ALIGN: left
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+#MainNavigation {
+	BACKGROUND-POSITION: right bottom; FONT-SIZE: 12px; FLOAT: right; BACKGROUND-IMAGE: url(/images/navright.gif); WIDTH: 770px; LINE-HEIGHT: 20px; PADDING-TOP: 10px; BORDER-BOTTOM: #2f83b6 2px solid; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: tahoma, "??", sans-serif; HEIGHT: 20px
+}
+#MainNavigationRoom {
+	FLOAT: left; BACKGROUND-IMAGE: url(/images/bg_02.gif); WIDTH: 400px; TEXT-INDENT: 0.5pc; BACKGROUND-REPEAT: repeat-x
+}
+#MainNavigationFunction {
+	FONT-WEIGHT: normal; FLOAT: right; WIDTH: 290px; TEXT-ALIGN: center
+}
+.FavoriteSpan {
+	COLOR: yellow
+}
+.ISUsedSpan {
+	COLOR: white
+}
+.PrintSpan {
+	COLOR: white
+}
+.CloseSpan {
+	COLOR: white
+}
+#ContextBox {
+	FLOAT: left; WIDTH: 760px
+}
+#NavigationBox {
+	FONT-WEIGHT: normal; FLOAT: left; WIDTH: 170px
+}
+#TopicRegion {
+	MARGIN-TOP: 3px; FLOAT: right; WIDTH: 580px; LINE-HEIGHT: 18px
+}
+.Navigation {
+	FONT-WEIGHT: normal; FLOAT: left; WIDTH: 170px; PADDING-TOP: 3px; BACKGROUND-REPEAT: no-repeat
+}
+#TopicTopRegion {
+	CLEAR: both; MARGIN-LEFT: auto; WIDTH: 578px; LINE-HEIGHT: 25px; MARGIN-RIGHT: auto; BACKGROUND-COLOR: #ffffff
+}
+#TopicTopRegion H1 {
+	LIST-STYLE-POSITION: outside; FONT-SIZE: 13px; MARGIN: 0px; COLOR: #666600; TEXT-INDENT: 1em; PADDING-TOP: 8px; BORDER-BOTTOM: #65a1ce 1px dashed; FONT-FAMILY: tahoma, "??", sans-serif; LIST-STYLE-TYPE: none
+}
+.Navigation H3 {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: left top; PADDING-LEFT: 0px; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(/images/columnmenubg.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #000000; TEXT-INDENT: 1em; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 20px
+}
+.NavigationBox {
+	BORDER-RIGHT: #c2c2c2 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #c2c2c2 1px solid; PADDING-LEFT: 3px; BACKGROUND: white; PADDING-BOTTOM: 3px; MARGIN: 0px; BORDER-LEFT: #c2c2c2 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #c2c2c2 1px solid
+}
+.Navigation UL {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 0px; PADDING-TOP: 2px
+}
+.Navigation LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LIST-STYLE-POSITION: inside; LIST-STYLE-IMAGE: url(/images/li.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.forumperson {
+	MARGIN-TOP: 6px; FONT-WEIGHT: normal; FONT-SIZE: 12px; MARGIN-LEFT: 50px; COLOR: #000000; TEXT-INDENT: 1.3em; LINE-HEIGHT: 20px; FONT-FAMILY: "??", serif
+}
+.center {
+	TEXT-ALIGN: center
+}
+.SkyscraperAD {
+	BORDER-RIGHT: #c2c2c2 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #c2c2c2 1px solid; PADDING-LEFT: 3px; BACKGROUND: white; PADDING-BOTTOM: 3px; MARGIN: 0px; BORDER-LEFT: #c2c2c2 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #c2c2c2 1px solid
+}
+#TopicContextRegion {
+	CLEAR: both; FONT-WEIGHT: normal; FONT-SIZE: 12px; MARGIN: auto; WIDTH: 460px; COLOR: #666666; LINE-HEIGHT: 22px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.rightbgtop {
+	FONT-SIZE: 2px; BACKGROUND-IMAGE: url(/images/rightnavbgtop.gif); BACKGROUND-REPEAT: no-repeat; HEIGHT: 4px
+}
+.rightbgbottom {
+	BACKGROUND-IMAGE: url(/images/rightnavbgbottom.gif); BACKGROUND-REPEAT: no-repeat; HEIGHT: 8px
+}
+.rightbgmid {
+	BACKGROUND-IMAGE: url(/images/rightnavbgmid.gif); BACKGROUND-REPEAT: repeat
+}
+#TopicButtomInfoRegion {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #333333; MARGIN-RIGHT: 10px; TEXT-ALIGN: right
+}
+.GoTop {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #333333; MARGIN-RIGHT: 10px; TEXT-ALIGN: right
+}
+.ReplyContext {
+	TABLE-LAYOUT: fixed; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; MARGIN-LEFT: auto; WIDTH: 100%; COLOR: #333333; LINE-HEIGHT: 20px; MARGIN-RIGHT: auto; PADDING-TOP: 0px; WORD-WRAP: break-word
+}
+.ReplyLine {
+	CLEAR: both; BACKGROUND-POSITION: 50% top; MARGIN-TOP: 5px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(/images/bg_01.gif); MARGIN-BOTTOM: 1px; TEXT-INDENT: 0.5em; LINE-HEIGHT: 23px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 25px; BACKGROUND-COLOR: #f0f0f0
+}
+.ReplyFloor {
+	COLOR: blue
+}
+.ReplyPoint {
+	COLOR: red
+}
+#CorrelatedTopicsRegionInfo {
+	CLEAR: both; COLOR: #990000; LINE-HEIGHT: 25px
+}
+#CorrelatedTopicsRegion {
+	CLEAR: both; BORDER-RIGHT: #2f83b6 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: #2f83b6 1px dashed; MARGIN-TOP: 15px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN-LEFT: auto; BORDER-LEFT: #2f83b6 1px dashed; WIDTH: 570px; MARGIN-RIGHT: auto; PADDING-TOP: 5px; BORDER-BOTTOM: #2f83b6 1px dashed
+}
+#CorrelatedTopicsRegion UL {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 0px; PADDING-TOP: 2px
+}
+#CorrelatedTopicsRegion LI {
+	CLEAR: both; LIST-STYLE-POSITION: inside; LIST-STYLE-IMAGE: url(/images/li_04.gif); COLOR: #666666; TEXT-INDENT: 1em
+}
+.tag {
+	PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+#LeftTag {
+	BORDER-RIGHT: #c2c2c2 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #c2c2c2 1px solid; PADDING-LEFT: 3px; BACKGROUND: white; FLOAT: left; PADDING-BOTTOM: 3px; MARGIN: 0px; BORDER-LEFT: #c2c2c2 1px solid; WIDTH: 75px; PADDING-TOP: 3px; BORDER-BOTTOM: #c2c2c2 1px solid
+}
+#RightTag {
+	BORDER-RIGHT: #c2c2c2 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #c2c2c2 1px solid; PADDING-LEFT: 3px; BACKGROUND: white; FLOAT: right; PADDING-BOTTOM: 3px; MARGIN: 0px; BORDER-LEFT: #c2c2c2 1px solid; WIDTH: 75px; PADDING-TOP: 3px; BORDER-BOTTOM: #c2c2c2 1px solid
+}
+.tag UL {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 0px; PADDING-TOP: 2px
+}
+.tag LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LIST-STYLE-POSITION: inside; LIST-STYLE-IMAGE: url(/images/li.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}

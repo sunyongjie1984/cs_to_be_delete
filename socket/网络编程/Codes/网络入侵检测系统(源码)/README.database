@@ -1,0 +1,276 @@
+I. Summary
+
+The database output plug-in enables snort to log to Postgresql, MySQL,
+any unixODBC database, and Oracle (Oracle support is beta in Snort 1.7). 
+This README contains information about how to set up and configure your 
+database for use with snort and how to configure the database plugin. 
+
+There is a web site at "http://www.incident.org/snortdb" that will
+always have the most up to date information and documentation about
+this plug-in. Questions or comments about the database plugin can be
+directed to Jed Pickel <jed@pickel.net> or to the snort-users mailing
+list.
+
+Database logging for snort would not be possible without the help,
+contribution of code, comments, and debugging from many people. Listed 
+here are some of the folks that have been very helpful in making this 
+happen.
+
+  Credits: 
+     Mike Anderson <mike@src.no>, <mike.andersen@proseq.net>
+        * provided a lot of useful feedback on the database format
+        * added oracle support!
+
+     Yen-Ming Chen <yenming.chen@foundstone.com>
+        * helped with initial database design and testing
+        * author of the first analysis applications based on
+          snortdb
+
+     George Colt <colt@ojp.usdoj.gov>: 
+        * contributed fix for machines that need libm to link to 
+          mysqlclient library.
+
+     Roman Danyliw <rdd@cert.org>, <roman@danyliw.com>
+        * submitted structure for storing options
+        * all kinds of help with design and code
+        * Wrote ACID - Analysis Console for Intrusion Databases
+
+     Geoff the UNIX guy <galitz@uclink.berkeley.edu>
+        * developer of applications based on snortdb
+
+     Bill Marquett <wlmarque@hewitt.com>
+        * snortdb power user
+        * bug squasher 
+
+     Todd Schrub <tls@cert.org>
+        * author of initial code for MySQL
+        * helped design initial database architecture
+
+     Thomas Stenhaug <thomas@src.no>, <thomas.stenhaug@proseq.net>
+        * added oracle support!
+
+     Chris Green <cmg@uab.edu>
+        * Sent in a patch to log fragments
+
+II. Database Setup
+
+To get this plug-in working you must have a database set up and 
+configured properly. Take the the following steps to get things
+working.
+
+   1) Install MySQL, Postgresql, or (unixODBC + some other RDBMS)
+        MySQL      => http://www.mysql.org
+        Postgresql => http://www.postgesql.org
+        unixODBC   => http://www.unixodbc.org
+        oracle     => http://www.oracle.com
+
+   2) Follow directions from your database vendor to be sure your 
+      RDBMS is properly configured and secured.
+
+   3) Follow directions from your vendor to create a database for 
+      snort.
+         MySQL example 
+         % echo "CREATE DATABASE snort;" | mysql -u root -p
+
+   4) Create a user that has privileges to INSERT and SELECT
+      on that database. 
+      example 
+         - First create a user - for this example we will use "jed"
+         - now grant the right privileges for that user 
+         > grant INSERT,SELECT on snort.* to jed@localhost;
+
+   5) Build the structure of the database according to files supplied
+      with snort in the "contrib" directory as the user created in 
+      step 4.
+
+      Do this while in the snort source directory.
+
+      For MySQL
+      % mysql < ./contrib/create_mysql
+
+      For Postgresql
+      % psql < ./contrib/create_postgresql
+
+      For Oracle
+      The file "./contrib/create_oracle" contains the database 
+      structure.
+
+      If you are using unixODBC, be sure to properly configure and
+      test that you can connect to your data source (DSN) with isql
+      before trying to run snort.
+
+      For RDBMS other than MySQL and Postgresql that are accessed
+      through ODBC you will need to create the database
+      structure yourself because datatypes vary for different
+      databases. You will need to have the same column names and
+      functionality for each column as in the mysql and
+      postgresql examples. The mysql file is the best example to
+      follow since it is optimized (given that mysql supports tiny
+      ints and unsigned ints). I intend to document this process 
+      better in the future to make this process easier.
+
+      As you create database structure files for new RDBMS mail 
+      them in so they can be included as part of the distribution.
+
+
+III. Plugin Configuration
+
+You must add some information to the snort configuration file 
+to enable database logging. The configuration file distributed
+with snort has some sample configuration lines.
+
+The configuration line will be of the following format:
+
+   output database: [log | alert], [type of database], [parameter list]
+
+Arguments:
+
+   [log | alert] - specify log or alert to connect the database
+       plugin to the log or alert facility. In most cases you will
+       likely want to use the log facility.
+
+   [type of database] - You must supply the type of database. The
+       possible values are mysql, postgresql, unixodbc, and oracle.
+
+   [parameter list] - The parameter list consists of key value
+       pairs. The proper format is a list of key=value pairs each
+       separated a space.
+
+       The only parameter that is absolutely necessary is "dbname".
+       All other parameters are optional but may be necessary
+       depending on how you have configured your RDBMS.
+
+       dbname - the name of the database you are connecting to 
+
+       host - the host the RDBMS is on
+
+       port - the port number the RDBMS is listening on 
+
+       user - connect to the database as this user
+
+       password - the password for given user 
+
+       sensor_name - specify your own name for this snort
+             sensor. If you do not specify a name one will be
+             generated automatically.
+
+       encoding - Because the packet payload and option data is
+             binary, there is no one simple and portable way to
+             store it in a database. BLOBS are not used because they
+             are not portable across databases. So I leave the
+             encoding option to you. You can choose from the
+             following options. Each has its own advantages and
+             disadvantages:
+
+           hex: (default) Represent binary data as a hex string.
+
+                storage requirements - 2x the size of the binary
+
+                searchability....... - very good
+
+                human readability... - not readable unless you 
+                                         are a true geek
+                                       requires post processing
+
+           base64: Represent binary data as a base64 string.
+
+                storage requirements - ~1.3x the size of the binary
+
+                searchability....... - impossible without post 
+                                         processing
+
+                human readability... - not readable
+                                       requires post processing
+
+           ascii: Represent binary data as an ascii string. This is
+                the only option where you will actually loose data.
+                Non ascii data is represented as a ".". If you choose
+                this option then data for ip and tcp options will
+                still be represented as "hex" because it does not
+                make any sense for that data to be ascii. 
+
+                storage requirements - Slightly larger than the
+                                       binary because some characters
+                                       are escaped (&,<,>)
+
+                searchability....... - very good for searching for 
+                                         a text string
+                                       impossible if you want to 
+                                         search for binary
+
+                human readability... - very good
+
+       detail - How much detailed data do you want to store? The options
+                are:
+
+                full: (default) log all details of a packet that 
+                      caused an alert (including ip/tcp options and 
+                      the payload)
+
+                fast: log only a minimum amount of data. You severely 
+                      limit the potential of some analysis
+                      applications if you choose this option, but
+                      this is still the best choice for some
+                      applications. The following fields are logged
+                      - (timestamp, signature, source ip,
+                      destination ip, source port, destination
+                      port, tcp flags, and protocol)
+
+   The configuration I am currently using is MySQL with the database
+   name of "snort". The user "jed@localhost" has INSERT and SELECT
+   privileges on the "snort" database and requires a password of
+   "xyz". The following line enables snort to log to this database.
+
+   output database: log, mysql, dbname=snort user=jed host=localhost password=xyz
+
+IV. Changelog:
+
+2001-01-18: Incorporated fragment logging patch.
+2000-12-31: Incorporated Oracle Patch.
+2000-10-05: Created README.database and removed documentation from
+               spo_database.c
+2000-10-03: Added sensor_name configuration option
+2000-09-29: Added configuration option enabling user to connect
+               the plugin to the alert or log facility
+            Changed name from spo_log_database to spo_database
+            Removed all old references to the log facility
+            Fixed a logic error that prevented messages from 
+               the portscan preprocessor to be logged.
+2000-08-24: Fixed the full logging of tcp fields
+            Added encoding and detail to sensor table
+            Added escaping for the ascii character '
+            Added hex binary logging support
+            Added detail and encoding to sensor table
+            Slightly changed data table to make more sense
+            Added encoding option so you can select hex, base64,
+               or ascii for logging binary data
+            Added the "detail" option so you can choose between
+               full and fast logging. 
+2000-08-23: A lot of code cleanup. 
+            Added linked list to store queries before they are
+               executed.
+            Added all tcp, udp, and icmp fields
+            Added support for tcp and ip options
+            Added support for logging the packet payload
+2000-08-14: Added usage, very verbose error messages and other
+               small fixes. No real functional changes. This update
+               is focused on making the plugin easier to install 
+               and configure.
+2000-06-06: Multiple instantiations is now working
+2000-06-06: Added restart and cleanexit functions
+2000-06-02: Bugfixes, better error reporting
+2000-05-09: Bugfixes, documentation fixes, and added some 
+            better error reporting
+2000-04-13: Bugfixes
+2000-04-03: Updated database structure
+2000-03-28: Added unixODBC support
+            Added MySQL support
+            Changed database structure
+2000-03-08: Added new table "sensor" and a new field to event
+            table to represent the sensor
+2000-03-08: Added locking on inserts to eliminate concurrency
+               problem 
+2000-03-08: Changed "type" and "code" in icmphdr to int2 instead
+               of char
+2000-03-01: Added extra argument to RegisterOutputPlugin
+2000-02-28: First release

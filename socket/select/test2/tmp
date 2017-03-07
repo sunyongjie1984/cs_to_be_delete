@@ -1,0 +1,80 @@
+listen port 1234
+max sock: 3
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+timeout
+new connection client[1] 172.16.16.25:14941
+client amount: 1
+[0]:4  [1]:0  [2]:0  [3]:0  [4]:0  
+
+client[0] send:hello
+client amount: 1
+[0]:4  [1]:0  [2]:0  [3]:0  [4]:0  
+
+client[0] send:hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello
+client amount: 1
+[0]:4  [1]:0  [2]:0  [3]:0  [4]:0  
+
+client[0] send:hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello
+client amount: 1
+[0]:4  [1]:0  [2]:0  [3]:0  [4]:0  
+
+client[0] send:hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello
+client amount: 1
+[0]:4  [1]:0  [2]:0  [3]:0  [4]:0  
+
+new connection client[2] 172.16.16.25:14943
+client amount: 2
+[0]:4  [1]:5  [2]:0  [3]:0  [4]:0  
+
+new connection client[3] 172.16.16.25:14944
+client amount: 3
+[0]:4  [1]:5  [2]:6  [3]:0  [4]:0  
+
+new connection client[4] 172.16.16.25:14945
+client amount: 4
+[0]:4  [1]:5  [2]:6  [3]:7  [4]:0  
+
+new connection client[5] 172.16.16.25:14946
+client amount: 5
+[0]:4  [1]:5  [2]:6  [3]:7  [4]:8  
+
+client[4] send:hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world 
+client amount: 5
+[0]:4  [1]:5  [2]:6  [3]:7  [4]:8  
+
+client[4] send:hello world 
+client amount: 5
+[0]:4  [1]:5  [2]:6  [3]:7  [4]:8  
+
+client[4] send:hello world hello world hello world hello world hello world hello world hello world hello world hello world 
+client amount: 5
+[0]:4  [1]:5  [2]:6  [3]:7  [4]:8  
+
+max connections arrive, exit

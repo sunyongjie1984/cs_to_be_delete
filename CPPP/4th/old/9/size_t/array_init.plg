@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: array_init - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP62E5.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/array_init.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\My Documents\רҵѧϰ\C++ Primer\9\size_t\array_init.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP62E5.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP62E6.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/array_init.pdb" /debug /machine:I386 /out:"Debug/array_init.exe" /pdbtype:sept 
+".\Debug\array_init.obj"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP62E6.TMP"
+<h3>Output Window</h3>
+Compiling...
+array_init.cpp
+C:\My Documents\רҵѧϰ\C++ Primer\9\size_t\array_init.cpp(55) : warning C4786: 'std::reverse_bidirectional_iterator<std::list<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::iterator,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> > &,std::basic_string<char,std::char_traits<char>,std::allocator<char> > *,int>' : identifier was truncated to '255' characters in the debug information
+C:\My Documents\רҵѧϰ\C++ Primer\9\size_t\array_init.cpp(55) : warning C4786: 'std::reverse_bidirectional_iterator<std::list<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::const_iterator,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> > const &,std::basic_string<char,std::char_traits<char>,std::allocator<char> > const *,int>' : identifier was truncated to '255' characters in the debug information
+c:\program files\microsoft visual studio\vc98\include\list(144) : warning C4786: 'std::list<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::list<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >' : identifier was truncated to '255' characters in the debug information
+c:\program files\microsoft visual studio\vc98\include\list(153) : warning C4786: 'std::list<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~list<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >' : identifier was truncated to '255' characters in the debug information
+Linking...
+
+
+
+<h3>Results</h3>
+array_init.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

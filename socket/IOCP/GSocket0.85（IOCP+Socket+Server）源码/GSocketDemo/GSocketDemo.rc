@@ -1,0 +1,348 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\GSocketDemo.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GSocketDemo.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 GSocketDemo"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
+    LTEXT           "GSocketDemo，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2009",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_GSOCKETDEMO_DIALOG DIALOGEX 0, 0, 371, 266
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "GSocket0.85 测试例程（完成端口通讯模块——IOCP Socket）"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "客户：",IDC_GSTATIC3,7,161,358,99
+    RTEXT           "连接数量：",IDC_STATIC,268,115,34,8
+    RTEXT           "包大小：",IDC_STATIC,111,115,35,8
+    RTEXT           "转发延时循环：",IDC_STATIC,176,80,55,8
+    EDITTEXT        IDC_GEDIT_18,146,113,25,12,ES_AUTOHSCROLL
+    RTEXT           "发送间隔：",IDC_STATIC,11,115,35,8
+    EDITTEXT        IDC_GEDIT_17,46,113,62,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GEDIT_14,232,79,25,12,ES_AUTOHSCROLL
+    RTEXT           "Socket缓冲：",IDC_STATIC,104,56,42,8
+    EDITTEXT        IDC_GEDIT_7,148,54,22,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GEDIT_20,303,113,25,12,ES_AUTOHSCROLL
+    CONTROL         "关闭MTU：",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,112,16,43,11
+    GROUPBOX        "Client设置：",IDC_GSTATIC6,7,102,358,41
+    RTEXT           "发送：",IDC_STATIC,9,173,21,9
+    EDITTEXT        IDC_GEDIT_25,30,171,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "接收：",IDC_STATIC,79,173,21,9
+    EDITTEXT        IDC_GEDIT_26,100,171,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "总时间：",IDC_STATIC,217,173,31,9
+    EDITTEXT        IDC_GEDIT_28,248,171,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "速率：",IDC_STATIC,294,173,24,9
+    EDITTEXT        IDC_GEDIT_29,319,171,43,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "收发：",IDC_STATIC,149,173,21,9
+    EDITTEXT        IDC_GEDIT_27,170,171,43,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "GSocket设置",IDC_GSTATIC8,7,3,168,95
+    EDITTEXT        IDC_GEDIT_2,57,28,43,12,ES_AUTOHSCROLL
+    RTEXT           "GMem页大小：",IDC_STATIC,9,17,48,9
+    RTEXT           "GMem总容量：",IDC_STATIC,9,30,48,9
+    EDITTEXT        IDC_GEDIT_1,57,15,43,12,ES_AUTOHSCROLL
+    RTEXT           "IOData总量：",IDC_STATIC,9,56,48,9
+    RTEXT           "GBuf大小：",IDC_STATIC,9,43,48,9
+    EDITTEXT        IDC_GEDIT_4,57,54,43,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GEDIT_3,57,41,43,12,ES_AUTOHSCROLL
+    RTEXT           "HndData总量：",IDC_STATIC,9,69,48,9
+    EDITTEXT        IDC_GEDIT_5,57,68,43,12,ES_AUTOHSCROLL
+    CONTROL         "随机断开",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,80,159,38,10
+    GROUPBOX        "Server设置",IDC_GSTATIC9,177,3,188,95
+    RTEXT           "接受超时：",IDC_STATIC,197,17,34,8
+    EDITTEXT        IDC_GEDIT_10,232,15,25,12,ES_AUTOHSCROLL
+    RTEXT           "空闲超时：",IDC_STATIC,197,33,34,8
+    EDITTEXT        IDC_GEDIT_11,232,31,25,12,ES_AUTOHSCROLL
+    RTEXT           "最大连接：",IDC_STATIC,197,49,34,8
+    EDITTEXT        IDC_GEDIT_12,232,47,25,12,ES_AUTOHSCROLL
+    RTEXT           "接受投递：",IDC_STATIC,197,65,34,8
+    EDITTEXT        IDC_GEDIT_13,232,63,25,12,ES_AUTOHSCROLL
+    CONTROL         "自收自发：",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,264,15,43,11
+    RTEXT           "本地IP：",IDC_STATIC,270,33,28,8
+    RTEXT           "本地端口：",IDC_STATIC,264,49,34,8
+    EDITTEXT        IDC_GEDIT_16,300,47,62,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GEDIT_15,300,31,62,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "TCP监听(尚未监听)",IDC_BN_TCP_LISTEN,265,63,97,13,WS_DISABLED
+    PUSHBUTTON      "UDP监听",IDC_BN_UDP_LISTEN,265,78,97,13,WS_DISABLED
+    PUSHBUTTON      "开始服务",IDC_BN_SERVICE,6,145,359,13
+    RTEXT           "本地IP：",IDC_STATIC,18,128,28,8
+    RTEXT           "本地端口：",IDC_STATIC,111,128,35,8
+    EDITTEXT        IDC_GEDIT_22,146,127,25,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GEDIT_21,46,127,62,12,ES_AUTOHSCROLL
+    RTEXT           "远程IP：",IDC_STATIC,175,128,27,8
+    EDITTEXT        IDC_GEDIT_24,303,127,25,12,ES_AUTOHSCROLL
+    RTEXT           "远程端口：",IDC_STATIC,267,128,35,8
+    EDITTEXT        IDC_GEDIT_23,202,127,62,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "TCP连接",IDC_BN_TCP_CONNECT,330,112,32,13,WS_DISABLED
+    PUSHBUTTON      "UDP连接",IDC_BN_UDP_CONNECT,330,126,32,13,WS_DISABLED
+    RTEXT           "心跳：",IDC_STATIC,175,115,27,8
+    EDITTEXT        IDC_GEDIT_19,202,113,62,12,ES_AUTOHSCROLL
+    CONTROL         "0缓冲接受：",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,108,29,47,11
+    CONTROL         "0缓冲接收：",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,108,42,47,10
+    RTEXT           "接收投递：",IDC_STATIC,16,83,41,8
+    EDITTEXT        IDC_GEDIT_6,57,81,43,12,ES_AUTOHSCROLL
+    RTEXT           "工作线程：",IDC_STATIC,105,69,41,8
+    EDITTEXT        IDC_GEDIT_8,148,68,22,12,ES_AUTOHSCROLL
+    RTEXT           "并发线程：",IDC_STATIC,105,83,41,8
+    EDITTEXT        IDC_GEDIT_9,148,81,22,12,ES_AUTOHSCROLL
+    CONTROL         "",IDC_GLIST3,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,9,186,353,71
+    PUSHBUTTON      "运行信息",IDC_BUTTON2,56,1,45,13
+    PUSHBUTTON      "复位",IDC_BUTTON6,121,158,19,12
+    EDITTEXT        IDC_GEDIT_WAIT_ACCEPT3,30,159,43,11,ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_GSOCK_INFO_DIALOG DIALOGEX 0, 0, 410, 262
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "GSocket运行信息"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "监听者：",IDC_GSTATIC1,7,122,202,64
+    GROUPBOX        "线程总数：             工作线程：",IDC_GSTATIC2,212,122,191,64
+    CONTROL         "",IDC_GLIST_WORKER,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,214,134,187,49
+    EDITTEXT        IDC_GEDIT_GMEM_TOTAL,155,69,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "空闲率：",IDC_STATIC,12,58,48,9
+    EDITTEXT        IDC_GEDIT_PHY_FREE,62,55,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "物理页大小：",IDC_STATIC,12,71,48,9
+    EDITTEXT        IDC_GEDIT_PHY_PAGE_SIZE,62,69,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "占物理页：",IDC_STATIC,12,85,48,9
+    EDITTEXT        IDC_GEDIT_PHY_USED_PAGE,62,83,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "页大小：",IDC_STATIC,121,44,32,9
+    EDITTEXT        IDC_GEDIT_GMEM_PAGE_NUMBER,155,55,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "页数量：",IDC_STATIC,121,58,32,9
+    RTEXT           "总量：",IDC_STATIC,121,71,32,9
+    EDITTEXT        IDC_GEDIT_GMEM_USED,155,83,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "使用量：",IDC_STATIC,121,85,32,9
+    GROUPBOX        "系统信息",IDC_STATIC,7,31,108,84
+    GROUPBOX        "GMem信息",IDC_STATIC,118,31,91,84
+    RTEXT           "闲物理内存：",IDC_STATIC,12,44,48,9
+    EDITTEXT        IDC_GEDIT_PHY_AVAIL,62,41,50,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_GMEM_USED_R,155,98,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "占物理内存：",IDC_STATIC,12,100,48,9
+    EDITTEXT        IDC_GEDIT_PHY_USED_BYTES,62,98,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "使用率：",IDC_STATIC,121,100,32,9
+    EDITTEXT        IDC_GEDIT_GMEM_PAGE_SIZE,155,41,50,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "IOData信息：",IDC_GSTATIC4,212,31,99,84
+    RTEXT           "占内存：",IDC_STATIC,216,44,39,9
+    RTEXT           "总量：",IDC_STATIC,216,71,39,9
+    RTEXT           "使用量：",IDC_STATIC,216,85,39,9
+    RTEXT           "使用率：",IDC_STATIC,216,100,39,9
+    RTEXT           "GBuf大小：",IDC_STATIC,216,58,39,9
+    EDITTEXT        IDC_GEDIT_IODT_BYTES,257,41,50,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_IODT_TOTAL,257,69,50,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_IODT_USED,257,83,50,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_GBUF_SIZE,257,55,50,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "HndData信息：",IDC_GSTATIC5,314,31,89,84
+    RTEXT           "占内存：",IDC_STATIC,317,44,32,9
+    EDITTEXT        IDC_GEDIT_HDDT_BYTES,350,41,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "大小：",IDC_STATIC,317,58,32,9
+    EDITTEXT        IDC_GEDIT_HDDT_SIZE,350,55,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "使用量：",IDC_STATIC,317,85,32,9
+    EDITTEXT        IDC_GEDIT_HDDT_USED,350,83,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "使用率：",IDC_STATIC,317,100,32,9
+    EDITTEXT        IDC_GEDIT_HDDT_USED_R,350,98,50,13,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "总量：",IDC_STATIC,317,71,32,9
+    EDITTEXT        IDC_GEDIT_HDDT_TOTAL,350,69,50,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_IODT_USED_R,257,98,50,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_LISTENER,45,119,21,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_WORKER,324,119,21,12,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_GLIST_LISTENER,"SysListView32",LVS_LIST | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,10,134,197,49
+    GROUPBOX        "连接：              等待：              列表：",IDC_GSTATIC7,7,192,396,64
+    CONTROL         "",IDC_GLIST_CLIENT,"SysListView32",LVS_LIST | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,10,204,391,49
+    EDITTEXT        IDC_GEDIT_CLIENT,35,189,28,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_WAIT_ACCEPT,87,189,28,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_WAIT_ACCEPT2,139,189,28,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_GEDIT_WORKER2,256,119,21,12,ES_AUTOHSCROLL | ES_READONLY
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "GSocketDemo.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "GSocketDemo.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_GSOCKETDEMO_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 364
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 259
+    END
+
+    IDD_GSOCK_INFO_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 403
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 255
+        HORZGUIDE, 168
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 GSocketDemo(&A)..."
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\GSocketDemo.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,856 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0057)http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<SCRIPT type=text/javascript>
+        try { document.domain = "csdn.net"; } catch (ex) { }
+    </SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/jquery.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/jquery.highlighter.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/highlighter.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/common.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/AreaCounter.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/feedback.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/relatedarticle.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/google_service.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    GS_googleAddAdSenseService("ca-pub-1076724771190722");
+    GS_googleEnableAllServices();
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+    GA_googleAddSlot("ca-pub-1076724771190722", "blog_postpage_72890");
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+    GA_googleFetchAds();
+</SCRIPT>
+<LINK media=all 
+href="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/default_1.css" 
+type=text/css rel=stylesheet><LINK media=all 
+href="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/csdn_favbykimi.css" 
+type=text/css rel=stylesheet><LINK 
+href="http://profile.csdn.net/lgfei/picture/1.ico" rel="Shortcut Icon"><LINK 
+title=RSS href="http://feeds.feedsky.com/csdn.net/lgfei" 
+type=application/rss+xml rel=alternate>
+<STYLE type=text/css>.code {
+	BORDER-RIGHT: #ff9900 1px dashed; BORDER-TOP: #ff9900 1px dashed; FONT-SIZE: 9pt; BORDER-LEFT: #ff9900 1px dashed; BORDER-BOTTOM: #ff9900 1px dashed; FONT-FAMILY: "Courier New", "Courier", "mono"; BACKGROUND-COLOR: #ffffcc
+}
+.text {
+	FONT-SIZE: 10pt; COLOR: #333333; FONT-FAMILY: "Georgia", "Times New Roman", "Times", "serif"
+}
+.feidiv {
+	BORDER-RIGHT: #669900 1px dashed; BORDER-TOP: #669900 1px dashed; BACKGROUND: #ffffcc; BORDER-LEFT: #669900 1px dashed; WIDTH: 100%; BORDER-BOTTOM: #669900 1px dashed
+}
+.textbg {
+	BACKGROUND: #ffff00
+}
+P {
+	PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; COLOR: #000; PADDING-TOP: 0px
+}
+A {
+	
+}
+BODY P {
+	FONT-SIZE: small; voice-family: inherit
+}
+UNKNOWN {
+	FONT-SIZE: small
+}
+HTML {
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif
+}
+BODY {
+	FONT-FAMILY: verdana, arial, helvetica, sans-serif
+}
+H1 {
+	BACKGROUND: #fff; COLOR: #002a5f; TEXT-DECORATION: none
+}
+H2 {
+	BACKGROUND: #fff; COLOR: #002a5f; TEXT-DECORATION: none
+}
+H3 {
+	BACKGROUND: #fff; COLOR: #002a5f; TEXT-DECORATION: none
+}
+H4 {
+	BACKGROUND: #fff; COLOR: #002a5f; TEXT-DECORATION: none
+}
+H1 {
+	FONT-SIZE: 30px
+}
+H2 {
+	FONT-SIZE: 24px
+}
+H3 {
+	FONT-SIZE: 20px
+}
+H4 {
+	FONT-SIZE: 16px
+}
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #fff; PADDING-BOTTOM: 0px; MARGIN: 10px 10px 0px; PADDING-TOP: 0px
+}
+#leftcontent {
+	MARGIN-TOP: 5px; BACKGROUND: #fff; LEFT: 10px; WIDTH: 220px; POSITION: absolute; TOP: 70px
+}
+#centercontent {
+	BORDER-RIGHT: #ddd 1px dotted; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BACKGROUND: #fff; PADDING-BOTTOM: 5px; BORDER-LEFT: #ddd 1px dotted; WIDTH: 500px; PADDING-TOP: 5px; HEIGHT: 100%; voice-family: inherit
+}
+UNKNOWN {
+	MARGIN-TOP: 5px; MARGIN-LEFT: 230px; MARGIN-RIGHT: 230px
+}
+#rightcontent {
+	MARGIN-TOP: 5px; RIGHT: 20px; BACKGROUND: #fff; WIDTH: 220px; POSITION: absolute; TOP: 70px
+}
+#banner {
+	BACKGROUND: url(http://student.mblogger.cn/images/student.mblogger.cn/lkfi/7737/o_fei3.gif); BORDER-BOTTOM: #ccc 1px dotted; HEIGHT: 59px; voice-family: inherit
+}
+UNKNOWN {
+	BACKGROUND: url(http://student.mblogger.cn/images/student.mblogger.cn/lkfi/7737/o_fei3.gif); HEIGHT: 59px
+}
+.header {
+	BACKGROUND: url(http://student.mblogger.cn/images/student.mblogger.cn/lkfi/7737/o_fei3.gif); MARGIN-BOTTOM: 0px
+}
+A.headermaintitle:link {
+	FONT-SIZE: 24px; COLOR: #002a5f; BACKGROUND-COLOR: #fff
+}
+A.headermaintitle:visited {
+	FONT-SIZE: 24px; COLOR: #002a5f; BACKGROUND-COLOR: #fff
+}
+A.headermaintitle:hover {
+	FONT-SIZE: 24px; COLOR: #002a5f; BACKGROUND-COLOR: #fff
+}
+A.headersubtitle:link {
+	FONT-WEIGHT: normal; FONT-SIZE: 18px; COLOR: #002a5f; FONT-STYLE: italic; BACKGROUND-COLOR: #fff; TEXT-DECORATION: none
+}
+A.headersubtitle:visited {
+	FONT-WEIGHT: normal; FONT-SIZE: 18px; COLOR: #002a5f; FONT-STYLE: italic; BACKGROUND-COLOR: #fff; TEXT-DECORATION: none
+}
+A.headersubtitle:hover {
+	FONT-WEIGHT: normal; FONT-SIZE: 18px; COLOR: #002a5f; FONT-STYLE: italic; BACKGROUND-COLOR: #fff; TEXT-DECORATION: none
+}
+.imageFrame {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0px
+}
+.footer {
+	CLEAR: both; PADDING-RIGHT: 10px; BORDER-TOP: #006 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 11px; BACKGROUND: #fff; PADDING-BOTTOM: 0px; WIDTH: 100%; COLOR: #006; PADDING-TOP: 2px; TEXT-ALIGN: center
+}
+.spacer {
+	CLEAR: both
+}
+.datetitle {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-WEIGHT: bold; FONT-SIZE: 18px; BACKGROUND: url(http://student.mblogger.cn/images/student.mblogger.cn/lkfi/7737/o_brushedmaintop.gif) no-repeat; PADDING-BOTTOM: 2px; MARGIN: 0px 10px 1px; COLOR: #002a5f; LINE-HEIGHT: 14px; PADDING-TOP: 2px; LETTER-SPACING: 0.2em; TEXT-ALIGN: center
+}
+.listtitle {
+	PADDING-RIGHT: 2px; MARGIN-TOP: 0px; PADDING-LEFT: 2px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: url(http://student.mblogger.cn/images/student.mblogger.cn/lkfi/7737/o_brushedsidetop.gif) no-repeat; MARGIN-BOTTOM: 1px; PADDING-BOTTOM: 2px; COLOR: #002a5f; LINE-HEIGHT: 14px; PADDING-TOP: 2px; LETTER-SPACING: 0.2em; TEXT-ALIGN: center
+}
+.list {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; MARGIN-BOTTOM: 15px
+}
+.postlist {
+	BORDER-RIGHT: #dddddd 1px solid; PADDING-RIGHT: 15px; PADDING-LEFT: 15px; MARGIN-BOTTOM: 15px; MARGIN-LEFT: 10px; BORDER-LEFT: #dddddd 1px solid; MARGIN-RIGHT: 10px; BORDER-BOTTOM: #dddddd 1px solid
+}
+.singlepost {
+	BORDER-TOP-WIDTH: 0px; BORDER-RIGHT: #dddddd 1px solid; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BACKGROUND: #fff; MARGIN-BOTTOM: 15px; BORDER-LEFT: #dddddd 1px solid; COLOR: #000; BORDER-BOTTOM: #ddd 1px dotted
+}
+.itemdesc {
+	FONT-SIZE: 11px; BACKGROUND: #fff; PADDING-BOTTOM: 5px; COLOR: #5c9a3d; TEXT-ALIGN: left
+}
+.posttitle {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+A.posttitle:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+A.posttitle:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+A.posttitle:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+.singleposttitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 22px; BACKGROUND: url(http://student.mblogger.cn/images/student.mblogger.cn/lkfi/7737/o_brushedmaintop.gif) no-repeat; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+A.singleposttitle:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 22px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+A.singleposttitle:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 22px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+A.singleposttitle:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 22px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+A.itemdesc:link {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.itemdesc:active {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.itemdesc:visited {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.itemdesc:hover {
+	BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+UL.entrylist {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 12px; BORDER-BOTTOM-WIDTH: 0px; MARGIN-LEFT: 0px; COLOR: #000; MARGIN-RIGHT: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px
+}
+LI.entrylistitem {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; MARGIN: 3px 0px; PADDING-TOP: 5px; TEXT-ALIGN: left
+}
+A.entrylisttitle:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #5c9a3d; BACKGROUND-COLOR: #fff; TEXT-DECORATION: underline
+}
+A.entrylisttitle:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #5c9a3d; BACKGROUND-COLOR: #fff; TEXT-DECORATION: underline
+}
+A.entrylisttitle:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #5c9a3d; BACKGROUND-COLOR: #fff; TEXT-DECORATION: underline
+}
+A.entrylisttitle:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #5c9a3d; BACKGROUND-COLOR: #fff; TEXT-DECORATION: underline
+}
+UL.list {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 12px; BORDER-BOTTOM-WIDTH: 0px; MARGIN-LEFT: 0px; COLOR: #000; MARGIN-RIGHT: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px
+}
+LI.listitem {
+	BORDER-RIGHT: #dddddd 1px solid; MARGIN-LEFT: 0px; BORDER-LEFT: #dddddd 1px solid; MARGIN-RIGHT: 0px; BORDER-BOTTOM: #ddd 1px dotted; TEXT-ALIGN: left
+}
+A.listitem {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.listitem:link {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.listitem:visited {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.listitem:active {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.listitem:hover {
+	BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: underline
+}
+IMG {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+DIV.seperator {
+	PADDING-RIGHT: 0px; BORDER-TOP: #006bad 1px solid; PADDING-LEFT: 0px; BACKGROUND: #fff; PADDING-BOTTOM: 0px; MARGIN: 5px 0px 0px; PADDING-TOP: 0px; HEIGHT: 1px
+}
+A:link {
+	FONT-WEIGHT: bold; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-WEIGHT: bold; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A:active {
+	FONT-WEIGHT: bold; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A:hover {
+	BACKGROUND: #5c9a3d; COLOR: #fff
+}
+.commentform {
+	TEXT-ALIGN: left
+}
+.moreinfotitle {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 16px; PADDING-BOTTOM: 0px; MARGIN: 0px; LINE-HEIGHT: 14px; PADDING-TOP: 0px
+}
+.moreinfo {
+	BORDER-TOP-WIDTH: 0px; BORDER-RIGHT: #888 1px solid; BORDER-LEFT-WIDTH: 0px; BACKGROUND: #fff; BORDER-BOTTOM-WIDTH: 0px
+}
+UL.morelist {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; MARGIN-LEFT: 0px; MARGIN-RIGHT: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px
+}
+LI.morelistitem {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; MARGIN-BOTTOM: 5px; MARGIN-LEFT: 0px; TEXT-ALIGN: left
+}
+A.printlink:link {
+	FONT-WEIGHT: normal; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.printlink:visited {
+	FONT-WEIGHT: normal; BACKGROUND: #fff; COLOR: #5c9a3d; TEXT-DECORATION: none
+}
+A.printlink:hover {
+	TEXT-DECORATION: underline
+}
+.calendarcss {
+	FONT-SIZE: 12px
+}
+.daycss {
+	FONT-SIZE: 12px; MARGIN: 10px
+}
+.todaycss {
+	FONT-SIZE: 12px; MARGIN: 10px; BACKGROUND-COLOR: silver
+}
+.calendartitlecss {
+	FONT-SIZE: 12px
+}
+#counter {
+	TEXT-ALIGN: center
+}
+#mbloggerads {
+	TEXT-ALIGN: center
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY id=defaultuser>
+<DIV id=csdnblog_allwrap>
+<DIV id=csdnblog_midwrap>
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/pub_topnav.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=javascript type=text/javascript>
+    // 页面加载完毕，脚本开始执行
+    $(document).ready(function() {
+        ChangeUserState();
+        $("#notice").find("a").click(HideNoticeInfo);
+    });
+    
+    var userName = getCookie("activeUserName");
+    var isGuest = !userName || userName == "Guest";
+    var delay = 20 * 60 * 1000;
+    var timer = 0;
+
+    function ChangeUserState() {        
+        clearInterval(timer);
+        if (isGuest) {
+            HideNoticeInfo();
+        }
+        else {
+            RefreshNoticeInfo();
+            timer = setInterval( RefreshNoticeInfo, delay);
+        }
+    }
+    
+    var apiUrl = "/!handler/NoticeHandler.ashx?jsoncallback=?";
+    function RefreshNoticeInfo() {
+        $.getJSON(apiUrl + "&_t=" + Math.random(), function(result) {
+            if (result.noticeNum) {
+                newNoticeCount = result.noticeNum;
+                if (newNoticeCount <= 0) {
+                    $("#notice").hide();
+                }
+                else {
+                    $("#noticeCount").text(newNoticeCount);
+                    $("#notice").show();
+                }
+            }
+        });
+    }
+    
+    function HideNoticeInfo() {
+        $("#notice").hide();
+    }
+</SCRIPT>
+
+<DIV id=csdnblog_header>
+<H1><A href="http://blog.csdn.net/lgfei">import python,xml,java</A></H1>
+<H2>python,swt初学者</H2>
+<UL id=personalnav>
+  <LI id=notice style="DISPLAY: none"><SPAN class=newnotice><A class=red 
+  onclick=LogClickCount(this,216); href="http://hi.csdn.net/space-notice.html" 
+  target=_blank><SPAN id=noticeCount></SPAN>条新通知</A></SPAN> </LI>
+  <LI style="DISPLAY: none"><A id=a_login 
+  href="http://passport.csdn.net/UserLogin.aspx">登录</A> </LI>
+  <LI style="DISPLAY: none"><A id=a_register 
+  href="http://passport.csdn.net/CSDNUserRegister.aspx" target=_blank>注册</A> 
+  </LI>
+  <LI style="DISPLAY: none"><A id=a_welcome href="http://hi.csdn.net/" 
+  target=_blank>欢迎</A> </LI>
+  <LI style="DISPLAY: none"><A id=a_exit 
+  href="http://writeblog.csdn.net/Signout.aspx">退出</A> </LI>
+  <LI style="DISPLAY: none"><A id=a_myblog href="http://blog.csdn.net/">我的博客</A> 
+  </LI>
+  <LI style="DISPLAY: none"><A id=a_configure 
+  href="http://writeblog.csdn.net/configure.aspx" target=_blank>配置</A> </LI>
+  <LI style="DISPLAY: none"><A id=a_postedit 
+  href="http://writeblog.csdn.net/PostEdit.aspx" target=_blank>写文章</A> </LI>
+  <LI style="DISPLAY: none"><A id=a_postlist 
+  href="http://writeblog.csdn.net/PostList.aspx" target=_blank>文章管理</A> </LI>
+  <LI><A id=a_bloghome href="http://blog.csdn.net/" target=_blank>博客首页</A> 
+</LI></UL>
+<UL id=blogsearchsty>
+  <LI><INPUT class=bolgsearch id=inputSearch> </LI>
+  <LI class=selectsty><SELECT id=Search_ddlSearchScope 
+  name=Search:ddlSearchScope> <OPTION value=all selected>全站</OPTION> <OPTION 
+    value=lgfei>当前博客</OPTION></SELECT> </LI>
+  <LI><INPUT class=bolggobtn id=buttonSearch type=button value=搜索> </LI></UL>
+<UL id=menu>
+  <LI><A href="http://hi.csdn.net/lgfei" target=_blank>空间</A> 
+  <LI><A class=on href="http://blog.csdn.net/lgfei">博客</A> 
+  <LI><A href="http://hi.csdn.net/!s/friend/list/lgfei" target=_blank>好友</A> 
+  <LI><A href="http://hi.csdn.net/!s/album/list/lgfei" target=_blank>相册</A> 
+  <LI><A class=last href="http://hi.csdn.net/!s/wall/to/lgfei" 
+  target=_blank>留言</A> </LI></UL></DIV>
+<SCRIPT type=text/javascript>
+    var CurrentUserName = 'lgfei';
+</SCRIPT>
+
+<DIV id=csdnblog_sidebar>
+<DIV class=gutter>
+<DIV class=aboutauthor>
+<DL>
+  <DT>用户操作 
+  <DD class=middle><A href="http://hi.csdn.net/!s/wall/to/lgfei" 
+  target=_blank>[留言]</A>&nbsp; <A href="http://hi.csdn.net/!s/msg/to/lgfei" 
+  target=_blank>[发消息]</A>&nbsp; <A href="http://hi.csdn.net/!s/friend/add/lgfei" 
+  target=_blank>[加为好友]</A>&nbsp; <SPAN id=userInfo></SPAN><SPAN 
+  id=SubscriptionList>
+  <DT>订阅我的博客 
+  <DD><A href="http://feeds.feedsky.com/csdn.net/lgfei"><IMG alt=XML聚合 
+  src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/gif.gif" 
+  border=0> </A>&nbsp;&nbsp; <A href="http://feeds.feedsky.com/csdn.net/lgfei" 
+  target=_blank><IMG alt=FeedSky 
+  src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/feedsky.gif" 
+  border=0> </A>
+  <DD><A 
+  href="http://www.xianguo.com/subscribe.php?url=http://feeds.feedsky.com/csdn.net/lgfei" 
+  target=_blank><IMG alt=订阅到鲜果 
+  src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/rss_xianguo.jpg" 
+  border=0> </A>
+  <DD><A 
+  href="http://fusion.google.com/add?feedurl=http://feeds.feedsky.com/csdn.net/lgfei" 
+  target=_blank><IMG alt=订阅到Google 
+  src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/rss_google.gif" 
+  border=0> </A>
+  <DD><A 
+  href="http://www.zhuaxia.com/add_channel.php?url=http://feeds.feedsky.com/csdn.net/lgfei" 
+  target=_blank><IMG alt=订阅到抓虾 
+  src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/rss_zhuaxia.gif" 
+  border=0> </A></SPAN>
+  <DT><SPAN class=floatright style="DISPLAY: none"><A class=a_edit 
+  href="http://writeblog.csdn.net/configure.aspx" 
+  target=_blank>[编辑]</A></SPAN>lgfei的公告 
+  <DD>“你不觉得这晚霞很美吗？”孙悟空说，眼睛还望着天边，“我只有看看这个，才能每天坚持向西走下去。” ——《悟空传》 
+  <DT><SPAN class=floatright style="DISPLAY: none"><A class=a_edit 
+  href="http://writeblog.csdn.net/EditCategories.aspx?catID=1" 
+  target=_blank>[编辑]</A></SPAN>文章分类 
+  <DD>
+  <DIV class=publiclist_sidebar>
+  <UL>
+    <LI><A href="http://blog.csdn.net/lgfei/category/35746.aspx/rss"><IMG 
+    alt=(RSS) 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/rss.gif"></A><A 
+    href="http://blog.csdn.net/lgfei/category/35746.aspx">cute Swt</A>
+    <LI><A href="http://blog.csdn.net/lgfei/category/73913.aspx/rss"><IMG 
+    alt=(RSS) 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/rss.gif"></A><A 
+    href="http://blog.csdn.net/lgfei/category/73913.aspx">Jsp</A>
+    <LI><A href="http://blog.csdn.net/lgfei/category/35745.aspx/rss"><IMG 
+    alt=(RSS) 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/rss.gif"></A><A 
+    href="http://blog.csdn.net/lgfei/category/35745.aspx">可爱的python</A>
+    <LI><A href="http://blog.csdn.net/lgfei/category/51320.aspx/rss"><IMG 
+    alt=(RSS) 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/rss.gif"></A><A 
+    href="http://blog.csdn.net/lgfei/category/51320.aspx">忠告</A></LI></UL></DIV>
+  <DT><SPAN class=floatright style="DISPLAY: none"><A class=a_edit 
+  href="http://writeblog.csdn.net/EditLinks.aspx" 
+  target=_blank>[编辑]</A></SPAN>blog_com
+  <DD><A href="http://moxie.blogdriver.com/moxie/index.html" 
+  target=_blank>产品－PRODUCT</A><A 
+  href="http://moxie.blogdriver.com/moxie/rss1.xml" target=_blank>(RSS)</A>
+  <DD><A href="http://icecloud.51.net/blog/" 
+  target=_blank>http://icecloud.51.net/blog/</A><A 
+  href="http://icecloud.51.net/blog/index.rdf" target=_blank>(RSS)</A>
+  <DD><A href="http://www.donews.net/keso/" target=_blank>对牛乱弹琴 | Playin' with 
+  IT</A><A href="http://www.donews.net/keso/Rss.aspx" target=_blank>(RSS)</A>
+  <DD><A href="http://udoo.51.net/" target=_blank>山南水北--udoo的weblog</A><A 
+  href="http://udoo.51.net/index.rdf" target=_blank>(RSS)</A>
+  <DD><A href="http://www.redsaga.com/mambo/" target=_blank>满江红.开源</A><A 
+  href="http://www.redsaga.com/mambo/index2.php?option=com_rss&amp;no_html=1" 
+  target=_blank>(RSS)</A>
+  <DD><A href="http://hedong.3322.org/newblog/" target=_blank>竹笋炒肉: Hedong's 
+  Blog</A><A href="http://hedong.3322.org/newblog/index.rdf" 
+  target=_blank>(RSS)</A>
+  <DD><A href="http://www.chedong.com/" target=_blank>车东</A><A 
+  href="http://weblog.chedong.com/index.rdf" target=_blank>(RSS)</A>
+  <DD><A href="http://gigix.blogdriver.com/" target=_blank>透明思考</A><A 
+  href="http://gigix.blogdriver.com/gigix/rss2.xml" target=_blank>(RSS)</A>
+  <DT><SPAN class=floatright style="DISPLAY: none"><A class=a_edit 
+  href="http://writeblog.csdn.net/EditLinks.aspx" 
+  target=_blank>[编辑]</A></SPAN>blog_java
+  <DT><SPAN class=floatright style="DISPLAY: none"><A class=a_edit 
+  href="http://writeblog.csdn.net/EditLinks.aspx" 
+  target=_blank>[编辑]</A></SPAN>blog_python
+  <DD><A href="http://blog.csdn.net/dreamingk/" 
+  target=_blank>http://blog.csdn.net/dreamingk/</A><A 
+  href="http://blog.csdn.net/dreamingk/Rss.aspx" target=_blank>(RSS)</A>
+  <DD><A href="http://limodou.donews.net/limodou" 
+  target=_blank>limodou的学习记录</A><A href="http://www.donews.net/limodou/Rss.aspx" 
+  target=_blank>(RSS)</A>
+  <DT><SPAN class=floatright style="DISPLAY: none"><A class=a_edit 
+  href="http://writeblog.csdn.net/EditLinks.aspx" 
+  target=_blank>[编辑]</A></SPAN>koolsites_java
+  <DD><A href="http://www.theserverside.com/" 
+  target=_blank>TheServerSide.com</A><A 
+  href="http://www.theserverside.com/rss/theserverside-1.0.rdf" 
+  target=_blank>(RSS)</A>
+  <DT><SPAN class=floatright style="DISPLAY: none"><A class=a_edit 
+  href="http://writeblog.csdn.net/EditLinks.aspx" 
+  target=_blank>[编辑]</A></SPAN>koolsites_python 
+  <DT>存档 
+  <DD>
+  <DIV class=publiclist_sidebar>
+  <UL>
+    <LI><A 
+href="http://blog.csdn.net/lgfei/archive/2004/12.aspx">2004年12月(2)</A>
+    <LI><A 
+href="http://blog.csdn.net/lgfei/archive/2004/10.aspx">2004年10月(1)</A>
+    <LI><A 
+href="http://blog.csdn.net/lgfei/archive/2004/09.aspx">2004年09月(2)</A>
+    <LI><A 
+    href="http://blog.csdn.net/lgfei/archive/2004/08.aspx">2004年08月(2)</A></LI></UL></DIV></DD></DL></DIV></DIV></DIV>
+<DIV id=csdnblog_content>
+<DIV class=gutter>
+<DIV class=default_contents>
+<DIV class=user_article>
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/feedbackcount.js" 
+type=text/javascript></SCRIPT>
+
+<H1 class=title_txt><IMG height=15 alt=原创 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/authorship.gif" 
+width=15 border=0>&nbsp; 随便写的一个python小程序，从网页中下载图片 <CITE 
+class=fav_csdnstylebykimi><A class=fav_csdnstylebykimi title=收藏到我的网摘中，并分享给我的朋友 
+href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(saveit=window.open('http://wz.csdn.net/storeit.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t),'saveit','scrollbars=no,width=590,height=300,left=75,top=20,status=no,resizable=yes'));saveit.focus();">收藏</A> 
+</CITE></H1>
+<DIV class=blogstory>
+<SCRIPT type=text/javascript>
+                        document.body.oncopy = function() {
+                            if (window.clipboardData) {
+                                setTimeout(function() {
+                                    var text = clipboardData.getData("text");
+                                    if (text && text.length > 300) {
+                                        text = text + "\r\n\n本文来自CSDN博客，转载请标明出处：" + location.href;
+                                        clipboardData.setData("text", text);
+                                    }
+                                }, 100);
+                            }
+                        }
+					</SCRIPT>
+
+<SCRIPT type=text/javascript>                        function StorePage() { d = document; t = d.selection ? (d.selection.type != 'None' ? d.selection.createRange().text : '') : (d.getSelection ? d.getSelection() : ''); void (keyit = window.open('http://www.365key.com/storeit.aspx?t=' + escape(d.title) + '&u=' + escape(d.location.href) + '&c=' + escape(t), 'keyit', 'scrollbars=no,width=475,height=575,left=75,top=20,status=no,resizable=yes')); keyit.focus(); }</SCRIPT>
+
+<P><FONT face="Courier New">在diveintopython网站上，</FONT><A 
+href="http://diveintopython.org/html_processing/extracting_data.html"><FONT 
+face="Courier New">http://diveintopython.org/html_processing/extracting_data.html</FONT></A><FONT 
+face="Courier New">可以找到一些html处理的例子，比如这个类可以用来获取html页面中的href标签内容。</FONT></P><PRE class=programlisting><SPAN class=pykeyword>from</SPAN> sgmllib <SPAN class=pykeyword>import</SPAN> SGMLParser
+
+<SPAN class=pykeyword>class</SPAN><SPAN class=pyclass> URLLister</SPAN>(SGMLParser):
+    <SPAN class=pykeyword>def</SPAN><SPAN class=pyclass> reset</SPAN>(self):                              <A name=dialect.extract.2.1></A>
+        SGMLParser.reset(self)
+        self.urls = []
+
+    <SPAN class=pykeyword>def</SPAN><SPAN class=pyclass> start_a</SPAN>(self, attrs):                     <A name=dialect.extract.2.2></A>
+        href = [v <SPAN class=pykeyword>for</SPAN> k, v <SPAN class=pykeyword>in</SPAN> attrs <SPAN class=pykeyword>if</SPAN> k==<SPAN class=pystring>'href'</SPAN>] <A name=dialect.extract.2.3></A> <A name=dialect.extract.2.4></A>
+        <SPAN class=pykeyword>if</SPAN> href:
+            self.urls.extend(href)<BR><BR><BR><BR>将这个文件href的地方都改成src，start_a改成start_img<BR>即：<BR><SPAN class=pykeyword>from sgmllib import SGMLParser</SPAN></PRE><PRE class=programlisting><SPAN class=pykeyword>class URLLister(SGMLParser):<BR>&nbsp;&nbsp;&nbsp; def reset(self):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SGMLParser.reset(self)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.urls = []</SPAN></PRE><PRE class=programlisting><SPAN class=pykeyword>&nbsp;&nbsp;&nbsp; def start_img(self, attrs):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; src = [v for k, v in attrs if k=='<FONT style="BACKGROUND-COLOR: #ffff00">src</FONT>'] <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if <FONT style="BACKGROUND-COLOR: #ffff00">src</FONT>:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.urls.extend(<FONT style="BACKGROUND-COLOR: #ffff00">src</FONT>)<BR>保存代码内容为urllister.py文件，放在python安装目录即可，这样就可以用来分析网页的图片地址了。<BR><BR><BR><BR></SPAN><BR><BR><BR><BR><BR>下面为图片下载的程序内容<BR><BR><FONT style="BACKGROUND-COLOR: #d3d3d3">import urllib2<BR>import urllib<BR>import os<BR>import urllister</FONT><BR><FONT color=#ff0000># 这是来自</FONT><A href="http://diveintopython.org/html_processing/extracting_data.html#dialect.extract.urllib"><FONT color=#ff0000>http://diveintopython.org/html_processing/extracting_data.html#dialect.extract.urllib</FONT></A><FONT color=#ff0000>的一个分析html页面的类</FONT></PRE>
+<P><BR><FONT style="BACKGROUND-COLOR: #d3d3d3" 
+face="Courier New">imagepath=[]</FONT></P>
+<P><FONT face="Courier New"><FONT color=#ff0000>#cd 
+函数用于判断路径是否正确，如正确则改变当前工作路径<BR></FONT><FONT style="BACKGROUND-COLOR: #d3d3d3">def 
+cd(ss):<BR>&nbsp;&nbsp;&nbsp; try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+os.chdir(ss)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print 
+'改变工作目录为'+ss<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+0<BR>&nbsp;&nbsp;&nbsp; except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print '输入图片保存路径有误，请重新输入'<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+1</FONT><BR><FONT 
+color=#ff3300>#addimagepath，该函数将图片路径添加到imagepath这个list中</FONT><BR><FONT 
+style="BACKGROUND-COLOR: #d3d3d3">def addimagepath(surl):<BR>&nbsp;&nbsp;&nbsp; 
+if 'http://' in surl&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+imagepath.append(surl)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print 
+'找到图片：'+surl.split('/')[-1]+'图片地址为：'+surl<BR>&nbsp;&nbsp;&nbsp; 
+else:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;surl=str_url+surl<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+imagepath.append(surl)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print 
+'找到图片：'+surl.split('/')[-1]+'图片地址为：'+surl</FONT></FONT></P>
+<P><FONT face="Courier New"><FONT color=#ff3300>#download images</FONT><BR><FONT 
+style="BACKGROUND-COLOR: #d3d3d3">def 
+image_down(list_image):<BR>&nbsp;&nbsp;&nbsp; if not 
+list_image:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print 
+"该页面没有任何图片"<BR>&nbsp;&nbsp;&nbsp; 
+else:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for image in 
+list_image:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+urllib.urlretrieve(image,image.split('/')[-1])</FONT> <FONT 
+color=#ff3300>#利用image.split('/')[-1]获得文件名<BR></FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<FONT style="BACKGROUND-COLOR: #d3d3d3" color=#000000>print 
+"来自"+image+"的图片保存成功！"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+except:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+print "来自"+image+"图片没有保存成功，继续保存下一张图片...."</FONT></FONT></P>
+<P><FONT style="BACKGROUND-COLOR: #d3d3d3" face="Courier New">print 
+"请输入网页的url地址："<BR>str_url=raw_input()</FONT></P>
+<P><FONT style="BACKGROUND-COLOR: #d3d3d3" face="Courier New">print 
+"请输入图片保存地址，如果直接回车将默认保存到我的文档"</FONT></P>
+<P><FONT style="BACKGROUND-COLOR: #d3d3d3" face="Courier New">temp=1<BR>while 
+temp:<BR>&nbsp;&nbsp;&nbsp; str_save=raw_input()<BR>&nbsp;&nbsp;&nbsp; if not 
+str_save:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+str_save='E:\Fei_Doc'<BR>&nbsp;&nbsp;&nbsp; 
+temp=cd(str_save)<BR>&nbsp;&nbsp;&nbsp; </FONT></P>
+<P><BR><FONT style="BACKGROUND-COLOR: #d3d3d3" 
+face="Courier New">try:<BR>&nbsp;&nbsp;&nbsp; 
+sock=urllib2.urlopen(str_url)<BR>&nbsp;&nbsp;&nbsp; print 
+"页面连接成功！开始获取图片地址……"<BR>except:<BR>&nbsp;&nbsp;&nbsp; print 
+"sorry，输入的地址有误或页面无法连接，程序将自动退出"</FONT></P>
+<P><FONT face="Courier New"><FONT 
+style="BACKGROUND-COLOR: #d3d3d3">parser=urllister.URLLister()<BR>parser.feed(sock.read())<BR>sock.close()<BR>parser.close()<BR>for 
+url in parser.urls:<BR>&nbsp;&nbsp;&nbsp; addimagepath(url)</FONT><BR><BR><FONT 
+color=#ff0000>#调用图片下载函数</FONT><BR><FONT 
+style="BACKGROUND-COLOR: #d3d3d3">image_down(imagepath)</FONT></FONT></P>
+<P><FONT face="Courier New"><FONT 
+color=#ff0000>#程序结束</FONT><BR><BR><BR>尽管这个程序能基本上解决问题，不过我发现有一些不足：<BR>1、如果页面的img标签后面没有直接跟src属性，比如复杂一点的img代码：<BR><!--StartFragment --><FONT 
+style="BACKGROUND-COLOR: #ffff00">&nbsp;&lt;<SPAN 
+class=start-tag>img</SPAN><SPAN class=attribute-name> border</SPAN>=<SPAN 
+class=attribute-value>"0" </SPAN><SPAN 
+class=attribute-name>onload</SPAN>=</FONT></FONT><FONT face="Courier New"><FONT 
+style="BACKGROUND-COLOR: #ffff00"><SPAN class=attribute-value>"<BR>function 
+onload(event) {<BR>javascript:<BR>&nbsp;&nbsp;&nbsp; if (this.width &gt; 
+screen.width - 333) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.width = 
+screen.width - 333;<BR>&nbsp;&nbsp;&nbsp; }<BR>}<BR>" </SPAN><SPAN 
+class=attribute-name>src</SPAN>=<SPAN 
+class=attribute-value>"http://bbs.263.net/forumData/119/2860134_1.jpg" 
+</SPAN><SPAN class=attribute-name>alt</SPAN>=<SPAN 
+class=attribute-value>"按此在新窗口浏览图片" </SPAN><SPAN 
+class=attribute-name>/</SPAN>&gt;</FONT></FONT></P>
+<P><FONT 
+face="Courier New">那么urllister便无法识别了。不过这个问题解决起来比较容易，直接对html代码每行代码进行分析，利用split('src')，可以得到所有src标签的内容，然后根据后缀是否为jpg，gif等得到图片文件地址。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</FONT></P>
+<P><FONT 
+face="Courier New">2、上面的程序只是对地址为http开始的图片以及当前url下面目录的图片进行处理，如果src里面的内容以“../images“ 
+或者&nbsp;“/“开头，则需另外处理。<BR>&nbsp;</FONT></P>
+<P class="right articalinfo">发表于 @ 2004年09月30日　21:27:00&nbsp;| <A id=a_comment 
+title=评论 
+href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#FeedBack">评论( 
+<SPAN id=FeedbackCount_122385>loading...</SPAN>
+<SCRIPT type=text/javascript>
+                                AddFeedbackCountStack("122385")
+							</SCRIPT>
+ ) </A>| <SPAN style="DISPLAY: none"><A class=a_edit title=编辑 
+href="http://writeblog.csdn.net/PostEdit.aspx?entryId=122385">编辑</A>|</SPAN> <A 
+href="mailto:webmaster@csdn.net?subject=Article Report!!!&amp;body=Author:lgfeiURL:http://blog.csdn.net/ArticleContent.aspx?UserName=lgfei&amp;Entryid=122385">举报</A>| 
+<CITE class=fav_csdnstylebykimi><A class=fav_csdnstylebykimi 
+title=收藏到我的网摘中，并分享给我的朋友 
+href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(saveit=window.open('http://wz.csdn.net/storeit.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t),'saveit','scrollbars=no,width=590,height=300,left=75,top=20,status=no,resizable=yes'));saveit.focus();">收藏</A> 
+</CITE></P><SPAN id=Post.ascx_ViewPost_PreviousAndNextEntriesDown>
+<H3 class=pagego><A 
+href="http://blog.csdn.net/lgfei/archive/2004/09/02/92044.aspx">旧一篇:一个python小程序,从文本文件中读取每行的两组数字,进行排序后输出.</A>&nbsp;|&nbsp;<A 
+href="http://blog.csdn.net/lgfei/archive/2004/10/03/124212.aspx">新一篇: 
+[刘巍]由C#风潮想起的－给初学编程者的忠告 </A></H3></SPAN>
+<DIV style="TEXT-ALIGN: left"><!-- ca-pub-1076724771190722/blog_postpage_72890 -->
+<SCRIPT type=text/javascript>
+    GA_googleFillSlot("blog_postpage_72890");
+</SCRIPT>
+</DIV>
+<DIV class=mutualitys>
+<DL>
+  <DT><SPAN><A onclick=LogClickCount(this,215) href="http://blog.csdn.net/" 
+  target=_blank>查看最新精华文章 请访问博客首页</A></SPAN>相关文章 </DT></DL></DIV></DIV></DIV><A 
+name=FeedBack></A>
+<SCRIPT type=text/javascript>
+                var CurrentEntryId = '122385';
+                var CurArticleTitle = '随便写的一个python小程序，从网页中下载图片';
+                var AllowComment = 'True';
+                var AllowAnonymousComment = /^true$/i.test('True');
+            </SCRIPT>
+
+<DIV class=commentslist id=commentslist></DIV>
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/CsdnDialog.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+                function ChangeIdentifyingCode() {
+                    var url = $('#imgValidationCode').attr('src');
+                    if (!(/&d=[\d\.]+$/).test(url)) url += "&d=1";
+                    url = url.replace(/&d=[\d\.]+$/, "&d=" + Math.random());
+                    $('#imgValidationCode').attr('src', url);
+                }
+
+                function OpenLoginDialog() {
+                    element = document.getElementById("loginBtn");
+                    var position = absolutePoint(element);
+
+                    var dialogTop = position.y - 400;
+                    var dialogLeft = position.x - 220;
+                    var dialogWidth = 435;
+                    var dialogHeight = 420;
+
+                    showWindow({ url: 'http://passport.csdn.net/UserLogin.aspx?show=replyLogin&from=http%3a%2f%2fblog.csdn.net%2f!tools%2fLoginSussess.aspx'
+                        , title: '登录'
+                        , top: dialogTop
+                        , left: dialogLeft
+                        , width: dialogWidth
+                        , height: dialogHeight
+                    });
+                }
+
+                function closeDialog(needRefresh) {
+                    closeWindow();
+                    if (needRefresh) {
+                        var url = location.href;
+                        if ((/\?/g).test(url))
+                            url = url.replace(/\?.*$/g, ("?" + Math.random()).replace(/\./g, ""));
+                        else url += ("?" + Math.random()).replace(/\./g, "");
+                        location.href = url;
+                    }
+                    $("#SubmitFeedback").unbind("click");
+                    $("#SubmitFeedback").bind("click", PostContent);
+                }
+
+                function absolutePoint(element) {
+                    var result = { x: element.offsetLeft, y: element.offsetTop };
+                    element = element.offsetParent;
+                    while (element) {
+                        result.x += element.offsetLeft;
+                        result.y += element.offsetTop;
+                        element = element.offsetParent;
+                    }
+                    return result;
+                }
+            </SCRIPT>
+
+<DIV class=commentnew>
+<DL>
+  <DT>
+  <UL>
+    <LI class=left>发表评论
+    <SCRIPT 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/RandomColumnContentJS.aspx" 
+    type=text/javascript></SCRIPT>
+     </LI></UL></DT>
+  <DD>
+  <UL>
+    <LI class=lefttop>表 情： </LI>
+    <LI class=right><A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=顶 alt=顶 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e01.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=砸 alt=砸 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e02.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=棒 alt=棒 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e03.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=大笑 alt=大笑 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e04.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=愤怒 alt=愤怒 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e05.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=大哭 alt=大哭 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e06.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=疑问 alt=疑问 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e07.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=汗 alt=汗 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e08.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=呕吐 alt=呕吐 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e09.gif"></A> 
+    <A onclick="return false;" 
+    href="http://blog.csdn.net/lgfei/archive/2004/09/30/122385.aspx#"><IMG 
+    class=brow title=送花 alt=送花 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/e10.gif"></A> 
+    </LI></UL>
+  <UL>
+    <LI class=left>评论内容： </LI>
+    <LI class=right><TEXTAREA class=textarea id=content onkeydown="if(event.ctrlKey &amp;&amp; event.keyCode==13){return $('#SubmitFeedback').click();}"></TEXTAREA> 
+    </LI></UL>
+  <DIV>
+  <UL>
+    <LI class=left>用 户 名： </LI>
+    <LI class=right><SPAN class=right id=loginTips style="DISPLAY: none"><A 
+    class=red id=loginBtn onclick="OpenLoginDialog(this);return false;" 
+    href="javascript:void(0);">登录</A> <A class=red 
+    href="http://passport.csdn.net/CSDNUserRegister.aspx" target=_blank>注册</A> 
+    </SPAN><SPAN class=right style="DISPLAY: none"><INPUT class=checkbox 
+    id=anonymous type=checkbox>匿名评论 </SPAN><SPAN class=left 
+    id=commentUser></SPAN></LI></UL></DIV>
+  <UL style="DISPLAY: none">
+    <LI class=left>验 证 码： </LI>
+    <LI class=right><INPUT class=input id=code> <A 
+    href="javascript:ChangeIdentifyingCode()"><IMG id=imgValidationCode 
+    style="VERTICAL-ALIGN: middle" alt=验证码 
+    src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/AntiBotImage.htm"></A> 
+    <A href="javascript:ChangeIdentifyingCode()">重新获得验证码</A> </LI></UL>
+  <UL>
+    <LI class=left> </LI>
+    <LI class=right><INPUT class=submitbtn id=SubmitFeedback type=button value=发表评论> 
+    </LI></UL></DD>
+  <DD style="PADDING-LEFT: 15px; FLOAT: left; WIDTH: 300px; TEXT-ALIGN: left">
+  <SCRIPT type=text/javascript><!--
+                            google_ad_client = "pub-1076724771190722";
+                            google_ad_slot = "2166389617";
+                            google_ad_width = 300;
+                            google_ad_height = 250;
+                        //-->
+                        </SCRIPT>
+
+  <SCRIPT 
+  src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/show_ads.js" 
+  type=text/javascript>
+                        </SCRIPT>
+  </DD></DL></DIV>
+<SCRIPT type=text/javascript>
+                LoadFeedbackCount();
+                document.write("<img src='http://counter.csdn.net/pv.aspx?id=24' border=0 width=0 height=0>");
+			</SCRIPT>
+</DIV></DIV></DIV>
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/publib_footer.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/counter.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/ga.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    try {
+        var pageTracker = _gat._getTracker("UA-2688088-9");
+        pageTracker._trackPageview();
+    } catch (err) { }
+</SCRIPT>
+</DIV></DIV><IMG height=0 
+src="随便写的一个python小程序，从网页中下载图片 - import python,xml,java - CSDN博客.files/count.htm" 
+width=0> </BODY></HTML>

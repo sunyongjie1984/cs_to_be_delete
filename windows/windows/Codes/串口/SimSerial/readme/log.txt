@@ -1,0 +1,56 @@
+2004.1.15
+1、完善win32app 程序test。自动生成Com20 Com21两个串口。发送IoControl实现两个串口的互连
+2、驱动中对Read和Write作了相应的处理。添加全局packet队列gIdleQueue和每个设备的ReadDataQueue以及相应的用来同步的自璇锁ReadQueueSpinLock
+
+2004.1.7
+进行代码的整理注释工作。精简代码，添加宏定义，优化部分代码。为单个串口的测试提供完善、稳定的版本。同时为下一个两个串口互连功能的添加做好准备
+
+2003.12.26
+1. 修改Set_Wait_Mask 和 Wait_On_Mask两个IoControl的处理过程
+2. 设置全局变量gDeviceArray保存每一个deviceObject和与其相连接的instance。使用全局自旋锁
+3. 修改HANDFLOW的处理。摒弃ReadBufferBase的使用
+4. 添加remote_instance的关联和disconnect等三个IoControl
+
+2003.12.23
+把IoCreateSymbolicLink和注册表ComX的注册操作做成单独的函数在IoControl中实现。经过此次修改，虚拟串口的Dos名称，即COMX，由win32应用程序动态设置，并且可以不用关闭设备的情况下重新设置。
+
+2003.12.22
+修改和添加驱动对win32上层的接口注册启动关闭等相关操作。AddInterface and DelInterface
+完善exe目录下的项目，即通过调用SetupDixxx等系列函数访问驱动的win32应用程序
+
+2003.1215
+重新开始剩余部分的开发工作。完善filter驱动。对VSPD XP3程序进行过滤监视。对IOCTL_SERIAL_SET_WAIT_MASK和IOCTL_SERIAL_WAIT_ON_MASK必须妥善处理
+
+2003.8.20
+制作定时器，每隔3秒，完成一次IRP_MJ_READ
+
+2003.8.19
+重新开辟ReadQueue, WriteQueue, MaskQueue三个队列
+可以pending IRP_MJ_READ，
+完善IOCTL_SERIAL_PURGE的处理，处理过程对上述三个队列进行清空。超级终端基本可以正常运行
+
+2003.8.18
+pending IOCTL_SERIAL_WAIT_ON_MASK, 使得超级终端可以调用IRP_MJ_READ
+目前Read循环不停的读出数据。
+
+2003.8.16
+着手进行一系列IO_CONTROL的处理
+
+2003.8.7
+完成SymbolicLinkName的注册。在注册表中Local_machine\Hardware\DeviceMap\SerialComm中添加KernelMode中的deviceName到UserMode中的DosDeviceName的连接
+通过这样处理，超级终端可以检测出自己虚拟的串口
+
+2003.7.16
+show resource
+初步完成Win32 app的框架。可以调用driver
+
+2003.7.12
+将sample.sys成功的安装在toaster虚拟出的device上
+
+2003.7.9
+
+初步完成WDM框架，修改inf，成功加载到rtl8139网卡设备。模拟成Smart card Reader。支持即插即用。
+存在问题：
+关机的时候，DispatchPnpPower有问题assert出错
+删除PAGE_CODE()宏。
+仍然出现问题。应该是OS本身的问题（2003.12.15添加：是由于病毒的影响）

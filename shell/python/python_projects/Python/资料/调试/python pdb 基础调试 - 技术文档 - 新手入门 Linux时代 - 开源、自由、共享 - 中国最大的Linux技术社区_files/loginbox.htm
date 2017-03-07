@@ -1,0 +1,8 @@
+
+var username="";
+if(username==""){
+	var str="<INPUT type=hidden value=eb595b8d name=formhash><INPUT type=hidden  value=index.php name=referer><INPUT type=hidden value='' name=loginmode><INPUT type=hidden value=1 name=styleid><INPUT type=hidden value=0 name=cookietime><INPUT type=hidden value=username name=loginfield><INPUT type=hidden value=0 name=questionid><INPUT type=submit style=\"width:56px;height:17px;border:0;background:url('http://www.chinaunix.net/images_new/login.gif');line-height:22px;cursor:hand;color:#15428B;\" value=''><input type='hidden' value=登录 name=loginsubmit>　<a href=http://bbs.chinaunix.net>游客访问</a> <A href='http://bbs.chinaunix.net/register.php' target=_blank><font color=red>免费注册</font></A> <a  href='http://bbs.chinaunix.net/member.php?action=lostpasswd' >忘记密码</a>";
+}else{
+	var str="您好，	<span class='bold'>"+(username)+"</span>，&nbsp;| <a href='http://bbs.chinaunix.net/logging.php?action=logout'>退出</a>	| <a href='http://bbs.chinaunix.net/pm.php' target='_blank'>短消息</a> 	| <a href=http://bbs.chinaunix.net/blog2.php target=_blank><font color=red>我的博客</font></a>	|  <a href='http://bbs.chinaunix.net/memcp.php'>控制面板</a> | <a href=http://hi.chinaunix.net target=_blank><font color=red>个人空间</font></a> | <a href=http://bbs.chinaunix.net/my.php target=_blank>我的话题</a>";
+}
+document.write (str);

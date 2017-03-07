@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Bulk_item	Bulk_item.h	/^    Bulk_item(const std::string& book = "", double sales_price = 0.0, $/;"	f	class:Bulk_item
+Bulk_item	Bulk_item.h	/^class Bulk_item : public Item_base {$/;"	c
+Item_base	Item_base.h	/^	Item_base(const std::string& book = "", double sales_price = 0.0): $/;"	f	class:Item_base
+Item_base	Item_base.h	/^class Item_base {$/;"	c
+book	Item_base.h	/^    std::string book() const $/;"	f	class:Item_base
+discount	Bulk_item.h	/^	double discount;$/;"	m	class:Bulk_item
+display_datamember	Bulk_item.h	/^void Bulk_item::display_datamember() const$/;"	f	class:Bulk_item
+display_datamember	Item_base.h	/^    virtual void display_datamember() const$/;"	f	class:Item_base
+isbn	Item_base.h	/^	std::string isbn;$/;"	m	class:Item_base
+main	基类到派生类的转换.cpp	/^int main()$/;"	f
+min_qty	Bulk_item.h	/^	size_t min_qty;$/;"	m	class:Bulk_item
+net_price	Bulk_item.h	/^double Bulk_item::net_price(size_t cnt) const$/;"	f	class:Bulk_item
+net_price	Item_base.h	/^	virtual double net_price(size_t n) const $/;"	f	class:Item_base
+price	Item_base.h	/^	double price;$/;"	m	class:Item_base
+print_total	基类到派生类的转换.cpp	/^void print_total(ostream& os, const Item_base& item, size_t n)$/;"	f
+~Item_base	Item_base.h	/^	virtual ~Item_base() { }$/;"	f	class:Item_base

@@ -1,0 +1,681 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\ChatClient.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#include ""l.chs\\afxprint.rc""        // printing/print preview resources\r\n"
+    "#include ""l.chs\\afxolecl.rc""        // OLE container resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\ChatClient.ico"
+IDR_CHATCLTYPE          ICON    DISCARDABLE     "res\\ChatClientDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_IMAGE               BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      IDC_CONNECT
+    BUTTON      IDC_DISCONNECT
+    SEPARATOR
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "连接(&N)\tCtrl+N",            IDC_CONNECT
+        MENUITEM "断开(&O)...\tCtrl+G",         IDC_DISCONNECT
+        MENUITEM "保存(&S)\tCtrl+S",            ID_FILE_SAVE
+        MENUITEM "另存为(&A)...",               ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "打印(&P)...\tCtrl+P",         ID_FILE_PRINT
+        MENUITEM "打印预览(&V)",                ID_FILE_PRINT_PREVIEW
+        MENUITEM "打印设置(&R)...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "最近文件",                    ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "编辑(&E)"
+    BEGIN
+        MENUITEM "撤消(&U)\tCtrl+Z",            ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "剪切(&T)\tCtrl+X",            ID_EDIT_CUT
+        MENUITEM "复制(&C)\tCtrl+C",            ID_EDIT_COPY
+        MENUITEM "粘贴(&P)\tCtrl+V",            ID_EDIT_PASTE
+        MENUITEM "选择性粘贴(&S)...",           ID_EDIT_PASTE_SPECIAL
+        MENUITEM "全选(&L)\tCtrl+A",            ID_EDIT_SELECT_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "查找(&F)...\tCtrl+F",         ID_EDIT_FIND
+        MENUITEM "查找下一个(&I)\tF3",          ID_EDIT_REPEAT
+        MENUITEM "替换(&E)\tCtrl+H",            ID_EDIT_REPLACE
+        MENUITEM SEPARATOR
+        MENUITEM "插入新对象(&N)...",           ID_OLE_INSERT_NEW
+        MENUITEM "链接(&K)...",                 ID_OLE_EDIT_LINKS
+        MENUITEM "对象特性(&R)\tAlt+Enter",     ID_OLE_EDIT_PROPERTIES
+        MENUITEM "<<用 OLE 谓词替换此处>>",     ID_OLE_VERB_FIRST
+    END
+    POPUP "查看(&V)"
+    BEGIN
+        MENUITEM "工具栏(&T)",                  ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(&S)",                  ID_VIEW_STATUS_BAR
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 ChatClient(&A)...",      ID_APP_ABOUT
+    END
+END
+
+IDR_CNTR_INPLACE MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "新建(&N)\tCtrl+N",            ID_FILE_NEW
+        MENUITEM "打开(&O)...\tCtrl+O",         ID_FILE_OPEN
+        MENUITEM "保存(&S)\tCtrl+S",            ID_FILE_SAVE
+        MENUITEM "另存为(&A)...",               ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "打印(&P)...\tCtrl+P",         ID_FILE_PRINT
+        MENUITEM "打印预览(&V)",                ID_FILE_PRINT_PREVIEW
+        MENUITEM "打印设置(&R)...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "最近文件",                    ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    MENUITEM SEPARATOR
+    MENUITEM SEPARATOR
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "A",            ID_EDIT_SELECT_ALL,     VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_EDIT_REPLACE,        VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_ESCAPE,      ID_CANCEL_EDIT_CNTR,    VIRTKEY, NOINVERT
+    VK_F3,          ID_EDIT_REPEAT,         VIRTKEY, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    VK_RETURN,      IDC_SEND,               VIRTKEY, CONTROL, NOINVERT
+    VK_RETURN,      ID_OLE_EDIT_PROPERTIES, VIRTKEY, ALT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_CNTR_INPLACE ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+    VK_ESCAPE,      ID_CANCEL_EDIT_CNTR,    VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 ChatClient"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "ChatClient 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2001",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_SENDDLG DIALOG DISCARDABLE  0, 0, 425, 74
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "聊天对象：",IDC_STATIC,38,19,47,11
+    COMBOBOX        IDC_TO,86,15,53,60,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "发送",IDC_SEND,321,41,33,14
+    COMBOBOX        IDC_TYPE,165,15,47,60,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "悄悄",IDC_SECRET,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    225,15,41,15
+    CONTROL         "过滤",IDC_FILTER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    271,15,41,15
+    LTEXT           "信息：",IDC_STATIC,38,42,34,15
+    EDITTEXT        IDC_TEXT,85,39,212,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "字色",IDC_COLOR,321,16,33,14
+END
+
+IDD_ONLINEDLG DIALOG DISCARDABLE  0, 0, 91, 190
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+END
+
+IDD_SETUP DIALOG DISCARDABLE  0, 0, 129, 53
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "登录到服务器"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,90,20,37,13
+    PUSHBUTTON      "取消",IDCANCEL,90,37,37,13
+    LTEXT           "名称：",IDC_STATIC,6,6,25,8
+    COMBOBOX        IDC_NAME,35,6,44,48,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "服务器:",IDC_STATIC,6,22,26,10
+    EDITTEXT        IDC_SERVER,35,22,44,12,ES_AUTOHSCROLL
+    LTEXT           "头像：",IDC_STATIC,6,37,24,10
+    COMBOBOX        IDC_IMAGE,35,38,44,50,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "ChatClient Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "ChatClient\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2001\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "ChatClient.EXE\0"
+            VALUE "ProductName", "ChatClient 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SENDDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 418
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 67
+    END
+
+    IDD_ONLINEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 84
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 183
+    END
+
+    IDD_SETUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 128
+        TOPMARGIN, 1
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_SETUP DLGINIT
+BEGIN
+    IDC_NAME, 0x403, 4, 0
+0x6f54, 0x006d, 
+    IDC_NAME, 0x403, 5, 0
+0x6f4a, 0x6e68, "\000" 
+    IDC_NAME, 0x403, 5, 0
+0xeed1, 0xf8c1, "\000" 
+    IDC_IMAGE, 0x403, 2, 0
+0x0031, 
+    IDC_IMAGE, 0x403, 2, 0
+0x0032, 
+    IDC_IMAGE, 0x403, 2, 0
+0x0033, 
+    IDC_IMAGE, 0x403, 2, 0
+0x0034, 
+    IDC_IMAGE, 0x403, 2, 0
+0x0035, 
+    IDC_IMAGE, 0x403, 2, 0
+0x0036, 
+    IDC_IMAGE, 0x403, 2, 0
+0x0037, 
+    0
+END
+
+IDD_SENDDLG DLGINIT
+BEGIN
+    IDC_TYPE, 0x403, 2, 0
+0x0031, 
+    IDC_TYPE, 0x403, 2, 0
+0x0032, 
+    IDC_TYPE, 0x403, 2, 0
+0x0033, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE 程序初始化失败。请确认 OLE 库程序是正确的版本。"
+    IDC_SEND                "快捷键是Ctrl+Enter\nCtrl+Enter\n"
+    IDP_FAILED_TO_CREATE    "建立对象失败。请确认该对象已被注册入系统。"
+    CG_IDS_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "ChatClient\n\nChatClient\nRtf 文件 (*.rtf)\n.rtf\nChatClient.Document\nChatClient Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "ChatClient"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "扩展名"
+    ID_INDICATOR_CAPS       "大写"
+    ID_INDICATOR_NUM        "数字"
+    ID_INDICATOR_SCRL       "滚动"
+    ID_INDICATOR_OVR        "改写"
+    ID_INDICATOR_REC        "记录"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "建立新文档\n新建"
+    ID_FILE_OPEN            "打开一个现有文档\n打开"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+    ID_FILE_SAVE_AS         "将活动文档以一个新文件名保存\n另存为"
+    ID_FILE_PAGE_SETUP      "改变打印选项\n页面设置"
+    ID_FILE_PRINT_SETUP     "改变打印机及打印选项\n打印设置"
+    ID_FILE_PRINT           "打印活动文档\n打印"
+    ID_FILE_PRINT_PREVIEW   "显示整页\n打印预览"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "显示程序信息，版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "打开该文档"
+    ID_FILE_MRU_FILE2       "打开该文档"
+    ID_FILE_MRU_FILE3       "打开该文档"
+    ID_FILE_MRU_FILE4       "打开该文档"
+    ID_FILE_MRU_FILE5       "打开该文档"
+    ID_FILE_MRU_FILE6       "打开该文档"
+    ID_FILE_MRU_FILE7       "打开该文档"
+    ID_FILE_MRU_FILE8       "打开该文档"
+    ID_FILE_MRU_FILE9       "打开该文档"
+    ID_FILE_MRU_FILE10      "打开该文档"
+    ID_FILE_MRU_FILE11      "打开该文档"
+    ID_FILE_MRU_FILE12      "打开该文档"
+    ID_FILE_MRU_FILE13      "打开该文档"
+    ID_FILE_MRU_FILE14      "打开该文档"
+    ID_FILE_MRU_FILE15      "打开该文档"
+    ID_FILE_MRU_FILE16      "打开该文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回前一个窗格\n前一窗格"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "将活动的窗口分隔成窗格\n分隔"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "删除被选对象\n删除"
+    ID_EDIT_CLEAR_ALL       "全部删除\n全部删除"
+    ID_EDIT_COPY            "复制被选对象并将其置于剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切被选对象并将其置于剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的正文\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_PASTE_LINK      "插入剪贴板内容和一条通向其来源的链接\n粘贴链接"
+    ID_EDIT_PASTE_SPECIAL   "用选项插入剪贴板内容\n选择性粘贴"
+    ID_EDIT_REPEAT          "重复上一步操作\n重复"
+    ID_EDIT_REPLACE         "用不同的正文替换指定的正文\n替换"
+    ID_EDIT_SELECT_ALL      "选择整个文档\n选择全部"
+    ID_EDIT_UNDO            "撤消最后一步操作\n撤消"
+    ID_EDIT_REDO            "重新执行先前已撤消的操作\n重新执行"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n显隐工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n显隐状态栏"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_INSERT_NEW       "插入新嵌入的对象\n新对象"
+    ID_OLE_EDIT_LINKS       "编辑链接对象\n编辑链接"
+    ID_OLE_EDIT_CONVERT     "将对象转换成不同的类型\n转换对象"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_VERB_FIRST       "激活嵌入或链接的对象"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "改变窗口大小"
+    AFX_IDS_SCMOVE          "改变窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小成图标"
+    AFX_IDS_SCMAXIMIZE      "把窗口放大到最大尺寸"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到先前的文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动的窗口并提示保存所有文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "把窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务表"
+    IDS_TALK0               "与,说"
+    IDS_TALK1               "冲,叫"
+    IDS_TALK2               "亲了亲 , 的脸颊"
+    IDS_TALK3               "轻轻地拥抱着,"
+    IDS_TALK4               "朝,横眉竖目道"
+    IDS_TALK5               "与,眨巴了两下眼睛"
+    IDS_TALK6               "轻轻地推了推,的胳膊"
+    IDS_TALK7               "对,点了点头"
+    IDS_TALK8               "问,道"
+    IDS_TALK9               "傻兮兮的朝,笑笑"
+    IDS_TALK10              "对准,就是一拳"
+    IDS_TALK11              "凌空一腿踢在,脑袋上"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预阅"
+    IDS_RETRYCONNECT        "连接服务器失败\n再试一次?"
+    IDS_SERVERRESET         "服务器可能已经关闭!"
+    IDC_LISTBOX             "在线列表"
+    IDS_CONNECTIONCLOSED    "关闭连接"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TALK12              "拉着,的手语气心长地说"
+    IDS_TALK13              "狠狠地掴了,几个耳光"
+    IDS_TALK14              "毕恭毕敬地向,弯腰鞠躬"
+    IDS_TALK15              "感到十二分的歉意，低声对,说"
+    IDS_TALK16              "很赞同,"
+    IDS_TALK17              "惊讶的对,吐了吐舌头"
+    IDS_TALK18              "对,摇了摇头"
+    IDS_TALK19              "张大嘴巴，打了个哈欠"
+    IDS_TALK20              "对,微微一笑"
+    IDS_TALK21              "紧紧的握住,的手"
+    IDS_TALK22              "向,挥手"
+    IDS_TALK23              "耸耸双肩"
+    IDS_TALK24              "忍不住放声大哭"
+    IDS_TALK25              "双手捂着脸，呜呜咽咽的"
+    IDS_TALK26              "拍拍,的肩膀，双眼关切的说"
+    IDS_TALK27              "气鼓鼓的嘟嘴道"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TALK28              "把胸脯拍得噼啪响"
+    IDS_TALK29              "依依不舍地拉着,的衣角"
+    IDS_TALK30              "用深情的眼神，痴痴地看着,"
+    IDS_TALK31              "抓抓头皮露出迷惑的神情"
+    IDS_TALK32              "悄悄地对,耳语"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_S0                  "说话"
+    IDS_S1                  "叫嚷"
+    IDS_S2                  "亲亲"
+    IDS_S3                  "拥抱"
+    IDS_S4                  "暴怒"
+    IDS_S5                  "眨眼"
+    IDS_S6                  "轻推"
+    IDS_S7                  "点头"
+    IDS_S8                  "询问"
+    IDS_S9                  "傻笑"
+    IDS_S10                 "拳打"
+    IDS_S11                 "脚踢"
+    IDS_S12                 "告诫"
+    IDS_S13                 "耳光"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_S14                 "鞠躬"
+    IDS_S15                 "歉意"
+    IDS_S16                 "同意"
+    IDS_S17                 "惊讶"
+    IDS_S18                 "摇头"
+    IDS_S19                 "哈欠"
+    IDS_S20                 "微笑"
+    IDS_S21                 "握手"
+    IDS_S22                 "挥手"
+    IDS_S23                 "耸肩"
+    IDS_S24                 "大哭"
+    IDS_S25                 "抽泣"
+    IDS_S26                 "安慰"
+    IDS_S27                 "生气"
+    IDS_S28                 "承诺"
+    IDS_S29                 "不舍"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_S30                 "深情"
+    IDS_S31                 "迷惑"
+    IDS_S32                 "耳语"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_SECRET              "发送信息只有你和对方知道\n发送信息只有你和对方知道\n"
+    IDC_FILTER              "只接收发给自己的信息\n只接收发给自己的信息\n"
+    IDC_COLOR               "请选择发送信息的字体颜色\n请选择发送信息的字体颜色\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_TO                  "请选择聊天的对象\n请选择聊天的对象\n"
+    IDC_TYPE                "请选择动作\n请选择动作\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_CONNECT             "Connect\n连接到服务器\n"
+    IDC_DISCONNECT          "断开连接\n断开连接\n"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\ChatClient.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#include "l.chs\afxprint.rc"        // printing/print preview resources
+#include "l.chs\afxolecl.rc"        // OLE container resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

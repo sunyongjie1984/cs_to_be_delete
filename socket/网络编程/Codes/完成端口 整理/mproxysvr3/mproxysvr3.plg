@@ -1,0 +1,60 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mproxysvr3 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7B.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\downloads\资料\编程\网络编程\mproxysvr3\IOData.cpp"
+"G:\downloads\资料\编程\网络编程\mproxysvr3\Main.cpp"
+"G:\downloads\资料\编程\网络编程\mproxysvr3\mproxy3.cpp"
+"G:\downloads\资料\编程\网络编程\mproxysvr3\Service.cpp"
+"G:\downloads\资料\编程\网络编程\mproxysvr3\greta\regexpr2.cpp"
+"G:\downloads\资料\编程\网络编程\mproxysvr3\greta\resetstk.cpp"
+"G:\downloads\资料\编程\网络编程\mproxysvr3\greta\syntax2.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7B.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7C.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/mproxysvr3.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\downloads\资料\编程\网络编程\mproxysvr3\Stdafx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7C.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7D.tmp" with contents
+[
+kernel32.lib user32.lib advapi32.lib WS2_32.lib /nologo /incremental:yes /pdb:"Debug/mproxysvr3.pdb" /debug /machine:I386 /out:"Debug/mproxysvr3.exe" /pdbtype:sept 
+".\Debug\IOData.obj"
+".\Debug\Main.obj"
+".\Debug\mproxy3.obj"
+".\Debug\Service.obj"
+".\Debug\Stdafx.obj"
+".\Debug\regexpr2.obj"
+".\Debug\resetstk.obj"
+".\Debug\syntax2.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7D.tmp"
+<h3>Output Window</h3>
+Compiling...
+Stdafx.cpp
+Compiling...
+IOData.cpp
+Main.cpp
+mproxy3.cpp
+Service.cpp
+regexpr2.cpp
+resetstk.cpp
+syntax2.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+mproxysvr3.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

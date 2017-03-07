@@ -1,0 +1,568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0063)http://nedbatchelder.com/text/exceptions-in-the-rainforest.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="http://nedbatchelder.com">--><base href="."><title>Ned Batchelder: Exceptions in the rainforest</title><link rel="stylesheet" href="./Ned Batchelder  Exceptions in the rainforest_files/style.css" type="text/css"><link rel="stylesheet" href="./Ned Batchelder  Exceptions in the rainforest_files/printstyle.css" type="text/css" media="print"><script type="text/javascript" src="./Ned Batchelder  Exceptions in the rainforest_files/nedbatchelder.js"></script><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head><body><center><table id="logo_banner" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td id="logo" align="center"><a href="http://nedbatchelder.com/"><img src="./Ned Batchelder  Exceptions in the rainforest_files/dodeca3_100.gif" width="100" height="120" alt="[*]"></a></td><td id="banner"><span class="path"><a href="http://nedbatchelder.com/">Ned Batchelder</a> : <a href="http://nedbatchelder.com/blog">Blog</a> | <a href="http://nedbatchelder.com/code">Code</a> | <a href="http://nedbatchelder.com/text">Text</a> | <a href="http://nedbatchelder.com/site">Site</a></span><br><span class="headslug">Exceptions in the rainforest</span><br><span class="path">
+                    » <a href="http://nedbatchelder.com/">Home</a> : <a href="http://nedbatchelder.com/text">Text</a></span></td></tr></tbody></table><table id="content_menu" cellpadding="0" cellspacing="0"><tbody><tr><td id="content" valign="top"><div class="body"><div id="searchwelcome"></div><p class="dateline">
+                            Created 16 October 2003
+                        </p><p class="first">As part of a
+<a href="http://nedbatchelder.com/blog/200310/joel_on_exceptions.html">debate</a> about exceptions and status returns,
+<a class="offsite" href="http://www.joelonsoftware.com/items/2003/10/15.html">Joel asked for an example</a>
+of exception handling using a particular chunk of code.
+Before jumping to the code, I want to talk about rainforests for a little bit.
+If you haven't read my previous article about
+<a href="http://nedbatchelder.com/text/exceptions-vs-status.html">exceptions and status returns</a>,
+you might want to start there.
+</p><h1 id="h_Rainforests">Rainforests</h1><p>If you've ever studied the rainforest, you know that it is not a simple place.
+A simplistic model of it would be that there are lots of trees, and lots of
+animals, and they all live together.  It's more interesting than that:
+The forest is <a class="offsite" href="http://www.mongabay.com/0401.htm">divided horizontally into layers</a>,
+and each layer has its own ecosystem, with different inhabitants.
+To understand how the rainforest works, you have to consider the layers
+separately, and see how they differ from each other.
+</p><p>Complex software is the same way: there are different layers, and the error handling
+they perform is different.  If we want to discuss what exception handling looks like
+in real code, we have to talk about the layers.</p><h1 id="h_Three_layers_of_code">Three layers of code</h1><p>In my experience, there are three layers to real code
+(from bottom to top, so this list might look upside-down):</p><ul><li><b>A</b>dapting the software beneath you.</li><li><b>B</b>uilding pieces of your system.</li><li><b>C</b>ombining it all together.</li></ul><p>Keep in mind, this is a simple model, and real software is fractal in most of its
+aspects.  A 100,000-line system will have layers within layers within layers.
+But this three-layer model closely matches the way I've seen a number of real
+systems evolve.
+Let's look at each of these layers in detail.
+</p><h2 id="h_Adapting_the_software_beneath_you">Adapting the software beneath you</h2><p>Beneath every piece of software is more software.
+Your Windows application sits on top of the Win32 API, or ATL.
+Your PHP web site sits on top of MySQL calls, and PHP primitives.
+Your Java system sits on top of the JDK, the J2EE facilities.
+Even if you are writing a device driver, your code is sitting on top of the actual
+I/O operations that write bits to the disk, or whatever it is your driver does.</p><p>At the lowest layer of your system, your code deals with your particular underlying
+software.  It makes its calls, and interprets the results.
+This layer is where you convert cultures, making the underlying software more the way
+you'd like it to be: operations become more convenient, concepts are presented more
+palatably to the rest of the system, ugly workarounds are hidden.
+</p><h2 id="h_Building_pieces_of_your_system">Building pieces of your system</h2><p>The middle layer of your code is where you construct the pieces of your world.
+Are you writing a spreadsheet? You'll need a cell engine, and some way to read and
+write data files, and connectors to databases, and charting modules.
+In some worlds this is called business logic.</p><p>This is where the bulk of the code will be, and where you are likely to be adding
+value.  Few applications compete on how well they read and write the registry.
+The interesting technology is in the cell engines, or drawing paradigms,
+or database intelligence, or logical inference algorithms.
+This is the interesting part.  The more time you can spend here productively,
+the better off you will be.</p><h2 id="h_Combining_it_all_together">Combining it all together</h2><p>At the top of your system is the big picture.
+For example: when the application starts, we need to create an empty document,
+initialize the database layer, and show the GUI.
+This is where you can see the main flow of the application.
+If you had to explain what your system did in detail to a knowledgeable user,
+this layer is the one you'd be talking about.
+This is the stage manager layer, coordinating pieces, making the whole thing
+hang together into a cohesive whole.
+</p><h1 id="h_How_exceptions_are_used_in_the_layers">How exceptions are used in the layers</h1><p>At the bottom layer (Adapting), there's a lot of throwing exceptions.
+Unless you are coding in Java or C#, where the system toolkits throw exceptions
+(in which case, I'm preaching to the choir),
+the layer beneath you more than likely is returning statuses to you.
+Each call will have its return value checked, and converted into an appropriate
+exception, and thrown.  Sometimes, error values will be dealt with immediately.
+For example, this layer may implement some simple retrying mechanism for some operations,
+or it may decide that some error returns are really not errors.</p><p>At the middle layer (Building), things are flowing pretty smoothly.
+Typically, there's not a lot of exceptions being thrown, and not a lot being caught
+either. This is where you often get to just think about the ideal case, and
+focus on the algorithms and data structures at hand.
+Of course, exceptions can happen, especially in the A-layer calls you make.
+But for the most part, you can let those exceptions fly.
+An upper layer will deal with them.</p><p>At the top layer (Combining), there's a lot of catching exceptions happening.
+Couldn't open a file?  Now you have to decide what to do about it.
+You can alert the user, try a different file name, exit the application, whatever
+you as the system designer decide is the best approach.
+</p><p>This C-layer code can actually be quite pre-occupied with dealing with exceptions.
+This makes sense: this is the layer where the code really knows what's going on.
+If you have an A-layer function to open a file, what should it do when the file
+can't be opened? How can you possibly say?  This function will be used to open
+all sorts of files for all sorts of reasons.  Maybe the C-layer caller knows that
+the file could be missing, and has a plan for what to do in that case, so alerting
+the user would be wrong.  It's the C-layer that understands the big picture, so
+it's the C-layer that should be dealing with the exceptions.
+</p><h1 id="h_Exceptions_vs._status_returns_again">Exceptions vs. status returns again</h1><p>Now for Joel's example.
+He <a class="offsite" href="http://www.joelonsoftware.com/items/2003/10/15.html">asked</a>
+that we discuss this code:</p><blockquote class="code"><tt><span class="kt">void</span>&nbsp;<span class="n">InstallSoftware</span><span class="p">()</span><br><span class="p">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">CopyFiles</span><span class="p">();</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">MakeRegistryEntries</span><span class="p">();</span><br><span class="p">}</span><br></tt></blockquote><p>Using the three-layer model above, this is clearly C-layer code. I know Joel asked for
+this example because he knew that even with exceptions the code would be cluttered with error
+handling, just as it would be with status returns.  He's right.  It's C-layer code, so it
+will have to deal with unusual cases.  There's no way around that.</p><p><a href="http://nedbatchelder.com/blog/200310/more_on_exceptions_and_status_returns.html">Others</a> have taken up this challenge,
+and come up with some nice ways to deal with it cleanly, using C++ destructor semantics
+to ensure that operations are rolled back.
+To be perfectly honest, I don't know that I would have been as clever as these writers,
+though they have given me some good ideas.
+I might have done it like this:</p><blockquote class="code"><tt><span class="kt">void</span>&nbsp;<span class="n">InstallSoftware</span><span class="p">()</span><br><span class="p">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">try</span>&nbsp;<span class="p">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">CopyFiles</span><span class="p">();</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">MakeRegistryEntries</span><span class="p">();</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">}</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">catch</span>&nbsp;<span class="p">(</span><span class="n">CException</span>&nbsp;<span class="o">&amp;</span>&nbsp;<span class="n">ex</span><span class="p">)</span>&nbsp;<span class="p">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">RemoveFiles</span><span class="p">();</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">DeleteRegistryEntries</span><span class="p">();</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">throw</span>&nbsp;<span class="n">ex</span><span class="p">;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">}</span><br><span class="p">}</span><br></tt></blockquote><p>This function either succeeds, in which case the files are copied and the registry
+entries are written, or it throws an exception, and the files and registry entries are
+cleaned up.  Is this sufficient?  I don't really know, and in a real implementation
+I can imagine it getting much hairier than this.
+</p><p>The status return folks may well be crowing about this code, that it is either
+not handling the problems completely, or that it is just as ugly as status return code.
+They're missing the point.  I'm not claiming that exceptions make all code prettier,
+or that they somehow remove the burden of thinking through what should happen when
+something goes wrong.
+</p><p>The debate over exceptions and status returns is not about whether error handling is
+hard to do well.  We all agree on that.
+It's not about whether exceptions make it magically better.  They don't, and if someone
+says they do, they haven't written large systems in the real world.
+</p><p>The debate is about how errors should be communicated through the code.
+The C-layer code we're talking about is going to be complicated no matter which technique
+you use to communicate errors around.</p><p>But what does the B-layer code look like?</p><blockquote class="code"><tt><span class="kt">void</span>&nbsp;<span class="n">MakeRegistryEntries</span><span class="p">()</span><br><span class="p">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">CRegistry</span>&nbsp;<span class="n">reg</span><span class="p">;</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">reg</span><span class="p">.</span><span class="n">WriteString</span><span class="p">(</span><span class="s">"ProductName"</span><span class="p">,</span>&nbsp;<span class="s">"Ned's&nbsp;FooBar"</span><span class="p">);</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">reg</span><span class="p">.</span><span class="n">WriteString</span><span class="p">(</span><span class="s">"Version"</span><span class="p">,</span>&nbsp;<span class="s">"1.2b"</span><span class="p">);</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">reg</span><span class="p">.</span><span class="n">WriteDword</span><span class="p">(</span><span class="s">"WebUpdateInterval"</span><span class="p">,</span>&nbsp;<span class="mi">7</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">);</span><br><span class="p">}</span><br></tt></blockquote><p>Here at the B-layer, we can get into the zone and just write registry entries.
+How would this look with status returns? Either cluttered with if statements, or
+hidden behind macros that simply pull your code into the "hidden function return" camp
+that are supposed to make exceptions evil.</p><p>The A-layer code looks like this:</p><blockquote class="code"><tt><span class="kt">void</span>&nbsp;<span class="n">CRegistry</span><span class="o">::</span><span class="n">WriteString</span><span class="p">(</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">const</span>&nbsp;<span class="kt">char</span>&nbsp;<span class="o">*</span>&nbsp;<span class="n">pszValueName</span><span class="p">,</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">const</span>&nbsp;<span class="kt">char</span>&nbsp;<span class="o">*</span>&nbsp;<span class="n">pszValue</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">)</span><br><span class="p">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">ASSERT</span><span class="p">(</span><span class="n">m_hKey</span>&nbsp;<span class="o">!=</span>&nbsp;<span class="nb">NULL</span><span class="p">);</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">DWORD</span>&nbsp;<span class="n">cbData</span>&nbsp;<span class="o">=</span>&nbsp;<span class="p">(</span><span class="n">DWORD</span><span class="p">)(</span><span class="n">strlen</span><span class="p">(</span><span class="n">pszValue</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><br><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">LONG</span>&nbsp;<span class="n">lRet</span>&nbsp;<span class="o">=</span>&nbsp;<span class="o">::</span><span class="n">RegSetValueEx</span><span class="p">(</span><span class="n">m_hKey</span><span class="p">,</span>&nbsp;<span class="n">pszValueName</span><span class="p">,</span>&nbsp;<span class="nb">NULL</span><span class="p">,</span>&nbsp;<span class="n">REG_SZ</span><span class="p">,</span>&nbsp;<span class="p">(</span><span class="n">BYTE</span><span class="o">*</span><span class="p">)</span><span class="n">pszValue</span><span class="p">,</span>&nbsp;<span class="n">cbData</span><span class="p">);</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">if</span>&nbsp;<span class="p">(</span><span class="n">lRet</span>&nbsp;<span class="o">!=</span>&nbsp;<span class="n">ERROR_SUCCESS</span><span class="p">)</span>&nbsp;<span class="p">{</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">CWin32Exception</span>&nbsp;<span class="n">ex</span><span class="p">(</span><span class="n">lRet</span><span class="p">);</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">throw</span>&nbsp;<span class="n">ex</span><span class="p">;</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="p">}</span><br><span class="p">}</span><br></tt></blockquote><p>Here we're adapting to the Win32 registry functions, converting their status returns
+into exceptions (which carries the actual status return as data so that it can be
+used for error messages, or analysis).
+</p><p>These example are all too brief to be real code, but demonstrate the concepts.
+Broadly speaking:</p><ul><li>A-layer generates exceptions,</li><li>B-layer can often ignore the whole issue, and</li><li>C-layer decides what to do</li></ul><h1 id="h_Exceptions_are_better_at_communicating_errors">Exceptions are better at communicating errors</h1><p>The challenge in building a large system is making sure errors get communicated around.
+Exceptions are a better way to do that than status returns:</p><ul><li>Exceptions can carry richer information.  If error handling is so important,
+why try to cram it all into a DWORD?</li><li>Exceptions let the B-layer get on with its work without being a mindless
+bucket brigade for status returns.</li><li>Exceptions make human error (failure to catch) visible, while error returns
+make human error (failure to check) invisible.</li><li>Exceptions leave the primary channel (function returns) available for the
+primary work.</li></ul><h1 id="h_See_also">See also</h1><ul><li><a href="http://nedbatchelder.com/text/exceptions-vs-status.html">Exceptions vs. status returns</a>,
+which lays out the arguments in favor of exceptions.</li><li><a href="http://nedbatchelder.com/text/fix-err-hand.html">Fix error handling first</a>,
+about ensuring your error handling code is running its best.</li><li><a href="http://nedbatchelder.com/blog">My blog</a>,
+where other similar topics are occasionally discussed.</li></ul><div class="googleads"></div><div class="comments" id="comments">
+<h1>Comments</h1>
+
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/b1ee8655493ec4222887540eb90304be.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>andrew</b></span>
+			<span class="when"><span class="adminlink"></span> 11:53 AM on 16 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Bob gave this some treatment over at his place: http://www.bobcongdon.net/blog/
+<br>
+<br>(Bob's appreantly has no permalinks)
+<br>
+<br>Geez, everybody is piling on Joel.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/b1ee8655493ec4222887540eb90304be.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>andrew</b></span>
+			<span class="when"><span class="adminlink"></span> 11:58 AM on 16 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Also, in your example to Joel, don't forget our "real world" status (or should I say STATUS) experience:
+<br>
+<br>STATUS DoSomething(int a, int b)
+<br>    {
+<br>    STATUS st;
+<br>    if (st != DoSomethingEx(a,b))
+<br>        goto error;
+<br>    if (st != DoSomethingEx2(a,b))
+<br>        goto error;
+<br>    error:
+<br>       return st;
+<br>    }
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/e4191e674de6b447a5f2069272a829db.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Ross</b></span>
+			<span class="when"><span class="adminlink"></span> 1:05 PM on 17 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			I know it's an example and that it's hypothetical BUT
+<br>
+<br>Using the following example (taken from the article) what happens if anything in the catch{} block throws an exception (as well it might if CopyFiles() threw the exception and then you called DeleteRegistryEntries).
+<br>
+<br>What is the solution? try{}catch{} in the catch{} block ? 
+<br>
+<br>void InstallSoftware()
+<br>{
+<br>    try {
+<br>        CopyFiles();
+<br>        MakeRegistryEntries();
+<br>    }
+<br>    catch (CException &amp; ex) {
+<br>        RemoveFiles();
+<br>        DeleteRegistryEntries();
+<br>        throw ex;
+<br>    }
+<br>}
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/89d3d633eb794ca1845a99690010fc79.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Wayne</b></span>
+			<span class="when"><span class="adminlink"></span> 9:39 PM on 17 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Ross, taking your point to an even higher level, ultimately there are errors that software just can't fix or clean up from. For example, what if during the RemoveFiles() function call in the example there was a permanent hard disk failure?
+<br>
+<br>The best that a program can do here is to attempt to accurately inform the user of the issue exit.
+<br>
+<br>That's why exceptions are cleaner in that you can wrap one highest level exception around all your code to catch anything, report it to the user, and exit. Doing that with status returns can get extremely messy. I know, because it's all I used to do before exceptions were made mainstream.
+<br>
+<br>But it's Joel's point that this type of catch-all exception handling leads to a higher probability of being sloppy and missing exceptions that could be readily recovered from.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/24bab27cbb7c0680a5b3cc075bb4df92.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Joe</b></span>
+			<span class="when"><span class="adminlink"></span> 9:28 AM on 20 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			BTW, the forest is divided into *vertical*, not horizontal layers :)
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/0858fdd2cc4111c6e233153209b9071f.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Mr. Pedant</b></span>
+			<span class="when"><span class="adminlink"></span> 2:22 PM on 21 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Just to be pedantic, the rainforest is divided vertically into horizontal layers.
+<br>
+<br>Straight from the horse's mouth:
+<br>"Primary tropical rainforest is vertically divided into at least five layers..."
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/25b6b59e5c6c6ddbf4f9cd34c4da9e31.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Doug</b></span>
+			<span class="when"><span class="adminlink"></span> 1:42 AM on 23 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Error codes are 'opt-in', while Exceptions are 'opt-out'.  That is, you have to explicitly code to allow error codes to propagate (opting in), while with exceptions, you can have gobs of code that is not cluttered with the exception handling code, and only write handling code in places where you can actually do something about it.  Most code is unable to do much about the exception - imagine trying to handle a FileNotFoundException in middle-layer code, how would you prompt the user?  You wouldn't, so it is a UI-layer problem.  Exception handling is usually cleaner overall, because only code that cares to handle and can handle the exception needs to get 'cluttered' to actually handle it.  All the other code remains uncluttered.  Thus, the opt-in nature of exception handling tends to result in more readable code and more cohesive programs.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/b11ef4340700b7bf0da699eb3b563a6f.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b><a href="http://www.silicontaiga.com/" rel="nofollow" target="_blank">Andrey Platov</a></b></span>
+			<span class="when"><span class="adminlink"></span> 12:12 PM on 27 Oct 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Hi all, Joel came with absolutely wrong sample and answer to Joel should be:
+<br>
+<br>void InstallSoftware()
+<br>{
+<br>    Log log;
+<br>    try {
+<br>        CopyFiles(log);
+<br>        MakeRegistryEntries(log);
+<br>    }
+<br>    catch (CException &amp; ex) {
+<br>        Rollback(log);
+<br>        throw ex;
+<br>    }
+<br>}
+<br>
+<br>Just use right techiques in right places, guys
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/2f5b9e121e2a6f3f8dcecec9d79bba23.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Ben W</b></span>
+			<span class="when"><span class="adminlink"></span> 3:52 PM on 4 Nov 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Ned, aren't you ignoring a big issue?  Non-trivial code at the B level, which just lets exceptions fly by, has to be equipped with declarations of objects having destructors tending towards nightmarish complexity.
+<br>
+<br>From the point of view of B level code, any function you call might return straight into your destructors, which have to tidy everything up without knowing how far through the main body of code you got.
+<br>
+<br>(Unless you sprinkle flag-settings through the body of the code.  But B level code is supposed to be clean.)
+<br>
+<br>Or is this just an argument against trying to write non-trivial code in the first place?  I know it's not pretty with status returns;  but with exceptions, isn't it even worse?  i.e. the body of the code looks very pretty, and the destructors are horrible.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/55a78f28073fc6c4fff0d16f7b4f4b2a.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Matt Morris</b></span>
+			<span class="when"><span class="adminlink"></span> 10:02 AM on 6 Nov 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			In C++, this is dealt with by acquiring resources in object constructors and releasing them in destructors. Objects are instantiated on the stack, and as they go out of scope, resources are freed. The nice thing about this approach is that there's no need to worry about how the function exits. See Bjarne's "appendix e" to his book (google for "c++ appendix e"). I have implemented this consistently through a large system and it works extremely well.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/d41d8cd98f00b204e9800998ecf8427e.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b><a href="http://nedbatchelder.com/www.softella.com" rel="nofollow" target="_blank">Flay</a></b></span>
+			<span class="when"><span class="adminlink"></span> 7:55 AM on 30 Dec 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			IMHO exceptions are bad because it makes execution flow a little bit unpredictable. It's like "goto" which we avoid. 
+<br>
+<br>Anyone tried to debug large systems with exceptions? We started at A, then down to B, then down to C, and then, bum-bang, voila, back to A! I hate this "jumps" !!!
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/d41d8cd98f00b204e9800998ecf8427e.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b><a href="http://nedbatchelder.com/www.softella.com" rel="nofollow" target="_blank">Flay</a></b></span>
+			<span class="when"><span class="adminlink"></span> 7:56 AM on 30 Dec 2003</span>
+		</div>
+		
+		<p class="commenttext">
+			Sorry, wrong sequence of A-B-C, should be: start form C, down to B etc.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/8d05b390989e04e7732fa45f54b34e15.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>DBMaster</b></span>
+			<span class="when"><span class="adminlink"></span> 6:15 AM on 5 Oct 2004</span>
+		</div>
+		
+		<p class="commenttext">
+			can anybody give me java code and explanation about rainforest algorithm related to decision tree on machine learning
+<br>Thanks Before
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/e656e8a79ae5a416f0c3d4de38d302b1.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b><a href="http://ashwin.zaatar.org/" rel="nofollow" target="_blank">Ashwin Nanjappa</a></b></span>
+			<span class="when"><span class="adminlink"></span> 9:05 PM on 17 Apr 2009</span>
+		</div>
+		
+		<p class="commenttext">
+			I found this post very useful in understanding exceptions and their practical usage. Thanks for writing and sharing.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/a345bf94ba8ec432bc547e6e48bed3ee.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>Kevin</b></span>
+			<span class="when"><span class="adminlink"></span> 1:23 AM on 29 Apr 2009</span>
+		</div>
+		
+		<p class="commenttext">
+			"g disk usage analyzer" led me here however I enjoyed stumbling upon this vintage post of Ned's.  The topic is so fundamental and I'm glad that people continue to find it helpful.
+<br> 
+<br>At the risk of re-igniting the discussion, the strongest argument I can offer in favor of A-layer adaptors from error status returns to exceptions is that it's all too easy to ignore an error return and more difficult* to ignore an exception.
+<br> 
+<br>I'm sure many readers (half a decade ago or since then) have spent remarkable amounts of time debugging some issue ultimately found to include one or more A-layer system or library calls which failed to check for error returns. Had checks existed symptoms of something amiss are often manifested much earlier in the development cycle, but even when surfaced late the problem areas are more clearly indicated.
+<br> 
+<br>As Ned discussed, diligently checking function call status returns is laborious and obscures program logic, it also often overloads the value types being returned.  These aspects are unavoidable for A-layer code and to consider bubbling error returns up to the canopy is not only counter productive, but also unlikely to be performed reliably.
+<br> 
+<br>The non-inline handling feature of exceptions is a benefit in that it allows program code to more clearly represent success-path sequential logic.  Resource initialization and lifecycle semantics still have to be managed in light of potential exceptions, however block scopes and stack-based instances of classes encapsulating resource handling do more than make this possible.
+<br> 
+<br>Even where there is consensus in a development team that error status returns are encapsulated in A-layer logic and converted to exceptions, the next potential pitfall relates to unnecessary or misbehaved catches or (*) even more egregious catch (...) {/*ignore*/} coding follies.
+<br> 
+<br>Often a B-layer exception handler can be replaced by automatic resource handling classes as mentioned, and other mid-layer catches will re-throw exceptions augmented with higher level context information (e.g. what type of file was being created when the access violation exception was raised).  Languages with checked exception semantics can also make re-throws necessary. 
+<br> 
+<br>Reviews of A-layer logic should ensure that function call error returns are checked and raise exceptions properly, and that B or higher layer exception handling isn't negating this value by silently ignoring problems.
+<br>
+<br>Now back to he matter of analyzing disk resource consumption on my TV...
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/25290ab9f807b59880320fe185d56a8f.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b><a href="http://dterei.blogspot.com/" rel="nofollow" target="_blank">David Terei</a></b></span>
+			<span class="when"><span class="adminlink"></span> 10:36 PM on 23 Jul 2009</span>
+		</div>
+		
+		<p class="commenttext">
+			I tended to agree with Joel at first but I think that was just a little of a knee jerk reaction. I think the main issue with exceptions isn't the concept itself but how it is generally used.
+<br>
+<br>My biggest gripe with exceptions is when they are used to convey information which I don't really see as an exception but should instead be a return value. For example, an API I'm working with at the moment has a function called 'getUser(String);' which does what it says. I would think such a function can return two values, a user, or null if no user matching the string was found. Instead it will either return a user, or throw an exception if no user is found. I think this is an incorrect design, a null user should be a perfectly valid return value. It shouldn't be treated as an exception. An exception should be thrown for something more like a failure to connect to the backing database which stores user credentials.
+<br>
+<br>I also quite like Haskell's error handling mechanisms. I think it generally has a nice mix between exceptions and error status codes. But the nice thing is it has a properly designed error status code mechanism. Returned objects can be wrapped in a Maybe type, which allows null returns to be specified, or they can be wrapped in an Either type, which allows either the correct result to be returned, or an error result to be returned. Also supports try/catch style exceptions.
+<br>
+<br>Oh and another reason why a lot of programmers are against exceptions I think is primarily due to checked exceptions. And they are defiantly a bad idea.
+		</p>
+	</div>
+	<div class="comment">
+		<img class="gravatar" src="./Ned Batchelder  Exceptions in the rainforest_files/cd2790532eb0074a2d20c9377d36e9a6.jpg" width="40" height="40" alt="[gravatar]">
+		<div class="head">
+			<span class="who"><b>CheshireCat</b></span>
+			<span class="when"><span class="adminlink"></span> 11:06 PM on 16 Dec 2009</span>
+		</div>
+		
+		<p class="commenttext">
+			but exceptions was totally wrong idea.
+<br>and i hear here mainly wrong arguments,
+<br>except yours, Flay)) yes, exceptions
+<br>forces to loose control flow.
+<br>
+<br>i now also throws some rocks in.
+<br>
+<br>1)errors must not be "propagated" to other layers in way many of you suggest.
+<br>errors in all big programs must be fully managed in their separate error processing module/subsystem.
+<br>then A and C layers just use it. register as error sources and error acceptors, send and receive messages via software bus, and so on...
+<br>B layer is completely unaware from that.
+<br>
+<br>it is not such complicated as sounds)
+<br>and such architecture is much-much-much more reliable than exceptions in the real world. world where big programs is constantly modified by gangs of mediocre half-time programmers.
+<br>just imagine - catching and throwing anybody's exceptions) add more exceptions) and more)... ?
+<br>
+<br>2) error recovery must be done in transactional style _only_.
+<br>all-or-nothing.
+<br>one more argument having STM
+<br>support in language?
+<br>(first argument was easy parallelisation)
+<br>
+<br>3) why you insist on packing all error codes to DWORD? just use normal language) with easy structure returns, they contains no less information than exceptions. C(++) is too baroque now as language))
+<br>
+<br>exceptions is very error prone and not simplify anything. they only make _illusion_ of simplification.
+<br>
+<br>exceptions ("modern GOTO") just
+<br>not needed anymore. completely.
+<br>it is just one more unnecessary source of troubles)) one more dead weight in any language now))
+<br>
+<br>p.s. meanwhile, just is OOP. when you think about language semantic from the point of permanent modifications of program sources many cool features
+<br>dies in one moment))
+<br>just stop praising some cool boolsh.t and loudly yell - "inheritance considered harmful"!))
+<br>functional programming will be next mainstream.
+<br>
+<br>and if managers hires only C...
+<br>so too bad for _that_ managers))
+<br>seems they die married on his legacy code...
+		</p>
+	</div>
+
+<div id="commentform">
+<h2>Add a comment:</h2>
+<div>
+	<form method="post" action="http://nedbatchelder.com/text/exceptions-in-the-rainforest.html#commentform" id="commentformform">
+		<table width="100%" border="0" cellspacing="0" cellpadding="2">
+			<tbody><tr>
+				<td width="0%">
+					<div class="label">name</div>
+				</td>
+				<td width="100%">
+					<input class="edit" type="text" name="fddf5e829dfe8ff9ec649ebe13716d50c" id="fddf5e829dfe8ff9ec649ebe13716d50c" size="40" value="">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="label">email</div>
+				</td>
+				<td>
+					<div style="display:none">
+					Ignore this:
+					<input class="edit" type="email" name="f97a86b3289c0a7cf63c03ffcaf3a31ad" id="f97a86b3289c0a7cf63c03ffcaf3a31ad" size="40">
+					</div>
+					<input class="edit" type="email" name="f0fcaa92a68129dcfc558feae83f2469c" id="f0fcaa92a68129dcfc558feae83f2469c" size="40" value="">
+					<span class="notice">not displayed and no spam.</span>
+					<div style="display:none">
+					Leave this empty:
+					<input class="edit" type="email" name="f31d285498e12bc7f6731eb72dd433d30" id="f31d285498e12bc7f6731eb72dd433d30" size="40">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="label">www</div>
+				</td>
+				<td>
+					<input class="edit" type="url" name="fa580ea659be39bf6987da594aaeb5b1b" id="fa580ea659be39bf6987da594aaeb5b1b" size="40" value="">
+					<span class="notice">not searched.</span>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<div class="notice">Name and either email or www are required.</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div align="center" style="display:none">
+						Don't put anything here:
+						<textarea name="f55764dcbd6c02df33e24c09aa87bceda" id="f55764dcbd6c02df33e24c09aa87bceda" rows="7" cols="77" style="width:100%"></textarea>
+					</div>
+					<div align="center">
+						<textarea name="fad10f054d3590de09979930370f23aad" id="fad10f054d3590de09979930370f23aad" rows="7" cols="77" style="width:100%"></textarea>
+					</div>
+					<div align="center" style="display:none">
+						Leave this empty:
+						<textarea name="fea4ee033254ff3e747e0730429c4a687" id="fea4ee033254ff3e747e0730429c4a687" rows="7" cols="77" style="width:100%"></textarea>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="notice" align="right">
+					URLs auto-link and some tags are allowed: &lt;a&gt;&lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;br&gt;&lt;pre&gt;.
+				</td>
+			</tr>
+			<tr valign="top">
+				<td colspan="2">
+					<div align="right">
+						<label for="cbnotify">
+							<input type="checkbox" name="f0b138b97a35599654d586caef340f52f" id="cbnotify">
+							<span class="label">Email me future comments</span>
+						</label>&nbsp;&nbsp;
+						<input id="previewbtn" type="submit" name="f8b0eb6f87f7d19144254af7e84746e5f" value="preview &gt;&gt;">
+						<span style="display:none">
+						<input type="submit" name="f00e6e8b163b91e291a5a0c68f2ff4bc5" value="I&#39;m a spambot">
+						</span>
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+		<input type="hidden" name="fb1b46067f239ee41ddd7fb3194acf27b" value="text/exceptions-in-the-rainforest.html">
+		<input type="hidden" name="spinner" value="d5e5335ff9255e7165f616b2b545b80c">
+		<input type="hidden" name="f1b3df73b36bc96e785e1f91f6e5680bb" value="1321498635">
+
+
+
+	</form>
+</div>
+</div>
+
+</div>
+</div></td><td id="menu" valign="top"><div class="sidebar">
+
+
+<div class="blogroll"><ul class="first"><li>Search this site:
+            
+<form action="http://www.google.com/cse" id="searchbox_007818501792991951010:s9hiibxg-ty" style="margin-top:6px;"><input type="hidden" name="cx" value="007818501792991951010:s9hiibxg-ty"><table cellpadding="0" cellspacing="0"><tbody><tr><td valign="middle"><input type="text" name="q" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(126, 157, 185); border-right-color: rgb(126, 157, 185); border-bottom-color: rgb(126, 157, 185); border-left-color: rgb(126, 157, 185); padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; width: 144px; height: 16px; background-image: url(http://www.google.com/coop/intl/en/images/google_custom_search_watermark.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat; "></td><td valign="middle"><input id="submit" type="image" title="Search" src="./Ned Batchelder  Exceptions in the rainforest_files/search.png"></td></tr></tbody></table></form><script type="text/javascript">
+    (function() {
+        var f = document.getElementById('searchbox_007818501792991951010:s9hiibxg-ty');
+        if (f && f.q) {
+            var q = f.q;
+            var b = function() {
+                if (q.value == '') {
+                    q.style.background = '#fff url(http:\x2F\x2Fwww.google.com\x2Fcoop\x2Fintl\x2Fen\x2Fimages\x2Fgoogle_custom_search_watermark.gif) left no-repeat';
+                }
+            };
+            var f = function() {
+                q.style.background = '#fff';
+            };
+            q.onfocus = f;
+            q.onblur = b;
+            if (!/[&?]q=[^&]/.test(location.search)) {
+                b();
+            }
+        }
+    })();
+</script></li><li class="first"><a href="http://nedbatchelder.com/site/aboutned.html" rel="author">About me</a></li><li><a href="http://flattr.com/thing/343733/Neds-stuff" target="_blank"><img src="./Ned Batchelder  Exceptions in the rainforest_files/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" width="93" height="20"></a></li><li>You might like:
+            <ul class="compact"><li>»&nbsp;<a href="http://nedbatchelder.com/blog">My blog</a></li><li>»&nbsp;<a href="http://susansenator.com/makingpeace.html">My wife's books</a><br><a href="http://susansenator.com/makingpeace.html"><img src="./Ned Batchelder  Exceptions in the rainforest_files/makingpeacetiny.png" alt="Making Peace With Autism" width="83" height="127" style="margin: 10px 0 0 0"></a> <a href="http://susansenator.com/survivalguide.html"><img src="./Ned Batchelder  Exceptions in the rainforest_files/survivalguidetiny.png" alt="Autism Mom&#39;s Survival Guide" width="86" height="121" style="margin: 10px 0 0 10"></a></li></ul></li></ul></div>
+
+</div></td></tr><tr><td id="copyright" colspan="2"><p class="copyright"><a rel="copyright license" href="http://nedbatchelder.com/site/legal.html">
+                            © Copyright
+                            
+                                2003,
+                            
+                            Ned Batchelder
+                        </a></p></td></tr></tbody></table></center><script type="text/javascript" language="javascript">
+var hs_portalid=18610; 
+var hs_salog_version = "2.00";
+var hs_ppa = "nedbatchelder.app101.hubspot.com";
+document.write(unescape("%3Cscript src='" + document.location.protocol + "//" + hs_ppa + "/salog.js.aspx' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./Ned Batchelder  Exceptions in the rainforest_files/salog.js.aspx" type="text/javascript"></script><script src="./Ned Batchelder  Exceptions in the rainforest_files/salog20.js" type="text/javascript"></script><span id="hsjssp">
+<img src="./Ned Batchelder  Exceptions in the rainforest_files/track" border="0" width="0" height="0"></span>
+
+</body></html>

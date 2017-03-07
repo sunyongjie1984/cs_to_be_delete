@@ -1,0 +1,733 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\SCC.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#include ""l.chs\\afxprint.rc""        // printing/print preview resources\r\n"
+    "#include ""l.chs\\afxolecl.rc""        // OLE container resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\SCC.ico"
+IDR_SCCTYPE             ICON    DISCARDABLE     "res\\idr_scct.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
+IDB_DOCKBAROFFICE       BITMAP  DISCARDABLE     "res\\DockOffice.bmp"
+IDB_MDIICONS            BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+IDR_SCC_TOOL            BITMAP  DISCARDABLE     "res\\scc_tool.bmp"
+IDB_DOCKBAR             BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+IDR_TOOLBAR_SHELL       BITMAP  DISCARDABLE     "res\\toolbar1.bmp"
+IDR_TOOLBAR_CS          BITMAP  DISCARDABLE     "res\\toolbar_.bmp"
+IDB_BITMAP1             BITMAP  DISCARDABLE     "res\\bmp00002.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 16
+BEGIN
+    BUTTON      ID_FILE_XSAVE
+    BUTTON      ID_VIEW_SFWND
+    SEPARATOR
+    BUTTON      ID_SCC_OPEN
+    BUTTON      ID_SCC_PAUSE
+    BUTTON      ID_SCC_CLEARDATA
+    BUTTON      ID_SHOW_FILTER
+    SEPARATOR
+    BUTTON      ID_SCC_SENDLINE
+    BUTTON      ID_SCC_CYCSEND
+    BUTTON      ID_SCC_TRIGGER
+    SEPARATOR
+    BUTTON      ID_SCC_ASCRECV
+    BUTTON      ID_SCC_ASCSEND
+END
+
+IDR_SCC_TOOL TOOLBAR DISCARDABLE  16, 16
+BEGIN
+    BUTTON      ID_SCC_SET_COM
+    BUTTON      ID_SCC_SET_BAUD
+    BUTTON      ID_SCC_SET_PARITY
+    BUTTON      ID_SCC_SET_DATA
+    BUTTON      ID_SCC_SET_STOP
+    BUTTON      ID_SCC_SET_RTO
+    BUTTON      ID_SCC_SET_FLOW
+    BUTTON      ID_SCC_SET_ADVANCE
+END
+
+IDR_TOOLBAR_SHELL TOOLBAR DISCARDABLE  16, 16
+BEGIN
+    BUTTON      ID_SCC_OPEN
+    BUTTON      ID_SCC_OPEN
+    BUTTON      ID_VIEW_WRAP
+    BUTTON      ID_SCC_READONLY
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_EXIT
+    BUTTON      ID_VIEW_CENTER
+    BUTTON      ID_VIEW_TOPHARF
+    BUTTON      ID_VIEW_BOTTOMHARF
+    BUTTON      ID_VIEW_LEFTHARF
+    BUTTON      ID_VIEW_RIGHTHARF
+    BUTTON      ID_FILE_OPEN
+END
+
+IDR_TOOLBAR_CS TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_CS_ADDSUM
+    BUTTON      ID_CS_ADDSUMWORD
+    BUTTON      ID_CS_MODBUS
+    BUTTON      ID_CS_CRC_CCITT16
+    BUTTON      ID_CS_CRC_CCITT8
+    BUTTON      ID_CS_CRC_ANSI16
+    BUTTON      ID_CS_CRC_CDT
+    BUTTON      ID_CS_1
+    BUTTON      ID_CS_2
+    BUTTON      ID_CS_3
+    BUTTON      ID_CS_4
+    BUTTON      ID_CS_5
+    BUTTON      ID_CS_6
+    BUTTON      ID_CS_7
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "打开监视报文(&O)...\tCtrl+O", ID_FILE_OPEN
+        MENUITEM "保存监视报文(&S)...\tCtrl+S", ID_FILE_XSAVE
+        MENUITEM "定时保存、清除(&T)...",       ID_FILE_AUTOSAVE
+        MENUITEM SEPARATOR
+        MENUITEM "打开发送报文(&F)",            ID_FILE_OPENS
+        MENUITEM "保存发送报文(&A)",            ID_FILE_SAVESEND
+        MENUITEM SEPARATOR
+        MENUITEM "打印(&P)...\tCtrl+P",         ID_FILE_PRINT
+        MENUITEM "打印预览(&V)",                ID_FILE_PRINT_PREVIEW
+        MENUITEM "打印设置(&R)...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "最近文件",                    ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "编辑(&E)"
+    BEGIN
+        MENUITEM "撤消(&U)\tCtrl+Z",            ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "剪切(&T)\tCtrl+X",            ID_EDIT_CUT
+        MENUITEM "复制(&C)\tCtrl+C",            ID_EDIT_COPY
+        MENUITEM "粘贴(&P)\tCtrl+V",            ID_EDIT_PASTE
+        MENUITEM "选择性粘贴(&S)...",           ID_EDIT_PASTE_SPECIAL
+        MENUITEM "全选(&L)\tCtrl+A",            ID_EDIT_SELECT_ALL
+        MENUITEM SEPARATOR
+        MENUITEM "查找(&F)...\tCtrl+F",         ID_EDIT_FIND
+        MENUITEM "查找下一个(&I)\tF3",          ID_EDIT_REPEAT
+        MENUITEM "替换(&E)\tCtrl+H",            ID_EDIT_REPLACE
+        MENUITEM SEPARATOR
+        MENUITEM "插入新对象(&N)...",           ID_OLE_INSERT_NEW
+        MENUITEM "链接(&K)...",                 ID_OLE_EDIT_LINKS
+        MENUITEM "对象特性(&R)\tAlt+Enter",     ID_OLE_EDIT_PROPERTIES
+        MENUITEM "<<用 OLE 谓词替换此处>>",     ID_OLE_VERB_FIRST
+    END
+    POPUP "视图(&V)"
+    BEGIN
+        MENUITEM "暂停报文显示(&P)",            ID_SCC_PAUSE
+        MENUITEM "报文过滤设置(&F)...",         ID_SHOW_FILTER
+        MENUITEM SEPARATOR
+        MENUITEM "显示端口(&P)",                ID_VIEW_SCC_PORT
+        MENUITEM "显示发送报文(&D)",            ID_VIEW_SCC_SEND
+        MENUITEM "显示时间(&T)",                ID_VIEW_SCC_TIME
+        MENUITEM SEPARATOR
+        MENUITEM "清除监视窗报文(&C)",          ID_SCC_CLEARDATA
+        MENUITEM SEPARATOR
+        MENUITEM "只读(&Y)",                    ID_SCC_READONLY
+        MENUITEM "自动换行(&W)",                ID_VIEW_WRAP
+    END
+    POPUP "工具(&T)"
+    BEGIN
+        MENUITEM "打开串口(&O)",                ID_SCC_OPEN
+        MENUITEM "默认参数(&D)",                ID_SCC_SET_OPTION
+        MENUITEM SEPARATOR
+        MENUITEM "手动单行发报(&W)",            ID_SCC_SENDLINE
+        MENUITEM "发送后跳到下行(&N)",          ID_SCC_GONEXT
+        MENUITEM SEPARATOR
+        MENUITEM "ASC模式接收(&R)",             ID_SCC_ASCRECV
+        MENUITEM "ASC模式发送(&S)",             ID_SCC_ASCSEND
+        POPUP "ASC模式发送时"
+        BEGIN
+            MENUITEM "添加文始符STX(&V)",           ID_SCC_ADDSTX
+            MENUITEM "添加文终符ETX(&E)",           ID_SCC_ADDETX
+            MENUITEM "添加回车符(&D)",              ID_SCC_ADDENTER
+            MENUITEM "添加换行符(&H)",              ID_SCC_ADDECHO
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "循环发送(&C)",                ID_SCC_CYCSEND
+        MENUITEM "触发模式发送(&T)",            ID_SCC_TRIGGER
+        MENUITEM "循环或触发发送设置(&A)...",   ID_ADVANCE_SEND
+        MENUITEM SEPARATOR
+        MENUITEM "转发设置(&Z)...",             ID_SCC_TRANSMIT
+    END
+    POPUP "添加校验(&P)"
+    BEGIN
+        MENUITEM "累加和(&C)",                  ID_CS_ADDSUM
+        MENUITEM "保留高位的累加和(&H)",        ID_CS_ADDSUMWORD
+        MENUITEM SEPARATOR
+        MENUITEM "MODBUS规约CRC(&M)",           ID_CS_MODBUS
+        MENUITEM "CCITT标准16位CRC(&O)",        ID_CS_CRC_CCITT16
+        MENUITEM "CCITT标准  8位CRC(&D)",       ID_CS_CRC_CCITT8
+        MENUITEM "ANSI标准16位CRC(&A)",         ID_CS_CRC_ANSI16
+        MENUITEM "CDT规约CRC(&T)",              ID_CS_CRC_CDT
+    END
+    POPUP "窗口(&W)"
+    BEGIN
+        MENUITEM "工具栏(&T)",                  ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(&S)",                  ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "发报窗(&W)",                  ID_VIEW_SFWND
+        MENUITEM "串口设置栏(&C)",              IDR_SCC_TOOL
+        MENUITEM SEPARATOR
+        MENUITEM "总在最上面(&A)",              ID_ALWAYSONTOP
+        MENUITEM "居中(&G)",                    ID_VIEW_CENTER
+        POPUP "窗口位于屏幕"
+        BEGIN
+            MENUITEM "上半部(&H)",                  ID_VIEW_TOPHARF
+            MENUITEM "下半部(&B)",                  ID_VIEW_BOTTOMHARF
+            MENUITEM "左半部(&L)",                  ID_VIEW_LEFTHARF
+            MENUITEM "右半部(&R)",                  ID_VIEW_RIGHTHARF
+        END
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 SCC(&A)...",             ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_SHELL MENU DISCARDABLE 
+BEGIN
+    POPUP "默认参数"
+    BEGIN
+        MENUITEM "默认参数(&D)",                ID_SCC_DEFAULT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "A",            ID_EDIT_SELECT_ALL,     VIRTKEY, CONTROL, NOINVERT
+    "B",            IDR_SCC_TOOL,           VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_SCC_CLEARDATA,       VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_EDIT_REPLACE,        VIRTKEY, CONTROL, NOINVERT
+    "M",            ID_CS_MODBUS,           VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_SCC_READONLY,        VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_XSAVE,          VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_ALWAYSONTOP,         VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      ID_CANCEL_EDIT_CNTR,    VIRTKEY, NOINVERT
+    VK_F11,         ID_CS_ADDSUM,           VIRTKEY, CONTROL, NOINVERT
+    VK_F2,          ID_SCC_SENDLINE,        VIRTKEY, NOINVERT
+    VK_F3,          ID_EDIT_REPEAT,         VIRTKEY, NOINVERT
+    VK_F4,          ID_VIEW_SFWND,          VIRTKEY, NOINVERT
+    VK_F5,          ID_SCC_OPEN,            VIRTKEY, NOINVERT
+    VK_F6,          ID_ADVANCE_SEND,        VIRTKEY, NOINVERT
+    VK_PAUSE,       ID_SCC_PAUSE,           VIRTKEY, NOINVERT
+    VK_RETURN,      ID_OLE_EDIT_PROPERTIES, VIRTKEY, ALT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 91
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 SCC"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,21,21
+    LTEXT           "SCC V0.3 (Build 0612) 版",IDC_STATIC,40,10,99,8,
+                    SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2004",IDC_STATIC,40,25,73,8
+    DEFPUSHBUTTON   "确定",IDOK,178,70,50,14,WS_GROUP
+    LTEXT           "北京    老民",IDC_STATIC,40,40,60,8
+    LTEXT           "wzm_bjsf@sina.com",IDC_STATIC_EMAIL,104,40,68,8
+    LTEXT           "特别感谢",IDC_STATIC,40,55,33,8
+    LTEXT           "界面库GUILIB",IDC_STATIC_GUILIB,75,55,48,8
+    LTEXT           "Francisco Campos",IDC_STATIC_GUILIB2,150,55,66,8
+    LTEXT           "的作者",IDC_STATIC,125,55,24,8
+END
+
+IDD_DIALOG_SEND DIALOGEX 0, 0, 164, 159
+STYLE DS_CENTER | WS_POPUP | WS_BORDER
+FONT 9, "宋体"
+BEGIN
+    GROUPBOX        "单行循环发送",IDC_STATIC,1,1,160,60
+    CONTROL         "指定行：",IDC_RADIO_LINE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,5,14,41,8
+    CONTROL         "范  围：",IDC_RADIO_LINES,"Button",BS_AUTORADIOBUTTON,5,
+                    29,41,8
+    CONTROL         "当前行",IDC_RADIO_CURLINE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,52,14,37,8
+    CONTROL         "固定行",IDC_RADIO_ONELINE,"Button",BS_AUTORADIOBUTTON,
+                    96,14,35,8
+    EDITTEXT        IDC_EDIT_ONELINE,135,12,23,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_MULTILINES,68,27,23,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    LTEXT           "单行发送周期：",IDC_STATIC,7,46,57,8
+    EDITTEXT        IDC_EDIT_TIME,70,45,43,12,ES_AUTOHSCROLL | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "应用",IDC_BUTTON_USE,132,123,30,13
+    PUSHBUTTON      "关闭",IDC_BUTTON_HIDE,132,143,30,13
+    EDITTEXT        IDC_EDIT_MULTILINES2,120,27,23,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    LTEXT           "从",IDC_STATIC,52,29,10,8
+    LTEXT           "行到",IDC_STATIC,96,29,17,8
+    LTEXT           "行",IDC_STATIC,148,29,10,8
+    GROUPBOX        "触发模式发送",IDC_STATIC,1,67,113,90
+    CONTROL         "List2",IDC_LIST_TRIGGER,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,3,79,108,58
+    LTEXT           "触发延时：",IDC_STATIC,5,143,41,8
+    EDITTEXT        IDC_EDIT_TRIGGER,50,142,25,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    LTEXT           "毫秒",IDC_STATIC,119,46,17,8
+    LTEXT           "毫秒",IDC_STATIC,83,143,17,8
+END
+
+IDD_DIALOG_TRANSMIT DIALOGEX 0, 0, 253, 73
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "透明转发设置"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "应用",IDOK,196,7,50,14
+    PUSHBUTTON      "退出",IDCANCEL,196,24,50,14
+    LTEXT           "与串口",IDC_STATIC,63,13,24,8
+    LTEXT           "间进行透明转发",IDC_STATIC,107,13,58,8
+    EDITTEXT        IDC_EDIT_COMSRC,46,11,14,12,NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_COMDEST,89,12,14,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "在串口",IDC_CHECK_COM,"Button",BS_AUTOCHECKBOX | 
+                    BS_FLAT | WS_TABSTOP,7,13,36,8
+END
+
+IDD_DIALOG_FILTER DIALOG DISCARDABLE  0, 0, 210, 94
+STYLE DS_CENTER | WS_POPUP | WS_BORDER
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "所有串口",IDC_RADIO_ALL,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,154,13,45,10
+    CONTROL         "当前串口",IDC_RADIO_CUR,"Button",BS_AUTORADIOBUTTON,154,
+                    25,45,10
+    CONTROL         "List1",IDC_LIST_FILTER,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,5,31,136,56
+    GROUPBOX        "串口数据显示",IDC_STATIC,148,2,59,35
+    GROUPBOX        "",IDC_STATIC,1,2,143,90
+    LTEXT           "只显示给定序号字节的值为给定字节值的报文",IDC_STATIC,5,
+                    11,136,18
+    PUSHBUTTON      "应用",IDC_BUTTON_FILTER,181,62,26,12
+    PUSHBUTTON      "退出",IDC_BUTTON_EXIT,181,79,26,12
+    CONTROL         "启用过滤设置",IDC_CHECK_FILTER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,147,41,59,10
+END
+
+IDD_DIALOG_SAVE DIALOGEX 0, 0, 187, 93
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "定时保存清除设置"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "退出",IDOK,146,72,32,14
+    EDITTEXT        IDC_BROWSE_EDIT,6,55,154,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      "...",IDC_BROWSE,163,55,15,12
+    LTEXT           "将监视报文定时保存在下面目录：",IDC_STATIC,6,41,124,9
+    CONTROL         "定时保存",IDC_CHECK_AS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,6,6,46,10
+    EDITTEXT        IDC_EDIT_ASTIME,127,6,25,12,ES_AUTOHSCROLL | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    LTEXT           "周期：",IDC_STATIC,97,8,28,9
+    LTEXT           "分",IDC_STATIC,157,7,9,9
+    LTEXT           "使用保存时本机时间作为文件名",IDC_STATIC,6,74,124,9
+    CONTROL         "定时清除",IDC_CHECK_CLEAR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,6,22,46,10
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x29L
+#else
+ FILEFLAGS 0x28L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "用于同时监视多个串口的通讯，也可向指定串口发送命令\0"
+            VALUE "CompanyName", "WzmWorld\0"
+            VALUE "FileDescription", "SCC Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "串口监视工具\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2004  北京  王治民\0"
+            VALUE "LegalTrademarks", "PCStudio\0"
+            VALUE "OriginalFilename", "SCC.EXE\0"
+            VALUE "PrivateBuild", "V0.2\0"
+            VALUE "ProductName", "SCC 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "Build 0609\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 84
+    END
+
+    IDD_DIALOG_TRANSMIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 246
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+
+    IDD_DIALOG_SAVE, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 178
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 86
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE 程序初始化失败。请确认 OLE 库程序是正确的版本。"
+    IDP_FAILED_TO_CREATE    "建立对象失败。请确认该对象已被注册入系统。"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           "SCC\n\nSCC\nPCStudio Frame Files (*.pcf)\n.pcf\nSCC.Document\nSCC Document"
+    IDR_SCC_TOOL            "显示或隐藏串口设置栏\n显隐串口设置栏"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "SCC"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "扩展名"
+    ID_INDICATOR_CAPS       "大写"
+    ID_INDICATOR_NUM        "数字"
+    ID_INDICATOR_SCRL       "滚动"
+    ID_INDICATOR_OVR        "改写"
+    ID_INDICATOR_REC        "记录"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "建立新文档\n新建"
+    ID_FILE_OPEN            "打开一个现有监视报文\n打开监视报文"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+    ID_FILE_SAVE_AS         "将活动文档以一个新文件名保存\n另存为"
+    ID_FILE_PAGE_SETUP      "改变打印选项\n页面设置"
+    ID_FILE_PRINT_SETUP     "改变打印机及打印选项\n打印设置"
+    ID_FILE_PRINT           "打印活动文档\n打印"
+    ID_FILE_PRINT_PREVIEW   "显示整页\n打印预览"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "显示程序信息，版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "打开该文档"
+    ID_FILE_MRU_FILE2       "打开该文档"
+    ID_FILE_MRU_FILE3       "打开该文档"
+    ID_FILE_MRU_FILE4       "打开该文档"
+    ID_FILE_MRU_FILE5       "打开该文档"
+    ID_FILE_MRU_FILE6       "打开该文档"
+    ID_FILE_MRU_FILE7       "打开该文档"
+    ID_FILE_MRU_FILE8       "打开该文档"
+    ID_FILE_MRU_FILE9       "打开该文档"
+    ID_FILE_MRU_FILE10      "打开该文档"
+    ID_FILE_MRU_FILE11      "打开该文档"
+    ID_FILE_MRU_FILE12      "打开该文档"
+    ID_FILE_MRU_FILE13      "打开该文档"
+    ID_FILE_MRU_FILE14      "打开该文档"
+    ID_FILE_MRU_FILE15      "打开该文档"
+    ID_FILE_MRU_FILE16      "打开该文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回前一个窗格\n前一窗格"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "将活动的窗口分隔成窗格\n分隔"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "删除被选对象\n删除"
+    ID_EDIT_CLEAR_ALL       "全部删除\n全部删除"
+    ID_EDIT_COPY            "复制被选对象并将其置于剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切被选对象并将其置于剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的正文\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_PASTE_LINK      "插入剪贴板内容和一条通向其来源的链接\n粘贴链接"
+    ID_EDIT_PASTE_SPECIAL   "用选项插入剪贴板内容\n选择性粘贴"
+    ID_EDIT_REPEAT          "重复上一步操作\n重复"
+    ID_EDIT_REPLACE         "用不同的正文替换指定的正文\n替换"
+    ID_EDIT_SELECT_ALL      "选择整个文档\n选择全部"
+    ID_EDIT_UNDO            "撤消最后一步操作\n撤消"
+    ID_EDIT_REDO            "重新执行先前已撤消的操作\n重新执行"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n显隐工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n显隐状态栏"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_INSERT_NEW       "插入新嵌入的对象\n新对象"
+    ID_OLE_EDIT_LINKS       "编辑链接对象\n编辑链接"
+    ID_OLE_EDIT_CONVERT     "将对象转换成不同的类型\n转换对象"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_OLE_VERB_FIRST       "激活嵌入或链接的对象"
+    57873                   "激活嵌入或链接的对象"
+    57874                   "激活嵌入或链接的对象"
+    57875                   "激活嵌入或链接的对象"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "改变窗口大小"
+    AFX_IDS_SCMOVE          "改变窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小成图标"
+    AFX_IDS_SCMAXIMIZE      "把窗口放大到最大尺寸"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到先前的文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动的窗口并提示保存所有文档"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "把窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务表"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预阅"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SCC_SET_COM          "设置当前串口\n串口"
+    ID_SCC_SET_BAUD         "设置当前所选串口的波特率\n波特率"
+    ID_SCC_SET_PARITY       "设置当前所选串口的校验位\n校验位"
+    ID_SCC_SET_DATA         "设置当前所选串口的数据位\n数据位"
+    ID_SCC_SET_STOP         "设置当前所选串口的停止位\n停止位"
+    ID_SCC_SET_RTO          "设置当前所选串口的打包间隔时间(单位：毫秒)\n打包时间(毫秒)"
+    ID_SCC_SET_FLOW         "设置当前所选串口的流控制\n流控制"
+    ID_SCC_OPEN             "打开或关闭当前串口\n打开或关闭串口"
+    ID_SCC_CLEARDATA        "清除监视窗报文\n清除监视报文"
+    ID_SCC_PAUSE            "暂停或继续报文显示\n暂停或继续报文显示"
+    ID_SCC_ASCRECV          "设置串口为ASC码模式接收\nASC模式接收"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_SCC_ASCSEND          "设置串口为ASC码模式发送\nASC模式发送"
+    ID_VIEW_WRAP            "设置文字自动换行模式\n切换自动换行"
+    ID_SCC_READONLY         "设置监视窗为只读模式\n切换只读模式"
+    ID_SCC_GONEXT           "发送后光标跳到下行\n发送后跳到下行"
+    ID_SCC_SENDLINE         "手动单行发送当前行报文\n手动单行发报"
+    ID_VIEW_SFWND           "显示或隐藏发报窗\n显隐发报窗"
+    ID_CS_ADDSUM            "只保留低字节的求和校验\n单字节求和校验"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_CS_ADDSUMWORD        "保留高位的求和校验\n双字节求和校验"
+    ID_CS_MODBUS            "MODBUS规约查询报文CRC校验，同ANSI标准16位CRC，只校验前6个字节\nMODBUS规约查询报文CRC校验"
+    ID_CS_CRC_CCITT16       "CCITT V.41，16位CRC校验，x16+x12+x5+1，即0x11021\nCCITT 16位CRC校验"
+    ID_CS_CRC_CCITT8        "CCITT V.41，8位CRC校验，x8+x2+x+1，即0x107\nCCITT 8位CRC校验"
+    ID_CS_CRC_ANSI16        "ANSI，16位CRC校验，x16+x15+x2+1，即0x18005\nANSI 16位CRC校验"
+    ID_CS_CRC_CDT           "CDT规约CRC校验，同CCITT标准8位CRC\nCDT规约CRC校验"
+    ID_SCC_DEFAULT          "默认参数,9600,8,N,1\n9600,8,N,1"
+    ID_SCC_SET_ADVANCE      "设置\n设置"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_XSAVE           "保存监视报文\n保存监视报文"
+    ID_ALWAYSONTOP          "总在最上面显示\n在最上面显示"
+    ID_ADVANCE_SEND         "显示或隐藏高级发送窗\n循环或触发发送设置"
+    ID_SCC_CYCSEND          "循环发送\n循环发送"
+    ID_SCC_TRIGGER          "触发模式发送\n触发模式发送"
+    ID_FILE_AUTOSAVE        "定时保存清除监视报文\n定时保存清除监视报文"
+    ID_SHOW_FILTER          "报文过滤设置\n报文过滤设置"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\SCC.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#include "l.chs\afxprint.rc"        // printing/print preview resources
+#include "l.chs\afxolecl.rc"        // OLE container resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

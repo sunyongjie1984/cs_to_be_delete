@@ -1,0 +1,180 @@
+.syntaxhighlighter {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px! important; BORDER-TOP: 0px; PADDING-LEFT: 0px! important; FONT-WEIGHT: normal! important; FONT-SIZE: 1em! important; RIGHT: auto! important; BACKGROUND: none transparent scroll repeat 0% 0%; LEFT: auto! important; FLOAT: none! important; PADDING-BOTTOM: 0px! important; MARGIN: 0px; VERTICAL-ALIGN: baseline! important; BORDER-LEFT: 0px; WIDTH: auto! important; BOTTOM: auto! important; LINE-HEIGHT: 1.1em! important; PADDING-TOP: 0px! important; BORDER-BOTTOM: 0px; FONT-STYLE: normal! important; FONT-FAMILY: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace! important; POSITION: static! important; TOP: auto! important; HEIGHT: auto! important; TEXT-ALIGN: left! important; outline: 0
+}
+.syntaxhighlighter DIV {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px! important; BORDER-TOP: 0px; PADDING-LEFT: 0px! important; FONT-WEIGHT: normal! important; FONT-SIZE: 1em! important; RIGHT: auto! important; BACKGROUND: none transparent scroll repeat 0% 0%; LEFT: auto! important; FLOAT: none! important; PADDING-BOTTOM: 0px! important; MARGIN: 0px; VERTICAL-ALIGN: baseline! important; BORDER-LEFT: 0px; WIDTH: auto! important; BOTTOM: auto! important; LINE-HEIGHT: 1.1em! important; PADDING-TOP: 0px! important; BORDER-BOTTOM: 0px; FONT-STYLE: normal! important; FONT-FAMILY: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace! important; POSITION: static! important; TOP: auto! important; HEIGHT: auto! important; TEXT-ALIGN: left! important; outline: 0
+}
+.syntaxhighlighter CODE {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px! important; BORDER-TOP: 0px; PADDING-LEFT: 0px! important; FONT-WEIGHT: normal! important; FONT-SIZE: 1em! important; RIGHT: auto! important; BACKGROUND: none transparent scroll repeat 0% 0%; LEFT: auto! important; FLOAT: none! important; PADDING-BOTTOM: 0px! important; MARGIN: 0px; VERTICAL-ALIGN: baseline! important; BORDER-LEFT: 0px; WIDTH: auto! important; BOTTOM: auto! important; LINE-HEIGHT: 1.1em! important; PADDING-TOP: 0px! important; BORDER-BOTTOM: 0px; FONT-STYLE: normal! important; FONT-FAMILY: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace! important; POSITION: static! important; TOP: auto! important; HEIGHT: auto! important; TEXT-ALIGN: left! important; outline: 0
+}
+.syntaxhighlighter SPAN {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px! important; BORDER-TOP: 0px; PADDING-LEFT: 0px! important; FONT-WEIGHT: normal! important; FONT-SIZE: 1em! important; RIGHT: auto! important; BACKGROUND: none transparent scroll repeat 0% 0%; LEFT: auto! important; FLOAT: none! important; PADDING-BOTTOM: 0px! important; MARGIN: 0px; VERTICAL-ALIGN: baseline! important; BORDER-LEFT: 0px; WIDTH: auto! important; BOTTOM: auto! important; LINE-HEIGHT: 1.1em! important; PADDING-TOP: 0px! important; BORDER-BOTTOM: 0px; FONT-STYLE: normal! important; FONT-FAMILY: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace! important; POSITION: static! important; TOP: auto! important; HEIGHT: auto! important; TEXT-ALIGN: left! important; outline: 0
+}
+.syntaxhighlighter {
+	PADDING-RIGHT: 1px! important; PADDING-LEFT: 1px! important; PADDING-BOTTOM: 1px! important; MARGIN: 1em 0px; WIDTH: 100%! important; PADDING-TOP: 1px! important; POSITION: relative! important
+}
+.syntaxhighlighter .bold {
+	FONT-WEIGHT: bold! important
+}
+.syntaxhighlighter .italic {
+	FONT-STYLE: italic! important
+}
+.syntaxhighlighter .line .number {
+	PADDING-RIGHT: 0.3em! important; DISPLAY: block! important; FLOAT: left! important; WIDTH: 3em! important; TEXT-ALIGN: right! important
+}
+.nogutter .line .number {
+	DISPLAY: none! important
+}
+.syntaxhighlighter .line .content {
+	DISPLAY: block! important; PADDING-LEFT: 0.5em! important; MARGIN-LEFT: 3.3em! important
+}
+.syntaxhighlighter .line .content .block {
+	DISPLAY: block! important; PADDING-LEFT: 1.5em! important; TEXT-INDENT: -1.5em! important
+}
+.syntaxhighlighter .line .content .spaces {
+	DISPLAY: none! important
+}
+.nogutter .line .content {
+	MARGIN-LEFT: 0px! important; BORDER-LEFT: medium none
+}
+.syntaxhighlighter .bar {
+	
+}
+.collapsed .bar {
+	
+}
+.nogutter .ruler {
+	PADDING-LEFT: 0px! important; MARGIN-LEFT: 0px! important
+}
+.syntaxhighlighter .ruler {
+	PADDING-RIGHT: 0px! important; PADDING-LEFT: 0.5em! important; PADDING-BOTTOM: 0.5em! important; MARGIN-LEFT: 3.3em! important; OVERFLOW: hidden! important; PADDING-TOP: 0px! important
+}
+.collapsed .lines {
+	DISPLAY: none! important
+}
+.collapsed .ruler {
+	DISPLAY: none! important
+}
+.syntaxhighlighter .toolbar {
+	PADDING-RIGHT: 8px! important; PADDING-LEFT: 0px! important; FONT-SIZE: 1px! important; RIGHT: 0px! important; PADDING-BOTTOM: 8px! important; PADDING-TOP: 8px! important; POSITION: absolute! important; TOP: 0px! important
+}
+.collapsed .toolbar {
+	PADDING-RIGHT: 0px! important; PADDING-LEFT: 0.5em! important; FONT-SIZE: 80%! important; PADDING-BOTTOM: 0.5em! important; PADDING-TOP: 0.2em! important; POSITION: static! important
+}
+.syntaxhighlighter .toolbar A.item {
+	DISPLAY: block! important; FLOAT: left! important; MARGIN-LEFT: 8px! important; OVERFLOW: hidden! important; TEXT-INDENT: -5000px! important; BACKGROUND-REPEAT: no-repeat! important
+}
+.syntaxhighlighter .toolbar .item {
+	DISPLAY: block! important; FLOAT: left! important; MARGIN-LEFT: 8px! important; OVERFLOW: hidden! important; TEXT-INDENT: -5000px! important; BACKGROUND-REPEAT: no-repeat! important
+}
+.collapsed .toolbar .item {
+	DISPLAY: none! important
+}
+.collapsed .toolbar .expandSource {
+	DISPLAY: inline! important; PADDING-LEFT: 20px! important; FLOAT: none! important; BACKGROUND-IMAGE: url(magnifier.png)! important; WIDTH: auto! important; TEXT-INDENT: 0px! important; HEIGHT: 16px! important
+}
+.syntaxhighlighter .toolbar .viewSource {
+	BACKGROUND-IMAGE: url(page_white_code.png)! important
+}
+.syntaxhighlighter .toolbar .printSource {
+	BACKGROUND-IMAGE: url(printer.png)! important
+}
+.syntaxhighlighter .toolbar .copyToClipboard {
+	BACKGROUND: none transparent scroll repeat 0% 0%; OVERFLOW: visible! important; TEXT-INDENT: 0px! important
+}
+.syntaxhighlighter .toolbar .about {
+	BACKGROUND-IMAGE: url(help.png)! important
+}
+.printing {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.printing .alt1 .content {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.printing .alt2 .content {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.printing .highlighted .number {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.printing .alt1 .content {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.printing .alt2 .content {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.printing .line .content .block {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.printing .line .number {
+	COLOR: #bbb! important
+}
+.printing .line .content {
+	COLOR: #000! important
+}
+.printing .toolbar {
+	DISPLAY: none! important
+}
+.printing .ruler {
+	DISPLAY: none! important
+}
+.printing A {
+	TEXT-DECORATION: none! important
+}
+.printing .plain {
+	COLOR: #000! important
+}
+.printing .plain A {
+	COLOR: #000! important
+}
+.printing .comments {
+	COLOR: #008200! important
+}
+.printing .comments A {
+	COLOR: #008200! important
+}
+.printing .string {
+	COLOR: blue! important
+}
+.printing .string A {
+	COLOR: blue! important
+}
+.printing .keyword {
+	FONT-WEIGHT: bold! important; COLOR: #069! important
+}
+.printing .preprocessor {
+	COLOR: gray! important
+}
+.printing .variable {
+	COLOR: #a70! important
+}
+.printing .value {
+	COLOR: #090! important
+}
+.printing .functions {
+	COLOR: #ff1493! important
+}
+.printing .constants {
+	COLOR: #0066cc! important
+}
+.printing .script {
+	FONT-WEIGHT: bold! important
+}
+.printing .color1 {
+	COLOR: #808080! important
+}
+.printing .color1 A {
+	COLOR: #808080! important
+}
+.printing .color2 {
+	COLOR: #ff1493! important
+}
+.printing .color2 A {
+	COLOR: #ff1493! important
+}
+.printing .color3 {
+	COLOR: red! important
+}
+.printing .color3 A {
+	COLOR: red! important
+}

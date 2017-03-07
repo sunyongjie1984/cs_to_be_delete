@@ -1,0 +1,276 @@
+<html>
+<head>
+<title>在C++中集成Lua脚本</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style type="text/css">
+<!--
+.style1 {color: #0099cc}
+-->
+</style>
+<link href='/Skin/DefaultSkin.css' rel='stylesheet' type='text/css'> <script language='JavaScript' type='text/JavaScript' src='/js/menu.js'></script>
+<script language='JavaScript' type='text/JavaScript'>
+//菜单列表
+var menu_skin="&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookie.asp?Action=SetSkin&ClassID=24&SkinID=1'>蓝色经典</a><br>&nbsp;<a style=font-size:9pt;line-height:14pt; href='SetCookie.asp?Action=SetSkin&ClassID=24&SkinID=2'>蓝色经典</a><br>";
+</script>
+<script type='text/javascript' language='JavaScript1.2' src='/js/stm31.js'></script>
+<script language="JavaScript" type="text/JavaScript">
+//改变图片大小
+function resizepic(thispic)
+{
+if(thispic.width>700) thispic.width=700;
+}
+//无级缩放图片大小
+function bbimg(o)
+{
+  var zoom=parseInt(o.style.zoom, 10)||100;
+  zoom+=event.wheelDelta/12;
+  if (zoom>0) o.style.zoom=zoom+'%';
+  return false;
+}
+//双击鼠标滚动屏幕的代码
+var currentpos,timer;
+function initialize()
+{
+timer=setInterval ("scrollwindow ()",30);
+}
+function sc()
+{
+clearInterval(timer);
+}
+function scrollwindow()
+{
+currentpos=document.body.scrollTop;
+window.scroll(0,++currentpos);
+if (currentpos !=document.body.scrollTop)
+sc();
+}
+document.onmousedown=sc
+document.ondblclick=initialize
+
+//更改字体大小
+var status0='';
+var curfontsize=10;
+var curlineheight=18;
+function fontZoomA(){
+  if(curfontsize>8){
+    document.getElementById('fontzoom').style.fontSize=(--curfontsize)+'pt';
+	document.getElementById('fontzoom').style.lineHeight=(--curlineheight)+'pt';
+  }
+}
+function fontZoomB(){
+  if(curfontsize<64){
+    document.getElementById('fontzoom').style.fontSize=(++curfontsize)+'pt';
+	document.getElementById('fontzoom').style.lineHeight=(++curlineheight)+'pt';
+  }
+}
+</script>
+</head>
+<body leftmargin=0 topmargin=0 > 
+<noscript> 
+<iframe src=*></iframe> 
+</noscript> 
+<!-- ********网页顶部代码开始******** --> 
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" class="top_tdbgall"> 
+  <tr> 
+    <td><a href='http://www.chinadv.com' title='ChinaDV'><img src='/images/logo.gif' width='307' height='57' border='0'></a></td>
+<td valign="bottom" height="40"><SCRIPT src="/injs/login_h.js"></SCRIPT>
+<table border="0"><tr><td height="6"></td></tr></table>
+</td> 
+  </tr>
+<tr> 
+    <!--频道显示代码-->
+    <td align="right" class="top_Channel" background="/Skin/chinadv/channel6-bg.gif" colspan="2">|&nbsp;<a class='Channel' href='/Index.asp'>首页</a>&nbsp;|&nbsp;<a class='Channel' href='/hygc/Index.html' target='_self'>行业观察</a>&nbsp;|&nbsp;<a class='Channel' href='/ysdt/Index.html' target='_self'>影视动态</a>&nbsp;|&nbsp;<a class='Channel' href='http://www.chinadv.com/cdvjob' target='_blank'>人才交流</a>&nbsp;|&nbsp;<a class='Channel' href='/zjjs/Index.html' target='_self'>专家介绍</a>&nbsp;|&nbsp;<a class='Channel' href='/yszz/Index.html' target='_self'>影视制作</a>&nbsp;|&nbsp;<a class='Channel2' href='/yxzz/Index.html'>游戏制作</a>&nbsp;|&nbsp;<a class='Channel' href='/smyx/Index.html' target='_self'>数码影像</a>&nbsp;|&nbsp;<a class='Channel' href='/sjjs/Index.html' target='_self'>书籍介绍</a>&nbsp;|&nbsp;<a class='Channel' href='/zpxs/Index.html' target='_self'>作品欣赏</a>&nbsp;|&nbsp;<a class='Channel' href='http://www.chinadv.com/forum/' target='_blank'>交流园地</a>&nbsp;|&nbsp;</td> 
+  </tr>   </table> 
+    <!--导航代码开始--> 
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0"> 
+<tr> 
+    <td background="/Skin/chinadv/top_Path_mid.gif" height="21" colspan="2" align="center">
+<script language='JavaScript1.2' type='text/JavaScript' src='/yxzz/JS/ShowClass_Menu.js'></script>
+</td>
+  </tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0"> 
+<tr> 
+    <!--栏目广告显示代码-->
+    <td align="center"></td>
+  </tr>
+</table>
+    <!--导航代码结束--> 
+<!-- ********网页顶部代码结束******** --> 
+<!-- ********网页中部代码开始******** --> 
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+
+  <tr>
+    <td><img src="/Skin/chinadv/centtop.gif" width="760" height="4"></td>
+  </tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="0" class="top_Path" cellspacing="0">
+  <tr>
+    <Td width="23">  </Td>
+    <Td width="483">您现在的位置：&nbsp;<a href='http://www.chinadv.com'>ChinaDV</a>&nbsp;&gt;&gt;&nbsp;<a href='/yxzz/Index.html'>游戏制作</a>&nbsp;&gt;&gt;&nbsp;<a href='/yxzz/zzjs/Index.html'>制作技术</a>&nbsp;&gt;&gt;&nbsp;正文</Td>
+    <Td width="254"> </Td>
+  </tr></table>  
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+
+  <tr>
+    <td><img src="/Skin/chinadv/centback.gif" width="760" height="4"></td>
+  </tr>
+</table>
+<!--文章显示代码开始--> 
+<!--中部第一段开始-->  
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" class="center_tdbgall">
+
+<tr>
+    <td width="6" valign="top"><img height="4" width="6"></td>
+    <td width="748" valign="top" class="main_tdbgall">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td width="10"><img src="" width="10" height="8"></td>
+			<td width="728"><img src="" height="8">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" style="word-break:break-all;Width:fixed"> 
+        <tr> 
+          <td width="3%" valign="middle"> <img src="/Images/arrow.gif" width="11" height="14" align="absmiddle"></td> 
+          <td width="66%">在C++中集成Lua脚本</td> 
+          <td width="18%">&nbsp;&nbsp;&nbsp;<font color=red>热</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#009900'>★★★</font></td> 
+          <td width="13%" align='right' nowrap>【字体：<a href="javascript:fontZoomA();" class="top_UserLogin">小</a> <a href="javascript:fontZoomB();" class="top_UserLogin">大</a>】</td> 
+        </tr> 
+      </table>
+			<table border="0" width="100%"  cellspacing="0" cellpadding="0" class="main_box1">
+				
+				<tr align="center" valign="middle"> 
+    <td colspan="2" class="main_ArticleTitle" style="word-break:break-all;Width:fixed">在C++中集成Lua脚本</td> 
+  </tr> 
+  <tr align="center" valign="middle"> 
+    <td colspan="2" class="main_ArticleSubheading" style="word-break:break-all;Width:fixed"></td> 
+  </tr> 
+  <tr align="center"> 
+    <td colspan="2">作者：沐枫&nbsp;&nbsp;&nbsp;&nbsp;游戏制作来源：第二人生&nbsp;&nbsp;&nbsp;&nbsp;点击数：<script language='javascript' src='/yxzz/GetHits.asp?ArticleID=1714'></script>&nbsp;&nbsp;&nbsp;&nbsp;更新时间：2004-11-23</td> 
+  </tr> 
+  <tr> 
+    <td height="300" colspan="2" valign="top" id="fontzoom" class="main_tdcon_760" style="word-break:break-all;Width:fixed">  <P>为什么要用Lua作脚本？<BR>　　使用Lua作脚本，主要是因为它小巧玲珑（体积小，运行快），而且它的语法又比较简单明了。不过，使用LuaAPI将Lua引擎集成到程序中，确实有一些不方便——用落木随风网友的话来说，就是"就象用汇编"。当然，现在你不用再这么辛苦了，因为你可以使用LuaWrapper For C++。使用这个工具，在C++中集成Lua脚本就是轻而易举的事。你原有的C++函数和类，几乎不需要任何改变，就可以与Lua脚本共享。<BR>　　我们接下来，用实例来说明，如何用LuaWrapper来集成Lua脚本到你的程序中去。<BR><BR>1.&nbsp;&nbsp;创建Lua引擎<BR>　　LuaWrap lua; 或者 LuaWrap* lua = new LuaWrap;<BR>　　创建一个LuaWrap对象，就是创建一个Lua脚本引擎。并且根据Lua的特性，你可以创建任意多个Lua引擎，甚至可以分布在不同的线程当中。<BR><BR>2.&nbsp;&nbsp;装载并执行脚本程序<BR>　　你可以从缓冲区中装载Lua脚本：<BR>　　lua.LoadString(<BR>　　　　"print(Hello World)"<BR>　　);<BR>　　当然，你也可以从文件中装入，并执行Lua脚本：<BR>　　Lua.LoadFile("./test.lua");<BR>　　Lua的脚本，可以是源代码，也可以经过编译后的中间代码。也许你对编译后的中间代码更感兴趣——如果你不希望让源代码赤裸裸的袒露在大家的眼前。<BR><BR>3.&nbsp;&nbsp;获取和设置Lua变量<BR>　　能够获取和设置脚本变量的内容，是一个最基本的功能。你可以使用GetGlobal和SetGlobal函数来做到这一点：<BR>　　(1)&nbsp;&nbsp;获取变量：<BR>　　　　int a = lua.GetGlobal&lt;int&gt;("a");<BR>　　　　LuaTable table = lua.GetGlobal&lt;LuaTable&gt;("t");<BR>　　　　这里，&lt;&gt; 里头的类型，就是想要的变量的类型。<BR>　　(2)&nbsp;&nbsp;设置变量：<BR>　　　　lua.SetGlobal("a", a); <BR>　　　　lua.SetGlobal("t", table);<BR><BR>4.&nbsp;&nbsp;调用Lua函数<BR>　　使用Call函数，就可以很简单的从你的程序中调用Lua函数：<BR>　　lua.Call&lt;void&gt;("print", "Hello World");<BR>　　int sum = lua.Call&lt;int&gt;("add", 2, 3);<BR>　　这里，&lt;&gt; 里头的类型是返回值的类型。<BR><BR>5.&nbsp;&nbsp;如何让Lua也能调用C++的函数<BR>　　精采的地方来了。假如有下面这样的一个函数：<BR>　　int add(int a, int b)<BR>　　{<BR>　　　　return a + b;<BR>　　}<BR>　　如果想让它能够让Lua使用，只需将它注册到Lua引擎当中就可以了：<BR>　　lua.RegisterFunc("add", int(int,int), add);<BR>　　这样，Lua中就可以用直接使用了：<BR>　　（Lua脚本）sum = add(1, 3) <BR><BR>　　(*) RegisterFunc的功能，就是让你把C++的函数注册到Lua中，供Lua脚本使用。<BR>　　　　第一个参数，是想要在Lua中用的函数名。<BR>　　　　第二个参数，是C++中函数的原型； C++允许函数重载的，你可以使用函数原型，来选择需要注册到Lua引擎中的那个函数。<BR>　　　　第三个参数，就是C++中函数的指针了。<BR><BR>6.&nbsp;&nbsp;如何能让C++的类在Lua中使用<BR>　　我们先看看下面这个C++类：<BR>class MyArray<BR>{<BR>&nbsp;&nbsp;std::vector&lt;double&gt; array;<BR>public:<BR>&nbsp;&nbsp;void setvalue(int index, double value);<BR>&nbsp;&nbsp;double getvalue(int index);<BR>&nbsp;&nbsp;int size();<BR>&nbsp;&nbsp;const char* ToString();<BR>};<BR><BR>　　你准备要让Lua能够自由访问并操作这个类。很简单，你只需增加几个宏定义就可以了：<BR><BR>class MyArray<BR>{<BR>&nbsp;&nbsp;std::vector&lt;double&gt; array;<BR>public:<BR>&nbsp;&nbsp;void setvalue(int index, double value);<BR>&nbsp;&nbsp;double getvalue(int index);<BR>&nbsp;&nbsp;int size();<BR>&nbsp;&nbsp;const char* ToString();<BR>&nbsp;&nbsp;// 将一个 class 作为一个 Lua 对象是很容易的，只需要增加以下宏定义。<BR>&nbsp;&nbsp;DEFINE_TYPENAME("My.array");<BR>&nbsp;&nbsp;BEGIN_REGLUALIB("array")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LUALIB_ITEM_create("new", MyArray )&nbsp;&nbsp;// 创建MyArray (注：由于发表的原因，create应为全部大写)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LUALIB_ITEM_DESTROY("del", MyArray )&nbsp;&nbsp;// 消除MyArray。<BR>&nbsp;&nbsp;END_REGLUALIB()<BR>&nbsp;&nbsp;BEGIN_REGLUALIB_MEMBER()<BR>&nbsp;&nbsp;&nbsp;&nbsp;LUALIB_ITEM_FUNC("size", int (MyArray*), &amp;MyArray::size)<BR>&nbsp;&nbsp;&nbsp;&nbsp;LUALIB_ITEM_FUNC("__getindex", double(MyArray*, int), &amp;MyArray::getvalue)&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;LUALIB_ITEM_FUNC("__newindex", void (MyArray*, int, double), &amp;MyArray::setvalue)<BR>&nbsp;&nbsp;&nbsp;&nbsp;LUALIB_ITEM_FUNC("__tostring", const char* (MyArray*), &amp;MyArray::ToString)<BR>&nbsp;&nbsp;&nbsp;&nbsp;LUALIB_ITEM_DESTROY("__gc", MyArray ) &nbsp;&nbsp;// 垃圾收集时消除对象用。<BR>&nbsp;&nbsp;END_REGLUALIB_MEMBER()<BR>};<BR><BR>　　只要有了这些宏定义，这个类就是可以在Lua中使用的类了，我们就可以在Lua中注册这个类了：<BR>　　lua.Register&lt;MyArray&gt;()<BR><BR>　　这样注册以后，我们在Lua中就可以使用这个类了：<BR>　　a = array.new()&nbsp;&nbsp;-- 创建对象，相当于 a = new Myarray<BR>　　a[1] = 10&nbsp;&nbsp;-- 调用__newindex，也就是C++中的 a-&gt;setvalue(1, 10)<BR>　　a[2] = 20&nbsp;&nbsp;-- 调用__newindex，也就是C++中的 a-&gt;setvalue(2, 20)<BR>　　print(<BR>　　　　a,&nbsp;&nbsp;-- 调用 __tostring，也就是C++中的 a-&gt;ToString()<BR>　　　　a:size(), -- 相当于C++中的 a-&gt;size()<BR>　　　　a[1], -- 调用__getindex，也就是C++中的a-&gt;getvalue(1)<BR>　　　　a[2]) --调用__getindex，也就是C++中的a-&gt;getvalue(2)<BR>　　array.del(a)&nbsp;&nbsp;-- 清除对象，相当于 delete a<BR>　　a = nil&nbsp;&nbsp;-- 清空 a，很象C++中的 a = NULL<BR><BR>　　当然，你也可以不用del这个对象，而是等待Lua帮你自动进行垃圾回收。在Lua进行垃圾回收时，它会自动调用这个对象的 __gc ，相当于 delete。<BR><BR>　　那么，在C++中要创建MyArray对象，并且传递给Lua全局变量怎么办？就象前面讲过的一样，使用SetGlobal：<BR>　　MyArray* a = new MyArray; <BR>　　lua.SetGlobal("a", a);<BR>　　要获取该对象，同样的，应该使用GetGlobal：<BR>　　MyArray* a = lua.GetGlobal&lt;MyArray&gt;("a");<BR>　　<BR>　　对于传递给Lua的对象，就让Lua来管理该对象的生存周期好了。如果你非要删除它的话，你可以使用DelGlobalObject：<BR>　　lua.DelGlobalObject&lt;MyArray&gt;("a");<BR>　　不过这么做的话，你应当明白你在做什么，因为在Lua的脚本中，可能已经在多处引用了这个对象了。删除了其中一个，将导致其它引用对象失效，从而可能引致系统崩溃。<BR><BR>　　(1)&nbsp;&nbsp;DEFINE_TYPENAME("My.array");<BR>　　　　定义类型的名称。在Lua中，这个类型名称是唯一用来识别C++类型的，你必须为不同的对象给予不同的名称。<BR><BR>　　(2)&nbsp;&nbsp;BEGIN_REGLUALIB("array") … END_REGLUALIB()<BR>　　　　你可以为一个对象定义一个程序库，"array"就是程序库的名字。在程序库中定义的函数是全局函数，在Lua中，使用该函数，需要在函数前加上库的名字，如：array.new（）。通常，程序库会包含创建对象的方法。如：<BR>　　　　LUALIB_ITEM_create("new", MyArray )&nbsp;&nbsp;// 创建MyArray (注：由于发表的原因，create应为全部大写)<BR>　　　　这样子，你才能在Lua中创建MyArray：<BR>　　　　a = array.new()<BR>　　<BR>　　　　你也可以选择增加一个删除对象操作：<BR>　　　　LUALIB_ITEM_DESTROY("del", MyArray ) &nbsp;&nbsp;// 删除MyArray<BR>　　　　这样，你就可以直接删除一个对象了：<BR>　　　　array.del(a)<BR><BR>　　(3)&nbsp;&nbsp;BEGIN_REGLUALIB_MEMBER() …END_REGLUALIB_MEMBER()<BR>　　　　在此处，你可以定义对象的成员函数，也可以重载对象的操作符——是的，就象C++的operator重载。例如：<BR>　　　　LUALIB_ITEM_FUNC("__newindex", void (MyArray*, int, double), &amp;MyArray::setvalue)<BR>　　　　就是重载 operator[] 操作符。Lua中可重载的操作符还有许多，如：<BR><BR>　　　　__getindex：操作符[]，支持读取访问，如 v = a[10]<BR>　　　　__newindex：操作符[]，支持赋值访问，如 a[10] = 1.22<BR>　　　　__tostring：将变量转换成字串__add：等同于operator +<BR>　　　　__add：操作符 ＋<BR>　　　　__sub：操作符 –<BR>　　　　__mul：操作符 ×<BR>　　　　__div：操作符 ÷<BR>　　　　__pow：操作符 ^ (乘方)<BR>　　　　__unm：一元操作符 –<BR>　　　　__concat：操作符 .. (字符串连接)<BR>　　　　__eq：操作符 == (a ~= b等价于 not a == b)<BR>　　　　__lt：操作符 &lt; (a &gt; b 等价于 b &lt; a)<BR>　　　　__le：操作符 &lt;= (a &gt;= b 等价于 b &lt;= a，要注意的是，如果没有定义"__le"，则Lua将会尝试将a&lt;=b 转换成 not (b &lt; a) )<BR><BR>　　　　__gc：在垃圾回收时调用此函数，相当于C++的析构函数。强烈建议定义此操作符，以免造成内存泄漏等情况。比如：<BR>　　　　LUALIB_ITEM_DESTROY("__gc", MyArray ) &nbsp;&nbsp;// 垃圾收集时消除对象用。<BR><BR>　　　　(注) 这里要说明一下，在lua中，访问索引操作符是__index，不是__getindex，在luaWrapper库中，为了方便使用，将其映射为__getindex，同时，对__index的定义将会被忽略。<BR><BR>　　　　就这么简单。假如你已经有现成的类，而你没有修改该类的权力，如何将其加入到Lua中呢？答案就是，继承它，将把派生类加入到Lua中。<BR><BR>结束语<BR>　　LuaWrapper 需要用到boost库的支持：boost/type_traits.hpp, boost/function.hpp, boost/bind.hpp，它使用了C++的模板部份特化，因此，C++编译器如果不支持此特性，将无法编译。目前支持此特性的编译器已经有很多。在VisualStudo产品系列中，只有VC7.1能支持此特性，因此，您如果正在使用VisualStudio，请确认你用的是VisualStudio2003。<BR>　　如果你觉得 LuaWrapper For C++ 能够帮助你，我会感觉很荣幸。我很愿意将这个程序库分享给大家。顺便一提的是，如果你在使用过程中发现BUG，或是有好的建议，希望您能与我联系。你在使用过程中，请不要删除文件中的署名信息；如果你修改了程序库，请您在修改的文件中加入您的修改说明。当然，我会非常欢迎您能将修改后的程序回馈给我。我会继续优化并完善它。<BR><BR><BR>=============================================================</P> </td> 
+  </tr> 
+  <tr> 
+    <td colspan="2" align='right'>游戏制作录入：<a href='/UserInfo.asp?UserName=chinadv'>chinadv</a>&nbsp;&nbsp;&nbsp;&nbsp;责任编辑：chinadv&nbsp; </td> 
+  </tr> 
+  <tr> 
+    <td width="5"></td> 
+    <td width="752"><li>上一篇游戏制作： <a href='/yxzz/zzjs/200411/1713.html' title='游戏制作标题：3D&nbsp;MAX&nbsp;快捷方式
+作    者：k`
+更新时间：2004-11-23 17:42:00'>3D&nbsp;MAX&nbsp;快捷方式</a></li><br> 
+      <li>下一篇游戏制作： <a href='/yxzz/zzjs/200411/1715.html' title='游戏制作标题：Painter&nbsp;8&nbsp;美少年&nbsp;(外加全過程)
+作    者：RORO
+更新时间：2004-11-23 17:50:00'>Painter&nbsp;8&nbsp;美少年&nbsp;(外加全過程)</a></li></td> 
+  </tr> 
+  <tr align="right"> 
+    <td colspan="2">【<a href='/yxzz/Comment.asp?ArticleID=1714' target='_blank'>发表评论</a>】【<a href='/yxzz/SendMail.asp?ArticleID=1714' target='_blank'>告诉好友</a>】【<a href='/yxzz/Print.asp?ArticleID=1714' target='_blank'>打印此文</a>】【<a href='javascript:window.close();'>关闭窗口</a>】 </td> 
+  </tr> 
+
+			</table><img src="" height="4">
+			</td>
+			<td width="10"><img src="" width="10" height="8"></td>
+		</tr>
+	</table>		
+</td>
+     <td width="6" valign="top"><img height="4" width="6"></td>
+  </tr>
+</table>
+<!--中部第一段结束-->
+
+    <!--文章显示代码结束--> 
+    <!--最新热点、最新推荐、相关文章代码开始-->
+<!--中部第二段开始-->  
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" class="center_tdbgall">
+
+<tr>
+    <td width="6" valign="top"><img height="4" width="6"></td>
+    <td width="748" valign="top" class="main_tdbgall">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td width="10"><img src="" width="10" height="8"></td>
+			<td width="728">
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="word-break:break-all;Width:fixed"> 
+  <tr> 
+    <td width="33%" Class="main_title_282"><b>      最新热点</b></td> 
+    <td width="5" rowspan="2"></td> 
+    <td width="33%" Class="main_title_282"><b>      最新推荐</b></td> 
+    <td width="5" rowspan="2"></td> 
+    <td width="33%" Class="main_title_282"><b>      相关游戏制作</b></td> 
+  </tr> 
+  <tr> 
+    <td height="100" valign="top" class="main_tdbg_760"><script language='javascript' src='/yxzz/JS/Article_Hot3.js'></script></td> 
+    <td width="33%" valign="top" class="main_tdbg_760"><script language='javascript' src='/yxzz/JS/Article_Elite3.js'></script></td> 
+    <td width="33%" valign="top" class="main_tdbg_760"><li><a href='/yxzz/hyxx/200510/2896.html'title='游戏制作标题：10月27日美国德州举办奥司汀游戏会议
+作    者：17173
+更新时间：2005-10-13 11:42:00'>10月27日美国德州举办奥司汀…</a></li><br><li><a href='/yxzz/yxzp/200510/2872.html'title='游戏制作标题：从街霸到红警!&nbsp;国内十大最具影响游戏
+作    者：17173
+更新时间：2005-10-8 15:39:00'>从街霸到红警!&nbsp;国内十大最具…</a></li><br><li><a href='/yxzz/hyxx/200503/2291.html'title='游戏制作标题：打造完美游戏品质&nbsp;金山《幻想春秋》封测延期至25日
+作    者：金山
+更新时间：2005-3-16 14:55:00'>打造完美游戏品质&nbsp;金山《幻想…</a></li><br><li><a href='/yxzz/hyxx/200503/2213.html'title='游戏制作标题：当游戏自动化后—金山烈火工作室告封神榜玩家书
+作    者：金山
+更新时间：2005-3-4 17:37:00'>当游戏自动化后—金山烈火工…</a></li><br><li><a href='/yxzz/hyxx/200501/2037.html'title='游戏制作标题：04年游戏评选揭晓&nbsp;盛大&nbsp;金山&nbsp;网易三分天下
+作    者：OGDEV
+更新时间：2005-1-21 15:10:00'>04年游戏评选揭晓&nbsp;盛大&nbsp;金山…</a></li><br><li><a href='/yxzz/hyxx/200501/2021.html'title='游戏制作标题：勇敢者的游戏&nbsp;金山《封神榜》冒险岛全新开放
+作    者：金山
+更新时间：2005-1-19 10:51:00'>勇敢者的游戏&nbsp;金山《封神榜》…</a></li><br><li><a href='/yxzz/hyxx/200412/1846.html'title='游戏制作标题：游戏历年大事记
+作    者：游戏制作联盟
+更新时间：2004-12-15 13:28:00'>游戏历年大事记</a></li><br><li><a href='/yxzz/hyxx/200412/1844.html'title='游戏制作标题：游戏业2004年大事记
+作    者：游戏制作联盟
+更新时间：2004-12-15 11:10:00'>游戏业2004年大事记</a></li><br><li><a href='/yxzz/hyxx/200412/1843.html'title='游戏制作标题：91游戏制作联盟大型专题：《2004年游戏业回顾》邀您精诚合作
+作    者：佚名
+更新时间：2004-12-15 11:12:00'>91游戏制作联盟大型专题：《…</a></li><br><li><a href='/yxzz/hyxx/200412/1842.html'title='游戏制作标题：大型网游专题《2004年游戏业回顾》隆重推出！
+作    者：游戏制作联盟
+更新时间：2004-12-15 11:15:00'>大型网游专题《2004年游戏业…</a></li><br></td> 
+  </tr> 
+</table> 
+			<img src="" height="4">
+			</td>
+			<td width="10"><img src="" width="10" height="8"></td>
+		</tr>
+	</table>		
+</td>
+     <td width="6" valign="top"><img height="4" width="6"></td>
+  </tr>
+</table>
+<!--中部第2段结束-->
+    <!--最新热点、最新推荐、相关文章代码结束-->
+    <!--网友评论代码开始-->
+<!--中部第3段开始-->  
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" class="center_tdbgall">
+
+<tr>
+    <td width="6" valign="top"><img height="4" width="6"></td>
+    <td width="748" valign="top" class="main_tdbgall">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td width="10"><img src="" width="10" height="8"></td>
+			<td width="728"><img src="" height="8">
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="word-break:break-all;Width:fixed"> 
+  <tr> 
+    <td height="25"><strong> <img src="/Images/TEAM.gif" width="16" height="16" align="absmiddle"> 网友评论：</strong>（只显示最新10条。评论内容只代表网友观点，与本站立场无关！）</td> 
+  </tr> 
+  <tr> 
+    <td> <script language='javascript' src='/yxzz/Comment.asp?Action=JS&ArticleID=1714'></script> </td> 
+  </tr> 
+</table> 
+			<img src="" height="4">
+			</td>
+			<td width="10"><img src="" width="10" height="8"></td>
+		</tr>
+	</table>		
+</td>
+     <td width="6" valign="top"><img height="4" width="6"></td>
+  </tr>
+</table>
+<!--中部第3段结束-->
+    <!--网友评论代码结束-->
+<!-- ********网页中部代码结束******** --> 
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0" class="center_tdbgall">
+<tr>
+        <td height="6"></td>
+      </tr>
+</table> 
+<!-- ********网页底部代码开始******** --> 
+<SCRIPT src="/injs/headbo.js"></SCRIPT>
+<!-- ********网页底部代码结束******** --> 
+</body>
+</html>

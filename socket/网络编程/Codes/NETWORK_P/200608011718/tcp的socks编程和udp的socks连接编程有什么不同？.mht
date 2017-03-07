@@ -1,0 +1,1064 @@
+From: <ÓÉ Microsoft Internet Explorer 5 ±£´æ>
+Subject: =?gb2312?B?dGNwtcRzb2Nrc7Hgs8y6zXVkcLXEc29ja3PBrL3TseCzzNPQyrLDtLK7zaw=?=
+	=?gb2312?B?o78=?=
+Date: Wed, 2 Aug 2006 13:19:51 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0054_01C6B636.55F5A910"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2869
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0054_01C6B636.55F5A910
+Content-Type: text/html;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://book.77169.org/ask14/ask188990.htm
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>tcp=B5=C4socks=B1=E0=B3=CC=BA=CDudp=B5=C4socks=C1=AC=BD=
+=D3=B1=E0=B3=CC=D3=D0=CA=B2=C3=B4=B2=BB=CD=AC=A3=BF</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; charset=3Dgb2312">
+<SCRIPT type=3Dtext/javascript><!--
+google_ad_client =3D "pub-7325395580237867";
+
+google_ad_width =3D 728;
+google_ad_height =3D 90;
+google_ad_format =3D "728x90_as";
+
+google_color_border =3D "FFFFFF";
+google_color_bg =3D "FFFFFF";
+google_color_link =3D "0000FF";
+google_color_url =3D "FFFFFF";
+google_color_text =3D "000000";
+//--></SCRIPT>
+
+<SCRIPT=20
+src=3D"http://book.77169.org/pagead2.googlesyndication.com/pagead/show_ad=
+s.js"=20
+type=3Dtext/javascript>
+</SCRIPT>
+
+<META content=3D"MSHTML 6.00.2900.2912" name=3DGENERATOR></HEAD>
+<BODY bgColor=3D#ffffff leftMargin=3D0 topMargin=3D0 marginheight=3D"0" =
+marginwidth=3D"0">
+<SCRIPT src=3D"http://book.77169.org/163new.js" =
+type=3Dtext/javascript></SCRIPT>
+
+<CENTER>
+<TABLE width=3D"100%">
+  <TBODY>
+  <TR>
+    <TD align=3Dright>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+align=3Dright border=3D0>
+        <TBODY>
+        <TR>
+          <TD colSpan=3D2><A =
+href=3D"http://book.77169.org/index.html">=B7=B5=BB=D8=CA=D7=D2=B3</A> - =
+
+            <A =
+href=3D"http://book.77169.org/index.htm">=B2=E9=D5=D2=B8=FC=B6=E0</A> - =
+</TD></TR>
+        <TR>
+          <TD colSpan=3D2 =
+height=3D15></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD align=3Dleft>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD vAlign=3Dtop align=3Dright =
+width=3D100>=D6=F7=A1=A1=A1=A1=CC=E2=A3=BA</TD>
+          <TD align=3Dright width=3D5></TD>
+          =
+<TD><PRE>tcp=B5=C4socks=B1=E0=B3=CC=BA=CDudp=B5=C4socks=C1=AC=BD=D3=B1=E0=
+=B3=CC=D3=D0=CA=B2=C3=B4=B2=BB=CD=AC=A3=BF</PRE></TD></TR>
+        <TR bgColor=3D#666666>
+          <TD colSpan=3D3 height=3D1></TD></TR>
+        <TR height=3D10>
+          <TD align=3Dright></TD>
+          <TD align=3Dright></TD>
+          <TD></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD><PRE>
+tcp=B5=C4socks=B1=E0=B3=CC=BA=CDudp=B5=C4socks=C1=AC=BD=D3=C4=A3=CA=BD=B5=
+=C4=B1=E0=B3=CC=BA=C3=CF=F1=B2=EE=B2=BB=B6=E0=A3=AC
+=B6=BC=CA=C7
+connect-&gt;
+listen-&gt;accept-&gt;
+
+=B2=BB=CD=AC=D6=AE=B4=A6=BD=F6=D4=DA=D3=DAsocket=BD=A8=C1=A2=B5=C4=CA=B1=BA=
+=F2=B5=C4=B2=CE=CA=FDsock_stream=BB=B9=CA=C7sock_dgram=C2=F0=A3=BF=A3=BF
+
+udp=B5=C4sock=C1=AC=BD=D3=C4=A3=CA=BD=BF=AA=CF=FA=CA=C7=B2=BB=CA=C7=BA=CD=
+=C6=D5=CD=A8udp=B2=EE=B2=BB=B6=E0=A3=BF=A3=BF
+</PRE></TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            wwwunix(=C4=BE=D2=D7) </B></FONT><FONT color=3D#000000>( ) =
+=D0=C5=D3=FE=A3=BA100 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-10=20
+            18:57:59Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>0</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+=B5=ABudp=B2=BB=D7=F6=D0=A3=D1=E9=A3=ACtcp=D7=F6=D0=A3=D1=E9=A1=A3
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            zersan(=B6=BA=C4=E3=CD=E6) </B></FONT><FONT =
+color=3D#000000>( ) =D0=C5=D3=FE=A3=BA100 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-10=20
+            21:38:30Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>10</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+socket=B1=E0=B3=CC=BB=F9=B1=BE=C9=CF=C4=A3=CA=BD=CF=E0=CD=AC=A3=AC=B5=AB=CA=
+=C7=B2=BB=CD=AC=B5=C4=D0=AD=D2=E9=D4=CB=D0=D0=CA=C7=B2=BB=D2=BB=D1=F9=B5=C4=
+=A1=A3
+TCP=CA=C7=BF=C9=BF=BF=B5=C4=C1=AC=BD=D3=A3=AC=B6=F8UDP=CA=C7=B7=A2=CB=CD=BA=
+=F3=B2=BB=B9=DC=B5=C4=B7=C7=BF=C9=BF=BF=C1=AC=BD=D3=A1=A3
+UDP=B5=C4socket=C4=A3=CA=BD=D7=EE=BA=F3=B5=B1=C8=BB=BE=CD=CA=C7=B7=A2=CB=CD=
+=C6=D5=CD=A8udp=B0=FC=A1=A3
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B> xuying()=20
+            </B></FONT><FONT color=3D#000000>( ) =D0=C5=D3=FE=A3=BA104 =
+</FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-10=20
+            23:53:04Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>10</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+tcp=BA=CDudp=B5=C4=D6=F7=D2=AA=C7=F8=B1=F0=D4=DA=D3=DA:
+1. tcp=CA=C7=BF=C9=BF=BF=B4=AB=CA=E4=A3=AC=B6=F8udp=B2=BB=CA=C7
+2. tcp =
+socket=CA=C7=C3=E6=CF=F2=C1=F7=B5=C4=A3=AC=D2=BB=B4=CE=B7=A2=CB=CD=B5=C4=CA=
+=FD=BE=DD=BF=C9=C4=DC=D2=AA=B6=E0=B4=CE=BD=D3=CA=D5=B2=C5=BF=C9=D2=D4=CA=D5=
+=CD=EA=A1=A3=B6=F8udp=CA=C7=CA=FD=BE=DD=B1=A8=B7=BD=CA=BD=A3=AC=D2=BB=B4=CE=
+=B7=A2=CB=CD=B6=D4=D3=A6=D2=BB=B4=CE=BD=D3=CA=D5=A1=A3
+
+udp=B4=AB=CA=E4=B5=C4=D0=A7=C2=CA=D2=AA=B8=DF=D3=DAtcp=A1=A3
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            renxiaoyao(=C8=CE=E5=D0=D2=A3) </B></FONT><FONT =
+color=3D#000000>( ) =D0=C5=D3=FE=A3=BA83 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-11=20
+            00:40:52Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>0</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+TCP=CA=C7=C3=E6=CF=F2=C1=AC=BD=D3=B5=C4=A3=AC=B6=F8UDP=B2=BB=CA=C7=C3=E6=CF=
+=F2=C1=AC=BD=D3=B5=C4=A1=A3TCP=C4=DC=B1=A3=D6=A4=CA=FD=BE=DD=B5=C4=BF=C9=BF=
+=BF=B4=AB=CA=E4=A3=ACUDP=B2=BB=C4=DC=B1=A3=D6=A4=CA=FD=BE=DD=B5=C4=BF=C9=BF=
+=BF=B4=AB=B5=DD=A3=AC=B5=AB=D3=C9=D3=DAUDP=C3=BB=D3=D0TCP=B8=B4=D4=D3=B5=C4=
+=D0=A3=D1=E9=B9=FD=B3=CC=A3=AC=D2=F2=B4=CB=B8=FC=CA=CA=BA=CF=D3=C3=D7=F6=D3=
+=CE=CF=B7=BA=CDDNS=D5=E2=D0=A9=B6=D4=CA=B1=D0=A7=D0=D4=D2=AA=C7=F3=B1=C8=BD=
+=CF=B8=DF=B5=C4=B3=A1=CB=F9
+=D4=DA=B1=E0=B3=CC=B7=BD=C3=E6UDP=CD=A8=B3=A3=B2=BB=D0=E8=D2=AA=B5=F7=D3=C3=
+Connect,Accept,listen=BA=AF=CA=FD=A3=A8=B5=B1=C8=BB=C4=E3=D2=B2=BF=C9=D2=D4=
+=CA=B9=D3=C3=D5=E2=D0=A9=BA=AF=CA=FD=A3=A9=A3=AC=D4=DA=B7=A2=CB=CD=CA=FD=BE=
+=DD=CA=B1=D3=C3Sendto,=B6=F8=B2=BB=D3=C3send=BA=AF=CA=FD=A3=AC=BD=D3=CA=DC=
+=CA=FD=BE=DD=CA=B1=CD=AC=D1=F9.=BB=B9=D3=D0=BE=CD=CA=C7=D3=C3UDP=CD=A8=D1=
+=B6=CA=B1=BA=F2=C3=BB=D3=D0=C3=F7=CF=D4=B5=C4C/S(=BF=CD=BB=A7/=B7=FE=CE=F1=
+=C6=F7)=C7=F8=B7=D6
+
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            hazard(hazard) </B></FONT><FONT color=3D#000000>( ) =
+=D0=C5=D3=FE=A3=BA95 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-11=20
+            11:17:01Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>0</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+=B6=D4=B2=BB=C6=F0=B8=F7=CE=BB=A3=AC=CE=D2=C3=BB=D3=D0=CB=B5=C7=E5=B3=FE=A1=
+=A3
+
+tcp=D3=EBudp=B5=C4=C7=F8=B1=F0=D0=A1=B5=DC=BB=B9=D6=AA=B5=C0=A3=AC=CE=D2=CF=
+=EB=CE=CAudp=B5=C4=C1=AC=BD=D3=C4=A3=CA=BD=A3=AC=BE=CD=CA=C7=D2=AA=CF=C8c=
+onnect=B5=C4=C4=A3=CA=BD=A3=AC=D5=E2=D6=D6=C4=A3=CA=BD=B5=C4=B3=CC=D0=F2=C1=
+=F7=B3=CC=BC=B8=BA=F5=BA=CDtcp=D2=BB=D1=F9=A3=AC=B2=BB=D6=AA=B5=C0=B6=D4=B7=
+=FE=CE=F1=C6=F7=B5=C4=CF=B5=CD=B3=BF=AA=CF=FA=D3=B0=CF=EC=CA=C7=B2=BB=CA=C7=
+=D2=B2=D2=BB=D1=F9=A3=AC
+
+=B1=C8=C8=E7=D2=BB=B4=CE=C1=AC=BD=D3=D2=B2=D2=AA=BF=AA=D2=BB=B8=F6=CF=DF=B3=
+=CC=A3=AC=B6=F8=C7=D2=D2=AA=B5=C8=B4=AB=CA=E4=BD=E1=CA=F8=CF=DF=B3=CC=B2=C5=
+=BB=E1=B9=D8=B1=D5=A3=AC=D5=E2=D1=F9=CA=C7=B2=BB=CA=C7
+=D3=EBtcp=B5=C4=B7=FE=CE=F1=C6=F7=BF=AA=CF=FA=B2=EE=B2=BB=B6=E0=C1=CB=A3=BF=
+
+
+=D5=E2=D1=F9=B4=F8=C0=B4=B5=C4=BA=C3=B4=A6=BE=CD=CA=C7=B2=BB=D3=C3=C5=D0=B6=
+=CFudp=B0=FC=B5=C4=C0=B4=D4=B4=A3=AC=D6=BB=CA=D5=C0=B4=D7=D4=CC=D8=B6=A8=B7=
+=FE=CE=F1=C6=F7=B5=C4udp=B0=FC=A1=A3
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            renxiaoyao(=C8=CE=E5=D0=D2=A3) </B></FONT><FONT =
+color=3D#000000>( ) =D0=C5=D3=FE=A3=BA83 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-11=20
+            17:37:25Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>0</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+hazard(hazard),=C4=E3=CE=AA=CA=B2=C3=B4=D4=DA=B1=E0=D0=B4UDP=B3=CC=D0=F2=CA=
+=B1=B7=C7=D2=AA=CA=B9=D3=C3Connect=BA=AF=CA=FD=C4=D8=A3=BFUDP=CA=C7=B7=C7=
+=C3=E6=CF=F2=C1=AC=BD=D3=B5=C4=A3=AC=D2=B2=BE=CD=CA=C7=D4=DA=B7=A2=CB=CD=CA=
+=FD=BE=DD=D6=AE=C7=B0=B2=A2=B2=BB=D0=E8=D2=AA=D4=DA=CD=A8=D0=C5=CB=AB=B7=BD=
+=B5=F7=D3=C3Connect=BD=A8=C1=A2=C1=AC=BD=D3=A3=AC=D6=BB=D0=E8=D2=AA=BD=A8=
+=C1=A2socket=B2=A2=C7=D2bind=D6=AE=BA=F3=A3=AC=D3=C3sendto=B7=A2=CB=CD=CA=
+=FD=BE=DD=BC=B4=BF=C9=A1=A3=BC=B4=CA=B9=C4=E3=B5=F7=D3=C3=C1=CBconnect=BA=
+=AF=CA=FD=A3=AC=BD=A8=C1=A2=B5=C4=D2=B2=CA=C7=D2=BB=B8=F6=A1=B0=BC=D9=A1=B1=
+=C1=AC=BD=D3=A3=AC=D2=F2=CE=AAUDP=CA=C7=B7=C7=C3=E6=CF=F2=C1=AC=BD=D3=B5=C4=
+=A1=A3=BF=B4=C0=B4=A3=AC=C4=E3=BB=B9=CA=C7=B6=D4TCP=BA=CDUDP=B5=C4=C7=F8=B1=
+=F0=C3=BB=D3=D0=B7=D6=C7=E5=B3=FE=A1=A3=CF=D6=D4=DA=C4=E3=C3=F7=B0=D7=C1=CB=
+=C2=F0?=C4=E3=B5=F7=D3=C3Connect=BC=F2=D6=B1=BE=CD=CA=C7=B6=E0=B4=CB=D2=BB=
+=BE=D9!!!1
+
+
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            hazard(hazard) </B></FONT><FONT color=3D#000000>( ) =
+=D0=C5=D3=FE=A3=BA95 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-11=20
+            19:03:29Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>0</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+renxiaoyao=A3=BA=B8=D0=D0=BB=BB=D8=B8=B4=A3=A1
+=BE=DD=CE=D2=CB=F9=D6=AA=A3=ACudp=BD=D3=CA=DC=B5=C4=CA=B1=BA=F2=CA=C7=C8=CE=
+=BA=CE=B6=CB=BF=DA=A3=AC=B2=BB=C2=DB=C0=B4=D4=B4=B5=C4=BD=D3=CA=DC=A3=AC=D7=
+=EE=BA=C3=D4=DA=CA=D5=C1=CB=D2=D4=BA=F3=A3=AC
+=D4=DA=B6=D4=B0=FC=B5=C4=C0=B4=D4=B4=BD=F8=D0=D0=C5=D0=B6=CF=A3=AC=CA=C7=B7=
+=F1=CA=C7=C0=B4=D7=D4=B7=FE=CE=F1=C6=F7=B5=C4=A1=A3
+=CE=D2=BF=B4=B5=C3=D5=E2=B1=BE=CA=E9=A3=AC=A1=B6linux=CD=F8=C2=E7=B1=E0=B3=
+=CC=A1=B7=C9=CF=D3=D0=B5=F7=D3=C3udp=B5=C4connect=C4=A3=CA=BD=A3=AC=D5=E2=
+=D1=F9=BF=C9=D2=D4=D4=DAconnect=D6=AE=BA=F3=D6=BB=CA=D5=C0=B4=D7=D4=B7=FE=
+=CE=F1=C6=F7=B5=C4udp=B0=FC=A1=A3
+=B8=C3=CA=E9=C8=CF=CE=AA=A3=ACclient=D4=DA=D2=BB=B6=D4=D2=BB=B5=C4=CA=B1=BA=
+=F2=A3=AC=D7=EE=BA=C3=B2=C9=D3=C3udp=B5=C4connect=C4=A3=CA=BD=A1=A3
+
+=B2=BB=D6=AA=B5=C0=D5=E2=B8=F6connect=CA=C7=B2=BB=CA=C7=CF=F2=C4=E3=CB=B5=
+=B5=C4=A3=AC=D6=BB=CA=C7=BC=D9=C1=AC=BD=D3=A3=AC=D5=E2=D1=F9=CA=C7=B2=BB=CA=
+=C7=B7=FE=CE=F1=C6=F7=C3=BB=D3=D0=BF=AA=CF=FA=A3=BF=A3=BF
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            renxiaoyao(=C8=CE=E5=D0=D2=A3) </B></FONT><FONT =
+color=3D#000000>( ) =D0=C5=D3=FE=A3=BA83 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-11=20
+            19:19:41Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>40</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+hazard(hazard)=A3=BA=B2=BB=BF=CD=C6=F8=A3=A1
+=D5=E2=B8=F6connect=CA=C7=B8=F6=BC=D9=C1=AC=BD=D3=A1=A3=B5=AB=CA=C7=CE=D2=
+=B2=BB=D6=AA=B5=C0=C4=E3=CB=F9=CB=B5=B5=C4=A1=B0=B7=FE=CE=F1=C6=F7=A1=B1=D6=
+=B8=CA=B2=C3=B4=A3=BF=D2=F2=CE=AA=D4=DAUDP=C4=A3=CA=BD=CF=C2=A3=AC=D2=BB=B0=
+=E3=C7=E9=BF=F6=CF=C2=CA=C7=C3=BB=D3=D0=B7=FE=CE=F1=C6=F7=BA=CD=BF=CD=BB=A7=
+=B6=CB=B5=C4=BB=AE=B7=D6=B5=C4=A1=A3=C4=E3=D2=B2=B6=D4=CD=F8=C2=E7=B1=E0=B3=
+=CC=B8=D0=D0=CB=C8=A4=A3=BF=CE=D2=B6=D4=CD=F8=C2=E7=B7=BD=C3=E6=B5=C4=B1=E0=
+=B3=CC=BA=DC=B8=D0=D0=CB=C8=A4=A3=AC=C4=DC=B8=E6=CB=DF=CE=D2=C4=E3=B5=C4Q=
+Q=C2=F0=A3=BF=CE=D2=C3=C7=BF=C9=D2=D4=BB=A5=CF=E0=BD=BB=C1=F7=A3=A1=CE=D2=
+=B5=C4QQ=CA=C7=A3=BA35137677,=D0=E8=D2=AA=C9=ED=B7=DD=D1=E9=D6=A4=A3=AC=C7=
+=EB=D2=D4"=CD=F8=C2=E7"=CE=AA=C7=EB=C7=F3=A1=A3
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            =
+ksyou(=B9=FD=BA=D3=D7=E4=A3=BA=B2=BB=C4=DC=BB=D8=CD=B7=D4=F5=C3=B4=B0=EC=A3=
+=BF) </B></FONT><FONT color=3D#000000>( ) =D0=C5=D3=FE=A3=BA100=20
+          </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-12=20
+            16:16:12Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>10</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+=BC=D3=CE=D2=A3=AC=CE=D2=B5=C4QQ=A3=BA5833238  =
+=B0=B5=BA=C5=A3=BA=CD=F8=C2=E7
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B> ipv9()=20
+            </B></FONT><FONT color=3D#000000>( ) =D0=C5=D3=FE=A3=BA99 =
+</FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-12=20
+            18:34:58Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>30</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+UDP=B5=C4connect=D6=BB=CA=C7=D4=DA=B1=BE=B5=D8=BC=C7=C2=BC=C1=CBsocket=B5=
+=C4=B6=D4=B6=CB=B5=C4=B5=D8=D6=B7=BA=CD=B6=CB=BF=DA=BA=C5=A3=AC=CB=FC=C6=E4=
+=CA=B5=B2=A2=C3=BB=D3=D0=BA=CD=B6=D4=B6=CB=D3=D0=B8=FC=B6=E0=B5=C4=CF=FB=CF=
+=A2=BD=BB=BB=A5=C0=B4=BD=A8=C1=A2=A1=B0=C1=AC=BD=D3=A1=B1=A3=AC=CB=F9=D2=D4=
+=CB=FC=BA=CD=CD=A8=B3=A3=D3=C3=B5=C4UDP=B5=C4=BF=AA=CF=FA=CA=C7=B2=EE=B2=BB=
+=B6=E0=B5=C4=A1=A3
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            hazard(hazard) </B></FONT><FONT color=3D#000000>( ) =
+=D0=C5=D3=FE=A3=BA95 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-12=20
+            20:53:17Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>0</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+renxiaoyao:
+=CE=D2=D4=DA=D7=F6=B5=C4=CF=EE=C4=BF=A3=AC=CF=A3=CD=FB=CA=B5=CA=B1=B2=A5=B7=
+=C5mpeg4=B1=E0=C2=EB=B5=C4=CA=D3=C6=B5=A3=AC=CE=D2=B8=D5=C9=E6=BC=B0=A1=A3=
+
+=CF=D6=D4=DA=D5=FD=D4=DA=BF=B4=B4=AB=CA=E4=D5=E2=B2=BF=B7=D6=A3=AC=CF=A3=CD=
+=FB=CF=C8=CA=B5=CF=D6=D3=C3udp=B4=AB=CA=FD=BE=DD=A3=AC=B2=A2=C7=D2=CA=B5=CF=
+=D6=C5=C5=D0=F2=A1=A3
+=C4=E3=CB=B5=B5=C4=B6=D4=A3=ACudp=B2=BB=B7=D6s/c,=CE=D2=CA=C7=B3=C6=CA=D3=
+=C6=B5=D4=B4=CE=AA=B7=FE=CE=F1=C6=F7=A1=A3
+
+=CF=D6=D4=DA=BB=B9=D3=D0=BA=DC=B6=E0=B6=AB=CE=F7=B2=BB=B6=AE=A3=AC=B1=C8=C8=
+=E7=C9=CF=C3=E6=CC=D6=C2=DB=B5=C4=A3=AC=CE=D2=D7=F6=D7=F7=CA=B5=D1=E9=B0=C9=
+=A1=A3
+udp=CA=C7=D3=D0=C1=AC=BD=D3=C4=A3=CA=BD=B5=C4=A3=AC=D5=E2=B8=F6=C1=AC=BD=D3=
+=CA=C7=BC=D9=C1=AC=BD=D3=A3=AC=D6=BB=CA=C7=BC=C7=C2=BC=CF=C2server=B5=C4i=
+p=D2=D4=BC=B0=B6=CB=BF=DA=A3=AC
+=D4=DA=BD=D3=CA=DC=B5=C4=C8=CE=D2=E2=B0=FC=B5=C4=CA=B1=BA=F2=BC=D3=D2=D4=B9=
+=FD=C2=CB=A3=AC=CE=D2=CA=D4=B9=FD=C1=CB=A3=AC=B6=F8=C7=D2=D6=BB=C4=DCconn=
+ect,=B2=BB=C4=DClisten=A3=ACaccept.
+
+=CE=D2=B5=C4oicq=A3=BA33746860=A3=AC=B2=BB=B9=FD=CE=D2=B2=BB=D4=F5=C3=B4=C9=
+=CF=A3=AC=BB=B6=D3=AD=BD=BB=C1=F7=A1=A3
+
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D10 bgColor=3D#f1f5fa></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#3366cc>=BB=D8=B8=B4=C8=CB=A3=BA<B>=20
+            hjt3328(=BE=F8=CD=FB=B5=C4=C9=FA=D3=E3=C6=AC) =
+</B></FONT><FONT color=3D#000000>( ) =D0=C5=D3=FE=A3=BA100 </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>2002-08-13=20
+            08:35:33Z </FONT></TD>
+          <TD bgColor=3D#f1f5fa height=3D25><FONT =
+color=3D#000000>=B5=C3=B7=D6:</FONT><FONT=20
+            color=3D#000000>0</FONT> </TD></TR>
+        <TR>
+          <TD bgColor=3D#0066cc colSpan=3D4 height=3D1></TD></TR>
+        <TR>
+          <TD colSpan=3D4 height=3D5></TD></TR>
+        <TR>
+          <TD><FONT color=3D#ffffff>?</FONT></TD>
+          <TD colSpan=3D3><PRE>
+tcp=CA=C7=C3=E6=CF=F2=C1=AC=BD=D3=B5=C4=A3=AC=D3=D0=BD=D0=B4=ED=B9=A6=C4=DC=
+=A3=ACudp=B2=BB=CA=C7=C3=E6=CF=F2=C1=AC=BD=D3=B5=C4=A3=AC=CB=FB=B2=BB=D0=A3=
+=D1=E9
+</PRE></TD></TR>
+        <TR>
+          <TD align=3Dright colSpan=3D4 height=3D10><FONT =
+color=3D#ff6633><B><A=20
+            href=3D"http://book.77169.org/ask14/ask188990.htm#top"><FONT =
+
+            color=3D#3366cc>Top</FONT></A></B></FONT></TD></TR>
+        <TR>
+          <TD colSpan=3D4 =
+height=3D5></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D580 border=3D0>
+        <TBODY>
+        <TR>
+          <TD width=3D"100%" bgColor=3D#999999 height=3D1></TD></TR>
+        <TR>
+          <TD width=3D"100%"><BR>=BD=E1=CC=F9 =
+=A3=AC=B5=C3=B7=D6=BC=C7=C2=BC=A3=BA zersan (10)=A1=A2 xuying (10)=A1=A2 =
+renxiaoyao=20
+            (40)=A1=A2 ksyou (10)=A1=A2 ipv9 (30)=A1=A2 </TD></TR>
+        <TR>
+          <TD width=3D"100%"=20
+height=3D10></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></CENTER>=
+
+<SCRIPT language=3Djavascript =
+src=3D"http://book.77169.org/bottom.js"></html>
+
+</SCRIPT>
+</BODY></HTML>
+
+------=_NextPart_000_0054_01C6B636.55F5A910
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://book.77169.org/pagead2.googlesyndication.com/pagead/show_ads.js
+
+function ObjectAD() {
+  /* Define Variables*/
+  this.ADID        =3D 0;
+  this.ADType      =3D 0;
+  this.ADName      =3D "";
+  this.ImgUrl      =3D "";
+  this.ImgWidth    =3D 0;
+  this.ImgHeight   =3D 0;
+  this.FlashWmode  =3D 0;
+  this.LinkUrl     =3D "";
+  this.LinkTarget  =3D 0;
+  this.LinkAlt     =3D "";
+  this.Priority    =3D 0;
+  this.CountView   =3D 0;
+  this.CountClick  =3D 0;
+  this.InstallDir  =3D "";
+}
+
+function BannerZoneAD(_id) {
+  /* Define Constants */
+  this.adNum       =3D 0;
+  this.adDelay     =3D 6000;
+
+  /* Define Common Variables*/
+  this.ID          =3D _id;
+  this.ZoneID      =3D 0;
+  this.ZoneName    =3D "";
+  this.ZoneWidth   =3D 0;
+  this.ZoneHeight  =3D 0;
+  this.ShowType    =3D 1;
+  this.DivName     =3D "";
+  this.Div         =3D null;
+
+  /* Define Unique Variables*/
+
+  /* Define Objects */
+  this.AllAD       =3D new Array();
+  this.ShowAD      =3D null;
+
+  /* Define Functions */
+  this.AddAD       =3D BannerZoneAD_AddAD;
+  this.GetShowAD   =3D BannerZoneAD_GetShowAD;
+  this.Show        =3D BannerZoneAD_Show;
+  this.LoopShow    =3D BannerZoneAD_LoopShow;
+
+}
+
+function BannerZoneAD_AddAD(_AD) {
+  this.AllAD[this.AllAD.length] =3D _AD;
+}
+
+function BannerZoneAD_GetShowAD() {
+  if (this.ShowType > 1) {
+    this.ShowAD =3D this.AllAD[0];
+    return;
+  }
+  var num =3D this.AllAD.length;
+  var sum =3D 0;
+  for (var i =3D 0; i < num; i++) {
+    sum =3D sum + this.AllAD[i].Priority;
+  }
+  if (sum <=3D 0) {return ;}
+  var rndNum =3D Math.random() * sum;
+  i =3D 0;
+  j =3D 0;
+  while (true) {
+    j =3D j + this.AllAD[i].Priority;
+    if (j >=3D rndNum) {break;}
+    i++;
+  }
+  this.ShowAD =3D this.AllAD[i];
+}
+
+function BannerZoneAD_Show() {
+  if (!this.AllAD) {
+    return;
+  } else {
+    this.GetShowAD();
+  }
+
+  if (this.ShowAD =3D=3D null) return false;
+  this.DivName =3D "BannerZoneAD_Div" + this.ZoneID;
+  if (this.ShowAD.ImgWidth) this.ShowAD.ImgWidth =3D this.ZoneWidth
+  if (this.ShowAD.ImgHeight) this.ShowAD.ImgHeight =3D this.ZoneHeight
+  if (this.ShowType =3D=3D 3) {
+    document.write("<div id=3D'" + this.DivName + "' =
+style=3D'visibility:visible; z-index:1; width:" + this.ZoneWidth + "; =
+height:" + this.ZoneHeight + "; filter: =
+revealTrans(duration=3D2,transition=3D20);'>" + AD_Content(this.ShowAD) =
++ "</div>");
+  } else {
+    if (navigator.appName =3D=3D "Netscape") {
+      document.write("<layer id=3D'" + this.DivName + "' width=3D'" + =
+this.ZoneWidth + "' height=3D'" + this.ZoneHeight + "'>" + =
+AD_Content(this.ShowAD) + "</layer>");
+    } else {
+      document.write("<div id=3D'" + this.DivName + "' =
+style=3D'visibility:visible; z-index:1; width:" + this.ZoneWidth + "; =
+height:" + this.ZoneHeight + ";'>" + AD_Content(this.ShowAD) + =
+"</div>");
+    }
+    if (this.ShowAD.CountView) {
+      document.write ("<script src=3D'" + this.ShowAD.InstallDir + =
+"AD/ADCount.asp?Action=3DView&ADID=3D" + this.ShowAD.ADID + "'></" + =
+"script>")
+    }
+  }
+  this.Div =3D document.getElementById(this.DivName);
+  if (this.ShowType =3D=3D 3) this.LoopShow();
+}
+
+function BannerZoneAD_LoopShow() {
+  if(this.adNum<this.AllAD.length-1) this.adNum++ ;=20
+  else this.adNum=3D0;=20
+  =
+this.Div.filters.revealTrans.Transition=3DMath.floor(Math.random()*23);=20
+  this.Div.filters.revealTrans.apply();=20
+  if (this.AllAD[this.adNum].ImgWidth) this.AllAD[this.adNum].ImgWidth =
+=3D this.ZoneWidth
+  if (this.AllAD[this.adNum].ImgHeight) this.AllAD[this.adNum].ImgHeight =
+=3D this.ZoneHeight
+  this.Div.innerHTML=3DAD_Content(this.AllAD[this.adNum]);
+  this.Div.filters.revealTrans.play()=20
+  this.Div.timer=3DsetTimeout(this.ID+".LoopShow()",this.adDelay);
+}
+
+function AD_Content(o) {
+  var str =3D "";
+  if (o.ADType =3D=3D 1 || o.ADType =3D=3D 2) {
+    o.ImgUrl =3D o.ImgUrl.toLowerCase()
+    if (o.ImgUrl.indexOf(".swf") !=3D  - 1) {
+      str =3D "<object =
+classid=3D'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' =
+codebase=3D'http://download.macromedia.com/pub/shockwave/cabs/flash/swfla=
+sh.cab#version=3D7,0,0,0'";
+      str +=3D " name=3D'AD_" + o.ADID + "' id=3D'AD_" + o.ADID + "'";
+      str +=3D " width=3D'" + o.ImgWidth + "'";
+      str +=3D " height=3D'" + o.ImgHeight + "'";
+      if (o.style) str +=3D " style=3D'" + o.style + "'";
+      if (o.extfunc) str +=3D " " + o.extfunc + " ";
+      str +=3D ">";
+      str +=3D "<param name=3D'movie' value=3D'" + o.ImgUrl + "'>";
+      if (o.FlashWmode =3D=3D 1) str +=3D "<param name=3D'wmode' =
+value=3D'Transparent'>";
+      if (o.play) str +=3D "<param name=3D'play' value=3D'" + o.play + =
+"'>";
+      if (typeof(o.loop) !=3D "undefined") str +=3D "<param =
+name=3D'loop' value=3D'" + o.loop + "'>";
+      str +=3D "<param name=3D'quality' value=3D'autohigh'></object>";
+      str =3D "<embed ";
+      str +=3D " name=3D'AD_" + o.ADID + "' id=3D'AD_" + o.ADID + "'";
+      str +=3D " width=3D'" + o.ImgWidth + "'";
+      str +=3D " height=3D'" + o.ImgHeight + "'";
+      if (o.style) str +=3D " style=3D'" + o.style + "'";
+      if (o.extfunc) str +=3D " " + o.extfunc + " ";
+      str +=3D " src=3D'" + o.ImgUrl + "'";
+      if (o.FlashWmode =3D=3D 1) str +=3D " wmode=3D'Transparent'";
+      if (o.play) str +=3D " play=3D'" + o.play + "'";
+      if (typeof(o.loop) !=3D "undefined") str +=3D " loop=3D'" + o.loop =
++ "'";
+      str +=3D " quality=3D'autohigh'"
+      str +=3D " =
+pluginspage=3D'http://www.macromedia.com/shockwave/download/index.cgi?P1_=
+Prod_Version=3DShockwaveFlash' =
+type=3D'application/x-shockwave-flash'></embed>";
+      str +=3D "</object>";
+    } else if (o.ImgUrl.indexOf(".gif") !=3D  - 1 || =
+o.ImgUrl.indexOf(".jpg") !=3D  - 1 || o.ImgUrl.indexOf(".jpeg") !=3D  - =
+1 || o.ImgUrl.indexOf(".bmp") !=3D  - 1 || o.ImgUrl.indexOf(".png") !=3D =
+ - 1) {
+      if (o.LinkUrl) {
+        if (o.CountClick) o.LinkUrl =3D o.InstallDir + =
+"AD/ADCount.asp?Action=3DClick&ADID=3D" + o.ADID
+        str +=3D "<a href=3D'" + o.LinkUrl + "' target=3D'" + =
+((o.LinkTarget =3D=3D 0) ? "_self" : "_blank") + "' title=3D'" + =
+o.LinkAlt + "'>";
+      }
+      str +=3D "<img ";
+      str +=3D " name=3D'AD_" + o.ADID + "' id=3D'AD_" + o.ADID + "'";
+      if (o.style) str +=3D " style=3D'" + o.style + "'";
+      if (o.extfunc) str +=3D " " + o.extfunc + " ";
+      str +=3D " src=3D'" + o.ImgUrl + "'";
+      if (o.ImgWidth) str +=3D " width=3D'" + o.ImgWidth + "'";
+      if (o.ImgHeight) str +=3D " height=3D'" + o.ImgHeight + "'";
+      str +=3D " border=3D'0'>";
+      if (o.LinkUrl) str +=3D "</a>";
+    }
+  } else if (o.ADType =3D=3D 3 || o.ADType =3D=3D 4) {
+    str =3D o.ADIntro
+  } else if (o.ADType =3D=3D 5) {
+    str =3D "<iframe id=3D'" + "AD_" + o.ADID + "' marginwidth=3D0 =
+marginheight=3D0 hspace=3D0 vspace=3D0 frameborder=3D0 scrolling=3Dno =
+width=3D100% height=3D100% src=3D'" + o.ADIntro + "'>wait</iframe>";
+  }
+  return str;
+}
+
+
+var ZoneAD_7 =3D new BannerZoneAD("ZoneAD_7");
+ZoneAD_7.ZoneID      =3D 7;
+ZoneAD_7.ZoneWidth   =3D 760;
+ZoneAD_7.ZoneHeight  =3D 60;
+ZoneAD_7.ShowType    =3D 1;
+
+var objAD =3D new ObjectAD();
+objAD.ADID           =3D 21;
+objAD.ADType         =3D 1;
+objAD.ADName         =3D "=BA=DA=BF=CD=CA=D6=B2=E1";
+objAD.ImgUrl         =3D "/AD/UploadAdPic/200506/nohack.gif";
+objAD.ImgWidth       =3D 0;
+objAD.ImgHeight      =3D 0;
+objAD.FlashWmode     =3D 0;
+objAD.ADIntro        =3D "";
+objAD.LinkUrl        =3D "http://www.77169.com.cn/product/shu_3.html";
+objAD.LinkTarget     =3D 1;
+objAD.LinkAlt        =3D "=BA=DA=BF=CD=CA=D6=B2=E1";
+objAD.Priority       =3D 1;
+objAD.CountView      =3D 0;
+objAD.CountClick     =3D 0;
+objAD.InstallDir     =3D "/";
+ZoneAD_7.AddAD(objAD);
+
+var objAD =3D new ObjectAD();
+objAD.ADID           =3D 9;
+objAD.ADType         =3D 2;
+objAD.ADName         =3D "=CD=F8=D5=BE=D5=D0=C9=FA=B9=E3=B8=E6";
+objAD.ImgUrl         =3D =
+"http://www1.77169.org/ad/UploadADPic/200406/0625changbanner.swf";
+objAD.ImgWidth       =3D 760;
+objAD.ImgHeight      =3D 60;
+objAD.FlashWmode     =3D 0;
+objAD.ADIntro        =3D "";
+objAD.LinkUrl        =3D "";
+objAD.LinkTarget     =3D 1;
+objAD.LinkAlt        =3D "";
+objAD.Priority       =3D 1;
+objAD.CountView      =3D 0;
+objAD.CountClick     =3D 0;
+objAD.InstallDir     =3D "/";
+ZoneAD_7.AddAD(objAD);
+
+ZoneAD_7.Show();
+
+------=_NextPart_000_0054_01C6B636.55F5A910
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://book.77169.org/163new.js
+
+document.write("<SCRIPT language=3D\"javascript\" =
+src=3D\"http:\/\/77169.org\/book23\/163new11.js\"><\/SCRIPT>");
+document.write("<div align=3D'center'><iframe WIDTH=3D760 HEIGHT=3D150 =
+MARGINHEIGHT=3D0 HSPACE=3D0 VSPACE=3D0 FRAMEBORDER=3D0 SCROLLING=3Dno =
+src=3D'http://77169.org/top.html'></iframe></div>");
+delta=3D0.15
+	var collection;
+	var closeB=3Dfalse;
+	function floaters() {
+		this.items	=3D [];
+		this.addItem	=3D function(id,x,y,content)
+				  {
+					document.write('<DIV id=3D'+id+' style=3D"Z-INDEX: 10; POSITION: =
+absolute;  width:80px; =
+height:60px;left:'+(typeof(x)=3D=3D'string'?eval(x):x)+';top:'+(typeof(y)=
+=3D=3D'string'?eval(y):y)+'">'+content+'</DIV>');
+				=09
+					var newItem				=3D {};
+					newItem.object			=3D document.getElementById(id);
+					newItem.x				=3D x;
+					newItem.y				=3D y;
+
+					this.items[this.items.length]		=3D newItem;
+				  }
+		this.play	=3D function()
+				  {
+					collection				=3D this.items
+					setInterval('play()',10);
+				  }
+		}
+		function play()
+		{
+			if(screen.width<=3D800 || closeB)
+			{
+				for(var i=3D0;i<collection.length;i++)
+				{
+					collection[i].object.style.display	=3D 'none';
+				}
+				return;
+			}
+			for(var i=3D0;i<collection.length;i++)
+			{
+				var followObj		=3D collection[i].object;
+				var followObj_x		=3D =
+(typeof(collection[i].x)=3D=3D'string'?eval(collection[i].x):collection[i=
+].x);
+				var followObj_y		=3D =
+(typeof(collection[i].y)=3D=3D'string'?eval(collection[i].y):collection[i=
+].y);
+
+				if(followObj.offsetLeft!=3D(document.body.scrollLeft+followObj_x)) {
+					var =
+dx=3D(document.body.scrollLeft+followObj_x-followObj.offsetLeft)*delta;
+					dx=3D(dx>0?1:-1)*Math.ceil(Math.abs(dx));
+					followObj.style.left=3DfollowObj.offsetLeft+dx;
+					}
+
+				if(followObj.offsetTop!=3D(document.body.scrollTop+followObj_y)) {
+					var =
+dy=3D(document.body.scrollTop+followObj_y-followObj.offsetTop)*delta;
+					dy=3D(dy>0?1:-1)*Math.ceil(Math.abs(dy));
+					followObj.style.top=3DfollowObj.offsetTop+dy;
+					}
+				followObj.style.display	=3D '';
+			}
+		}=09
+				function closeBanner()
+		{
+			closeB=3Dtrue;
+			return;
+		}
+	=09
+	var theFloaters		=3D new floaters();
+
+	theFloaters.play();
+document.write("<div id=3DeMeng  style=3D\"BORDER-RIGHT: #455690 1px =
+solid; BORDER-TOP: #a6b4cf 1px solid; Z-INDEX: 99999; LEFT: 65px; =
+VISIBILITY: hidden; BORDER-LEFT: #a6b4cf 1px solid; WIDTH: 226px; =
+BORDER-BOTTOM: #455690 1px solid; POSITION: absolute; TOP: 622px; =
+HEIGHT: 102px\"> ");
+document.write("    <table id=3Dtable14  style=3D\"BORDER-TOP: #ffffff =
+1px solid; BORDER-LEFT: #ffffff 1px solid\" cellspacing=3D0 =
+cellpadding=3D0 width=3D\"100%\" border=3D0 bgcolor=3D\"#cfdef4\" =
+height=3D\"100\">");
+document.write("      <tr> ");
+document.write("        <td style=3D\"PADDING-LEFT: 4px; FONT-WEIGHT: =
+normal; FONT-SIZE: 12px; BACKGROUND-IMAGE: none; COLOR: #1f336b; =
+PADDING-TOP: 4px\" valign=3Dcenter width=3D\"88%\" =
+height=3D\"20\">&nbsp;<font color=3D\"#0000FF\"><b><font =
+color=3D\"#132235\">=C4=FA=D3=D0=D0=C2=B5=C4=B6=CC=CF=FB=CF=A2<\/font><\/=
+b><\/font><\/td>");
+document.write("        <td style=3D\"PADDING-RIGHT: 2px; =
+BACKGROUND-IMAGE: none; PADDING-TOP: 2px\" valign=3Dcenter align=3Dright =
+width=3D19> ");
+document.write("          <div align=3D\"center\"> <span =
+title=3D=B9=D8=B1=D5 style=3D\"FONT-WEIGHT: bold; FONT-SIZE: 12px; =
+CURSOR: hand; COLOR: red; MARGIN-RIGHT: 4px\" =
+onClick=3D\"javascript:closeDiv();\"><font =
+color=3D\"#003399\">=A1=C1<\/font><\/span><\/div>");
+document.write("        <\/td>");
+document.write("      <\/tr>");
+document.write("      <tr valign=3D\"top\"> ");
+document.write("        <td style=3D\"20padding-right: %201px; =
+20padding-bottom: %201px\'); background-image: url(\'\')\" colspan=3D2> =
+");
+document.write("          <div style=3D\"BORDER-RIGHT: #b9c9ef 1px =
+solid; PADDING-RIGHT: 13px; BORDER-TOP: #728eb8 1px solid; PADDING-LEFT: =
+13px; FONT-SIZE: 12px; PADDING-BOTTOM: 13px; BORDER-LEFT: #728eb8 1px =
+solid; WIDTH: 100%; COLOR: #1f336b; PADDING-TOP: 18px; BORDER-BOTTOM: =
+#b9c9ef 1px solid; HEIGHT: 100%\"> ");
+document.write("            <p align=3D\"left\"> <b><a =
+href=3D\"http:\/\/77169.com\/pay\/20041001.html\" target=3D_blank><font =
+color=3D\"#FF0000\">=BC=D3=C8=EB=BA=DA=BF=CD=C5=E0=D1=B5=B0=E0<\/font><\/=
+a><\/b><br>");
+document.write("              <a href=3D\"http:\/\/bbs.77169.com\" =
+target=3D_blank><font color=3D\"#FF0000\"><b><br>");
+document.write("              =
+=BB=AA=CF=C4=BA=DA=BF=CD=C2=DB=CC=B3!<\/b><\/font><\/a> <b><font =
+color=3D\"#FF0000\"><a href=3D\"http:\/\/book.77169.com\" =
+target=3D\"_blank\">IT=B1=E0=B3=CC=CA=E9=BC=AE<\/a><\/font><\/b><br>");
+document.write("              <a href=3D\"http:\/\/blog.77169.com\" =
+target=3D\"_blank\"><font color=3D\"#ff0000\"><br>");
+document.write("=D7=EE=B4=F3=B5=C4IT=C0=E0=C3=E2=B7=D1blog<\/font><\/a> =
+<a href=3D\"http:\/\/idc.77169.com\" =
+target=3D\"_blank\">=C3=E2=B7=D1=BF=D5=BC=E4=D3=F2=C3=FB<\/a> ");
+window.onload =3D getMsg;=20
+window.onresize =3D resizeDiv;=20
+window.onerror =3D function(){}=20
+var divTop,divLeft,divWidth,divHeight,docHeight,docWidth,objTimer,i =3D =
+0;=20
+function getMsg()=20
+{=20
+try{=20
+divTop =3D parseInt(document.getElementById("eMeng").style.top,10)=20
+divLeft =3D parseInt(document.getElementById("eMeng").style.left,10)=20
+divHeight =3D parseInt(document.getElementById("eMeng").offsetHeight,10) =
+
+divWidth =3D parseInt(document.getElementById("eMeng").offsetWidth,10)=20
+docWidth =3D document.body.clientWidth;=20
+docHeight =3D document.body.clientHeight;=20
+document.getElementById("eMeng").style.top =3D =
+parseInt(document.body.scrollTop,10) + docHeight + 10;// divHeight=20
+document.getElementById("eMeng").style.left =3D =
+parseInt(document.body.scrollLeft,10) + docWidth - divWidth=20
+document.getElementById("eMeng").style.visibility=3D"visible"=20
+objTimer =3D window.setInterval("moveDiv()",10)=20
+}=20
+catch(e){}=20
+}=20
+
+function resizeDiv()=20
+{=20
+try{=20
+divHeight =3D parseInt(document.getElementById("eMeng").offsetHeight,10) =
+
+divWidth =3D parseInt(document.getElementById("eMeng").offsetWidth,10)=20
+docWidth =3D document.body.clientWidth;=20
+docHeight =3D document.body.clientHeight;=20
+document.getElementById("eMeng").style.top =3D docHeight - divHeight + =
+parseInt(document.body.scrollTop,10)=20
+document.getElementById("eMeng").style.left =3D docWidth - divWidth + =
+parseInt(document.body.scrollLeft,10)=20
+}=20
+catch(e){}=20
+}=20
+
+function moveDiv()=20
+{=20
+try=20
+{=20
+if(parseInt(document.getElementById("eMeng").style.top,10) <=3D =
+(docHeight - divHeight + parseInt(document.body.scrollTop,10)))=20
+{=20
+window.clearInterval(objTimer)=20
+objTimer =3D window.setInterval("resizeDiv()",1)=20
+}=20
+divTop =3D parseInt(document.getElementById("eMeng").style.top,10)=20
+document.getElementById("eMeng").style.top =3D divTop - 1=20
+}=20
+catch(e){}=20
+}=20
+function closeDiv()=20
+{=20
+document.getElementById('eMeng').style.visibility=3D'hidden';=20
+if(objTimer) window.clearInterval(objTimer)=20
+}=20
+document.write("          <\/div>");
+document.write("    <\/table>");
+document.write("<\/div>");
+
+------=_NextPart_000_0054_01C6B636.55F5A910
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://book.77169.org/bottom.js
+
+document.write("<iframe marginwidth=3D0 marginheight=3D0  =
+frameborder=3D0 bordercolor=3D\'#000000\' scrolling=3Dno =
+src=3D\'http:\/\/77169.org\/bottom.html\' width=3D760 =
+height=3D190><\/iframe>");
+
+------=_NextPart_000_0054_01C6B636.55F5A910--
