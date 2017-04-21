@@ -1,1 +1,0 @@
-myBST > a.txt
