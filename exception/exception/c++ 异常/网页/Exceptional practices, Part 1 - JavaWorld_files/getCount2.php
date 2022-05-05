@@ -1,1 +1,0 @@
-(function(){stButtons.processCB({"url":"http:\/\/www.javaworld.com\/javaworld\/jw-08-2001\/jw-0803-exceptions.html","wordpress":186,"slashdot":1,"twitter":3,"total":190,"ourl":"http:\/\/www.javaworld.com\/javaworld\/jw-08-2001\/jw-0803-exceptions.html"})})();

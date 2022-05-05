@@ -1,1 +1,0 @@
-document.writeln("<img height=\"40\" alt=\"\" src=\"http:\/\/www.qudong.com\/ad\/img\/ads_hz.gif\" width=\"960\" \/>")
