@@ -1,9 +1,0 @@
-; TestComObject1.def : Declares the module parameters.
-
-LIBRARY      "TestComObject1.DLL"
-
-EXPORTS
-	DllCanUnloadNow     @1 PRIVATE
-	DllGetClassObject   @2 PRIVATE
-	DllRegisterServer   @3 PRIVATE
-	DllUnregisterServer	@4 PRIVATE

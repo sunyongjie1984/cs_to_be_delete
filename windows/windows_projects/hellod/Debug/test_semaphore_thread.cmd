@@ -1,1 +1,0 @@
-hello test_semaphore_thread

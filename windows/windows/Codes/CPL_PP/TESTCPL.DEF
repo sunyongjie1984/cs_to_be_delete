@@ -1,8 +1,0 @@
-; testcpl.def : Declares the module parameters for the DLL.
-
-LIBRARY      "testcpl"
-DESCRIPTION  'testcpl Control Panel Applet'
-
-EXPORTS
-    ; Explicit exports can go here
-	CPlApplet

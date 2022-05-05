@@ -1,2 +1,0 @@
-C:\Users\yochayk\Documents\Yochay\Work\Windows 7\Content\Rhythems\Windows 7 LightUp Developer Training Course\Module 2 - Libraries and Federated Search\HOL\End\ShellLibraryExercise\obj\Debug\SLUtil.exe
-C:\Users\yochayk\Documents\Yochay\Work\Windows 7\Content\Rhythems\Windows 7 LightUp Developer Training Course\Module 2 - Libraries and Federated Search\HOL\End\ShellLibraryExercise\obj\Debug\SLUtil.pdb

@@ -1,5 +1,0 @@
-eToolsVersions">
-    <Error Text="The tools version &quot;$(MSBuildToolsVersion)&quot; of the solution does not support building projects with a different tools version." Code="MSB4149" HelpKeyword="MSBuild.SolutionToolsVersionDoesNotSupportProjectToolsVersion" Condition="'$(MSBuildToolsVersion)' == '2.0' and ('$(ProjectToolsVersion)' != '2.0' and '$(ProjectToolsVersion)' != '')" />
-  </Target>
-  <Target Name="dcelevel2api" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
-    <VCBuild Projects="f:\tpx\Code\trunk\level2\dcelevel2api\dcelevel2api\dcelevel2api.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="f:\tpx\Code\trunk\level2\dcelevel2api\dcelevel2api.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)

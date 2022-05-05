@@ -1,3 +1,0 @@
-The VER_SET_CONDITION macro sets the bits of a 64-bit value to indicate the comparison operator to use for a specified 
-operating system version attribute. This macro is used to build the dwlConditionMask parameter of the VerifyVersionInfo 
-function.

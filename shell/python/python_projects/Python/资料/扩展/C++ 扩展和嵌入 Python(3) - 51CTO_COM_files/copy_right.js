@@ -1,1 +1,0 @@
-document.write('Copyright&copy;2005-2010 <a href="http://www.51cto.com">51CTO.COM</a> 版权所有 未经许可 请勿转载');

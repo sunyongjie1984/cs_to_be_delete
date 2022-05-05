@@ -1,1 +1,0 @@
-SIO_ENABLE_CIRCULAR_QUEUING is a NT only option.

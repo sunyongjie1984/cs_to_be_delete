@@ -1,7 +1,0 @@
-设定两个最基本的机关来启用内存泄漏检测机制
-
-    一是使用调试堆函数：
-	#define _CRTDBG_MAP_ALLOC 
-	#include<stdlib.h> 
-
-	#include<crtdbg.h>

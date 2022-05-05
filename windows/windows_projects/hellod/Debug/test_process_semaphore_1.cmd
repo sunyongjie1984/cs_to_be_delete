@@ -1,1 +1,0 @@
-hello test_process_semaphore 1
